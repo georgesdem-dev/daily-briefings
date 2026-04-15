@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Briefing — April 15, 2026</title>
+  <style>
+    :root {
+      --navy:    #0d1b2a;
+      --navy2:   #1b2d42;
+      --navy3:   #243750;
+      --accent:  #3b82f6;
+      --accent2: #60a5fa;
+      --gold:    #f59e0b;
+      --red:     #ef4444;
+      --green:   #22c55e;
+      --text:    #e2e8f0;
+      --muted:   #94a3b8;
+      --card:    #162032;
+      --border:  #1e3a5f;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 0;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, #0a1628 0%, #162645 50%, #0f2040 100%);
+      border-bottom: 2px solid var(--accent);
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+    }
+    header .label {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 0.5rem;
+    }
+    header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+    header .date-line {
+      margin-top: 0.6rem;
+      font-size: 1rem;
+      color: var(--muted);
+    }
+    header .date-line span {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* ── LAYOUT ── */
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── SECTION HEADERS ── */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 2.8rem 0 1.2rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--border);
+    }
+    .section-title .emoji { font-size: 1.4rem; }
+    .section-title .tag {
+      margin-left: auto;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent2);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .card p { font-size: 0.9rem; color: var(--text); margin-bottom: 0.5rem; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ul {
+      padding-left: 1.2rem;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .card ul li { margin-bottom: 0.4rem; }
+    .card a { color: var(--accent2); text-decoration: none; border-bottom: 1px dotted var(--accent2); }
+    .card a:hover { color: #fff; }
+
+    /* ── AUDIENCE TABS ── */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media(min-width: 640px) {
+      .audience-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    .audience-card {
+      background: var(--navy2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.2rem 1.4rem;
+    }
+    .audience-card .aud-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .aud-ciso   .aud-label { color: #f87171; }
+    .aud-partner .aud-label { color: #34d399; }
+    .aud-exec   .aud-label { color: #fbbf24; }
+    .audience-card ul {
+      padding-left: 1rem;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+    .audience-card ul li { margin-bottom: 0.5rem; }
+    .audience-card a { color: var(--accent2); text-decoration: none; }
+
+    /* ── STAT PILLS ── */
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin: 1rem 0;
+    }
+    .stat-pill {
+      background: var(--navy3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.8rem;
+    }
+    .stat-pill .val { font-weight: 700; color: var(--gold); }
+    .stat-pill .lbl { color: var(--muted); margin-left: 0.3rem; }
+
+    /* ── ALERT STRIP ── */
+    .alert {
+      background: rgba(239,68,68,0.12);
+      border-left: 4px solid var(--red);
+      border-radius: 0 8px 8px 0;
+      padding: 0.8rem 1.2rem;
+      font-size: 0.875rem;
+      margin-bottom: 0.8rem;
+      color: #fca5a5;
+    }
+    .warn {
+      background: rgba(245,158,11,0.12);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      padding: 0.8rem 1.2rem;
+      font-size: 0.875rem;
+      margin-bottom: 0.8rem;
+      color: #fde68a;
+    }
+    .info {
+      background: rgba(59,130,246,0.1);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 0.8rem 1.2rem;
+      font-size: 0.875rem;
+      margin-bottom: 0.8rem;
+      color: #bfdbfe;
+    }
+
+    /* ── SOURCES ── */
+    .sources {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.8rem;
+      padding-top: 0.6rem;
+      border-top: 1px solid var(--border);
+    }
+    .sources a { color: var(--muted); text-decoration: none; }
+    .sources a:hover { color: var(--accent2); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    footer span { color: var(--accent2); font-weight: 600; }
+
+    /* ── DIVIDER ── */
+    hr.section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    .subsection-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 1.4rem 0 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="label">Daily Intelligence Briefing · By Jorge</div>
+  <h1>📰 Daily Briefing</h1>
+  <div class="date-line">
+    <span>Wednesday, April 15, 2026</span> &nbsp;·&nbsp; 6:00 PM
+  </div>
+</header>
+
+<main>
+
+  <!-- ══════════════════════════════════════
+       SECTION 1 — IRAN WAR
+  ══════════════════════════════════════ -->
+  <div class="section-title">
+    <span class="emoji">🪖</span>
+    Iran War
+    <span class="tag">Day 47</span>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-pill"><span class="val">Day 47</span><span class="lbl">of conflict</span></div>
+    <div class="stat-pill"><span class="val">$90–94</span><span class="lbl">oil $/bbl (Brent/WTI)</span></div>
+    <div class="stat-pill"><span class="val">Apr 21</span><span class="lbl">ceasefire expiry</span></div>
+    <div class="stat-pill"><span class="val">24</span><span class="lbl">ships/week through Hormuz (vs 100+ pre-war)</span></div>
+    <div class="stat-pill"><span class="val">3.1%</span><span class="lbl">IMF global growth forecast (cut)</span></div>
+  </div>
+
+  <div class="alert">
+    ⚠️ <strong>Ceasefire expires April 21.</strong> Talks broke down in Islamabad on April 12 without a deal. A second round is being urgently sought via Pakistani mediation.
+  </div>
+
+  <div class="card">
+    <h3>🕊️ Diplomatic Status — Teetering Ceasefire</h3>
+    <ul>
+      <li><strong>Pakistan's role:</strong> PM Shehbaz Sharif and Army Chief Field Marshal Asim Munir brokered the original ceasefire on April 7–8 and hosted the Islamabad Peace Talks (April 11–12). Today, Pakistan's army chief is in Tehran for emergency consultations.</li>
+      <li><strong>Talks collapsed:</strong> After 21+ hours of marathon negotiations, the US and Iranian delegations left Islamabad without a deal. Core sticking points: <em>Iran's nuclear program</em> and the <em>future of the Strait of Hormuz</em>.</li>
+      <li><strong>What's next:</strong> VP Vance said the US made "a lot of progress" and Trump hinted talks could resume within 2 days. A narrow window remains before the April 21 ceasefire deadline.</li>
+      <li><strong>Iran's posture:</strong> Foreign Minister Araghchi acknowledged Pakistan's role but signaled Tehran won't cede on core nuclear demands. Hezbollah has also <em>rejected</em> direct talks with Israel.</li>
+    </ul>
+    <div class="sources">Sources:
+      <a href="https://www.al-monitor.com/originals/2026/04/vance-says-us-made-lot-progress-talks-iran" target="_blank">Al-Monitor</a> ·
+      <a href="https://www.aljazeera.com/news/liveblog/2026/4/15/iran-war-live-trump-hints-at-second-round-of-talks-israel-pounds-lebanon" target="_blank">Al Jazeera</a> ·
+      <a href="https://thediplomat.com/2026/04/why-the-us-iran-talks-in-pakistan-ended-in-a-deadlock/" target="_blank">The Diplomat</a> ·
+      <a href="https://www.cfr.org/articles/u-s-iran-peace-talks-hit-an-impasse-what-comes-next" target="_blank">CFR</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>⚓ Naval Blockade — Hormuz "Fully Implemented"</h3>
+    <ul>
+      <li><strong>US CENTCOM declared</strong> the Strait of Hormuz blockade "fully implemented" today, cutting off ~90% of Iran's seaborne economic trade.</li>
+      <li><strong>Oil prices:</strong> Peaked at ~$104/bbl (Brent) last week; eased to ~$94 on hints of resumed diplomacy. Still near $100 range — the largest oil supply disruption in history.</li>
+      <li><strong>Shipping collapse:</strong> Only 2 vessels passed through Hormuz on Friday. Down from 100+ per day pre-war. 24 ships made the full passage last week total.</li>
+      <li><strong>China impact:</strong> Iran was a key oil supplier to China; analysts warn the blockade is "disrupting China's oil lifeline." Beijing has protested the blockade.</li>
+      <li><strong>IMF warning:</strong> Cut 2026 global growth to 3.1% (from 3.3% in January), warning of an "adverse scenario" if oil stays at $100.</li>
+      <li><strong>Iran's threat:</strong> Tehran has threatened retaliatory strikes on Red Sea shipping if the blockade continues.</li>
+    </ul>
+    <div class="sources">Sources:
+      <a href="https://www.cnbc.com/2026/04/15/us-strait-of-hormuz-blockade-navy-iran-seaborne-trade-oil-trump.html" target="_blank">CNBC</a> ·
+      <a href="https://yournews.com/2026/04/15/6794625/us-naval-blockade-of-iranian-ports-disrupts-chinas-oil-lifeline-analysts-say/" target="_blank">YourNews</a> ·
+      <a href="https://www.aljazeera.com/economy/2026/4/14/imf-cuts-global-growth-forecast-during-hormuz-blockade" target="_blank">Al Jazeera (IMF)</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🪖 Military Front — Lebanon, Israel & Regional Spillover</h3>
+    <ul>
+      <li><strong>Lebanon — mass casualties:</strong> Israel conducted its <em>largest coordinated strike</em> since entering Lebanon in March, killing 300+ people on April 8. Lebanon filed an urgent UN complaint.</li>
+      <li><strong>Israel–Lebanon talks:</strong> Israel and Lebanon met with US officials, but Hezbollah formally rejected participation in any talks with Israel.</li>
+      <li><strong>Conflict timeline:</strong> War began ~Feb 28, 2026 with joint US–Israel airstrikes targeting Iranian military/government sites and resulting in the assassination of Supreme Leader Khamenei.</li>
+      <li><strong>Trump's assessment:</strong> Described the war as "very close to over" — a claim he has made repeatedly since the war's first week.</li>
+    </ul>
+    <div class="sources">Sources:
+      <a href="https://en.wikipedia.org/wiki/2026_Iran_war" target="_blank">Wikipedia — 2026 Iran War</a> ·
+      <a href="https://www.aljazeera.com/news/2026/4/14/iran-war-what-is-happening-on-day-46-of-the-us-iran-conflict" target="_blank">Al Jazeera Day 46 Recap</a> ·
+      <a href="https://www.cnn.com/2026/04/15/world/live-news/iran-war-blockade-us-trump" target="_blank">CNN Live Updates</a>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- ══════════════════════════════════════
+       SECTION 2 — CYBERSECURITY
+  ══════════════════════════════════════ -->
+  <div class="section-title">
+    <span class="emoji">🛡️</span>
+    Cybersecurity
+    <span class="tag">Patch Tuesday Week</span>
+  </div>
+
+  <div class="warn">
+    🔴 <strong>Active Exploit Alert:</strong> Chrome CVE-2026-5281 (WebGPU/Dawn use-after-free) — CISA deadline to patch for federal agencies is <strong>today, April 15</strong>. Update Chrome immediately.
+  </div>
+
+  <!-- CISO -->
+  <div class="subsection-title">🔐 CISO — Active Threats & Patch Priorities</div>
+  <div class="card aud-ciso">
+    <h3>🔴 Critical Patches This Week</h3>
+    <ul>
+      <li><strong>Chrome Zero-Day CVE-2026-5281</strong> — Use-after-free in Dawn (WebGPU). Actively exploited in the wild. Added to CISA KEV catalog April 1; federal patch deadline is <em>today</em>. Push browser updates immediately across all endpoints. <a href="https://thehackernews.com/2026/04/new-chrome-zero-day-cve-2026-5281-under.html" target="_blank">→ THN</a></li>
+      <li><strong>Microsoft Patch Tuesday — 163 CVEs</strong> including CVE-2026-32201 (SharePoint, exploited in wild as zero-day). Prioritize SharePoint servers. <a href="https://www.tenable.com/blog/microsofts-april-2026-patch-tuesday-addresses-163-cves-cve-2026-32201" target="_blank">→ Tenable</a></li>
+      <li><strong>Fortinet CVE-2026-35616</strong> (CVSS 9.1) — Pre-auth API bypass in FortiClient EMS leads to privilege escalation. CISA KEV listed April 6. Patch or isolate immediately. <a href="https://thehackernews.com/2026/04/fortinet-patches-actively-exploited-cve.html" target="_blank">→ THN</a></li>
+      <li><strong>Adobe Acrobat Reader CVE-2026-34621</strong> — Actively exploited; malicious JavaScript executes when opening crafted PDFs. Block untrusted PDFs, patch now. <a href="https://thehackernews.com/2026/04/adobe-patches-actively-exploited.html" target="_blank">→ THN</a></li>
+    </ul>
+  </div>
+
+  <div class="card aud-ciso">
+    <h3>🌐 Nation-State & Ransomware Threats</h3>
+    <ul>
+      <li><strong>Storm-1175 (China-linked) + Medusa Ransomware:</strong> Exploiting combinations of zero-days and N-days for "high-velocity" attacks. Primary targets: <em>healthcare, education, professional services, finance</em> in US, UK, and Australia. <a href="https://thehackernews.com/2026/04/china-linked-storm-1175-exploits-zero.html" target="_blank">→ THN</a></li>
+      <li><strong>DPRK — $285M Crypto Theft:</strong> North Korean actors executed a months-long social engineering operation against Drift (crypto exchange), culminating in an April 1 theft. Campaign started fall 2025.</li>
+      <li><strong>APT28 (Russia/Forest Blizzard):</strong> Active campaign compromising MikroTik and TP-Link routers for cyber espionage. Review exposed network edge devices.</li>
+      <li><strong>US Public Sector under siege:</strong> Trend Micro Q1 2026 report highlights sustained attacks on federal/state infrastructure amidst Iran war.</li>
+    </ul>
+    <div class="sources">Sources:
+      <a href="https://www.trendmicro.com/en_us/research/26/d/us-public-sector-under-siege.html" target="_blank">Trend Micro</a> ·
+      <a href="https://krebsonsecurity.com/" target="_blank">Krebs on Security</a> ·
+      <a href="https://www.bleepingcomputer.com/" target="_blank">Bleeping Computer</a>
+    </div>
+  </div>
+
+  <!-- CONSULTING PARTNER -->
+  <div class="subsection-title">🤝 Consulting Partner — Market & Client Risk Trends</div>
+  <div class="card aud-partner">
+    <h3>📊 Industry & Client Implications</h3>
+    <ul>
+      <li><strong>Healthcare sector on high alert:</strong> Medusa ransomware (Storm-1175) disproportionately targeting healthcare organizations. Strong opportunity for incident response, tabletop exercises, and ransomware resilience assessments for health sector clients.</li>
+      <li><strong>FortiClient EMS exposure:</strong> Many mid-market clients use FortiClient as VPN/endpoint manager. CVE-2026-35616 (pre-auth privilege escalation) represents an immediate client engagement trigger for patch verification and exposure assessment.</li>
+      <li><strong>Shadow AI governance:</strong> 76% of organizations now report shadow AI as a "definite or probable problem" (up from 61% last year). Growing advisory demand for AI risk frameworks, acceptable use policies, and AI governance programs.</li>
+      <li><strong>Geopolitical cyber risk integration:</strong> Cybersecurity Insights 2026 emphasizes that failure to embed geopolitical intelligence into threat modeling leaves clients exposed to state-sponsored attacks. Cross-sell opportunity for threat intelligence services amid the Iran war.</li>
+      <li><strong>CISA compliance deadlines:</strong> Two CISA KEV deadlines in April (Chrome + Fortinet) create compliance urgency. Managed service clients need proactive outreach.</li>
+    </ul>
+    <div class="sources">Sources:
+      <a href="https://www.securityweek.com/cyber-insights-2026-cyberwar-and-rising-nation-state-threats/" target="_blank">SecurityWeek</a> ·
+      <a href="https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-our-2026-cybersecurity-forecast-report" target="_blank">Google Cloud CISO Perspectives</a>
+    </div>
+  </div>
+
+  <!-- BUSINESS EXEC -->
+  <div class="subsection-title">💼 Business Executive — Strategic Risk & Board Topics</div>
+  <div class="card aud-exec">
+    <h3>📋 What the Board Needs to Know</h3>
+    <ul>
+      <li><strong>$285M in one attack:</strong> The DPRK-linked theft from Drift (crypto) is a reminder that sophisticated nation-states now target financial services with patient, multi-month social engineering. No sector is immune.</li>
+      <li><strong>Critical vendor exposure:</strong> Fortinet and Adobe products used by millions of enterprises are under active exploit. Boards should ask: Do we have a process for prioritizing critical vendor patches within 24–72 hours?</li>
+      <li><strong>Iran war = elevated cyber threat:</strong> Iran retains significant offensive cyber capabilities despite battlefield losses. US-linked organizations should expect retaliatory cyber operations if the ceasefire collapses post-April 21.</li>
+      <li><strong>AI-driven attack surface growing:</strong> 1 in 8 companies now reports AI-related breaches. Shadow AI (unapproved AI tools used by employees) is rapidly becoming a board-level governance issue.</li>
+    </ul>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- ══════════════════════════════════════
+       SECTION 3 — ARTIFICIAL INTELLIGENCE
+  ══════════════════════════════════════ -->
+  <div class="section-title">
+    <span class="emoji">🤖</span>
+    Artificial Intelligence
+    <span class="tag">Market Shift</span>
+  </div>
+
+  <div class="info">
+    💡 <strong>Macro signal:</strong> Motley Fool and analysts note "AI hype is fading" — valuations cooling after peak exuberance, but underlying enterprise adoption is accelerating. Potential best buying opportunity of 2026.
+  </div>
+
+  <div class="card">
+    <h3>🚀 Top Story — SpaceX acquires xAI: $1.25T "Orbital Intelligence" Giant</h3>
+    <ul>
+      <li><strong>Merger closed February 2026</strong> in an all-shares deal: SpaceX absorbed Elon Musk's xAI to create a $1.25 trillion combined entity — the <em>largest merger in history</em>.</li>
+      <li><strong>SpaceX filed confidentially for IPO</strong> on April 1 with the SEC. Roadshow targeted for week of June 8. Targeting a $1.75T valuation and a <em>$75B raise</em> — which would be the largest IPO in history.</li>
+      <li><strong>Strategic rationale:</strong> Grok AI models embedded into SpaceX operations; Nvidia's radiation-hardened Blackwell chips ordered to power the "Grok-Sat" orbital AI architecture.</li>
+      <li><strong>Safety controversy:</strong> xAI/Grok facing active regulatory probes in <em>Europe, India, Australia, and California</em> after its models allowed generation of CSAM and non-consensual intimate imagery. Major reputational and regulatory liability.</li>
+    </ul>
+    <div class="sources">Sources:
+      <a href="https://markets.financialcontent.com/stocks/article/marketminute-2026-4-9-the-125-trillion-frontier-spacex-and-xai-merge-to-create-orbital-intelligence-powerhouse" target="_blank">FinancialContent</a> ·
+      <a href="https://www.cnbc.com/2026/02/02/elon-musk-spacex-xai-ipo.html" target="_blank">CNBC</a> ·
+      <a href="https://www.informationweek.com/it-infrastructure/the-verticalism-debate-what-the-spacex-xai-merger-signals-for-cio-strategy" target="_blank">InformationWeek</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>💰 OpenAI — $852B Valuation, $122B Raise (March 2026)</h3>
+    <ul>
+      <li>The largest private funding round in history: <strong>$50B from Amazon, $30B from Nvidia, $30B from SoftBank</strong>, and others.</li>
+      <li>OpenAI now valued at $852B, cementing its position as the most valuable private company and key AI infrastructure player.</li>
+      <li>Competitive race between OpenAI (ChatGPT) and xAI (Grok) intensifying across enterprise and consumer segments.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>⚛️ Nvidia Announces Ising — Quantum AI Models</h3>
+    <ul>
+      <li>Nvidia launched <strong>Ising</strong>, a new family of open-source quantum AI models designed to serve as the AI control plane for quantum hardware processors.</li>
+      <li>Positions Nvidia at the intersection of quantum computing and AI — extending its dominance beyond classical GPU compute.</li>
+    </ul>
+    <div class="sources">Sources:
+      <a href="https://www.cio.com/article/4158418/nvidia-announces-quantum-ai-models.html" target="_blank">CIO.com</a>
+    </div>
+  </div>
+
+  <!-- CISO (AI) -->
+  <div class="subsection-title">🔐 CISO — AI Security Risks</div>
+  <div class="audience-grid">
+    <div class="audience-card aud-ciso">
+      <div class="aud-label">🔐 CISO View</div>
+      <ul>
+        <li><strong>Shadow AI at 76%:</strong> Most employees using unapproved AI tools — major data exfiltration and compliance risk</li>
+        <li><strong>Agentic AI breaches:</strong> 1 in 8 companies now reporting breaches linked to autonomous AI agents</li>
+        <li><strong>EU denied access to Anthropic Mythos</strong> for security testing — model opacity remains a governance gap</li>
+        <li><strong>Adversarial attacks</strong> on ML models (poisoning, membership inference, backdoor injection) becoming mainstream threat vectors</li>
+        <li><strong>Prompt injection</strong> and jailbreaks remain unsolved for enterprise LLM deployments</li>
+      </ul>
+    </div>
+    <div class="audience-card aud-partner">
+      <div class="aud-label">🤝 Consulting Partner View</div>
+      <ul>
+        <li><strong>AI IAM emerging category:</strong> Curity launched "Access Intelligence" for runtime authorization of AI agents — growing market for AI governance tooling</li>
+        <li><strong>GSA automating 1M work hours</strong> post-RIF — government AI modernization wave creates consulting demand</li>
+        <li><strong>SAP Business AI Q1 highlights</strong> show ERP vendors accelerating AI feature rollout — client readiness assessments needed</li>
+        <li><strong>UChicago + Microsoft + NVIDIA</strong> Midwest AI startup accelerator — pipeline of AI-native clients emerging</li>
+        <li><strong>Only 40% of executives</strong> confident in AI privacy compliance — major advisory gap</li>
+      </ul>
+    </div>
+    <div class="audience-card aud-exec">
+      <div class="aud-label">💼 Executive View</div>
+      <ul>
+        <li><strong>SpaceX–xAI = vertical AI consolidation:</strong> Signals a new era of vertically integrated AI+infrastructure competitors. CIOs should reassess vendor concentration risk</li>
+        <li><strong>AI hype cooling, adoption accelerating:</strong> Fewer moonshots, more ROI-focused deployments. Board pressure to show AI value increasing</li>
+        <li><strong>Regulatory wave incoming:</strong> xAI's safety failures in Europe/India/Australia signal tightening global AI regulation — compliance costs rising</li>
+        <li><strong>OpenAI at $852B</strong> is now a systemically important technology company — procurement and partnership decisions carry strategic weight</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sources" style="margin-top:1rem; padding:0.8rem 1rem; background: var(--card); border-radius:8px; border: 1px solid var(--border);">
+    <strong>AI Sources:</strong>
+    <a href="https://www.csoonline.com/article/4158847/curity-looks-to-reinvent-iam-with-runtime-authorization-for-ai-agents.html" target="_blank">CSO Online (Curity)</a> ·
+    <a href="https://federalnewsnetwork.com/artificial-intelligence/2026/04/gsa-looks-to-automate-a-million-work-hours-after-losing-nearly-40-of-its-workforce/" target="_blank">Federal News Network (GSA)</a> ·
+    <a href="https://www.csoonline.com/article/4158560/european-authorities-without-access-to-anthropics-ai-for-hacking.html" target="_blank">CSO Online (Anthropic EU)</a> ·
+    <a href="https://www.fool.com/investing/2026/04/14/the-artificial-intelligence-ai-hype-is-fading-and/" target="_blank">Motley Fool</a> ·
+    <a href="https://www.cio.com/article/4157398/the-state-of-ai-security-in-2026.html" target="_blank">CIO — State of AI Security 2026</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>Generated by <span>Jorge</span> · Daily Briefing for Georges · April 15, 2026</p>
+  <p style="margin-top:0.4rem; font-size:0.7rem;">Sources: Reuters, Al Jazeera, CNN, CNBC, Al-Monitor, CFR, The Diplomat, The Hacker News, Tenable, Bleeping Computer, Krebs on Security, SecurityWeek, Trend Micro, CIO, CSO Online, Federal News Network, Motley Fool, FinancialContent</p>
+</footer>
+
+</body>
+</html>
