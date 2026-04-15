@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — April 13, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      padding: 48px 0 36px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 44px;
+    }
+    .header .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #58a6ff;
+      margin-bottom: 12px;
+    }
+    .header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #f0f6fc;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .header .date {
+      font-size: 0.95rem;
+      color: #8b949e;
+    }
+    .header .tagline {
+      display: inline-block;
+      margin-top: 16px;
+      background: linear-gradient(135deg, #1f6feb 0%, #388bfd 100%);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+    }
+
+    /* ── Section blocks ── */
+    .section {
+      margin-bottom: 48px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      border-radius: 10px 10px 0 0;
+      border-bottom: 2px solid transparent;
+    }
+    .section-header h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+    .section-body {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      padding: 24px 28px;
+    }
+
+    /* Iran = red-orange */
+    .iran .section-header  { background: #1e0d0d; border-color: #da3633; }
+    .iran .section-header h2 { color: #ff7b72; }
+
+    /* Cyber = teal */
+    .cyber .section-header { background: #0d1e1e; border-color: #3fb950; }
+    .cyber .section-header h2 { color: #56d364; }
+
+    /* AI = indigo-blue */
+    .ai .section-header    { background: #0d1433; border-color: #58a6ff; }
+    .ai .section-header h2 { color: #79c0ff; }
+
+    /* ── Audience tabs ── */
+    .audience-block {
+      background: #0d1117;
+      border: 1px solid #21262d;
+      border-radius: 8px;
+      margin: 18px 0;
+      overflow: hidden;
+    }
+    .audience-block .audience-label {
+      padding: 9px 16px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-bottom: 1px solid #21262d;
+    }
+    .audience-block .audience-content {
+      padding: 14px 16px;
+      font-size: 0.93rem;
+      color: #c9d1d9;
+    }
+    .audience-ciso   .audience-label { color: #ff7b72; background: #1e0b0b; }
+    .audience-partner .audience-label { color: #d2a8ff; background: #150e22; }
+    .audience-exec   .audience-label { color: #ffa657; background: #1e1200; }
+
+    /* ── Story items ── */
+    .story {
+      padding: 14px 0;
+      border-bottom: 1px solid #21262d;
+    }
+    .story:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .story-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #f0f6fc;
+      margin-bottom: 6px;
+    }
+    .story-body {
+      font-size: 0.92rem;
+      color: #b1bac4;
+      margin-bottom: 6px;
+    }
+    .story-meta {
+      font-size: 0.78rem;
+      color: #58a6ff;
+    }
+    .story-meta a {
+      color: #58a6ff;
+      text-decoration: none;
+      border-bottom: 1px solid #1f6feb44;
+      transition: border-color 0.15s;
+    }
+    .story-meta a:hover { border-color: #58a6ff; }
+
+    /* ── Alert pill ── */
+    .alert-pill {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 12px;
+      margin-right: 7px;
+      vertical-align: middle;
+    }
+    .alert-critical { background: #da3633; color: #fff; }
+    .alert-high     { background: #d29922; color: #0d1117; }
+    .alert-medium   { background: #3fb950; color: #0d1117; }
+    .alert-info     { background: #388bfd; color: #fff; }
+
+    /* ── Key stats bar ── */
+    .stats-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .stat-card {
+      flex: 1 1 160px;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 14px 18px;
+      text-align: center;
+    }
+    .stat-card .stat-value {
+      font-size: 1.6rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-card .stat-label {
+      font-size: 0.72rem;
+      color: #8b949e;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .stat-red   { color: #ff7b72; }
+    .stat-amber { color: #ffa657; }
+    .stat-green { color: #56d364; }
+    .stat-blue  { color: #79c0ff; }
+
+    /* ── Dividers ── */
+    .subsection-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #8b949e;
+      margin: 22px 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #21262d;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      margin-top: 56px;
+      padding-top: 20px;
+      border-top: 1px solid #21262d;
+      color: #484f58;
+      font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ═══════════ HEADER ═══════════ -->
+  <div class="header">
+    <div class="label">Daily Intelligence Briefing</div>
+    <h1>📰 Evening Brief</h1>
+    <div class="date">Monday, April 13, 2026 &nbsp;·&nbsp; 6:00 PM</div>
+    <div class="tagline">Prepared by Jorge</div>
+  </div>
+
+
+  <!-- ═══════════ SECTION 1: IRAN ═══════════ -->
+  <div class="section iran">
+    <div class="section-header">
+      <h2>🔥 Iran War — Day 45</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="stats-bar">
+        <div class="stat-card">
+          <div class="stat-value stat-red">$102</div>
+          <div class="stat-label">Brent Crude / bbl</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value stat-amber">$104</div>
+          <div class="stat-label">WTI Crude / bbl</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value stat-red">5,000+</div>
+          <div class="stat-label">Casualties (Iran + Lebanon)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value stat-amber">–27%</div>
+          <div class="stat-label">OPEC Production Drop</div>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-critical">BREAKING</span>
+          US Naval Blockade of Iranian Ports Now in Effect
+        </div>
+        <div class="story-body">
+          The US military launched a full naval blockade of all Iranian port traffic as of 10 a.m. ET today (Day 45 of the conflict). The blockade follows the collapse of weekend peace talks in Islamabad, where the US and Iran were unable to reach a deal after more than 21 hours of negotiations. President Trump declared the US Navy would intercept any vessel attempting to enter or exit Iranian waters and that Iranian ships approaching the blockade zone would be "eliminated."
+        </div>
+        <div class="story-meta">
+          Sources: <a href="https://www.cnn.com/2026/04/13/world/live-news/iran-us-war-trump-hormuz" target="_blank">CNN Live Updates</a> &nbsp;·&nbsp;
+          <a href="https://www.aljazeera.com/news/2026/4/13/iran-war-what-is-happening-on-day-45-of-the-us-iran-conflict" target="_blank">Al Jazeera Day 45</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-critical">DIPLOMACY FAILED</span>
+          Islamabad Talks Collapse — Hormuz the Sticking Point
+        </div>
+        <div class="story-body">
+          Vice President J.D. Vance led the US delegation in what became a marathon 21-hour negotiating session in Islamabad, mediated by Pakistan. Talks broke down on two core issues: US demands for permanent control over the Strait of Hormuz and Iran's insistence on its right to a peaceful nuclear energy program. A two-week ceasefire that had been agreed on April 8 is now effectively void. Iran's state-run Press TV blamed US intransigence, while Vance said Iran had "chosen not to accept our terms."
+        </div>
+        <div class="story-meta">
+          Sources: <a href="https://time.com/article/2026/04/11/strait-of-hormuz-iran-peace-talks/" target="_blank">Time — Failed Talks</a> &nbsp;·&nbsp;
+          <a href="https://www.aljazeera.com/news/liveblog/2026/4/12/iran-war-live-historic-face-to-face-talks-with-us-continue-in-islamabad" target="_blank">Al Jazeera — Islamabad Liveblog</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-high">ENERGY MARKETS</span>
+          Oil Surges Above $100 — Strait Traffic at Standstill
+        </div>
+        <div class="story-body">
+          Brent crude rose 7% to $102/bbl and WTI climbed 7.8% to $104/bbl — representing gains of 40% and 50% respectively since the war began in late February. OPEC production has fallen ~27% to 20.79 million barrels/day. Shipping through the Strait of Hormuz — through which ~20% of global oil transits — is at an effective standstill. Global markets opened sharply lower.
+        </div>
+        <div class="story-meta">
+          Sources: <a href="https://edition.cnn.com/2026/04/13/business/oil-prices-us-blockade-hormuz-intl" target="_blank">CNN Business — Oil Prices</a> &nbsp;·&nbsp;
+          <a href="https://www.cnbc.com/2026/04/12/oil-prices-iran-war-strait-hormuz-blockade.html" target="_blank">CNBC — Oil Surge</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-medium">IRANIAN RESPONSE</span>
+          IRGC and Army Condemn Blockade as "Piracy"
+        </div>
+        <div class="story-body">
+          Iran's armed forces called the US blockade plan "an act of piracy." Navy chief Shahram Irani dismissed Trump's threats as "ridiculous and funny." The IRGC has vowed to retaliate, though no specific military action has been reported yet. Iran continues to insist the strait remains open to international shipping under international law, setting the stage for a potential naval confrontation.
+        </div>
+        <div class="story-meta">
+          Sources: <a href="https://www.aljazeera.com/news/2026/4/13/irans-army-says-us-plans-to-blockade-hormuz-amounts-to-piracy" target="_blank">Al Jazeera — Iran Army Statement</a> &nbsp;·&nbsp;
+          <a href="https://www.nbcnews.com/world/iran/live-blog/live-updates-us-blockade-iran-ports-trump-hormuz-peace-talks-ceasefire-rcna331473" target="_blank">NBC News Liveblog</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-info">CONTEXT</span>
+          Lebanon Fighting Continues — Israel Ceasefire Talks Separate Track
+        </div>
+        <div class="story-body">
+          Separate ceasefire negotiations between Israel and Lebanon continue on a parallel diplomatic track. More than 5,000 people have been killed across Iran and Lebanon combined since the broader regional conflict escalated six weeks ago. International pressure is mounting from European and Gulf states for a return to negotiations.
+        </div>
+        <div class="story-meta">
+          Sources: <a href="https://en.wikipedia.org/wiki/2026_Iran_war" target="_blank">Wikipedia — 2026 Iran War</a> &nbsp;·&nbsp;
+          <a href="https://www.csis.org/programs/latest-analysis-war-iran" target="_blank">CSIS — War Analysis</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════════ SECTION 2: CYBERSECURITY ═══════════ -->
+  <div class="section cyber">
+    <div class="section-header">
+      <h2>🛡️ Cybersecurity</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="subsection-title">Top Stories</div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-critical">ZERO-DAY</span>
+          Chrome CVE-2026-5281 Actively Exploited — Patch Now
+        </div>
+        <div class="story-body">
+          Google released an emergency patch for CVE-2026-5281, a use-after-free vulnerability in the Dawn graphics engine. This marks the fourth Chrome zero-day fixed in 2026. The bug allows a remote attacker who has already compromised the renderer process to execute arbitrary code via a crafted HTML page. Chrome update released; enterprise fleet patching should be prioritized immediately.
+        </div>
+        <div class="story-meta">
+          Source: <a href="https://thehackernews.com/2026/04/new-chrome-zero-day-cve-2026-5281-under.html" target="_blank">The Hacker News — Chrome Zero-Day</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-critical">RANSOMWARE</span>
+          China-Linked Storm-1175 Deploys Medusa Ransomware via Zero-Days
+        </div>
+        <div class="story-body">
+          A Chinese state-nexus threat actor (Storm-1175) is chaining zero-day and N-day vulnerabilities in high-velocity attacks to deploy Medusa ransomware. Primary targets: healthcare, education, financial services, and professional services organisations in Australia, the UK, and the US. Separately, Qilin and Warlock ransomware operators are using Bring Your Own Vulnerable Driver (BYOVD) techniques to silence endpoint protection tools before encryption. The Everest group escalated pressure on Nissan by releasing additional breach evidence after claiming large-scale data theft.
+        </div>
+        <div class="story-meta">
+          Source: <a href="https://thehackernews.com/2026/04/china-linked-storm-1175-exploits-zero.html" target="_blank">The Hacker News — Storm-1175 / Medusa</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-high">SUPPLY CHAIN</span>
+          Weaponized WordPress Plugin Distributed for ~6 Hours
+        </div>
+        <div class="story-body">
+          Smart Slider 3 version 3.5.1.35 (released April 7) contained a fully weaponized remote access toolkit. Any site that auto-updated during the approximately 6-hour window before detection received the malicious payload. Organisations running WordPress should audit their Smart Slider 3 version and check for indicators of compromise.
+        </div>
+        <div class="story-meta">
+          Source: <a href="https://www.governmentenforcementreport.com/2026/04/emerging-cybersecurity-threats-safeguarding-your-organization-in-a-rapidly-evolving-landscape/" target="_blank">Government Enforcement Report</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-high">CISA KEV</span>
+          TrueConf CVE-2026-3502 Added to CISA KEV — Deadline April 16
+        </div>
+        <div class="story-body">
+          CISA added a TrueConf zero-day (CVE-2026-3502) to its Known Exploited Vulnerabilities catalog, citing active exploitation in attacks against Southeast Asian government networks. Federal Civilian Executive Branch agencies must apply fixes by <strong>April 16, 2026</strong>. Enterprise users of TrueConf (video conferencing) should treat this as P1.
+        </div>
+        <div class="story-meta">
+          Source: <a href="https://thehackernews.com/2026/03/trueconf-zero-day-exploited-in-attacks.html" target="_blank">The Hacker News — TrueConf</a>
+        </div>
+      </div>
+
+      <!-- ── Audience Sub-sections ── -->
+      <div class="subsection-title">Audience Perspectives</div>
+
+      <div class="audience-block audience-ciso">
+        <div class="audience-label">🔐 CISO — Active Threats &amp; Operational Priorities</div>
+        <div class="audience-content">
+          <strong>Immediate actions:</strong>
+          <ul style="margin: 8px 0 8px 18px;">
+            <li>Patch Chrome fleet for CVE-2026-5281 (active in-the-wild exploitation)</li>
+            <li>Apply TrueConf patch before CISA deadline of April 16</li>
+            <li>Audit WordPress/Smart Slider 3 deployments for compromise (April 7 window)</li>
+            <li>Review EDR configurations for BYOVD attack surface (Qilin/Warlock TTPs)</li>
+          </ul>
+          <strong>Threat landscape:</strong> China-nexus volume continues to dominate nation-state activity, with a heavy focus on edge devices, zero-days, and long-dwell persistence in critical infrastructure. Iran is also conducting password-spraying campaigns as retaliation in cyberspace for the kinetic conflict. The Adobe Reader zero-day (exploited since Dec 2025) remains unpatched in many environments — verify status. Regulators are moving from policy-based to outcome-based accountability; boards are now directly liable for material cyber failures under evolving NIS2 and CMMC frameworks.
+        </div>
+      </div>
+
+      <div class="audience-block audience-partner">
+        <div class="audience-label">🤝 Consulting Partner — Industry Trends &amp; Client Risk</div>
+        <div class="audience-content">
+          <strong>Client risk conversations to have now:</strong> The Storm-1175/Medusa campaign hitting healthcare and finance is a strong opener for ransomware resilience engagements. BYOVD-based EDR bypass is a clear signal that clients with legacy endpoint stacks need architecture reviews. Supply chain risk (Smart Slider 3 incident) is a compelling case study for clients still relying on auto-update without integrity verification.
+          <br/><br/>
+          <strong>Regulatory tailwinds:</strong> CMMC (US), EU Cyber Resilience Act, and NIS2 are all moving toward prescriptive, auditable obligations — a significant pipeline driver for compliance advisory and vCISO work. The shift to board-level accountability for cyber incidents creates a natural entry point for executive-level consulting engagements. Iran's cyberspace retaliation adds urgency for clients in energy, finance, and critical infrastructure.
+        </div>
+      </div>
+
+      <div class="audience-block audience-exec">
+        <div class="audience-label">💼 Business Executive — Strategic Risk &amp; Board Topics</div>
+        <div class="audience-content">
+          <strong>What this means for you:</strong> The US-Iran conflict has a cyber dimension that is escalating in parallel with the kinetic war. Iran is retaliating digitally (password spraying, infrastructure probes) while Chinese state actors continue high-tempo operations against western enterprises. Oil at $100+ will create supply chain cost pressures across all sectors.
+          <br/><br/>
+          <strong>Board-level issues:</strong> Ransomware groups are now using reputational leverage (public data releases) as a lever — not just encryption. Nissan's experience with Everest is instructive. Regulators are increasing direct board accountability for cyber failures under EU and US frameworks. This is no longer purely an IT issue. Ensure your CISO has a board reporting cadence and that cyber risk is on the next board agenda.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════════ SECTION 3: ARTIFICIAL INTELLIGENCE ═══════════ -->
+  <div class="section ai">
+    <div class="section-header">
+      <h2>🤖 Artificial Intelligence</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="subsection-title">Top Stories</div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-critical">MARKET SHIFT</span>
+          Anthropic Surpasses OpenAI in Revenue — $30B ARR
+        </div>
+        <div class="story-body">
+          Anthropic's annualised revenue hit $30 billion in April 2026, surpassing OpenAI's $25B ARR for the first time — a seismic shift in the AI landscape. Claude 3.5 Sonnet now holds 32% of the enterprise LLM API market vs. OpenAI GPT-4o at 25%. Approximately 80% of Anthropic's revenue is enterprise, with higher retention and lower churn. Nearly a third of American businesses paid for Anthropic's offerings in March 2026, up 6+ percentage points in a single month. OpenAI adoption was flat at 35%.
+        </div>
+        <div class="story-meta">
+          Sources: <a href="https://www.the-ai-corner.com/p/anthropic-30b-arr-passed-openai-revenue-2026" target="_blank">The AI Corner — Anthropic Revenue</a> &nbsp;·&nbsp;
+          <a href="https://www.pymnts.com/artificial-intelligence-2/2026/anthropic-gains-on-openai-amid-rising-adoption-among-enterprises/" target="_blank">PYMNTS — Enterprise Adoption</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-high">MODEL RISK</span>
+          Anthropic Limits Access to "Mythos Preview" After Autonomous Exploit Discovery
+        </div>
+        <div class="story-body">
+          Anthropic is restricting access to its Mythos Preview model after discovering it can autonomously identify and exploit tens of thousands of software vulnerabilities — successfully reproducing and chaining exploits in over 80% of internal test cases, including flaws in major operating systems and long-standing open-source projects. The model demonstrated advanced autonomy, chaining multi-step exploits across interconnected systems — a significant dual-use risk milestone for the industry.
+        </div>
+        <div class="story-meta">
+          Source: <a href="https://www.devflokers.com/blog/ai-news-last-24-hours-april-2026-model-releases-breakthroughs" target="_blank">DevFlokers — AI Model Releases</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-info">NEW MODEL</span>
+          Meta Releases Muse Spark — Ranks 4th on Intelligence Index
+        </div>
+        <div class="story-body">
+          Meta debuted Muse Spark, its first major AI model since the $14B deal to bring in Alexandr Wang. The model ranks 4th on the Artificial Analysis Intelligence Index v4.0, with standout performance in figure understanding (86.4% on CharXiv Reasoning) and medical reasoning (42.8% on HealthBench Hard). It features a parallel sub-agent architecture with a dedicated "Contemplating mode" for complex reasoning tasks. Performance on abstract reasoning remains a weakness (42.5 on ARC AGI 2).
+        </div>
+        <div class="story-meta">
+          Source: <a href="https://www.cnbc.com/2026/04/08/meta-debuts-first-major-ai-model-since-14-billion-deal-to-bring-in-alexandr-wang.html" target="_blank">CNBC — Meta Muse Spark</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-info">REGULATION</span>
+          OpenAI, Anthropic &amp; Google Unite to Combat Chinese Model Cloning
+        </div>
+        <div class="story-body">
+          OpenAI, Anthropic, and Google are sharing intelligence through the Frontier Model Forum to clamp down on Chinese competitors extracting capabilities from US frontier models through systematic querying and model distillation. Separately, AI regulation is heading for a US political showdown in 2026, with AI company PACs and pro-regulation PACs increasingly clashing. Utah became the first state to grant AI systems authority to renew drug prescriptions — a significant regulatory milestone in AI-powered healthcare.
+        </div>
+        <div class="story-meta">
+          Sources: <a href="https://www.bloomberg.com/news/articles/2026-04-06/openai-anthropic-google-unite-to-combat-model-copying-in-china" target="_blank">Bloomberg — Frontier Model Forum</a> &nbsp;·&nbsp;
+          <a href="https://www.technologyreview.com/2026/01/05/1130662/whats-next-for-ai-in-2026/" target="_blank">MIT Technology Review</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-info">ENTERPRISE</span>
+          PwC: Top 20% of Companies Capture 75% of AI's Economic Gains
+        </div>
+        <div class="story-body">
+          PwC's 2026 AI Performance Study finds that three-quarters of AI's economic gains are being captured by just 20% of companies — and the leaders are focused on revenue growth, not just cost reduction. Telecom leads agentic AI deployment at 48%, followed by retail/CPG at 47%. Enterprises have moved from experimentation to full deployment in code development, legal, financial analysis, and administrative support. Anthropic will gain access to ~3.5 GW of TPU-based compute via expanded Google-Broadcom partnership.
+        </div>
+        <div class="story-meta">
+          Sources: <a href="https://www.pwc.com/gx/en/news-room/press-releases/2026/pwc-2026-ai-performance-study.html" target="_blank">PwC 2026 AI Performance Study</a> &nbsp;·&nbsp;
+          <a href="https://apacnewsnetwork.com/2026/04/anthropic-expands-ai-infrastructure-with-google-broadcom-tpu-deal/" target="_blank">APAC Media — Anthropic TPU Deal</a>
+        </div>
+      </div>
+
+      <!-- ── Audience Sub-sections ── -->
+      <div class="subsection-title">Audience Perspectives</div>
+
+      <div class="audience-block audience-ciso">
+        <div class="audience-label">🔐 CISO — AI Security Risks</div>
+        <div class="audience-content">
+          <strong>Mythos Preview is a watershed moment:</strong> An AI model autonomously chaining exploits across major OS and open-source projects — with an 80%+ success rate — represents a step-change in the offensive AI threat. Even with Anthropic limiting access, similar capabilities will proliferate. Security teams should begin planning for AI-assisted attack acceleration: red team frequency, patch cycle SLAs, and detection of AI-generated exploit patterns all need reassessment.
+          <br/><br/>
+          <strong>Vendor lock-in risk:</strong> With Anthropic now leading on enterprise revenue and Google, OpenAI, and Anthropic all competing aggressively for enterprise contracts, vendor lock-in is a growing security and resilience concern. Ensure AI vendor contracts include data portability, model transparency, and SLA accountability. Review data privacy posture for all LLM integrations — especially as agentic deployments expand into sensitive functions (legal, financial, clinical).
+        </div>
+      </div>
+
+      <div class="audience-block audience-partner">
+        <div class="audience-label">🤝 Consulting Partner — Market Moves &amp; Opportunities</div>
+        <div class="audience-content">
+          <strong>Anthropic passing OpenAI in revenue is the most important signal of the quarter.</strong> Clients who standardized on GPT-4o should be re-evaluating their AI stack now. The 80/20 split of AI value accrual (PwC study) is your most powerful slide in any AI strategy deck — most clients are in the 80% and need a path to the 20%.
+          <br/><br/>
+          <strong>Emerging opportunities:</strong> (1) Agentic AI governance frameworks — enterprises deploying AI in legal, finance, and clinical contexts need policy, oversight, and audit trail design. (2) AI vendor risk assessments — with OpenAI, Anthropic, and Google all pursuing aggressive lock-in strategies, multi-vendor architecture and exit strategy work is in demand. (3) The Mythos-class dual-use model issue creates a new "AI Red Team as a Service" consulting category. (4) Utah's prescription AI precedent will drive healthcare AI compliance engagements nationally within 12 months.
+        </div>
+      </div>
+
+      <div class="audience-block audience-exec">
+        <div class="audience-label">💼 Business Executive — Strategic Implications</div>
+        <div class="audience-content">
+          <strong>The competitive gap is widening fast.</strong> PwC's data is clear: the top 20% of companies using AI are pulling away from the rest — and they're generating revenue, not just cutting costs. If your AI strategy is still in pilot mode, it is a strategic liability.
+          <br/><br/>
+          <strong>Key decisions for leaders:</strong> (1) Anthropic overtaking OpenAI in enterprise revenue means it's time to revisit your AI vendor strategy — both are worth evaluating seriously. (2) The push into agentic AI (AI taking autonomous actions in workflows) is real and accelerating — telecom and retail are already at 48% deployment rates. (3) The political/regulatory environment is intensifying in 2026: the US federal AI regulatory battle will likely shape enterprise compliance obligations within 12–18 months. Engage now, don't wait. (4) AI is moving into direct clinical and professional decision-making (Utah prescription renewals) — industries that resist this will face competitive disadvantage but also carry new liability.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <div class="footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Daily Briefing &nbsp;·&nbsp; April 13, 2026 &nbsp;·&nbsp; 6:00 PM</p>
+    <p style="margin-top:6px;">Sources: Al Jazeera · CNN · CNBC · NBC News · Time · CSIS · The Hacker News · CISA · PwC · Bloomberg · MIT Technology Review · PYMNTS</p>
+  </div>
+
+</div>
+</body>
+</html>
