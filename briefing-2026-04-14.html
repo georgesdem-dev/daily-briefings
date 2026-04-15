@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — April 14, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      padding: 48px 0 36px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 44px;
+    }
+    .header .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #58a6ff;
+      margin-bottom: 12px;
+    }
+    .header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #f0f6fc;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .header .date {
+      font-size: 0.95rem;
+      color: #8b949e;
+    }
+    .header .tagline {
+      display: inline-block;
+      margin-top: 16px;
+      background: linear-gradient(135deg, #1f6feb 0%, #388bfd 100%);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+    }
+
+    /* ── Section blocks ── */
+    .section {
+      margin-bottom: 48px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      border-radius: 10px 10px 0 0;
+      border-bottom: 2px solid transparent;
+    }
+    .section-header h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+    .section-body {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      padding: 24px 28px;
+    }
+
+    /* Iran = red-orange */
+    .iran .section-header  { background: #1e0d0d; border-color: #da3633; }
+    .iran .section-header h2 { color: #ff7b72; }
+
+    /* Cyber = teal */
+    .cyber .section-header { background: #0d1e1e; border-color: #3fb950; }
+    .cyber .section-header h2 { color: #56d364; }
+
+    /* AI = indigo-blue */
+    .ai .section-header    { background: #0d1433; border-color: #58a6ff; }
+    .ai .section-header h2 { color: #79c0ff; }
+
+    /* ── Audience tabs ── */
+    .audience-block {
+      background: #0d1117;
+      border: 1px solid #21262d;
+      border-radius: 8px;
+      margin: 18px 0;
+      overflow: hidden;
+    }
+    .audience-block .audience-label {
+      padding: 9px 16px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-bottom: 1px solid #21262d;
+    }
+    .audience-block .audience-content {
+      padding: 14px 16px;
+      font-size: 0.93rem;
+      color: #c9d1d9;
+    }
+    .audience-ciso   .audience-label { color: #ff7b72; background: #1e0b0b; }
+    .audience-partner .audience-label { color: #d2a8ff; background: #150e22; }
+    .audience-exec   .audience-label { color: #ffa657; background: #1e1200; }
+
+    /* ── Story items ── */
+    .story {
+      padding: 14px 0;
+      border-bottom: 1px solid #21262d;
+    }
+    .story:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .story-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #f0f6fc;
+      margin-bottom: 6px;
+    }
+    .story-body {
+      font-size: 0.92rem;
+      color: #b1bac4;
+      margin-bottom: 6px;
+    }
+    .story-meta {
+      font-size: 0.78rem;
+      color: #58a6ff;
+    }
+    .story-meta a {
+      color: #58a6ff;
+      text-decoration: none;
+      border-bottom: 1px solid #1f6feb44;
+      transition: border-color 0.15s;
+    }
+    .story-meta a:hover { border-color: #58a6ff; }
+
+    /* ── Alert pill ── */
+    .alert-pill {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 12px;
+      margin-right: 7px;
+      vertical-align: middle;
+    }
+    .alert-critical { background: #da3633; color: #fff; }
+    .alert-high     { background: #d29922; color: #0d1117; }
+    .alert-medium   { background: #3fb950; color: #0d1117; }
+    .alert-info     { background: #388bfd; color: #fff; }
+
+    /* ── Key stats bar ── */
+    .stats-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .stat-card {
+      flex: 1 1 160px;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 14px 18px;
+      text-align: center;
+    }
+    .stat-card .stat-value {
+      font-size: 1.6rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-card .stat-label {
+      font-size: 0.72rem;
+      color: #8b949e;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .stat-red   { color: #ff7b72; }
+    .stat-amber { color: #ffa657; }
+    .stat-green { color: #56d364; }
+    .stat-blue  { color: #79c0ff; }
+
+    /* ── Dividers ── */
+    .subsection-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #8b949e;
+      margin: 22px 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #21262d;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      margin-top: 56px;
+      padding-top: 20px;
+      border-top: 1px solid #21262d;
+      color: #484f58;
+      font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ═══════════ HEADER ═══════════ -->
+  <div class="header">
+    <div class="label">Daily Intelligence Briefing</div>
+    <h1>📰 Evening Brief</h1>
+    <div class="date">Tuesday, April 14, 2026 &nbsp;·&nbsp; 6:00 PM</div>
+    <div class="tagline">Prepared by Jorge</div>
+  </div>
+
+
+  <!-- ═══════════ SECTION 1: IRAN ═══════════ -->
+  <div class="section iran">
+    <div class="section-header">
+      <h2>🔥 Iran War — Day 46</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="stats-bar">
+        <div class="stat-card">
+          <div class="stat-value stat-red">3.1%</div>
+          <div class="stat-label">IMF 2026 Global Growth Forecast</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value stat-amber">1.1%</div>
+          <div class="stat-label">MENA Growth Forecast (cut −2.8pp)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value stat-red">−6.1%</div>
+          <div class="stat-label">Iran GDP Forecast 2026</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value stat-amber">Apr 21</div>
+          <div class="stat-label">Ceasefire Expiry</div>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-critical">DIPLOMACY</span>
+          Trump Hints at Second Round of Talks — "Next Two Days"
+        </div>
+        <div class="story-body">
+          President Trump told the New York Post that a second round of US–Iran negotiations could take place in Pakistan "over the next two days." The ceasefire — originally brokered by Pakistan on April 7–8 — is set to expire on April 21. VP Vance, who led the failed Islamabad talks on April 11–12, said mistrust between Washington and Tehran "cannot be resolved overnight" but that Iranian negotiators have shown a "genuine desire to reach an agreement." Iran's Foreign Minister Araghchi said the two sides were "inches away" from a deal when the US imposed "maximalism and shifting goalposts."
+        </div>
+        <div class="story-meta">
+          Sources: <a href="https://www.cnn.com/2026/04/14/world/live-news/iran-war-blockade-us-trump" target="_blank">CNN Live Updates — Day 46</a> &nbsp;·&nbsp;
+          <a href="https://time.com/article/2026/04/14/us-iran-talks-war-ceasefire-trump-nuclear-enrichment-strait-hormuz/" target="_blank">Time — Officials Consider Second Round</a> &nbsp;·&nbsp;
+          <a href="https://www.cnbc.com/2026/04/14/trump-iran-war-strait-of-hormuz-negotiations.html" target="_blank">CNBC — More Talks in Discussion</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-high">BLOCKADE</span>
+          Few Ships Pass Hormuz — Blockade Squeezing Iran's Economy
+        </div>
+        <div class="story-body">
+          Day 2 of the US naval blockade saw minimal traffic entering or leaving Iranian ports in the Persian Gulf and Gulf of Oman. According to Al Jazeera, Iran has limited escape routes: China remains a potential lifeline as a buyer of sanctioned Iranian oil via ship-to-ship transfers, but Beijing has strongly condemned the blockade as "dangerous and irresponsible." The Strait of Hormuz — through which ~20% of global oil typically transits — is effectively closed. Oil prices remain elevated at around $100/bbl (Brent).
+        </div>
+        <div class="story-meta">
+          Sources: <a href="https://www.aljazeera.com/news/2026/4/14/how-much-will-us-hormuz-blockade-hurt-iran-and-does-tehran-have-an-escape" target="_blank">Al Jazeera — Iran's Escape Routes</a> &nbsp;·&nbsp;
+          <a href="https://www.cnbc.com/2026/04/14/china-us-strait-of-hormuz-war-donald-trump-oil-energy-crisis-conflict-middle-east-iran.html" target="_blank">CNBC — China Condemns Blockade</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-critical">IMF WARNING</span>
+          IMF Cuts 2026 Global Growth to 3.1% — Warns of Recession Risk
+        </div>
+        <div class="story-body">
+          The IMF released its World Economic Outlook today, cutting the 2026 global growth forecast by 0.2 percentage points to 3.1% (down from 3.4% projected before the war). IMF chief economist Pierre-Olivier Gourinchas said the Fund had been "planning to upgrade growth to 3.4%" before the conflict erupted. Middle East and North Africa growth was slashed to just 1.1% (a 2.8pp cut). Iran's GDP is now forecast to contract 6.1% in 2026. Iraq, Kuwait, Qatar, and Bahrain also face contractions. Global inflation is projected to rise to 4.4% in 2026 — up 0.6pp from January estimates. The IMF warned of a potential global recession scenario if Hormuz remains closed and oil prices spike further.
+        </div>
+        <div class="story-meta">
+          Sources: <a href="https://www.aljazeera.com/economy/2026/4/14/imf-cuts-global-growth-forecast-during-hormuz-blockade" target="_blank">Al Jazeera — IMF Forecast Cut</a> &nbsp;·&nbsp;
+          <a href="https://www.axios.com/2026/04/14/imf-iran-inflation-economy" target="_blank">Axios — IMF Halted Momentum</a> &nbsp;·&nbsp;
+          <a href="https://www.cnbc.com/2026/04/14/uk-downgrade-iran-war-uk-growth-middle-east-conflict-global-economy.html" target="_blank">CNBC — UK Hardest Hit Among Rich Nations</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-medium">REGIONAL</span>
+          Israel–Lebanon Talks Continue; Hezbollah Refuses Direct Negotiations
+        </div>
+        <div class="story-body">
+          Israel and Lebanon representatives met with US officials in Washington on Day 46 as a parallel diplomatic track to the US–Iran negotiations. However, Hezbollah has continued to reject any direct talks with Israel, complicating efforts to reach a broader regional ceasefire that Iran has insisted must encompass Lebanon. Al Jazeera's Day 46 recap noted Trump claimed Tehran "wants a deal" but that implementation details remain deeply contested.
+        </div>
+        <div class="story-meta">
+          Sources: <a href="https://www.aljazeera.com/news/liveblog/2026/4/14/iran-war-live-trump-claims-tehran-wants-a-deal-amid-us-blockade-of-hormuz" target="_blank">Al Jazeera — Day 46 Liveblog</a> &nbsp;·&nbsp;
+          <a href="https://www.bloomberg.com/news/articles/2026-04-14/us-iran-seek-more-ceasefire-talks-amid-hormuz-blockade" target="_blank">Bloomberg — US, Iran Seek More Talks</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-info">CONTEXT</span>
+          Wikipedia: 2026 Strait of Hormuz Crisis — What's at Stake
+        </div>
+        <div class="story-body">
+          The 2026 Strait of Hormuz crisis is now the largest disruption to global oil supply in recorded history. Before the war, approximately 21 million barrels per day transited the strait — about 20% of global oil consumption. The blockade's secondary effects are rippling through Asian energy markets, particularly for Japan, South Korea, India, and China. The CFR warns that even a negotiated settlement will not quickly restore shipping confidence, with insurers likely to maintain war-risk premiums for months.
+        </div>
+        <div class="story-meta">
+          Sources: <a href="https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_crisis" target="_blank">Wikipedia — 2026 Hormuz Crisis</a> &nbsp;·&nbsp;
+          <a href="https://www.cfr.org/articles/u-s-iran-peace-talks-hit-an-impasse-what-comes-next" target="_blank">CFR — What Comes Next</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════════ SECTION 2: CYBERSECURITY ═══════════ -->
+  <div class="section cyber">
+    <div class="section-header">
+      <h2>🛡️ Cybersecurity</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="subsection-title">Top Stories</div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-critical">PATCH TUESDAY</span>
+          Microsoft Patches 167 CVEs Including Actively Exploited SharePoint Zero-Day
+        </div>
+        <div class="story-body">
+          Microsoft's April 2026 Patch Tuesday — one of the largest in the company's history — addresses 167 vulnerabilities, including two zero-days. The most critical is <strong>CVE-2026-32201</strong>, an actively exploited spoofing vulnerability in Microsoft SharePoint Server, which CISA added to its KEV catalog with a federal remediation deadline of <strong>April 28, 2026</strong>. The vulnerability involves improper input validation allowing an unauthorized attacker to perform spoofing over a network and view or modify sensitive information. Eight vulnerabilities are rated Critical, of which seven enable Remote Code Execution. A second zero-day, <strong>CVE-2026-33825</strong> (CVSS 7.8), is a privilege escalation flaw in Microsoft Defender. Organizations with internet-facing SharePoint servers should treat patching as P1 this week.
+        </div>
+        <div class="story-meta">
+          Sources: <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-april-2026-patch-tuesday-fixes-167-flaws-2-zero-days/" target="_blank">Bleeping Computer — April 2026 Patch Tuesday</a> &nbsp;·&nbsp;
+          <a href="https://thehackernews.com/2026/04/microsoft-issues-patches-for-sharepoint.html" target="_blank">The Hacker News — SharePoint Zero-Day</a> &nbsp;·&nbsp;
+          <a href="https://www.theregister.com/2026/04/14/microsofts_massive_patch_tuesday/" target="_blank">The Register — Massive Patch Tuesday</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-critical">ACTIVE EXPLOIT</span>
+          Fortinet CVE-2026-35616 — Pre-Auth RCE in FortiClient EMS (CISA KEV)
+        </div>
+        <div class="story-body">
+          CISA added <strong>CVE-2026-35616</strong> (CVSS 9.1) to its KEV catalog on April 6, and exploitation attempts have been recorded against honeypots since March 31. The vulnerability in Fortinet FortiClient EMS (versions 7.4.5 and 7.4.6) is a pre-authentication API bypass that enables privilege escalation and remote code execution without any valid credentials. Shadowserver identified more than 2,000 publicly accessible instances worldwide. A hotfix is available; version 7.4.7 will contain the full patch. Mid-market enterprises using FortiClient as their VPN/endpoint manager should treat this as a P0 patching priority.
+        </div>
+        <div class="story-meta">
+          Sources: <a href="https://thehackernews.com/2026/04/fortinet-patches-actively-exploited-cve.html" target="_blank">The Hacker News — CVE-2026-35616</a> &nbsp;·&nbsp;
+          <a href="https://www.cisa.gov/news-events/alerts/2026/04/06/cisa-adds-one-known-exploited-vulnerability-catalog" target="_blank">CISA — KEV Alert</a> &nbsp;·&nbsp;
+          <a href="https://www.greenbone.net/en/blog/patch-now-2026-35616-and-cve-2026-21643/" target="_blank">Greenbone — Fortinet EMS Deep Dive</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-high">RANSOMWARE</span>
+          Qilin Most Active Ransomware Group — New Victims Confirmed
+        </div>
+        <div class="story-body">
+          Qilin ransomware confirmed a new victim — Après Mécanique — on April 14, 2026. Barracuda Networks' SOC Threat Radar for April 2026 highlighted a sharp rise in brute-force authentication attacks targeting SonicWall and FortiGate devices, which accounted for over 56% of all confirmed SOC incidents in the February–March period. The State of Ransomware in Q1 2026 (Emsisoft) noted continued high volume across healthcare, manufacturing, and professional services. Threat actors are increasingly combining credential brute-forcing on perimeter devices with BYOVD (Bring Your Own Vulnerable Driver) techniques to disable endpoint protection before deploying ransomware payloads.
+        </div>
+        <div class="story-meta">
+          Sources: <a href="https://blog.barracuda.com/2026/04/14/soc-threat-radar-april-2026" target="_blank">Barracuda — SOC Threat Radar April 2026</a> &nbsp;·&nbsp;
+          <a href="https://www.emsisoft.com/en/blog/47562/the-state-of-ransomware-in-q1-2026/" target="_blank">Emsisoft — State of Ransomware Q1 2026</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-high">SUPPLY CHAIN</span>
+          Q1 2026: 21,764 Malicious Open-Source Packages Identified
+        </div>
+        <div class="story-body">
+          Sonatype's Q1 2026 Open Source Malware Index identified 21,764 malicious packages in the first quarter, bringing the total catalogued since 2017 to 1,346,867. Trojans dominated the threat landscape, with most activity focused on credential theft, host reconnaissance, and staged payload delivery. The defining pattern of Q1 2026 was <em>trust abuse</em> — attackers succeeding by hiding inside trusted packages, trusted release paths, and trusted CI/CD workflows. CISOs and DevSecOps teams should ensure software composition analysis (SCA) scanning is integrated into all CI/CD pipelines and that dependency update policies are enforced.
+        </div>
+        <div class="story-meta">
+          Source: <a href="https://securityboulevard.com/2026/04/q1-2026-open-source-malware-index-adaptive-attacks-familiar-weaknesses/" target="_blank">Security Boulevard — Q1 2026 Malware Index</a>
+        </div>
+      </div>
+
+      <!-- ── Audience Sub-sections ── -->
+      <div class="subsection-title">Audience Perspectives</div>
+
+      <div class="audience-block audience-ciso">
+        <div class="audience-label">🔐 CISO — Active Threats &amp; Operational Priorities</div>
+        <div class="audience-content">
+          <strong>This week's patch priority list:</strong>
+          <ul style="margin: 8px 0 8px 18px;">
+            <li><strong>P0:</strong> Fortinet FortiClient EMS CVE-2026-35616 — apply hotfix immediately; 2,000+ exposed instances, actively exploited since March 31</li>
+            <li><strong>P1:</strong> Microsoft SharePoint CVE-2026-32201 — actively exploited zero-day, CISA KEV deadline April 28</li>
+            <li><strong>P1:</strong> Microsoft Defender CVE-2026-33825 (CVSS 7.8) — privilege escalation zero-day in this Patch Tuesday</li>
+            <li><strong>P1:</strong> Chrome CVE-2026-5281 — still the CISA deadline today (April 15) for federal agencies; push browser fleet updates now if not done</li>
+          </ul>
+          <strong>Threat landscape:</strong> The combination of perimeter device brute-forcing (SonicWall/FortiGate) + BYOVD EDR bypass + ransomware deployment is now the dominant attack chain in Q1/Q2 2026. If your organization uses any of these perimeter products, review authentication logs immediately. Open-source supply chain attacks continue to accelerate — SCA tooling in CI/CD is no longer optional. Iran's cyber retaliation posture remains elevated; organizations in energy, finance, and government should ensure OT/ICS monitoring is active and incident response playbooks are tested.
+        </div>
+      </div>
+
+      <div class="audience-block audience-partner">
+        <div class="audience-label">🤝 Consulting Partner — Industry Trends &amp; Client Risk</div>
+        <div class="audience-content">
+          <strong>Client conversations to have this week:</strong> The April 2026 Patch Tuesday (167 CVEs, two zero-days) combined with the Fortinet KEV listing is a powerful opener for patch program maturity assessments. Many mid-market clients still lack a structured process for prioritizing critical vendor patches within 24–72 hours of release — this is a concrete, deliverable gap. The Qilin brute-force campaigns against SonicWall/FortiGate are ideal for initiating perimeter exposure reviews with clients running legacy VPN/firewall stacks.
+          <br/><br/>
+          <strong>Pipeline indicators:</strong> The open-source malware acceleration (21,764 packages in Q1) is driving strong demand for DevSecOps transformation engagements, particularly in financial services and technology sectors. CISA's KEV compliance requirements are increasingly being used by GRC teams as forcing functions for budget conversations with finance — this is a useful frame for compliance-led security investment discussions. Iran war cyber retaliation risk is creating new client urgency in the energy and critical infrastructure sectors for threat intelligence and OT/ICS security reviews.
+        </div>
+      </div>
+
+      <div class="audience-block audience-exec">
+        <div class="audience-label">💼 Business Executive — Strategic Risk &amp; Board Topics</div>
+        <div class="audience-content">
+          <strong>What the board needs to know:</strong> Microsoft's record-breaking Patch Tuesday (167 CVEs, including two actively exploited zero-days) is a reminder that enterprise software complexity has outpaced most organizations' ability to patch at speed. The question for boards is not whether vulnerabilities exist — they always will — but whether the organization has a structured, funded process to respond within days rather than weeks.
+          <br/><br/>
+          <strong>Strategic risk:</strong> The Hormuz blockade continues to have a direct cybersecurity dimension. Iran retains significant offensive cyber capability and is expected to escalate cyber operations if the kinetic conflict intensifies after the April 21 ceasefire expiry. The IMF's warning of a potential global recession (3.1% growth forecast, inflation rising to 4.4%) should be on your next board risk register update. Organizations with significant Middle East supply chain exposure or energy cost sensitivity should stress-test their assumptions for a prolonged Hormuz closure scenario.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════════ SECTION 3: ARTIFICIAL INTELLIGENCE ═══════════ -->
+  <div class="section ai">
+    <div class="section-header">
+      <h2>🤖 Artificial Intelligence</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="subsection-title">Top Stories</div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-critical">CONTROVERSY</span>
+          Anthropic Faces User Backlash Over Claude Performance Degradation
+        </div>
+        <div class="story-body">
+          Anthropic is facing a wave of user backlash after heavy users and developers reported a significant decline in Claude's performance. According to Fortune and VentureBeat, users say the model increasingly fails to follow instructions, takes inappropriate shortcuts, and makes more errors in complex workflows. The root cause: Anthropic quietly reduced Claude's default "effort" level to "medium" to reduce token consumption, without adequately communicating the change. Boris Cherny, head of Claude Code, acknowledged the change publicly after user complaints surfaced. Speculation is mounting that Anthropic may be running short of compute capacity after explosive enterprise adoption — a concern that could impact its planned IPO roadshow.
+        </div>
+        <div class="story-meta">
+          Sources: <a href="https://fortune.com/2026/04/14/anthropic-claude-performance-decline-user-complaints-backlash-lack-of-transparency-accusations-compute-crunch/" target="_blank">Fortune — Claude Backlash</a> &nbsp;·&nbsp;
+          <a href="https://venturebeat.com/technology/is-anthropic-nerfing-claude-users-increasingly-report-performance" target="_blank">VentureBeat — Is Anthropic Nerfing Claude?</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-high">MARKET</span>
+          AI Hype Fading — But Enterprise Adoption Accelerates
+        </div>
+        <div class="story-body">
+          Motley Fool and other analysts note that AI valuations are cooling after peak exuberance in early 2026, but underlying enterprise adoption continues to accelerate. MIT Technology Review published a teaser today for its upcoming "10 Things That Matter in AI Right Now" list — to be published April 21 at the EmTech AI conference — identifying AI companions, mechanistic interpretability, generative coding, and hyperscale data centers as the most important trends to watch. The US and China remain nearly neck-and-neck on frontier model performance, with Chinese models (DeepSeek, Alibaba) only modestly behind US leaders as of March 2026.
+        </div>
+        <div class="story-meta">
+          Sources: <a href="https://www.fool.com/investing/2026/04/14/the-artificial-intelligence-ai-hype-is-fading-and/" target="_blank">Motley Fool — AI Hype Fading</a> &nbsp;·&nbsp;
+          <a href="https://www.technologyreview.com/2026/04/14/1135298/coming-soon-10-things-that-matter-in-ai-right-now/" target="_blank">MIT Technology Review — 10 Things Preview</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-high">ENTERPRISE</span>
+          Anthropic Nears OpenAI in US Enterprise AI Spending — 1,000+ $1M+ Accounts
+        </div>
+        <div class="story-body">
+          Despite the performance controversy, Anthropic's enterprise momentum remains strong. More than 1,000 businesses are now spending over $1M/year with Anthropic on an annualized basis — up from roughly 500 just two months earlier. Business adoption has doubled to $8.4B over six months. Claude Managed Agents, launched April 10, offers enterprises a cloud-native service for orchestrating, sandboxing, and governing AI agent deployments at scale. Separately, xAI released Grok 4.20, which scored highest on benchmarks measuring factual accuracy on recent news events — positioning it as a strong competitor for business intelligence use cases.
+        </div>
+        <div class="story-meta">
+          Sources: <a href="https://creati.ai/ai-news/2026-04-12/anthropic-nears-openai-us-business-ai-spending-enterprise-surge/" target="_blank">Creati.ai — Anthropic Enterprise Surge</a> &nbsp;·&nbsp;
+          <a href="https://winbuzzer.com/2026/04/10/anthropic-launches-claude-managed-agents-enterprise-ai-xcxwbn/" target="_blank">WinBuzzer — Claude Managed Agents</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-info">HARDWARE</span>
+          Micron Breaks Ground on $100B Semiconductor Megafab in New York
+        </div>
+        <div class="story-body">
+          Micron officially broke ground this week on its $100B semiconductor megafab in Onondaga County, New York — the largest private investment in New York State history and the largest semiconductor facility in the US when complete. The four-fab campus will create 50,000 jobs, including 9,000 direct Micron positions. Fab 1 operations are expected to begin in 2030. The facility will focus on advanced memory products for AI workloads, data centers, and high-performance computing. This is a strategic domestic AI infrastructure milestone aimed at reducing US dependence on Asian memory supply chains.
+        </div>
+        <div class="story-meta">
+          Source: <a href="https://investors.micron.com/news-releases/news-release-details/micron-announces-groundbreaking-historic-new-york-megafab" target="_blank">Micron — New York Megafab Groundbreaking</a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">
+          <span class="alert-pill alert-info">RESEARCH</span>
+          Nature: Human Scientists Still Outperform Best AI Agents on Complex Tasks
+        </div>
+        <div class="story-body">
+          A new study published in Nature found that human scientists significantly outperform the best AI agents on complex, open-ended scientific tasks that require multi-step reasoning, experimental design, and domain creativity. The findings challenge the narrative that AI will imminently replace knowledge workers in research-intensive roles. The study is significant for enterprise AI strategy: while AI dramatically accelerates routine, structured tasks, the gap in genuinely complex, novel problem-solving remains substantial — reinforcing a "human + AI" augmentation model rather than wholesale automation for high-stakes work.
+        </div>
+        <div class="story-meta">
+          Source: <a href="https://www.nature.com/articles/d41586-026-01199-z" target="_blank">Nature — Human Scientists vs. AI Agents</a>
+        </div>
+      </div>
+
+      <!-- ── Audience Sub-sections ── -->
+      <div class="subsection-title">Audience Perspectives</div>
+
+      <div class="audience-block audience-ciso">
+        <div class="audience-label">🔐 CISO — AI Security Risks</div>
+        <div class="audience-content">
+          <strong>Claude performance degradation — a governance signal:</strong> The revelation that Anthropic silently reduced Claude's default effort level without notifying enterprise customers highlights a critical vendor transparency gap. For CISOs managing AI in production workflows — especially agentic deployments in security, legal, or compliance contexts — model behavior changes that are not disclosed represent an operational and compliance risk. Vendor change notification requirements should be added to all enterprise AI contracts.
+          <br/><br/>
+          <strong>Supply chain AI risks:</strong> The open-source malware acceleration (21,764 malicious packages in Q1) extends directly into AI environments. Teams using open-source AI libraries, model hubs (Hugging Face), and AI-enhanced development tools face the same trust-abuse attack patterns. Mandate SCA scanning for all AI/ML dependencies in the same way as application code.
+        </div>
+      </div>
+
+      <div class="audience-block audience-partner">
+        <div class="audience-label">🤝 Consulting Partner — Market Moves &amp; Opportunities</div>
+        <div class="audience-content">
+          <strong>Claude performance controversy = vendor governance opportunity:</strong> The backlash against Anthropic's silent model change is a compelling entry point for enterprise AI governance engagements. Most large clients have no process for detecting, validating, or responding to upstream model changes from AI vendors. This is a concrete, high-value consulting gap.
+          <br/><br/>
+          <strong>Emerging opportunities:</strong> (1) <strong>AI agent governance frameworks</strong> — Claude Managed Agents and similar enterprise orchestration services are proliferating; clients need policy, oversight, and audit trail design before full deployment. (2) <strong>AI vendor benchmarking</strong> — with Claude, GPT-4o, Grok, and Gemini all competing on enterprise accounts, structured multi-vendor evaluation is in demand. (3) <strong>AI + semiconductor supply chain strategy</strong> — Micron's megafab groundbreaking is an inflection point for AI infrastructure advisory conversations. (4) <strong>PwC's 80/20 AI value capture finding</strong> remains the strongest framing for AI strategy engagements: most clients need a clear path from experimentation to production at scale.
+        </div>
+      </div>
+
+      <div class="audience-block audience-exec">
+        <div class="audience-label">💼 Business Executive — Strategic Implications</div>
+        <div class="audience-content">
+          <strong>Hype cooling, but adoption gap widening:</strong> The Motley Fool and MIT data are consistent — AI valuations are moderating from peak levels, but the leaders are pulling away from the laggards in terms of actual revenue impact. Companies still in "pilot mode" are now 12–18 months behind the leaders.
+          <br/><br/>
+          <strong>Key decisions for executives:</strong> (1) The Claude performance controversy is a reminder that AI vendors can silently change the behavior of systems you depend on — ensure your AI procurement contracts include notification requirements for model changes. (2) The Nature study on human vs. AI performance provides important nuance: AI augments knowledge workers but does not yet replace them on genuinely complex tasks — this should shape your AI workforce strategy. (3) Micron's $100B domestic semiconductor investment is a 5–10 year strategic signal about AI infrastructure self-sufficiency in the US — relevant for long-horizon technology investment planning. (4) The AI hype moderation may create a window for more rational ROI conversations with boards that were previously skeptical of AI investment.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <div class="footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Daily Briefing &nbsp;·&nbsp; April 14, 2026 &nbsp;·&nbsp; 6:00 PM</p>
+    <p style="margin-top:6px;">Sources: Al Jazeera · CNN · CNBC · Bloomberg · Time · IMF · CFR · Bleeping Computer · The Hacker News · CISA · The Register · Barracuda Networks · Emsisoft · Sonatype · Fortune · VentureBeat · MIT Technology Review · Motley Fool · Nature · Micron</p>
+  </div>
+
+</div>
+</body>
+</html>
