@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Friday, April 17, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── HEADER ── */
+    .header {
+      text-align: center;
+      padding: 48px 0 36px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 10px;
+    }
+    .header h1 { font-size: 2rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
+    .header .dateline { font-size: 0.9rem; color: #8b949e; }
+    .header .back { margin-top: 14px; font-size: 0.82rem; }
+
+    /* ── SECTION ── */
+    .section {
+      margin-bottom: 52px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid;
+    }
+    .section-header .emoji { font-size: 1.6rem; }
+    .section-header h2 { font-size: 1.25rem; font-weight: 800; letter-spacing: 0.5px; }
+    .section-header .section-label {
+      margin-left: auto;
+      font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    /* Section colour themes */
+    .iran   .section-header { border-color: #da3633; }
+    .iran   .section-header h2 { color: #ff7b72; }
+    .iran   .section-header .section-label { background: #2d1519; color: #da3633; }
+
+    .cyber  .section-header { border-color: #388bfd; }
+    .cyber  .section-header h2 { color: #79c0ff; }
+    .cyber  .section-header .section-label { background: #0c1e3c; color: #388bfd; }
+
+    .ai     .section-header { border-color: #a371f7; }
+    .ai     .section-header h2 { color: #d2a8ff; }
+    .ai     .section-header .section-label { background: #1a1035; color: #a371f7; }
+
+    /* ── STORY CARD ── */
+    .story {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-left: 3px solid;
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .iran  .story { border-left-color: #da3633; }
+    .cyber .story { border-left-color: #388bfd; }
+    .ai    .story { border-left-color: #a371f7; }
+
+    .story-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 6px; display: flex; align-items: flex-start; gap: 8px;
+    }
+    .badge {
+      font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 12px;
+      white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+    }
+    .badge-hot   { background: #3d1a1a; color: #f85149; }
+    .badge-new   { background: #0c2d0c; color: #3fb950; }
+    .badge-watch { background: #2d2208; color: #e3b341; }
+    .badge-crit  { background: #0c1e3c; color: #388bfd; }
+
+    .story p { font-size: 0.88rem; color: #c9d1d9; margin-bottom: 6px; }
+    .story .source { font-size: 0.78rem; color: #484f58; }
+    .story .source a { color: #6e7681; }
+    .story .source a:hover { color: #58a6ff; }
+
+    /* ── AUDIENCE TABS ── */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+    @media (max-width: 640px) { .audience-grid { grid-template-columns: 1fr; } }
+
+    .audience-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .audience-card .aud-title {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; margin-bottom: 10px; display: flex;
+      align-items: center; gap: 6px;
+    }
+    .audience-card ul { padding-left: 16px; }
+    .audience-card li { font-size: 0.83rem; color: #c9d1d9; margin-bottom: 5px; }
+
+    .cyber .audience-card:nth-child(1) .aud-title { color: #f85149; }
+    .cyber .audience-card:nth-child(2) .aud-title { color: #3fb950; }
+    .cyber .audience-card:nth-child(3) .aud-title { color: #e3b341; }
+    .ai    .audience-card:nth-child(1) .aud-title { color: #f85149; }
+    .ai    .audience-card:nth-child(2) .aud-title { color: #3fb950; }
+    .ai    .audience-card:nth-child(3) .aud-title { color: #e3b341; }
+
+    .audience-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: #6e7681;
+      margin-top: 24px; margin-bottom: 10px;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center; margin-top: 60px; padding-top: 20px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="label">Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="dateline">Friday, April 17, 2026 &nbsp;·&nbsp; 6:00 PM Paris Time</div>
+    <div class="back"><a href="index.html">← Back to Archive</a></div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 1 · IRAN WAR
+  ══════════════════════════════════════════ -->
+  <div class="section iran">
+    <div class="section-header">
+      <span class="emoji">🔥</span>
+      <h2>Iran War</h2>
+      <span class="section-label">Breaking</span>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-hot">HOT</span>
+        Israel–Lebanon 10-Day Ceasefire Takes Effect
+      </div>
+      <p>A 10-day ceasefire between Israel and the Lebanese government officially began at 5:00 PM local time on Thursday, April 17. The death toll from Israeli strikes on Lebanon had reached 2,196 before the truce took hold. The ceasefire was brokered by the United States, though significant ambiguity remains: Israeli PM Netanyahu and VP Vance insist Lebanon is <em>not</em> included in the broader Iran ceasefire framework, while Pakistani PM Sharif—who helped mediate—says all fronts are covered.</p>
+      <div class="source">Sources: <a href="https://www.nbcnews.com/world/iran/live-blog/live-updates-iran-war-israel-lebanon-leaders-talks-ceasefire-trump-rcna332095" target="_blank">NBC News</a> · <a href="https://www.aljazeera.com/news/liveblog/2026/4/17/iran-war-live-ceasefire-starts-in-lebanon-as-trump-says-tehran-deal-close" target="_blank">Al Jazeera</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-hot">HOT</span>
+        Iran Opens Strait of Hormuz — But U.S. Blockade Stays
+      </div>
+      <p>Iranian FM Abbas Araghchi declared the Strait of Hormuz "completely open" for commercial vessel passage for the duration of the ceasefire period, triggering an immediate surge in equity markets and a sharp drop in oil prices. However, President Trump stated the U.S. naval blockade of Iranian ports <strong>"will remain in full force"</strong> until a comprehensive peace deal is signed. Ships must use a coordinated route as specified by Tehran.</p>
+      <div class="source">Sources: <a href="https://www.cnn.com/2026/04/17/world/live-news/iran-war-trump-lebanon-israel-ceasefire" target="_blank">CNN</a> · <a href="https://abc7.com/live-updates/iran-war-straight-hormuz-blockade-oil-prices-us-stock-market-ceasefire/18880313/" target="_blank">ABC7</a> · <a href="https://www.nbcnews.com/world/iran/live-blog/live-updates-israel-lebanon-ceasefire-trump-iran-talks-hormuz-summit-rcna332294" target="_blank">NBC News Live</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-watch">DIPLOMACY</span>
+        Islamabad Talks: Vance, Witkoff, Kushner on the Ground
+      </div>
+      <p>U.S. VP JD Vance, Special Envoy Steve Witkoff, and Jared Kushner flew to Islamabad for direct peace negotiations with Iranian officials under Pakistani mediation. Trump declared the war "very close to over" and announced the U.S. and Iran have agreed to a two-week ceasefire—saying Tehran will work toward a final peace agreement. Iran's deputy FM, however, publicly rejected any temporary ceasefire, demanding a comprehensive regional end to hostilities.</p>
+      <div class="source">Sources: <a href="https://www.aljazeera.com/news/2026/4/8/us-iran-ceasefire-deal-what-are-the-terms-and-whats-next" target="_blank">Al Jazeera</a> · <a href="https://www.npr.org/2026/04/16/nx-s1-5787392/iran-middle-east-updates" target="_blank">NPR</a> · <a href="https://www.haaretz.com/israel-news/israel-security/2026-04-16/ty-article-live/report-lebanese-officials-say-cease-fire-with-israel-expected-soon/0000019d-9419-df26-a1bf-b5dbfb980000" target="_blank">Haaretz</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-watch">WATCH</span>
+        Iran Rejects Temporary Truce; Full Deal Demands Remain
+      </div>
+      <p>Despite the announced ceasefire, Tehran's official position remains that it seeks a <em>comprehensive, permanent</em> end to the war across all fronts—not a temporary pause. This creates fragility: any new strike, especially involving Hezbollah or the IRGC, could unravel both the Lebanon ceasefire and Hormuz opening before a permanent deal is reached. Talks in Islamabad are the clearest diplomatic pathway, but no timeline has been announced.</p>
+      <div class="source">Sources: <a href="https://www.cbsnews.com/live-updates/iran-war-us-trump-strait-of-hormuz-diplomacy-ceasefire/" target="_blank">CBS News</a> · <a href="https://www.csis.org/programs/latest-analysis-war-iran" target="_blank">CSIS</a></div>
+    </div>
+  </div><!-- /iran -->
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 2 · CYBERSECURITY
+  ══════════════════════════════════════════ -->
+  <div class="section cyber">
+    <div class="section-header">
+      <span class="emoji">🛡️</span>
+      <h2>Cybersecurity</h2>
+      <span class="section-label">Patch Tuesday Week</span>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-crit">CRITICAL</span>
+        Microsoft April Patch Tuesday: 167 CVEs, 2 Zero-Days, 8 Critical
+      </div>
+      <p><strong>CVE-2026-32201</strong> — Actively exploited zero-day in <strong>SharePoint Server</strong> enabling spoofing attacks that can expose or manipulate sensitive data. <strong>CVE-2026-33825</strong> — Zero-day in <strong>Microsoft Defender</strong> enabling privilege escalation to SYSTEM level, dramatically increasing full-compromise risk. Eight vulnerabilities are rated Critical. Patch immediately, prioritizing internet-facing SharePoint and all endpoints running Defender.</p>
+      <div class="source">Sources: <a href="https://www.securityweek.com/microsoft-patches-exploited-sharepoint-zero-day-and-160-other-vulnerabilities/" target="_blank">SecurityWeek</a> · <a href="https://www.integrity360.com/cyber-news-roundup-april-17th-2026" target="_blank">Integrity360</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-crit">CRITICAL</span>
+        Apache ActiveMQ CVE-2026-34197 Added to CISA KEV — Deadline April 30
+      </div>
+      <p>A high-severity flaw (CVSS 8.8) in Apache ActiveMQ Classic is under active exploitation. CISA added it to the Known Exploited Vulnerabilities catalog, requiring all Federal Civilian Executive Branch agencies to patch by <strong>April 30, 2026</strong>. Enterprise environments running ActiveMQ for messaging infrastructure should treat this as an emergency. The flaw allows remote code execution by unauthenticated attackers in some configurations.</p>
+      <div class="source">Sources: <a href="https://thehackernews.com/" target="_blank">The Hacker News</a> · <a href="https://www.integrity360.com/cyber-news-roundup-april-17th-2026" target="_blank">Integrity360</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-crit">CRITICAL</span>
+        Chrome Zero-Day CVE-2026-5281 — 4th Chrome 0-Day of 2026
+      </div>
+      <p>A use-after-free in Chrome's <strong>Dawn/WebGPU</strong> component (CVE-2026-5281) was patched in Chrome v146.0.7680.177+. Google confirmed active exploitation in the wild; CISA added it to KEV. This is Chrome's <em>fourth</em> zero-day of 2026, raising concerns about the browser's attack surface. All Chromium-based browsers (Edge, Brave, Opera, Vivaldi) remain vulnerable until they ship upstream patches.</p>
+      <div class="source">Sources: <a href="https://thehackernews.com/2026/04/new-chrome-zero-day-cve-2026-5281-under.html" target="_blank">The Hacker News</a> · <a href="https://www.helpnetsecurity.com/2026/04/01/google-chrome-zero-day-cve-2026-5281/" target="_blank">Help Net Security</a> · <a href="https://socradar.io/blog/cve-2026-5281-chrome-webgpu-zero-day/" target="_blank">SOCRadar</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-new">TAKEDOWN</span>
+        Operation PowerOFF Dismantles 53 DDoS-for-Hire Domains, 4 Arrests
+      </div>
+      <p>An international law enforcement operation — Operation PowerOFF — took down 53 domains running commercial DDoS-for-hire services used by more than <strong>75,000 cybercriminals</strong>. Four individuals were arrested. This is one of the largest single coordinated actions against the DDoS marketplace. The operation underscores continued collaboration between Europol, the FBI, and national agencies across Europe and Asia.</p>
+      <div class="source">Source: <a href="https://www.integrity360.com/cyber-news-roundup-april-17th-2026" target="_blank">Integrity360 Roundup</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-watch">WATCH</span>
+        NIST Restricts CVE Enrichment — 263% Surge Since 2020
+      </div>
+      <p>NIST announced it will only fully enrich CVE listings that meet certain triage conditions, citing a <strong>263% surge in CVE submissions</strong> between 2020 and 2025. This creates risk for organizations relying on the NVD for vulnerability prioritization, as many CVEs will lack CVSS scores and CWE classifications. Security teams should evaluate supplementary sources (EPSS, vendor advisories, Shodan) to fill the gap.</p>
+      <div class="source">Sources: <a href="https://thehackernews.com/" target="_blank">The Hacker News</a> · <a href="https://blog.barracuda.com/2026/04/14/soc-threat-radar-april-2026" target="_blank">Barracuda SOC Radar</a></div>
+    </div>
+
+    <!-- Audience perspective grid -->
+    <div class="audience-label">PERSPECTIVES BY ROLE</div>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="aud-title">🔐 CISO</div>
+        <ul>
+          <li>Emergency patch SharePoint & Defender (CVE-2026-32201 / -33825) — both actively exploited</li>
+          <li>Mandate Chrome updates across all endpoints; block Chromium forks until patched</li>
+          <li>ActiveMQ: audit all broker instances; treat KEV deadline as hard cutoff</li>
+          <li>Reassess NVD dependency — build workflow for unenriched CVEs</li>
+          <li>Review DDoS resilience posture in light of PowerOFF disruption</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <div class="aud-title">🤝 Consulting Partner</div>
+        <ul>
+          <li>Patch Tuesday + Chrome zero-day = immediate client advisory opportunity</li>
+          <li>ActiveMQ KEV listing is a strong hook for middleware security assessments</li>
+          <li>NIST CVE enrichment reduction: propose vulnerability intelligence retainer services</li>
+          <li>Operation PowerOFF: brief clients on DDoS exposure and crisis playbooks</li>
+          <li>4th Chrome 0-day of 2026 is a compelling board-level data point</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <div class="aud-title">💼 Business Executive</div>
+        <ul>
+          <li>Microsoft released patches for 167 flaws — IT teams need to prioritize this week</li>
+          <li>Chrome browser flaw is actively exploited — fleet updates are urgent</li>
+          <li>75,000 criminals used DDoS-for-hire tools; law enforcement took them down today</li>
+          <li>NIST CVE backlog grows — your security team may need additional tooling budget</li>
+        </ul>
+      </div>
+    </div>
+  </div><!-- /cyber -->
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 3 · ARTIFICIAL INTELLIGENCE
+  ══════════════════════════════════════════ -->
+  <div class="section ai">
+    <div class="section-header">
+      <span class="emoji">🤖</span>
+      <h2>Artificial Intelligence</h2>
+      <span class="section-label">Stanford AI Index</span>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-hot">REPORT</span>
+        Stanford AI Index 2026: AI Surpasses Humans on PhD-Level Benchmarks
+      </div>
+      <p>The Stanford HAI AI Index 2026 (released April 16) shows AI models now meet or exceed human expert performance on PhD-level science, math, and language understanding tests. Key findings: US–China capability gap is narrowing (Anthropic leads by only 2.7% over top Chinese models); software developer employment for ages 22–25 has dropped ~20% since 2024; AI-related scientific publications in natural/physical/life sciences are up 26–28% YoY. Grok 4's estimated training run emitted 72,816 tons of CO₂-equivalent.</p>
+      <div class="source">Sources: <a href="https://hai.stanford.edu/news/inside-the-ai-index-12-takeaways-from-the-2026-report" target="_blank">Stanford HAI</a> · <a href="https://www.technologyreview.com/2026/04/13/1135675/want-to-understand-the-current-state-of-ai-check-out-these-charts/" target="_blank">MIT Tech Review</a> · <a href="https://spectrum.ieee.org/state-of-ai-index-2026" target="_blank">IEEE Spectrum</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-hot">EXCLUSIVE</span>
+        Anthropic's Claude Mythos: Too Dangerous to Release
+      </div>
+      <p>Anthropic confirmed the existence of <strong>Claude Mythos</strong>, its most capable model to date — and announced it will <em>not</em> be publicly released. The model scored <strong>93.9% on SWE-bench Verified</strong> and <strong>94.6% on GPQA Diamond</strong>, and reportedly discovered thousands of zero-day vulnerabilities across every major OS and browser in red-team testing. Only 50 organizations get access under the gated "Project Glasswing" program. The decision renews the debate over responsible disclosure vs. competitive pressure.</p>
+      <div class="source">Sources: <a href="https://www.france24.com/en/why-anthropic-s-new-ai-model-is-too-powerful-to-release-1" target="_blank">France 24</a> · <a href="https://whatllm.org/blog/new-ai-models-april-2026" target="_blank">WhatLLM</a> · <a href="https://www.anthropic.com/news" target="_blank">Anthropic</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-new">MODELS</span>
+        GPT-5.4 Leads on Productivity; Gemini 3.1 Pro Tops Reasoning
+      </div>
+      <p>OpenAI's <strong>GPT-5.4</strong> (released March 5) posted record scores on computer-use benchmarks OSWorld-Verified and WebArena Verified, and 83% on GDPval for knowledge work — the highest yet. Meanwhile, Google's <strong>Gemini 3.1 Pro</strong> leads on 13 of 16 benchmarks including GPQA Diamond (94.3%). OpenAI is finalizing "Spud" (likely GPT-5.5 or GPT-6), suggesting another capability leap is weeks away.</p>
+      <div class="source">Sources: <a href="https://llm-stats.com/ai-news" target="_blank">LLM Stats</a> · <a href="https://renovateqr.com/blog/ai-models-april-2026" target="_blank">RenovateQR AI Tracker</a> · <a href="https://www.aiandnews.com/blog/latest-ai-news-april-2026-3/" target="_blank">AI and News</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-watch">MARKET</span>
+        PwC: Top 20% of Companies Capture 75% of AI Economic Gains
+      </div>
+      <p>PwC's 2026 AI Performance Study finds that <strong>three-quarters of AI's economic value</strong> is being captured by just 20% of companies—and those leading firms are focused on <em>growth</em>, not just cost reduction. The widening gap suggests AI is becoming a structural competitive moat. Laggards risk permanent disadvantage as frontier model costs drop and deployment velocity accelerates.</p>
+      <div class="source">Source: <a href="https://www.pwc.com/gx/en/news-room/press-releases/2026/pwc-2026-ai-performance-study.html" target="_blank">PwC 2026 AI Performance Study</a></div>
+    </div>
+
+    <!-- Audience perspective grid -->
+    <div class="audience-label">PERSPECTIVES BY ROLE</div>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="aud-title">🔐 CISO</div>
+        <ul>
+          <li>Claude Mythos finding thousands of zero-days is a wake-up call — offensive AI is here</li>
+          <li>Update threat models to include AI-assisted vulnerability discovery by adversaries</li>
+          <li>Evaluate "Project Glasswing" access for internal red-team use before adversaries get access</li>
+          <li>Stanford AI Index confirms AI misuse sophistication is rising in lockstep with capability</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <div class="aud-title">🤝 Consulting Partner</div>
+        <ul>
+          <li>PwC data is the slide you need: show clients AI ROI concentration before they fall behind</li>
+          <li>Claude Mythos / Project Glasswing: pitch AI-assisted penetration testing services</li>
+          <li>GPT-5.4 + Gemini 3.1 = strong case for refreshing client AI tool stacks now</li>
+          <li>Stanford Index job displacement data supports workforce transformation practices</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <div class="aud-title">💼 Business Executive</div>
+        <ul>
+          <li>75% of AI value is going to 20% of companies — which group are you in?</li>
+          <li>AI now outperforms PhD-level experts; the productivity window is open now</li>
+          <li>Anthropic built a model so dangerous they won't release it — a sign of how fast capabilities are advancing</li>
+          <li>Young software developer employment is down 20% since 2024 — workforce planning needs updating</li>
+        </ul>
+      </div>
+    </div>
+  </div><!-- /ai -->
+
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Friday, April 17, 2026 · 6:00 PM Paris Time</p>
+    <p style="margin-top:6px;">Sources: Reuters, Al Jazeera, NBC News, CNN, CBS News, NPR, Haaretz, CSIS · SecurityWeek, The Hacker News, Help Net Security, SOCRadar, Barracuda, Integrity360 · Stanford HAI, MIT Tech Review, France 24, PwC, LLM Stats</p>
+  </div>
+
+</div>
+</body>
+</html>
