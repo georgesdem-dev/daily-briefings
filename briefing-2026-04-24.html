@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Thursday, April 24, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 820px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 12px;
+    }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
+    .header .date { font-size: 1rem; color: #8b949e; margin-bottom: 16px; }
+    .header .nav { font-size: 0.82rem; color: #484f58; }
+    .header .nav a { color: #6e7681; }
+
+    /* ── Section blocks ── */
+    .section {
+      margin-bottom: 52px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid #21262d;
+    }
+    .section-icon { font-size: 1.6rem; }
+    .section-title { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; }
+    .section-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 3px 9px; border-radius: 20px;
+      margin-left: auto;
+    }
+    .tag-iran    { background: #3d1a1a; color: #f85149; border: 1px solid #6e2a2a; }
+    .tag-cyber   { background: #1a2d1a; color: #3fb950; border: 1px solid #2a4a2a; }
+    .tag-ai      { background: #1a1f3d; color: #79c0ff; border: 1px solid #2a3a6e; }
+
+    /* ── Stories ── */
+    .story {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .story:hover { border-color: #444c56; }
+    .story h3 {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 8px; line-height: 1.4;
+    }
+    .story p { font-size: 0.88rem; color: #c9d1d9; line-height: 1.65; margin-bottom: 8px; }
+    .story p:last-child { margin-bottom: 0; }
+    .story .source {
+      font-size: 0.76rem; color: #484f58; margin-top: 10px;
+    }
+    .story .source a { color: #6e7681; }
+    .story .source a:hover { color: #58a6ff; }
+
+    /* ── Audience sub-sections ── */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .audience-card {
+      background: #0d1117;
+      border: 1px solid #21262d;
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .audience-card .badge {
+      font-size: 10px; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; color: #8b949e; margin-bottom: 8px;
+      display: block;
+    }
+    .audience-card ul {
+      list-style: none; padding: 0;
+    }
+    .audience-card ul li {
+      font-size: 0.82rem; color: #c9d1d9; margin-bottom: 5px;
+      padding-left: 14px; position: relative;
+    }
+    .audience-card ul li::before {
+      content: "›"; position: absolute; left: 0; color: #58a6ff;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      border: none; border-top: 1px solid #21262d;
+      margin: 14px 0 20px;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center; margin-top: 60px; padding-top: 20px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+
+    /* ── TL;DR pill ── */
+    .tldr {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-left: 3px solid #58a6ff;
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin-bottom: 28px;
+      font-size: 0.86rem;
+      color: #8b949e;
+    }
+    .tldr strong { color: #f0f6fc; }
+
+    /* severity badges */
+    .badge-critical { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; padding:2px 7px; border-radius:4px; background:#6e1f1f; color:#f85149; margin-right:6px; letter-spacing:0.8px; }
+    .badge-high     { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; padding:2px 7px; border-radius:4px; background:#3d2a0a; color:#e3b341; margin-right:6px; letter-spacing:0.8px; }
+    .badge-new      { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; padding:2px 7px; border-radius:4px; background:#1a2d1a; color:#3fb950; margin-right:6px; letter-spacing:0.8px; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ═══════════════ HEADER ═══════════════ -->
+  <div class="header">
+    <div class="label">Daily Intelligence Briefing</div>
+    <h1>📰 Thursday, April 24, 2026</h1>
+    <div class="date">Day 56 of the Iran War &nbsp;·&nbsp; Evening Edition · 6 PM Paris</div>
+    <div class="nav"><a href="index.html">← Back to archive</a></div>
+  </div>
+
+  <!-- ═══════════════ TL;DR ═══════════════ -->
+  <div class="tldr">
+    <strong>Today at a glance:</strong> &nbsp;
+    Araghchi flies to Islamabad as US–Iran talks stall; only 5 ships crossed Hormuz in 24 h; Lebanon ceasefire extended 3 weeks &nbsp;·&nbsp;
+    Three Microsoft Defender zero-days under active exploitation; Storm-1175 deploys Medusa ransomware in under 24 h &nbsp;·&nbsp;
+    OpenAI launches GPT-5.5 ("smarter in fewer tokens"); PwC: top 20% of firms capture 75% of AI's gains
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 1 — IRAN WAR
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🪖</span>
+      <span class="section-title">Iran War — Day 56</span>
+      <span class="section-tag tag-iran">ACTIVE CONFLICT</span>
+    </div>
+
+    <!-- Story 1 -->
+    <div class="story">
+      <h3>🧳 Araghchi Heads to Islamabad — Talks Still in Limbo</h3>
+      <p>Iran's Foreign Minister Abbas Araghchi is travelling to Islamabad tonight for "consultations," followed by Muscat and Moscow, in a diplomatic shuttle aimed at breaking the US–Iran deadlock. A US source confirmed Iranian delegates will <em>not</em> speak directly with American representatives in Pakistan, but Islamabad hopes the visit will catalyse a second round of direct talks. Trump told reporters "Don't rush me" when asked for a timeline, while Iranian officials said key sticking points remain unresolved.</p>
+      <p>Russia has repeatedly offered to take custody of Iran's enriched uranium — storing or reprocessing it on Russian soil — as a potential bridge solution, but Trump reportedly rejected the Kremlin's proposal.</p>
+      <div class="source">
+        Sources:
+        <a href="https://www.cnn.com/2026/04/24/world/live-news/iran-war-trump-israel-lebanon" target="_blank">CNN Live</a> ·
+        <a href="https://www.aljazeera.com/news/liveblog/2026/4/24/iran-war-live-lebanon-truce-extended-trump-says-time-not-on-tehrans-side" target="_blank">Al Jazeera Live</a> ·
+        <a href="https://www.aljazeera.com/news/2026/4/24/iran-war-whats-happening-on-day-56-after-trump-extended-ceasefire" target="_blank">Al Jazeera Day 56 Recap</a>
+      </div>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story">
+      <h3>🚢 Hormuz Near-Closure: Only 5 Ships in 24 Hours</h3>
+      <p>Just five vessels — including one Iranian oil-products tanker — transited the Strait of Hormuz in the past 24 hours, underscoring the near-total closure of a chokepoint that normally handles one-fifth of global oil and LNG supplies. Earlier this week Iran seized the container ships <em>MSC Francesca</em> and <em>Epaminondas</em> as they attempted to exit the strait. Mutual blockades remain in force: Washington blocks Iranian port traffic, Tehran targets non-allied vessels. Hundreds of ships and ~20,000 seafarers remain stranded in the Gulf.</p>
+      <div class="source">
+        Sources:
+        <a href="https://www.usnews.com/news/world/articles/2026-04-24/only-five-ships-pass-through-strait-of-hormuz-in-24-hours" target="_blank">US News / Al-Monitor</a> ·
+        <a href="https://www.cnbc.com/2026/04/22/iran-war-strait-hormuz-tanker-ship-trump-blockade.html" target="_blank">CNBC</a> ·
+        <a href="https://www.aljazeera.com/news/2026/4/23/how-iran-raised-hormuz-stakes-by-capturing-ships" target="_blank">Al Jazeera</a>
+      </div>
+    </div>
+
+    <!-- Story 3 -->
+    <div class="story">
+      <h3>🕊️ Lebanon Ceasefire Extended by Three Weeks</h3>
+      <p>Following White House talks with Israeli and Lebanese envoys, Trump announced the Israel–Lebanon ceasefire has been extended by three additional weeks. Israeli strikes in Lebanon have continued at a reduced tempo since the initial truce, but the extension provides a buffer as diplomacy around the broader Iran conflict remains unresolved.</p>
+      <div class="source">
+        Sources:
+        <a href="https://www.cbsnews.com/live-updates/iran-war-trump-video-strait-of-hormuz-ship-attack-ceasefire-lebanon/" target="_blank">CBS News</a> ·
+        <a href="https://www.aljazeera.com/news/liveblog/2026/4/22/iran-war-live-trump-says-ceasefire-extended-as-talks-with-tehran-in-limbo" target="_blank">Al Jazeera</a>
+      </div>
+    </div>
+
+    <!-- Story 4 -->
+    <div class="story">
+      <h3>🌏 China's Diplomatic Play: Positioning as the Alternative</h3>
+      <p>Beijing is leveraging its neutral stance in the Iran conflict to deepen ties with Tehran and Gulf states, offering trade lifelines and positioning itself as a reliable partner — a contrast it is loudly making with Washington. Analysts at Al Jazeera note China is the biggest indirect beneficiary of the war so far, absorbing discounted Iranian crude and expanding infrastructure deals with Gulf states anxious about American reliability.</p>
+      <div class="source">
+        Source: <a href="https://www.aljazeera.com/news/2026/4/22/how-china-is-gaining-from-iran-war-by-showing-it-is-different-from-us" target="_blank">Al Jazeera</a>
+      </div>
+    </div>
+
+    <!-- Story 5 -->
+    <div class="story">
+      <h3>⚡ Four Scenarios for What Comes Next</h3>
+      <p>Al Jazeera's conflict desk outlines four possible trajectories: (1) <strong>Negotiated de-escalation</strong> — unlikely short-term but still the preferred US path; (2) <strong>Prolonged frozen conflict</strong> — ceasefire holds, Hormuz remains contested; (3) <strong>Iranian nuclear breakout</strong> — if talks collapse entirely; (4) <strong>Regional escalation</strong> — Hezbollah re-entry, Gulf state confrontations. Most analysts currently put scenario 2 as most probable given today's diplomatic stalemate.</p>
+      <div class="source">
+        Source: <a href="https://www.aljazeera.com/news/2026/4/21/iran-us-war-four-scenarios-for-whats-next-as-talks-stumble" target="_blank">Al Jazeera</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       SECTION 2 — CYBERSECURITY
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🔒</span>
+      <span class="section-title">Cybersecurity</span>
+      <span class="section-tag tag-cyber">THREAT INTEL</span>
+    </div>
+
+    <!-- Story 1 -->
+    <div class="story">
+      <h3><span class="badge-critical">Critical</span> Three Microsoft Defender Zero-Days Actively Exploited — Two Still Unpatched</h3>
+      <p>Three Defender zero-days have been exploited since April 10, with attackers leveraging privilege escalation and denial-of-service paths. The most severe — <strong>CVE-2026-33825 "BlueHammer"</strong> — is a time-of-check/time-of-use flaw in Defender's signature-update mechanism that allows a low-privilege attacker to gain SYSTEM. Two of the three CVEs remain unpatched as of today; Microsoft says patches are in accelerated development.</p>
+      <p>Separately, the exploited <strong>SharePoint CVE-2026-32201</strong> (spoofing, CVSS 6.5) was addressed in this month's Patch Tuesday alongside 160 other vulnerabilities.</p>
+      <div class="source">
+        Sources:
+        <a href="https://thehackernews.com/2026/04/three-microsoft-defender-zero-days.html" target="_blank">The Hacker News</a> ·
+        <a href="https://www.securityweek.com/microsoft-patches-exploited-sharepoint-zero-day-and-160-other-vulnerabilities/" target="_blank">SecurityWeek</a>
+      </div>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story">
+      <h3><span class="badge-critical">Critical</span> Storm-1175: Medusa Ransomware Deployed Within 24 Hours</h3>
+      <p>Microsoft Threat Intelligence has published an updated profile of <strong>Storm-1175</strong>, a China-linked group that has radically compressed the ransomware attack lifecycle. Average dwell time across the industry is 21 days; Storm-1175 moves from initial exploitation to Medusa ransomware delivery <strong>in under 24 hours</strong>. The group weaponises zero-days approximately one week before public disclosure — recent examples include <strong>CVE-2025-10035</strong> (Fortra GoAnywhere MFT) and <strong>CVE-2026-23760</strong> (SmarterTools SmarterMail). Sectors hit hardest: healthcare, education, financial services, professional services — primarily in the US, UK, and Australia.</p>
+      <div class="source">
+        Sources:
+        <a href="https://thehackernews.com/2026/04/china-linked-storm-1175-exploits-zero.html" target="_blank">The Hacker News</a> ·
+        <a href="https://www.microsoft.com/en-us/security/blog/2026/04/06/storm-1175-focuses-gaze-on-vulnerable-web-facing-assets-in-high-tempo-medusa-ransomware-operations/" target="_blank">Microsoft Security Blog</a> ·
+        <a href="https://www.darkreading.com/threat-intelligence/storm-1175-medusa-ransomware-high-velocity" target="_blank">Dark Reading</a>
+      </div>
+    </div>
+
+    <!-- Story 3 -->
+    <div class="story">
+      <h3><span class="badge-high">High</span> Chrome Zero-Day CVE-2026-5281 — Patch Released</h3>
+      <p>Google released an emergency Chrome patch for <strong>CVE-2026-5281</strong>, a use-after-free bug in Dawn (Chrome's WebGPU implementation) found under active exploitation in the wild. Users should ensure Chrome auto-updates are applied immediately. This is at least the fourth Chrome zero-day of 2026.</p>
+      <div class="source">
+        Source: <a href="https://thehackernews.com/2026/04/new-chrome-zero-day-cve-2026-5281-under.html" target="_blank">The Hacker News</a>
+      </div>
+    </div>
+
+    <!-- Story 4 -->
+    <div class="story">
+      <h3><span class="badge-high">High</span> Fortinet CVE-2026-35616 — Pre-Auth RCE in FortiClient EMS (CVSS 9.1)</h3>
+      <p>Fortinet patched <strong>CVE-2026-35616</strong> in FortiClient EMS — an improper access control flaw allowing unauthenticated code execution via API bypass. With a CVSS of 9.1 and confirmed exploitation in the wild, this should be treated as a priority patch for any environment running FortiClient EMS.</p>
+      <div class="source">
+        Source: <a href="https://thehackernews.com/2026/04/fortinet-patches-actively-exploited-cve.html" target="_blank">The Hacker News</a>
+      </div>
+    </div>
+
+    <!-- Audience grid -->
+    <div class="audience-grid">
+      <div class="audience-card">
+        <span class="badge">🔐 CISO Priorities</span>
+        <ul>
+          <li>Isolate Defender on sensitive hosts pending BlueHammer patch</li>
+          <li>Emergency patch: FortiClient EMS (CVE-2026-35616, CVSS 9.1)</li>
+          <li>Force Chrome update across enterprise fleet (CVE-2026-5281)</li>
+          <li>Assume Storm-1175 can achieve ransomware in &lt;24 h — review IR playbooks</li>
+          <li>Scan perimeter for GoAnywhere MFT and SmarterMail exposures</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <span class="badge">🤝 Consulting Partner</span>
+        <ul>
+          <li>Healthcare / edu clients need immediate Storm-1175 briefing</li>
+          <li>24-hour dwell-time shift invalidates most IR retainer SLAs — revisit</li>
+          <li>Defender unpatched zero-days → upsell continuous monitoring</li>
+          <li>April's record Patch Tuesday volume signals systemic MS debt</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <span class="badge">💼 Business Executive</span>
+        <ul>
+          <li>Ransomware groups now strike in hours, not days — board should know</li>
+          <li>Windows Defender — the default AV — has unpatched holes</li>
+          <li>Healthcare sector under sustained Chinese state-linked attack</li>
+          <li>Cyber insurance renewals may rise given high-profile April exploits</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       SECTION 3 — ARTIFICIAL INTELLIGENCE
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🤖</span>
+      <span class="section-title">Artificial Intelligence</span>
+      <span class="section-tag tag-ai">MARKET &amp; TECH</span>
+    </div>
+
+    <!-- Story 1 -->
+    <div class="story">
+      <h3><span class="badge-new">Launch</span> OpenAI Releases GPT-5.5 — "Smarter in Fewer Tokens"</h3>
+      <p>OpenAI released <strong>GPT-5.5</strong> on Thursday (just weeks after GPT-5.4), describing it as its "smartest and most intuitive" model yet. Key improvements: dramatically better coding and computer-use capabilities, stronger agentic performance on multi-step tasks, and gains on scientific research workflows. Built on NVIDIA GB200 NVL72 systems, GPT-5.5 ships a <strong>Thinking</strong> variant and a <strong>Pro</strong> variant. OpenAI says it achieves better results in fewer tokens than its predecessor, reducing cost per useful output. Rolling out now to Plus, Pro, Business, and Enterprise subscribers in ChatGPT and Codex.</p>
+      <div class="source">
+        Sources:
+        <a href="https://openai.com/index/introducing-gpt-5-5/" target="_blank">OpenAI</a> ·
+        <a href="https://techcrunch.com/2026/04/23/openai-chatgpt-gpt-5-5-ai-model-superapp/" target="_blank">TechCrunch</a> ·
+        <a href="https://www.cnbc.com/2026/04/23/openai-announces-latest-artificial-intelligence-model.html" target="_blank">CNBC</a>
+      </div>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story">
+      <h3>⚠️ Anthropic's Mythos Model: Limited Rollout Over Security Concerns</h3>
+      <p>Cybersecurity risks from Anthropic's <strong>Mythos</strong> model are at the top of the agenda for tech executives and government officials. Anthropic restricted Mythos' rollout after the model demonstrated the ability to autonomously identify software weaknesses and security flaws at scale — including, reportedly, generating novel zero-day exploits. The decision has sparked debate about responsible disclosure frameworks for AI capabilities that effectively function as offensive cyber tools.</p>
+      <div class="source">
+        Source: Search results via CNBC / crescendo.ai
+      </div>
+    </div>
+
+    <!-- Story 3 -->
+    <div class="story">
+      <h3>🏦 Visa Launches Intelligent Commerce Connect for AI Agents</h3>
+      <p>Visa introduced <strong>Intelligent Commerce Connect</strong>, a platform letting AI agents browse, select, and pay for goods autonomously on behalf of users — with tokenization, authentication, and spend controls built in. The announcement signals that major financial infrastructure is now being deliberately re-engineered for agentic AI workflows, a shift with significant implications for fraud, compliance, and consumer protection frameworks.</p>
+      <div class="source">
+        Source: crescendo.ai / AI-news roundup
+      </div>
+    </div>
+
+    <!-- Story 4 -->
+    <div class="story">
+      <h3>📊 MIT Tech Review: 10 Things That Matter in AI Right Now (2026)</h3>
+      <p>MIT Technology Review's annual AI trends piece highlights multi-agent cooperation (teams of agents replacing solo-agent workflows), energy efficiency breakthroughs (new nanoelectronic chips reducing AI energy use by up to 70%), and the growing gap between AI leaders and laggards. Separately, a PwC study finds the top 20% of firms capture ~75% of AI's economic gains, with leaders focused on <em>growth</em> rather than cost-cutting.</p>
+      <div class="source">
+        Sources:
+        <a href="https://www.technologyreview.com/2026/04/21/1135643/10-ai-artificial-intelligence-trends-technologies-research-2026/" target="_blank">MIT Technology Review</a> ·
+        <a href="https://www.pwc.com/gx/en/news-room/press-releases/2026/pwc-2026-ai-performance-study.html" target="_blank">PwC 2026 AI Performance Study</a>
+      </div>
+    </div>
+
+    <!-- Audience grid -->
+    <div class="audience-grid">
+      <div class="audience-card">
+        <span class="badge">🔐 CISO — AI Security</span>
+        <ul>
+          <li>Mythos controversy: prepare board comms on AI-enabled offensive capabilities</li>
+          <li>GPT-5.5 agentic upgrades expand shadow-IT AI risk surface</li>
+          <li>Visa's agent payment platform introduces new fraud/authentication vectors</li>
+          <li>Multi-agent systems blur accountability — update AI governance policies</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <span class="badge">🤝 Consulting Partner</span>
+        <ul>
+          <li>GPT-5.5 release velocity (5.4 → 5.5 in weeks) signals accelerating capability curve</li>
+          <li>PwC study: help laggard clients close the AI performance gap now</li>
+          <li>Agent-to-agent cooperation = new service design category to explore</li>
+          <li>Visa platform: AI-in-finance practice opportunity</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <span class="badge">💼 Business Executive</span>
+        <ul>
+          <li>GPT-5.5 available today to paid OpenAI subscribers — evaluate for dev/research</li>
+          <li>Top 20% of companies take 75% of AI gains (PwC) — where do you stand?</li>
+          <li>AI agents can now buy things on your behalf — governance is urgent</li>
+          <li>Anthropic limiting its most powerful model: sign of industry maturation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <div class="footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Thursday, April 24, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html">← Full briefing archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
