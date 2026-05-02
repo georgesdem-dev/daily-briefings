@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Saturday, April 25, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 820px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 12px;
+    }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
+    .header .date { font-size: 1rem; color: #8b949e; margin-bottom: 16px; }
+    .header .nav { font-size: 0.82rem; color: #484f58; }
+    .header .nav a { color: #6e7681; }
+
+    /* ── Section blocks ── */
+    .section {
+      margin-bottom: 52px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid #21262d;
+    }
+    .section-icon { font-size: 1.6rem; }
+    .section-title { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; }
+    .section-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 3px 9px; border-radius: 20px;
+      margin-left: auto;
+    }
+    .tag-iran    { background: #3d1a1a; color: #f85149; border: 1px solid #6e2a2a; }
+    .tag-cyber   { background: #1a2d1a; color: #3fb950; border: 1px solid #2a4a2a; }
+    .tag-ai      { background: #1a1f3d; color: #79c0ff; border: 1px solid #2a3a6e; }
+
+    /* ── Stories ── */
+    .story {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .story:hover { border-color: #444c56; }
+    .story h3 {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 8px; line-height: 1.4;
+    }
+    .story p { font-size: 0.88rem; color: #c9d1d9; line-height: 1.65; margin-bottom: 8px; }
+    .story p:last-child { margin-bottom: 0; }
+    .story .source {
+      font-size: 0.76rem; color: #484f58; margin-top: 10px;
+    }
+    .story .source a { color: #6e7681; }
+    .story .source a:hover { color: #58a6ff; }
+
+    /* ── Audience sub-sections ── */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .audience-card {
+      background: #0d1117;
+      border: 1px solid #21262d;
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .audience-card .badge {
+      font-size: 10px; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; color: #8b949e; margin-bottom: 8px;
+      display: block;
+    }
+    .audience-card ul {
+      list-style: none; padding: 0;
+    }
+    .audience-card ul li {
+      font-size: 0.82rem; color: #c9d1d9; margin-bottom: 5px;
+      padding-left: 14px; position: relative;
+    }
+    .audience-card ul li::before {
+      content: "›"; position: absolute; left: 0; color: #58a6ff;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      border: none; border-top: 1px solid #21262d;
+      margin: 14px 0 20px;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center; margin-top: 60px; padding-top: 20px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+
+    /* ── TL;DR pill ── */
+    .tldr {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-left: 3px solid #58a6ff;
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin-bottom: 28px;
+      font-size: 0.86rem;
+      color: #8b949e;
+    }
+    .tldr strong { color: #f0f6fc; }
+
+    /* severity badges */
+    .badge-critical { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; padding:2px 7px; border-radius:4px; background:#6e1f1f; color:#f85149; margin-right:6px; letter-spacing:0.8px; }
+    .badge-high     { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; padding:2px 7px; border-radius:4px; background:#3d2a0a; color:#e3b341; margin-right:6px; letter-spacing:0.8px; }
+    .badge-new      { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; padding:2px 7px; border-radius:4px; background:#1a2d1a; color:#3fb950; margin-right:6px; letter-spacing:0.8px; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ═══════════════ HEADER ═══════════════ -->
+  <div class="header">
+    <div class="label">Daily Intelligence Briefing</div>
+    <h1>📰 Saturday, April 25, 2026</h1>
+    <div class="date">Day 57 of the Iran War &nbsp;·&nbsp; Weekend Edition · 6 PM Paris</div>
+    <div class="nav"><a href="index.html">← Back to archive</a></div>
+  </div>
+
+  <!-- ═══════════════ TL;DR ═══════════════ -->
+  <div class="tldr">
+    <strong>Today at a glance:</strong> &nbsp;
+    Trump cancels Witkoff &amp; Kushner Pakistan trip — "If they want to talk, all they have to do is call"; Hormuz near-closed as Iran offers Hormuz-for-blockade-lift deal, nuclear talks deferred &nbsp;·&nbsp;
+    Linux "Copy Fail" LPE (CVE-2026-31431, CVSS 7.8) threatens all distros since 2017; Windows Shell CVE-2026-32202 zero-click NTLMv2 hash theft confirmed &nbsp;·&nbsp;
+    DeepSeek V4 launches on Huawei chips with 1.6T parameters at a fraction of OpenAI pricing; Meta and Microsoft cut thousands of jobs to fund AI spend
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 1 — IRAN WAR
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🪖</span>
+      <span class="section-title">Iran War — Day 57</span>
+      <span class="section-tag tag-iran">ACTIVE CONFLICT</span>
+    </div>
+
+    <!-- Story 1 -->
+    <div class="story">
+      <h3>✈️ Trump Cancels Witkoff &amp; Kushner Pakistan Trip — Talks Collapse</h3>
+      <p>President Trump abruptly canceled the planned trip by envoys Steve Witkoff and Jared Kushner to Islamabad after Iran's chief negotiator, Foreign Minister Abbas Araghchi, left Pakistan following talks only with Pakistani officials — with no direct contact with American representatives. Trump posted: <em>"Too much time wasted on traveling, too much work!"</em> and blamed "tremendous infighting and confusion within their 'leadership'" in Tehran.</p>
+      <p>Trump added: "If they want to talk, all they have to do is call." The cancellation marks the most significant diplomatic breakdown since the ceasefire took effect on April 8, leaving Pakistan's mediation role without a clear next step.</p>
+      <div class="source">
+        Sources:
+        <a href="https://www.cnn.com/2026/04/25/world/live-news/iran-war-israel-pakistan-talks" target="_blank">CNN Live</a> ·
+        <a href="https://www.cnbc.com/2026/04/25/iran-says-no-meeting-with-us-negotiators-planned-in-pakistan.html" target="_blank">CNBC</a> ·
+        <a href="https://www.foxnews.com/live-news/iran-war-trump-us-ceasefire-deal-strait-hormuz-pakistan-talks-april-25" target="_blank">Fox News</a>
+      </div>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story">
+      <h3>🚢 Iran Tables Hormuz-for-Blockade Deal — Nuclear Questions Deferred</h3>
+      <p>Iran formally presented a proposal — conveyed via Pakistani mediators — to reopen the Strait of Hormuz in exchange for the United States lifting its naval blockade and formally ending the war, with all nuclear negotiations deferred to a later phase. The proposal represents Iran's attempt to separate the immediate shipping and sanctions crisis from the harder structural question of its enrichment programme.</p>
+      <p>Trump said Iran "offered a lot, but not enough" — his clearest indication yet that he will not accept a deal that sidelines nuclear commitments. The Strait continues to operate at roughly 5–10% of pre-war traffic, with Iran charging tolls exceeding $1 million per vessel for permitted crossings.</p>
+      <div class="source">
+        Sources:
+        <a href="https://www.cbsnews.com/live-updates/us-iran-war-trump-strait-of-hormuz-hezbollah-lebanon-israel-ceasefire/" target="_blank">CBS News</a> ·
+        <a href="https://www.nbcnews.com/world/iran/live-blog/live-updates-us-envoys-heading-pakistan-uncertainty-iran-talks-rcna342031" target="_blank">NBC News</a>
+      </div>
+    </div>
+
+    <!-- Story 3 -->
+    <div class="story">
+      <h3>🇷🇺 Araghchi Pivots to Moscow as Pakistan Channel Stalls</h3>
+      <p>After leaving Islamabad empty-handed, Foreign Minister Araghchi flew to Moscow to brief Russian President Vladimir Putin. Russia has repeatedly offered to serve as a custodian of Iran's enriched uranium stockpile — a face-saving bridge solution for a deal — but Washington has shown little interest. Araghchi is expected to continue shuttle diplomacy through Gulf capitals in the coming days.</p>
+      <div class="source">
+        Source: <a href="https://www.cbsnews.com/live-updates/us-iran-war-trump-strait-of-hormuz-hezbollah-lebanon-israel-ceasefire/" target="_blank">CBS News</a>
+      </div>
+    </div>
+
+    <!-- Story 4 -->
+    <div class="story">
+      <h3>🛢️ Global Energy Markets: Shipping Near-Paralyzed, Prices Elevated</h3>
+      <p>With the Strait of Hormuz still effectively closed to commercial traffic and mutual blockades in force — Washington blocking Iranian port traffic, Tehran targeting non-allied vessels — global oil and LNG prices remain significantly elevated. Analysts estimate the prolonged closure has already removed the equivalent of 18–20% of global seaborne energy supply from the market. Hundreds of tankers and container ships remain stranded in the Gulf.</p>
+      <div class="source">
+        Source: <a href="https://www.cnbc.com/2026/04/22/iran-war-strait-hormuz-tanker-ship-trump-blockade.html" target="_blank">CNBC</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       SECTION 2 — CYBERSECURITY
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🔒</span>
+      <span class="section-title">Cybersecurity</span>
+      <span class="section-tag tag-cyber">THREAT INTEL</span>
+    </div>
+
+    <!-- Story 1 -->
+    <div class="story">
+      <h3><span class="badge-critical">Critical</span> "Copy Fail" — Linux LPE CVE-2026-31431 Affects All Distros Since 2017</h3>
+      <p>Researchers disclosed <strong>CVE-2026-31431</strong> (CVSS 7.8), a local privilege escalation vulnerability dubbed <em>Copy Fail</em> that allows an unprivileged local user to gain root on any Linux distribution shipped since 2017. A 732-byte Python proof-of-concept can edit a setuid binary by writing controlled bytes into the page cache of any readable file. Affected distributions include Amazon Linux, RHEL, SUSE, and Ubuntu. Patches are being coordinated across vendors; status varies by distribution.</p>
+      <div class="source">
+        Sources:
+        <a href="https://thehackernews.com/" target="_blank">The Hacker News</a> ·
+        <a href="https://www.cisa.gov/news-events/bulletins/sb26-117" target="_blank">CISA Weekly Bulletin</a>
+      </div>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story">
+      <h3><span class="badge-critical">Critical</span> Windows Shell Zero-Click CVE-2026-32202 — NTLMv2 Hash Theft via LNK File</h3>
+      <p>Microsoft confirmed active exploitation of <strong>CVE-2026-32202</strong>, a Windows Shell spoofing vulnerability stemming from an incomplete patch for an earlier APT28 (Fancy Bear) zero-day. When Windows Explorer renders a folder containing a malicious <code>.lnk</code> shortcut, it automatically resolves embedded UNC paths, sending the victim's NTLMv2 authentication hash to an attacker-controlled server — <em>without the user needing to open or click anything</em>. The stolen hash enables NTLM relay attacks and offline cracking for lateral movement. CISA added it to the KEV catalog with a May 12 federal patch deadline.</p>
+      <div class="source">
+        Sources:
+        <a href="https://thehackernews.com/2026/04/microsoft-confirms-active-exploitation.html" target="_blank">The Hacker News</a> ·
+        <a href="https://www.akamai.com/blog/security-research/incomplete-patch-apt28s-zero-day-cve-2026-32202" target="_blank">Akamai Research</a> ·
+        <a href="https://www.theregister.com/2026/04/29/microsoft_zero_click_exploit/" target="_blank">The Register</a>
+      </div>
+    </div>
+
+    <!-- Story 3 -->
+    <div class="story">
+      <h3><span class="badge-high">High</span> April 2026 Data Breaches: EU Commission, Booking.com, Medtronic Hit</h3>
+      <p>A new roundup from CM-Alliance catalogues major April incidents: attackers struck the EU Commission (government data exposed), Booking.com (customer PII and payment data), McGrawHill (educational platform breach), and Medtronic (healthcare device data). The pattern reflects a broadening of ransomware and extortion targeting beyond technology sector targets to include government and healthcare entities that carry high-value regulated data.</p>
+      <div class="source">
+        Source: <a href="https://www.cm-alliance.com/cybersecurity-blog/major-cyber-attacks-data-breaches-ransomware-attacks-in-april-2026" target="_blank">CM-Alliance</a>
+      </div>
+    </div>
+
+    <!-- Audience grid -->
+    <div class="audience-grid">
+      <div class="audience-card">
+        <span class="badge">🔐 CISO Priorities</span>
+        <ul>
+          <li>Audit Linux environments for CVE-2026-31431 — all distros since 2017 at risk</li>
+          <li>Block outbound SMB to untrusted hosts to mitigate CVE-2026-32202 NTLMv2 leaks</li>
+          <li>Enforce NTLM relay protections (SMB signing, EPA) across domain</li>
+          <li>Verify Defender BlueHammer (CVE-2026-33825) workarounds still in place</li>
+          <li>Review endpoint DLP controls — April breach patterns show data exfil before encryption</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <span class="badge">🤝 Consulting Partner</span>
+        <ul>
+          <li>Linux LPE affects cloud-native clients — prioritise container host patching</li>
+          <li>CVE-2026-32202 zero-click LNK attack is board-level comms material</li>
+          <li>Healthcare and government breach patterns signal sector-specific advisory ops</li>
+          <li>April breach volume is tracking record pace — revisit client IR coverage gaps</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <span class="badge">💼 Business Executive</span>
+        <ul>
+          <li>Simply opening a folder can now expose your network password — patch Windows now</li>
+          <li>Healthcare and government entities facing sustained attack — supply chain risk</li>
+          <li>Linux servers underpinning cloud infrastructure need emergency patching</li>
+          <li>Cyber insurance claims accelerating across April incidents</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       SECTION 3 — ARTIFICIAL INTELLIGENCE
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🤖</span>
+      <span class="section-title">Artificial Intelligence</span>
+      <span class="section-tag tag-ai">MARKET &amp; TECH</span>
+    </div>
+
+    <!-- Story 1 -->
+    <div class="story">
+      <h3><span class="badge-new">Launch</span> DeepSeek V4: 1.6 Trillion Parameters, Huawei Chips, 90% Cheaper Than OpenAI</h3>
+      <p>Chinese AI company DeepSeek released its V4 model in preview on April 24-25, marking a significant milestone: <strong>DeepSeek-V4-Pro</strong> (1.6T parameters, 1M-token context) runs entirely on Huawei Ascend 950PR chips — the first frontier-class AI built on domestic Chinese semiconductor infrastructure. Performance benchmarks rival closed frontier models from OpenAI and Anthropic. Pricing: $3.48 per million output tokens for V4-Pro vs. $30 for GPT-5.5 — a 90% discount. A smaller <strong>V4-Flash</strong> variant costs just $0.28/M tokens.</p>
+      <p>MIT Technology Review called it "a model that matters" — validating China's ability to build frontier AI outside Western chip supply chains and intensifying geopolitical pressure over semiconductor export controls.</p>
+      <div class="source">
+        Sources:
+        <a href="https://www.cnbc.com/2026/04/24/deepseek-v4-llm-preview-open-source-ai-competition-china.html" target="_blank">CNBC</a> ·
+        <a href="https://www.technologyreview.com/2026/04/24/1136422/why-deepseeks-v4-matters/" target="_blank">MIT Technology Review</a> ·
+        <a href="https://techcrunch.com/2026/04/24/deepseek-previews-new-ai-model-that-closes-the-gap-with-frontier-models/" target="_blank">TechCrunch</a>
+      </div>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story">
+      <h3>📉 Meta and Microsoft Cut Thousands of Jobs to Fund AI Investment Surge</h3>
+      <p>Meta is cutting approximately 8,000 roles as part of a broader "efficiency drive" explicitly linked to increased AI investment, while Microsoft is pursuing similar headcount reductions. Snap CEO Evan Spiegel also announced the layoff of approximately 1,000 employees, citing AI capabilities that allow smaller teams to achieve equivalent output. The pattern signals a structural shift: major technology firms are actively redeploying human capital costs into compute and model training budgets.</p>
+      <div class="source">
+        Source: <a href="https://medium.com/@stephen.stanley777/ai-daily-update-april-25-2026-bd7544cc2758" target="_blank">AI Daily Update — Medium</a>
+      </div>
+    </div>
+
+    <!-- Story 3 -->
+    <div class="story">
+      <h3>🏦 Anthropic Tops OpenAI in Enterprise Adoption Among First-Time AI Buyers</h3>
+      <p>New data from Ramp's corporate spending platform shows first-time enterprise AI buyers now choose Anthropic at <strong>3x the rate of OpenAI</strong>. One in five businesses using Ramp now pays for Anthropic; OpenAI's share among first-time buyers has dropped from 37% to 26%. The trend reflects Claude's growing reputation for reliability, safety, and API quality in production environments — and comes just as Anthropic surpassed OpenAI in LLM revenue market share in Q1 2026.</p>
+      <div class="source">
+        Source: <a href="https://kersai.com/ai-breakthroughs-april-2026-models-funding-shifts/" target="_blank">Kersai AI April 2026 Roundup</a>
+      </div>
+    </div>
+
+    <!-- Audience grid -->
+    <div class="audience-grid">
+      <div class="audience-card">
+        <span class="badge">🔐 CISO — AI Security</span>
+        <ul>
+          <li>DeepSeek V4 open-source: adversaries can now fine-tune frontier models locally</li>
+          <li>Huawei-chip supply chain raises data sovereignty questions for enterprise deployment</li>
+          <li>Shadow AI risk expanding as cheap open models proliferate without corporate guardrails</li>
+          <li>Job cuts signal AI replacing security analysts — budget AI tool governance now</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <span class="badge">🤝 Consulting Partner</span>
+        <ul>
+          <li>DeepSeek V4 at 90% cheaper price: client CFOs will ask why they're paying for OpenAI</li>
+          <li>Anthropic winning first-time buyers — position Claude in enterprise pitches</li>
+          <li>Workforce reduction + AI investment = practice opportunity in AI change management</li>
+          <li>Open-source frontier models shift make-vs-buy calculus for custom AI projects</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <span class="badge">💼 Business Executive</span>
+        <ul>
+          <li>DeepSeek V4 offers frontier AI at 90% cost reduction vs. OpenAI — evaluate now</li>
+          <li>Major tech firms cutting staff to fund AI — reflects industry direction of travel</li>
+          <li>Anthropic overtaking OpenAI in new business: competitive landscape is fluid</li>
+          <li>Open-source AI models create new IP and data security risks to manage</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <div class="footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Saturday, April 25, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html">← Full briefing archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
