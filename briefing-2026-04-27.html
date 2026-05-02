@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Monday, April 27, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117; color: #e6edf3; line-height: 1.75; font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 820px; margin: 0 auto; padding: 40px 24px 80px; }
+    .header { text-align: center; padding: 52px 0 40px; border-bottom: 1px solid #21262d; margin-bottom: 48px; }
+    .header .label { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #58a6ff; margin-bottom: 12px; }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
+    .header .date { font-size: 1rem; color: #8b949e; margin-bottom: 16px; }
+    .header .nav { font-size: 0.82rem; color: #484f58; }
+    .header .nav a { color: #6e7681; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 2px solid #21262d; }
+    .section-icon { font-size: 1.6rem; }
+    .section-title { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; }
+    .section-tag { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; margin-left: auto; }
+    .tag-iran { background: #3d1a1a; color: #f85149; border: 1px solid #6e2a2a; }
+    .tag-cyber { background: #1a2d1a; color: #3fb950; border: 1px solid #2a4a2a; }
+    .tag-ai { background: #1a1f3d; color: #79c0ff; border: 1px solid #2a3a6e; }
+    .story { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 20px 22px; margin-bottom: 14px; }
+    .story:hover { border-color: #444c56; }
+    .story h3 { font-size: 1rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; line-height: 1.4; }
+    .story p { font-size: 0.88rem; color: #c9d1d9; line-height: 1.65; margin-bottom: 8px; }
+    .story p:last-child { margin-bottom: 0; }
+    .story .source { font-size: 0.76rem; color: #484f58; margin-top: 10px; }
+    .story .source a { color: #6e7681; }
+    .story .source a:hover { color: #58a6ff; }
+    .audience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin-top: 18px; }
+    .audience-card { background: #0d1117; border: 1px solid #21262d; border-radius: 8px; padding: 14px 16px; }
+    .audience-card .badge { font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8b949e; margin-bottom: 8px; display: block; }
+    .audience-card ul { list-style: none; padding: 0; }
+    .audience-card ul li { font-size: 0.82rem; color: #c9d1d9; margin-bottom: 5px; padding-left: 14px; position: relative; }
+    .audience-card ul li::before { content: "›"; position: absolute; left: 0; color: #58a6ff; }
+    .footer { text-align: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem; }
+    .footer strong { color: #6e7681; }
+    .tldr { background: #161b22; border: 1px solid #30363d; border-left: 3px solid #58a6ff; border-radius: 0 8px 8px 0; padding: 14px 18px; margin-bottom: 28px; font-size: 0.86rem; color: #8b949e; }
+    .tldr strong { color: #f0f6fc; }
+    .badge-critical { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; padding:2px 7px; border-radius:4px; background:#6e1f1f; color:#f85149; margin-right:6px; letter-spacing:0.8px; }
+    .badge-high { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; padding:2px 7px; border-radius:4px; background:#3d2a0a; color:#e3b341; margin-right:6px; letter-spacing:0.8px; }
+    .badge-new { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; padding:2px 7px; border-radius:4px; background:#1a2d1a; color:#3fb950; margin-right:6px; letter-spacing:0.8px; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="label">Daily Intelligence Briefing</div>
+    <h1>📰 Monday, April 27, 2026</h1>
+    <div class="date">Day 59 of the Iran War &nbsp;·&nbsp; Morning Edition · 6 PM Paris</div>
+    <div class="nav"><a href="index.html">← Back to archive</a></div>
+  </div>
+
+  <div class="tldr">
+    <strong>Today at a glance:</strong> &nbsp;
+    Iran tables Hormuz-for-blockade deal deferring nuclear talks; Araghchi meets Putin who pledges support; Rubio calls proposal "unacceptable" &nbsp;·&nbsp;
+    CVE-2026-32202 Windows Shell zero-click exploit confirmed active (incomplete APT28 patch); Itron critical infrastructure breach details emerge &nbsp;·&nbsp;
+    Google signs classified Pentagon AI deal; OpenAI goes live on AWS; Microsoft-OpenAI partnership enters next phase
+  </div>
+
+  <!-- SECTION 1: IRAN WAR -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🪖</span>
+      <span class="section-title">Iran War — Day 59</span>
+      <span class="section-tag tag-iran">ACTIVE CONFLICT</span>
+    </div>
+
+    <div class="story">
+      <h3>📜 Iran's Formal Proposal: Open Hormuz, Lift Blockade, Defer Nuclear Talks</h3>
+      <p>Iran formally submitted its peace proposal to the United States via Pakistani mediators: reopen the Strait of Hormuz in exchange for the US lifting its naval blockade and formally ending the war — with Iran's nuclear programme addressed only in a subsequent, separate negotiation phase. The proposal envisions an extended ceasefire or permanent end to hostilities as the first stage, Hormuz reopening as the second, and nuclear talks as a later third phase.</p>
+      <p>Secretary of State Marco Rubio publicly called the proposal "unacceptable," stating that the US will not agree to lift its blockade without guarantees on Iran's nuclear programme. Trump's White House said the president was "reviewing" the proposal with national security advisors.</p>
+      <div class="source">
+        Sources:
+        <a href="https://www.aljazeera.com/news/liveblog/2026/4/27/iran-war-live-araghchi-to-meet-putin-trump-says-tehran-can-call-for-talks" target="_blank">Al Jazeera Live</a> ·
+        <a href="https://www.washingtonpost.com/world/2026/04/27/iran-talks-putin-araghchi-trump-russia/" target="_blank">Washington Post</a> ·
+        <a href="https://www.axios.com/2026/04/27/iran-us-hormuz-strait-nuclear-talks-proposal-pakistan" target="_blank">Axios</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h3>🤝 Putin Meets Araghchi: "We'll Do Everything for Peace"</h3>
+      <p>President Vladimir Putin met with Iranian Foreign Minister Araghchi in Moscow, declaring Russia would "do everything possible to bring peace to the Middle East" and praising the Iranian people as "bravely and heroically fighting for their sovereignty." Putin reiterated Russia's offer to take custody of Iran's enriched uranium as a confidence-building measure. Moscow is positioning itself as an indispensable mediator — a role that gives it geopolitical leverage regardless of the war's outcome.</p>
+      <div class="source">
+        Sources:
+        <a href="https://www.cnn.com/2026/04/27/world/live-news/iran-war-trump-israel" target="_blank">CNN Day 59 Live</a> ·
+        <a href="https://www.npr.org/2026/04/27/nx-s1-5800669/iran-middle-east-updates" target="_blank">NPR</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h3>🛢️ Trump: "Tehran Can Call for Talks" — Red Lines Unchanged</h3>
+      <p>Trump responded to the diplomatic standoff by saying Iran knows how to reach him and that his "red lines with respect to Iran have been made very, very clear." He reiterated that any deal would require Iran to forfeit its near-bomb-grade uranium and abandon enrichment — demands Tehran has consistently refused. With Rubio labelling the latest proposal unacceptable and Trump reviewing it, analysts see little prospect of a breakthrough before the 60-day War Powers Act deadline on May 2.</p>
+      <div class="source">
+        Source: <a href="https://www.timesofisrael.com/liveblog-april-27-2026/" target="_blank">Times of Israel Liveblog</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: CYBERSECURITY -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🔒</span>
+      <span class="section-title">Cybersecurity</span>
+      <span class="section-tag tag-cyber">THREAT INTEL</span>
+    </div>
+
+    <div class="story">
+      <h3><span class="badge-critical">Critical</span> CVE-2026-32202 Active Exploitation Confirmed — APT28 Incomplete Patch Creates New Zero-Click Attack</h3>
+      <p>Microsoft confirmed on April 27 that <strong>CVE-2026-32202</strong> is under active exploitation. The flaw stems from an incomplete patch for <strong>CVE-2026-21510</strong> — a vulnerability previously exploited by Russia's APT28 (Fancy Bear) via weaponized <code>.lnk</code> shortcut files. Microsoft patched CVE-2026-21510 in April's Patch Tuesday but marked it incorrectly; the fix was insufficient, and attackers quickly weaponised the residual gap. Browsing a folder containing a malicious shortcut is sufficient to send the victim's NTLMv2 hash to an attacker — enabling relay attacks and password recovery. CISA's mandatory patch deadline for federal agencies is May 12.</p>
+      <div class="source">
+        Sources:
+        <a href="https://thehackernews.com/2026/04/microsoft-confirms-active-exploitation.html" target="_blank">The Hacker News</a> ·
+        <a href="https://www.akamai.com/blog/security-research/incomplete-patch-apt28s-zero-day-cve-2026-32202" target="_blank">Akamai</a> ·
+        <a href="https://www.helpnetsecurity.com/2026/04/29/windows-cve-2026-32202-exploited/" target="_blank">Help Net Security</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h3><span class="badge-high">High</span> Itron Breach Details: Utility Smart Meter Giant Hit in April 13 Intrusion</h3>
+      <p>Itron — which provides smart metering and energy management infrastructure to hundreds of North American utilities — disclosed full details of its April 13 intrusion. The attacker gained access to internal IT systems; Itron confirmed no customer-hosted systems were reached and operations were unaffected. However, the attack's origin and whether data was exfiltrated remain unknown. No ransomware group has claimed responsibility. The incident underscores persistent threat actor interest in OT-adjacent IT systems that carry operational data for water, power, and gas infrastructure.</p>
+      <div class="source">
+        Sources:
+        <a href="https://techcrunch.com/2026/04/27/critical-infrastructure-giant-itron-says-it-was-hacked/" target="_blank">TechCrunch</a> ·
+        <a href="https://www.bleepingcomputer.com/news/security/american-utility-firm-itron-discloses-breach-of-internal-it-network/" target="_blank">Bleeping Computer</a> ·
+        <a href="https://www.securityweek.com/" target="_blank">SecurityWeek</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h3><span class="badge-high">High</span> VECT 2.0 RaaS: Marketed as Ransomware, Operates as a Data Wiper</h3>
+      <p>Researchers published analysis of <strong>VECT 2.0</strong>, a cross-platform Ransomware-as-a-Service operation targeting Windows, Linux, and VMware ESXi environments. Forensic analysis reveals a critical flaw in VECT 2.0's cryptographic engine: files larger than 128 KB are permanently and unrecoverably destroyed rather than encrypted, making VECT 2.0 function as a catastrophic wiper rather than a traditional extortion tool. Organisations targeted by VECT 2.0 face permanent data loss — rendering victim-side decryption keys meaningless.</p>
+      <div class="source">
+        Source: <a href="https://thehackernews.com/" target="_blank">The Hacker News</a>
+      </div>
+    </div>
+
+    <!-- Audience grid -->
+    <div class="audience-grid">
+      <div class="audience-card">
+        <span class="badge">🔐 CISO Priorities</span>
+        <ul>
+          <li>CVE-2026-32202: apply April Patch Tuesday updates; disable NTLMv1, enforce signing</li>
+          <li>Block outbound SMB (445) to internet at perimeter to mitigate LNK-based coercion</li>
+          <li>Review utility/OT vendor segmentation — Itron-class breach is an insider threat pathway</li>
+          <li>VECT 2.0: backup immutability is critical — verify air-gapped backups cannot be wiped</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <span class="badge">🤝 Consulting Partner</span>
+        <ul>
+          <li>APT28 incomplete patch story: perfect SOC retainer upsell — patch validation matters</li>
+          <li>Itron: utility sector clients need OT/IT segmentation assessment now</li>
+          <li>VECT 2.0 wiper risk: immutable backup audit is immediate billable engagement</li>
+          <li>Microsoft patch quality issues signal need for independent patch validation services</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <span class="badge">💼 Business Executive</span>
+        <ul>
+          <li>Russian state-linked hackers exploiting Windows despite recent Microsoft patches</li>
+          <li>Utility sector under attack — supply chain risk to any energy-dependent operation</li>
+          <li>New ransomware variant permanently destroys data — cyber insurance may not cover</li>
+          <li>Validate your backup strategy against wiper-style attacks this week</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: AI -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🤖</span>
+      <span class="section-title">Artificial Intelligence</span>
+      <span class="section-tag tag-ai">MARKET &amp; TECH</span>
+    </div>
+
+    <div class="story">
+      <h3>🏛️ Google Signs Classified Pentagon AI Deal After Anthropic's Refusal</h3>
+      <p>Google reached a classified agreement with the US Department of Defense allowing the Pentagon to use Gemini AI systems for "any lawful government purpose" on classified networks. The deal follows Anthropic's refusal to agree to similar unrestricted terms — Anthropic insisted on explicit prohibitions against autonomous weapons and domestic mass surveillance, leading the Pentagon to designate Anthropic a "supply chain risk" (a label a federal judge later called "Orwellian"). More than 600 Google employees signed a letter urging CEO Sundar Pichai to reject the deal; Google signed regardless.</p>
+      <div class="source">
+        Sources:
+        <a href="https://techcrunch.com/2026/04/28/google-expands-pentagons-access-to-its-ai-after-anthropics-refusal/" target="_blank">TechCrunch</a> ·
+        <a href="https://www.bloomberg.com/news/articles/2026-04-28/google-allows-pentagon-to-use-its-ai-in-classified-military-work" target="_blank">Bloomberg</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h3><span class="badge-new">Partnership</span> OpenAI on AWS + Microsoft Partnership Next Phase</h3>
+      <p>OpenAI made OpenAI models, Codex, and Managed Agents available on Amazon Web Services on April 28, expanding enterprise access across AWS cloud environments. Separately, OpenAI announced the "next phase" of its Microsoft partnership, with deeper Azure integration for agentic workloads. The dual-cloud availability signals OpenAI's shift toward enterprise distribution at scale, potentially reducing dependency on the Azure-exclusive channel that has defined its go-to-market since 2023.</p>
+      <div class="source">
+        Source: <a href="https://openai.com/news/" target="_blank">OpenAI News</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h3>📊 Google Investment in Anthropic: A "Screaming Bargain" at $40B</h3>
+      <p>Analysis from multiple sources frames Google's commitment of up to $40 billion in Anthropic — announced April 24 — as potentially the most asymmetric investment in tech history. With Anthropic now in talks for a $900 billion valuation round (reported April 29), Google's $40B stake could represent a 2–3x return in months. Meanwhile, Counterpoint Research confirmed Anthropic has surpassed OpenAI in global LLM revenue with a 31.4% market share in Q1 2026, vs. OpenAI at 29%.</p>
+      <div class="source">
+        Sources:
+        <a href="https://techcrunch.com/2026/04/24/google-to-invest-up-to-40b-in-anthropic-in-cash-and-compute/" target="_blank">TechCrunch</a> ·
+        <a href="https://www.fool.com/investing/2026/04/27/google-screaming-bargain-anthropic-investment/" target="_blank">Motley Fool</a>
+      </div>
+    </div>
+
+    <!-- Audience grid -->
+    <div class="audience-grid">
+      <div class="audience-card">
+        <span class="badge">🔐 CISO — AI Security</span>
+        <ul>
+          <li>Google's Pentagon AI deal: classified AI access raises insider threat and data spillage risks</li>
+          <li>Anthropic's refusal to allow autonomous weapon use sets a governance benchmark</li>
+          <li>OpenAI on AWS: multi-cloud AI deployment increases data governance complexity</li>
+          <li>Assess AI tool procurement policies against autonomous decision-making guardrails</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <span class="badge">🤝 Consulting Partner</span>
+        <ul>
+          <li>Google-Pentagon deal: defense/gov AI practice opportunity for compliance and red-teaming</li>
+          <li>Anthropic #1 in LLM revenue: shift enterprise AI roadmaps to include Claude</li>
+          <li>OpenAI multi-cloud = new architecture advisory demand for AWS-native clients</li>
+          <li>$900B Anthropic valuation signals AI sector remains top-of-market for M&amp;A advisory</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <span class="badge">💼 Business Executive</span>
+        <ul>
+          <li>AI safety governance now determining which companies win government contracts</li>
+          <li>Anthropic overtaking OpenAI in revenue: diversify AI vendor exposure</li>
+          <li>OpenAI now available on AWS — evaluate procurement if Azure isn't your primary cloud</li>
+          <li>$900B Anthropic valuation: AI sector still attracting massive capital despite high rates</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Monday, April 27, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html">← Full briefing archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
