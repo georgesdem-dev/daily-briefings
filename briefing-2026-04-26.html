@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Sunday, April 26, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 820px; margin: 0 auto; padding: 40px 24px 80px; }
+    .header {
+      text-align: center; padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d; margin-bottom: 48px;
+    }
+    .header .label { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #58a6ff; margin-bottom: 12px; }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
+    .header .date { font-size: 1rem; color: #8b949e; margin-bottom: 16px; }
+    .header .nav { font-size: 0.82rem; color: #484f58; }
+    .header .nav a { color: #6e7681; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 2px solid #21262d; }
+    .section-icon { font-size: 1.6rem; }
+    .section-title { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; }
+    .section-tag { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; margin-left: auto; }
+    .tag-iran    { background: #3d1a1a; color: #f85149; border: 1px solid #6e2a2a; }
+    .tag-cyber   { background: #1a2d1a; color: #3fb950; border: 1px solid #2a4a2a; }
+    .tag-ai      { background: #1a1f3d; color: #79c0ff; border: 1px solid #2a3a6e; }
+    .story { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 20px 22px; margin-bottom: 14px; }
+    .story:hover { border-color: #444c56; }
+    .story h3 { font-size: 1rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; line-height: 1.4; }
+    .story p { font-size: 0.88rem; color: #c9d1d9; line-height: 1.65; margin-bottom: 8px; }
+    .story p:last-child { margin-bottom: 0; }
+    .story .source { font-size: 0.76rem; color: #484f58; margin-top: 10px; }
+    .story .source a { color: #6e7681; }
+    .story .source a:hover { color: #58a6ff; }
+    .audience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin-top: 18px; }
+    .audience-card { background: #0d1117; border: 1px solid #21262d; border-radius: 8px; padding: 14px 16px; }
+    .audience-card .badge { font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8b949e; margin-bottom: 8px; display: block; }
+    .audience-card ul { list-style: none; padding: 0; }
+    .audience-card ul li { font-size: 0.82rem; color: #c9d1d9; margin-bottom: 5px; padding-left: 14px; position: relative; }
+    .audience-card ul li::before { content: "›"; position: absolute; left: 0; color: #58a6ff; }
+    .footer { text-align: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem; }
+    .footer strong { color: #6e7681; }
+    .tldr { background: #161b22; border: 1px solid #30363d; border-left: 3px solid #58a6ff; border-radius: 0 8px 8px 0; padding: 14px 18px; margin-bottom: 28px; font-size: 0.86rem; color: #8b949e; }
+    .tldr strong { color: #f0f6fc; }
+    .badge-critical { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; padding:2px 7px; border-radius:4px; background:#6e1f1f; color:#f85149; margin-right:6px; letter-spacing:0.8px; }
+    .badge-high     { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; padding:2px 7px; border-radius:4px; background:#3d2a0a; color:#e3b341; margin-right:6px; letter-spacing:0.8px; }
+    .badge-new      { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; padding:2px 7px; border-radius:4px; background:#1a2d1a; color:#3fb950; margin-right:6px; letter-spacing:0.8px; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="label">Daily Intelligence Briefing</div>
+    <h1>📰 Sunday, April 26, 2026</h1>
+    <div class="date">Day 58 of the Iran War &nbsp;·&nbsp; Weekend Edition · 6 PM Paris</div>
+    <div class="nav"><a href="index.html">← Back to archive</a></div>
+  </div>
+
+  <div class="tldr">
+    <strong>Today at a glance:</strong> &nbsp;
+    Tehran rejects US peace plan, calls Trump "deceitful"; Araghchi lands in Moscow; Lebanon ceasefire fractures with 14 killed in Israeli strikes &nbsp;·&nbsp;
+    CISA adds 6 exploited flaws in Fortinet, Microsoft, and Adobe; supply-chain campaign targets security and dev tools &nbsp;·&nbsp;
+    AWS rolls out AI agents for DevOps and security; 72% of enterprises now running agentic AI in production
+  </div>
+
+  <!-- SECTION 1: IRAN WAR -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🪖</span>
+      <span class="section-title">Iran War — Day 58</span>
+      <span class="section-tag tag-iran">ACTIVE CONFLICT</span>
+    </div>
+
+    <div class="story">
+      <h3>🚫 Tehran Rejects US 15-Point Plan, Calls Trump "Deceitful"</h3>
+      <p>Iranian officials flatly rejected a 15-point US peace plan circulating through Pakistani intermediaries, with the government calling President Trump "deceitful" and denying that any formal negotiations were underway. Iran reiterated its core condition: any ceasefire deal must include an end to Israel's campaign in Lebanon, effectively linking the Iran nuclear and Hormuz negotiations to the separate Lebanon war — a demand Washington has firmly rejected.</p>
+      <div class="source">
+        Sources:
+        <a href="https://www.aljazeera.com/news/liveblog/2026/4/26/iran-war-live-tehran-rejects-talks-under-siege-trump-cancels-envoys-trip" target="_blank">Al Jazeera Live</a> ·
+        <a href="https://www.aljazeera.com/news/2026/4/26/iran-war-whats-happening-on-day-58-as-tehran-washington-talks-stall" target="_blank">Al Jazeera Day 58 Recap</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h3>🇷🇺 Araghchi Flies to Moscow — Putin Meeting Scheduled</h3>
+      <p>Iranian Foreign Minister Abbas Araghchi arrived in Moscow on Sunday for meetings with President Vladimir Putin, marking his second major diplomatic stop in 48 hours after leaving Islamabad. Iran is seeking Russian backing for its proposal to defer nuclear negotiations while reopening the Strait of Hormuz. Moscow has offered to serve as a custodian for Iran's enriched uranium — a bridge solution Russia hopes can unlock a broader deal — but Washington remains skeptical.</p>
+      <div class="source">
+        Source: <a href="https://www.cnn.com/2026/04/26/world/live-news/iran-war-trump-israel" target="_blank">CNN Day 58 Live</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h3>💥 Lebanon Ceasefire Fractures: 14 Killed in Israeli Strikes</h3>
+      <p>The three-week Lebanon ceasefire extension announced by Trump last Thursday is already under severe strain. Israeli forces struck targets across the Nabatieh District and other areas of southern Lebanon, resulting in 14 fatalities. Israeli Prime Minister Netanyahu's office said the strikes targeted Hezbollah infrastructure; Hezbollah fired several drones at Israeli positions in response. Iran has explicitly conditioned any Iran-US deal on an end to Israeli strikes in Lebanon — meaning the Lebanon front directly constrains the diplomatic track.</p>
+      <div class="source">
+        Sources:
+        <a href="https://www.aljazeera.com/news/liveblog/2026/4/26/iran-war-live-tehran-rejects-talks-under-siege-trump-cancels-envoys-trip" target="_blank">Al Jazeera</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h3>🚢 Hormuz Standoff: Mutual Blockades Deepen Economic Damage</h3>
+      <p>The Strait of Hormuz enters its third week of effective closure. The US Navy maintains a blockade preventing Iranian oil exports; Tehran restricts or tolls commercial transits through the strait. Global energy analysts note that the prolonged disruption is reshaping tanker routes — some very large crude carriers (VLCCs) have begun rerouting around the Cape of Good Hope, adding 10–15 days to delivery times and significantly increasing shipping costs for Asian importers.</p>
+      <div class="source">
+        Source: <a href="https://commonslibrary.parliament.uk/research-briefings/cbp-10636/" target="_blank">House of Commons Library — Hormuz Analysis</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: CYBERSECURITY -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🔒</span>
+      <span class="section-title">Cybersecurity</span>
+      <span class="section-tag tag-cyber">THREAT INTEL</span>
+    </div>
+
+    <div class="story">
+      <h3><span class="badge-critical">Critical</span> CISA Adds 6 Known-Exploited Flaws: Fortinet, Microsoft, Adobe</h3>
+      <p>CISA's Known Exploited Vulnerabilities catalog expanded this weekend with six new entries covering Fortinet FortiClient EMS (<strong>CVE-2026-21643</strong>, SQL injection, CVSS 9.1), Microsoft Exchange, and Adobe Acrobat. Federal Civilian Executive Branch agencies were given an April 27 deadline to apply mitigations. The Fortinet flaw allows unauthenticated attackers to execute code via crafted HTTP requests — a critical perimeter risk for any enterprise with FortiClient EMS exposed to the internet.</p>
+      <div class="source">
+        Sources:
+        <a href="https://thehackernews.com/2026/04/cisa-adds-6-known-exploited-flaws-in.html" target="_blank">The Hacker News</a> ·
+        <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank">CISA KEV Catalog</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h3><span class="badge-high">High</span> Supply Chain Campaign Targets Security and Dev Tools</h3>
+      <p>The Register and Semgrep researchers disclosed an ongoing supply-chain attack campaign specifically targeting security and developer tooling packages. Threat actors are compromising package maintainer accounts — particularly those lacking MFA — and pushing malicious versions that execute stealthily on import. The campaign predates the PyTorch Lightning incident later in the week and suggests a coordinated, sustained effort to compromise developer infrastructure across multiple ecosystems including npm, PyPI, and RubyGems.</p>
+      <div class="source">
+        Sources:
+        <a href="https://www.theregister.com/2026/04/27/supply_chain_campaign_targets_security/" target="_blank">The Register</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h3><span class="badge-high">High</span> Itron Discloses April 13 Breach of Critical Infrastructure Systems</h3>
+      <p>Itron — a major supplier of smart meters, energy management, and water monitoring systems powering utilities across North America — disclosed it detected unauthorized access to internal IT systems on April 13. The company said operations continued in all material respects and no customer-hosted systems were compromised. No ransomware group has claimed the attack. The disclosure is notable given Itron's footprint in critical infrastructure: its systems manage billing and operational data for hundreds of utility providers.</p>
+      <div class="source">
+        Sources:
+        <a href="https://techcrunch.com/2026/04/27/critical-infrastructure-giant-itron-says-it-was-hacked/" target="_blank">TechCrunch</a> ·
+        <a href="https://www.bleepingcomputer.com/news/security/american-utility-firm-itron-discloses-breach-of-internal-it-network/" target="_blank">Bleeping Computer</a>
+      </div>
+    </div>
+
+    <!-- Audience grid -->
+    <div class="audience-grid">
+      <div class="audience-card">
+        <span class="badge">🔐 CISO Priorities</span>
+        <ul>
+          <li>Emergency patch: FortiClient EMS CVE-2026-21643 (CVSS 9.1, unauthenticated RCE)</li>
+          <li>Audit PyPI/npm package dependencies — supply chain campaign actively targeting dev tools</li>
+          <li>Enforce MFA on all package registry / developer accounts</li>
+          <li>Assess utility sector vendors for Itron-style IT/OT adjacency risks</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <span class="badge">🤝 Consulting Partner</span>
+        <ul>
+          <li>Itron breach: OT-adjacent IT compromise is board-level risk for utility clients</li>
+          <li>Supply chain campaign = immediate advisory for clients with DevOps pipelines</li>
+          <li>CISA 6-CVE drop signals elevated threat tempo — upsell continuous monitoring</li>
+          <li>FortiClient EMS CVSS 9.1 creates urgent patch project opportunity</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <span class="badge">💼 Business Executive</span>
+        <ul>
+          <li>Critical infrastructure (utilities, water) systems actively targeted by hackers</li>
+          <li>Developer tools being poisoned — software supply chain risk is real</li>
+          <li>CISA mandating rapid patches across 6 major product flaws this weekend</li>
+          <li>Ensure IT vendor partners have MFA enabled on all package management accounts</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: AI -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🤖</span>
+      <span class="section-title">Artificial Intelligence</span>
+      <span class="section-tag tag-ai">MARKET &amp; TECH</span>
+    </div>
+
+    <div class="story">
+      <h3><span class="badge-new">Launch</span> AWS Rolls Out AI Agents for DevOps and Security Incident Response</h3>
+      <p>Amazon Web Services released a suite of AI agents targeting DevOps pipelines and security incident response, designed to minimise human oversight in complex incident management workflows. The agents can triage alerts, correlate logs, suggest remediation steps, and — in some configurations — execute automated responses. AWS is positioning the launch as a direct complement to its existing security services (GuardDuty, Security Hub) and as a counter-move to Google's Gemini Enterprise Agent Platform announced at Cloud Next.</p>
+      <div class="source">
+        Source: <a href="https://kersai.com/ai-breakthroughs-april-2026-models-funding-shifts/" target="_blank">Kersai AI April 2026</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h3>📊 72% of Enterprises Now Running Agentic AI in Production</h3>
+      <p>New survey data from the week of April 20–26 shows that more than 72% of enterprises are either in production with or actively piloting agentic AI systems — a remarkable acceleration from under 30% at the start of 2026. The data, compiled across the Mind and Machine Weekly newsletter ecosystem, reflects a structural shift from experimentation to deployment. Leading use cases: customer service automation, code generation, security triage, and supply chain monitoring.</p>
+      <div class="source">
+        Source: <a href="https://mindandmachineweekly.substack.com/p/weekly-ai-newsletter-april-2026-2026" target="_blank">Mind &amp; Machine Weekly</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h3>🇨🇳 DeepSeek V4 Aftermath: Pressure Intensifies on US Chip Export Controls</h3>
+      <p>The launch of DeepSeek V4 on Huawei Ascend 950PR chips — achieving frontier-class performance without Nvidia H100s or GB200s — has triggered fresh debate in Washington about the efficacy of semiconductor export controls. The Commerce Department is reportedly reviewing whether additional restrictions on Huawei chip architectures are warranted, while analysts at MIT Technology Review note that the V4 launch demonstrates China's ability to route around current controls through domestic semiconductor investment.</p>
+      <div class="source">
+        Source: <a href="https://www.technologyreview.com/2026/04/24/1136422/why-deepseeks-v4-matters/" target="_blank">MIT Technology Review</a>
+      </div>
+    </div>
+
+    <!-- Audience grid -->
+    <div class="audience-grid">
+      <div class="audience-card">
+        <span class="badge">🔐 CISO — AI Security</span>
+        <ul>
+          <li>AWS AI security agents: validate before deployment — automated response creates new blast radius</li>
+          <li>72% enterprise agentic AI adoption means shadow AI governance is now critical</li>
+          <li>DeepSeek V4 open weights: adversaries can fine-tune for targeted attacks</li>
+          <li>Chip export circumvention: DeepSeek V4 shows nation-state AI capability isn't slowing</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <span class="badge">🤝 Consulting Partner</span>
+        <ul>
+          <li>AWS security agents create implementation and governance consulting demand</li>
+          <li>72% enterprise agentic AI deployment = urgent need for AI governance frameworks</li>
+          <li>DeepSeek V4 pricing pressure forces OpenAI/Anthropic cost justification conversations</li>
+          <li>Chip export debate creates geopolitical risk advisory opportunity for multinationals</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <span class="badge">💼 Business Executive</span>
+        <ul>
+          <li>Most large enterprises now using AI agents — if yours isn't, you're falling behind</li>
+          <li>AWS AI security automation: evaluate for SOC efficiency gains</li>
+          <li>DeepSeek V4 challenges assumption that frontier AI requires US chips</li>
+          <li>Export control policy uncertainty affects tech procurement planning</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Sunday, April 26, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html">← Full briefing archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
