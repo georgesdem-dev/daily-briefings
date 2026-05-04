@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Monday, May 4, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 48px 0 36px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 12px;
+    }
+    .header h1 { font-size: 2rem; font-weight: 800; color: #f0f6fc; margin-bottom: 8px; }
+    .header .date { font-size: 1rem; color: #8b949e; margin-bottom: 6px; }
+    .header .subtitle { font-size: 0.875rem; color: #6e7681; }
+
+    /* Section cards */
+    .section {
+      margin-bottom: 48px;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .section-header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 18px 24px;
+      border-bottom: 1px solid #21262d;
+    }
+    .section-header.iran   { background: linear-gradient(90deg, #1a0a0a, #161b22); }
+    .section-header.cyber  { background: linear-gradient(90deg, #0a1020, #161b22); }
+    .section-header.ai     { background: linear-gradient(90deg, #0a1a0f, #161b22); }
+    .section-icon { font-size: 1.8rem; }
+    .section-title { font-size: 1.2rem; font-weight: 800; color: #f0f6fc; }
+    .section-badge {
+      margin-left: auto; font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 3px 10px; border-radius: 20px;
+    }
+    .badge-iran  { background: #3d1212; color: #f85149; }
+    .badge-cyber { background: #0c1f3f; color: #58a6ff; }
+    .badge-ai    { background: #0d2b1a; color: #3fb950; }
+
+    .section-body { padding: 24px; background: #161b22; }
+
+    /* Story items */
+    .story { margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid #21262d; }
+    .story:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .story-headline {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc; margin-bottom: 6px;
+      display: flex; align-items: flex-start; gap: 8px;
+    }
+    .story-tag {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      padding: 2px 7px; border-radius: 4px; flex-shrink: 0; margin-top: 2px;
+    }
+    .tag-breaking { background: #6e1212; color: #ff7b72; }
+    .tag-developing { background: #2d2007; color: #e3b341; }
+    .tag-diplomatic { background: #0c1f3f; color: #58a6ff; }
+    .tag-economic { background: #1c1c40; color: #a5d6ff; }
+    .tag-critical { background: #6e1212; color: #ff7b72; }
+    .tag-patch { background: #0c1f3f; color: #58a6ff; }
+    .tag-threat { background: #2d2007; color: #e3b341; }
+    .tag-launch { background: #0d2b1a; color: #3fb950; }
+    .tag-risk { background: #2d2007; color: #e3b341; }
+    .story p { color: #c9d1d9; font-size: 0.9rem; margin-bottom: 6px; }
+    .story-source { font-size: 0.78rem; color: #6e7681; margin-top: 4px; }
+    .story-source a { color: #58a6ff; }
+
+    /* Audience sub-sections */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .audience-card {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .audience-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 8px;
+    }
+    .audience-label.ciso    { color: #58a6ff; }
+    .audience-label.partner { color: #e3b341; }
+    .audience-label.exec    { color: #3fb950; }
+    .audience-card ul { padding-left: 16px; }
+    .audience-card li { color: #c9d1d9; font-size: 0.82rem; margin-bottom: 4px; }
+
+    /* SITREP summary box */
+    .sitrep {
+      background: #0d1117; border: 1px solid #30363d;
+      border-left: 3px solid #f85149;
+      border-radius: 8px; padding: 14px 18px; margin-bottom: 24px;
+    }
+    .sitrep-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #f85149; margin-bottom: 8px; }
+    .sitrep ul { padding-left: 18px; }
+    .sitrep li { color: #c9d1d9; font-size: 0.88rem; margin-bottom: 4px; }
+
+    /* Stats row */
+    .stats-row {
+      display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px;
+    }
+    .stat-pill {
+      background: #0d1117; border: 1px solid #30363d;
+      border-radius: 6px; padding: 8px 14px;
+      font-size: 0.82rem;
+    }
+    .stat-pill .val { font-weight: 800; color: #f0f6fc; }
+    .stat-pill .lbl { color: #6e7681; }
+
+    /* Footer */
+    .footer {
+      text-align: center; margin-top: 56px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+    .back-link { display: inline-block; margin-bottom: 48px; color: #58a6ff; font-size: 0.88rem; }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <a class="back-link" href="index.html">← All Briefings</a>
+
+  <div class="header">
+    <div class="label">Daily Intelligence Briefing</div>
+    <h1>📰 Monday, May 4, 2026</h1>
+    <div class="date">Day 66 of the Iran War &nbsp;·&nbsp; 6:00 PM Paris Time</div>
+    <div class="subtitle">Iran War &nbsp;·&nbsp; Cybersecurity &nbsp;·&nbsp; Artificial Intelligence</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ IRAN WAR -->
+  <div class="section">
+    <div class="section-header iran">
+      <div class="section-icon">⚔️</div>
+      <div class="section-title">Iran War — Day 66</div>
+      <div class="section-badge badge-iran">ACTIVE CONFLICT</div>
+    </div>
+    <div class="section-body">
+
+      <div class="sitrep">
+        <div class="sitrep-title">⚡ SITREP — May 4, 2026</div>
+        <ul>
+          <li>US Navy begins escorting American-flagged vessels through Strait of Hormuz; first two ships transit successfully</li>
+          <li>Iran's IRGC calls US escort mission a ceasefire violation; threatens to resume hostilities</li>
+          <li>UAE reports intercepted Iranian missile and drone attack; oil facility fire in Fujairah</li>
+          <li>Iran claims two missiles struck a US frigate — Pentagon flatly denies any vessel was hit</li>
+          <li>Ceasefire technically in place since April 8 (Pakistan-brokered) but increasingly fragile</li>
+          <li>Diplomatic deadlock persists: nuclear program and Hormuz control remain the two sticking points</li>
+        </ul>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-pill"><span class="val">Day 66</span> <span class="lbl">conflict</span></div>
+        <div class="stat-pill"><span class="val">$5.64</span> <span class="lbl">diesel avg / gal (+50% vs pre-war)</span></div>
+        <div class="stat-pill"><span class="val">2 ships</span> <span class="lbl">US-escorted through Hormuz today</span></div>
+        <div class="stat-pill"><span class="val">14 pts</span> <span class="lbl">Iran's latest peace proposal</span></div>
+      </div>
+
+      <!-- Story 1 -->
+      <div class="story">
+        <div class="story-headline">
+          <span class="story-tag tag-breaking">Breaking</span>
+          US Navy Begins Hormuz Escort Operations; Iran Calls It a Ceasefire Violation
+        </div>
+        <p>The Trump administration launched its plan to escort American-flagged commercial ships through the Strait of Hormuz on Monday. Two vessels successfully transited the strait under naval protection — the first such passage since Iran imposed shipping restrictions. Iran's IRGC responded sharply, with a senior parliament security official warning that US military escorts violate the terms of the ceasefire brokered by Pakistan on April 8. Iran had conditionally allowed commercial traffic during the ceasefire but re-imposed restrictions when Washington refused to lift its naval blockade of Iranian ports.</p>
+        <div class="story-source">Sources: <a href="https://www.cnn.com/2026/05/04/world/live-news/iran-war-hormuz-trump" target="_blank">CNN Live</a> · <a href="https://www.cbsnews.com/live-updates/iran-war-trump-strait-of-hormuz-israel-lebanon-ceasefire/" target="_blank">CBS News</a> · <a href="https://www.aljazeera.com/news/liveblog/2026/5/4/iran-war-live-tehran-says-trumps-hormuz-mission-violates-ceasefire" target="_blank">Al Jazeera</a></div>
+      </div>
+
+      <!-- Story 2 -->
+      <div class="story">
+        <div class="story-headline">
+          <span class="story-tag tag-breaking">Incident</span>
+          UAE Reports Iranian Missile & Drone Attack; Fire at Fujairah Oil Facility
+        </div>
+        <p>UAE authorities confirmed they intercepted an Iranian drone and missile strike, with a fire breaking out at an oil site in Fujairah. Iran asserted that two missiles struck a US Navy frigate that had ignored warnings — a claim the US military categorically denied. The incident significantly escalates tensions around the Strait and raises questions about the ceasefire's durability. No American casualties were reported.</p>
+        <div class="story-source">Sources: <a href="https://www.aljazeera.com/news/liveblog/2026/5/4/iran-war-live-tehran-says-trumps-hormuz-mission-violates-ceasefire" target="_blank">Al Jazeera</a></div>
+      </div>
+
+      <!-- Story 3 -->
+      <div class="story">
+        <div class="story-headline">
+          <span class="story-tag tag-diplomatic">Diplomatic</span>
+          Iran's 14-Point Proposal Hits Wall Over Nuclear Demand
+        </div>
+        <p>Iran presented Washington — via Pakistani intermediaries — with a 14-point peace framework calling for: guaranteed non-aggression, comprehensive sanctions relief, lifting of the naval blockade, resolution of the Lebanon front, and a protocol to fully reopen Hormuz. Crucially, the plan defers nuclear negotiations to a later phase, after economic relief is secured. The Trump administration has rejected this sequencing. Secretary of State Marco Rubio reiterated on Sunday that any final deal must include Iran's permanent dismantlement of its nuclear program — a condition Tehran calls a "red line" of its own. Negotiations remain at an impasse.</p>
+        <div class="story-source">Sources: <a href="https://www.aljazeera.com/news/2026/4/28/whats-in-irans-latest-proposal-and-how-has-the-us-responded" target="_blank">Al Jazeera Analysis</a> · <a href="https://www.axios.com/2026/04/27/iran-us-hormuz-strait-nuclear-talks-proposal-pakistan" target="_blank">Axios</a> · <a href="https://www.pbs.org/newshour/show/u-s-iran-talks-at-impasse-over-nuclear-program-and-strait-of-hormuz" target="_blank">PBS NewsHour</a></div>
+      </div>
+
+      <!-- Story 4 -->
+      <div class="story">
+        <div class="story-headline">
+          <span class="story-tag tag-developing">Developing</span>
+          IRGC Issues Warning: Fully Prepared to Resume Full-Scale Operations
+        </div>
+        <p>Iran's Islamic Revolutionary Guard Corps issued a formal statement Monday declaring it is "fully prepared" to resume conflict if the US continues its Hormuz escort operations. The IRGC framed the US naval action as an act of aggression under the ceasefire agreement. The warning comes as Trump told reporters Sunday that negotiations with Iran are "very positive" — a characterisation at odds with Tehran's public posture. The House of Commons Library notes the ceasefire has no formal expiry but both sides have set escalating deadlines.</p>
+        <div class="story-source">Sources: <a href="https://www.aljazeera.com/news/liveblog/2026/5/2/iran-war-live-trump-says-no-early-end-to-war-unhappy-with-tehran-offer" target="_blank">Al Jazeera</a> · <a href="https://commonslibrary.parliament.uk/research-briefings/cbp-10637/" target="_blank">House of Commons Library</a> · <a href="https://www.cnn.com/2026/05/03/world/live-news/iran-war-news" target="_blank">CNN</a></div>
+      </div>
+
+      <!-- Story 5 -->
+      <div class="story">
+        <div class="story-headline">
+          <span class="story-tag tag-economic">Economic</span>
+          Energy Markets: Diesel at $5.64/gal; Dual Blockade Squeezes Global Supply Chains
+        </div>
+        <p>The mutual US naval blockade of Iranian ports and Iran's closure of Hormuz continue to batter global energy markets. US retail diesel has risen to $5.64 per gallon — up 50% from $3.76 before the war. Brent crude remains elevated above $126/barrel (last tracked April 28). Shipping insurance costs through the region have surged, and several European nations are in emergency consultations over strategic petroleum reserve releases. The IMF previously cut its 2026 global growth forecast to 3.1% citing the conflict's economic ripple effects.</p>
+        <div class="story-source">Sources: <a href="https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_crisis" target="_blank">Wikipedia — Hormuz Crisis</a> · <a href="https://www.cbsnews.com/live-updates/iran-war-trump-strait-of-hormuz-israel-lebanon-ceasefire/" target="_blank">CBS News</a></div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════ CYBERSECURITY -->
+  <div class="section">
+    <div class="section-header cyber">
+      <div class="section-icon">🔒</div>
+      <div class="section-title">Cybersecurity</div>
+      <div class="section-badge badge-cyber">THREAT INTEL</div>
+    </div>
+    <div class="section-body">
+
+      <!-- Story 1 -->
+      <div class="story">
+        <div class="story-headline">
+          <span class="story-tag tag-critical">Critical</span>
+          ShinyHunters Claims 275M-Record Breach of Instructure / Canvas LMS
+        </div>
+        <p>The ShinyHunters extortion group added edtech giant Instructure — maker of Canvas LMS — to its Tor-based leak site on May 3, claiming the theft of 3.65 terabytes of data. The group asserts records belonging to approximately 275 million students, teachers, and staff across nearly 9,000 educational institutions worldwide were compromised. Exfiltrated data reportedly includes names, email addresses, and student ID numbers. Instructure disclosed a breach and scrambled to restore services over the weekend. With Canvas holding a dominant share of the US higher-education LMS market, the blast radius spans most major US universities and K-12 systems.</p>
+        <div class="story-source">Sources: <a href="https://www.securityweek.com/edtech-firm-instructure-discloses-data-breach/" target="_blank">SecurityWeek</a> · <a href="https://www.breachsense.com/breaches/" target="_blank">BreachSense</a></div>
+      </div>
+
+      <!-- Story 2 -->
+      <div class="story">
+        <div class="story-headline">
+          <span class="story-tag tag-critical">CISA KEV</span>
+          Windows Zero-Click CVE-2026-32202: Federal Patch Deadline May 12
+        </div>
+        <p>CISA added CVE-2026-32202 — a zero-click Windows Shell vulnerability capable of exposing sensitive system information without user interaction — to its Known Exploited Vulnerabilities catalog, ordering all federal agencies to patch by May 12. Microsoft and CISA confirmed the flaw is being actively exploited in the wild. APT28 (Russia's GRU unit) was previously linked to exploitation of this vulnerability class. A separate Microsoft patch for a related zero-click exploit flagged by APT28 was found last week to be incomplete, with a follow-on Windows flaw now also under active attack (The Register, April 29).</p>
+        <div class="story-source">Sources: <a href="https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-patch-windows-flaw-exploited-in-zero-day-attacks/" target="_blank">Bleeping Computer</a> · <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank">CISA KEV Catalog</a> · <a href="https://www.theregister.com/2026/04/29/microsoft_zero_click_exploit/" target="_blank">The Register</a></div>
+      </div>
+
+      <!-- Story 3 -->
+      <div class="story">
+        <div class="story-headline">
+          <span class="story-tag tag-critical">Ransomware</span>
+          Interlock Ransomware Exploiting Cisco FMC CVE-2026-20131 (CVSS 10.0)
+        </div>
+        <p>The Interlock ransomware group is actively exploiting CVE-2026-20131, a critical (CVSS 10.0) unauthenticated remote code execution vulnerability in Cisco Firepower Management Center (FMC). The flaw allows attackers to gain root access without credentials. Cisco has released patches; organisations running FMC should treat this as an emergency patching priority. This follows a pattern of Interlock operators rapidly weaponising high-severity network appliance flaws to gain initial access to corporate environments.</p>
+        <div class="story-source">Sources: <a href="https://thehackernews.com/2026/03/interlock-ransomware-exploits-cisco-fmc.html" target="_blank">The Hacker News</a></div>
+      </div>
+
+      <!-- Story 4 -->
+      <div class="story">
+        <div class="story-headline">
+          <span class="story-tag tag-threat">Nation-State</span>
+          China-Linked Storm-1175 Using Zero-Days to Deploy Medusa Ransomware at Scale
+        </div>
+        <p>Threat intelligence reports link a China-based threat actor (Storm-1175) to a high-velocity campaign combining zero-day and N-day vulnerabilities to rapidly deploy Medusa ransomware across targets. The group is notable for compressing the time between initial access and ransomware deployment to under 24 hours. This blurring of nation-state espionage and financially-motivated ransomware is a significant trend in 2026 threat intelligence, complicating attribution and legal response frameworks.</p>
+        <div class="story-source">Sources: <a href="https://thehackernews.com/2026/04/china-linked-storm-1175-exploits-zero.html" target="_blank">The Hacker News</a></div>
+      </div>
+
+      <!-- Story 5 -->
+      <div class="story">
+        <div class="story-headline">
+          <span class="story-tag tag-threat">IAB</span>
+          Zestix/Sentap IAB Linked to Dozens of Enterprise Breaches via Infostealers
+        </div>
+        <p>SecurityWeek reports that a threat actor identified as Zestix/Sentap — functioning as an initial access broker — has been tied to data breaches at dozens of major global enterprises. The actor uses credentials harvested by infostealer malware to gain entry, then sells access or facilitates follow-on attacks. The campaign underscores the persistent threat posed by the infostealer-to-IAB pipeline, where a single piece of commodity malware infecting an employee device can cascade into a full corporate breach.</p>
+        <div class="story-source">Sources: <a href="https://www.securityweek.com/dozens-of-major-data-breaches-linked-to-single-threat-actor/" target="_blank">SecurityWeek</a></div>
+      </div>
+
+      <!-- Story 6 -->
+      <div class="story">
+        <div class="story-headline">
+          <span class="story-tag tag-patch">KEV Update</span>
+          cPanel CVE-2026-41940: SE Asia Governments & MSPs Under Active Attack
+        </div>
+        <p>Detected on May 2, a previously unknown threat actor is exploiting the recently disclosed cPanel/WHM vulnerability CVE-2026-41940 to target government and military entities across Southeast Asia, alongside MSPs and hosting providers in the Philippines, Laos, Canada, South Africa, and the US. With an estimated 1.5 million exposed servers (as of late April), organisations running cPanel should apply the emergency patch immediately and review access logs for anomalous root-level activity.</p>
+        <div class="story-source">Sources: <a href="https://thehackernews.com/" target="_blank">The Hacker News</a> · <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank">CISA KEV</a></div>
+      </div>
+
+      <!-- Audience cards -->
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="audience-label ciso">🔐 CISO Priorities</div>
+          <ul>
+            <li>Emergency: patch Cisco FMC (CVSS 10.0) and cPanel NOW</li>
+            <li>CVE-2026-32202 Windows zero-click — federal deadline May 12; apply enterprise-wide</li>
+            <li>Audit Canvas/Instructure SSO integrations; assume credential exposure</li>
+            <li>Hunt for infostealer infections (Zestix/Sentap IAB vector)</li>
+            <li>Defender CVE-2026-33825 CISA deadline May 6 — tomorrow</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="audience-label partner">🤝 Consulting Partner Lens</div>
+          <ul>
+            <li>Instructure breach: immediate scope assessment for education-sector clients</li>
+            <li>Cisco FMC patch advisory — high client density in this product</li>
+            <li>Ransomware-as-nation-state tool (Storm-1175) → board-level narrative shift</li>
+            <li>IAB market expanding → tabletop exercises on infostealer-to-breach scenarios</li>
+            <li>cPanel: MSP supply-chain risk — review client hosting environments</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="audience-label exec">💼 Executive Summary</div>
+          <ul>
+            <li>275M student/teacher records stolen from Canvas — largest edtech breach on record</li>
+            <li>Three urgent unpatched flaws actively being exploited across enterprise stacks</li>
+            <li>Chinese nation-state actors now deploying ransomware as a weapon</li>
+            <li>US government agencies have until May 12 to patch critical Windows flaw</li>
+            <li>Corporate credential theft via infostealers enabling large-scale enterprise breaches</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════ AI -->
+  <div class="section">
+    <div class="section-header ai">
+      <div class="section-icon">🤖</div>
+      <div class="section-title">Artificial Intelligence</div>
+      <div class="section-badge badge-ai">TECH &amp; STRATEGY</div>
+    </div>
+    <div class="section-body">
+
+      <!-- Story 1 -->
+      <div class="story">
+        <div class="story-headline">
+          <span class="story-tag tag-risk">Security Risk</span>
+          GPT-5.5 Meets "High" Cyber Risk Bar — OpenAI Rolls Out With Tighter Controls
+        </div>
+        <p>OpenAI's GPT-5.5, now live for Plus, Pro, Business, and Enterprise subscribers on ChatGPT and Amazon Bedrock, has been classified at the "High" cybersecurity risk tier in OpenAI's internal safety framework. While it does not reach the "Critical" threshold, GPT-5.5 demonstrated the ability to perform complex cyber tasks requiring specialist knowledge and to automate discovery and exploitation of operationally relevant vulnerabilities. OpenAI implemented authenticated access controls and enhanced monitoring. A companion model — GPT-5.4-Cyber — was separately launched with tiered access for vetted security teams and researchers.</p>
+        <div class="story-source">Sources: <a href="https://www.cnbc.com/2026/04/23/openai-announces-latest-artificial-intelligence-model.html" target="_blank">CNBC</a> · <a href="https://www.helpnetsecurity.com/2026/04/24/openai-gpt-5-5-cybersecurity-safeguards/" target="_blank">Help Net Security</a> · <a href="https://thehackernews.com/2026/04/openai-launches-gpt-54-cyber-with.html" target="_blank">The Hacker News</a> · <a href="https://www.axios.com/2026/04/14/openai-model-cyber-program-release" target="_blank">Axios</a></div>
+      </div>
+
+      <!-- Story 2 -->
+      <div class="story">
+        <div class="story-headline">
+          <span class="story-tag tag-launch">Launch</span>
+          NVIDIA &amp; Cadence Expand Partnership to Close Robotics "Sim-to-Real" Gap
+        </div>
+        <p>At CadenceLIVE Silicon Valley 2026, NVIDIA and Cadence Design Systems announced a deepened partnership combining their semiconductor design and AI simulation platforms to tackle the persistent sim-to-real gap in robotics — the challenge of getting robot models trained in simulation to behave reliably in the physical world. The collaboration targets both autonomous vehicle and industrial robotics applications. NVIDIA's Vera Rubin platform (unveiled at CES 2026) underpins the new joint offering with significantly expanded memory bandwidth and AI processing throughput.</p>
+        <div class="story-source">Sources: <a href="https://www.aiandnews.com/blog/latest-ai-news-may-2026-2/" target="_blank">AI and News</a> · <a href="https://llm-stats.com/ai-news" target="_blank">LLM Stats</a></div>
+      </div>
+
+      <!-- Story 3 -->
+      <div class="story">
+        <div class="story-headline">
+          <span class="story-tag tag-launch">Agentic AI</span>
+          OpenAI Developing AI-First Smartphone; Cloudflare &amp; Stripe Enable Autonomous Agent Accounts
+        </div>
+        <p>OpenAI is reportedly developing a smartphone built around AI agents that replace traditional apps — with the device designed to continuously understand user context and autonomously execute tasks. Separately, Cloudflare and Stripe announced a joint protocol enabling AI agents to independently create accounts, purchase domains, and deploy applications without human intervention. Adobe is testing an agentic Firefly assistant capable of executing multi-step creative tasks across Photoshop, Illustrator, and Premiere. The week's announcements collectively mark a significant maturation of the autonomous agent paradigm from demo to production deployment.</p>
+        <div class="story-source">Sources: <a href="https://coaio.com/news/2026/05/breaking-tech-news-on-may-1-2026-ai-innovations-privacy-battles-and-2okc/" target="_blank">Coaio Tech</a> · <a href="https://www.aiandnews.com/blog/latest-ai-news-may-2026/" target="_blank">AI and News</a></div>
+      </div>
+
+      <!-- Story 4 -->
+      <div class="story">
+        <div class="story-headline">
+          <span class="story-tag tag-launch">Enterprise</span>
+          Google Gemini Hits Millions of Vehicles; OpenAI to Double Headcount to 8,000
+        </div>
+        <p>Google's Gemini conversational AI is now integrated into millions of vehicles, offering advanced real-time conversational capabilities that go beyond prior in-car voice assistants. Meanwhile, OpenAI confirmed plans to nearly double its workforce from approximately 4,000 to 8,000 employees by end of 2026, accelerating on research, safety, and go-to-market. Enterprise AI software adoption is projected to grow over 30% in 2026, driven by the agentic AI wave and competitive pressure across sectors.</p>
+        <div class="story-source">Sources: <a href="https://www.aiandnews.com/blog/latest-ai-news-may-2026-2/" target="_blank">AI and News</a> · <a href="https://www.marketingprofs.com/opinions/2026/54640/ai-update-may-1-2026-ai-news-and-views-from-the-past-week" target="_blank">MarketingProfs</a></div>
+      </div>
+
+      <!-- Story 5 -->
+      <div class="story">
+        <div class="story-headline">
+          <span class="story-tag tag-risk">CISO Watch</span>
+          Enterprise Data Exposure Risk: 60% of Corporate Data in Cloud, AI Can Retrieve It Instantly
+        </div>
+        <p>A Metomic analysis highlights a growing enterprise security blind spot: employees routinely paste sensitive data — contracts, product roadmaps, customer emails — directly into AI prompts. With 60% of corporate data now cloud-resident and tools like GPT-5.5 able to retrieve and process it at speed, organisations face significant data exfiltration risk from within. The concern is amplified by AI agents gaining autonomous capabilities, including the ability to initiate transactions and deploy code. Security teams are urged to implement DLP controls specific to AI-tool interactions and to enforce prompt-level data classification policies.</p>
+        <div class="story-source">Sources: <a href="https://www.metomic.io/resource-centre/is-chatgpt-a-security-risk-to-your-business" target="_blank">Metomic</a> · <a href="https://concentric.ai/chatgpt-security-risks-in-2026-a-guide-to-risks-your-team-might-be-missing/" target="_blank">Concentric AI</a> · <a href="https://fortune.com/2026/02/05/openai-gpt-5-3-codex-warns-unprecedented-cybersecurity-risks/" target="_blank">Fortune</a></div>
+      </div>
+
+      <!-- Audience cards -->
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="audience-label ciso">🔐 CISO Priorities</div>
+          <ul>
+            <li>GPT-5.5 "High" cyber risk: restrict access, implement monitoring per OpenAI guidance</li>
+            <li>Deploy DLP controls for AI tool interactions (ChatGPT, Copilot, Claude)</li>
+            <li>Review agentic AI access: Cloudflare/Stripe agent-account protocol introduces new supply-chain vectors</li>
+            <li>Assess GPT-5.4-Cyber eligibility for red-team / pen-test programs</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="audience-label partner">🤝 Consulting Partner Lens</div>
+          <ul>
+            <li>Agentic AI wave is creating a new AI governance advisory market</li>
+            <li>NVIDIA–Cadence partnership signals robotics sector AI spend surge</li>
+            <li>OpenAI's 8,000-employee scale-up → expanded enterprise sales channel opportunities</li>
+            <li>30%+ enterprise AI adoption growth = client demand for integration/security services</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="audience-label exec">💼 Executive Summary</div>
+          <ul>
+            <li>OpenAI's latest model rated "High" cybersecurity risk — but launches anyway with guardrails</li>
+            <li>AI agents can now autonomously open accounts and deploy code (Cloudflare + Stripe)</li>
+            <li>Gemini enters millions of cars; AI embedded in every consumer touchpoint</li>
+            <li>OpenAI doubling headcount — arms race for AI talent accelerates</li>
+            <li>60% of enterprise cloud data now instantly accessible to AI — a governance imperative</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Monday, May 4, 2026 &nbsp;·&nbsp; Sources: Reuters, Al Jazeera, CNN, CBS News, PBS, Axios, The Hacker News, Bleeping Computer, SecurityWeek, CISA, CNBC, Fortune, Help Net Security, Metomic</p>
+  </div>
+
+</div>
+</body>
+</html>
