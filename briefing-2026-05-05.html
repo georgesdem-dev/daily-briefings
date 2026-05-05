@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Tuesday, May 5, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 8px; }
+    .header .subtitle { font-size: 0.95rem; color: #8b949e; }
+    .header .date-badge {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 5px 16px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      color: #8b949e;
+    }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 52px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #21262d;
+    }
+    .section-icon { font-size: 1.5rem; }
+    .section-title { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; }
+    .section-day { font-size: 0.78rem; font-weight: 600; color: #8b949e; text-transform: uppercase; letter-spacing: 1px; margin-left: auto; }
+
+    /* ── Story cards ── */
+    .story-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+      transition: border-color 0.15s;
+    }
+    .story-card:hover { border-color: #58a6ff; }
+    .story-card .story-tag {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 12px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 9px;
+    }
+    .tag-critical { background: #3d1f1f; color: #ff7b72; border: 1px solid #6e2020; }
+    .tag-developing { background: #1f2d3d; color: #79c0ff; border: 1px solid #1f4068; }
+    .tag-diplomatic { background: #1f2d1f; color: #56d364; border: 1px solid #1f4020; }
+    .tag-alert { background: #3d2d1f; color: #e3b341; border: 1px solid #6e4a1f; }
+    .tag-intel { background: #2d1f3d; color: #d2a8ff; border: 1px solid #4a1f6e; }
+    .tag-market { background: #1f2d2d; color: #39d353; border: 1px solid #1f4d4d; }
+
+    .story-card h3 { font-size: 1rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; line-height: 1.45; }
+    .story-card p { font-size: 0.9rem; color: #8b949e; margin-bottom: 10px; line-height: 1.65; }
+    .story-card .source-link {
+      font-size: 0.78rem;
+      color: #58a6ff;
+    }
+
+    /* ── Audience sub-sections ── */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .audience-card {
+      background: #0d1117;
+      border: 1px solid #21262d;
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #ff7b72; }
+    .aud-partner { color: #79c0ff; }
+    .aud-exec { color: #e3b341; }
+    .audience-card ul { list-style: none; padding: 0; }
+    .audience-card ul li {
+      font-size: 0.84rem; color: #8b949e; padding: 4px 0;
+      border-bottom: 1px solid #161b22;
+      line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "›  "; color: #58a6ff; font-weight: 700; }
+
+    /* ── Situation board ── */
+    .status-board {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 20px;
+    }
+    .status-board table { width: 100%; border-collapse: collapse; }
+    .status-board td {
+      padding: 8px 10px;
+      font-size: 0.88rem;
+      border-bottom: 1px solid #21262d;
+      vertical-align: top;
+    }
+    .status-board td:first-child { color: #8b949e; width: 160px; font-weight: 600; white-space: nowrap; }
+    .status-board td:last-child { color: #e6edf3; }
+    .status-board tr:last-child td { border-bottom: none; }
+    .pill {
+      display: inline-block; padding: 1px 8px; border-radius: 10px;
+      font-size: 0.72rem; font-weight: 700; margin-right: 4px;
+    }
+    .pill-red { background: #3d1f1f; color: #ff7b72; }
+    .pill-yellow { background: #3d2d1f; color: #e3b341; }
+    .pill-green { background: #1f2d1f; color: #56d364; }
+    .pill-blue { background: #1f2d3d; color: #79c0ff; }
+
+    /* ── Divider ── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid #21262d;
+      margin: 32px 0;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      margin-top: 64px;
+      padding-top: 20px;
+      border-top: 1px solid #21262d;
+      color: #484f58;
+      font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: #58a6ff; font-size: 0.85rem; font-weight: 600;
+      margin-bottom: 36px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <a class="back-link" href="index.html">← Back to Archive</a>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="label">Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="subtitle">Iran War &nbsp;·&nbsp; Cybersecurity &nbsp;·&nbsp; AI</div>
+    <div class="date-badge">Tuesday, May 5, 2026 &nbsp;·&nbsp; 6:00 PM Paris</div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       SECTION 1 — IRAN WAR (Day 67)
+       ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">⚔️</span>
+      <span class="section-title">Iran War</span>
+      <span class="section-day">Day 67 · May 5, 2026</span>
+    </div>
+
+    <!-- Situation Board -->
+    <div class="status-board">
+      <table>
+        <tr>
+          <td>Ceasefire Status</td>
+          <td><span class="pill pill-yellow">STRAINED</span> Extended indefinitely — both sides claim violations</td>
+        </tr>
+        <tr>
+          <td>Strait of Hormuz</td>
+          <td><span class="pill pill-red">CONTESTED</span> US "Project Freedom" escorts active; Iran calls it a violation</td>
+        </tr>
+        <tr>
+          <td>UAE Theater</td>
+          <td><span class="pill pill-red">ESCALATING</span> Iran launched 15 missiles at UAE; UAE airspace partially closed</td>
+        </tr>
+        <tr>
+          <td>Diplomacy</td>
+          <td><span class="pill pill-blue">ACTIVE</span> Iranian FM Araghchi en route to Beijing for consultations</td>
+        </tr>
+        <tr>
+          <td>Oil Prices</td>
+          <td><span class="pill pill-yellow">ELEVATED</span> Brent above $100/barrel despite slight decline today</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-critical">⚠ Critical Escalation</span>
+      <h3>Iran Strikes UAE with 15 Missiles — First Since Ceasefire</h3>
+      <p>Iran launched 15 missiles and drones at the United Arab Emirates overnight, targeting a major oil port in Fujairah — the largest military action since the ceasefire came into effect on April 8. UAE air defenses intercepted the salvo and Emirati authorities partially closed national airspace. The attack marks the first direct missile strike on UAE since the ceasefire began, representing a dramatic escalation that threatens to unravel the truce brokered by Pakistan.</p>
+      <span class="source-link">Sources: <a href="https://www.aljazeera.com/news/liveblog/2026/5/5/iran-war-live-washington-tehran-trade-threats-over-strait-of-hormuz" target="_blank">Al Jazeera Live</a> · <a href="https://www.cbsnews.com/live-updates/iran-war-trump-strait-of-hormuz-israel-lebanon-ceasefire/" target="_blank">CBS News</a></span>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-developing">🔵 Developing</span>
+      <h3>"Project Freedom": US Navy Escorts Ships Through Hormuz, Sinks 7 Iranian Boats</h3>
+      <p>CENTCOM launched "Operation Project Freedom" to facilitate safe passage of commercial shipping through the Strait of Hormuz. US and Iranian forces traded shots as the operation commenced — the US Navy sank 7 small Iranian gunboats during confrontations in the strait. Tehran condemned the operation as a ceasefire violation, with Iranian FM Araghchi calling the US plan "Project Deadlock." Defense Secretary Hegseth maintained the ceasefire is "not over," framing Project Freedom as a separate, temporary operation.</p>
+      <span class="source-link">Sources: <a href="https://foreignpolicy.com/2026/05/04/us-project-freedom-strait-hormuz-trump-iran-war-strikes-uae-south-korea/" target="_blank">Foreign Policy</a> · <a href="https://thehill.com/policy/defense/5863622-us-iran-ceasefire-strait-hormuz/" target="_blank">The Hill</a> · <a href="https://www.cnn.com/2026/05/04/politics/us-iran-ceasefire-strait-of-hormuz" target="_blank">CNN</a></span>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-diplomatic">🟢 Diplomacy</span>
+      <h3>Araghchi Flies to Beijing; China Mediates as Ceasefire Frays</h3>
+      <p>Iranian Foreign Minister Abbas Araghchi departed for China today as part of ongoing diplomatic consultations between Tehran and Beijing. The visit signals Iran's continued effort to leverage Chinese backing amid rising US pressure. Beijing has maintained a cautious but supportive posture toward Tehran throughout the conflict. Meanwhile, Trump has not publicly declared the ceasefire broken, leaving the US policy position deliberately ambiguous as military operations continue in the strait.</p>
+      <span class="source-link">Sources: <a href="https://www.cnn.com/2026/05/05/world/live-news/iran-war-news" target="_blank">CNN Live Updates</a> · <a href="https://en.wikipedia.org/wiki/2026_Iran_war_ceasefire" target="_blank">Wikipedia — 2026 Iran War Ceasefire</a></span>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-alert">🟠 Geopolitical Watch</span>
+      <h3>Oil Markets Rattled; Hormuz Tensions Drive Prices Above $100</h3>
+      <p>Global oil markets remain highly volatile with Brent crude holding above $100/barrel despite a modest decline today as traders assess the latest Hormuz developments. Energy analysts warn that sustained military activity near the strait — through which approximately 20% of global oil flows — could push prices significantly higher if tanker insurance underwriters begin withdrawing coverage. OPEC+ has offered no coordinated response, with the UAE's partial exit from bloc cooperation further complicating supply outlooks.</p>
+      <span class="source-link">Sources: <a href="https://www.aljazeera.com/news/liveblog/2026/5/4/iran-war-live-tehran-says-trumps-hormuz-mission-violates-ceasefire" target="_blank">Al Jazeera</a> · <a href="https://www.globalsecurity.org/military/ops/iran-war-oprep.htm" target="_blank">GlobalSecurity Day 66 OPREP</a></span>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       SECTION 2 — CYBERSECURITY
+       ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🔐</span>
+      <span class="section-title">Cybersecurity</span>
+      <span class="section-day">Threat Intel · May 5, 2026</span>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-critical">⚠ Critical CVE</span>
+      <h3>CVE-2026-41940: cPanel/WHM Zero-Day Under Mass Exploitation — "Sorry" Ransomware Deployed</h3>
+      <p>Threat actors are weaponizing a critical authentication-bypass vulnerability in cPanel and WebHost Manager (WHM), tracked as CVE-2026-41940, to gain administrative control of web hosting control panels. Active exploitation has led to complete wipes of websites and backups. Attackers are deploying a new ransomware strain dubbed "Sorry" that locks critical web directories and databases, paralysing hosted organizations. Security teams are reporting a massive wave of compromise across shared-hosting environments globally.</p>
+      <span class="source-link">Sources: <a href="https://thehackernews.com/" target="_blank">The Hacker News</a> · <a href="https://bestantiviruspro.org/todays-most-reported-virus-threats-may-4-2026/" target="_blank">Best Antivirus Pro (May 4)</a></span>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-critical">⚠ CISA KEV — Patch by May 7</span>
+      <h3>BlueHammer (CVE-2026-33825): CISA Orders Federal Patching — 48-Hour Deadline</h3>
+      <p>CISA has added the BlueHammer Windows vulnerability (CVE-2026-33825) to its Known Exploited Vulnerabilities catalog and ordered Federal Civilian Executive Branch agencies to patch <strong>by May 7</strong> — two days from now. Organizations that have not yet applied the patch should treat this as an emergency. Private sector organizations running unpatched Windows systems face significant exploitation risk from active threat actor campaigns.</p>
+      <span class="source-link">Sources: <a href="https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-patch-microsoft-defender-flaw-exploited-in-zero-day-attacks/" target="_blank">Bleeping Computer</a> · <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank">CISA KEV Catalog</a></span>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-alert">🟠 Active Threat</span>
+      <h3>MOVEit Automation CVE-2026-4670 (CVSS 9.8) + MetInfo CVE-2026-29014 (CVSS 9.8) — Both Actively Exploited</h3>
+      <p>Progress Software has patched a critical authentication-bypass flaw in MOVEit Automation (CVE-2026-4670, CVSS 9.8) that is already under active exploitation — echoing the catastrophic MOVEit Transfer wave of 2023. Simultaneously, attackers are exploiting a code-injection flaw in the MetInfo CMS (CVE-2026-29014, CVSS 9.8) allowing arbitrary code execution. Organizations using either product must patch immediately and audit for indicators of compromise.</p>
+      <span class="source-link">Sources: <a href="https://thehackernews.com/" target="_blank">The Hacker News</a> · <a href="https://www.securityweek.com/" target="_blank">SecurityWeek</a></span>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-intel">🟣 Threat Intel</span>
+      <h3>KRYBIT Ransomware & VENOMOUS#HELPER RMM Campaign — Multi-Sector Hits</h3>
+      <p>KRYBIT ransomware is aggressively targeting consumer services, education, and manufacturing across North America and Europe, systematically exfiltrating employee records, financial data, and design files before encrypting. Separately, the active phishing campaign VENOMOUS#HELPER has compromised 80+ organizations since April 2025 using legitimate Remote Monitoring and Management (RMM) tools to maintain persistence — making detection via traditional AV difficult. Established RaaS operations Qilin and Akira continue devastating enterprise networks through renewed investment in Bring Your Own Vulnerable Driver (BYOVD) attacks to achieve kernel-level access.</p>
+      <span class="source-link">Sources: <a href="https://krebsonsecurity.com/" target="_blank">Krebs on Security</a> · <a href="https://www.bleepingcomputer.com/" target="_blank">Bleeping Computer</a></span>
+    </div>
+
+    <hr class="section-divider"/>
+
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="aud-label aud-ciso">🔐 CISO Priorities</div>
+        <ul>
+          <li>EMERGENCY: Patch CVE-2026-33825 (BlueHammer) before May 7 CISA deadline</li>
+          <li>Audit all cPanel/WHM instances for CVE-2026-41940 IOCs — ransomware active</li>
+          <li>Isolate and patch MOVEit Automation — CVSS 9.8 actively exploited</li>
+          <li>Hunt for VENOMOUS#HELPER RMM persistence in your environment</li>
+          <li>BYOVD detections: audit signed driver inventory against known-vulnerable list</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <div class="aud-label aud-partner">🤝 Consulting Partner Lens</div>
+        <ul>
+          <li>cPanel exploitation wave opens managed-hosting & SMB remediation pipeline</li>
+          <li>MOVEit repeat cycle: clients using MFT solutions need urgent assessment</li>
+          <li>BYOVD / kernel-level RaaS requires EDR tuning engagements</li>
+          <li>RMM supply-chain risk is a board-level conversation starter</li>
+          <li>2026 WEF Outlook: cyber inequality between large/small orgs is growing</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <div class="aud-label aud-exec">💼 Executive Briefing</div>
+        <ul>
+          <li>Two CVSS 9.8 flaws actively exploited — ask your CISO for patch status today</li>
+          <li>Federal agencies have 48-hour mandatory patching window — private sector should match urgency</li>
+          <li>Ransomware actors targeting education, manufacturing, consumer services</li>
+          <li>Cyber threats now "industrialized" — low-skill attackers using automated toolkits</li>
+          <li>AI-augmented attacks: 90+ firms had own AI tools hijacked to steal credentials</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       SECTION 3 — AI
+       ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🤖</span>
+      <span class="section-title">Artificial Intelligence</span>
+      <span class="section-day">May 5, 2026</span>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-developing">🔵 Model Race</span>
+      <h3>GPT-5.5 Matches Claude Mythos on Offensive Cyber Evaluations — Safety Debate Renewed</h3>
+      <p>UK AI Safety Institute (AISI) evaluations have found that OpenAI's GPT-5.5 (released April 23) performs comparably to Anthropic's Claude Mythos on offensive cyber tasks — the same capability level that led Anthropic to initially withhold Mythos from release. GPT-5.5 became generally available via API on April 24, just six weeks after GPT-5.4, reflecting the accelerating pace of frontier model development. Senior engineers rate GPT-5.5 as noticeably stronger than GPT-5.4 and Claude Opus 4.7 on reasoning and autonomous task completion. The AISI findings are renewing calls for harmonized international safety frameworks before even more capable models ship.</p>
+      <span class="source-link">Sources: <a href="https://www.cnbc.com/2026/04/23/openai-announces-latest-artificial-intelligence-model.html" target="_blank">CNBC</a> · <a href="https://creati.ai/ai-news/2026-05-01/gpt-5-5-cyber-tests-put-openai-near-anthropic-mythos/" target="_blank">Creati AI (AISI report)</a> · <a href="https://techcrunch.com/2026/04/23/openai-chatgpt-gpt-5-5-ai-model-superapp/" target="_blank">TechCrunch</a></span>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-developing">🔵 Model Update</span>
+      <h3>Kimi K2.6 Tops Coding Benchmark, Beating GPT-5.5 and Claude; Anthropic Widens Claude Integrations</h3>
+      <p>Zhipu AI's Kimi K2.6 has outperformed GPT-5.5, Claude Opus 4.7, and Gemini in a head-to-head programming challenge, marking another strong showing for Chinese AI labs in specialized benchmarks. Meanwhile, Anthropic released Claude Opus 4.6 and Sonnet 4.6, now offering a 1-million token context window at no long-context surcharge — a significant cost reduction for enterprises processing large documents. Anthropic also widened Claude's integration footprint to include creative tools such as Adobe and Blender, embedding AI directly into design and production workflows.</p>
+      <span class="source-link">Sources: <a href="https://llm-stats.com/ai-news" target="_blank">LLM Stats</a> · <a href="https://blog.mean.ceo/anthropic-claude-news-may-2026/" target="_blank">Anthropic Claude News May 2026</a></span>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-alert">🟠 Policy</span>
+      <h3>White House Announces Comprehensive AI Regulation Framework</h3>
+      <p>The White House announced on May 3 that the US government is developing comprehensive AI regulations aimed at ensuring safety, accountability, and fairness across all sectors. The framework is expected to address agentic AI, frontier model safety evaluations, and federal procurement standards. This follows growing Congressional pressure after OpenAI and Anthropic briefed lawmakers on the offensive cyber capabilities of frontier models. Gartner projects enterprise AI adoption will increase over 30% in 2026, intensifying the urgency for governance frameworks that can keep pace.</p>
+      <span class="source-link">Sources: <a href="https://www.technologyreview.com/2026/04/21/1135643/10-ai-artificial-intelligence-trends-technologies-research-2026/" target="_blank">MIT Tech Review — 10 Things That Matter in AI 2026</a> · <a href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank">Crescendo AI News</a></span>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-market">🟢 Enterprise</span>
+      <h3>Shadow AI Crisis: 1,200 Unofficial AI Apps Per Enterprise, 86% With No Visibility</h3>
+      <p>New research reveals the average enterprise now has approximately 1,200 unofficial AI applications in use — a phenomenon dubbed "Shadow AI." 86% of organizations report zero visibility into their AI data flows, and Shadow AI breaches cost an average of $670,000 more than standard security incidents. While 83% of organizations planned to deploy agentic AI capabilities this year, only 29% feel truly ready to do so securely. The Cisco State of AI Security 2026 report found AI-related security incidents surged 56.4% year-over-year.</p>
+      <span class="source-link">Sources: <a href="https://blogs.cisco.com/ai/cisco-state-of-ai-security-2026-report" target="_blank">Cisco State of AI Security 2026</a> · <a href="https://www.cybersecurity-insiders.com/2026-ciso-ai-risk-report/" target="_blank">2026 CISO AI Risk Report</a> · <a href="https://adversa.ai/blog/top-agentic-ai-security-resources-may-2026/" target="_blank">Adversa AI — Agentic AI Security</a></span>
+    </div>
+
+    <hr class="section-divider"/>
+
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="aud-label aud-ciso">🔐 CISO: AI Risk</div>
+        <ul>
+          <li>GPT-5.5 now at "High" offensive cyber bar — review AI tool access controls</li>
+          <li>Launch Shadow AI discovery — 1,200 unofficial apps per org on average</li>
+          <li>Mandate AI data-flow visibility: 86% of orgs currently flying blind</li>
+          <li>Align AI governance to NIST AI RMF, ISO 42001, MITRE ATLAS</li>
+          <li>Test agentic AI with adversarial red-teaming before production deployment</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <div class="aud-label aud-partner">🤝 Consulting Partner</div>
+        <ul>
+          <li>AI governance gap = massive opportunity: only 29% of orgs feel AI-ready</li>
+          <li>Shadow AI assessments and remediation is an immediate service offering</li>
+          <li>Kimi K2.6 coding dominance signals client need for model vendor diversification</li>
+          <li>1M token Claude context: cost structures for document-heavy clients improving</li>
+          <li>White House framework incoming — help clients get ahead of compliance curve</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <div class="aud-label aud-exec">💼 Executive View</div>
+        <ul>
+          <li>AI model race accelerating: GPT-5.5 shipped 6 weeks after GPT-5.4</li>
+          <li>UK safety evaluators: frontier AI now has meaningful offensive cyber capability</li>
+          <li>White House AI regulation framework on the way — strategic positioning now</li>
+          <li>Gartner: 30%+ enterprise AI adoption growth in 2026 — competitive imperative</li>
+          <li>Shadow AI is a real financial risk: $670K premium per breach vs. standard incidents</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Tuesday, May 5, 2026 &nbsp;·&nbsp; 6:00 PM Paris &nbsp;·&nbsp; <a href="index.html">← Full Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
