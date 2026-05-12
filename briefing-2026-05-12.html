@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Tuesday, May 12, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .header .eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .header h1 { font-size: 2.1rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .header .date { font-size: 1rem; color: #8b949e; margin-bottom: 6px; }
+    .header .tagline { font-size: 0.88rem; color: #6e7681; }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 54px;
+    }
+    .section-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid #21262d;
+    }
+    .section-icon { font-size: 1.6rem; }
+    .section-title { font-size: 1.3rem; font-weight: 800; color: #f0f6fc; }
+    .section-subtitle { font-size: 0.8rem; color: #8b949e; margin-top: 2px; }
+
+    /* ── Story card ── */
+    .story {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+    }
+    .story-title {
+      font-size: 1.05rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 8px; line-height: 1.4;
+    }
+    .story-body { font-size: 0.9rem; color: #c9d1d9; line-height: 1.7; }
+    .story-body p { margin-bottom: 8px; }
+    .story-body p:last-child { margin-bottom: 0; }
+    .story-source {
+      margin-top: 10px; font-size: 0.78rem; color: #6e7681;
+    }
+    .story-source a { color: #58a6ff; }
+
+    /* ── Audience badges ── */
+    .audience-block {
+      margin-top: 14px;
+      border-top: 1px solid #21262d;
+      padding-top: 14px;
+    }
+    .audience-row {
+      display: flex; gap: 10px; margin-bottom: 8px;
+      flex-wrap: wrap; align-items: flex-start;
+    }
+    .audience-row:last-child { margin-bottom: 0; }
+    .badge {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.8px; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 20px; flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .badge-ciso   { background: #1f3a5c; color: #79c0ff; border: 1px solid #264b70; }
+    .badge-partner{ background: #1e3a2a; color: #56d364; border: 1px solid #2d5a3d; }
+    .badge-exec   { background: #3a2a1e; color: #e3b341; border: 1px solid #5a3d2d; }
+    .audience-text { font-size: 0.84rem; color: #c9d1d9; }
+
+    /* ── Pill tags ── */
+    .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+    .tag {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.5px;
+      padding: 2px 8px; border-radius: 12px;
+      background: #21262d; color: #8b949e; border: 1px solid #30363d;
+    }
+    .tag-red    { background: #3a1a1a; color: #ff7b72; border-color: #5a2a2a; }
+    .tag-orange { background: #3a2a1a; color: #ffa657; border-color: #5a3a2a; }
+    .tag-blue   { background: #1a2a3a; color: #79c0ff; border-color: #2a3a5a; }
+    .tag-green  { background: #1a3a2a; color: #56d364; border-color: #2a5a3a; }
+    .tag-purple { background: #2a1a3a; color: #d2a8ff; border-color: #3a2a5a; }
+
+    /* ── Severity ── */
+    .severity {
+      display: inline-block; font-size: 0.7rem; font-weight: 800;
+      padding: 2px 10px; border-radius: 4px; margin-left: 10px;
+      vertical-align: middle; letter-spacing: 0.6px; text-transform: uppercase;
+    }
+    .sev-critical { background: #ff7b72; color: #0d1117; }
+    .sev-high     { background: #ffa657; color: #0d1117; }
+    .sev-medium   { background: #e3b341; color: #0d1117; }
+
+    /* ── SITREP box ── */
+    .sitrep {
+      background: #1c2128;
+      border-left: 4px solid #58a6ff;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      font-size: 0.88rem; color: #c9d1d9;
+    }
+    .sitrep strong { color: #f0f6fc; }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center; margin-top: 60px;
+      padding-top: 20px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #484f58;
+    }
+    .footer strong { color: #6e7681; }
+    .footer a { color: #6e7681; }
+    .back-link {
+      display: inline-block; margin-bottom: 40px;
+      font-size: 0.85rem; color: #58a6ff;
+    }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <a class="back-link" href="index.html">← Back to Archive</a>
+
+  <div class="header">
+    <div class="eyebrow">Intelligence Briefing &nbsp;·&nbsp; Day 74</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="date">Tuesday, May 12, 2026</div>
+    <div class="tagline">Iran War &nbsp;·&nbsp; Cybersecurity &nbsp;·&nbsp; Artificial Intelligence</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 1 — IRAN WAR
+  ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🌍</div>
+      <div>
+        <div class="section-title">Iran War</div>
+        <div class="section-subtitle">Day 74 · Ceasefire Deadlock · Hormuz Crisis</div>
+      </div>
+    </div>
+
+    <div class="sitrep">
+      <strong>SITREP:</strong> The fragile US–Iran ceasefire is now described by Trump as on <strong>"massive life support"</strong> after he rejected Tehran's counter-proposal as <strong>"totally unacceptable."</strong> Both sides continue to exchange fire in the Strait of Hormuz. Hezbollah resumed cross-border strikes into Israel for the first time since mid-April. Oil near $120/bbl. Day 74 of the conflict.
+    </div>
+
+    <!-- Story 1 -->
+    <div class="story">
+      <div class="story-title">
+        Trump Calls Ceasefire "Massive Life Support" — Dismisses Iran's Counter-Proposal
+      </div>
+      <div class="tags">
+        <span class="tag tag-red">Ceasefire</span>
+        <span class="tag tag-orange">Diplomacy</span>
+        <span class="tag tag-blue">Negotiations</span>
+      </div>
+      <div class="story-body">
+        <p>President Trump declared on social media that the US–Iran ceasefire is on <em>"massive life support"</em> after rejecting Tehran's latest response to the American ceasefire framework. Trump called Iran's counter-proposal <strong>"garbage"</strong> and said it was "TOTALLY UNACCEPTABLE." The rejection marks a significant deterioration in talks that had been mediated by Pakistan since the original April 8 ceasefire agreement.</p>
+        <p>The core impasse: Washington wants Iran to halt uranium enrichment for at least 12 years and hand over ~440 kg of 60%-enriched uranium immediately. Tehran is demanding the end of war on all fronts, lifting of all US sanctions, reopening of Iranian oil exports, unfreezing of assets, and compensation for war damage — before agreeing to nuclear concessions.</p>
+        <p>New US sanctions on Iran were unveiled alongside Trump's remarks, tightening economic pressure further.</p>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://www.washingtonpost.com/politics/2026/05/10/iran-response-us-proposal-war/" target="_blank">Washington Post</a> ·
+        <a href="https://www.aljazeera.com/news/2026/5/11/trump-says-ceasefire-on-life-support-slams-iran-response-to-us-proposal" target="_blank">Al Jazeera</a> ·
+        <a href="https://www.cnn.com/2026/05/11/world/live-news/iran-war-proposal-trump" target="_blank">CNN Live</a>
+      </div>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story">
+      <div class="story-title">
+        Strait of Hormuz: Shooting Incidents Continue Despite Ceasefire — Oil Near $120/bbl
+      </div>
+      <div class="tags">
+        <span class="tag tag-red">Hormuz</span>
+        <span class="tag tag-orange">Oil Prices</span>
+        <span class="tag tag-red">Naval Clashes</span>
+      </div>
+      <div class="story-body">
+        <p>Both US and Iranian forces have exchanged fire in the Strait of Hormuz since the April 8 ceasefire took effect, effectively rendering it meaningless at sea. Shipping data shows only a trickle of tankers using the strait — with AIS transponders switched off — as carriers fear Iranian attack. Iran closed the strait to almost all traffic on March 4, following which Brent Crude surged past $120/barrel. The US counter-blockade on Iranian ports remains in place.</p>
+        <p>Oil prices remain elevated at approximately $20 above pre-war levels, with average US gas prices at $4.52/gallon (AAA). QatarEnergy's force majeure on LNG exports declared at the onset of the crisis has yet to be lifted.</p>
+        <p>Iran has demanded the US guarantee no further attacks and end its naval blockade as a precondition for any nuclear talks — terms Washington has rejected.</p>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://www.insurancejournal.com/news/international/2026/05/11/869296.htm" target="_blank">Insurance Journal</a> ·
+        <a href="https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_crisis" target="_blank">Wikipedia — Hormuz Crisis</a> ·
+        <a href="https://www.aljazeera.com/news/2026/4/14/how-much-will-us-hormuz-blockade-hurt-iran-and-does-tehran-have-an-escape" target="_blank">Al Jazeera</a>
+      </div>
+    </div>
+
+    <!-- Story 3 -->
+    <div class="story">
+      <div class="story-title">
+        Hezbollah Resumes Cross-Border Strikes Into Israel — Lebanon Truce Fractures
+      </div>
+      <div class="tags">
+        <span class="tag tag-red">Hezbollah</span>
+        <span class="tag tag-orange">Lebanon</span>
+        <span class="tag tag-blue">Escalation</span>
+      </div>
+      <div class="story-body">
+        <p>Hezbollah publicly claimed responsibility for 26 attacks on Friday, including two strikes on targets inside Israel — the first acknowledged cross-border strikes since the delicate mid-April Lebanon ceasefire. The group also claimed responsibility for the killing of two medics in Lebanon, an incident Al Jazeera's live blog tracked on May 11.</p>
+        <p>The Lebanese front's renewed activity complicates the broader ceasefire architecture, as Iran-backed groups are signaling they will not hold their fire if the US–Iran diplomatic track collapses entirely. International observers warn the Lebanon truce could be the next casualty of the diplomatic deadlock.</p>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://www.aljazeera.com/news/liveblog/2026/5/11/iran-war-live-trump-slams-tehrans-reply-israel-kills-2-medics-in-lebanon" target="_blank">Al Jazeera Live Blog</a> ·
+        <a href="https://en.wikipedia.org/wiki/2026_Iran_war" target="_blank">Wikipedia — 2026 Iran War</a>
+      </div>
+    </div>
+
+    <!-- Story 4 -->
+    <div class="story">
+      <div class="story-title">
+        Geopolitical Reactions: Europe, Gulf States, and Global Economic Shockwave
+      </div>
+      <div class="tags">
+        <span class="tag tag-blue">Geopolitics</span>
+        <span class="tag tag-orange">Economy</span>
+        <span class="tag tag-blue">EU</span>
+      </div>
+      <div class="story-body">
+        <p>The closure of the Strait of Hormuz to virtually all commercial shipping since March 4 has triggered a global economic shockwave: supply chain disruptions, surging fuel prices, and forced corporate contingency measures. European governments are pushing for renewed UN mediation, while Gulf Cooperation Council states maintain a cautious posture — caught between their security dependency on Washington and economic exposure to the oil crisis.</p>
+        <p>Iran's foreign minister previously announced on April 17 that the strait would remain open during the Lebanon ceasefire window. That commitment appears void as ceasefire conditions continue to be violated by multiple parties.</p>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://en.wikipedia.org/wiki/Economic_impact_of_the_2026_Iran_war" target="_blank">Wikipedia — Economic Impact</a> ·
+        <a href="https://commonslibrary.parliament.uk/research-briefings/cbp-10636/" target="_blank">UK House of Commons Library</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 2 — CYBERSECURITY
+  ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🔒</div>
+      <div>
+        <div class="section-title">Cybersecurity</div>
+        <div class="section-subtitle">Threats · CVEs · Ransomware · Compliance</div>
+      </div>
+    </div>
+
+    <!-- Story 1 -->
+    <div class="story">
+      <div class="story-title">
+        APT45 Uses AI to Build First Known Zero-Day 2FA Bypass — Google Disrupts "Mass Exploitation" Plot
+        <span class="severity sev-critical">Critical</span>
+      </div>
+      <div class="tags">
+        <span class="tag tag-red">Zero-Day</span>
+        <span class="tag tag-red">APT45</span>
+        <span class="tag tag-purple">AI-Generated Exploit</span>
+        <span class="tag tag-orange">2FA Bypass</span>
+      </div>
+      <div class="story-body">
+        <p>Google's Threat Intelligence Group (GTIG) has confirmed the <strong>first ever AI-generated zero-day exploit used in a real-world cyberattack</strong>. The North Korean APT45 (also known as Andariel / Onyx Sleet) used an AI model — not identified as Gemini — to discover and weaponize a 2FA bypass flaw in an unnamed popular open-source web-based admin tool. The flaw exploited a hard-coded trust exception in the authentication flow.</p>
+        <p>The group sent <em>"thousands of repetitive prompts"</em> recursively analysing CVEs and validating proof-of-concept exploits, enabling dramatically faster vulnerability discovery. Google identified the campaign as a planned <strong>mass exploitation event</strong> and worked with the affected vendor to responsibly disclose and patch before widespread damage occurred.</p>
+        <p>Exploitation mean time from CVE publication to working exploit in 2026 is now <strong>~10 hours</strong> across 3,532 CVE-exploit pairs — a record pace.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="badge badge-ciso">🔐 CISO</span>
+          <span class="audience-text">Review all admin tools using 2FA — audit authentication flow hardcoding. Assume CVE windows of <strong>10 hours or less</strong>. AI-assisted threat actors are now a confirmed reality, not a hypothetical. Update threat models to include adversarial AI-assisted reconnaissance.</span>
+        </div>
+        <div class="audience-row">
+          <span class="badge badge-partner">🤝 Partner</span>
+          <span class="audience-text">Milestone moment: AI-generated zero-days are no longer theoretical. Client advisory opportunity on adversarial AI risk and the collapsing CVE exploitation window. Pair with compliance frameworks (NIST AI RMF, ISO 42001).</span>
+        </div>
+        <div class="audience-row">
+          <span class="badge badge-exec">💼 Executive</span>
+          <span class="audience-text">Nation-state attackers now use AI to find security holes faster than patches can be issued. This is no longer a technology problem — it's a board-level risk. Ensure CISO has mandate and resources to match AI-accelerated threat pace.</span>
+        </div>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://thehackernews.com/2026/05/hackers-used-ai-to-develop-first-known.html" target="_blank">The Hacker News</a> ·
+        <a href="https://www.securityweek.com/google-detects-first-ai-generated-zero-day-exploit/" target="_blank">SecurityWeek</a> ·
+        <a href="https://www.cnbc.com/2026/05/11/google-thwarts-effort-hacker-group-use-ai-mass-exploitation-event.html" target="_blank">CNBC</a> ·
+        <a href="https://www.theregister.com/ai-ml/2026/05/11/google-says-criminals-used-ai-built-zero-day-in-planned-mass-hack-spree/5237982" target="_blank">The Register</a>
+      </div>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story">
+      <div class="story-title">
+        Microsoft Defender "BlueHammer" Zero-Day (CVE-2026-33825): Two More Unpatched Flaws Linger
+        <span class="severity sev-high">High</span>
+      </div>
+      <div class="tags">
+        <span class="tag tag-red">Zero-Day</span>
+        <span class="tag tag-orange">Microsoft Defender</span>
+        <span class="tag tag-blue">LPE</span>
+        <span class="tag tag-orange">CISA KEV</span>
+      </div>
+      <div class="story-body">
+        <p>Three Microsoft Defender zero-days — codenamed <strong>BlueHammer</strong>, <strong>RedSun</strong>, and <strong>UnDefend</strong> — were publicly disclosed by a researcher known as Chaotic Eclipse, who released PoC exploit code to GitHub in protest. All three are now being actively exploited in the wild.</p>
+        <p><strong>BlueHammer (CVE-2026-33825, CVSS 7.8)</strong> is a race-condition LPE flaw that grants System privileges. Patched on April 14, CISA added it to the KEV Catalog and ordered federal agencies to patch by May 7. <strong>RedSun</strong> and <strong>UnDefend</strong> (which disables Defender definition updates) remain <em>unpatched with no CVE assigned and no public fix timeline</em>. Patch Tuesday is May 13 — today — making this an urgent watch item.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="badge badge-ciso">🔐 CISO</span>
+          <span class="audience-text">Verify BlueHammer patch is deployed fleet-wide. Monitor today's Patch Tuesday (May 13) for RedSun and UnDefend fixes. Consider compensating controls for endpoints not yet patched — restrict Defender definition update permissions and monitor for privilege escalation indicators.</span>
+        </div>
+        <div class="audience-row">
+          <span class="badge badge-partner">🤝 Partner</span>
+          <span class="audience-text">Strong consulting opportunity: endpoint security posture assessments, Defender configuration reviews. Many clients remain exposed on RedSun and UnDefend — no patch exists yet.</span>
+        </div>
+        <div class="audience-row">
+          <span class="badge badge-exec">💼 Executive</span>
+          <span class="audience-text">Microsoft's flagship security product has three active vulnerabilities — two still without a fix. Organizations depending on Defender as a sole endpoint control are at elevated risk today.</span>
+        </div>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://www.securityweek.com/recent-microsoft-defender-vulnerability-exploited-as-zero-day/" target="_blank">SecurityWeek</a> ·
+        <a href="https://thehackernews.com/2026/04/three-microsoft-defender-zero-days.html" target="_blank">The Hacker News</a> ·
+        <a href="https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-patch-microsoft-defender-flaw-exploited-in-zero-day-attacks/" target="_blank">Bleeping Computer</a>
+      </div>
+    </div>
+
+    <!-- Story 3 -->
+    <div class="story">
+      <div class="story-title">
+        ShinyHunters Ransomware Group: Canvas/Instructure Breach Hits 9,000 Institutions Globally
+        <span class="severity sev-high">High</span>
+      </div>
+      <div class="tags">
+        <span class="tag tag-red">Ransomware</span>
+        <span class="tag tag-orange">ShinyHunters</span>
+        <span class="tag tag-blue">Education Sector</span>
+        <span class="tag tag-blue">PII Exposure</span>
+      </div>
+      <div class="story-body">
+        <p>The ShinyHunters ransomware group has claimed a series of high-profile attacks: a breach of <strong>Instructure (Canvas LMS)</strong> affecting nearly <strong>9,000 educational institutions worldwide</strong>, including UC Berkeley and the National University of Singapore. Additionally, the group attacked <strong>Cushman &amp; Wakefield</strong>, exposing over <strong>500,000 Salesforce records</strong> — including PII and internal corporate data.</p>
+        <p>These campaigns highlight ShinyHunters' pivot toward cloud-based SaaS platforms as primary attack surfaces. The Canvas breach is particularly notable for its scale across the global education sector.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="badge badge-ciso">🔐 CISO</span>
+          <span class="audience-text">If your org uses Canvas or Instructure products, treat breach notification as active. Audit Salesforce access controls and connected third-party integrations — Cushman breach vector likely a misconfigured OAuth app. Review SaaS supply chain risk assessments.</span>
+        </div>
+        <div class="audience-row">
+          <span class="badge badge-partner">🤝 Partner</span>
+          <span class="audience-text">Education and real estate sectors are newly exposed. Incident response retainers and SaaS security assessments are in demand. ShinyHunters' trend toward Salesforce-connected data is an emerging threat pattern to include in client briefings.</span>
+        </div>
+        <div class="audience-row">
+          <span class="badge badge-exec">💼 Executive</span>
+          <span class="audience-text">Half a million corporate records exposed via a single SaaS misconfiguration at Cushman &amp; Wakefield underscores the third-party data risk that board risk committees need to own. Ransomware is no longer just about encrypting files — it's data extortion at scale.</span>
+        </div>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://sharkstriker.com/blog/may-2026-data-breaches/" target="_blank">SharkStriker May Breach List</a> ·
+        <a href="https://www.brightdefense.com/resources/recent-data-breaches/" target="_blank">BrightDefense</a> ·
+        <a href="https://thehackernews.com/" target="_blank">The Hacker News</a>
+      </div>
+    </div>
+
+    <!-- Story 4 -->
+    <div class="story">
+      <div class="story-title">
+        CVE Exploitation Velocity Hits Record: 10-Hour Mean Time to Exploit in 2026
+        <span class="severity sev-medium">Medium</span>
+      </div>
+      <div class="tags">
+        <span class="tag tag-orange">Patch Management</span>
+        <span class="tag tag-blue">CVE Trends</span>
+        <span class="tag tag-blue">Threat Intelligence</span>
+      </div>
+      <div class="story-body">
+        <p>According to CYFIRMA's Weekly Intelligence Report (May 8, 2026), the mean time from CVE publication to working exploit has dropped to approximately <strong>10 hours</strong> across 3,532 CVE-exploit pairs in 2026 — a dramatic compression compared to previous years. The acceleration is being partially attributed to AI-assisted vulnerability research by threat actors.</p>
+        <p>Other notable vulnerabilities on active watch:
+          <strong>CVE-2026-6973</strong> — Ivanti Endpoint Manager (improper input validation, actively weaponized);
+          <strong>CVE-2026-4670</strong> — MOVEit Automation critical auth bypass (CVSS 9.8);
+          <strong>CVE-2026-41940</strong> — cPanel/WHM zero-day exploited for ransomware, cryptomining, and backdoor implantation.
+        </p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="badge badge-ciso">🔐 CISO</span>
+          <span class="audience-text">A 10-hour exploit window makes traditional weekly/monthly patch cycles inadequate. Prioritise automated patching for internet-facing assets and review Ivanti EPM and MOVEit deployments immediately. Treat any unpatched CVE as potentially already exploited.</span>
+        </div>
+        <div class="audience-row">
+          <span class="badge badge-partner">🤝 Partner</span>
+          <span class="audience-text">Vulnerability management and patch prioritisation advisory is a growing practice area. The 10-hour window is a compelling data point for client conversations on CTEM (Continuous Threat Exposure Management) adoption.</span>
+        </div>
+        <div class="audience-row">
+          <span class="badge badge-exec">💼 Executive</span>
+          <span class="audience-text">Attackers now exploit new security flaws in under half a day on average. Security teams cannot operate at that speed without automation investment. This is a resource and tooling question for the C-suite.</span>
+        </div>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://www.cyfirma.com/news/weekly-intelligence-report-08-may-2026/" target="_blank">CYFIRMA Weekly Intelligence Report</a> ·
+        <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank">CISA KEV Catalog</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 3 — ARTIFICIAL INTELLIGENCE
+  ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🤖</div>
+      <div>
+        <div class="section-title">Artificial Intelligence</div>
+        <div class="section-subtitle">Security · Market · Enterprise Strategy</div>
+      </div>
+    </div>
+
+    <!-- Story 1 -->
+    <div class="story">
+      <div class="story-title">
+        AI Writes Its First Zero-Day Exploit in the Wild — A Watershed Moment for Cyber Risk
+      </div>
+      <div class="tags">
+        <span class="tag tag-red">AI Security Risk</span>
+        <span class="tag tag-red">APT45</span>
+        <span class="tag tag-purple">Adversarial AI</span>
+      </div>
+      <div class="story-body">
+        <p>Google's confirmation that an AI model was used by North Korean APT45 to build a working zero-day exploit marks a <strong>fundamental shift in the threat landscape</strong>. For the first time, AI has demonstrably shortened the vulnerability discovery-to-weaponisation cycle in a real nation-state campaign.</p>
+        <p>Fortune called it "the moment security professionals have been warning about for years." The Register noted that the technique — thousands of recursive prompts analysing CVEs — is essentially AI-automated red-teaming weaponised by adversaries. No evidence Gemini or any specific major AI provider's system was involved; the attackers likely used open-weight or custom-trained models.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="badge badge-ciso">🔐 CISO</span>
+          <span class="audience-text">This is the proof-of-concept that adversarial AI has arrived operationally. Update your threat model: AI-generated exploits are now a real attack class. Engage your red team and threat intel function to assess how AI tools could accelerate adversary activity targeting your specific stack.</span>
+        </div>
+        <div class="audience-row">
+          <span class="badge badge-partner">🤝 Partner</span>
+          <span class="audience-text">First AI-generated zero-day in the wild is a turning point clients will react to. Proactive advisory opportunity: AI risk assessment frameworks, adversarial AI scenarios in tabletop exercises, and AI governance as a security control.</span>
+        </div>
+        <div class="audience-row">
+          <span class="badge badge-exec">💼 Executive</span>
+          <span class="audience-text">AI is now being used by nation-state hackers to attack companies. This moves the AI conversation from "productivity tool" to "strategic risk vector" at the board level — and changes the ROI calculus on AI security investments.</span>
+        </div>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://fortune.com/2026/05/11/google-catches-hackers-cybersecurity-warning-ai-anthropic-mythos/" target="_blank">Fortune</a> ·
+        <a href="https://www.bloomberg.com/news/articles/2026-05-11/hackers-used-ai-to-build-zero-day-attack-google-researchers-say" target="_blank">Bloomberg</a> ·
+        <a href="https://arnav.au/2026/05/12/ai-just-wrote-its-first-zero-day-exploit/" target="_blank">Arnav.au Analysis</a>
+      </div>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story">
+      <div class="story-title">
+        Apple to Allow Third-Party AI Models Across iOS 27 — OpenAI/Microsoft Partnership Goes Non-Exclusive
+      </div>
+      <div class="tags">
+        <span class="tag tag-blue">Apple</span>
+        <span class="tag tag-blue">OpenAI</span>
+        <span class="tag tag-green">Market Structure</span>
+        <span class="tag tag-purple">Competitive Landscape</span>
+      </div>
+      <div class="story-body">
+        <p>Two major competitive landscape shifts broke this week. <strong>Apple</strong> reportedly plans to open iOS 27, iPadOS 27, and macOS 27 to <em>third-party AI model selection</em>, allowing users to switch between providers including Google and Anthropic to power Apple Intelligence features — a move that would significantly commoditise the AI assistant layer on 1.5 billion+ Apple devices.</p>
+        <p><strong>Microsoft and OpenAI</strong> have restructured their partnership to a <strong>non-exclusive arrangement</strong>, opening the door to greater commercial competition in cloud AI. OpenAI can now pursue other cloud providers more aggressively, while Microsoft gains flexibility to integrate competing models. Meanwhile, <strong>Snap confirmed the end of its $400M Perplexity partnership</strong>, with the companies "amicably parting ways" in Q1 2026.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="badge badge-ciso">🔐 CISO</span>
+          <span class="audience-text">If iOS allows third-party AI providers, enterprise MDM policies will need updating to control which AI backends are permitted on company-managed devices. Shadow AI risk increases significantly on the Apple platform. Prepare policy frameworks now.</span>
+        </div>
+        <div class="audience-row">
+          <span class="badge badge-partner">🤝 Partner</span>
+          <span class="audience-text">The commoditisation of AI at the OS layer accelerates enterprise AI adoption — and the advisory market. Microsoft/OpenAI going non-exclusive signals increased fragmentation. Multi-vendor AI strategy advisory will be in demand across all client segments.</span>
+        </div>
+        <div class="audience-row">
+          <span class="badge badge-exec">💼 Executive</span>
+          <span class="audience-text">Apple opening AI choice to users is the biggest platform-level shift since app stores. Enterprises should anticipate employees choosing their own AI providers on Apple hardware — your AI governance policies need to account for this before iOS 27 ships.</span>
+        </div>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://www.marketingprofs.com/opinions/2026/54655/ai-update-may-8-2026-ai-news-and-views-from-the-past-week" target="_blank">MarketingProfs AI Update</a> ·
+        <a href="https://llm-stats.com/ai-news" target="_blank">LLM Stats</a> ·
+        <a href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank">Crescendo AI News</a>
+      </div>
+    </div>
+
+    <!-- Story 3 -->
+    <div class="story">
+      <div class="story-title">
+        AI in the Boardroom: 76% of Enterprises Now Have a Chief AI Officer — Boards Grapple With Governance
+      </div>
+      <div class="tags">
+        <span class="tag tag-green">Enterprise AI</span>
+        <span class="tag tag-blue">Governance</span>
+        <span class="tag tag-purple">CAIO</span>
+      </div>
+      <div class="story-body">
+        <p>A new survey of 2,000+ organisations finds that <strong>76% have now established a Chief AI Officer (CAIO) role</strong>, up from just 26% in 2025 — a tripling in twelve months. CNBC reports that AI is changing boardrooms materially, with boards now regularly discussing AI oversight, ethics, and risk alongside financial performance.</p>
+        <p>Microsoft's global AI diffusion report (May 7) shows AI usage growing from 16.3% to <strong>17.8% of the world's working-age population</strong> in Q1 2026. US software developer employment is up 4% year-over-year, suggesting AI is augmenting rather than replacing technical roles — for now.</p>
+        <p>EU AI Act negotiations to amend high-risk AI deadlines have stalled, meaning the <strong>August 2026 compliance deadline for high-risk AI systems remains in force</strong>. The UK announced a domestic AI hardware plan targeting chip and semiconductor sovereignty.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="badge badge-ciso">🔐 CISO</span>
+          <span class="audience-text">With 76% of enterprises having a CAIO, expect AI governance questions to arrive at your desk from the board. Security needs a seat in AI governance frameworks — ensure your team has a defined role in the CAIO/CISO interface, particularly for model vetting and AI supply chain risk.</span>
+        </div>
+        <div class="audience-row">
+          <span class="badge badge-partner">🤝 Partner</span>
+          <span class="audience-text">CAIO role explosion means a new executive buyer for AI consulting. EU AI Act compliance (August 2026 deadline) remains a strong near-term driver. The UK hardware plan signals government procurement opportunity. Align practice offerings accordingly.</span>
+        </div>
+        <div class="audience-row">
+          <span class="badge badge-exec">💼 Executive</span>
+          <span class="audience-text">If you don't yet have a CAIO or equivalent governance structure, you're now in the minority. The EU AI Act compliance deadline is August 2026 — for any organisation operating in Europe with high-risk AI systems, this is a legal exposure issue, not just a best-practice question.</span>
+        </div>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://www.cnbc.com/2026/05/11/heres-how-artificial-intelligence-is-changing-boardrooms.html" target="_blank">CNBC</a> ·
+        <a href="https://blogs.microsoft.com/on-the-issues/2026/05/07/the-state-of-global-ai-diffusion-in-2026/" target="_blank">Microsoft on the Issues</a> ·
+        <a href="https://www.tlt.com/insights-and-events/insight/ai-brief-may-2026" target="_blank">TLT AI Brief May 2026</a> ·
+        <a href="https://www.transparencycoalition.ai/news/ai-legislative-update-may8-2026" target="_blank">AI Legislative Update</a>
+      </div>
+    </div>
+
+    <!-- Story 4 -->
+    <div class="story">
+      <div class="story-title">
+        Cadence + NVIDIA Expand Robotics AI Partnership — Sim-to-Real Gap Targeted
+      </div>
+      <div class="tags">
+        <span class="tag tag-green">Robotics</span>
+        <span class="tag tag-blue">NVIDIA</span>
+        <span class="tag tag-purple">Agentic AI</span>
+      </div>
+      <div class="story-body">
+        <p>Cadence Design Systems and NVIDIA announced an expanded partnership combining Cadence's simulation engines with NVIDIA's Isaac robotics libraries and Cosmos world-foundation models. The explicit goal is closing the <em>"sim-to-real gap"</em> — the performance degradation robots experience when transitioning from virtual training environments to physical deployment.</p>
+        <p>The partnership is seen as a major step toward practical industrial and logistics robotics at scale, and aligns with NVIDIA's broader push to make Cosmos the de-facto world model standard for physical AI systems.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="badge badge-partner">🤝 Partner</span>
+          <span class="audience-text">Physical AI and industrial automation are the next wave after enterprise software AI. Cadence/NVIDIA is positioning for the design-to-deployment pipeline. Manufacturing, logistics, and defence clients will be early movers — advisory on AI integration into physical operations is an emerging practice area.</span>
+        </div>
+        <div class="audience-row">
+          <span class="badge badge-exec">💼 Executive</span>
+          <span class="audience-text">Robotics AI is moving from lab to factory floor faster than anticipated. If your sector involves physical operations, this partnership signals that AI-driven automation at scale is closer than most roadmaps assume.</span>
+        </div>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://blogs.oracle.com/ai-and-datascience/whats-new-in-ai-may-2026" target="_blank">Oracle AI & Data Science Blog</a> ·
+        <a href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank">Crescendo AI</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Tuesday, May 12, 2026 &nbsp;·&nbsp; 6:00 PM Paris Time</p>
+    <p style="margin-top:6px;"><a href="index.html">← Back to Briefing Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
