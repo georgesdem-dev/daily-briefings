@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Saturday, May 16, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── HEADER ── */
+    .header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 10px; }
+    .header .meta { font-size: 0.88rem; color: #8b949e; }
+    .header .meta span { margin: 0 6px; }
+
+    /* ── SECTION ── */
+    .section {
+      margin-bottom: 52px;
+    }
+    .section-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid #21262d;
+    }
+    .section-icon { font-size: 1.6rem; }
+    .section-title { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; }
+    .section-badge {
+      margin-left: auto;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 3px 10px; border-radius: 20px;
+    }
+    .badge-red    { background: #3d1f1f; color: #f85149; border: 1px solid #6a2020; }
+    .badge-blue   { background: #1a2a3d; color: #58a6ff; border: 1px solid #1f4068; }
+    .badge-purple { background: #2a1f3d; color: #bc8cff; border: 1px solid #4a2d7a; }
+
+    /* ── STORY CARD ── */
+    .story {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+      transition: border-color 0.15s;
+    }
+    .story:hover { border-color: #444c56; }
+    .story-headline {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 8px; line-height: 1.4;
+    }
+    .story-body { font-size: 0.88rem; color: #c9d1d9; margin-bottom: 10px; }
+    .story-source {
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .story-source a { color: #58a6ff; }
+
+    /* ── AUDIENCE BLOCKS ── */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .audience-card {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+    .audience-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 8px;
+    }
+    .audience-ciso   .audience-label { color: #f85149; }
+    .audience-partner .audience-label { color: #3fb950; }
+    .audience-exec   .audience-label { color: #d29922; }
+    .audience-body { font-size: 0.83rem; color: #c9d1d9; line-height: 1.6; }
+
+    /* ── DIVIDER ── */
+    .sub-section-title {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 1.8px;
+      text-transform: uppercase; color: #484f58;
+      margin: 28px 0 14px; padding-left: 2px;
+    }
+
+    /* ── STATUS BAR ── */
+    .status-bar {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 16px 20px;
+      display: flex; flex-wrap: wrap; gap: 22px;
+      margin-bottom: 28px;
+    }
+    .stat { display: flex; flex-direction: column; }
+    .stat-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #484f58; }
+    .stat-value { font-size: 1.05rem; font-weight: 700; color: #f0f6fc; margin-top: 2px; }
+    .stat-value.red    { color: #f85149; }
+    .stat-value.amber  { color: #d29922; }
+    .stat-value.green  { color: #3fb950; }
+
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center; margin-top: 60px; padding-top: 22px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+    .back-link { margin-bottom: 32px; }
+    .back-link a { font-size: 0.85rem; color: #58a6ff; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="label">Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      <span>Saturday, May 16, 2026</span>
+      <span>·</span>
+      <span>6:00 PM Paris</span>
+      <span>·</span>
+      <span>Day 78 of the Iran War</span>
+    </div>
+  </div>
+
+  <div class="back-link"><a href="index.html">← Back to Archive</a></div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 1 — IRAN WAR
+  ══════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">⚔️</div>
+      <div class="section-title">Iran War — Day 78</div>
+      <div class="section-badge badge-red">CRITICAL</div>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+      <div class="stat">
+        <span class="stat-label">Ceasefire</span>
+        <span class="stat-value amber">On Life Support</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Hormuz</span>
+        <span class="stat-value red">Dual Blockade</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">War Cost (US)</span>
+        <span class="stat-value red">$29 Billion</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Oil (Brent)</span>
+        <span class="stat-value amber">&gt;$100/bbl</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Talks</span>
+        <span class="stat-value amber">Stalled</span>
+      </div>
+    </div>
+
+    <!-- Stories -->
+    <div class="story">
+      <div class="story-headline">🕊️ Ceasefire on "Life Support" as Iran Calls Trust the Core Issue</div>
+      <div class="story-body">
+        Iran's Foreign Minister Abbas Araghchi stated Friday that a "lack of trust" remains the biggest obstacle to ending the war, even as both sides continue back-channel talks. Trump, heading to China for meetings with President Xi Jinping, said the ceasefire is on "massive life support" and that Xi had offered diplomatic help but ruled out military assistance to Tehran. Trump has told aides he is now more seriously considering resuming combat operations if talks break down.
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://www.washingtonpost.com/world/2026/05/15/iran-us-israel-war-trump-oil-hormuz/17ad56ca-5068-11f1-97e7-22c6c29ff0d8_story.html" target="_blank">Washington Post</a> ·
+        <a href="https://www.cnbc.com/2026/05/15/trump-xi-us-china-iran-war-deal.html" target="_blank">CNBC</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">🚢 The "Dual Blockade": Iran Controls Hormuz, US Blocks Iranian Ports</div>
+      <div class="story-body">
+        Despite Iran's FM announcing the Strait of Hormuz was "open," it remains effectively closed — Iran is limiting ships to a trickle and charging tolls exceeding $1 million per vessel. In parallel, the US Navy has maintained its blockade of Iranian ports since April 13. The Guardian described the standoff as a "dual blockade," with oil prices staying above $100/barrel and analysts warning US gas pump prices could reach $5/gallon. Iran's counter-proposal demanded sovereignty recognition over Hormuz plus war reparations, which Trump called "totally unacceptable."
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_crisis" target="_blank">Wikipedia — 2026 Strait of Hormuz Crisis</a> ·
+        <a href="https://www.aljazeera.com/news/2026/5/6/has-the-us-accepted-irans-demand-to-settle-hormuz-first-nuclear-later" target="_blank">Al Jazeera</a> ·
+        <a href="https://www.cbsnews.com/live-updates/iran-war-trump-ceasefire-life-support-israel-hezbollah/" target="_blank">CBS News</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">🇨🇳 China's Diplomatic Role — Xi Offers Mediation, Rules Out Military Aid</div>
+      <div class="story-body">
+        Trump departed for China on May 12, where he said he would have a "long talk" on Iran with Xi Jinping. Xi reportedly told Trump he would not send military assistance to Iran but offered to facilitate diplomatic talks. Iran's FM Araghchi also welcomed Chinese mediation, saying Tehran was open to diplomatic help "particularly from China." The China factor is emerging as the main remaining pathway toward a peace agreement as direct US-Iran talks remain deadlocked.
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://www.cnbc.com/2026/05/15/trump-xi-us-china-iran-war-deal.html" target="_blank">CNBC</a> ·
+        <a href="https://www.aljazeera.com/news/liveblog/2026/5/12/iran-war-live-trump-slams-iranian-proposal-as-ceasefire-hangs-by-a-thread" target="_blank">Al Jazeera</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">💀 Lebanon Violence Continues Despite Ceasefire — 8 Killed in Israeli Strikes</div>
+      <div class="story-body">
+        Israeli strikes targeting vehicles on a highway south of Beirut on May 13 killed eight people, including two children, according to Lebanon's health ministry — the latest in a string of attacks despite the Lebanon ceasefire that began April 16. The strikes signal ongoing fragility in the Israel-Hezbollah dimension of the broader conflict.
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://www.cnn.com/2026/05/13/world/live-news/trump-iran-war-news" target="_blank">CNN — Day 75 Live Updates</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">💰 War Cost Climbs to $29B; Iran Parliament Threatens to "Teach a Lesson"</div>
+      <div class="story-body">
+        The US war against Iran has now cost $29 billion, up from the $25B estimate provided to Congress two weeks ago, a Pentagon official confirmed. Iran's parliament speaker warned that Iran's military is "ready to teach a lesson to any aggressor" after Trump rejected Tehran's peace counter-proposal. The US Department of Energy now forecasts oil prices will remain above $100/barrel in coming weeks.
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://www.cnn.com/2026/05/12/world/live-news/trump-iran-war-news" target="_blank">CNN — Day 74 Live Updates</a> ·
+        <a href="https://commonslibrary.parliament.uk/research-briefings/cbp-10521/" target="_blank">UK House of Commons Library</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 2 — CYBERSECURITY
+  ══════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🔒</div>
+      <div class="section-title">Cybersecurity</div>
+      <div class="section-badge badge-blue">THREAT INTEL</div>
+    </div>
+
+    <!-- TOP STORY -->
+    <div class="story">
+      <div class="story-headline">🤖 WORLD FIRST: Google Detects AI-Generated Zero-Day Exploit in the Wild</div>
+      <div class="story-body">
+        Google Threat Intelligence Group (GTIG) has identified and helped neutralize what it believes is the first zero-day exploit developed using artificial intelligence. A prominent cybercrime group used AI to craft a Python script that bypassed two-factor authentication (2FA) on a widely used open-source web administration tool. GTIG flagged several telltale signs of AI authorship: overly instructional code comments, textbook-style formatting, and even a hallucinated CVSS score that doesn't exist. Google alerted the tool's developer before the attackers could execute what GTIG assessed was a planned "mass exploitation event." Nation-state clusters associated with China (PRC) and North Korea (DPRK) are cited as showing heightened interest in AI-assisted exploit development.
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://www.securityweek.com/google-detects-first-ai-generated-zero-day-exploit/" target="_blank">SecurityWeek</a> ·
+        <a href="https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access" target="_blank">Google Cloud Blog (GTIG)</a> ·
+        <a href="https://www.bloomberg.com/news/articles/2026-05-11/hackers-used-ai-to-build-zero-day-attack-google-researchers-say" target="_blank">Bloomberg</a> ·
+        <a href="https://cyberscoop.com/google-threat-intelligence-group-ai-developed-zero-day-exploit/" target="_blank">CyberScoop</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">🚨 CISA KEV Alert: Cisco Catalyst SD-WAN CVE-2026-20182 — CVSS 10.0, Patch by May 17</div>
+      <div class="story-body">
+        CISA added CVE-2026-20182, a critical authentication bypass in Cisco Catalyst SD-WAN Controller, to its Known Exploited Vulnerabilities catalog. The flaw carries a CVSS score of 10.0 — the maximum possible — and federal agencies have until <strong>May 17, 2026</strong> to remediate. Cisco attributed active exploitation with high confidence to threat cluster UAT-8616, the same group behind prior exploitation of CVE-2026-20127 targeting SD-WAN infrastructure.
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank">CISA KEV Catalog</a> ·
+        <a href="https://carthageelectronics.com/zero-day-threat-report-may-2026/" target="_blank">Zero-Day Threat Report May 2026</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">📧 Microsoft Exchange Server CVE-2026-42897 Under Active Exploitation</div>
+      <div class="story-body">
+        Microsoft disclosed CVE-2026-42897 (CVSS 8.1), a spoofing vulnerability in on-premise Exchange Server rooted in a cross-site scripting flaw, and confirmed it is under active exploitation in the wild. The May 2026 Security Update Review from Zero Day Initiative covers this and other critical patches from Microsoft's Patch Tuesday cycle. Organisations still running on-premise Exchange are urged to patch immediately.
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://www.thezdi.com/blog/2026/5/12/the-may-2026-security-update-review" target="_blank">Zero Day Initiative — May 2026 Security Update Review</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">🏫 Canvas LMS Ransomware: ShinyHunters Breaches 275M+ Records, Demands Ransom</div>
+      <div class="story-body">
+        The Canvas LMS (Instructure) data breach that began in early May escalated on May 7 when ShinyHunters replaced the platform's login page with a ransomware message, threatening to release sensitive data — including names, email addresses, student IDs, and internal messages — unless a ransom was paid by May 12. The breach affects educational institutions globally and was tracked in parallel to the earlier data exposure incident. Instructure confirmed it was investigating a cybersecurity attack.
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://en.wikipedia.org/wiki/2026_Canvas_security_incident" target="_blank">Wikipedia — 2026 Canvas Security Incident</a> ·
+        <a href="https://www.brightdefense.com/resources/recent-data-breaches/" target="_blank">Bright Defense — 2026 Data Breaches</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">🏦 Allianz UK Hit by Clop Ransomware via Oracle E-Business Suite CVE</div>
+      <div class="story-body">
+        Allianz UK confirmed a cyber incident linked to the Clop ransomware group exploiting CVE-2025-61882, a critical Oracle E-Business Suite vulnerability rated CVSS 9.8. The incident adds to a growing wave of Clop-attributed attacks exploiting Oracle enterprise applications. Insurance sector CISOs should treat Oracle EBS patching as a P0 priority.
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://www.brightdefense.com/resources/recent-data-breaches/" target="_blank">Bright Defense — 2026 Data Breaches</a>
+      </div>
+    </div>
+
+    <!-- AUDIENCE BREAKDOWNS -->
+    <div class="sub-section-title">Audience Analysis</div>
+    <div class="audience-grid">
+      <div class="audience-card audience-ciso">
+        <div class="audience-label">🔐 CISO Lens</div>
+        <div class="audience-body">
+          <strong>Action items this weekend:</strong><br>
+          • <strong>Patch NOW</strong>: CVE-2026-20182 (Cisco SD-WAN, CVSS 10.0) — federal deadline is May 17. If you have SD-WAN in your estate, this is P0.<br>
+          • <strong>Exchange on-prem</strong>: CVE-2026-42897 actively exploited — prioritise patching or consider emergency WAF rules.<br>
+          • <strong>AI-generated exploits</strong>: Google's GTIG finding signals a new threat category. Existing signature-based detection is less effective against AI-crafted, polymorphic payloads. Review your 2FA implementations for the open-source admin tool category.<br>
+          • <strong>Clop/Oracle EBS</strong>: If Oracle E-Business Suite is in scope, treat CVE-2025-61882 as critical immediately.
+        </div>
+      </div>
+      <div class="audience-card audience-partner">
+        <div class="audience-label">🤝 Consulting Partner Lens</div>
+        <div class="audience-body">
+          <strong>Client conversation drivers:</strong><br>
+          • The AI-generated zero-day story is a watershed moment — expect board-level anxiety. Position your practice around AI-augmented red teaming and detection capabilities.<br>
+          • CISA's CVSS 10.0 Cisco alert creates an immediate advisory opportunity for clients running SD-WAN infrastructure.<br>
+          • Canvas breach opens a conversation with EdTech and higher-ed clients on third-party risk and ransomware readiness.<br>
+          • Clop's Oracle EBS angle is a timely reminder for large enterprise clients: patch cadence on legacy ERP must improve.
+        </div>
+      </div>
+      <div class="audience-card audience-exec">
+        <div class="audience-label">💼 Business Executive Lens</div>
+        <div class="audience-body">
+          <strong>Strategic risk summary:</strong><br>
+          • Google's discovery of an AI-built cyberattack weapon marks a step-change in the threat landscape. Hackers now have AI "co-pilots" accelerating exploit development — the security talent gap widens.<br>
+          • The Canvas breach affects millions of students globally and highlights ransomware as a business-continuity risk in the education sector.<br>
+          • With Allianz UK hit, the insurance sector is no longer a safe harbour. Cyber insurance pricing pressures will increase.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 3 — AI
+  ══════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🤖</div>
+      <div class="section-title">Artificial Intelligence</div>
+      <div class="section-badge badge-purple">MARKET & STRATEGY</div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">🔄 Microsoft & OpenAI Drop Exclusivity — Models Now Available on AWS & Google Cloud</div>
+      <div class="story-body">
+        In a major structural shift announced in late April and still reverberating through the market, Microsoft and OpenAI have ended their exclusive cloud relationship. OpenAI models can now be deployed across Amazon Web Services and Google Cloud — with Microsoft retaining only a four-month first-mover window on new frontier model releases. OpenAI revenue share payments to Microsoft are capped and run through 2030. Separately, Amazon announced up to $50B in OpenAI investment and secured exclusive third-party cloud distribution rights for OpenAI Frontier, its enterprise agent platform.
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://redmondmag.com/articles/2026/04/28/microsoft-openai-restructure-partnership.aspx" target="_blank">Redmond Magazine</a> ·
+        <a href="https://www.cnbc.com/2026/04/27/openai-microsoft-partnership-revenue-cap.html" target="_blank">CNBC</a> ·
+        <a href="https://interestingengineering.com/ai-robotics/microsoft-openai-partnership-restructuring" target="_blank">Interesting Engineering</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">🍎 Apple to Open iOS 27 AI Engine to Google, Anthropic & Third-Party Providers</div>
+      <div class="story-body">
+        Apple is reportedly preparing a major platform shift for iOS 27, iPadOS 27, and macOS 27 that would allow users to select third-party AI providers — including Google Gemini and Anthropic Claude — to power Apple Intelligence features. This would represent the most significant opening of Apple's platform in years, and would reshape the consumer AI distribution landscape by plugging frontier models directly into Apple's 1.4B active devices.
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://imfounder.com/science-tech/ai/ai-updates-may-2026/" target="_blank">IMFounder — 7 Explosive AI Updates May 2026</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">📊 76% of Enterprises Now Have a Chief AI Officer (CAIO)</div>
+      <div class="story-body">
+        A new survey of over 2,000 organisations finds 76% have established a Chief AI Officer position — up dramatically from 26% in 2025. The surge reflects board-level mandates to govern AI risk and capture value. Lloyds Banking Group became the first FTSE blue-chip company to deploy an AI tool directly in its boardroom, signalling AI's ascent into the C-suite and governance layer of major institutions.
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://www.cnbc.com/2026/05/11/heres-how-artificial-intelligence-is-changing-boardrooms.html" target="_blank">CNBC</a> ·
+        <a href="https://www.tlt.com/insights-and-events/insight/ai-brief-may-2026" target="_blank">TLT AI Brief May 2026</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">💼 AI Now Top Driver of Corporate Job Cuts for Second Consecutive Month</div>
+      <div class="story-body">
+        AI was cited as the top reason for job cuts in April 2026 — the second month in a row. However, analysis suggests companies are more often automating specific parts of roles rather than eliminating positions wholesale. The nuance matters: AI is reshaping job content faster than it is replacing headcount. But reskilling pressure is intensifying across professional services, finance, and knowledge work.
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://www.cnn.com/2026/05/10/tech/ai-taking-jobs" target="_blank">CNN Business</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">📜 Regulatory Watch: EU AI Act Stalls; China Issues AI Companion Rules</div>
+      <div class="story-body">
+        Negotiations to amend the EU AI Act have stalled, leaving the August 2026 compliance deadlines for high-risk AI systems in force — organisations rushing to achieve compliance before summer should not expect last-minute relief. Meanwhile, China's Cyberspace Administration issued the "Interim Measures for the Administration of Artificial Intelligence Anthropomorphic Interaction Services," establishing a dedicated compliance regime for AI-powered virtual companions and chatbots effective July 15, 2026.
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://www.fladgate.com/insights/ai-round-up-may-2026" target="_blank">Fladgate — AI Round-Up May 2026</a> ·
+        <a href="https://www.tlt.com/insights-and-events/insight/ai-brief-may-2026" target="_blank">TLT AI Brief May 2026</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">🔗 Snap–Perplexity $400M Partnership Collapses; Grok 4.3 Lands on Oracle Cloud</div>
+      <div class="story-body">
+        Snap and Perplexity's planned $400 million AI partnership has ended before any broad rollout, reflecting consolidation pressures in consumer AI distribution. On the model side, Grok 4.3 — xAI's latest reasoning model featuring a one million-token context window — is now available on Oracle Cloud Infrastructure (OCI) Enterprise AI.
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://imfounder.com/science-tech/ai/ai-updates-may-2026/" target="_blank">IMFounder — May 2026 AI Updates</a> ·
+        <a href="https://blogs.oracle.com/ai-and-datascience/whats-new-in-ai-may-2026" target="_blank">Oracle AI Blog</a>
+      </div>
+    </div>
+
+    <!-- AUDIENCE BREAKDOWNS -->
+    <div class="sub-section-title">Audience Analysis</div>
+    <div class="audience-grid">
+      <div class="audience-card audience-ciso">
+        <div class="audience-label">🔐 CISO Lens</div>
+        <div class="audience-body">
+          The Google GTIG AI zero-day finding (see Cyber section) is the most important AI-security development this week. Key implications: (1) AI is now a weapon in adversaries' hands at scale; (2) your red team must adopt AI tooling to stay ahead; (3) AI-generated code in your supply chain — including open source — may contain AI-authored vulnerabilities. Apple's opening of iOS 27 to third-party AI providers adds new data flows to manage under mobile device management policies.
+        </div>
+      </div>
+      <div class="audience-card audience-partner">
+        <div class="audience-label">🤝 Consulting Partner Lens</div>
+        <div class="audience-body">
+          The CAIO surge (26% → 76% in one year) is your strongest selling signal of 2026. Clients need governance frameworks, AI strategy roadmaps, and CAIO enablement urgently. The Microsoft-OpenAI non-exclusivity opens multi-cloud AI architecture conversations. Apple's iOS 27 move creates enterprise mobility and AI data governance advisory opportunities. EU AI Act deadline pressure in August is another near-term engagement driver.
+        </div>
+      </div>
+      <div class="audience-card audience-exec">
+        <div class="audience-label">💼 Business Executive Lens</div>
+        <div class="audience-body">
+          Three board-level signals this week: (1) AI in the boardroom is no longer experimental — Lloyds set the precedent for FTSE blue-chips; (2) the CAIO role has become a near-universal expectation — if you don't have one, you're now in the minority; (3) AI-driven job restructuring is real and accelerating — workforce strategy must factor in AI displacement and reskilling at the 2026 planning horizon.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Saturday, May 16, 2026 at 6:00 PM Paris &nbsp;·&nbsp; <a href="index.html">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
