@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Wednesday, May 20, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 52px;
+    }
+    .header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 12px;
+    }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
+    .header .date { font-size: 1rem; color: #8b949e; }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 56px;
+    }
+    .section-header {
+      display: flex; align-items: center; gap: 14px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid #21262d;
+      margin-bottom: 28px;
+    }
+    .section-icon { font-size: 2rem; }
+    .section-title { font-size: 1.35rem; font-weight: 800; color: #f0f6fc; }
+    .section-subtitle { font-size: 0.82rem; color: #6e7681; margin-top: 2px; letter-spacing: 0.5px; text-transform: uppercase; }
+
+    /* ── Story card ── */
+    .story {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .story-headline {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 8px;
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .story-badge {
+      display: inline-block;
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 7px;
+      border-radius: 4px; flex-shrink: 0; margin-top: 2px;
+    }
+    .badge-breaking { background: #da3633; color: #fff; }
+    .badge-developing { background: #9a6700; color: #fff; }
+    .badge-analysis { background: #1f6feb; color: #fff; }
+    .badge-alert  { background: #da3633; color: #fff; }
+    .badge-patch  { background: #238636; color: #fff; }
+    .badge-breach { background: #9a6700; color: #fff; }
+    .badge-launch { background: #1f6feb; color: #fff; }
+    .badge-trend  { background: #6e40c9; color: #fff; }
+
+    .story-body { font-size: 0.9rem; color: #c9d1d9; line-height: 1.7; }
+    .story-body p { margin-bottom: 6px; }
+    .story-source { margin-top: 10px; font-size: 0.78rem; color: #6e7681; }
+    .story-source a { color: #58a6ff; }
+
+    /* ── Audience pills ── */
+    .audience-section { margin-top: 28px; }
+    .audience-block {
+      background: #0d1117;
+      border: 1px solid #21262d;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+    }
+    .audience-tag {
+      display: inline-block;
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px;
+      border-radius: 4px; margin-bottom: 7px;
+    }
+    .tag-ciso    { background: #21262d; color: #f85149; border: 1px solid #f85149; }
+    .tag-partner { background: #21262d; color: #3fb950; border: 1px solid #3fb950; }
+    .tag-exec    { background: #21262d; color: #d29922; border: 1px solid #d29922; }
+
+    .audience-text { font-size: 0.87rem; color: #c9d1d9; line-height: 1.65; }
+
+    /* ── Divider ── */
+    .divider { border: none; border-top: 1px solid #21262d; margin: 36px 0; }
+
+    /* ── Summary banner ── */
+    .summary-banner {
+      background: linear-gradient(135deg, #161b22 0%, #1c2128 100%);
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 24px 26px;
+      margin-bottom: 52px;
+    }
+    .summary-banner h2 { font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #6e7681; margin-bottom: 12px; }
+    .summary-items { display: flex; flex-direction: column; gap: 8px; }
+    .summary-item { font-size: 0.9rem; color: #c9d1d9; display: flex; gap: 10px; }
+    .summary-item .si-label { color: #58a6ff; font-weight: 700; min-width: 110px; }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center; padding-top: 24px;
+      border-top: 1px solid #21262d;
+      color: #484f58; font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .header h1 { font-size: 1.5rem; }
+      .section-title { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ── HEADER ── -->
+  <div class="header">
+    <div class="label">Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="date">Wednesday, May 20, 2026 &nbsp;·&nbsp; 6:00 PM Edition</div>
+  </div>
+
+  <!-- ── TOP-LINE SUMMARY ── -->
+  <div class="summary-banner">
+    <h2>Today at a Glance</h2>
+    <div class="summary-items">
+      <div class="summary-item"><span class="si-label">🪖 Iran War</span> Trump pauses strike after Gulf pressure; Iran's revised 14-point plan revives diplomacy — Hormuz tolls floated as IRGC tightens grip on strait</div>
+      <div class="summary-item"><span class="si-label">🔐 Cyber</span> Drupal emergency release tonight (5–9 PM UTC) — exploit window open; Exchange CVE-2026-42897 still unpatched &amp; CISA KEV-listed; Verizon DBIR: vuln exploitation overtakes credentials for first time</div>
+      <div class="summary-item"><span class="si-label">🤖 AI</span> Google I/O 2026 underway: Gemini 3.5 Flash + Omni + Spark personal agent; Snap/Perplexity $400M deal collapses; OpenAI shares cyber model with EU — Anthropic holds back Mythos</div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- SECTION 1 — IRAN WAR                            -->
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🪖</div>
+      <div>
+        <div class="section-title">Iran War — Day 82</div>
+        <div class="section-subtitle">Ceasefire · Diplomacy · Strait of Hormuz · Geopolitics</div>
+      </div>
+    </div>
+
+    <!-- Story 1 -->
+    <div class="story">
+      <div class="story-headline">
+        <span class="story-badge badge-developing">Developing</span>
+        Trump Pauses Strike Again — Gulf Leaders Deliver Iran's Revised 14-Point Plan
+      </div>
+      <div class="story-body">
+        <p>President Trump announced he is placing a planned military strike on Iran "on hold" after Qatar, Saudi Arabia, and other Gulf states relayed a revised Iranian peace proposal drafted in Tehran. Trump said there is now "a very good chance" a deal can be reached to prevent Iran from obtaining a nuclear weapon.</p>
+        <p>Iran's revised 14-point plan — transmitted via Pakistan — retains demands for the release of frozen overseas assets, full sanctions relief, and recognition of sovereignty over the Strait of Hormuz. The most contentious sticking point: the U.S. is insisting on a 20-year moratorium on all uranium enrichment, a condition Tehran's negotiating team has "firmly rejected in every round."</p>
+        <p>U.S. and Iranian officials are reportedly "closing in" on a single-page framework memo that would serve as a ceasefire anchor while more detailed negotiations proceed, according to Axios sources.</p>
+      </div>
+      <div class="story-source">Sources: <a href="https://www.aljazeera.com/news/2026/5/19/trump-says-iran-attack-on-hold-what-we-know-about-latest-negotiations" target="_blank">Al Jazeera</a> · <a href="https://www.axios.com/2026/05/06/iran-us-deal-one-page-memo" target="_blank">Axios</a> · <a href="https://www.timesofisrael.com/us-iran-said-closing-in-on-framework-for-permanent-deal-as-trump-renews-bomb-threats/" target="_blank">Times of Israel</a></div>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story">
+      <div class="story-headline">
+        <span class="story-badge badge-developing">Hormuz</span>
+        IRGC Declares "Vast Operational Area" — UK Deploys Warship &amp; Drones to Protect Shipping
+      </div>
+      <div class="story-body">
+        <p>Iran's Revolutionary Guard Corps Navy has formally redefined the Strait of Hormuz as a "vast operational area" extending from Jask to Siri Island, giving it legal pretext to challenge any vessel without prior IRGC clearance. Tehran is now reportedly floating a fee/toll regime for commercial transit — a move that would institutionalize its blockade leverage.</p>
+        <p>U.S. Central Command reports turning back 58 commercial vessels attempting to enter or exit Iranian ports. Three U.S. warships were targeted by IRGC missiles on May 7 during a Hormuz transit — none were struck. Commercial shipping through the strait remains at roughly 5% of pre-war volume.</p>
+        <p>The United Kingdom today announced the deployment of drones, fighter aircraft, and HMS <em>Dauntless</em> to join an international coalition securing commercial passage. The EU is considering secondary sanctions on IRGC-linked entities facilitating the tolling scheme.</p>
+      </div>
+      <div class="story-source">Sources: <a href="https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_crisis" target="_blank">Wikipedia — Hormuz Crisis</a> · <a href="https://www.aljazeera.com/news/2026/4/24/how-long-can-iran-survive-the-uss-hormuz-blockade" target="_blank">Al Jazeera</a> · <a href="https://www.britannica.com/event/2026-Iran-war" target="_blank">Britannica</a></div>
+    </div>
+
+    <!-- Story 3 -->
+    <div class="story">
+      <div class="story-headline">
+        <span class="story-badge badge-analysis">Analysis</span>
+        Ceasefire Architecture Holding — But Fragile as Iranian FM Cites "Zero Trust" in Washington
+      </div>
+      <div class="story-body">
+        <p>The April 8 ceasefire brokered by Pakistan — with a subsequent Lebanon truce effective April 16 — remains nominally in force, but Iranian Foreign Minister Abbas Araghchi stated this week that Tehran "cannot trust the Americans at all" and that the ceasefire is being maintained only "to give diplomacy a chance." A UAE drone strike last Sunday set fire to an electrical generator at the Barakah nuclear plant perimeter, further fraying trust.</p>
+        <p>International Crisis Group warns that the absence of a formal verification mechanism means both sides can claim the other is in violation. The House of Commons Library notes that UK parliamentary debate is intensifying over whether British assets in the coalition constitute co-belligerence under international law.</p>
+      </div>
+      <div class="story-source">Sources: <a href="https://en.wikipedia.org/wiki/2026_Iran_war_ceasefire" target="_blank">Wikipedia — Ceasefire</a> · <a href="https://www.npr.org/2026/05/10/nx-s1-5817605/trump-rejects-iran-ceasefire-proposal" target="_blank">NPR</a> · <a href="https://commonslibrary.parliament.uk/research-briefings/cbp-10637/" target="_blank">House of Commons Library</a></div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- SECTION 2 — CYBERSECURITY                       -->
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🔐</div>
+      <div>
+        <div class="section-title">Cybersecurity</div>
+        <div class="section-subtitle">Threats · CVEs · Ransomware · Strategic Risk</div>
+      </div>
+    </div>
+
+    <!-- Story 1 — Drupal -->
+    <div class="story">
+      <div class="story-headline">
+        <span class="story-badge badge-alert">⚠️ URGENT</span>
+        Drupal Core Security Release Tonight — Exploit Window Expected Within Hours
+      </div>
+      <div class="story-body">
+        <p>The Drupal Security Team issued an emergency advisory today: a core security release is scheduled for <strong>today, May 20, 5:00–9:00 PM UTC</strong>. Administrators running any Drupal version are urged to reserve time immediately for core updates — the team explicitly warns that exploits targeting the vulnerability may be developed and deployed "within hours or days" of the patch publication.</p>
+        <p>Details of the vulnerability have been withheld pending patch release. Organizations running public-facing Drupal sites should activate WAF rules, prepare emergency change windows, and monitor Drupal's security advisories feed for the CVE assignment.</p>
+      </div>
+      <div class="story-source">Sources: <a href="https://www.breachsense.com/breaches/" target="_blank">BreachSense</a> · <a href="https://sharkstriker.com/blog/may-2026-data-breaches/" target="_blank">SharkStriker</a></div>
+    </div>
+
+    <!-- Story 2 — Exchange -->
+    <div class="story">
+      <div class="story-headline">
+        <span class="story-badge badge-alert">No Patch</span>
+        CVE-2026-42897 — Microsoft Exchange Zero-Day Actively Exploited, CISA KEV-Listed
+      </div>
+      <div class="story-body">
+        <p>A high-severity XSS/spoofing vulnerability in on-premises Microsoft Exchange Server (CVE-2026-42897, CVSS 8.1) is being actively exploited in the wild via crafted emails. CISA added the flaw to its Known Exploited Vulnerabilities catalog on May 15. <strong>Microsoft has not released a patch.</strong></p>
+        <p>Microsoft recommends enabling the Exchange Emergency Mitigation (EM) Service — active by default on Exchange 2016/2019 — as the primary interim control. Organizations still running on-prem Exchange should also: block external access to OWA as a temporary measure, monitor Exchange IIS logs for anomalous POST requests, and accelerate any pending migration to Exchange Online.</p>
+      </div>
+      <div class="story-source">Sources: <a href="https://thehackernews.com/2026/05/on-prem-microsoft-exchange-server-cve.html" target="_blank">The Hacker News</a> · <a href="https://www.infosecurity-magazine.com/news/microsoft-zeroday-exchange-servers/" target="_blank">Infosecurity Magazine</a> · <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank">CISA KEV</a></div>
+    </div>
+
+    <!-- Story 3 — Cisco -->
+    <div class="story">
+      <div class="story-headline">
+        <span class="story-badge badge-patch">Patch Available</span>
+        Cisco SD-WAN Sixth Zero-Day of 2026 (CVE-2026-20182) — Patch Issued
+      </div>
+      <div class="story-body">
+        <p>Cisco has patched a sixth SD-WAN zero-day (CVE-2026-20182) exploited in 2026, marking an alarming trend of sustained targeting of Cisco's SD-WAN stack by nation-state and ransomware actors. The companion flaw CVE-2026-20131 (CVSS 10.0) in Cisco Firepower Management Center, exploited by Interlock ransomware for unauthenticated RCE-as-root, was patched in late March.</p>
+        <p>Threat actor UAT-8616 (linked to a financially motivated Eastern European group) was attributed to multiple CVE-2026-20182 intrusions. Patches are available — organizations should apply immediately and audit SD-WAN policy controllers for signs of lateral movement.</p>
+      </div>
+      <div class="story-source">Sources: <a href="https://www.securityweek.com/cisco-patches-another-sd-wan-zero-day-the-sixth-exploited-in-2026/" target="_blank">SecurityWeek</a> · <a href="https://thehackernews.com/2026/03/interlock-ransomware-exploits-cisco-fmc.html" target="_blank">The Hacker News</a></div>
+    </div>
+
+    <!-- Story 4 — Verizon DBIR -->
+    <div class="story">
+      <div class="story-headline">
+        <span class="story-badge badge-analysis">DBIR 2026</span>
+        Verizon DBIR: Vulnerability Exploitation Overtakes Credential Theft as Top Breach Vector
+      </div>
+      <div class="story-body">
+        <p>Verizon's 2026 Data Breach Investigations Report marks a historic shift: for the first time, vulnerability exploitation has surpassed stolen credentials as the leading initial breach vector. The report attributes the shift to AI-accelerated exploitation timelines — from public disclosure to weaponized exploit now measured in hours — combined with chronic enterprise patching delays.</p>
+        <p>Ransomware and third-party supply chain compromises continue to surge. DragonForce ransomware is confirmed to be using the SimpleHelp API privilege escalation flaw as a precursor. The DBIR also highlights that the first four months of 2026 saw critical zero-days in Microsoft Office, Chrome, Cisco SD-WAN, VMware Aria, and cPanel weaponized within hours of disclosure.</p>
+      </div>
+      <div class="story-source">Sources: <a href="https://www.securityweek.com/verizon-dbir-2026-vulnerability-exploitation-overtakes-credential-theft-as-top-breach-vector/" target="_blank">SecurityWeek</a> · <a href="https://www.guidepointsecurity.com/wp-content/uploads/2026/01/GRIT-2026-Ransomware-and-Cyber-Threat-Report.pdf" target="_blank">GuidePoint GRIT Report</a></div>
+    </div>
+
+    <!-- Story 5 — Breaches today -->
+    <div class="story">
+      <div class="story-headline">
+        <span class="story-badge badge-breach">Breaches</span>
+        May 20 Breach Disclosures — Akira, TITAN &amp; Payload Active; Grafana GitHub Confirmed
+      </div>
+      <div class="story-body">
+        <p>Multiple organizations reported breaches today: Acton Electrical, Annuaire des Entreprises, Apex Maritime, Don Bosco Technical Institute, and Elohim Law Corporation. Threat actor groups involved include <strong>Akira</strong>, <strong>Nova</strong>, <strong>TITAN</strong>, and <strong>Payload</strong> — suggesting several concurrent campaigns are active.</p>
+        <p>Grafana Labs separately confirmed its previously-disclosed breach was limited to its GitHub environment, affecting both public and private source code repositories. No production infrastructure was compromised, but exposure of internal tooling repositories raises supply-chain risk concerns for downstream users.</p>
+      </div>
+      <div class="story-source">Sources: <a href="https://www.breachsense.com/breaches/" target="_blank">BreachSense</a> · <a href="https://sharkstriker.com/blog/may-2026-data-breaches/" target="_blank">SharkStriker</a></div>
+    </div>
+
+    <!-- Audience sections -->
+    <div class="audience-section">
+      <div class="audience-block">
+        <div class="audience-tag tag-ciso">🔐 CISO Lens</div>
+        <div class="audience-text">
+          <strong>Priority action list for today:</strong> (1) Confirm Drupal EM patch is deployed by 9 PM UTC — activate WAF rules now if not already. (2) Verify Exchange EM Service is enabled on all on-prem servers and pull IIS logs for CVE-2026-42897 indicators. (3) Apply Cisco SD-WAN CVE-2026-20182 patch and conduct a lateral movement audit on affected controllers. (4) Verizon DBIR's finding that exploits now deploy in hours — not days — should accelerate your SLA for critical CVE patching from 30 days to ≤72 hours. Review your vuln management SLAs with the board.
+        </div>
+      </div>
+      <div class="audience-block">
+        <div class="audience-tag tag-partner">🤝 Consulting Partner Lens</div>
+        <div class="audience-text">
+          Verizon DBIR's shift from credentials to vulnerability exploitation as #1 vector is a compelling client conversation starter — particularly for clients still running on-prem Exchange or legacy Cisco SD-WAN. The six Cisco SD-WAN zero-days in 5 months is a strong case for SASE/cloud-native SD-WAN migration. The Grafana breach also opens a supply chain security conversation for DevOps-heavy clients. Drupal's emergency release tonight is an opportunity for immediate incident preparedness value-add.
+        </div>
+      </div>
+      <div class="audience-block">
+        <div class="audience-tag tag-exec">💼 Executive Lens</div>
+        <div class="audience-text">
+          Two unpatched vulnerabilities in widely-used enterprise software (Microsoft Exchange, Drupal) are being actively exploited today. The Verizon DBIR's landmark finding — attackers now exploit software flaws faster than most organizations can patch them — validates investment in continuous vulnerability management programs. Ask your CISO: what is our current mean-time-to-patch for critical CVEs, and has it been benchmarked against the DBIR's new exploitation timeline data?
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- SECTION 3 — ARTIFICIAL INTELLIGENCE             -->
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🤖</div>
+      <div>
+        <div class="section-title">Artificial Intelligence</div>
+        <div class="section-subtitle">Models · Security · Market · Enterprise Strategy</div>
+      </div>
+    </div>
+
+    <!-- Story 1 — Google I/O -->
+    <div class="story">
+      <div class="story-headline">
+        <span class="story-badge badge-launch">Google I/O 2026</span>
+        Google Unveils Gemini 3.5 Flash, Gemini Omni &amp; Spark Personal Agent — Races OpenAI &amp; Anthropic
+      </div>
+      <div class="story-body">
+        <p>Google I/O 2026 kicked off today with a sweeping AI announcement wave. Key releases:</p>
+        <p><strong>Gemini 3.5 Flash</strong> — Now generally available. Delivers frontier-level intelligence at ½ to ⅓ the price of comparable models, with 4× the throughput. Immediate competitor to OpenAI's o3-mini and Anthropic's Claude Haiku.</p>
+        <p><strong>Gemini Omni</strong> — New flagship multimodal model capable of generating any output from any input (text, image, video, audio). Positioned as a "world understanding" model, entering early beta for Google AI Ultra subscribers next week.</p>
+        <p><strong>Gemini Spark</strong> — A 24/7 personal AI agent that autonomously takes actions across connected apps under user direction. Beta rollout begins next week for trusted testers and AI Ultra subscribers. Direct competition to OpenAI's Operator and Anthropic's Claude-in-apps integrations.</p>
+        <p><strong>Developer platform</strong>: Antigravity (agent orchestration) received major upgrades; Managed Agents in the Gemini API now provisions a fully sandboxed agent with a single API call. Google Cloud also announced expanded AI infrastructure commitments tied to a $200B+ cloud and chips buildout with Google Cloud partners.</p>
+      </div>
+      <div class="story-source">Sources: <a href="https://www.techradar.com/news/live/google-io-2026-live" target="_blank">TechRadar Live Blog</a> · <a href="https://developers.googleblog.com/all-the-news-from-the-google-io-2026-developer-keynote/" target="_blank">Google Developers Blog</a> · <a href="https://www.cnbc.com/2026/05/19/google-ai-ultra-gemini-spark-omni.html" target="_blank">CNBC</a></div>
+    </div>
+
+    <!-- Story 2 — Snap/Perplexity -->
+    <div class="story">
+      <div class="story-headline">
+        <span class="story-badge badge-trend">Deals</span>
+        Snap &amp; Perplexity Terminate $400M AI Partnership Before Broad Rollout
+      </div>
+      <div class="story-body">
+        <p>Snap and Perplexity AI have ended their planned $400 million AI partnership before it reached broad rollout, according to multiple sources. The collapse is a significant setback for Perplexity — which had positioned the Snap deal as a flagship consumer distribution play — and raises questions about the sustainability of AI-as-a-feature integrations in social platforms at scale.</p>
+        <p>The termination follows Snap's broader cost discipline push and an internal reassessment of whether third-party AI search engines align with Snap's first-party data strategy. Perplexity is understood to be in conversations with other consumer app partners.</p>
+      </div>
+      <div class="story-source">Sources: <a href="https://llm-stats.com/ai-news" target="_blank">LLM Stats AI News</a> · <a href="https://imfounder.com/science-tech/ai/ai-updates-may-2026/" target="_blank">IMFounder</a></div>
+    </div>
+
+    <!-- Story 3 — OpenAI / Anthropic EU -->
+    <div class="story">
+      <div class="story-headline">
+        <span class="story-badge badge-analysis">Regulation</span>
+        OpenAI Gives EU Early Access to Cyber Model — Anthropic Still Withholding Mythos
+      </div>
+      <div class="story-body">
+        <p>OpenAI has agreed to provide EU regulators early pre-deployment access to its new specialized cybersecurity model — a first under the emerging EU AI Act compliance framework that requires frontier model testing before public release. Microsoft, Google, and xAI have also agreed to government pre-launch access under a White House arrangement announced earlier this month.</p>
+        <p>Anthropic, however, continues to withhold its Mythos model (internally referred to as Project Glasswing) from regulators, citing concerns that pre-release access could enable adversarial probing. The standoff is intensifying regulatory scrutiny of Anthropic in both Brussels and Washington.</p>
+        <p>The wider context: Anthropic overtook OpenAI in enterprise adoption metrics per recent surveys, and Mythos is expected to be its most capable model to date — making its regulatory positioning a strategic as much as a compliance question.</p>
+      </div>
+      <div class="story-source">Sources: <a href="https://www.cnbc.com/2026/05/11/openai-eu-cyber-model-anthropic-mythos-gpt.html" target="_blank">CNBC</a> · <a href="https://www.cnn.com/2026/05/05/tech/microsoft-google-xai-government-test-ai-models" target="_blank">CNN Business</a></div>
+    </div>
+
+    <!-- Story 4 — Enterprise/global adoption -->
+    <div class="story">
+      <div class="story-headline">
+        <span class="story-badge badge-trend">Enterprise</span>
+        Global AI Adoption Hits 17.8% of Working-Age Population — Frontier Firms Use 3.5× More Per Employee
+      </div>
+      <div class="story-body">
+        <p>Global AI usage among the working-age population rose from 16.3% to 17.8% in Q1 2026, per Microsoft's State of Global AI Diffusion report. The critical finding: "frontier" enterprise firms now use 3.5× more AI intelligence per employee than typical firms, with the widest gaps in advanced agentic workflows and software development — creating a compounding productivity divergence.</p>
+        <p>OpenAI's B2B Signals data reinforces this: the fastest-growing enterprise use cases are autonomous coding agents, multi-step research pipelines, and AI-driven customer operations. 76% of enterprises now have a Chief AI Officer on record, up from 43% in 2025.</p>
+      </div>
+      <div class="story-source">Sources: <a href="https://blogs.microsoft.com/on-the-issues/2026/05/07/the-state-of-global-ai-diffusion-in-2026/" target="_blank">Microsoft On the Issues</a> · <a href="https://imfounder.com/science-tech/ai/ai-updates-may-2026/" target="_blank">IMFounder</a></div>
+    </div>
+
+    <!-- Audience sections -->
+    <div class="audience-section">
+      <div class="audience-block">
+        <div class="audience-tag tag-ciso">🔐 CISO Lens</div>
+        <div class="audience-text">
+          Anthropic's refusal to provide pre-deployment government access to Mythos sets a precedent that other vendors may follow — reducing your ability to assess frontier model risks before they reach your environment. Watch the regulatory escalation. Separately, Gemini Spark and OpenAI Operator-class agents introduce new shadow-IT vectors: employees will onboard personal AI agents that act across corporate SaaS apps without IT visibility. Begin inventorying "AI agent" permissions in your SSO/OAuth grant audit now. Google I/O's Managed Agents API also means agentic apps will proliferate among your developers — review your AI usage policy.
+        </div>
+      </div>
+      <div class="audience-block">
+        <div class="audience-tag tag-partner">🤝 Consulting Partner Lens</div>
+        <div class="audience-text">
+          Google I/O 2026 is your biggest week-of-event client conversation catalyst since GPT-4 launched. Gemini 3.5 Flash's price-performance (frontier at ⅓ the cost) will pressure clients currently paying premium rates for cloud AI. The Snap/Perplexity collapse is a cautionary tale for clients pursuing AI integration partnerships — lead with build-vs-integrate frameworks. The 76% CAIO adoption stat is a door-opener for AI governance and strategy engagements. Mythos/regulation standoff is also a client risk briefing opportunity.
+        </div>
+      </div>
+      <div class="audience-block">
+        <div class="audience-tag tag-exec">💼 Executive Lens</div>
+        <div class="audience-text">
+          Google I/O confirmed the AI platform war is accelerating: three new Gemini tiers in one day, personal AI agents launching next week, and $200B+ in infrastructure commitments. The "frontier firms" productivity gap — 3.5× more AI per employee — means the window for competitive AI adoption is narrowing. Two questions for your leadership team: (1) Are we on track to deploy agentic AI workflows this year, or still in pilot? (2) Given the Snap/Perplexity collapse, do our AI vendor relationships have appropriate exit clauses and data portability guarantees?
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div class="footer">
+    Generated by <strong>Jorge</strong> &nbsp;·&nbsp; Wednesday, May 20, 2026 &nbsp;·&nbsp; 6:00 PM<br/>
+    Sources: Reuters · Al Jazeera · Axios · CNBC · The Hacker News · SecurityWeek · CISA · TechRadar · Google Developers Blog · Wikipedia · Verizon DBIR 2026 · Microsoft
+  </div>
+
+</div>
+</body>
+</html>
