@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Sunday, June 7, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
+    .header .date { font-size: 1rem; color: #8b949e; margin-bottom: 18px; }
+    .day-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #b91c1c, #7f1d1d);
+      color: #fecaca;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 4px 14px; border-radius: 20px;
+    }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 52px;
+    }
+    .section-header {
+      display: flex; align-items: center; gap: 12px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid #21262d;
+      margin-bottom: 24px;
+    }
+    .section-icon { font-size: 1.6rem; }
+    .section-title { font-size: 1.35rem; font-weight: 800; color: #f0f6fc; }
+    .section-subtitle { font-size: 0.8rem; color: #8b949e; margin-top: 2px; }
+
+    /* ── Story card ── */
+    .story {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .story:hover { border-color: #444c56; }
+    .story-meta {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 1px;
+      text-transform: uppercase; color: #8b949e; margin-bottom: 8px;
+    }
+    .tag {
+      display: inline-block; padding: 2px 9px; border-radius: 12px;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+    .tag-red    { background: #3d1010; color: #f87171; }
+    .tag-amber  { background: #3d2a0a; color: #fbbf24; }
+    .tag-blue   { background: #0c2340; color: #60a5fa; }
+    .tag-purple { background: #1e1040; color: #a78bfa; }
+    .tag-green  { background: #0a2e1a; color: #4ade80; }
+    .tag-teal   { background: #062928; color: #2dd4bf; }
+    .tag-orange { background: #3d1e08; color: #fb923c; }
+
+    .story h3 { font-size: 1rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; }
+    .story p  { font-size: 0.88rem; color: #c9d1d9; margin-bottom: 10px; }
+    .story p:last-of-type { margin-bottom: 0; }
+    .story .source-link {
+      font-size: 0.78rem; color: #58a6ff; display: inline-block; margin-top: 6px;
+    }
+
+    /* ── Audience blocks ── */
+    .audience-section { margin-top: 28px; }
+    .audience-title {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: #6e7681;
+      margin-bottom: 12px; padding-bottom: 6px;
+      border-bottom: 1px solid #21262d;
+    }
+    .audience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+    .audience-card {
+      background: #0d1117;
+      border: 1px solid #21262d;
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .aud-ciso   .aud-label { color: #f87171; }
+    .aud-partner .aud-label { color: #fbbf24; }
+    .aud-exec   .aud-label { color: #60a5fa; }
+    .audience-card ul { padding-left: 16px; }
+    .audience-card li { font-size: 0.83rem; color: #c9d1d9; margin-bottom: 4px; }
+
+    /* ── Key Numbers strip ── */
+    .numbers-strip {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px; margin: 24px 0;
+    }
+    .number-card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .number-card .num { font-size: 1.6rem; font-weight: 800; color: #f0f6fc; }
+    .number-card .num-label { font-size: 0.72rem; color: #8b949e; margin-top: 2px; }
+
+    /* ── Timeline ── */
+    .timeline { margin: 0; padding: 0; list-style: none; }
+    .timeline li {
+      position: relative; padding: 0 0 18px 24px;
+      border-left: 2px solid #21262d;
+      font-size: 0.87rem; color: #c9d1d9;
+    }
+    .timeline li::before {
+      content: ''; position: absolute; left: -5px; top: 5px;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #58a6ff;
+    }
+    .timeline li strong { color: #f0f6fc; }
+    .timeline li:last-child { border-left-color: transparent; }
+
+    /* ── Alert banner ── */
+    .alert {
+      background: #1a0a0a; border: 1px solid #7f1d1d;
+      border-radius: 8px; padding: 14px 18px; margin-bottom: 14px;
+      font-size: 0.87rem; color: #fca5a5;
+    }
+    .alert strong { color: #f87171; }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center; margin-top: 60px; padding-top: 20px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+    .back-link {
+      display: inline-block; margin-bottom: 12px;
+      font-size: 0.82rem; color: #58a6ff;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ══ HEADER ══ -->
+  <div class="header">
+    <div class="label">Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="date">Sunday, June 7, 2026</div>
+    <span class="day-badge">⚔️ Day 100 of the Iran War</span>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 1 — IRAN WAR
+  ══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">⚔️</div>
+      <div>
+        <div class="section-title">Iran War</div>
+        <div class="section-subtitle">Battlefield · Diplomacy · Hormuz · Geopolitics</div>
+      </div>
+    </div>
+
+    <!-- Key Numbers -->
+    <div class="numbers-strip">
+      <div class="number-card">
+        <div class="num">100</div>
+        <div class="num-label">Days of conflict</div>
+      </div>
+      <div class="number-card">
+        <div class="num">&gt;90%</div>
+        <div class="num-label">Hormuz traffic drop (peak)</div>
+      </div>
+      <div class="number-card">
+        <div class="num">$24B</div>
+        <div class="num-label">Frozen assets at deadlock</div>
+      </div>
+      <div class="number-card">
+        <div class="num">7</div>
+        <div class="num-label">Iranian missiles fired Jun 6</div>
+      </div>
+    </div>
+
+    <!-- Story 1 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="tag tag-red">Breaking</span>
+        <span>Jun 7 · Military</span>
+      </div>
+      <h3>🚨 Ceasefire Under Severe Strain — Both Sides Exchange Strikes on Day 100</h3>
+      <p>
+        On Saturday June 6, the US military struck coastal Iranian radar installations at <strong>Sirik</strong> and <strong>Qeshm Island</strong> after detecting drones allegedly launched toward the Strait of Hormuz. Iran responded early Saturday with a seven-missile barrage targeting US air bases in <strong>Kuwait</strong> and a US Navy site in <strong>Bahrain</strong>. CENTCOM confirmed six missiles were intercepted; one failed to reach its target. No coalition casualties were reported.
+      </p>
+      <p>
+        Iranian Foreign Minister Abbas Araghchi publicly stated there had been "no significant progress" in recent negotiations, directly contradicting President Trump's claim that talks are going "very well." Tehran accused Washington of <em>"lacking the will for stability"</em> — the most pointed diplomatic rebuke since ceasefire violations began.
+      </p>
+      <a class="source-link" href="https://www.aljazeera.com/news/liveblog/2026/6/6/iran-war-live-us-says-iranian-drones-shot-down-radar-sites-attacked" target="_blank">→ Al Jazeera Live Updates</a>
+      &nbsp;·&nbsp;
+      <a class="source-link" href="https://www.cbsnews.com/live-updates/iran-us-war-israel-hezbollah-fighting-ceasefire-efforts/" target="_blank">→ CBS News Live</a>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="tag tag-amber">Diplomacy</span>
+        <span>Jun 7 · Assets &amp; Reparations</span>
+      </div>
+      <h3>💰 US Plans to Redirect $24B in Frozen Iranian Assets for Gulf Reconstruction</h3>
+      <p>
+        A source familiar with Treasury Secretary Scott Bessent's thinking told ABC News that the Trump administration is planning to redirect <strong>frozen Iranian assets</strong> to fund reconstruction and repair costs for Gulf allies damaged during the war. The move would bypass direct peace deal negotiations and signal a new US approach to post-conflict financing — but risks further infuriating Tehran, which has demanded its assets be unfrozen as part of any normalization agreement.
+      </p>
+      <p>
+        The <strong>$24 billion in frozen assets</strong> remains the central sticking point in stalled negotiations, with Iran insisting on their return before meaningful nuclear talks can resume.
+      </p>
+      <a class="source-link" href="https://abcnews.com/International/live-updates/iran-live-updates-irgc-claims-airbase-attack-after/?id=133475855" target="_blank">→ ABC News</a>
+      &nbsp;·&nbsp;
+      <a class="source-link" href="https://www.cnbc.com/2026/06/03/us-iran-war-escalates-peace-talks-stalemate-.html" target="_blank">→ CNBC</a>
+    </div>
+
+    <!-- Story 3 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="tag tag-blue">Strait of Hormuz</span>
+        <span>Jun 7 · Shipping &amp; Energy</span>
+      </div>
+      <h3>🚢 Hormuz Brinkmanship Continues — Selective Ship Access Persists</h3>
+      <p>
+        The Strait of Hormuz remains the central theater of economic warfare. After traffic collapsed more than 90% during April's peak confrontation, Iran has continued a policy of <strong>selective clearance</strong> — approving certain tankers while blocking others. The US Navy maintains an active escort and blockade posture established April 13. Global oil markets remain highly sensitive to each exchange, with Brent still trading well above pre-conflict levels.
+      </p>
+      <p>
+        The US escort mission — which Iran views as a ceasefire violation — continues to generate daily friction. No resolution to the Hormuz standoff is expected while peace talks remain deadlocked.
+      </p>
+      <a class="source-link" href="https://en.wikipedia.org/wiki/2026_Iran_war" target="_blank">→ Wikipedia: 2026 Iran War</a>
+      &nbsp;·&nbsp;
+      <a class="source-link" href="https://www.washingtonpost.com/world/2026/06/01/iran-us-trade-strikes-deal-end-war-remains-elusive/" target="_blank">→ Washington Post</a>
+    </div>
+
+    <!-- Story 4 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="tag tag-purple">Geopolitics</span>
+        <span>Jun 7 · Lebanon &amp; Regional</span>
+      </div>
+      <h3>🇮🇱 Lebanon Front Pressures Peace Talks — Israel Holds Off on Beirut After US Request</h3>
+      <p>
+        Escalating Israeli military operations in Lebanon continue to undermine diplomatic momentum. The Washington Post reported that Israel agreed to <strong>pause a planned Beirut strike</strong> following a direct US request, reflecting ongoing tension between Washington's desire to de-escalate and Israel's independent operational posture. Hezbollah has resumed limited rocket fire into northern Israel, further complicating ceasefire architecture.
+      </p>
+      <p>
+        Pakistan's role as the primary <strong>mediator between Washington and Tehran</strong> continues — a function it has played since brokering the fragile April 7-8 ceasefire.
+      </p>
+      <a class="source-link" href="https://www.washingtonpost.com/world/2026/06/01/iran-us-trade-strikes-deal-end-war-remains-elusive/" target="_blank">→ Washington Post</a>
+      &nbsp;·&nbsp;
+      <a class="source-link" href="https://commonslibrary.parliament.uk/research-briefings/cbp-10637/" target="_blank">→ House of Commons Library</a>
+    </div>
+
+    <!-- Context timeline -->
+    <div style="margin-top: 24px;">
+      <div style="font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #6e7681; margin-bottom: 14px;">Conflict Timeline (Key Milestones)</div>
+      <ul class="timeline">
+        <li><strong>Feb 28</strong> — Operation Epic Fury: ~900 US/Israeli strikes in 12h; Khamenei killed</li>
+        <li><strong>Mar 2</strong> — Iran closes Strait of Hormuz; retaliatory missile/drone campaign begins</li>
+        <li><strong>Apr 7-8</strong> — Pakistan brokers temporary US-Iran-Israel ceasefire</li>
+        <li><strong>Apr 13</strong> — US Navy establishes Hormuz naval blockade</li>
+        <li><strong>May 19</strong> — Peace talks stall; Iran rejects US 14-point plan framework</li>
+        <li><strong>Jun 3</strong> — US and Iran exchange strikes; ceasefire described as "gravely strained"</li>
+        <li><strong>Jun 6</strong> — US hits radar sites; Iran fires 7 ballistic missiles at US Gulf bases</li>
+        <li><strong>Jun 7</strong> — <strong>Day 100.</strong> No peace deal. Assets dispute deadlocks talks.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 2 — CYBERSECURITY
+  ══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🔒</div>
+      <div>
+        <div class="section-title">Cybersecurity</div>
+        <div class="section-subtitle">Threats · CVEs · Ransomware · Incidents</div>
+      </div>
+    </div>
+
+    <!-- Alert -->
+    <div class="alert">
+      <strong>⚠ Active Exploitation Alert:</strong> Three high-severity vulnerabilities currently being exploited in the wild — Cisco SD-WAN CVE-2026-20245 (root RCE), Microsoft BlueHammer/RedSun/UnDefend (Windows + Defender), and SolarWinds Serv-U crash flaw. Patch immediately.
+    </div>
+
+    <!-- Story 1 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="tag tag-red">Critical CVE</span>
+        <span>Jun 2026 · Zero-Day</span>
+      </div>
+      <h3>🔴 Cisco SD-WAN 7th Zero-Day of 2026 — CVE-2026-20245 Actively Exploited</h3>
+      <p>
+        Cisco disclosed an unpatched high-severity zero-day in <strong>Catalyst SD-WAN Manager</strong> (CVE-2026-20245) that enables <strong>root privilege escalation</strong> and is currently being actively exploited in the wild. This is the <em>seventh</em> SD-WAN vulnerability whose exploitation Cisco has confirmed in 2026 alone — a troubling pattern for enterprise network infrastructure.
+      </p>
+      <p>
+        Separately, Microsoft continues to face backlash over its legal threats against independent security researcher <em>"Nightmare Eclipse"</em>, who published proof-of-concept exploits for unpatched Windows and Defender vulnerabilities (<strong>BlueHammer, RedSun, UnDefend</strong>). Several of these flaws are now being exploited in the wild — and no patches are yet available.
+      </p>
+      <a class="source-link" href="https://www.bleepingcomputer.com/news/security/new-cisco-sd-wan-flaw-exploited-in-zero-day-attacks-to-gain-root/" target="_blank">→ Bleeping Computer: Cisco SD-WAN</a>
+      &nbsp;·&nbsp;
+      <a class="source-link" href="https://www.securityweek.com/microsoft-tries-to-calm-legal-threat-fears-after-zero-day-disclosure-backlash/" target="_blank">→ SecurityWeek: Microsoft</a>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="tag tag-orange">Ransomware</span>
+        <span>Jun 2026 · Extortion</span>
+      </div>
+      <h3>🔴 Crimson Collective Claims 1M+ Brightspeed Customer Records in Telecom Ransomware Hit</h3>
+      <p>
+        A new aggressive cyber extortion group calling itself the <strong>Crimson Collective</strong> has claimed responsibility for a ransomware attack on US telecom provider <strong>Brightspeed</strong>, alleging theft of data from more than <strong>1 million customers</strong>. The group has emerged in recent months as one of the more active ransomware operators, targeting critical infrastructure and demanding significant payouts.
+      </p>
+      <p>
+        The telecom sector has been heavily targeted throughout 2026, with state-linked actors and criminal groups both exploiting the disruption caused by the Iran war and associated geopolitical instability.
+      </p>
+      <a class="source-link" href="https://www.bleepingcomputer.com/" target="_blank">→ Bleeping Computer</a>
+    </div>
+
+    <!-- Story 3 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="tag tag-amber">Supply Chain</span>
+        <span>Jun 2026 · Developer Security</span>
+      </div>
+      <h3>📦 IronWorm Malware Infects 36 npm Packages in Coordinated Supply Chain Attack</h3>
+      <p>
+        A new infostealer named <strong>IronWorm</strong> has been found embedded in <strong>36 npm packages</strong> in a coordinated supply chain attack targeting Node.js developers. The malware exfiltrates credentials, tokens, and environment variables from CI/CD pipelines and developer machines. Affected packages have been flagged and removed, but organizations using Node.js dependencies from the past two weeks should audit their lock files immediately.
+      </p>
+      <a class="source-link" href="https://www.bleepingcomputer.com/" target="_blank">→ Bleeping Computer</a>
+    </div>
+
+    <!-- Story 4 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="tag tag-blue">Breach</span>
+        <span>Jun 2026 · Data Exposure</span>
+      </div>
+      <h3>🔓 DentaQuest Breach Exposes 2.6M Records · UN World Food Programme Palestine App Compromised</h3>
+      <p>
+        <strong>DentaQuest</strong>, a major dental benefits administrator, suffered a breach exposing sensitive data of approximately <strong>2.6 million accounts</strong>, including PII and health information.
+      </p>
+      <p>
+        In a separate and highly sensitive incident, the <strong>UN World Food Programme</strong> confirmed that its self-registration application (SRA) for Palestine was breached, potentially exposing data of aid recipients in the conflict zone. The breach carries significant humanitarian and geopolitical implications.
+      </p>
+      <a class="source-link" href="https://www.acilearning.com/blog/the-biggest-cybersecurity-breaches-of-2026-so-far-and-the-training-that-could-have-prevented-them/" target="_blank">→ ACI Learning: 2026 Breaches</a>
+    </div>
+
+    <!-- Story 5 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="tag tag-red">Critical CVE</span>
+        <span>Jun 2026 · Web Security</span>
+      </div>
+      <h3>🟠 WordPress CVE-2026-3300 — Everest Forms Pro RCE Actively Exploited</h3>
+      <p>
+        A critical vulnerability in the <strong>Everest Forms Pro</strong> WordPress plugin (CVE-2026-3300) allows unauthenticated attackers to take complete control of affected websites. The flaw is being actively exploited in the wild. Organizations running this plugin should patch immediately. Also: <strong>SolarWinds Serv-U</strong> is being actively targeted with a newly patched high-severity flaw that can crash servers.
+      </p>
+      <a class="source-link" href="https://www.securityweek.com/cisco-warns-of-7th-sd-wan-zero-day-exploited-in-2026/" target="_blank">→ SecurityWeek</a>
+    </div>
+
+    <!-- Audience Analysis -->
+    <div class="audience-section">
+      <div class="audience-title">Audience Lens</div>
+      <div class="audience-grid">
+        <div class="audience-card aud-ciso">
+          <div class="aud-label">🔐 CISO Priorities</div>
+          <ul>
+            <li>Emergency patch: Cisco SD-WAN CVE-2026-20245</li>
+            <li>Audit Windows/Defender: BlueHammer, RedSun, UnDefend still unpatched</li>
+            <li>npm dependency audit for IronWorm (36 packages)</li>
+            <li>SolarWinds Serv-U patch deployment</li>
+            <li>Ransomware playbook review — Crimson Collective TTPs emerging</li>
+            <li>Agentic AI audit logs: agent actions attributed to human users</li>
+          </ul>
+        </div>
+        <div class="audience-card aud-partner">
+          <div class="aud-label">🤝 Consulting Partner</div>
+          <ul>
+            <li>Cisco SD-WAN clients need immediate engagement — 7th exploited CVE in 2026</li>
+            <li>Microsoft legal threats to researchers = disclosure policy chaos for clients</li>
+            <li>Supply chain security (IronWorm) = advisory/assessment opportunity</li>
+            <li>Healthcare sector: DentaQuest breach signals ongoing health data targeting</li>
+            <li>AI agent governance framework demand rising — 48% of CISOs cite top risk</li>
+          </ul>
+        </div>
+        <div class="audience-card aud-exec">
+          <div class="aud-label">💼 Business Executive</div>
+          <ul>
+            <li>Ransomware threat elevated — new group Crimson Collective targeting telecoms at scale</li>
+            <li>Supply chain attacks via developer tools: ask your CTO about npm audit status</li>
+            <li>Microsoft patch controversy: no timeline for fixes to three exploited vulnerabilities</li>
+            <li>Shadow AI cost: $4.63M avg breach cost vs $3.96M standard breach</li>
+            <li>Iran-linked cyber operations likely escalating alongside kinetic conflict</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 3 — ARTIFICIAL INTELLIGENCE
+  ══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🤖</div>
+      <div>
+        <div class="section-title">Artificial Intelligence</div>
+        <div class="section-subtitle">Models · Security · Market · Research</div>
+      </div>
+    </div>
+
+    <!-- Story 1 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="tag tag-teal">Model Launch</span>
+        <span>Jun 7 · Google</span>
+      </div>
+      <h3>⚡ Google Releases Gemini 3.5 Flash — Frontier Intelligence at 4× Speed</h3>
+      <p>
+        Google has released <strong>Gemini 3.5 Flash</strong>, positioning it as frontier-level intelligence at <em>4× the speed</em> of comparable models. Priced at <strong>$1.50 / $9 per 1M tokens</strong> (input/output) with a 1M token context window, it scores 76.2% on Terminal-Bench 2.1. The release intensifies competition in the "fast and capable" tier, directly challenging Anthropic's Claude Haiku and OpenAI's GPT-4o mini class.
+      </p>
+      <a class="source-link" href="https://llm-stats.com/ai-news" target="_blank">→ LLM Stats: AI News</a>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="tag tag-blue">Microsoft</span>
+        <span>Jun 4 · Build 2026</span>
+      </div>
+      <h3>🏗️ Microsoft Unveils MAI-Code-1-Flash &amp; MAI-Thinking-1 — Reduces OpenAI Dependency</h3>
+      <p>
+        At its <strong>Build 2026</strong> developer conference in San Francisco, Microsoft announced its first homegrown AI coding model: <strong>MAI-Code-1-Flash</strong>, which converts natural language descriptions into functional code. Alongside it, <strong>MAI-Thinking-1</strong> adds extended reasoning capabilities. The launch represents Microsoft's clearest signal yet of its strategy to reduce reliance on OpenAI — following the restructured partnership agreement in which OpenAI dropped exclusivity rights.
+      </p>
+      <a class="source-link" href="https://www.cnbc.com/2026/06/02/microsoft-unveils-new-ai-models-lessen-reliance-on-openai-lower-costs.html" target="_blank">→ CNBC: Microsoft AI Models</a>
+    </div>
+
+    <!-- Story 3 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="tag tag-purple">Anthropic</span>
+        <span>May 28 · Claude</span>
+      </div>
+      <h3>🧠 Claude Opus 4.8 Achieves 88.6% on SWE-Bench — 2.5× Faster at Same Price</h3>
+      <p>
+        Anthropic launched <strong>Claude Opus 4.8</strong> on May 28, achieving <strong>88.6% on SWE-bench Verified</strong> — the industry benchmark for autonomous software engineering. Performance improves 2.5× over Opus 4.7 with no pricing change. Anthropic simultaneously recruited OpenAI's second-ever chip engineer, <strong>Clive Chan</strong>, as both companies race toward custom AI hardware and anticipated IPOs.
+      </p>
+      <a class="source-link" href="https://llm-stats.com/ai-news" target="_blank">→ LLM Stats</a>
+    </div>
+
+    <!-- Story 4 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="tag tag-green">NVIDIA</span>
+        <span>Jun 2 · Computex</span>
+      </div>
+      <h3>🖥️ NVIDIA Nemotron 3 Ultra (550B params) — Largest US Open-Weights Model</h3>
+      <p>
+        At Jensen Huang's <strong>Computex keynote</strong>, NVIDIA announced <strong>Nemotron 3 Ultra</strong> with 550 billion parameters (55B active via MoE), claiming the title of the most intelligent US open-weights model. NVIDIA also unveiled new AI-integrated laptop chips (Blackwell Mobile), marking its push to own the entire AI stack from data center to consumer PC.
+      </p>
+      <a class="source-link" href="https://www.cnbc.com/2026/06/02/nvidias-new-pc-chips-are-ceos-bid-to-own-every-part-of-ai-stack.html" target="_blank">→ CNBC: NVIDIA Computex</a>
+    </div>
+
+    <!-- Story 5 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="tag tag-red">AI Security</span>
+        <span>Jun 2026 · Agentic Threats</span>
+      </div>
+      <h3>🚨 Agentic AI Is Now the #1 CISO Threat — Audit Logs Attribute Agent Actions to Humans</h3>
+      <p>
+        A <strong>Cisco State of AI Security 2026</strong> report and multiple threat intelligence firms confirm: <strong>48% of cybersecurity professionals</strong> now identify agentic AI as the single most dangerous attack vector. A McKinsey red-team exercise demonstrated that an autonomous agent compromised their internal AI platform "Lilli" and gained broad system access in <strong>under two hours</strong>.
+      </p>
+      <p>
+        A critical governance gap: AI agents typically run under <strong>user credentials</strong>, meaning their actions appear as human actions in audit logs — creating serious forensic and compliance problems. Adversaries are now deploying agentic frameworks to automate full attack chains (recon → phishing → credential testing → infrastructure rotation) without human control.
+      </p>
+      <a class="source-link" href="https://blogs.cisco.com/ai/cisco-state-of-ai-security-2026-report" target="_blank">→ Cisco State of AI Security</a>
+      &nbsp;·&nbsp;
+      <a class="source-link" href="https://www.bvp.com/atlas/securing-ai-agents-the-defining-cybersecurity-challenge-of-2026" target="_blank">→ Bessemer: Securing AI Agents</a>
+    </div>
+
+    <!-- Story 6 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="tag tag-blue">OpenAI</span>
+        <span>Jun 2026 · Security Feature</span>
+      </div>
+      <h3>🔒 OpenAI Launches "Lockdown Mode" for ChatGPT — Blocks Web Access to Prevent Prompt Injection</h3>
+      <p>
+        OpenAI debuted <strong>Lockdown Mode</strong> for ChatGPT, disabling web access and Deep Research to mitigate prompt injection attacks on sensitive data. The move acknowledges the growing risk of <strong>prompt injection</strong> as the primary attack vector against AI systems in enterprise settings — and signals growing pressure on AI labs to ship security controls alongside capability improvements.
+      </p>
+      <a class="source-link" href="https://llm-stats.com/ai-news" target="_blank">→ LLM Stats: AI News</a>
+    </div>
+
+    <!-- Audience Analysis -->
+    <div class="audience-section">
+      <div class="audience-title">Audience Lens</div>
+      <div class="audience-grid">
+        <div class="audience-card aud-ciso">
+          <div class="aud-label">🔐 CISO Priorities</div>
+          <ul>
+            <li>Audit AI agent credential scope — agents running as users hide in logs</li>
+            <li>Deploy ChatGPT Lockdown Mode for sensitive enterprise deployments</li>
+            <li>Red-team all agentic AI platforms before production rollout</li>
+            <li>Prompt injection now a documented attack chain — update AI security policy</li>
+            <li>IronWorm: ML/AI teams often heavy npm users — check dependency trees</li>
+          </ul>
+        </div>
+        <div class="audience-card aud-partner">
+          <div class="aud-label">🤝 Consulting Partner</div>
+          <ul>
+            <li>Gemini 3.5 Flash + MAI models = new cost structure for AI integration projects</li>
+            <li>Agentic AI governance is the hottest new advisory category — 48% CISO concern</li>
+            <li>Microsoft independence from OpenAI opens multi-vendor AI strategy conversations</li>
+            <li>NVIDIA PC AI chips = new endpoint AI security considerations for clients</li>
+            <li>Claude Opus 4.8 SWE-bench 88.6%: code generation quality milestone for dev work</li>
+          </ul>
+        </div>
+        <div class="audience-card aud-exec">
+          <div class="aud-label">💼 Business Executive</div>
+          <ul>
+            <li>Competitive alert: Gemini 3.5 Flash + Microsoft MAI = AI cost dropping fast</li>
+            <li>OpenAI superapp pivot: ChatGPT moving toward enterprise platform, not just chat</li>
+            <li>AI at every layer: Google, Microsoft, NVIDIA all expanding stacks simultaneously</li>
+            <li>Agentic AI risk: ask your IT team how agent actions are tracked in audit logs</li>
+            <li>Anthropic Opus 4.8: best-in-class coding AI may reshape your dev team's tools</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <div class="footer">
+    <a class="back-link" href="index.html">← Back to Archive</a>
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Sunday, June 7, 2026 · 6:00 PM Paris time</p>
+    <p style="margin-top: 6px;">Sources: Al Jazeera · ABC News · CNBC · CBS News · CNN · Washington Post · Bleeping Computer · SecurityWeek · Cisco Blogs · Bessemer · LLM Stats · ACI Learning</p>
+  </div>
+
+</div>
+</body>
+</html>
