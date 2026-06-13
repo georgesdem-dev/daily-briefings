@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Saturday, June 13, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
+    .header .date { font-size: 1rem; color: #8b949e; margin-bottom: 20px; }
+    .header .meta {
+      display: inline-flex; gap: 20px; flex-wrap: wrap; justify-content: center;
+      font-size: 0.8rem;
+    }
+    .badge {
+      display: inline-block; padding: 4px 12px; border-radius: 20px;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.5px;
+    }
+    .badge-war   { background: #3d1a1a; color: #f85149; border: 1px solid #6e2020; }
+    .badge-cyber { background: #1a2d1a; color: #3fb950; border: 1px solid #206020; }
+    .badge-ai    { background: #1a1f3d; color: #79c0ff; border: 1px solid #2040a0; }
+
+    /* SECTION */
+    .section {
+      margin-bottom: 52px;
+    }
+    .section-header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 0 0 14px;
+      border-bottom: 2px solid #21262d;
+      margin-bottom: 24px;
+    }
+    .section-icon { font-size: 1.6rem; }
+    .section-title { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; }
+    .section-subtitle { font-size: 0.78rem; color: #8b949e; margin-left: auto; }
+
+    /* STORY CARD */
+    .story-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+      position: relative;
+    }
+    .story-card:hover { border-color: #444c56; }
+    .story-headline {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px;
+    }
+    .story-body { font-size: 0.88rem; color: #c9d1d9; margin-bottom: 10px; line-height: 1.65; }
+    .story-source {
+      font-size: 0.75rem; color: #58a6ff;
+    }
+    .story-tag {
+      float: right;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.5px;
+      padding: 2px 8px; border-radius: 12px; margin-left: 8px; margin-top: 2px;
+    }
+    .tag-breaking { background: #4d1515; color: #f85149; border: 1px solid #6e2020; }
+    .tag-critical  { background: #2d1e00; color: #e3b341; border: 1px solid #60450a; }
+    .tag-notable   { background: #1a2840; color: #79c0ff; border: 1px solid #20406a; }
+    .tag-anniversary { background: #3d2d00; color: #d29922; border: 1px solid #705020; }
+
+    /* AUDIENCE BLOCKS */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-top: 6px;
+    }
+    .audience-card {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .audience-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .audience-label.ciso    { color: #f85149; }
+    .audience-label.partner { color: #3fb950; }
+    .audience-label.exec    { color: #79c0ff; }
+    .audience-card ul { padding-left: 16px; }
+    .audience-card li { font-size: 0.83rem; color: #c9d1d9; margin-bottom: 6px; line-height: 1.55; }
+
+    /* DIVIDER */
+    .sub-section-title {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: #8b949e;
+      margin: 28px 0 14px;
+      padding-bottom: 6px;
+      border-bottom: 1px dashed #21262d;
+    }
+
+    /* FOOTER */
+    .footer {
+      text-align: center; margin-top: 60px; padding-top: 20px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+    .back-link {
+      display: inline-block; margin-bottom: 40px;
+      font-size: 0.85rem; color: #58a6ff;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    /* ALERT BAR */
+    .alert-bar {
+      background: #3d1a1a;
+      border: 1px solid #6e2020;
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin-bottom: 32px;
+      font-size: 0.85rem;
+      color: #f85149;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .alert-bar strong { color: #ffa0a0; }
+
+    @media (max-width: 600px) {
+      .header h1 { font-size: 1.5rem; }
+      .section-subtitle { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <a class="back-link" href="index.html">← Back to Archive</a>
+
+  <div class="header">
+    <div class="label">Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="date">Saturday, June 13, 2026 &nbsp;·&nbsp; 6:00 PM Paris</div>
+    <div class="meta">
+      <span class="badge badge-war">🔴 Iran War — Day 106</span>
+      <span class="badge badge-cyber">🛡️ Cybersecurity</span>
+      <span class="badge badge-ai">🤖 Artificial Intelligence</span>
+    </div>
+  </div>
+
+  <div class="alert-bar">
+    🗓️ <span><strong>1-Year Anniversary:</strong> Today marks exactly one year since Israel launched the strikes that began the 12-Day War (June 13, 2025) — which set the stage for the broader 2026 conflict now in its 106th day.</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 1 — IRAN WAR
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">⚔️</div>
+      <div class="section-title">Iran War</div>
+      <div class="section-subtitle">Day 106 &nbsp;|&nbsp; Sources: Reuters · CNN · BBC · Al Jazeera · Wikipedia</div>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-breaking">BREAKING</span>
+      <div class="story-headline">Peace Deal Text Finalised — Signing Expected Within Days</div>
+      <div class="story-body">
+        US and Iranian negotiators, with Pakistani mediation, reached agreement on the final text of a draft peace deal on June 12. The framework would extend the current ceasefire by 60 days, begin de-mining the Strait of Hormuz, and open separate nuclear negotiations. President Trump has signalled an imminent signing "possibly in Europe within days," though Iranian officials caution that nuclear issues will require separate follow-on talks. An Iranian Foreign Ministry spokesperson said "an understanding has been reached on the majority of issues."
+      </div>
+      <div class="story-source">
+        Source: <a href="https://www.cnn.com/2026/06/12/world/live-news/iran-war-trump-israel" target="_blank">CNN Live Blog — June 12, 2026</a>
+        &nbsp;·&nbsp; <a href="https://en.wikipedia.org/wiki/2026_Iran_war_ceasefire" target="_blank">Wikipedia — 2026 Iran War Ceasefire</a>
+      </div>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-critical">ACTIVE THREAT</span>
+      <div class="story-headline">US Military Downs Two Iranian Drones Targeting Strait of Hormuz Vessels</div>
+      <div class="story-body">
+        As of June 12, the US military intercepted and destroyed two Iranian drones that were targeting commercial vessels in the Strait of Hormuz. The Strait remains under a fragile ceasefire arrangement with commercial traffic operating under US Navy escort. The incident underscores the volatility of the waterway even as diplomats work toward a final agreement. Israel is pressing Washington to prevent any unfreezing of Iranian assets as part of a deal, complicating talks.
+      </div>
+      <div class="story-source">
+        Source: <a href="https://www.cnn.com/2026/06/12/world/live-news/iran-war-trump-israel" target="_blank">CNN — June 12, 2026</a>
+      </div>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-anniversary">ANNIVERSARY</span>
+      <div class="story-headline">Iran Marks 1-Year Anniversary of the 12-Day War with Defiant Ceremonies</div>
+      <div class="story-body">
+        Senior Iranian officials held national ceremonies today marking exactly one year since Israel launched strikes on June 13, 2025, targeting Iran's nuclear programme and killing top military commanders and nuclear scientists. State media quoted officials vowing "justice will be served," while the government used the occasion to rally domestic support ahead of a potential peace deal. The Twelve-Day War (June 13–24, 2025) ultimately led to the broader 2026 conflict that began on February 28, when the US and Israel launched fresh strikes to induce regime change.
+      </div>
+      <div class="story-source">
+        Source: <a href="https://www.presstv.ir/Detail/2026/06/13/770369/Iranian-officials-mark-first-anniversary-US-Israeli-aggression--June-13" target="_blank">PressTV — June 13, 2026</a>
+        &nbsp;·&nbsp; <a href="https://en.wikipedia.org/wiki/Twelve-Day_War" target="_blank">Wikipedia — Twelve-Day War</a>
+      </div>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-notable">DIPLOMACY</span>
+      <div class="story-headline">Lebanon Resolution Included in Draft — Israel Katz Rejects Territorial Withdrawal</div>
+      <div class="story-body">
+        The emerging US-Iran memorandum of understanding reportedly includes language resolving the Lebanon front "and all other fronts." However, Israeli Defense Minister Israel Katz stated publicly that Israel will not withdraw from territories it currently occupies in Lebanon, setting up a potential friction point with the draft agreement. The MOU is also expected to address sanctions relief in exchange for Iran transferring enriched uranium stockpiles to US custody.
+      </div>
+      <div class="story-source">
+        Source: <a href="https://commonslibrary.parliament.uk/research-briefings/cbp-10637/" target="_blank">UK House of Commons Library — US-Iran Ceasefire &amp; Nuclear Talks</a>
+        &nbsp;·&nbsp; <a href="https://www.aljazeera.com/gallery/2026/6/7/100-days-of-the-us-israel-war-on" target="_blank">Al Jazeera — 100 Days of the War</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 2 — CYBERSECURITY
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🛡️</div>
+      <div class="section-title">Cybersecurity</div>
+      <div class="section-subtitle">Sources: Bleeping Computer · Krebs · The Hacker News · ZDI · Help Net Security</div>
+    </div>
+
+    <div class="sub-section-title">🔥 Top Threats &amp; Vulnerabilities</div>
+
+    <div class="story-card">
+      <span class="story-tag tag-breaking">RECORD</span>
+      <div class="story-headline">Microsoft June 2026 Patch Tuesday: Record-Breaking 200+ CVEs, 3 Zero-Days Actively Exploited</div>
+      <div class="story-body">
+        Microsoft's June 2026 Patch Tuesday — released June 10 — set an all-time record with over 200 CVEs addressed in a single monthly release, including 33 rated Critical (28 RCE). Three zero-days were actively exploited in the wild at time of release:
+        <br/><br/>
+        • <strong>CVE-2026-45586 "GreenPlasma"</strong> — Windows Collaborative Translation Framework (CTFMON) Elevation of Privilege, already chained with other flaws in active campaigns.<br/>
+        • <strong>CVE-2026-50507 "YellowKey"</strong> — Windows BitLocker Security Feature Bypass; requires physical/local access but enables full-disk encryption circumvention.<br/>
+        • <strong>CVE-2026-49160</strong> — HTTP.sys Denial-of-Service; allows remote server crash via crafted HTTP requests (wormable, CVSS 9.8).<br/><br/>
+        Security researcher <em>Nightmare Eclipse</em> disclosed at least two of the zero-days publicly before patches were available.
+      </div>
+      <div class="story-source">
+        Source: <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-june-2026-patch-tuesday-fixes-6-zero-days-200-flaws/" target="_blank">Bleeping Computer</a>
+        &nbsp;·&nbsp; <a href="https://krebsonsecurity.com/2026/06/a-record-breaking-patch-tuesday-for-june-2026/" target="_blank">Krebs on Security</a>
+        &nbsp;·&nbsp; <a href="https://www.zerodayinitiative.com/blog/2026/6/9/the-june-2026-security-update-review" target="_blank">Zero Day Initiative</a>
+      </div>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-critical">ACTIVE EXPLOIT</span>
+      <div class="story-headline">Qilin Ransomware Actively Exploiting Check Point VPN Zero-Day (CVE-2026-50751)</div>
+      <div class="story-body">
+        A Qilin ransomware affiliate is actively exploiting CVE-2026-50751, an authentication bypass in Check Point VPN Remote Access and Mobile Access affecting configurations using the deprecated IKEv1 key exchange protocol. Check Point first detected suspicious activity on June 4; attacks are believed to have started in early May. Victims span education, manufacturing, and financial sectors. Alongside Qilin, Nightspire and RansomHouse have also claimed new victims this week across similar verticals.
+      </div>
+      <div class="story-source">
+        Source: <a href="https://www.helpnetsecurity.com/2026/06/08/check-point-cve-2026-50751-qilin-ransomware/" target="_blank">Help Net Security — CVE-2026-50751</a>
+        &nbsp;·&nbsp; <a href="https://vanderbiltreport.com/top-cybersecurity-news-for-june-9-2026m-ransomware-hit-vpn-flaw-and-a-sneaky-python-worm/" target="_blank">The Vanderbilt Report</a>
+      </div>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-critical">PATCH NOW</span>
+      <div class="story-headline">Android June 2026 Patch: 124 CVEs Including Actively Exploited Integer Overflow (CVE-2025-48595)</div>
+      <div class="story-body">
+        Google's June 2026 Android security update addresses 124 vulnerabilities. The standout is CVE-2025-48595, an integer overflow in the Android Framework enabling local privilege escalation without user interaction — already exploited in the wild. Chrome's V8 engine also received an emergency patch for CVE-2026-11645, exploited via malicious web pages.
+      </div>
+      <div class="story-source">
+        Source: <a href="https://thecyberexpress.com/cve-2025-48595-android-june-2026/" target="_blank">The Cyber Express — Android June 2026</a>
+        &nbsp;·&nbsp; <a href="https://carthageelectronics.com/cyber-threat-report-june-8-10-2026-cve-zero-days-ransomware/" target="_blank">June 2026 Cyber Threat Report</a>
+      </div>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-notable">CISA KEV</span>
+      <div class="story-headline">CISA Adds SolarWinds Serv-U CVE to KEV Catalog — Federal Deadline June 19</div>
+      <div class="story-body">
+        CISA added CVE-2026-28318 (SolarWinds Serv-U managed file transfer) to its Known Exploited Vulnerabilities catalog on June 5 with a mandatory federal remediation deadline of June 19. Federal agencies must patch or mitigate immediately; the flaw enables remote code execution against internet-exposed Serv-U instances.
+      </div>
+      <div class="story-source">
+        Source: <a href="https://www.securityweek.com/" target="_blank">SecurityWeek</a>
+        &nbsp;·&nbsp; <a href="https://carthageelectronics.com/cyber-threat-report-june-8-10-2026-cve-zero-days-ransomware/" target="_blank">June 2026 Cyber Threat Report</a>
+      </div>
+    </div>
+
+    <div class="sub-section-title">👥 Audience Intelligence</div>
+
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="audience-label ciso">🔐 CISO Priorities</div>
+        <ul>
+          <li>Emergency: Patch <strong>GreenPlasma / YellowKey / MiniPlasma</strong> zero-days today — already exploited in EoP chains.</li>
+          <li>Disable <strong>IKEv1</strong> on all Check Point VPN deployments to block Qilin lateral movement.</li>
+          <li>Force Android MDM updates across mobile fleet — CVE-2025-48595 is actively exploited, no interaction required.</li>
+          <li>If SolarWinds Serv-U is in scope: patch before June 19 (CISA KEV deadline).</li>
+          <li>Validate Chrome auto-update status for CVE-2026-11645 (V8 zero-day).</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <div class="audience-label partner">🤝 Consulting Partner</div>
+        <ul>
+          <li>Record 200+ CVE Patch Tuesday is a managed services upsell moment — clients overwhelmed.</li>
+          <li>Qilin VPN campaign hitting education & manufacturing: immediate advisory for those verticals.</li>
+          <li>SolarWinds KEV deadline creates compliance urgency — use for breach readiness assessments.</li>
+          <li>Rising ransomware across 3 groups this week signals continued trend; tabletop exercises relevant.</li>
+          <li>Nightmare Eclipse public disclosures before patches: propose proactive threat-intel retainers.</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <div class="audience-label exec">💼 Business Executive</div>
+        <ul>
+          <li>Largest-ever Microsoft patch day signals accelerating attack surface expansion — budget for patching velocity matters.</li>
+          <li>Ransomware gangs (Qilin, Nightspire, RansomHouse) hit education, finance & manufacturing simultaneously — sector-agnostic risk.</li>
+          <li>SolarWinds Serv-U flaw is a supply-chain risk reminder: third-party file-transfer tools are high-value targets.</li>
+          <li>Chrome and Android zero-days: employee device patching policy is now a board-level hygiene item.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 3 — ARTIFICIAL INTELLIGENCE
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🤖</div>
+      <div class="section-title">Artificial Intelligence</div>
+      <div class="section-subtitle">Sources: MIT Tech Review · VentureBeat · LLM Stats · FelloAI · The Information</div>
+    </div>
+
+    <div class="sub-section-title">🚀 Model Releases &amp; Industry Moves</div>
+
+    <div class="story-card">
+      <span class="story-tag tag-breaking">MILESTONE</span>
+      <div class="story-headline">ChatGPT Hits 1 Billion Monthly Active Users — OpenAI Confidentially Files for IPO at $852B Valuation</div>
+      <div class="story-body">
+        OpenAI's ChatGPT has crossed one billion monthly active users, cementing it as the fastest consumer product in history to reach that scale. Simultaneously, OpenAI has confidentially filed for an IPO that values the company at approximately $852 billion. However, public surveys in 2026 show rising concern over AI accuracy, data privacy, and deployment speed — user trust in ChatGPT outputs is becoming more cautious even as usage soars.
+      </div>
+      <div class="story-source">
+        Source: <a href="https://yellow.com/news/chatgpt-one-billion-monthly-users-ai-sentiment" target="_blank">Yellow.com — ChatGPT 1B Users</a>
+        &nbsp;·&nbsp; <a href="https://felloai.com/best-ai-models/" target="_blank">FelloAI — Best AI Models June 2026</a>
+      </div>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-notable">MODEL RACE</span>
+      <div class="story-headline">Triple-Launch Wave: GPT-5.6, Gemini 3.5 Pro & Claude Mythos Expected Within Weeks</div>
+      <div class="story-body">
+        The AI industry is bracing for a simultaneous model release wave with all three frontier labs expected to ship major updates within weeks of each other: <strong>OpenAI GPT-5.6</strong>, <strong>Google Gemini 3.5 Pro</strong>, and <strong>Anthropic Claude Mythos 1</strong>. Anthropic's Claude Opus 4.8 (already released) is currently outperforming GPT-5.5 and Gemini 3.1 Pro on several coding benchmarks. Meanwhile, NVIDIA's open-weights <strong>Nemotron 3 Ultra</strong> (550B parameters, fully permissive licence, released June 4) jumped to #1 on open-model leaderboards.
+      </div>
+      <div class="story-source">
+        Source: <a href="https://centerbit.co/en/blog/ai-rumors-june-2026-gpt-5-6-gemini-3-5-pro-claude-mythos" target="_blank">Centerbit — AI Rumors June 2026</a>
+        &nbsp;·&nbsp; <a href="https://llm-stats.com/ai-news" target="_blank">LLM Stats — June 2026</a>
+        &nbsp;·&nbsp; <a href="https://www.essamamdani.com/blog/june-2026-ai-model-flood-gpt-gemini-claude" target="_blank">Essa Mamdani — June 2026 AI Flood</a>
+      </div>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-notable">INDUSTRY SHIFT</span>
+      <div class="story-headline">Agentic AI Goes Mainstream — From Chat to Autonomous Task Completion at Enterprise Scale</div>
+      <div class="story-body">
+        The defining trend of mid-2026: AI is shifting decisively from chat interfaces to agentic systems that complete multi-step tasks autonomously in research, coding, legal work, financial operations, and commerce. Ramp is piloting AI-run financial operations; Uber has deployed robotaxis in Spain; BYD entered humanoid robotics. Microsoft's MAI models (launched at Build, June 2) signal a move to develop independent AI capabilities separate from OpenAI. Anthropic published a landmark report in early June calling on frontier labs to develop a coordinated mechanism for responsible AI development.
+      </div>
+      <div class="story-source">
+        Source: <a href="https://medium.com/@davidakpovi/ai-news-week-of-june-1-to-june-7-2026-7957940c805a" target="_blank">Medium — AI News Week of June 1–7</a>
+        &nbsp;·&nbsp; <a href="https://blog.mean.ceo/ai-news-june-2026/" target="_blank">Mean CEO Blog — AI News June 2026</a>
+      </div>
+    </div>
+
+    <div class="story-card">
+      <span class="story-tag tag-notable">REGULATION</span>
+      <div class="story-headline">UK "Regulating for Growth" Bill Reshapes AI Regulatory Landscape</div>
+      <div class="story-body">
+        Announced in the UK King's Speech on May 13, 2026, the Regulating for Growth Bill aims to modernise the UK regulatory framework to support AI-driven economic growth while maintaining essential protections. TLT's June AI brief notes that the bill will affect compliance obligations across sectors with significant AI deployment, particularly financial services and healthcare. The EU AI Act's tiered obligations are now fully in effect, creating divergent compliance regimes between the EU and UK for the first time since Brexit.
+      </div>
+      <div class="story-source">
+        Source: <a href="https://www.tlt.com/insights-and-events/insight/tlts-ai-brief-june-2026" target="_blank">TLT — AI Brief June 2026</a>
+      </div>
+    </div>
+
+    <div class="sub-section-title">👥 Audience Intelligence</div>
+
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="audience-label ciso">🔐 CISO Priorities</div>
+        <ul>
+          <li>Agentic AI explosion means autonomous systems now act without human approval — review agent permission scopes urgently.</li>
+          <li>Nemotron 3 Ultra (open weights, 550B) lowers barriers for adversarial fine-tuning — expect AI-augmented attack tools to accelerate.</li>
+          <li>Shadow AI is now 1,200+ apps per enterprise (per earlier M-Trends data): AI governance policies must cover agentic workflows.</li>
+          <li>Anthropic's coordinated AI safety call: watch for new voluntary commitments that affect enterprise AI procurement criteria.</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <div class="audience-label partner">🤝 Consulting Partner</div>
+        <ul>
+          <li>ChatGPT at 1B users + rising trust concerns = AI accuracy/bias audit practice opportunity.</li>
+          <li>UK Regulating for Growth Bill and EU AI Act divergence creates compliance advisory demand for multinationals.</li>
+          <li>Triple-launch wave (GPT-5.6/Gemini 3.5/Mythos) will prompt clients to re-evaluate AI vendor selection — be ready with comparison frameworks.</li>
+          <li>Microsoft MAI independence from OpenAI: reposition enterprise Microsoft AI roadmap advisory.</li>
+          <li>Agentic AI moving to production — process automation, ROI measurement, and governance playbooks are in demand.</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <div class="audience-label exec">💼 Business Executive</div>
+        <ul>
+          <li>ChatGPT's 1B-user milestone confirms AI is now mass-market infrastructure — competitor AI adoption is table stakes.</li>
+          <li>OpenAI IPO at $852B valuation signals the AI investment super-cycle is far from over.</li>
+          <li>Agentic AI deployments (Ramp, Uber, BYD) demonstrate real operational ROI — ask your AI teams for a 90-day agentic pilot plan.</li>
+          <li>UK/EU regulatory divergence: ensure legal &amp; compliance teams are tracking AI obligations in each operating jurisdiction.</li>
+          <li>NVIDIA Nemotron 3 Ultra (open, 550B): the gap between frontier closed models and open-source alternatives is narrowing fast.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Saturday, June 13, 2026 at 6:00 PM (Paris time)</p>
+    <p style="margin-top: 6px;">Sources: Reuters · CNN · BBC · Al Jazeera · Wikipedia · Bleeping Computer · Krebs on Security · Help Net Security · ZDI · MIT Technology Review · LLM Stats · FelloAI</p>
+  </div>
+
+</div>
+</body>
+</html>
