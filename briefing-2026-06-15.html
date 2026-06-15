@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Monday, June 15, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .header .back-link {
+      display: inline-block;
+      font-size: 0.82rem;
+      color: #8b949e;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+    .header .back-link:hover { color: #58a6ff; }
+    .header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 10px; }
+    .header .meta { font-size: 0.9rem; color: #8b949e; }
+    .header .meta span { color: #6e7681; margin: 0 6px; }
+
+    /* Summary bar */
+    .summary-bar {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-left: 4px solid #58a6ff;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 48px;
+      font-size: 0.9rem;
+      color: #c9d1d9;
+      line-height: 1.6;
+    }
+    .summary-bar strong { color: #f0f6fc; }
+
+    /* Sections */
+    .section { margin-bottom: 56px; }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #21262d;
+    }
+    .section-icon { font-size: 1.8rem; }
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #f0f6fc;
+      letter-spacing: -0.3px;
+    }
+    .section-day {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #8b949e;
+      margin-left: auto;
+      background: #21262d;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    /* Story cards */
+    .story {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+      transition: border-color 0.15s;
+    }
+    .story:hover { border-color: #484f58; }
+    .story-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #f0f6fc;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .story-body {
+      font-size: 0.88rem;
+      color: #c9d1d9;
+      line-height: 1.7;
+    }
+    .story-body p + p { margin-top: 8px; }
+    .story-source {
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: #6e7681;
+    }
+    .story-source a { color: #8b949e; }
+    .story-source a:hover { color: #58a6ff; }
+
+    /* Tags */
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-right: 6px;
+      margin-bottom: 8px;
+      vertical-align: middle;
+    }
+    .tag-breaking { background: #3d1a1a; color: #f85149; border: 1px solid #5c2020; }
+    .tag-developing { background: #1c2a1a; color: #56d364; border: 1px solid #1f3a1d; }
+    .tag-critical { background: #3d1a1a; color: #f85149; border: 1px solid #5c2020; }
+    .tag-high { background: #2d1e00; color: #e3b341; border: 1px solid #453000; }
+    .tag-patched { background: #1a2e1a; color: #56d364; border: 1px solid #1d3d1d; }
+    .tag-zeroday { background: #3d1a2e; color: #d2a8ff; border: 1px solid #5c2045; }
+    .tag-new { background: #1a2036; color: #79c0ff; border: 1px solid #1d2d5c; }
+
+    /* Audience sub-sections */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .audience-card {
+      background: #0d1117;
+      border: 1px solid #21262d;
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .audience-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .audience-ciso .audience-label { color: #79c0ff; }
+    .audience-partner .audience-label { color: #56d364; }
+    .audience-exec .audience-label { color: #e3b341; }
+    .audience-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .audience-card ul li {
+      font-size: 0.83rem;
+      color: #c9d1d9;
+      padding: 3px 0;
+      padding-left: 14px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .audience-card ul li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: #484f58;
+    }
+
+    /* Quote block */
+    .quote {
+      border-left: 3px solid #30363d;
+      margin: 10px 0 4px;
+      padding: 6px 14px;
+      font-style: italic;
+      color: #8b949e;
+      font-size: 0.86rem;
+    }
+
+    /* Divider */
+    .divider {
+      border: none;
+      border-top: 1px solid #21262d;
+      margin: 24px 0;
+    }
+
+    /* CVE table */
+    .cve-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-top: 12px;
+    }
+    .cve-table th {
+      text-align: left;
+      padding: 8px 12px;
+      background: #21262d;
+      color: #8b949e;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+    }
+    .cve-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #21262d;
+      color: #c9d1d9;
+      vertical-align: top;
+    }
+    .cve-table tr:last-child td { border-bottom: none; }
+    .cve-id { font-family: 'SFMono-Regular', Consolas, monospace; color: #d2a8ff; font-size: 0.8rem; }
+    .severity-critical { color: #f85149; font-weight: 700; }
+    .severity-high { color: #e3b341; font-weight: 600; }
+
+    /* Stat pills */
+    .stat-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+      margin-bottom: 4px;
+    }
+    .stat-pill {
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 0.8rem;
+      color: #c9d1d9;
+    }
+    .stat-pill strong { color: #f0f6fc; }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid #21262d;
+      color: #484f58;
+      font-size: 0.78rem;
+      line-height: 1.8;
+    }
+    .footer strong { color: #6e7681; }
+    .footer .nav-links { margin-top: 8px; }
+    .footer .nav-links a { color: #6e7681; margin: 0 8px; }
+    .footer .nav-links a:hover { color: #58a6ff; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <a href="index.html" class="back-link">← Back to Archive</a>
+    <div class="label">Daily Intelligence Briefing</div>
+    <h1>Monday, June 15, 2026</h1>
+    <div class="meta">Iran War · Cybersecurity · AI<span>·</span>Day 108 of conflict</div>
+  </div>
+
+  <!-- Summary Bar -->
+  <div class="summary-bar">
+    <strong>Today's Top Stories:</strong>
+    US &amp; Iran announce ceasefire extension deal today — Geneva signing set for Friday June 19 with immediate Hormuz reopening, but Israel poses biggest challenge ·
+    Microsoft Patch Tuesday fixes record 200 CVEs including 6 zero-days; Nightmare Eclipse drops fresh Windows 0-day hours later ·
+    Oracle PeopleSoft CVE-2026-35273 (CVSS 9.8) actively exploited by ShinyHunters across 100+ orgs ·
+    Claude Fable 5 pulled by US government export directive; cybersecurity community protests ban on Anthropic's Mythos-class models ·
+    Nvidia raises $20B in bonds for AI infrastructure buildout
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SECTION 1: IRAN WAR
+       ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">💣</div>
+      <div class="section-title">Iran War</div>
+      <div class="section-day">Day 108</div>
+    </div>
+
+    <!-- Story 1: Main deal -->
+    <div class="story">
+      <div class="story-title">
+        <span class="tag tag-breaking">Breaking</span>
+        US &amp; Iran Announce Ceasefire Extension Deal — Hormuz to Reopen at Geneva Signing
+      </div>
+      <div class="story-body">
+        <p>The United States and Iran reached an initial agreement today to <strong>extend their fragile ceasefire</strong> and reopen the Strait of Hormuz to international shipping. The deal, brokered by Pakistan, is scheduled to be formally signed <strong>Friday, June 19 in Geneva</strong> — with Iran stating it will not implement any terms until the signing ceremony takes place.</p>
+        <p>Key terms of the deal include a <strong>60-day ceasefire extension</strong>, a memorandum of understanding between Washington and Tehran, and the <strong>immediate reopening of the Strait of Hormuz</strong> upon signing. A 60-day window is also established to negotiate the fate of Iran's highly enriched uranium stockpile and nuclear program.</p>
+        <p>Trump authorized ending the US naval blockade of Iranian ports as part of the accord. France and other Western partners signaled they are "ready to take action very quickly" to help restore normal shipping traffic through the strait. However, energy experts caution it could take <strong>months for global fuel prices to stabilize</strong> even once the strait reopens.</p>
+        <div class="quote">"Iran would not start implementing it until it was signed." — Iran's Deputy Foreign Minister</div>
+        <div class="quote">"A wall to no nuclear weapon." — President Trump, describing his vision for the deal</div>
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://www.npr.org/2026/06/15/nx-s1-5858590/us-iran-deal-updates">NPR</a> ·
+        <a href="https://www.pbs.org/newshour/world/iran-and-u-s-reach-an-initial-deal-to-extend-the-ceasefire-and-open-the-strait-of-hormuz-but-challenges-remain">PBS NewsHour</a> ·
+        <a href="https://www.axios.com/2026/06/14/us-iran-ceasefire-extended-hormuz-reopen-trump">Axios</a>
+      </div>
+    </div>
+
+    <!-- Story 2: Israel challenge -->
+    <div class="story">
+      <div class="story-title">
+        <span class="tag tag-developing">Developing</span>
+        Israel's Stance Remains the Biggest Obstacle to the Deal
+      </div>
+      <div class="story-body">
+        <p>Israeli Defense Minister Israel Katz declared that Israel will remain <strong>"indefinitely"</strong> in occupied territories in Lebanon, Syria, and Gaza — a direct contradiction of Iran's insistence that any agreement must include an end to Israel's fighting in Lebanon against Iranian-backed Hezbollah.</p>
+        <p>Netanyahu's spokesman reiterated that Israel "will continue to defend itself against any threat," signaling Jerusalem is not bound by the US-Iran accord. This creates a potential decoupling between the wider US-Iran ceasefire and the Israel-Hezbollah front — a gap that could unravel the deal before it is signed.</p>
+        <div class="quote">"It's a long time till Friday." — Luxembourg's Foreign Minister, on the risks ahead of the Geneva signing</div>
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://www.pbs.org/newshour/world/iran-and-u-s-reach-an-initial-deal-to-extend-the-ceasefire-and-open-the-strait-of-hormuz-but-challenges-remain">PBS NewsHour</a> ·
+        <a href="https://commonslibrary.parliament.uk/research-briefings/cbp-10637/">House of Commons Library</a>
+      </div>
+    </div>
+
+    <!-- Story 3: Nuclear / Geopolitical context -->
+    <div class="story">
+      <div class="story-title">
+        <span class="tag tag-developing">Context</span>
+        Nuclear Talks Deferred 60 Days; Global Geopolitical Stakes
+      </div>
+      <div class="story-body">
+        <p>The agreement deliberately defers the hardest question — Iran's nuclear program — to a <strong>60-day negotiating window</strong>. The US and Israel remain deeply concerned that Iran's highly enriched uranium stockpile could support weapons development, while Tehran continues to insist its program is peaceful.</p>
+        <p>The conflict began on <strong>February 28, 2026</strong>, when Israel and the United States launched airstrikes against Iran, killing its Supreme Leader. Iran responded with a broad missile and drone campaign against Israel, US bases, and Gulf Arab states, and by closing the Strait of Hormuz. After over five weeks of fighting, a first ceasefire was reached on April 7–8. Since then, multiple extensions and violations have kept the region on edge.</p>
+        <p>Humanitarian toll to date: <strong>thousands dead in Iran and Lebanon</strong>, dozens in Israel and Gulf states, and more than <strong>one-sixth of Lebanon's population displaced</strong>.</p>
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://www.britannica.com/event/2026-Iran-war">Britannica</a> ·
+        <a href="https://en.wikipedia.org/wiki/2026_Iran_war_ceasefire">Wikipedia — 2026 Iran war ceasefire</a> ·
+        <a href="https://www.newsnationnow.com/world/us-iran-peace-deal-final-text-agreed-upon/">NewsNation</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SECTION 2: CYBERSECURITY
+       ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🔒</div>
+      <div class="section-title">Cybersecurity</div>
+    </div>
+
+    <!-- Story 1: Patch Tuesday -->
+    <div class="story">
+      <div class="story-title">
+        <span class="tag tag-critical">Critical</span>
+        Microsoft June Patch Tuesday — 200 CVEs, 6 Zero-Days, then a 7th Hours Later
+      </div>
+      <div class="story-body">
+        <p>Microsoft's June 2026 Patch Tuesday released fixes for <strong>200 vulnerabilities</strong>, including <strong>33 rated Critical</strong> (28 RCE, 4 elevation of privilege, 1 information disclosure) and <strong>6 zero-days</strong>. Hours after the release, security researcher <em>Nightmare Eclipse</em> published a fresh, unpatched Windows zero-day on GitHub — making it effectively 7 active zero-day threats.</p>
+
+        <div class="stat-row">
+          <div class="stat-pill">Total: <strong>200 CVEs</strong></div>
+          <div class="stat-pill">Critical: <strong>33</strong></div>
+          <div class="stat-pill">Zero-Days: <strong>6 + 1 new</strong></div>
+          <div class="stat-pill">RCE: <strong>55</strong></div>
+          <div class="stat-pill">EoP: <strong>65</strong></div>
+        </div>
+
+        <table class="cve-table">
+          <thead>
+            <tr>
+              <th>CVE</th>
+              <th>Nickname</th>
+              <th>Component</th>
+              <th>Type</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="cve-id">CVE-2026-42897</span></td>
+              <td>—</td>
+              <td>Exchange Server</td>
+              <td>Spoofing</td>
+              <td><span class="severity-critical">Actively Exploited</span></td>
+            </tr>
+            <tr>
+              <td><span class="cve-id">CVE-2026-45586</span></td>
+              <td>GreenPlasma</td>
+              <td>Windows CTFMON</td>
+              <td>EoP</td>
+              <td><span class="severity-high">Publicly Disclosed</span></td>
+            </tr>
+            <tr>
+              <td><span class="cve-id">CVE-2026-45585</span></td>
+              <td>YellowKey</td>
+              <td>Windows BitLocker</td>
+              <td>Security Bypass</td>
+              <td><span class="severity-high">Publicly Disclosed</span></td>
+            </tr>
+            <tr>
+              <td><span class="cve-id">CVE-2026-50507</span></td>
+              <td>bitskrieg</td>
+              <td>Windows BitLocker</td>
+              <td>Security Bypass</td>
+              <td><span class="severity-high">Publicly Disclosed</span></td>
+            </tr>
+            <tr>
+              <td><span class="cve-id">CVE-2026-49160</span></td>
+              <td>HTTP/2 Bomb</td>
+              <td>HTTP.sys</td>
+              <td>DoS</td>
+              <td><span class="severity-high">Publicly Disclosed</span></td>
+            </tr>
+            <tr>
+              <td><span class="cve-id">CVE-2020-17103</span></td>
+              <td>Mini-Plasma</td>
+              <td>Windows Cloud Files</td>
+              <td>EoP</td>
+              <td><span class="severity-high">Publicly Disclosed</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin-top:10px;">Key affected products: <strong>Exchange Server</strong>, <strong>Windows</strong> (BitLocker, Hyper-V, Kerberos, kernel), <strong>Microsoft Office</strong>, Remote Desktop Client, SharePoint, and Visual Studio Code.</p>
+        <p style="margin-top:8px;">⚠️ <strong>Priority action:</strong> Patch CVE-2026-42897 (Exchange spoofing, actively exploited) immediately. Apply all BitLocker bypass patches before next scheduled maintenance window.</p>
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-june-2026-patch-tuesday-fixes-6-zero-days-200-flaws/">BleepingComputer</a> ·
+        <a href="https://www.zerodayinitiative.com/blog/2026/6/9/the-june-2026-security-update-review">Zero Day Initiative</a>
+      </div>
+    </div>
+
+    <!-- Story 2: Oracle PeopleSoft -->
+    <div class="story">
+      <div class="story-title">
+        <span class="tag tag-zeroday">Zero-Day</span>
+        Oracle PeopleSoft CVE-2026-35273 (CVSS 9.8) — ShinyHunters Breaches 100+ Orgs
+      </div>
+      <div class="story-body">
+        <p>The ShinyHunters extortion group (tracked as UNC6240 by Mandiant/Google Threat Intelligence) has exploited a <strong>critical unauthenticated RCE vulnerability</strong> in Oracle PeopleSoft Enterprise PeopleTools (versions 8.61 and 8.62) to breach over <strong>100 organizations</strong>, including the University of Nottingham, across 300 vulnerable instances.</p>
+        <p>The flaw — <strong>CVE-2026-35273</strong> (CVSS 9.8) — requires only network HTTP access and no login or user interaction to achieve full server takeover. It was exploited as a zero-day from <strong>May 27 through June 9</strong>, nearly two weeks before Oracle pushed an out-of-band security advisory. Exploitation targeted the PeopleSoft Environment Management Hub (PSEMHUB) endpoints; stolen data was published on the ShinyHunters Data Leak Site on June 9.</p>
+        <p>Universities have been disproportionately affected, but the sector spread is wide. Mandiant classifies the underlying vulnerability as SSRF-derived.</p>
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://thehackernews.com/2026/06/shinyhunters-exploits-oracle-peoplesoft.html">The Hacker News</a> ·
+        <a href="https://www.rapid7.com/blog/post/etr-active-exploitation-of-oracle-peoplesoft-zero-day-cve-2026-35273/">Rapid7</a> ·
+        <a href="https://www.securityweek.com/oracle-addresses-peoplesoft-vulnerability-amid-reports-of-zero-day-attacks/">SecurityWeek</a> ·
+        <a href="https://www.theregister.com/cyber-crime/2026/06/11/shinyhunters-claims-oracle-peoplesoft-0-day-hit-100-orgs/5254443">The Register</a>
+      </div>
+    </div>
+
+    <!-- Story 3: AudiA6 + OnyxC2 -->
+    <div class="story">
+      <div class="story-title">
+        <span class="tag tag-patched">Law Enforcement</span>
+        Europol Dismantles AudiA6 Crypto-Laundering Service; OnyxC2 Malware Targets 200+ Apps
+      </div>
+      <div class="story-body">
+        <p>European authorities, coordinated by Europol, <strong>disrupted the AudiA6 cryptocurrency laundering service</strong>, a key financial pipeline used by ransomware gangs and cybercriminal networks to wash hundreds of millions in illicit profits. The takedown cuts off a significant monetization channel for multiple threat actors simultaneously.</p>
+        <p>In parallel, researchers disclosed a new malware framework: <strong>OnyxC2</strong> targets more than <strong>200 applications and browser extensions</strong> while evading detection through encrypted payloads, DLL sideloading, and in-memory execution techniques. No threat actor attribution has been published yet.</p>
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://www.securityweek.com/">SecurityWeek</a> ·
+        <a href="https://www.bleepingcomputer.com/">BleepingComputer</a>
+      </div>
+    </div>
+
+    <!-- Audience grid -->
+    <div class="audience-grid">
+      <div class="audience-card audience-ciso">
+        <div class="audience-label">🔐 CISO Priorities</div>
+        <ul>
+          <li>Patch CVE-2026-42897 (Exchange) now — actively exploited</li>
+          <li>Apply all 6 June Patch Tuesday zero-days; block Nightmare Eclipse PoC exploitation</li>
+          <li>Audit PeopleSoft 8.61/8.62 installs — patch CVE-2026-35273, check for PSEMHUB IOCs from May 27+</li>
+          <li>Hunt for OnyxC2 DLL sideloading in EDR telemetry</li>
+          <li>BitLocker bypass patches (YellowKey/bitskrieg) — prioritize servers and mobile endpoints</li>
+        </ul>
+      </div>
+      <div class="audience-card audience-partner">
+        <div class="audience-label">🤝 Consulting Partner</div>
+        <ul>
+          <li>Client advisory: Oracle PeopleSoft exposure assessment for higher-ed and public sector clients</li>
+          <li>Patch Tuesday emergency advisory — 200 CVEs signals elevated risk window for next 2 weeks</li>
+          <li>AudiA6 takedown disrupts ransomware payments flow — expect threat actor pivots</li>
+          <li>Compliance gap: BitLocker bypass CVEs affect many FedRAMP and ISO 27001 environments</li>
+        </ul>
+      </div>
+      <div class="audience-card audience-exec">
+        <div class="audience-label">💼 Business Executive</div>
+        <ul>
+          <li>Microsoft patched 200 flaws this month — ask your CISO if Exchange and Windows systems are updated</li>
+          <li>If your org uses Oracle PeopleSoft (HR, finance, student systems) — verify patching status urgently</li>
+          <li>European law enforcement disrupted a major criminal money-laundering operation, reducing ransomware gang capacity</li>
+          <li>Cyber risk remains elevated: board-level briefing on current patch backlog recommended</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SECTION 3: AI
+       ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🤖</div>
+      <div class="section-title">Artificial Intelligence</div>
+    </div>
+
+    <!-- Story 1: Claude Fable 5 / government ban -->
+    <div class="story">
+      <div class="story-title">
+        <span class="tag tag-breaking">Ongoing</span>
+        Claude Fable 5 Pulled by US Export Directive — Security Community Protests Anthropic Model Ban
+      </div>
+      <div class="story-body">
+        <p>The reverberations from last week's Claude Fable 5 launch and removal continue to dominate AI policy conversations. Anthropic launched Claude Fable 5 on <strong>June 9</strong>, describing it as the most capable model it had ever publicly deployed — scoring more than 10% higher than Claude Opus 4.8 on several benchmarks and excelling in software engineering, vision, scientific research, and autonomous task execution.</p>
+        <p>By <strong>June 12 at 5:21 PM ET</strong>, the model was pulled — the first time a US government export control directive has ever been used to take down a live, publicly deployed AI model. The restriction extends to both Fable 5 and Mythos 5 (the restricted government-adjacent variant), citing concerns about the models' offensive cyber capabilities.</p>
+        <p>Cybersecurity experts are now protesting the ban, warning that restricting access to Anthropic's most powerful defensive AI tools could <strong>limit blue-team and threat-hunting capabilities</strong> while doing little to prevent adversarial use of equivalent foreign models. The Trump administration's AI security framework executive order — signed this week — "stops short of regulating industry" while acknowledging these risks.</p>
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://techcrunch.com/2026/06/09/anthropic-released-claude-fable-5-its-most-powerful-model-publicly-days-after-warning-ai-is-getting-too-dangerous/">TechCrunch</a> ·
+        <a href="https://thehackernews.com/2026/06/anthropic-releases-claude-fable-5-its.html">The Hacker News</a> ·
+        <a href="https://www.infoq.com/news/2026/06/claude-5-release/">InfoQ</a> ·
+        <a href="https://enterprisedna.co/resources/news/anthropic-claude-fable-5-mythos-5-public-launch-2026/">EnterpriseDNA</a>
+      </div>
+    </div>
+
+    <!-- Story 2: Nvidia + Infrastructure -->
+    <div class="story">
+      <div class="story-title">
+        <span class="tag tag-new">Markets</span>
+        Nvidia Raises $20B in Bonds for AI Infrastructure; Microsoft Copilot Wave 3 Launches
+      </div>
+      <div class="story-body">
+        <p>Nvidia is raising at least <strong>$20 billion through its first bond sale since 2021</strong>, reflecting the extraordinary capital demands of AI infrastructure. The move signals that even the world's most profitable chipmaker is tapping debt markets to fund the AI buildout cycle.</p>
+        <p>Microsoft simultaneously announced <strong>Wave 3 of Microsoft 365 Copilot</strong>, featuring multi-model support including Anthropic's Claude and new agentic "Copilot Cowork" capabilities — alongside general availability of Agent 365 and the new <em>Microsoft 365 E7: The Frontier Suite</em>. This represents Microsoft's clearest break yet from OpenAI exclusivity at the product layer.</p>
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://llm-stats.com/ai-news">LLM Stats — AI News June 2026</a> ·
+        <a href="https://www.crescendo.ai/news/latest-ai-news-and-updates">Crescendo AI News</a>
+      </div>
+    </div>
+
+    <!-- Story 3: Meta layoffs + OpenAI + Models -->
+    <div class="story">
+      <div class="story-title">
+        <span class="tag tag-new">Industry</span>
+        Meta Cuts 8,000 Jobs for AI Pivot; OpenAI Launches $150M Partner Network; New Models
+      </div>
+      <div class="story-body">
+        <p><strong>Meta</strong> began implementing layoffs of approximately <strong>8,000 employees (~10% of workforce)</strong> as part of an AI-focused restructuring, with 7,000 additional employees reassigned to AI teams. The move underscores how even the largest technology companies are reallocating human capital aggressively toward AI operations.</p>
+        <p><strong>OpenAI</strong> launched its <strong>Partner Network</strong>, investing $150M to accelerate global enterprise AI adoption, deployment, and transformation. The move mirrors Anthropic's earlier Goldman/Blackstone partnership and positions OpenAI more directly in the consulting and services ecosystem.</p>
+        <p>New model releases this week: <strong>Kimi K2.7 Code</strong> (Moonshot AI), <strong>DiffusionGemma 26B-A4B</strong> (Google), and several Microsoft MAI models. Indian AI startup <strong>Sarvam AI</strong> raised $234M in Series B at a $1.5B valuation, with HCLTech acquiring a 10.5% stake — a signal of rapid AI industry expansion beyond the US and China.</p>
+      </div>
+      <div class="story-source">
+        Sources:
+        <a href="https://llm-stats.com/llm-updates">LLM Stats — Model Releases</a> ·
+        <a href="https://blog.mean.ceo/new-ai-model-releases-news-june-2026/">Mean CEO Blog</a> ·
+        <a href="https://dentro.de/ai/news/">Dentro.de AI News</a>
+      </div>
+    </div>
+
+    <!-- Audience grid -->
+    <div class="audience-grid">
+      <div class="audience-card audience-ciso">
+        <div class="audience-label">🔐 CISO Priorities</div>
+        <ul>
+          <li>Claude Fable 5 / Mythos ban: reassess AI-assisted threat hunting toolchain — alternatives needed</li>
+          <li>Microsoft Copilot Wave 3 + Claude integration: new data-exposure surface area for DLP review</li>
+          <li>Meta AI restructuring = potential talent exodus to smaller, less-regulated startups — watch supply chain risk</li>
+          <li>Kimi K2.7 Code: evaluate use in development pipelines vs. code exfiltration risk</li>
+        </ul>
+      </div>
+      <div class="audience-card audience-partner">
+        <div class="audience-label">🤝 Consulting Partner</div>
+        <ul>
+          <li>Government AI export controls = new compliance advisory opportunity for clients with dual-use AI</li>
+          <li>Microsoft Copilot Wave 3 (multi-model) creates demand for M365 deployment and governance engagements</li>
+          <li>OpenAI Partner Network: evaluate membership to access enterprise deals and co-sell pipeline</li>
+          <li>Meta/tech layoffs are freeing senior AI talent — recruitment window for AI practices</li>
+        </ul>
+      </div>
+      <div class="audience-card audience-exec">
+        <div class="audience-label">💼 Business Executive</div>
+        <ul>
+          <li>US government placed restrictions on Anthropic's most powerful AI — watch for ripple effects on enterprise AI availability</li>
+          <li>Microsoft's 365 Copilot now includes multiple AI models (not just OpenAI) — renegotiate contracts accordingly</li>
+          <li>Nvidia's $20B bond raise signals AI infrastructure spending will remain high through 2026–27</li>
+          <li>Meta cutting 10% of workforce while doubling AI investment — AI-driven efficiency is accelerating across Big Tech</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Monday, June 15, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:4px;">Sources: Reuters · PBS NewsHour · NPR · Axios · BleepingComputer · The Hacker News · SecurityWeek · Rapid7 · TechCrunch · Mandiant/Google TI · LLM Stats</p>
+    <div class="nav-links">
+      <a href="index.html">← Full Archive</a>
+      <a href="briefing-2026-06-13.html">← Previous Briefing (Jun 13)</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
