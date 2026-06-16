@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Tuesday, June 16, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 12px;
+    }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
+    .header .date { font-size: 1rem; color: #8b949e; margin-bottom: 14px; }
+    .header .day-badge {
+      display: inline-block;
+      background: #1f2937;
+      border: 1px solid #374151;
+      border-radius: 20px;
+      padding: 4px 16px;
+      font-size: 0.82rem;
+      color: #f59e0b;
+      font-weight: 600;
+    }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 52px;
+    }
+    .section-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #21262d;
+    }
+    .section-icon { font-size: 1.6rem; }
+    .section-title { font-size: 1.2rem; font-weight: 800; color: #f0f6fc; }
+    .section-subtitle { font-size: 0.78rem; color: #6e7681; margin-left: auto; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ── Story cards ── */
+    .story {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .story-title {
+      font-size: 0.97rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 7px; display: flex; align-items: flex-start; gap: 8px;
+    }
+    .story-title .badge {
+      flex-shrink: 0;
+      font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.8px; padding: 2px 7px; border-radius: 4px; margin-top: 2px;
+    }
+    .badge-urgent { background: #7f1d1d; color: #fca5a5; }
+    .badge-breaking { background: #7c2d12; color: #fdba74; }
+    .badge-developing { background: #1e3a5f; color: #93c5fd; }
+    .badge-analysis { background: #1a2f23; color: #6ee7b7; }
+    .badge-critical { background: #4c1d95; color: #c4b5fd; }
+    .badge-high { background: #1e3a5f; color: #93c5fd; }
+    .badge-medium { background: #1c2a1c; color: #86efac; }
+    .story-body { font-size: 0.875rem; color: #c9d1d9; line-height: 1.7; margin-bottom: 10px; }
+    .story-source { font-size: 0.75rem; color: #6e7681; }
+    .story-source a { color: #58a6ff; }
+
+    /* ── Audience lens ── */
+    .audience-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;
+      margin-top: 20px;
+    }
+    @media(max-width: 640px) { .audience-grid { grid-template-columns: 1fr; } }
+    .audience-card {
+      background: #0d1117;
+      border: 1px solid #21262d;
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .audience-label {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.2px; margin-bottom: 8px;
+    }
+    .label-ciso { color: #f87171; }
+    .label-partner { color: #34d399; }
+    .label-exec { color: #60a5fa; }
+    .audience-card ul { padding-left: 14px; }
+    .audience-card li { font-size: 0.82rem; color: #c9d1d9; margin-bottom: 4px; }
+
+    /* ── Divider ── */
+    .sub-section-title {
+      font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: #6e7681; margin: 22px 0 10px;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center; margin-top: 60px; padding-top: 20px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+    .nav-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 12px; }
+    .nav-links a { font-size: 0.82rem; }
+
+    /* ── Timeline pill ── */
+    .timeline {
+      background: #161b22; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 18px; margin-bottom: 16px;
+    }
+    .timeline-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.2px; color: #58a6ff; margin-bottom: 8px; }
+    .timeline-item { font-size: 0.83rem; color: #c9d1d9; padding: 3px 0;
+      border-bottom: 1px dashed #21262d; }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-item strong { color: #f0f6fc; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="label">Intelligence Briefing · Prepared by Jorge</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="date">Tuesday, June 16, 2026</div>
+    <div class="day-badge">⚔️ Iran War — Day 109 &nbsp;|&nbsp; Post-Ceasefire Diplomatic Phase</div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       SECTION 1 — IRAN WAR
+       ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">⚔️</div>
+      <div class="section-title">Iran War &amp; Geopolitics</div>
+      <div class="section-subtitle">Day 109</div>
+    </div>
+
+    <!-- Timeline recap -->
+    <div class="timeline">
+      <div class="timeline-title">📅 Conflict Timeline — Key Phases</div>
+      <div class="timeline-item"><strong>Feb 28:</strong> Opening Israeli/US strikes — conflict begins</div>
+      <div class="timeline-item"><strong>Apr 8:</strong> Pakistan-brokered ceasefire — 40-day active war ends</div>
+      <div class="timeline-item"><strong>Jun 7–8:</strong> Ceasefire falters — worst strikes in months, Lebanon re-escalation</div>
+      <div class="timeline-item"><strong>Jun 14:</strong> MOU announced — US lifts Hormuz naval blockade immediately</div>
+      <div class="timeline-item"><strong>Jun 19:</strong> MOU formal signing — 60-day nuclear negotiation clock starts</div>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-developing">Developing</span>
+        MOU Set for June 19 Signing — But Frozen Assets Dispute Clouds Path Forward
+      </div>
+      <div class="story-body">
+        Pakistani PM Shehbaz Sharif announced on June 14 that the US and Iran have finalized a memorandum of understanding to be signed on June 19. Minutes after the announcement, President Trump declared the immediate lifting of the US naval blockade on ships docked at Iranian ports in the Strait of Hormuz — a significant concession. The MOU's terms include: a full cessation of hostilities in Lebanon, an end to Iranian Hormuz restrictions, reduction of US military assets from the region, partial sanctions relief, and release of some frozen Iranian assets. A 60-day clock begins at signing to resolve the nuclear question, with Iran reaffirming its NPT commitments. However, a senior Iranian official told CNN that Tehran claims Washington initially agreed to release frozen assets "at the outset" but has shown no willingness to follow through — a potential deal-breaker.
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://www.pbs.org/newshour/world/u-s-and-iranian-negotiators-reach-tentative-deal-to-extend-ceasefire-and-start-new-nuclear-talks" target="_blank">PBS NewsHour</a> ·
+        <a href="https://en.wikipedia.org/wiki/2026_Iran_war_ceasefire" target="_blank">Wikipedia — 2026 Iran War Ceasefire</a> ·
+        <a href="https://www.britannica.com/event/2026-Iran-war" target="_blank">Britannica</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-urgent">Urgent</span>
+        Ceasefire Shaky: Netanyahu Halts Attacks Without Acknowledging Ceasefire — Iran Suspends But Warns
+      </div>
+      <div class="story-body">
+        Israeli PM Netanyahu confirmed Israel has halted operations against Iran but stopped short of formally acknowledging any ceasefire — a deliberate ambiguity that keeps legal and diplomatic options open. Iran has similarly suspended operations but issued a warning: if Israeli strikes in southern Lebanon continue, it will resume attacks. The June 7–8 escalation — the worst since the April 8 ceasefire — was triggered by an IDF strike on southern Beirut that prompted Iranian ballistic missile waves. Both sides are observing an informal halt, but the fragility is underscored by the unresolved Lebanon file and the disputes over asset releases.
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://www.cnn.com/2026/06/07/world/live-news/iran-war-trump-israel-lebanon" target="_blank">CNN — June 7–8 Live Updates</a> ·
+        <a href="https://commonslibrary.parliament.uk/research-briefings/cbp-10637/" target="_blank">UK House of Commons Library — US-Iran Ceasefire &amp; Nuclear Talks</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-analysis">Analysis</span>
+        Hormuz Reopening: Strategic &amp; Economic Implications
+      </div>
+      <div class="story-body">
+        The US lifting the Hormuz naval blockade — announced alongside the MOU — marks the most concrete economic de-escalation step since the war began. During the conflict, the Hormuz standoff disrupted global shipping, rerouted tankers to longer Cape of Good Hope routes, contributed to an oil price spike, and stranded roughly 2,000 ships at peak. With the MOU signing scheduled for June 19 and Beijing emerging as a secondary mediator alongside Islamabad, global energy markets are cautiously pricing in a full normalization. The critical 60-day nuclear negotiation window — and Iran's demand for upfront asset relief — will determine whether the current calm becomes a durable settlement or a temporary pause. Chinese mediation is seen as a potential bridge given Beijing's leverage over both Iranian oil exports and US Treasury markets.
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://www.globalsecurity.org/military/ops/iran-war-update.htm" target="_blank">GlobalSecurity.org — Iran War Daily Update</a> ·
+        <a href="https://www.britannica.com/event/2026-Iran-war" target="_blank">Britannica — 2026 Iran War</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       SECTION 2 — CYBERSECURITY
+       ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🔒</div>
+      <div class="section-title">Cybersecurity</div>
+      <div class="section-subtitle">Threats · Vulnerabilities · Incidents</div>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-critical">Critical</span>
+        Microsoft June Patch Tuesday: Record 200+ CVEs Including 6 Zero-Days — Patch Now
+      </div>
+      <div class="story-body">
+        Microsoft's June 2026 Patch Tuesday, released June 9, shattered records with 206–211 CVEs addressed — the largest single monthly release in Microsoft's history. The update includes 6 actively exploited zero-days and multiple wormable CVSS 9.8 flaws. Among the critical vulnerabilities are remote code execution bugs in Windows components and elevation-of-privilege flaws actively chained by ransomware operators. Security teams should prioritize patching immediately, especially the three zero-days confirmed as exploited in the wild prior to patch release.
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-june-2026-patch-tuesday-fixes-6-zero-days-200-flaws/" target="_blank">Bleeping Computer — June 2026 Patch Tuesday</a> ·
+        <a href="https://www.zerodayinitiative.com/blog/2026/6/9/the-june-2026-security-update-review" target="_blank">Zero Day Initiative — June 2026 Security Review</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-critical">Critical</span>
+        Check Point VPN Zero-Day CVE-2026-50751 — CISA Emergency Directive; Qilin Ransomware Actively Exploiting
+      </div>
+      <div class="story-body">
+        CISA issued an emergency directive requiring immediate patching of CVE-2026-50751, an unauthenticated remote access flaw in Check Point VPN products exploitable via IKEv1. The Qilin ransomware group has been confirmed using this vulnerability to gain initial access into enterprise networks. Organizations running Check Point VPN — widely deployed in enterprise and critical infrastructure environments — should patch on an emergency basis. The vulnerability allows full remote access without credentials, making it particularly dangerous for perimeter security.
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://carthageelectronics.com/cyber-threat-report-june-8-10-2026-cve-zero-days-ransomware/" target="_blank">Carthage Electronics — June 2026 Cyber Threat Report</a> ·
+        <a href="https://www.esecurityplanet.com/weekly-roundup/zero-days-ai-exploits-and-supply-chain-risks-define-this-week-in-cybersecurity-in-june-2026/" target="_blank">eSecurity Planet — Week in Cybersecurity June 2026</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-high">High</span>
+        Oracle PeopleSoft CVE-2026-35273 Exploited by ShinyHunters | Cisco SD-WAN 7th Zero-Day | Sysco Extortion (61M Records)
+      </div>
+      <div class="story-body">
+        <strong>Oracle PeopleSoft:</strong> ShinyHunters exploited CVE-2026-35273 to breach over 100 enterprise customers, exfiltrating data and demanding payment. Oracle has released a patch but widespread exposure remains. <br/><br/>
+        <strong>Cisco SD-WAN:</strong> Cisco disclosed CVE-2026-20262 (CVSS 6.5) in Catalyst SD-WAN Manager — the 7th SD-WAN zero-day exploited in 2026 — with a separate unpatched CVE-2026-20245 that allows root command execution. <br/><br/>
+        <strong>Sysco extortion:</strong> A second extortion claim involving 61 million Sysco records surfaced this week, weeks after the initial Qilin ransomware threat. The supply chain implications for the foodservice industry are significant.
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://www.securityweek.com/oracle-addresses-peoplesoft-vulnerability-amid-reports-of-zero-day-attacks/" target="_blank">SecurityWeek — Oracle PeopleSoft</a> ·
+        <a href="https://www.securityweek.com/cisco-warns-of-7th-sd-wan-zero-day-exploited-in-2026/" target="_blank">SecurityWeek — Cisco SD-WAN</a> ·
+        <a href="https://techcrunch.com/2026/06/07/the-worst-hacks-and-breaches-of-2026-so-far/" target="_blank">TechCrunch — Worst Hacks of 2026 So Far</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-medium">Threat Intel</span>
+        China-Linked Hackers Stole US/Canadian AI &amp; Defence Data for Over a Year (Google Report)
+      </div>
+      <div class="story-body">
+        Google's threat intelligence team has reported that Chinese state-linked actors spent over a year exfiltrating AI research and defence data from US and Canadian laboratories. The campaign targeted machine learning models, chip designs, and classified defence AI programmes — representing a significant intelligence coup. The revelation is likely to intensify export controls on AI technology and increase scrutiny of cross-border AI research partnerships.
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://intellizence.com/insights/business-signals-trends/major-cyber-attacks-data-breaches-leading-companies/" target="_blank">Intellizence — 2026 Cyber Attacks Tracker</a> ·
+        <a href="https://tech.yahoo.com/cybersecurity/articles/worst-hacks-breaches-2026-far-140245836.html" target="_blank">Yahoo Tech / TechCrunch — Worst Breaches 2026</a>
+      </div>
+    </div>
+
+    <!-- Audience lenses -->
+    <div class="sub-section-title">Audience Lens</div>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="audience-label label-ciso">🔐 CISO</div>
+        <ul>
+          <li>Emergency patch: MS Patch Tuesday 200+ CVEs — prioritize the 6 zero-days</li>
+          <li>Check Point VPN CVE-2026-50751 — CISA emergency directive, patch immediately</li>
+          <li>Cisco SD-WAN CVE-2026-20245 — no patch yet, consider isolation</li>
+          <li>Oracle PeopleSoft CVE-2026-35273 — validate patching across ERP fleet</li>
+          <li>Qilin &amp; ShinyHunters actively targeting enterprise perimeters</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <div class="audience-label label-partner">🤝 Consulting Partner</div>
+        <ul>
+          <li>Record Patch Tuesday creates massive backlog — advisory opportunity for triage frameworks</li>
+          <li>ShinyHunters ERP targeting signals new extortion wave — board-level briefings needed</li>
+          <li>Check Point VPN exposure affects thousands of enterprise clients globally</li>
+          <li>China AI data theft report: strengthen client AI R&amp;D security posture</li>
+          <li>Ransomware (Qilin, Nightspire, RansomHouse) still hitting education &amp; finance</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <div class="audience-label label-exec">💼 Business Executive</div>
+        <ul>
+          <li>Record 200+ Microsoft patches — IT teams need emergency resources</li>
+          <li>Sysco 61M-record extortion: food supply chain cyber risk is real</li>
+          <li>State-sponsored theft of AI data from labs: R&amp;D security is a boardroom issue</li>
+          <li>Ransomware continues across sectors — cyber insurance premiums rising</li>
+          <li>Smart TV data collection under UK regulatory investigation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       SECTION 3 — ARTIFICIAL INTELLIGENCE
+       ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🤖</div>
+      <div class="section-title">Artificial Intelligence</div>
+      <div class="section-subtitle">Models · Policy · Market</div>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-breaking">Breaking</span>
+        OpenAI Introduces "Daybreak" Cybersecurity AI + IPO Filing Imminent at $730B Valuation
+      </div>
+      <div class="story-body">
+        OpenAI has launched <strong>Daybreak</strong> — a cybersecurity-focused programme combining GPT-5.5 models with Codex Security to automate threat modeling, vulnerability identification, patching, and remediation workflows. This is OpenAI's most direct move into cybersecurity tooling and will compete with existing SIEM/SOAR vendors. Separately, OpenAI is preparing to file confidentially for an IPO in the coming weeks, targeting a listing as early as September 2026 at a $730 billion private market valuation — a figure that reflects explosive enterprise adoption since GPT-5 launch.
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://llm-stats.com/ai-news" target="_blank">LLM Stats — AI News June 2026</a> ·
+        <a href="https://wavespeed.ai/blog/posts/june-2026-ai-launch-wave/" target="_blank">WaveSpeed Blog — June 2026 AI Launch Wave</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-developing">Developing</span>
+        Anthropic Meets White House on "Claude Fable 5" — Export Dispute Continues; Gemini 3.5 Flash Ships
+      </div>
+      <div class="story-body">
+        <strong>Anthropic:</strong> Senior Anthropic executives flew to Washington on June 15 for White House meetings amid an ongoing dispute over the national security classification of Claude Fable 5. US officials remain split on whether the model poses export risks. The standoff echoes earlier debates around Claude Mythos and adds regulatory uncertainty to Anthropic's enterprise roadmap. <br/><br/>
+        <strong>Google:</strong> Gemini 3.5 Flash has shipped, delivering improved speed and multimodal performance. Google continues to embed Gemini across its advertising, commerce, robotics, and research products. Gemini 3.5 Flash targets cost-sensitive enterprise deployments where latency matters.
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://dentro.de/ai/news/" target="_blank">dentro.de — AI News June 2026</a> ·
+        <a href="https://blog.mean.ceo/new-ai-model-releases-news-june-2026/" target="_blank">mean.ceo — New AI Model Releases June 2026</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-analysis">Analysis</span>
+        AI Goes From Demos to Business Systems — Meta AI Wearables, Agentic AI at Scale
+      </div>
+      <div class="story-body">
+        The broader AI landscape this week highlights a maturation shift: the industry is moving from proof-of-concept demos to embedded business systems. Key developments: <br/>
+        • <strong>Meta</strong> is developing an AI-powered pendant and "Wearables for Work" — targeting enterprise wearables at scale, with plans to significantly grow AI glasses sales in 2026. <br/>
+        • <strong>Microsoft</strong> is highlighting Majorana 2 quantum chip progress alongside agentic AI in R&amp;D workflows. <br/>
+        • Uber robotaxis are operating in Spain; BYD has entered humanoid robotics. <br/>
+        • <strong>White House AI executive order</strong>: Trump signed a revised EO narrowing AI oversight scope — reducing regulatory friction for enterprise deployments but raising concerns among AI safety advocates.
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://medium.com/@davidakpovi/ai-news-week-of-june-1-to-june-7-2026-7957940c805a" target="_blank">Medium — AI News Week of June 1–7</a> ·
+        <a href="https://www.marketingprofs.com/opinions/2026/54909/ai-update-june-5-2026-ai-news-and-views-from-the-past-week" target="_blank">MarketingProfs — AI Update June 5</a> ·
+        <a href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank">Crescendo AI — Latest AI News</a>
+      </div>
+    </div>
+
+    <!-- Audience lenses -->
+    <div class="sub-section-title">Audience Lens</div>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="audience-label label-ciso">🔐 CISO</div>
+        <ul>
+          <li>OpenAI Daybreak: AI-native threat modeling/vuln patching — evaluate for SOC integration</li>
+          <li>Claude Fable 5 export dispute: AI model access uncertainty for international deployments</li>
+          <li>China AI data theft (Google report): lock down ML model access and training data pipelines</li>
+          <li>Trump AI EO narrows oversight — reduces regulatory cover for AI security programs</li>
+          <li>500+ models in market: AI supply chain security is now a CISO mandate</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <div class="audience-label label-partner">🤝 Consulting Partner</div>
+        <ul>
+          <li>OpenAI Daybreak = new competitor to SIEM/SOAR vendors — clients will ask about integration</li>
+          <li>Gemini 3.5 Flash shipped: multimodal AI now table stakes for enterprise clients</li>
+          <li>OpenAI IPO at $730B signals long-term AI infrastructure bets are paying off</li>
+          <li>Agentic AI at scale: 72% of enterprises running agentic AI — governance frameworks needed</li>
+          <li>Meta wearables + AI: new endpoint category for enterprise security policies</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <div class="audience-label label-exec">💼 Business Executive</div>
+        <ul>
+          <li>OpenAI IPO coming: AI market consolidation and valuation benchmarks shifting</li>
+          <li>Gemini 3.5 Flash: Google's AI cost competitiveness improves for enterprise procurement</li>
+          <li>Trump AI EO: lighter regulatory touch = faster enterprise AI deployment in US</li>
+          <li>Meta AI wearables: new human-AI interface category emerging — watch for enterprise use cases</li>
+          <li>AI shifting to real workflows: ROI metrics replacing hype metrics</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <div class="nav-links">
+    <a href="index.html">← Back to Archive</a>
+    <a href="briefing-2026-06-15.html">← Yesterday's Briefing</a>
+  </div>
+
+  <div class="footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Tuesday, June 16, 2026 at 6:00 PM (Paris time)</p>
+    <p style="margin-top:6px;">Sources: Reuters, BBC, PBS, CNN, Bleeping Computer, SecurityWeek, ZDI, eSecurity Planet, LLM Stats, WaveSpeed, Medium, Crescendo AI</p>
+  </div>
+
+</div>
+</body>
+</html>
