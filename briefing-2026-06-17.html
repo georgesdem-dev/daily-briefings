@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Wednesday, June 17, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 52px;
+    }
+    .header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 8px; }
+    .header .subtitle { font-size: 0.9rem; color: #8b949e; margin-bottom: 18px; }
+    .header .day-badge {
+      display: inline-block;
+      background: #161b22; border: 1px solid #30363d;
+      color: #f85149; font-size: 0.8rem; font-weight: 700;
+      padding: 4px 14px; border-radius: 20px; letter-spacing: 1px;
+    }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 56px;
+    }
+    .section-header {
+      display: flex; align-items: center; gap: 12px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 28px;
+    }
+    .section-icon { font-size: 1.6rem; }
+    .section-title { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; }
+    .section-meta { font-size: 0.78rem; color: #58a6ff; font-weight: 600; margin-left: auto; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ── Story card ── */
+    .story {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+      transition: border-color 0.15s;
+    }
+    .story:hover { border-color: #58a6ff; }
+    .story-headline {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px;
+    }
+    .story-body { font-size: 0.88rem; color: #c9d1d9; line-height: 1.7; }
+    .story-source {
+      margin-top: 10px; font-size: 0.78rem; color: #58a6ff;
+    }
+    .story-source a { color: #58a6ff; text-decoration: none; }
+    .story-source a:hover { text-decoration: underline; }
+
+    /* ── Audience tags ── */
+    .audience-block {
+      background: #0d1117;
+      border: 1px solid #21262d;
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin-top: 12px;
+    }
+    .audience-row { margin-bottom: 10px; }
+    .audience-row:last-child { margin-bottom: 0; }
+    .audience-tag {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.8px;
+      padding: 2px 9px; border-radius: 12px;
+      margin-right: 6px; vertical-align: middle;
+    }
+    .tag-ciso { background: #1a3a2a; color: #3fb950; border: 1px solid #238636; }
+    .tag-partner { background: #1a2a3a; color: #58a6ff; border: 1px solid #1f6feb; }
+    .tag-exec { background: #2a1a3a; color: #bc8cff; border: 1px solid #6e40c9; }
+    .audience-text { font-size: 0.84rem; color: #c9d1d9; vertical-align: middle; }
+
+    /* ── Alert banner ── */
+    .alert {
+      background: #1a0a0a;
+      border: 1px solid #f85149;
+      border-left: 4px solid #f85149;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 14px;
+    }
+    .alert-title { font-size: 0.78rem; font-weight: 700; color: #f85149; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+    .alert-body { font-size: 0.87rem; color: #c9d1d9; }
+
+    /* ── Highlight ── */
+    .highlight { color: #e3b341; font-weight: 600; }
+    .critical { color: #f85149; font-weight: 700; }
+    .positive { color: #3fb950; font-weight: 600; }
+
+    /* ── CVE pill ── */
+    .cve {
+      display: inline-block; font-family: monospace; font-size: 0.8rem;
+      background: #1a1f29; border: 1px solid #30363d;
+      color: #e3b341; padding: 1px 8px; border-radius: 4px;
+    }
+
+    /* ── Divider ── */
+    .topic-divider {
+      border: none; border-top: 1px dashed #21262d;
+      margin: 20px 0;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      margin-top: 60px; padding-top: 22px;
+      border-top: 1px solid #21262d;
+      color: #484f58; font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .header h1 { font-size: 1.6rem; }
+      .container { padding: 24px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="label">Daily Intelligence Briefing</div>
+    <h1>📰 Wednesday, June 17, 2026</h1>
+    <div class="subtitle">Iran War &nbsp;·&nbsp; Cybersecurity &nbsp;·&nbsp; Artificial Intelligence</div>
+    <div class="day-badge">⚔️ WAR DAY 110</div>
+  </div>
+
+  <!-- ═══════════════════════════════ IRAN WAR ═══════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🇮🇷</div>
+      <div class="section-title">Iran War</div>
+      <div class="section-meta">Day 110 · Live Updates</div>
+    </div>
+
+    <!-- Top alert -->
+    <div class="alert">
+      <div class="alert-title">🚨 Breaking — Hormuz Reopens</div>
+      <div class="alert-body">The first Iranian oil tankers have left the Strait of Hormuz since the US naval blockade began. The MOU is in effect — a formal signing ceremony is set for <strong>Friday, June 19 in Switzerland</strong>. Global oil markets are rallying on the news.</div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">🤝 US–Iran MOU Agreed — Iran Commits to "Never Produce Nuclear Weapons"</div>
+      <div class="story-body">
+        A draft memorandum of understanding obtained by CNN confirms the full framework of the deal:
+        <ul style="margin-top:8px; margin-left:18px; color:#c9d1d9;">
+          <li>Iran affirms commitment to the NPT and pledges it will <span class="positive">"never produce nuclear weapons"</span></li>
+          <li>Iran can immediately resume oil and fuel exports — sanctions waiver covers banking, transportation, and insurance</li>
+          <li>60-day negotiation window opens for the future of Iran's nuclear enrichment program</li>
+          <li>The US lifts its naval blockade; Iranian crude loading resumes at Kharg Island today</li>
+        </ul>
+        <br/>
+        The deal was brokered through Oman and Pakistan channels. A formal signing ceremony is scheduled <span class="highlight">Friday, June 19, in Geneva, Switzerland</span>. Nuclear talks on Phase 2 will follow.
+      </div>
+      <div class="story-source">📎 Sources: <a href="https://www.cnn.com/2026/06/17/world/live-news/iran-war-g7-summit" target="_blank">CNN Live Updates</a> · <a href="https://www.axios.com/2026/06/14/us-iran-ceasefire-extended-hormuz-reopen-trump" target="_blank">Axios</a> · <a href="https://www.npr.org/2026/06/15/nx-s1-5858590/us-iran-deal-updates" target="_blank">NPR</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">🛢️ Iran's First Oil Exports in Months Leave the Strait</div>
+      <div class="story-body">
+        Tanker tracking monitors confirmed the first vessels carrying Iranian crude departed the Strait of Hormuz today — the first such movement since the US naval blockade shut down Iran's exports roughly two months ago. Brent crude fell ~4% on the news. Asian refiners that had faced acute fuel shortages are expected to be the first recipients. Trump posted on Truth Social: <em>"Hormuz is OPEN. Great for the world!"</em>
+      </div>
+      <div class="story-source">📎 Source: <a href="https://www.rferl.org/a/iran-war-us-hormuz-oil-blockade-gulf-israel/33640284.html" target="_blank">Radio Free Europe/Liberty</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">⚠️ Lebanon Flashpoint: Israel Strikes Despite the Deal</div>
+      <div class="story-body">
+        In a significant complication, Israel struck southern Beirut today despite the MOU framework. Both Trump and Iran's foreign minister publicly criticized the move. <span class="critical">Iran has stated the deal explicitly requires Israeli forces to withdraw from Lebanon</span>, and called any continued occupation a "material violation" of the memorandum. Hezbollah has not responded militarily as of this writing, but the situation remains volatile. Israel's government has not commented on the strikes.
+        <br/><br/>
+        This is the second direct confrontation since the initial ceasefire on April 7–8 — the first being Iran's ballistic missile volley after an IDF strike on June 7.
+      </div>
+      <div class="story-source">📎 Sources: <a href="https://www.cbsnews.com/live-updates/iran-war-us-deal-peace-israel-lebanon-hezbollah-strait-of-hormuz/" target="_blank">CBS News</a> · <a href="https://www.nbcnews.com/world/iran/live-blog/live-updates-trump-iran-deal-end-war-reopen-hormuz-markets-israel-rcna350076" target="_blank">NBC News</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">🌍 G7 Summit: World Leaders Back US–Iran Agreement</div>
+      <div class="story-body">
+        At the G7 Summit in France (June 15–17), leaders voiced formal "support" for the US-Iran agreement, calling it a critical step toward regional stability. The summit also featured an extraordinary moment: OpenAI's Sam Altman, Anthropic's Dario Amodei, and Google DeepMind's Demis Hassabis appeared before G7 heads of state together for the first time — briefing leaders on AI governance, safety standards, and the risks of AI-enabled weapons proliferation in post-conflict environments.
+      </div>
+      <div class="story-source">📎 Sources: <a href="https://www.cnn.com/2026/06/17/world/live-news/iran-war-g7-summit" target="_blank">CNN G7 Live</a> · <a href="https://commonslibrary.parliament.uk/research-briefings/cbp-10637/" target="_blank">UK House of Commons Library</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">📊 Geopolitical Outlook — What Comes Next</div>
+      <div class="story-body">
+        <strong>Next 72 hours:</strong> Geneva signing ceremony Friday. Watch for Israeli reaction and whether Hezbollah holds fire.<br/>
+        <strong>60-day nuclear window:</strong> Iran's enrichment program — including Fordow and Natanz — remains operational pending Phase 2 talks. The critical question: will Iran agree to cap enrichment below 20% or accept additional IAEA inspections?<br/>
+        <strong>Energy markets:</strong> Brent fell on deal news but analysts warn prices remain elevated until 2–3 weeks of sustained flows confirm Hormuz normalcy.<br/>
+        <strong>Lebanon:</strong> The Lebanon withdrawal demand may yet sink the MOU if Israel refuses. International Crisis Group analysts say this is the "single biggest spoiler risk."
+      </div>
+      <div class="story-source">📎 Source: <a href="https://www.britannica.com/event/2026-Iran-war" target="_blank">Britannica — 2026 Iran War</a> · <a href="https://en.wikipedia.org/wiki/2026_Iran_war_ceasefire" target="_blank">Wikipedia — 2026 Ceasefire</a></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ CYBERSECURITY ═══════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🔒</div>
+      <div class="section-title">Cybersecurity</div>
+      <div class="section-meta">Threats · CVEs · Incidents</div>
+    </div>
+
+    <!-- Alert: Fortinet -->
+    <div class="alert">
+      <div class="alert-title">🚨 Active Exploitation — Patch Fortinet FortiSandbox NOW</div>
+      <div class="alert-body">Three Fortinet FortiSandbox CVEs are being <strong>actively exploited in the wild as of the past 24 hours</strong>: <span class="cve">CVE-2026-39813</span> (auth bypass via path traversal), <span class="cve">CVE-2026-39808</span> (OS command injection), and <span class="cve">CVE-2026-25089</span>. Fortinet has released patches — apply immediately.</div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">🪲 Joomla JCE Plugin — Max-Severity, Added to CISA KEV Catalog</div>
+      <div class="story-body">
+        CISA has added a <span class="critical">maximum-severity flaw</span> in the Widget Factory Joomla Content Editor (JCE) plugin to its Known Exploited Vulnerabilities (KEV) catalog, citing active exploitation in the wild. Any organization running public-facing Joomla sites should treat this as a P1. Federal agencies face the standard 72-hour CISA remediation deadline.
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-tag tag-ciso">🔐 CISO</span>
+          <span class="audience-text">Add to active threat hunt. Any Joomla/JCE deployment — on-prem or cloud-hosted — needs patching before end of day. Check WAF logs for exploit attempts.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-partner">🤝 Consulting</span>
+          <span class="audience-text">Clients in media, publishing, education, and government commonly run Joomla. Flag to CMO/CTO contacts — this is a reputational risk if a client site is defaced.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-exec">💼 Executive</span>
+          <span class="audience-text">If your web presence runs Joomla, contact your IT team now. A compromised public site can expose customer data and damage brand trust.</span>
+        </div>
+      </div>
+      <div class="story-source">📎 Source: <a href="https://cybersecuritynews.com/" target="_blank">Cybersecurity News</a> · <a href="https://www.esecurityplanet.com/weekly-roundup/zero-days-ai-exploits-and-supply-chain-risks-define-this-week-in-cybersecurity-in-june-2026/" target="_blank">eSecurity Planet Weekly Roundup</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">📦 Supply-Chain Attack: 140+ Malicious NPM Packages Drop in Hours</div>
+      <div class="story-body">
+        A single NPM account (<code style="color:#e3b341;">ehindero</code>) mass-published <span class="critical">140+ malicious packages</span> targeting the <code style="color:#e3b341;">Mastra</code> scope within a short window on June 17. The packages appear designed to steal developer credentials and inject backdoors into CI/CD pipelines. NPM security has been alerted and removals are underway — but any developer who ran <code style="color:#e3b341;">npm install</code> in the affected window should consider their build environment compromised.
+        <br/><br/>
+        <strong>Immediate action:</strong> Lock your <code>package-lock.json</code>, audit installed packages, rotate secrets accessible from build machines, and scan recent build artifacts for unexpected network calls.
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-tag tag-ciso">🔐 CISO</span>
+          <span class="audience-text">Alert DevSecOps and AppSec teams. Enforce npm audit gates in CI. This is a supply-chain event — treat affected build servers as potentially compromised until proven clean.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-partner">🤝 Consulting</span>
+          <span class="audience-text">Software and fintech clients with Node.js stacks are the priority. This is a strong hook for software supply-chain security assessments (SBOM, dependency pinning, registry mirroring).</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-exec">💼 Executive</span>
+          <span class="audience-text">Any product with a JavaScript/Node.js component may be affected. Ask your engineering leads for a status update by EOD.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">🦠 OnyxC2 Malware — 200+ Apps Targeted, Evasion Techniques Escalating</div>
+      <div class="story-body">
+        Security researchers have detailed <strong>OnyxC2</strong>, a sophisticated C2 framework that targets more than 200 applications and browser extensions. Its evasion toolkit combines encrypted payloads, DLL sideloading, and pure in-memory execution — making it resistant to both EDR signature matching and behavioral heuristics. The malware has been linked to financial sector intrusions across Europe and North America.
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-tag tag-ciso">🔐 CISO</span>
+          <span class="audience-text">Update EDR behavioral rules. Focus on anomalous DLL loading patterns and unsigned in-memory modules. Hunt for OnyxC2 IOCs — threat intel vendors have begun publishing signatures.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-partner">🤝 Consulting</span>
+          <span class="audience-text">Excellent briefing topic for financial sector clients. OnyxC2 represents the current benchmark for commodity C2 sophistication — use it to drive detection engineering engagements.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-exec">💼 Executive</span>
+          <span class="audience-text">Advanced malware increasingly bypasses traditional antivirus. Ensure your security team has deployed modern behavioral detection (EDR/XDR) beyond signature-based tools.</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="topic-divider"/>
+
+    <div class="story">
+      <div class="story-headline">📋 Ongoing Critical Vulnerabilities — Status Board</div>
+      <div class="story-body">
+        <table style="width:100%; border-collapse:collapse; font-size:0.84rem; color:#c9d1d9;">
+          <tr style="border-bottom:1px solid #30363d; color:#8b949e; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.5px;">
+            <th style="text-align:left; padding:6px 8px;">CVE</th>
+            <th style="text-align:left; padding:6px 8px;">Product</th>
+            <th style="text-align:left; padding:6px 8px;">Status</th>
+          </tr>
+          <tr style="border-bottom:1px solid #21262d;">
+            <td style="padding:7px 8px;"><span class="cve">CVE-2026-50751</span></td>
+            <td style="padding:7px 8px;">Check Point VPN (IKEv1)</td>
+            <td style="padding:7px 8px;"><span class="critical">CISA Emergency Directive · Qilin ransomware active</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid #21262d;">
+            <td style="padding:7px 8px;"><span class="cve">CVE-2026-33825</span></td>
+            <td style="padding:7px 8px;">Microsoft Defender (BlueHammer)</td>
+            <td style="padding:7px 8px;"><span class="highlight">LPE + defense evasion — patch via June Patch Tuesday</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid #21262d;">
+            <td style="padding:7px 8px;"><span class="cve">CVE-2025-48595</span></td>
+            <td style="padding:7px 8px;">Android Framework</td>
+            <td style="padding:7px 8px;"><span class="critical">Zero-day exploited · Fixed in Android June 2026 update</span></td>
+          </tr>
+          <tr>
+            <td style="padding:7px 8px;"><span class="cve">CVE-2026-39813/08/25089</span></td>
+            <td style="padding:7px 8px;">Fortinet FortiSandbox</td>
+            <td style="padding:7px 8px;"><span class="critical">Actively exploited in wild — patch NOW</span></td>
+          </tr>
+        </table>
+        <br/>
+        Microsoft's June 2026 Patch Tuesday addressed <span class="highlight">206 CVEs</span> including 3 actively exploited zero-days. Google Chrome also shipped a zero-day patch. Ransomware groups <strong>Nightspire</strong>, <strong>Qilin</strong>, and <strong>RansomHouse</strong> have claimed new victims in education, manufacturing, and financial sectors this week.
+      </div>
+      <div class="story-source">📎 Sources: <a href="https://www.securityweek.com/oracle-addresses-peoplesoft-vulnerability-amid-reports-of-zero-day-attacks/" target="_blank">SecurityWeek</a> · <a href="https://carthageelectronics.com/cyber-threat-report-june-8-10-2026-cve-zero-days-ransomware/" target="_blank">Carthage Electronics Cyber Threat Report</a> · <a href="https://thecyberexpress.com/cve-2025-48595-android-june-2026/" target="_blank">The Cyber Express</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">📈 Rapid7 Global Threat Landscape Report — Exploited Vulnerabilities Up 105%</div>
+      <div class="story-body">
+        Rapid7's 2026 Global Threat Landscape Report (released this week) found that exploited high and critical severity vulnerabilities <span class="critical">surged 105%</span> year-over-year, with attack timelines collapsing to under 10 hours for median time-to-exploit on disclosed CVEs. AI-augmented tooling is cited as the primary driver — automated scanning and exploitation chains are now broadly available to mid-tier threat actors.
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-tag tag-ciso">🔐 CISO</span>
+          <span class="audience-text">Patch SLAs built around 30-day windows are now dangerously outdated. Prioritize CVSS 9.0+ to under 24 hours. Consider continuous vulnerability prioritization platforms.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-partner">🤝 Consulting</span>
+          <span class="audience-text">This report is a compelling business case for vulnerability management modernization and threat-informed defense programs. Use the 105% stat in board presentations.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-exec">💼 Executive</span>
+          <span class="audience-text">The window between a vulnerability being announced and attackers exploiting it has collapsed to hours. This is a board-level risk requiring investment in faster patching and threat detection.</span>
+        </div>
+      </div>
+      <div class="story-source">📎 Source: <a href="https://finviz.com/news/338342/rapid7-2026-global-threat-landscape-report-shows-exploited-high-and-critical-severity-vulnerabilities-surged-105-as-attack-timelines-collapsed" target="_blank">Rapid7 via Finviz</a></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ AI ═══════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🤖</div>
+      <div class="section-title">Artificial Intelligence</div>
+      <div class="section-meta">Models · Policy · Market</div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">🌐 G7 Historic Moment: Altman, Amodei &amp; Hassabis Brief World Leaders Together</div>
+      <div class="story-body">
+        At the G7 Summit in France, OpenAI CEO <strong>Sam Altman</strong>, Anthropic CEO <strong>Dario Amodei</strong>, and Google DeepMind CEO <strong>Demis Hassabis</strong> appeared before G7 heads of state simultaneously — <span class="highlight">the first time rival AI lab chiefs have jointly briefed world leaders</span>. Topics included AI-enabled weapons proliferation risks in post-conflict environments (directly tied to the Iran war context), AI governance frameworks, and frontier model safety standards. The appearance signals AI has reached a level of geopolitical significance previously reserved for central bankers and intelligence chiefs.
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-tag tag-ciso">🔐 CISO</span>
+          <span class="audience-text">AI governance is moving to the nation-state level. Expect rapid policy cascades — regulatory requirements around frontier AI access and export controls will tighten. Prepare your AI usage inventory now.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-partner">🤝 Consulting</span>
+          <span class="audience-text">This signals a major AI governance consulting wave. Clients will need help mapping their AI usage against emerging G7 frameworks. Position AI governance practices now.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-exec">💼 Executive</span>
+          <span class="audience-text">AI is now a geopolitical asset. Companies using frontier AI tools may face new compliance obligations tied to export controls and allied-nation frameworks — watch this space closely.</span>
+        </div>
+      </div>
+      <div class="story-source">📎 Source: <a href="https://aiweekly.co/ai-news-today/anthropic-news" target="_blank">AI Weekly / Anthropic News</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">⚖️ Anthropic Responds to US Government Suspension of Fable 5 &amp; Mythos 5</div>
+      <div class="story-body">
+        Anthropic issued a formal public statement on the US government directive suspending international access to <strong>Claude Fable 5</strong> and <strong>Claude Mythos 5</strong> — citing national security concerns over the models' advanced cyber and scientific capabilities. Key developments:
+        <ul style="margin-top:8px; margin-left:18px; color:#c9d1d9;">
+          <li>Anthropic researcher <strong>Nicholas Carlini</strong> (who previously warned about Mythos) is leading a team briefing the White House on AI safeguards</li>
+          <li>Anthropic has announced enterprise partnerships with <strong>TCS</strong> and <strong>DXC Technology</strong> to bring Claude to regulated industries (banking, healthcare, government) — a move that may ease some restrictions</li>
+          <li>Claude's market share sits at 8.2% but grew <span class="positive">306% in one quarter</span> — the fastest growth among major AI chatbots</li>
+        </ul>
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-tag tag-ciso">🔐 CISO</span>
+          <span class="audience-text">AI capability export controls are becoming real compliance obligations. If your organization uses Anthropic's advanced models, assess your licensing and export classification posture.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-partner">🤝 Consulting</span>
+          <span class="audience-text">The TCS/DXC partnerships open a services layer around Claude in regulated industries. Strong BD opportunity for practices that can position alongside these system integrators.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-exec">💼 Executive</span>
+          <span class="audience-text">Government restrictions on AI capabilities signal the market is maturing fast. AI vendor diversification and model-agnostic architectures are becoming strategic priorities.</span>
+        </div>
+      </div>
+      <div class="story-source">📎 Source: <a href="https://www.anthropic.com/news" target="_blank">Anthropic Newsroom</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">🦄 New $2B AI Lab from Alibaba Qwen's Founding Lead</div>
+      <div class="story-body">
+        <strong>Junyang Lin</strong>, who led the development of Alibaba's Qwen model family, has founded a new AI lab that has raised several hundred million dollars at a <span class="highlight">~$2 billion post-money valuation</span>. The lab is focused on open-weights frontier research — a direct counterweight to US-centric closed models. This continues a trend of model talent spinning out of Big Tech to form independent research labs, with backing from sovereign wealth funds and Asian tech conglomerates. The Qwen models have been among the most capable open-weights alternatives to GPT-class systems.
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-tag tag-partner">🤝 Consulting</span>
+          <span class="audience-text">Open-weights models are increasingly viable for enterprise deployment where data sovereignty is paramount (EU, APAC). Watch this lab — their first model release could shift the enterprise open-source AI landscape.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-exec">💼 Executive</span>
+          <span class="audience-text">The AI talent and capital ecosystem is now truly global. US export controls on AI models may accelerate non-US alternatives — this diversification changes the competitive landscape.</span>
+        </div>
+      </div>
+      <div class="story-source">📎 Source: <a href="https://seekingalpha.com/news/4502538-anthropic-to-open-first-india-office-in-2026-as-ai-battle-heats-up-reuters" target="_blank">Seeking Alpha</a> · <a href="https://llm-stats.com/ai-news" target="_blank">LLM Stats AI News</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">📜 Colorado Consumer AI Protection Act — 13 Days to Compliance</div>
+      <div class="story-body">
+        The <strong>Colorado Consumer Protections for Artificial Intelligence Act</strong> takes effect <span class="highlight">June 30, 2026</span> — now 13 days away. It applies to any deployer or developer of high-risk AI systems affecting Colorado residents in:
+        <ul style="margin-top:8px; margin-left:18px; color:#c9d1d9;">
+          <li>Employment &amp; hiring decisions</li>
+          <li>Healthcare access and triage</li>
+          <li>Financial services and credit</li>
+          <li>Education, housing, and legal services</li>
+        </ul>
+        Requirements include: AI risk management programs, annual impact assessments, disclosure when AI makes consequential decisions, and a right to appeal AI-driven outcomes for affected residents. Colorado is the first US state to pass such comprehensive AI legislation — more states are expected to follow.
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-tag tag-ciso">🔐 CISO</span>
+          <span class="audience-text">You are likely already subject to this if your org uses AI in hiring, lending, or healthcare serving Colorado. Coordinate with Legal and DPO immediately — the 30th is very close.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-partner">🤝 Consulting</span>
+          <span class="audience-text">This is a live compliance obligation for most enterprise clients. AI impact assessment frameworks, disclosure templates, and appeal process design are all billable services right now.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-exec">💼 Executive</span>
+          <span class="audience-text">If your company operates in Colorado and uses AI in any HR, credit, or customer-facing decision process, your General Counsel needs to certify compliance by June 30. Do not miss this deadline.</span>
+        </div>
+      </div>
+      <div class="story-source">📎 Source: <a href="https://www.marketingprofs.com/opinions/2026/54909/ai-update-june-5-2026-ai-news-and-views-from-the-past-week" target="_blank">MarketingProfs AI Update</a> · <a href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank">Crescendo AI News</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">📊 AI Market Snapshot — Chatbot Wars Update</div>
+      <div class="story-body">
+        Latest market share data for the major AI chatbot platforms (worldwide web visits):
+        <table style="width:100%; border-collapse:collapse; font-size:0.84rem; margin-top:10px; color:#c9d1d9;">
+          <tr style="border-bottom:1px solid #30363d; color:#8b949e; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.5px;">
+            <th style="text-align:left; padding:6px 8px;">Platform</th>
+            <th style="text-align:right; padding:6px 8px;">Share</th>
+            <th style="text-align:right; padding:6px 8px;">Trend</th>
+          </tr>
+          <tr style="border-bottom:1px solid #21262d;">
+            <td style="padding:7px 8px;"><strong>ChatGPT (OpenAI)</strong></td>
+            <td style="text-align:right; padding:7px 8px;"><span class="positive">54.7%</span></td>
+            <td style="text-align:right; padding:7px 8px; color:#8b949e;">▼ from 76.5% (Feb '25)</td>
+          </tr>
+          <tr style="border-bottom:1px solid #21262d;">
+            <td style="padding:7px 8px;"><strong>Google Gemini</strong></td>
+            <td style="text-align:right; padding:7px 8px;"><span class="highlight">27.4%</span></td>
+            <td style="text-align:right; padding:7px 8px; color:#3fb950;">▲ +104% in 6 months</td>
+          </tr>
+          <tr>
+            <td style="padding:7px 8px;"><strong>Claude (Anthropic)</strong></td>
+            <td style="text-align:right; padding:7px 8px;">8.2%</td>
+            <td style="text-align:right; padding:7px 8px; color:#3fb950;">▲ +306% in 1 quarter</td>
+          </tr>
+        </table>
+        <br/>
+        ChatGPT has passed the symbolic milestone of <span class="positive">1 billion monthly active users</span>. The spread is narrowing — Gemini's aggressive growth (fueled by Google Workspace integration) and Claude's explosive enterprise adoption are eroding OpenAI's dominance.
+      </div>
+      <div class="story-source">📎 Source: <a href="https://llm-stats.com/llm-updates" target="_blank">LLM Stats</a> · <a href="https://medium.com/@davidakpovi/ai-news-week-of-june-1-to-june-7-2026-7957940c805a" target="_blank">Medium — AI News June 2026</a></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Wednesday, June 17, 2026 &nbsp;·&nbsp; 6:00 PM Paris Time</p>
+    <p style="margin-top:6px;">Sources: Reuters · CNN · NBC News · PBS · Axios · NPR · CBS News · RFERL · SecurityWeek · eSecurity Planet · The Hacker News · Rapid7 · Cisco Blogs · VentureBeat · LLM Stats · AI Weekly</p>
+  </div>
+
+</div>
+</body>
+</html>
