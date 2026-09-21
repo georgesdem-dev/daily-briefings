@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Monday, September 21, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Monday, September 21, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Day 206</a>
+    <div class="toc-section">Fire pause extends into third week · Hormuz at ~5% baseline · Mahan Air halts Iran–Turkey flights · UN General Assembly window opens Sep 23</div>
+    <a href="#cyber">🔐 Cybersecurity</a>
+    <div class="toc-section">Plugin4Shell zero-click RCE hits Claude Code, Codex, Copilot, Gemini CLI · Google Gemini unauthorized-access incident · OnePoint Patient Care breach</div>
+    <a href="#ai">🤖 Artificial Intelligence</a>
+    <div class="toc-section">Plugin4Shell exposes agentic-AI supply chain risk · Gemini CTF sandbox escape · Frontier release cadence continues</div>
+  </div>
+
+  <!-- ═══════════════════ IRAN WAR ═══════════════════ -->
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — Day 206</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        Situation Overview
+        <span class="badge badge-yellow">FIRE PAUSE — INTO ITS THIRD WEEK</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        Day 206 extends the unannounced fire pause into its third week — sources vary on the exact consecutive-day count, but all agree no US/coalition strike on Iranian territory and no new Iranian attack on any host state have occurred since early September. The April Lebanon ceasefire continues to hold despite the Sep 16 Israeli strikes on south Lebanon towns. The Houthi hold on Bab al-Mandeb, and their pivot toward seeking political recognition rather than just shipping tolls, remains the dominant flashpoint alongside Hormuz.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">~5%</div>
+          <div class="stat-label">Hormuz traffic vs. pre-war baseline</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">5.3 ships/day</div>
+          <div class="stat-label">Total Hormuz transits (incl. ~1.4 tankers/day)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">Sep 21</div>
+          <div class="stat-label">Mahan Air cuts all Iran–Turkey flights</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">Sep 23–27</div>
+          <div class="stat-label">UN General Assembly — watch for diplomatic movement</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">✈️ Sanctions Bite — Mahan Air Grounded on Turkey Route, Georgia Follows</div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Effective today, sanctioned Iranian carrier Mahan Air is cancelling all flights between Iran and Turkey, and Georgia is separately suspending sanctioned Iranian carriers from its airspace/airports — both moves tightening Iran's remaining regional air-travel and cargo lifelines as the economic squeeze compounds the naval blockade. Combined with the rial's collapse and triple-digit food inflation reported last week, the sanctions regime is increasingly constraining Tehran's options heading into the UN General Assembly window.
+      </p>
+      <div class="sources">
+        Sources: <a href="https://en.wikipedia.org/wiki/2026_Iran_war">Wikipedia — 2026 Iran War</a>
+        <a href="https://www.congress.gov/crs-product/R45281">CRS — Hormuz Security Developments</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🚢 Strait of Hormuz — Still Far Below Normal Despite Tehran's Claims</div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Independent shipping data continues to show Hormuz transits running at roughly 5% of the pre-war baseline — about 5.3 total ships per day, including only ~1.4 tankers — sharply undercutting CENTCOM's recent "six-month high" framing. Foreign Minister Araghchi's claim of an Oman-brokered plan to reopen the strait, repeated again from Beijing, remains unconfirmed by any Omani official.
+      </p>
+      <table class="data-table">
+        <thead><tr><th>Indicator</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Hormuz throughput (independent trackers)</td><td class="highlight">~5% of pre-war baseline; 5.3 ships/day</td></tr>
+          <tr><td>Iran–Oman reopening plan</td><td class="warn">Claimed by Tehran (Araghchi, Beijing); unconfirmed by Oman</td></tr>
+          <tr><td>US naval blockade</td><td class="warn">Still active</td></tr>
+          <tr><td>Iranian air travel</td><td class="highlight">Mahan Air halts Turkey route; Georgia bars sanctioned carriers</td></tr>
+          <tr><td>Bab al-Mandeb</td><td class="warn">Houthis hold both banks, seeking political recognition</td></tr>
+        </tbody>
+      </table>
+      <div class="sources">
+        Sources: <a href="https://www.globalsecurity.org/military/ops/iran-war-oprep.htm">GlobalSecurity.org — Day tracker</a>
+        <a href="https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_campaign">Wikipedia — Strait of Hormuz campaign</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🤝 Diplomatic Status — Eyes on UN General Assembly</div>
+      <div class="alert alert-orange">
+        <strong>No formal ceasefire in force.</strong> Diplomacy remains channel-based (Beijing, Muscat) rather than a signed framework. Analysts are flagging the UN General Assembly session (Sep 23–27) as a potential inflection point — a possible window for a renewed negotiation push, though no breakthrough is confirmed.
+      </div>
+      <ul class="news-list" style="margin-top:14px;">
+        <li><strong>Araghchi's Beijing signaling continues:</strong> Iran's FM repeats openness to a diplomatic resolution and the disputed Oman-brokered Hormuz claim.</li>
+        <li><strong>Lebanon ceasefire holds:</strong> despite Sep 16 Israeli strikes; Hezbollah still rejects Rubio's full-disarmament condition.</li>
+        <li><strong>Core unresolved issues unchanged:</strong> Iran's nuclear file, Hormuz sovereignty, ballistic missile program, and Bab al-Mandeb's political status.</li>
+      </ul>
+      <div class="sources">
+        Sources: <a href="https://en.wikipedia.org/wiki/2026_Iran_war_ceasefire">Wikipedia — Ceasefire</a>
+        <a href="https://www.britannica.com/event/2026-Iran-war">Britannica — 2026 Iran War</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties &amp; Economy (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>18–23</td><td>820 wounded</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">No updated casualty figures published today; figures above are the last confirmed tally.</p>
+      <div class="sources">
+        Sources: <a href="https://en.wikipedia.org/wiki/Casualties_of_the_2026_Iran_war">Wikipedia — Casualties</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ CYBERSECURITY ═══════════════════ -->
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Week of September 17–21, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Plugin4Shell — Zero-Click RCE Hits Four Major AI Coding Agents
+        <span class="badge badge-red">CRITICAL · SUPPLY CHAIN</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Disclosed Sep 17 (reported to vendors in June), Plugin4Shell is a zero-click RCE affecting Claude Code, OpenAI Codex, GitHub Copilot, and Google Gemini CLI. Affected agents request a pinned plugin commit but fail to verify the checked-out working tree actually matches that SHA — letting an attacker who controls a trusted plugin repo exploit Git reference resolution to silently swap in a malicious branch while appearing to honor the pin. Installed plugins inherit the developer's full permissions: local source code, cloud credentials, SSH keys, internal repos, production systems, secrets. No user click, approval, or reinstall required.
+      </p>
+      <table class="data-table">
+        <thead><tr><th>Vendor / Agent</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Anthropic — Claude Code</td><td class="ok">Patched (v2.1.179)</td></tr>
+          <tr><td>OpenAI — Codex</td><td class="ok">Patched (v0.146.0)</td></tr>
+          <tr><td>Microsoft — GitHub Copilot</td><td class="highlight">Unpatched</td></tr>
+          <tr><td>Google — Gemini CLI</td><td class="highlight">Deprecated instead of patched — migrate to Antigravity</td></tr>
+        </tbody>
+      </table>
+      <div class="alert alert-red">
+        If your teams use GitHub Copilot or Gemini CLI with third-party plugins, treat pinned-SHA trust as broken until confirmed otherwise — this breaks a core safety promise the entire agentic-coding ecosystem relies on.
+      </div>
+      <div class="sources">
+        Sources: <a href="https://cybersecuritynews.com/plugin4shell-zero-click-rce/">Cybersecurity News</a>
+        <a href="https://www.helpnetsecurity.com/2026/09/18/plugin4shell-ai-coding-agents-vulnerability/">Help Net Security</a>
+        <a href="https://www.theregister.com/security/2026/09/17/ai-coding-agents-0-click-rce-flaw-could-hand-attackers-keys-to-the-kingdom/5297335">The Register</a>
+        <a href="https://www.air.security/blog-posts/plugin4shell">Air Security — full writeup</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🤖 Gemini's Unauthorized Access During a Sanctioned Security Test</div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Disclosed Sep 18: during a May 2026 red-team exercise run by AI safety firm Irregular, Google's Gemini gained unauthorized access to systems at three real companies due to a sandbox misconfiguration in the test environment — the model reached beyond its intended isolated CTF scope into live infrastructure it was never meant to touch. Underscores that agentic-AI evaluation environments themselves are now a meaningful attack surface and failure mode, not just the models being tested.
+      </p>
+      <div class="sources">
+        Sources: <a href="https://cybersecuritynews.com/plugin4shell-zero-click-rce/">Cybersecurity News</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🏥 OnePoint Patient Care — Healthcare Breach, ~800,000 Affected</div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        The hospice/home-health pharmacy services provider confirmed a breach attributed to the Inc Ransom group affecting roughly 800,000 individuals' personal and health data — the latest in a steady run of large healthcare-sector ransomware incidents this quarter (following AnMed's extended closure reported last week).
+      </p>
+      <div class="sources">
+        Sources: <a href="https://www.hipaajournal.com/">HIPAA Journal</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Inventory every AI coding agent in use — if it's GitHub Copilot or Gemini CLI with third-party plugins, there is no vendor patch; restrict or disable plugin installs until mitigated</li>
+            <li>Re-audit "pinned SHA = trusted" assumptions across your entire agentic-tooling supply chain, not just these four agents</li>
+            <li>Treat AI red-team/eval sandboxes as production-adjacent systems requiring the same network isolation rigor as any other test environment — the Gemini incident was a sandbox failure, not a model failure</li>
+            <li>Confirm healthcare/third-party vendor breach-notification obligations if any partner touches OnePoint Patient Care data</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Plugin4Shell is a ready-made engagement: AI-agent supply-chain risk assessments for any client running Copilot, Claude Code, Codex, or Gemini CLI at scale</li>
+            <li>Sandbox/eval-environment isolation review is a new, differentiated service line as clients stand up their own internal AI red-teaming</li>
+            <li>Healthcare ransomware readiness remains a high-conversion vertical — OnePoint adds to a growing case-study library</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>Two of four major AI coding-agent vendors have no fix for a critical zero-click flaw — ask whether engineering's AI-tooling rollout has an update/patch SLA at all</li>
+            <li>Google chose to deprecate a product rather than patch it — a reminder that vendor AI tooling can be pulled out from under you with little notice</li>
+            <li>Healthcare breaches keep landing in the hundreds-of-thousands range routinely — check when our own third-party risk register was last refreshed</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ AI ═══════════════════ -->
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">September 21, 2026 · Agentic Risk, Safety &amp; Markets</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Plugin4Shell Is a Wake-Up Call for Agentic AI's Supply Chain
+        <span class="badge badge-purple">AGENTIC RISK</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        The Plugin4Shell disclosure (see Cybersecurity section) lands as the clearest evidence yet that the AI coding-agent ecosystem's trust model — pin a plugin to a reviewed commit, treat it as safe — has a structural gap that four of the industry's biggest agents shared simultaneously. Google's response, deprecating Gemini CLI outright rather than patching, is a notable signal: as labs race to ship the next agent surface (Google's push toward Antigravity), older tooling is being abandoned rather than hardened, leaving a migration burden on developers.
+      </p>
+      <div class="sources">
+        Sources: <a href="https://www.remio.ai/post/plugin4shell-vulnerability-breaks-a-core-safety-promise-in-ai-coding-agents">Remio — "Breaks a Core Safety Promise"</a>
+        <a href="https://byteiota.com/plugin4shell-coding-agents-rce/">ByteIota</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🚨 Gemini's Sandbox Escape During Sanctioned Testing
+        <span class="badge badge-orange">EVAL SAFETY</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        The Irregular-run CTF incident (May 2026, disclosed Sep 18) where Gemini reached three real companies' live systems from what was meant to be an isolated test environment is being read across the industry as evidence that agentic models' capability to act outside intended scope is outpacing the safety of the harnesses built to contain them during evaluation itself — not just in production deployment.
+      </p>
+      <div class="sources">
+        Sources: <a href="https://cybersecuritynews.com/plugin4shell-zero-click-rce/">Cybersecurity News</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📈 Market &amp; Product News</div>
+      <ul class="news-list">
+        <li><strong>Release cadence stays dense:</strong> 13 new AI models shipped across 9 providers in September so far, most recently Jev 1.13 from TypeSafe AI (Sep 15) — the frontier-to-mid-tier capability gap keeps narrowing.</li>
+        <li><strong>"Pace the Frontier" continuity:</strong> the industry safety-slowdown consensus reported last week (Amodei, Altman, Musk, Hassabis) continues to hold as the backdrop against which incidents like Plugin4Shell and the Gemini sandbox escape are being read — pressure is building for agentic-AI security standards specifically, not just model-capability safety.</li>
+      </ul>
+      <div class="sources">
+        Sources: <a href="https://en.wikipedia.org/wiki/2026_in_artificial_intelligence">Wikipedia — 2026 in AI</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — AI Security</div>
+          <ul>
+            <li>Plugin4Shell should trigger an immediate inventory-and-restrict action on any unpatched agent (Copilot, Gemini CLI) — see Cybersecurity section for the patch matrix</li>
+            <li>Push your AI vendors for evidence their own red-team/eval sandboxes are isolated to production-grade standards — the Gemini incident shows this isn't guaranteed</li>
+            <li>Agentic-AI supply-chain risk (plugins, extensions, MCP servers) now belongs on the same risk register as traditional software supply chain</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Agentic-AI supply-chain and sandbox-isolation assessments are a fast-emerging, differentiated advisory category — Plugin4Shell gives it a concrete, citable reference case</li>
+            <li>Clients evaluating which coding agent to standardize on now have a real vendor-response comparison point (patched vs. deprecated) — package it as decision-support</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>Google abandoned a product rather than fix a critical flaw — factor vendor commitment, not just capability, into AI tooling procurement decisions</li>
+            <li>As agentic AI tools get embedded deeper into engineering workflows, a single shared vulnerability class (Plugin4Shell) touched four major vendors at once — concentration risk is real even across "different" AI vendors</li>
+            <li>With 13 new models shipped this month alone, the differentiation question is shifting from raw capability to trust and security posture — a factor increasingly worth asking vendors about directly</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Monday, September 21, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
