@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Tuesday, September 22, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Tuesday, September 22, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Day 207–208</a>
+    <div class="toc-section">Tehran warns of "unlimited" retaliation, threatens new weapons · Parliament files NPT-withdrawal bill tied to weapons testing · Houthis expand strikes into Saudi Arabia, fighting rages in Yemen</div>
+    <a href="#cyber">🔐 Cybersecurity</a>
+    <div class="toc-section">Microsoft's biggest-ever Patch Tuesday: 974 CVEs, 2 exploited zero-days, 20 wormable bugs, federal KEV deadline today · Claude Mythos vulnerability-discovery scale grows</div>
+    <a href="#ai">🤖 Artificial Intelligence</a>
+    <div class="toc-section">AMD crosses $1 trillion market cap on AI chip demand · MIT Tech Review pushes back on "summer of AI hype" · Anthropic engineer's viral superintelligence warning</div>
+  </div>
+
+  <!-- ═══════════════════ IRAN WAR ═══════════════════ -->
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — Day 207–208</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        Situation Overview
+        <span class="badge badge-red">RHETORIC ESCALATES DESPITE FIRE PAUSE</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        The unannounced fire pause continues — no new US/coalition strike on Iranian territory, no new Iranian attack on a host state — but Monday's developments sharply raised the diplomatic temperature. Tehran said it has learned the US may be planning a new round of strikes and warned of retaliation "without limitations," while state media claimed the "world will be astonished" by new weapons Iran would deploy if attacked again. US embassies across the Middle East issued fresh security alerts for American citizens.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">"Unlimited"</div>
+          <div class="stat-label">Iran's threatened retaliation scope</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">NPT bill</div>
+          <div class="stat-label">Filed with "triple urgency," awaiting Speaker approval</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">4 killed</div>
+          <div class="stat-label">Yemen's al-Jawf province, Houthi–Saudi-backed clashes</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">Sep 21</div>
+          <div class="stat-label">Mahan Air halts all Turkey &amp; Georgia flights</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">☢️ Parliament Files NPT-Withdrawal Bill — Now Linked to Weapons Testing</div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Iranian lawmaker Hossein-Ali Haji Deligani confirmed a bill has been submitted to Parliament's Presiding Board seeking Iran's withdrawal from the Nuclear Non-Proliferation Treaty, filed with triple urgency and pending Speaker Ghalibaf's approval before an open-session debate. Unlike earlier withdrawal proposals, this draft's most consequential feature is new language explicitly tying NPT exit to nuclear-weapons testing rather than treaty exit alone. Lawmakers cited the IAEA Board of Governors' recent referral of Iran's file to the UN Security Council as justification, arguing "remaining in the NPT brings us nothing but losses."
+      </p>
+      <div class="alert alert-red">
+        This is the most significant escalation-risk signal of the week — a formal legislative move toward weapons-testing language, not just treaty withdrawal, would mark a major shift from the diplomatic-pressure track the war has followed since the April ceasefire.
+      </div>
+      <div class="sources">
+        Sources: <a href="https://newscord.org/article/irans-parliament-weighs-npt-withdrawal-as-draft-awaits-open-session-approval--Story_20260921_84d1febc">NewsCord — 10-outlet framing roundup</a>
+        <a href="https://easternherald.com/2026/09/21/iran-parliament-npt-withdrawal-nuclear-weapons-bill-pezeshkian/">Eastern Herald</a>
+        <a href="https://www.presstv.co.uk/Detail/2026/09/20/776678/Iran-lawmakers-NPT-withdrawal">Press TV</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🚀 Houthis Expand Strikes Into Saudi Arabia; Yemen Fighting Rages</div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Beyond the Bab al-Mandeb blockade, the Houthis expanded their offensive over the weekend to strike deep into Saudi territory — oil storage facilities at Riyadh's international airport and Aramco facilities in Yanbu. Simultaneously, ground fighting between Houthi forces and Saudi-backed factions killed at least four people in Yemen's al-Jawf province. Iranian officials separately claimed a new anti-ship cluster-munition missile was used in the Sep 5 attack on the USS George Washington and in the Sep 8 strike on US forces at Muwaffaq Salti Airbase, Jordan.
+      </p>
+      <ul class="news-list">
+        <li><strong>Widening theater:</strong> The Houthi front is no longer confined to shipping lanes — direct strikes on Saudi oil infrastructure raise the stakes for Riyadh's own calculus on intervention.</li>
+        <li><strong>Weapons claims unverified:</strong> Iran's cluster-munition missile claims have not been independently confirmed by US or coalition sources.</li>
+      </ul>
+      <div class="sources">
+        Sources: <a href="https://www.aljazeera.com/news/liveblog/2026/9/21/iran-war-live-tehran-warns-us-against-new-strikes-fighting-rages-in-yemen">Al Jazeera — Iran war live, Sep 21</a>
+        <a href="https://www.criticalthreats.org/analysis/iran-update-september-21-2026">Critical Threats — Iran Update</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🚢 Hormuz &amp; Diplomatic Status</div>
+      <div class="alert alert-orange">
+        <strong>No formal ceasefire in force.</strong> Hormuz traffic continues "at a trickle" per independent trackers; Araghchi's claimed Oman-brokered reopening plan remains unconfirmed by Muscat. The UN General Assembly session (Sep 23–27) opens tomorrow as the next watch point for any diplomatic movement.
+      </div>
+      <ul class="news-list" style="margin-top:14px;">
+        <li><strong>Sanctions tightening continues:</strong> Mahan Air's Sep 21 suspension of all Iran–Turkey and Iran–Georgia flights compounds economic pressure alongside rial collapse and triple-digit food inflation.</li>
+        <li><strong>Lebanon ceasefire holds</strong> despite continued friction; core unresolved issues (nuclear file, Hormuz sovereignty, missile program) remain unchanged.</li>
+      </ul>
+      <div class="sources">
+        Sources: <a href="https://www.globalsecurity.org/military/ops/iran-war-oprep.htm">GlobalSecurity.org — Day tracker</a>
+        <a href="https://en.wikipedia.org/wiki/2026_Iran_war_ceasefire">Wikipedia — Ceasefire</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>18–23</td><td>820 wounded</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive + al-Jawf clashes)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <div class="sources">
+        Sources: <a href="https://en.wikipedia.org/wiki/Casualties_of_the_2026_Iran_war">Wikipedia — Casualties</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ CYBERSECURITY ═══════════════════ -->
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Week of September 18–22, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Microsoft's Biggest-Ever Patch Tuesday — 974 CVEs, 2 Exploited Zero-Days
+        <span class="badge badge-red">FEDERAL DEADLINE TODAY</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        September's Patch Tuesday is the largest single-day CVE release Microsoft has ever published — 974 vulnerabilities, including 723 in Windows and 222 in Office (111 of those in Office 2016). Two are confirmed exploited zero-days: <strong>CVE-2026-85880</strong>, a heap buffer overflow in Windows ALPC (CVSS 7.8) letting a local attacker gain SYSTEM privileges — only the second ALPC zero-day since January 2023 — and <strong>CVE-2026-81963</strong>, a link-following flaw in the Windows Update Stack, the first of seven such Update Stack elevation-of-privilege bugs patched since 2022 to be exploited in the wild. Twenty of the newly fixed flaws are wormable — remotely exploitable without authentication or user interaction. CISA added both zero-days to its KEV catalog, and the deadline for Federal Civilian Executive Branch agencies to patch is <strong>today, September 22</strong>.
+      </p>
+      <table class="data-table">
+        <thead><tr><th>CVE</th><th>Component</th><th>Severity</th></tr></thead>
+        <tbody>
+          <tr><td>CVE-2026-85880</td><td>Windows ALPC (heap overflow → SYSTEM)</td><td class="warn">CVSS 7.8, exploited</td></tr>
+          <tr><td>CVE-2026-81963</td><td>Windows Update Stack (link following → SYSTEM)</td><td class="highlight">Exploited, CISA KEV deadline Sep 22</td></tr>
+          <tr><td>20 additional flaws</td><td>Various Windows components</td><td class="highlight">Wormable, unauthenticated RCE</td></tr>
+        </tbody>
+      </table>
+      <div class="sources">
+        Sources: <a href="https://www.securityweek.com/microsoft-patches-record-974-vulnerabilities-including-two-exploited-zero-days/">SecurityWeek</a>
+        <a href="https://securityaffairs.com/198705/security/microsofts-biggest-patch-tuesday-974-cves-2-zero-days-and-20-wormable-bugs.html">Security Affairs</a>
+        <a href="https://www.tenable.com/blog/microsofts-september-2026-patch-tuesday-addresses-964-cves-cve-2026-81963-cve-2026-85880">Tenable</a>
+        <a href="https://www.crowdstrike.com/en-us/blog/patch-tuesday-analysis-september-2026/">CrowdStrike</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🤖 Claude Mythos — AI Vulnerability Discovery Keeps Scaling</div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Anthropic's Project Glasswing continues to expand: Claude Mythos and its partner program have now identified more than 10,000 high- or critical-severity vulnerabilities in critical software, including 6,202 high/critical issues among 23,019 flagged across 1,000+ scanned open-source projects. Access has been extended to AWS, Apple, Broadcom, Cisco, CrowdStrike, Google, JPMorganChase, the Linux Foundation, Microsoft, NVIDIA, and Palo Alto Networks under Anthropic's Cyber Verification Program, aiming to get defenders scanning critical software before offensive use of similar AI capability becomes widespread.
+      </p>
+      <div class="sources">
+        Sources: <a href="https://www.anthropic.com/glasswing">Anthropic — Project Glasswing</a>
+        <a href="https://www.helpnetsecurity.com/2026/05/26/anthropic-project-glasswing-update/">Help Net Security</a>
+        <a href="https://en.wikipedia.org/wiki/Claude_Mythos">Wikipedia — Claude Mythos</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Prioritize CVE-2026-85880 and CVE-2026-81963 immediately — both are confirmed exploited and today is the federal KEV deadline; treat as your own internal deadline regardless of sector</li>
+            <li>With 974 CVEs in one release and 20 wormable, expect a compressed but high-volume patch cycle — triage by internet exposure and lateral-movement potential first</li>
+            <li>Evaluate whether your org qualifies for Anthropic's Cyber Verification Program to get ahead of AI-scale vulnerability discovery rather than react to it</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Record-scale Patch Tuesday is a natural trigger for emergency patch-management and vulnerability-prioritization engagements this week</li>
+            <li>AI-assisted vulnerability discovery (Claude Mythos) is becoming a board-level topic — advisory demand on "what does AI-scale vuln discovery mean for our SDLC" is rising</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>The largest patch release in Microsoft's history, with wormable bugs among it, is a reminder that patch-cycle risk is structural, not occasional — ask IT how today's KEV deadline was handled</li>
+            <li>AI tools are now finding more vulnerabilities than most human security teams combined — both a defensive opportunity and a signal that attackers will get the same leverage</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ AI ═══════════════════ -->
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">September 22, 2026 · Markets, Hype Check &amp; Safety</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: AMD Crosses $1 Trillion Market Cap on AI Chip Demand
+        <span class="badge badge-green">MARKET MILESTONE</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        AMD's stock surged roughly 9–10% this week, pushing its market capitalization past $1 trillion for the first time and making it the fourth US chipmaker to reach the milestone, after Nvidia, Broadcom, and Micron. The move caps a 180%+ rally since January, driven by AMD's Data Center segment surging 107% to $6.7 billion in Q2 on multi-gigawatt GPU commitments from OpenAI, Meta, and Anthropic — reinforcing AMD's position as the credible number-two AI accelerator supplier behind Nvidia.
+      </p>
+      <div class="sources">
+        Sources: <a href="https://finance.yahoo.com/markets/stocks/articles/amd-joins-1-trillion-market-172341283.html">Yahoo Finance</a>
+        <a href="https://www.gurufocus.com/news/9091164/amd-surpasses-1-trillion-market-cap-amid-ai-demand-surge">GuruFocus</a>
+        <a href="https://tech-insider.org/amd-trillion-dollar-market-cap-2026/">Tech Insider</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🧐 "Don't Be Fooled by This Summer of AI Hype" — MIT Tech Review's Skeptical Take
+        <span class="badge badge-blue">ANALYSIS</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        A pointed MIT Technology Review piece published today pushes back on the summer's cascade of dramatic AI claims: Anthropic's assertion that Claude Mythos out-finds most human security experts, the OpenAI–Hugging Face hacking incident (with Anthropic and Meta disclosing similar issues), and competing claims of mathematical breakthroughs from both Anthropic and OpenAI. The article also flags an Anthropic engineer's viral resignation post, in which he said Anthropic and OpenAI are "racing straight towards self-improving superintelligence and gambling with our lives" — using it as a case study in how alarm and hype can both outrun verifiable evidence, and arguing policymakers and the public should weigh these announcements with more skepticism.
+      </p>
+      <div class="sources">
+        Sources: <a href="https://www.technologyreview.com/2026/09/22/1144867/dont-be-fooled-summer-ai-hype/">MIT Technology Review</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📈 Market &amp; Product Notes</div>
+      <ul class="news-list">
+        <li><strong>Chip-sector concentration deepens:</strong> AMD joining Nvidia, Broadcom, and Micron above $1T underscores how tightly AI infrastructure spend is concentrating value in a handful of semiconductor names.</li>
+        <li><strong>Claude Mythos continuity:</strong> see Cybersecurity section — the same capability driving skepticism in the MIT piece is simultaneously being operationalized defensively via Project Glasswing.</li>
+      </ul>
+      <div class="sources">
+        Sources: <a href="https://en.wikipedia.org/wiki/2026_in_artificial_intelligence">Wikipedia — 2026 in AI</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — AI Security</div>
+          <ul>
+            <li>The OpenAI–Hugging Face hacking incident referenced in today's MIT piece is a reminder that AI-vendor supply chain (integrations, marketplaces, hosted model platforms) is now a live attack surface — audit third-party AI integrations accordingly</li>
+            <li>Balance the "AI hype skepticism" framing against the concrete Patch Tuesday reality: AI-assisted vulnerability discovery is already operational at scale (Claude Mythos), regardless of how breakthrough claims are marketed</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Clients will ask about AMD's rally and AI infrastructure concentration risk — a timely angle for vendor-diversification and AI infrastructure-dependency advisory</li>
+            <li>"AI hype vs. reality" due-diligence framing (per the MIT piece) is a sellable lens for evaluating vendor AI claims before procurement</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>Four chipmakers now sit above $1 trillion largely on AI demand — assess whether your capex or vendor contracts are exposed to a concentrated, potentially frothy segment</li>
+            <li>An Anthropic engineer's public superintelligence warning, set against a still-strong AI capex cycle, is a reminder the industry itself is not aligned on how fast — or how safely — this is moving; useful context for your own AI adoption pacing decisions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Tuesday, September 22, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
