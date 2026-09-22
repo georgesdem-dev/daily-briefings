@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Investment Brief — Tuesday, September 22, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+    .header { text-align: center; padding: 52px 0 40px; border-bottom: 1px solid #21262d; margin-bottom: 48px; }
+    .header .label { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #f0c040; margin-bottom: 12px; }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
+    .header .date { font-size: 1rem; color: #8b949e; margin-bottom: 16px; }
+    .header .nav { font-size: 0.82rem; color: #484f58; }
+    .header .nav a { color: #6e7681; }
+    .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 48px; }
+    .stat-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 14px 16px; text-align: center; }
+    .stat-card .stat-label { font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8b949e; margin-bottom: 6px; display: block; }
+    .stat-card .stat-value { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; display: block; margin-bottom: 3px; }
+    .stat-card .stat-change { font-size: 0.78rem; font-weight: 600; }
+    .green { color: #3fb950; } .red { color: #f85149; } .amber { color: #e3b341; } .blue { color: #58a6ff; }
+    .stat-card.bullish { border-top: 2px solid #238636; }
+    .stat-card.bearish { border-top: 2px solid #da3633; }
+    .stat-card.neutral { border-top: 2px solid #9e6a03; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 2px solid #21262d; }
+    .section-icon { font-size: 1.6rem; }
+    .section-title { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; }
+    .section-tag { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; margin-left: auto; }
+    .tag-market { background: #1a1f3d; color: #79c0ff; border: 1px solid #2a3a6e; }
+    .tag-pick { background: #1a3d1a; color: #3fb950; border: 1px solid #2a6e2a; }
+    .tag-risk { background: #3d1a1a; color: #f85149; border: 1px solid #6e2a2a; }
+    .tag-insight { background: #3d2a0a; color: #e3b341; border: 1px solid #6e4a0a; }
+    .story { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 20px 22px; margin-bottom: 14px; }
+    .story:hover { border-color: #444c56; }
+    .story h3 { font-size: 1rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; line-height: 1.4; }
+    .story p { font-size: 0.88rem; color: #c9d1d9; line-height: 1.65; margin-bottom: 8px; }
+    .story p:last-child { margin-bottom: 0; }
+    .story .source { font-size: 0.76rem; color: #484f58; margin-top: 10px; }
+    .pick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 14px; }
+    .pick-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px; }
+    .pick-card:hover { border-color: #444c56; }
+    .pick-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
+    .pick-ticker { font-size: 1.2rem; font-weight: 800; color: #58a6ff; }
+    .pick-company { font-size: 0.78rem; color: #8b949e; margin-top: 2px; }
+    .pick-price { text-align: right; }
+    .pick-price .price-val { font-size: 1.1rem; font-weight: 700; color: #f0f6fc; }
+    .pick-price .price-change { font-size: 0.78rem; }
+    .pick-desc { font-size: 0.84rem; color: #c9d1d9; line-height: 1.6; margin-bottom: 12px; }
+    .pick-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .pick-badge { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; }
+    .badge-buy { background: #1a3d1a; color: #3fb950; border: 1px solid #2a5a2a; }
+    .badge-moderate { background: #1a2d3d; color: #58a6ff; border: 1px solid #2a4a6e; }
+    .badge-income { background: #3d2a0a; color: #e3b341; border: 1px solid #6e4a0a; }
+    .badge-growth { background: #1a1a3d; color: #a371f7; border: 1px solid #3a2a6e; }
+    .badge-etf { background: #1a3d3d; color: #56d364; border: 1px solid #2a5a5a; }
+    .badge-defensive { background: #2d1a3d; color: #d2a8ff; border: 1px solid #5a2a6e; }
+    .target-row { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+    .target-pill { background: #0d1117; border: 1px solid #21262d; border-radius: 6px; padding: 4px 10px; font-size: 0.76rem; color: #8b949e; }
+    .target-pill span { font-weight: 700; color: #f0f6fc; }
+    .outlook-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 6px; }
+    .outlook-table thead th { text-align: left; padding: 10px 12px; font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8b949e; background: #161b22; border-bottom: 2px solid #21262d; }
+    .outlook-table tbody tr { border-bottom: 1px solid #21262d; }
+    .outlook-table tbody tr:hover { background: #161b22; }
+    .outlook-table tbody td { padding: 11px 12px; color: #c9d1d9; vertical-align: top; }
+    .outlook-table .ticker-cell { font-weight: 800; color: #58a6ff; white-space: nowrap; }
+    .outlook-table .price-cell { font-weight: 700; color: #f0f6fc; }
+    .outlook-table .target-up { color: #3fb950; font-weight: 700; }
+    .outlook-table .target-dn { color: #f85149; font-weight: 700; }
+    .outlook-table .target-flat { color: #e3b341; font-weight: 700; }
+    .risk-low { color: #3fb950; font-size: 10px; font-weight: 700; }
+    .risk-med { color: #e3b341; font-size: 10px; font-weight: 700; }
+    .risk-high { color: #f85149; font-size: 10px; font-weight: 700; }
+    .insight-card { background: #161b22; border: 1px solid #30363d; border-left: 3px solid #e3b341; border-radius: 0 10px 10px 0; padding: 18px 20px; margin-bottom: 14px; }
+    .insight-card h3 { font-size: 0.96rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; }
+    .insight-card p { font-size: 0.86rem; color: #c9d1d9; line-height: 1.65; }
+    .insight-card .person { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #e3b341; margin-bottom: 8px; display: block; }
+    .risk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+    .risk-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 16px 18px; }
+    .risk-card .risk-title { font-size: 0.88rem; font-weight: 700; color: #f0f6fc; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .risk-card ul { list-style: none; padding: 0; }
+    .risk-card ul li { font-size: 0.82rem; color: #c9d1d9; margin-bottom: 6px; padding-left: 16px; position: relative; line-height: 1.5; }
+    .risk-card ul li::before { content: "›"; position: absolute; left: 0; color: #f85149; }
+    .wl-item { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #21262d; font-size: 0.82rem; }
+    .wl-item:last-child { border-bottom: none; }
+    .wl-ticker { font-weight: 700; color: #58a6ff; }
+    .wl-reason { color: #8b949e; font-size: 0.76rem; }
+    .tldr { background: #161b22; border: 1px solid #30363d; border-left: 3px solid #58a6ff; border-radius: 0 8px 8px 0; padding: 14px 18px; margin-bottom: 28px; font-size: 0.86rem; color: #8b949e; }
+    .tldr strong { color: #f0f6fc; }
+    .sector-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+    .sector-row { display: flex; justify-content: space-between; align-items: center; background: #0d1117; border: 1px solid #21262d; border-radius: 6px; padding: 7px 12px; font-size: 0.82rem; }
+    .sector-name { color: #c9d1d9; }
+    .sector-pct { font-weight: 700; }
+    .footer { text-align: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem; }
+    .footer strong { color: #6e7681; }
+    .upside-pct { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; background: #1a3d1a; color: #3fb950; margin-left: 6px; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="label">📈 Investment Brief · Moderate Risk Portfolio</div>
+    <h1>Tuesday, September 22, 2026</h1>
+    <div class="date">Levels as of Monday, Sep 21 close &nbsp;·&nbsp; Iran War Ongoing (~7th Month) &nbsp;·&nbsp; For Georges</div>
+    <div class="nav"><a href="index.html">← Back to archive</a></div>
+  </div>
+
+  <div class="tldr">
+    <strong>Today at a glance:</strong> &nbsp;
+    Monday was the best trading day since early August — Nasdaq +2.3%, S&amp;P +1.5%, Dow +0.7% — as an AI-stock surge combined with a sharp 4.5% drop in oil on hopes for renewed Iran diplomacy &nbsp;·&nbsp;
+    VIX held flat near 14.8, still the calmest reading in weeks &nbsp;·&nbsp;
+    NVDA led chipmakers higher (+2.3%) while gold slipped 0.9% as risk appetite returned &nbsp;·&nbsp;
+    Top picks for moderate risk: MSFT, NVDA, JNJ, XOM, JPM, NEE, UPS, SPY — Howard Marks' "quality and income over breadth" playbook, now with Goldman's high-yield UPS pick added
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-card bullish">
+      <span class="stat-label">S&amp;P 500</span>
+      <span class="stat-value">7,764.70</span>
+      <span class="stat-change green">+114.20 &nbsp;+1.49%</span>
+    </div>
+    <div class="stat-card bullish">
+      <span class="stat-label">Dow Jones</span>
+      <span class="stat-value">52,050.26</span>
+      <span class="stat-change green">+366.22 &nbsp;+0.71%</span>
+    </div>
+    <div class="stat-card bullish">
+      <span class="stat-label">Nasdaq</span>
+      <span class="stat-value">27,125.09</span>
+      <span class="stat-change green">+599.55 &nbsp;+2.26%</span>
+    </div>
+    <div class="stat-card bullish">
+      <span class="stat-label">Russell 2000</span>
+      <span class="stat-value">2,875.36</span>
+      <span class="stat-change green">+14.96 &nbsp;+0.52%</span>
+    </div>
+    <div class="stat-card neutral">
+      <span class="stat-label">VIX</span>
+      <span class="stat-value">14.80</span>
+      <span class="stat-change amber">flat</span>
+    </div>
+    <div class="stat-card bearish">
+      <span class="stat-label">Crude Oil (WTI)</span>
+      <span class="stat-value">$95.78</span>
+      <span class="stat-change red">-4.52 &nbsp;-4.51%</span>
+    </div>
+    <div class="stat-card bearish">
+      <span class="stat-label">Gold</span>
+      <span class="stat-value">$4,340.51</span>
+      <span class="stat-change red">-0.9%</span>
+    </div>
+    <div class="stat-card neutral">
+      <span class="stat-label">10Y Treasury</span>
+      <span class="stat-value">4.96%</span>
+      <span class="stat-change amber">-4bps</span>
+    </div>
+  </div>
+
+
+  <!-- SECTION 1 — MARKET SNAPSHOT -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">📊</span>
+      <span class="section-title">Market Snapshot</span>
+      <span class="section-tag tag-market">LIVE DATA</span>
+    </div>
+
+    <div class="story">
+      <h3>🏭 Sector Performance — YTD Leaders &amp; Laggards</h3>
+      <p>Energy still leads 2026 at roughly +40% YTD even after Monday's oil-price plunge, though the gap to Technology narrowed sharply as chipmakers ripped higher on the AI trade "regaining its footing." Industrials and Utilities remain solid mid-pack performers on the infrastructure/power-demand supercycle thesis. Financial Services and Consumer Cyclicals stay the relative laggards on rate uncertainty and softening consumer data.</p>
+      <div class="sector-grid">
+        <div class="sector-row"><span class="sector-name">⚡ Energy</span><span class="sector-pct green">+40.1% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">💻 Technology</span><span class="sector-pct green">+24.2% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">🔩 Industrials</span><span class="sector-pct green">+19.0% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">💡 Utilities</span><span class="sector-pct green">+16.1% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">🪨 Basic Materials</span><span class="sector-pct green">+13.5% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">📡 Comm. Services</span><span class="sector-pct green">+12.0% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">🛒 Consumer Defensive</span><span class="sector-pct green">+8.7% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">🏘️ Real Estate</span><span class="sector-pct green">+6.2% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">💊 Healthcare</span><span class="sector-pct green">+4.3% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">🚗 Consumer Cyclical</span><span class="sector-pct red">-0.5% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">🏦 Financial Services</span><span class="sector-pct red">-2.1% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">📈 All Sectors (avg)</span><span class="sector-pct green">+12.9% YTD</span></div>
+      </div>
+    </div>
+
+    <div class="story">
+      <h3>🪖 Iran War — Oil Sinks on Diplomacy Hopes, But No Ceasefire Yet</h3>
+      <p>WTI crude fell $4.52 (-4.5%) Monday, its sharpest one-day drop in weeks, on renewed hopes that Washington and Tehran could return to the ceasefire framework negotiated back in June. President Pezeshkian has signaled Iran is willing to "reciprocate" if the US restores those terms, but Washington has so far kept up economic pressure and struck fresh Iranian targets — as of early September, no active ceasefire is in force and Trump has warned of harsher retaliation if Iran strikes again. Markets are trading the *hope* of de-escalation more than any confirmed breakthrough, which keeps oil a two-way risk this week.</p>
+    </div>
+
+    <div class="story">
+      <h3>📈 AI Trade Regains Its Footing</h3>
+      <p>Monday's rally was led by chipmakers and mega-cap tech as the AI trade "regained its footing" after a choppy stretch, per Schwab and CNBC coverage — NVDA +2.3%, broad Nasdaq strength across semis and AI infrastructure names. The move came alongside falling oil and falling Treasury yields (10Y steady near 4.96%), an easier backdrop that let risk assets re-rate higher. Small caps also participated (Russell 2000 +0.5%), a mild breadth improvement worth watching given the sector's recent underperformance.</p>
+    </div>
+  </div>
+
+
+  <!-- SECTION 2 — TOP PICKS: MODERATE RISK -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🎯</span>
+      <span class="section-title">Top Picks — Moderate Risk Portfolio</span>
+      <span class="section-tag tag-pick">BUY THESIS</span>
+    </div>
+
+    <div class="tldr" style="border-left-color: #3fb950;">
+      <strong>Portfolio philosophy:</strong> &nbsp; Balancing capital appreciation with downside protection, per Howard Marks' guidance to favor quality, income, and reasonable valuations over speculative breadth. Diversified across AI infrastructure, healthcare, energy, financials, utilities, logistics, and an S&amp;P 500 core. All are liquid, large-cap, analyst-consensus Buy/Overweight names.
+    </div>
+
+    <div class="pick-grid">
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">MSFT</div><div class="pick-company">Microsoft Corporation</div></div>
+          <div class="pick-price"><div class="price-val">$493.78</div><div class="price-change red">-0.80% Mon</div></div>
+        </div>
+        <p class="pick-desc">Core AI infrastructure holding, trading near its cheapest forward multiple since 2023 even as Azure growth and Copilot enterprise adoption accelerate. Consensus target ~$573 (Strong Buy), implying mid-teens upside. Bear case: FY2026 capex outpacing revenue growth near-term.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Strong Buy</span><span class="pick-badge badge-growth">AI Core</span><span class="pick-badge badge-income">Dividend</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$573</span></div><div class="target-pill">Upside: <span class="green">+16%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">NVDA</div><div class="pick-company">NVIDIA Corporation</div></div>
+          <div class="pick-price"><div class="price-val">$227.35</div><div class="price-change green">+2.29% Mon</div></div>
+        </div>
+        <p class="pick-desc">Led Monday's AI-trade rebound as chipmakers "regained their footing." Jensen Huang expects Nvidia to sell twice as many chips next year, with a $500B booking pipeline through 2026. Supply (HBM3e, CoWoS packaging) remains the binding constraint, not demand. Consensus target ~$330; high beta warrants a smaller position slice.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Buy</span><span class="pick-badge badge-growth">AI Chips</span><span class="pick-badge badge-moderate">Higher Beta</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$330</span></div><div class="target-pill">Upside: <span class="green">+45%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">JNJ</div><div class="pick-company">Johnson &amp; Johnson</div></div>
+          <div class="pick-price"><div class="price-val">$269.99</div><div class="price-change green">+50% 52wk</div></div>
+        </div>
+        <p class="pick-desc">Defensive blue-chip anchor. Healthcare remains the weakest "growth" sector YTD but JNJ has still outrun the S&amp;P over the trailing year. 2026 sales guided to $99.5-100.5B; adjusted EPS seen growing ~7%. Consensus Moderate-to-Strong Buy; talc litigation remains the key overhang.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Buy</span><span class="pick-badge badge-defensive">Defensive</span><span class="pick-badge badge-income">Dividend</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$281</span></div><div class="target-pill">Upside: <span class="green">+4%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">XOM</div><div class="pick-company">Exxon Mobil Corporation</div></div>
+          <div class="pick-price"><div class="price-val">$161.20</div><div class="price-change red">-1.4% Mon</div></div>
+        </div>
+        <p class="pick-desc">Best-in-class energy exposure to the Iran risk premium, pulled back Monday alongside the 4.5% oil drop on diplomacy hopes. JPMorgan's integrated-oils desk still favors US majors over peers given elevated geopolitical tension. Consensus ~$170, Buy-rated. Low beta (~0.2) provides genuine diversification against tech-driven swings.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Buy</span><span class="pick-badge badge-income">Dividend</span><span class="pick-badge badge-defensive">Low Beta</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$170</span></div><div class="target-pill">Upside: <span class="green">+5%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">JPM</div><div class="pick-company">JPMorgan Chase</div></div>
+          <div class="pick-price"><div class="price-val">$349.67</div><div class="price-change amber">~flat</div></div>
+        </div>
+        <p class="pick-desc">World's most profitable bank, offering rotation into the year's weakest sector (Financial Services). 2026 EPS forecast raised to $21.25 on strong Core Pre-Provision Net Revenue and healthy credit quality. Consensus "Moderate Buy," trading near the top of its 52-week range — scale in on pullbacks.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Overweight</span><span class="pick-badge badge-income">Dividend</span><span class="pick-badge badge-defensive">Value</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$355</span></div><div class="target-pill">Upside: <span class="green">+2%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">NEE</div><div class="pick-company">NextEra Energy</div></div>
+          <div class="pick-price"><div class="price-val">$80.47</div><div class="price-change amber">~flat</div></div>
+        </div>
+        <p class="pick-desc">World's largest wind/solar generator, with a fresh catalyst: the pending all-stock merger with Dominion Energy (~$66B). AI data-center power demand keeps driving 20-year renewable PPA signings. Consensus Buy, average target $98.39, though analysts are split post-merger-announcement.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Buy</span><span class="pick-badge badge-defensive">Utility</span><span class="pick-badge badge-income">Dividend</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$98</span></div><div class="target-pill">Upside: <span class="green">+22%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">UPS</div><div class="pick-company">United Parcel Service</div></div>
+          <div class="pick-price"><div class="price-val">$99.00</div><div class="price-change amber">6.6% yield</div></div>
+        </div>
+        <p class="pick-desc">New addition — Goldman Sachs' highest-conviction high-yield dividend pick (Conviction List), yielding 6.6% with a $132 price target (+33% implied upside). Regular quarterly dividend of $1.64/share confirmed. Logistics/transformation turnaround story provides a differentiated income sleeve alongside JNJ/XOM/NEE. Watch for Amazon-volume-related headwinds flagged by BofA.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Conviction Buy</span><span class="pick-badge badge-income">High Yield</span><span class="pick-badge badge-defensive">Logistics</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$132</span></div><div class="target-pill">Upside: <span class="green">+33%</span></div></div>
+      </div>
+
+    </div>
+
+    <div class="story">
+      <h3>📦 ETF Core Position — Diversification Layer</h3>
+      <p><strong class="blue">SPY (S&amp;P 500 ETF) — ~$772.90 | Expense: 0.09% | Yield: 0.99%</strong> — The bedrock position, tracking Monday's rally to a fresh high. Goldman's freshly raised 8,000 year-end S&amp;P target implies modest further upside from here. A 25-28% SPY allocation anchors the portfolio while individual names express conviction; keep dollar-cost-averaging additions given September's seasonal volatility.</p>
+    </div>
+  </div>
+
+
+  <!-- SECTION 3 — 30-60-90 DAY OUTLOOK TABLE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🗓️</span>
+      <span class="section-title">30–60–90 Day Outlook</span>
+      <span class="section-tag tag-market">PRICE TARGETS</span>
+    </div>
+
+    <div class="story" style="padding: 0; overflow-x: auto;">
+      <table class="outlook-table">
+        <thead>
+          <tr><th>Ticker</th><th>Current</th><th>30-Day Target</th><th>60-Day Target</th><th>90-Day Target</th><th>12-Mo Consensus</th><th>Key Catalyst</th><th>Risk Level</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="ticker-cell">MSFT</td><td class="price-cell">$494</td><td class="target-up">$510</td><td class="target-up">$535</td><td class="target-up">$555</td><td class="target-up">$573 <span class="upside-pct">+16%</span></td><td>Q1 FY27 Azure results; Copilot seat growth; capex commentary</td><td><span class="risk-low">LOW</span></td></tr>
+          <tr><td class="ticker-cell">NVDA</td><td class="price-cell">$227</td><td class="target-up">$250</td><td class="target-up">$280</td><td class="target-up">$305</td><td class="target-up">$330 <span class="upside-pct">+45%</span></td><td>Blackwell supply ramp; DOJ Groq review; FQ3 earnings (Nov)</td><td><span class="risk-high">HIGH</span></td></tr>
+          <tr><td class="ticker-cell">JNJ</td><td class="price-cell">$270</td><td class="target-up">$274</td><td class="target-up">$278</td><td class="target-up">$281</td><td class="target-up">$281 <span class="upside-pct">+4%</span></td><td>Talc litigation rulings; Q3 earnings (mid-Oct)</td><td><span class="risk-low">LOW</span></td></tr>
+          <tr><td class="ticker-cell">XOM</td><td class="price-cell">$161</td><td class="target-up">$166</td><td class="target-flat">$165</td><td class="target-up">$172</td><td class="target-up">$170 <span class="upside-pct">+5%</span></td><td>Iran diplomacy path; Guyana ramp; Q3 earnings (early Nov)</td><td><span class="risk-med">MED</span></td></tr>
+          <tr><td class="ticker-cell">JPM</td><td class="price-cell">$350</td><td class="target-up">$355</td><td class="target-up">$362</td><td class="target-up">$368</td><td class="target-up">$355 <span class="upside-pct">+2%</span></td><td>Q3 earnings (mid-Oct); Fed policy path; credit quality</td><td><span class="risk-med">MED</span></td></tr>
+          <tr><td class="ticker-cell">NEE</td><td class="price-cell">$80</td><td class="target-up">$85</td><td class="target-up">$90</td><td class="target-up">$95</td><td class="target-up">$98 <span class="upside-pct">+22%</span></td><td>Dominion merger approvals; Q3 earnings; AI-datacenter PPAs</td><td><span class="risk-med">MED</span></td></tr>
+          <tr><td class="ticker-cell">UPS</td><td class="price-cell">$99</td><td class="target-up">$106</td><td class="target-up">$115</td><td class="target-up">$124</td><td class="target-up">$132 <span class="upside-pct">+33%</span></td><td>Q3 earnings (late Oct); Amazon volume trends; cost-cut progress</td><td><span class="risk-med">MED</span></td></tr>
+          <tr><td class="ticker-cell">SPY</td><td class="price-cell">$773</td><td class="target-up">$785</td><td class="target-up">$795</td><td class="target-up">$800</td><td class="target-up">~$800 <span class="upside-pct">+4%</span></td><td>Q3 earnings season (Oct); Fed rate path; Iran diplomacy path</td><td><span class="risk-low">LOW</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.75rem;color:#484f58;margin-top:10px;padding:0 4px;">
+      * 30/60/90-day targets are Jorge's estimates derived from analyst 12-month consensus targets scaled + technical levels. Not financial advice. Price data as of Monday, September 21, 2026 close (Yahoo Finance / StockAnalysis / TipRanks / Goldman Sachs).
+    </p>
+  </div>
+
+
+  <!-- SECTION 4 — INVESTOR INSIGHTS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🧠</span>
+      <span class="section-title">Trusted Investor Insights</span>
+      <span class="section-tag tag-insight">MACRO VIEWS</span>
+    </div>
+
+    <div class="insight-card">
+      <span class="person">Warren Buffett / Berkshire Hathaway</span>
+      <h3>Cash Pile Pushes Past $400B — "We Aren't in It to Make 5-6%"</h3>
+      <p>Berkshire's cash and T-bill hoard, already a record $397.4B at Q1, is now believed to have crossed $400B under CEO Greg Abel, who has extended Buffett's multi-year selling pattern (Apple trimmed to ~22% of the equity book; Bank of America cut by more than half). Buffett's own words: minor market drops of 5-6% aren't enough to deploy it. Buybacks resumed in March but only at a token $234M, signaling the market still looks fully valued to Omaha.</p>
+    </div>
+
+    <div class="insight-card" style="border-left-color: #58a6ff;">
+      <span class="person" style="color: #58a6ff;">Goldman Sachs Research — September 2026 Outlook</span>
+      <h3>S&amp;P 500 Target 8,000 — And a New High-Yield Conviction Pick in UPS</h3>
+      <p>Goldman's year-end S&amp;P target stands at 8,000, anchored on a raised 2026 EPS forecast of $340 (+24% YoY). Separately, Goldman's Conviction List highlights UPS as a top high-yield dividend idea — 6.6% yield, $132 target — alongside its broader overweight-equities stance (2026 EPS growth seen at 31% in the US). September's seasonal weakness remains a live caution even after Monday's rally.</p>
+    </div>
+
+    <div class="insight-card" style="border-left-color: #a371f7;">
+      <span class="person" style="color: #a371f7;">Ray Dalio / Bridgewater</span>
+      <h3>Debt "Capital War" Warning — Yet Still Buying US Tech</h3>
+      <p>Dalio continues to warn that US government borrowing needs (~$2T 2026 deficit, ~$10T in maturing debt to refinance) are outpacing investor appetite, and recently called the market "very likely" in a bubble by technical definition. Yet Bridgewater's latest 13F filings show large additions to Nvidia, Alphabet, Microsoft, and Amazon — a barbell of macro-tail hedges (dollar, gold) paired with continued AI-compounder exposure that this brief's picks largely mirror.</p>
+    </div>
+
+    <div class="insight-card" style="border-left-color: #e3b341;">
+      <span class="person">Howard Marks / Oaktree Capital</span>
+      <h3>AI Is Structural, Not a Fad — But Selectivity Still Matters</h3>
+      <p>Marks argues AI has moved from abstraction to economic force "at a speed that approaches instantaneous," a structural development investors must grapple with rather than dismiss as hype. He pairs this with continued caution on the US fiscal position — America's "golden credit card" increasingly strained by debt issuance colliding with buyer capacity limits. His prescription: favor income-generating, reasonably-valued quality over high-beta names at extreme multiples.</p>
+    </div>
+  </div>
+
+
+  <!-- SECTION 5 — KEY RISKS & WATCHLIST -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">⚠️</span>
+      <span class="section-title">Key Risks &amp; Watchlist</span>
+      <span class="section-tag tag-risk">RISK MONITOR</span>
+    </div>
+
+    <div class="risk-grid">
+      <div class="risk-card">
+        <div class="risk-title">🪖 Geopolitical Risks</div>
+        <ul>
+          <li>No active Iran ceasefire — Monday's oil drop reflects hope for diplomacy, not a confirmed deal</li>
+          <li>Trump has warned of harsher US retaliation if Iran strikes again; Washington still pressing economic warfare</li>
+          <li>Strait of Hormuz remains a persistent chokepoint; any renewed disruption spikes oil sharply</li>
+          <li>Pezeshkian's openness to "reciprocate" on June-framework terms is the only concrete diplomatic thread right now</li>
+        </ul>
+      </div>
+      <div class="risk-card">
+        <div class="risk-title">💰 Macro / Fed Risks</div>
+        <ul>
+          <li>10Y yield steady near 4.96%, still pressuring rate-sensitive valuations</li>
+          <li>Dalio: market "very likely" in a bubble by technical definition; ~$10T in maturing US debt needs refinancing</li>
+          <li>September historically the S&amp;P's worst month — Monday's rally doesn't erase the seasonal caution</li>
+          <li>Gold pulled back 0.9% as risk appetite returned — worth watching if the trend reverses</li>
+        </ul>
+      </div>
+      <div class="risk-card">
+        <div class="risk-title">📉 Earnings / Sector Risks</div>
+        <ul>
+          <li>NVDA under DOJ scrutiny over the Groq chip-licensing deal — regulatory overhang on the AI trade</li>
+          <li>MSFT capex growing faster than revenue is the core bear argument</li>
+          <li>JNJ talc litigation remains unresolved despite strong fundamentals</li>
+          <li>UPS: BofA flagged Amazon-volume headwinds as a risk to watch into Q3 earnings</li>
+        </ul>
+      </div>
+      <div class="risk-card">
+        <div class="risk-title">🔒 Portfolio-Specific Watch Items</div>
+        <ul>
+          <li>NEE: Dominion Energy merger (~$66B) still needs regulatory approval</li>
+          <li>XOM: any durable Iran ceasefire is a headwind to the current oil-price premium</li>
+          <li>NVDA: HBM3e/CoWoS packaging capacity fully allocated through mid-2027 — a supply constraint, not demand</li>
+          <li>Russell 2000 participated in Monday's rally (+0.5%) — a healthy breadth signal to keep tracking</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="story" style="margin-top: 16px;">
+      <h3>👁️ Watchlist — Names to Monitor Closely</h3>
+      <div class="wl-item"><div><span class="wl-ticker">Iran Diplomacy</span><span class="wl-reason"> — any confirmed return to the June ceasefire framework would be a major oil catalyst</span></div><span class="amber">👀 MONITOR</span></div>
+      <div class="wl-item"><div><span class="wl-ticker">NVDA</span><span class="wl-reason"> — DOJ reviewing the Groq licensing deal; FQ3 earnings in November is the next major catalyst</span></div><span class="amber">👀 REGULATORY</span></div>
+      <div class="wl-item"><div><span class="wl-ticker">UPS</span><span class="wl-reason"> — new pick; watch Amazon-volume trends and Q3 earnings in late October</span></div><span class="green">📋 NEW PICK</span></div>
+      <div class="wl-item"><div><span class="wl-ticker">NEE</span><span class="wl-reason"> — Dominion merger regulatory approval process ongoing</span></div><span class="amber">📋 MERGER WATCH</span></div>
+      <div class="wl-item" style="border: none;"><div><span class="wl-ticker">10Y Yield</span><span class="wl-reason"> — near 4.96%; a sustained break higher would pressure growth-stock multiples</span></div><span class="red">⚠️ RATE RISK</span></div>
+    </div>
+
+    <div class="story" style="margin-top: 14px;">
+      <h3>📐 Suggested Moderate-Risk Allocation — September 2026</h3>
+      <p style="margin-bottom:12px;">A balanced allocation for a sophisticated investor comfortable with moderate risk (~12-16% expected annual return, ~12-15% expected annual volatility):</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:0.83rem;">
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;"><span style="color:#58a6ff;font-weight:700;">Core ETF (25%)</span><br><span style="color:#8b949e;">SPY 25%</span></div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;"><span style="color:#3fb950;font-weight:700;">AI / Growth Tech (25%)</span><br><span style="color:#8b949e;">MSFT 16% · NVDA 9%</span></div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;"><span style="color:#e3b341;font-weight:700;">Income / Defensive (35%)</span><br><span style="color:#8b949e;">JNJ 8% · XOM 7% · NEE 7% · JPM 6% · UPS 7%</span></div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px; grid-column: 1/-1;"><span style="color:#f85149;font-weight:700;">Cash / Tactical (15%)</span><br><span style="color:#8b949e;">Dry powder for September seasonal weakness · NVDA regulatory dips · post-earnings entries</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>Investment Brief by Jorge</strong> &nbsp;·&nbsp; September 22, 2026 &nbsp;·&nbsp; Iran War Ongoing</p>
+    <p style="margin-top:6px;">Data sourced from Yahoo Finance, StockAnalysis, TipRanks, Goldman Sachs, CNBC, TheStreet, Reuters (levels as of Mon Sep 21 close) · Not financial advice · For informational purposes only</p>
+    <p style="margin-top:6px;"><a href="index.html">← Full briefing archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
