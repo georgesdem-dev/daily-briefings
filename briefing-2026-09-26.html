@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Saturday, September 26, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Saturday, September 26, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Trump Rejects the Seven-Day Roadmap</a>
+    <div class="toc-section">Araghchi's roadmap rejected · echoes of the collapsed June 17 MoU · war enters its seventh month</div>
+    <a href="#cyber">🔐 Cybersecurity</a>
+    <div class="toc-section">Bitget loses $351.6M in suspected North Korean hack, 2026's largest crypto theft · SalesBleed: zero-click Salesforce Agentforce flaws</div>
+    <a href="#ai">🤖 Artificial Intelligence</a>
+    <div class="toc-section">Google, OpenAI, Anthropic court Sriram Krishnan to lead a self-regulatory "Frontier AI Standards Agency" · SalesBleed as AI-agent security crossover</div>
+  </div>
+
+  <!-- ═══════════════════ IRAN WAR ═══════════════════ -->
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — Trump Rejects the Seven-Day Roadmap</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 211</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: "I Reject Their Proposal" — Trump Shuts Down Iran's Hormuz Roadmap
+        <span class="badge badge-red">DIPLOMACY STALLS AGAIN</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        Iran's Foreign Minister Abbas Araghchi confirmed Tehran had formally submitted its seven-day roadmap and was awaiting Washington's answer: initial steps within 4-5 days, the Strait of Hormuz reopening on day six, and nuclear-deal talks starting on day seven. Trump ended the wait Saturday, telling reporters outside the White House "I reject their proposal" before departing for Tennessee. The plan required the US to ease military pressure, lift its naval blockade of Iranian ports, and waive sanctions on Iranian oil sales — asks the administration has consistently refused. The proposal closely mirrored the June 17 memorandum of understanding, brokered by Qatar and Pakistan, which set a 60-day negotiating window but collapsed within weeks. The war has now entered its seventh month with no durable ceasefire framework in sight.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">Rejected</div>
+          <div class="stat-label">Trump's response to Iran's 7-day roadmap</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">7 months</div>
+          <div class="stat-label">War duration as of today</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">June 17</div>
+          <div class="stat-label">Date of the earlier, since-collapsed MoU</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.aljazeera.com/news/2026/9/26/trump-rejects-irans-seven-day-roadmap-to-reopen-strait-of-hormuz">Al Jazeera — Trump rejects roadmap</a>
+        <a href="https://www.aljazeera.com/news/2026/9/25/iran-says-it-awaits-us-response-on-seven-day-roadmap-to-end-war">Al Jazeera — Iran awaits response</a>
+        <a href="https://www.globalsecurity.org/military/ops/iran-war-oprep.htm">GlobalSecurity.org — Day 209/210 Updates</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>18–23</td><td>820 wounded</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">No new casualty totals published today. With the roadmap rejected, watch for whether Hormuz shipping attacks or Iranian retaliatory signaling resume in the coming days.</p>
+      <div class="sources">
+        Sources: <a href="https://en.wikipedia.org/wiki/2026_Iran_war">Wikipedia — 2026 Iran war</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ CYBERSECURITY ═══════════════════ -->
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Week of September 24–26, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Bitget Loses $351.6M — 2026's Largest Crypto Heist, North Korea Suspected
+        <span class="badge badge-red">BACKEND COMPROMISE</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Crypto exchange Bitget disclosed that attackers stole $351.6 million from its hot and warm wallets on Sept 24, moving funds across Ethereum, XRP Ledger, Arbitrum, Avalanche, Optimism, BNB Chain, and Base. Rather than stealing private keys, the attacker compromised a critical backend system inside Bitget's wallet infrastructure, used it to spoof transaction data, and triggered the authorization process to move funds out. IP-behavior patterns and on-chain analysis point to North Korean state-linked actors — Bitget is working with Mandiant and SlowMist on the investigation. Losses will be covered by Bitget's $464M User Protection Fund, though the theft could drain roughly 76% of it.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">$351.6M</div>
+          <div class="stat-label">Stolen — largest 2026 crypto theft</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">76%</div>
+          <div class="stat-label">Of protection fund the loss could consume</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">7</div>
+          <div class="stat-label">Blockchains funds were moved across</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://thehackernews.com/2026/09/bitget-says-suspected-north-korean.html">The Hacker News</a>
+        <a href="https://www.trmlabs.com/resources/blog/bitget-loses-usd-3516-million-in-hot-wallet-breach-in-likely-north-korea-attack">TRM Labs</a>
+        <a href="https://techcrunch.com/2026/09/25/north-korean-hackers-suspected-in-351m-crypto-theft-the-largest-so-far-this-year/">TechCrunch</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🕳️ SalesBleed: Zero-Click Flaws Let Attackers Hijack Salesforce's AI Agents
+        <span class="badge badge-purple">AI AGENT SECURITY</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Zenity Labs disclosed three vulnerabilities in Salesforce Agentforce, collectively named SalesBleed. Two enabled zero-click exfiltration of CRM data to attacker-controlled infrastructure via poisoned leads, requiring no employee click or approval. The third let an anonymous insider weaponize the trusted identity of an Agentforce-connected Slack agent to post phishing messages under that agent's name, since the integration didn't reliably attribute which user triggered the action. Salesforce was notified June 1 and confirmed all three issues remediated by Aug 19 — but the case is now a widely cited reference for zero-click risk in enterprise AI-agent deployments.
+      </p>
+      <div class="sources">
+        Sources: <a href="https://www.securityweek.com/salesbleed-flaws-in-salesforce-agentforce-enabled-zero-click-data-exfiltration/">SecurityWeek</a>
+        <a href="https://finance.yahoo.com/technology/ai/articles/zenity-labs-uncovers-salesbleed-3-140200553.html">Zenity Labs via Yahoo Finance</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Bitget's breach came through backend transaction-authorization spoofing, not stolen keys — if you operate or custody crypto infrastructure, review authorization-flow integrity, not just key storage</li>
+            <li>SalesBleed is now patched, but treat it as a template: audit any Agentforce/CRM-connected AI agent for zero-click data paths and identity-attribution gaps in chat/Slack integrations</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Clients running Salesforce Agentforce or similar AI-agent CRM tooling should get a SalesBleed-pattern review — the flaw class (zero-click, agent-identity spoofing) will recur across other agent platforms</li>
+            <li>Crypto/fintech clients: the Bitget incident is a strong prompt for backend authorization-flow audits, distinct from the usual key-management conversation</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>$351.6M lost in a single incident, potentially consuming three-quarters of a dedicated insurance-style fund, is a useful benchmark when sizing your own incident-reserve adequacy</li>
+            <li>AI agents acting under a trusted corporate identity (Slack, CRM) are now a documented phishing and data-exfiltration vector — worth a direct question to IT on which AI agents can act autonomously in your name</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ AI ═══════════════════ -->
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">September 26, 2026 · Industry Self-Regulation Takes Shape</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Google, OpenAI, Anthropic Court Sriram Krishnan for a Self-Regulatory "Frontier AI Standards Agency"
+        <span class="badge badge-blue">SELF-REGULATION, NOT GOVERNMENT</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Days after their CEOs told the UN Security Council the industry needs global oversight, the three labs are quietly building their own alternative: a voluntary self-regulator — tentatively the Frontier AI Standards Agency, modeled on Wall Street's FINRA — that could launch by year-end or early 2027. They've approached Sriram Krishnan, the former White House AI policy advisor, to be CEO, alongside other candidates including ex-Biden tech official Arati Prabhakar, former diplomat Condoleezza Rice, and VC David Friedberg. The pillars under discussion: shared technical evaluations, pre-release audits, independent testing, and standardized safety protocols — all industry-run, with no government body involved. The irony reporters have noted: Krishnan spent his time in the White House arguing against exactly this kind of centralized oversight, saying there would be "no FDA for AI." OpenAI's Chris Lehane confirmed the three labs have been coordinating on this for several weeks.
+      </p>
+      <div class="alert alert-orange">
+        Read alongside Wednesday's UN Security Council briefing, this looks like the industry moving to define its own guardrails before governments do — a governance model your organization's AI vendors may soon be judged against instead of, or in addition to, any binding regulation.
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.bankinfosecurity.com/google-openai-anthropic-plan-frontier-ai-standards-body-a-32926">BankInfoSecurity</a>
+        <a href="https://aiweekly.co/alerts/google-openai-anthropic-court-sriram-krishnan-for-ai-safety-body">AI Weekly</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔗 Crossover: SalesBleed Shows Why Agent Governance Matters Now</div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        The SalesBleed flaws in Salesforce Agentforce (see Cybersecurity section) are a live example of the exact risk category the Frontier AI Standards Agency and this week's Dataiku Agent Management launch are both trying to address: autonomous agents with real permissions and trusted identities, operating with weak attribution and audit trails. Expect "who can act as this agent, and can we prove it" to become a standard enterprise AI-governance question over the next few months.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — AI Security</div>
+          <ul>
+            <li>A voluntary, industry-run standards body won't replace your own AI-agent risk controls — SalesBleed shows the practical gaps (zero-click exfiltration, identity spoofing) still land on your team to catch, standards agency or not</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>If the Frontier AI Standards Agency launches, expect client questions about whether their AI vendors are certified against it — worth tracking its pillars now to advise ahead of the curve</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>The three largest AI labs choosing self-regulation over waiting for government rules is a strategic signal — it may shape whether binding AI legislation gains real momentum, or stalls in favor of an industry-defined bar</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Saturday, September 26, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
