@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Thursday, October 1, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Thursday, October 1, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Trump: War Ends "Very Soon, One Way or the Other"</a>
+    <div class="toc-section">Tehran briefs Cabinet on US response to Hormuz plan · Trump presents stark choice between deal and more strikes</div>
+    <a href="#cyber">🔐 Cybersecurity — Cisco Catalyst SD-WAN Zero-Day Under Active Exploitation</a>
+    <div class="toc-section">Fifth Cisco zero-day exploited this year · CISA federal deadline Oct 3 · NetScaler and Apple CoreGraphics follow-ups</div>
+    <a href="#ai">🤖 Artificial Intelligence — Tech Giants Sign "Morally Binding" White House AI Safety Pact</a>
+    <div class="toc-section">OpenAI, Google, Meta, Nvidia, Anthropic, xAI commit to voluntary controls, no enforcement mechanism · Trump floats 10-person AI safety board</div>
+  </div>
+
+  <!-- ═══════════════════ IRAN WAR ═══════════════════ -->
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — Trump: War Ends "Very Soon, One Way or the Other"</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 216</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Tehran Weighs Washington's Response as Trump Issues Stark Choice
+        <span class="badge badge-red">ULTIMATUM</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        Iran confirmed it has received Washington's formal response to its seven-day Hormuz trust-building proposal, with Foreign Minister Abbas Araghchi briefing President Masoud Pezeshkian and the full Cabinet after returning from Qatar-mediated talks. President Trump said the seven-month war will end "very soon, one way or the other," presenting Tehran with a binary choice: reach an agreement or face further US military action — language that echoes his earlier rejection of Iran's proposed sequencing for reopening the strait. Iran's Revolutionary Guards continue to frame the US campaign as a failure even as Washington insists Iran's military and nuclear capabilities have been severely degraded. The core disagreement from recent days persists: Iran wants sanctions relief and an end to the naval blockade before final nuclear talks begin, while the US wants nuclear issues addressed as part of any deal, not after. CENTCOM reported as of late September that US forces have redirected 122 commercial vessels as part of the ongoing maritime blockade targeting traffic in and out of Iranian ports.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">122</div>
+          <div class="stat-label">Vessels redirected by US blockade</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">"Very soon"</div>
+          <div class="stat-label">Trump's stated war-end timeline</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">216 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://gulfnews.com/uae/us-iran-war-trump-says-make-a-deal-or-face-more-attacks-what-uae-residents-need-to-know-tonight-october-1-2026-1.500695133">Gulf News</a>
+        <a href="https://gulfnews.com/world/mena/trump-says-us-war-on-iran-will-end-very-soon-as-irgc-calls-it-a-failure-1.500692927">Gulf News</a>
+        <a href="https://www.aljazeera.com/news/liveblog/2026/9/28/iran-war-live-tehran-warns-its-fully-prepared-for-war-amid-hormuz-tensions">Al Jazeera</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>18–23</td><td>820 wounded</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">No new casualty totals published today; focus remains on the diplomatic ultimatum.</p>
+      <div class="sources">
+        Sources: <a href="https://en.wikipedia.org/wiki/2026_Iran_war">Wikipedia — 2026 Iran war</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ CYBERSECURITY ═══════════════════ -->
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Thursday, October 1, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Cisco Catalyst SD-WAN Zero-Day — Fifth of the Year
+        <span class="badge badge-red">CVE-2026-76504 · CVSS 9.8</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Cisco disclosed active exploitation of CVE-2026-76504, an authentication-bypass zero-day in Catalyst SD-WAN Manager — the fifth Cisco zero-day exploited in the wild this year. The flaw stems from improper URI-encoding handling in HTTP requests, letting unauthenticated attackers reach a restricted admin API endpoint; Cisco's published indicators of compromise show attackers using %6a-encoded characters in malicious requests to bypass authentication entirely. All Catalyst SD-WAN Manager deployments are affected regardless of configuration, and there are no workarounds — only patching (versions 26.2.1, 26.1.2.1, 20.18.4.1, 20.15.6.1, 20.12.8.2, and 20.9.10.1) closes the hole. CISA added the flaw to its Known Exploited Vulnerabilities catalog with a federal remediation deadline of October 3. Separately, government and finance organizations remain under sustained attack via the Citrix NetScaler zero-days (CVE-2026-88771/88772) disclosed last week, with dozens of organizations hit including suspected state-sponsored actors, and Apple's CoreGraphics zero-day (CVE-2026-86950) continues to be tied to a highly targeted espionage-style campaign against specific individuals rather than broad exploitation.
+      </p>
+      <div class="alert alert-red">
+        Admin-level compromise with zero workarounds and a 48-hour federal deadline makes this a same-week patch, not a next-sprint item — especially for networks managing SD-WAN fleets centrally, where one compromised manager instance cascades across every connected site.
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.securityweek.com/cisco-patches-exploited-catalyst-sd-wan-zero-day-vulnerability/">SecurityWeek</a>
+        <a href="https://helpnetsecurity.com/2026/10/01/new-cisco-sd-wan-zero-day-exploited-in-the-wild-cve-2026-76504">Help Net Security</a>
+        <a href="https://dev.to/etairos/cisco-sd-wan-manager-zero-day-cve-2026-76504-grants-unauthenticated-admin-api-access-2i0o">DEV Community</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Two Zammad zero-days (CVE-2026-102489, CVE-2026-102490) were exploited in an AI-powered attack targeting DIVD, chained to hijack sessions, achieve remote code execution, and escalate to root — notable as another case of AI-assisted exploit chaining following JadePuffer's autonomous ransomware debut this week.</li>
+        <li>NetScaler attacks continue weeks after disclosure: SecurityWeek reports government and finance-sector targets still being hit in ongoing campaigns.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Patch Catalyst SD-WAN Manager immediately — no workaround exists, and the CISA deadline is October 3</li>
+            <li>Hunt for %6a-encoded request patterns in SD-WAN manager logs as a specific IOC for this exploit</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Clients running centrally-managed SD-WAN fleets are a priority call this week — one compromised manager instance can cascade across every connected branch site</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>Five Cisco zero-days exploited in a single year is a pattern worth a board-level vendor-risk conversation, not just a patching metric</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ AI ═══════════════════ -->
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Thursday, October 1, 2026 · Industry Self-Regulation Meets Federal Scrutiny</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Tech Giants Sign "Morally Binding" AI Safety Pact at the White House
+        <span class="badge badge-purple">VOLUNTARY · NO ENFORCEMENT</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        OpenAI, Google, Meta, Nvidia, Anthropic, and xAI signed a voluntary AI safety agreement with the Trump administration on September 29, with Trump calling it "almost like a constitution" for the industry. Signatories — including OpenAI President Greg Brockman, Anthropic CEO Dario Amodei, Google CEO Sundar Pichai, Meta CEO Mark Zuckerberg, and Nvidia CEO Jensen Huang — committed to strengthening internal safeguards, using independent external auditors, and taking steps to prevent AI systems from accessing computer systems in unintended ways. Trump said he's considering a 10-person federal board to police AI tool safety, though he named no potential members. Crucially, the pact has no enforcement mechanism and doesn't require companies to publish or even name their auditors — a stark contrast with the FTC's newly opened formal probe into OpenAI, Anthropic, and METR over rogue AI agents (disclosed Sept 30), which does carry the threat of compelled testimony and information demands. The juxtaposition is the story: industry self-policing announced one day, binding federal investigation confirmed the next.
+      </p>
+      <div class="alert alert-orange">
+        A voluntary, unenforceable pact signed the same week the FTC opened a formal information-demand probe tells you where real leverage sits — treat the pact as a PR and goodwill signal, not a compliance framework, when assessing vendor AI risk.
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.cbsnews.com/news/trump-ai-constitution-tech-execs-openai-anthropic-voluntary-controls/">CBS News</a>
+        <a href="https://decrypt.co/379728/trump-unveils-morally-binding-ai-accord-signed-by-openai-google-and-nvidia">Decrypt</a>
+        <a href="https://coincentral.com/openai-google-meta-anthropic-nvidia-and-xai-sign-white-house-ai-safety-pact">CoinCentral</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Model Competition Update</div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Artificial Analysis reports Google's Gemini 4 Argon now matches GPT-6 Astra on its Intelligence Index while posting a dramatically lower hallucination rate — 15% versus 51% for Astra — a meaningful reliability gap for any enterprise evaluating model choice for high-stakes or regulated use cases. Separately, Google researchers were reported to be increasingly concerned about AI's cognitive and emotional risks to children even as the company continues pushing AI tools into schools.
+      </p>
+      <div class="sources">
+        Sources: <a href="https://theneuron.ai/digest/everything-that-happened-in-ai-today-wednesday-september-30-2026">The Neuron</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — AI Security</div>
+          <ul>
+            <li>Don't let the voluntary pact substitute for your own AI-vendor due diligence — it names no specific controls and requires no public disclosure of auditors</li>
+            <li>A 51% hallucination rate on a flagship frontier model (GPT-6 Astra) is a hard number to cite when justifying human-in-the-loop requirements for any AI system touching sensitive decisions</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>The gap between voluntary industry pacts and the FTC's binding probe is a clean talking point for clients asking "is self-regulation enough?" — the honest answer, per this week's news, is no</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>Gemini 4 Argon's reliability edge over GPT-6 Astra is worth tracking if your AI vendor selection has leaned on raw capability benchmarks alone — hallucination rate is increasingly the differentiator</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Thursday, October 1, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
