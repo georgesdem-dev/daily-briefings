@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Investment Brief — Thursday, October 1, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+    .header { text-align: center; padding: 52px 0 40px; border-bottom: 1px solid #21262d; margin-bottom: 48px; }
+    .header .label { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #f0c040; margin-bottom: 12px; }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
+    .header .date { font-size: 1rem; color: #8b949e; margin-bottom: 16px; }
+    .header .nav { font-size: 0.82rem; color: #484f58; }
+    .header .nav a { color: #6e7681; }
+    .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 48px; }
+    .stat-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 14px 16px; text-align: center; }
+    .stat-card .stat-label { font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8b949e; margin-bottom: 6px; display: block; }
+    .stat-card .stat-value { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; display: block; margin-bottom: 3px; }
+    .stat-card .stat-change { font-size: 0.78rem; font-weight: 600; }
+    .green { color: #3fb950; } .red { color: #f85149; } .amber { color: #e3b341; } .blue { color: #58a6ff; }
+    .stat-card.bullish { border-top: 2px solid #238636; }
+    .stat-card.bearish { border-top: 2px solid #da3633; }
+    .stat-card.neutral { border-top: 2px solid #9e6a03; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 2px solid #21262d; }
+    .section-icon { font-size: 1.6rem; }
+    .section-title { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; }
+    .section-tag { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; margin-left: auto; }
+    .tag-market { background: #1a1f3d; color: #79c0ff; border: 1px solid #2a3a6e; }
+    .tag-pick { background: #1a3d1a; color: #3fb950; border: 1px solid #2a6e2a; }
+    .tag-risk { background: #3d1a1a; color: #f85149; border: 1px solid #6e2a2a; }
+    .tag-insight { background: #3d2a0a; color: #e3b341; border: 1px solid #6e4a0a; }
+    .story { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 20px 22px; margin-bottom: 14px; }
+    .story:hover { border-color: #444c56; }
+    .story h3 { font-size: 1rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; line-height: 1.4; }
+    .story p { font-size: 0.88rem; color: #c9d1d9; line-height: 1.65; margin-bottom: 8px; }
+    .story p:last-child { margin-bottom: 0; }
+    .story .source { font-size: 0.76rem; color: #484f58; margin-top: 10px; }
+    .pick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 14px; }
+    .pick-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px; }
+    .pick-card:hover { border-color: #444c56; }
+    .pick-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
+    .pick-ticker { font-size: 1.2rem; font-weight: 800; color: #58a6ff; }
+    .pick-company { font-size: 0.78rem; color: #8b949e; margin-top: 2px; }
+    .pick-price { text-align: right; }
+    .pick-price .price-val { font-size: 1.1rem; font-weight: 700; color: #f0f6fc; }
+    .pick-price .price-change { font-size: 0.78rem; }
+    .pick-desc { font-size: 0.84rem; color: #c9d1d9; line-height: 1.6; margin-bottom: 12px; }
+    .pick-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .pick-badge { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; }
+    .badge-buy { background: #1a3d1a; color: #3fb950; border: 1px solid #2a5a2a; }
+    .badge-moderate { background: #1a2d3d; color: #58a6ff; border: 1px solid #2a4a6e; }
+    .badge-income { background: #3d2a0a; color: #e3b341; border: 1px solid #6e4a0a; }
+    .badge-growth { background: #1a1a3d; color: #a371f7; border: 1px solid #3a2a6e; }
+    .badge-etf { background: #1a3d3d; color: #56d364; border: 1px solid #2a5a5a; }
+    .badge-defensive { background: #2d1a3d; color: #d2a8ff; border: 1px solid #5a2a6e; }
+    .target-row { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+    .target-pill { background: #0d1117; border: 1px solid #21262d; border-radius: 6px; padding: 4px 10px; font-size: 0.76rem; color: #8b949e; }
+    .target-pill span { font-weight: 700; color: #f0f6fc; }
+    .outlook-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 6px; }
+    .outlook-table thead th { text-align: left; padding: 10px 12px; font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8b949e; background: #161b22; border-bottom: 2px solid #21262d; }
+    .outlook-table tbody tr { border-bottom: 1px solid #21262d; }
+    .outlook-table tbody tr:hover { background: #161b22; }
+    .outlook-table tbody td { padding: 11px 12px; color: #c9d1d9; vertical-align: top; }
+    .outlook-table .ticker-cell { font-weight: 800; color: #58a6ff; white-space: nowrap; }
+    .outlook-table .price-cell { font-weight: 700; color: #f0f6fc; }
+    .outlook-table .target-up { color: #3fb950; font-weight: 700; }
+    .outlook-table .target-dn { color: #f85149; font-weight: 700; }
+    .outlook-table .target-flat { color: #e3b341; font-weight: 700; }
+    .risk-low { color: #3fb950; font-size: 10px; font-weight: 700; }
+    .risk-med { color: #e3b341; font-size: 10px; font-weight: 700; }
+    .risk-high { color: #f85149; font-size: 10px; font-weight: 700; }
+    .insight-card { background: #161b22; border: 1px solid #30363d; border-left: 3px solid #e3b341; border-radius: 0 10px 10px 0; padding: 18px 20px; margin-bottom: 14px; }
+    .insight-card h3 { font-size: 0.96rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; }
+    .insight-card p { font-size: 0.86rem; color: #c9d1d9; line-height: 1.65; }
+    .insight-card .person { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #e3b341; margin-bottom: 8px; display: block; }
+    .risk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+    .risk-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 16px 18px; }
+    .risk-card .risk-title { font-size: 0.88rem; font-weight: 700; color: #f0f6fc; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .risk-card ul { list-style: none; padding: 0; }
+    .risk-card ul li { font-size: 0.82rem; color: #c9d1d9; margin-bottom: 6px; padding-left: 16px; position: relative; line-height: 1.5; }
+    .risk-card ul li::before { content: "›"; position: absolute; left: 0; color: #f85149; }
+    .wl-item { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #21262d; font-size: 0.82rem; }
+    .wl-item:last-child { border-bottom: none; }
+    .wl-ticker { font-weight: 700; color: #58a6ff; }
+    .wl-reason { color: #8b949e; font-size: 0.76rem; }
+    .tldr { background: #161b22; border: 1px solid #30363d; border-left: 3px solid #58a6ff; border-radius: 0 8px 8px 0; padding: 14px 18px; margin-bottom: 28px; font-size: 0.86rem; color: #8b949e; }
+    .tldr strong { color: #f0f6fc; }
+    .sector-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+    .sector-row { display: flex; justify-content: space-between; align-items: center; background: #0d1117; border: 1px solid #21262d; border-radius: 6px; padding: 7px 12px; font-size: 0.82rem; }
+    .sector-name { color: #c9d1d9; }
+    .sector-pct { font-weight: 700; }
+    .footer { text-align: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem; }
+    .footer strong { color: #6e7681; }
+    .upside-pct { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; background: #1a3d1a; color: #3fb950; margin-left: 6px; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="label">📈 Investment Brief · Moderate Risk Portfolio</div>
+    <h1>Thursday, October 1, 2026</h1>
+    <div class="date">Levels as of Wednesday, Sep 30 close (Q3 close) &nbsp;·&nbsp; Shutdown Averted &nbsp;·&nbsp; Payrolls Friday &nbsp;·&nbsp; For Georges</div>
+    <div class="nav"><a href="index.html">← Back to archive</a></div>
+  </div>
+
+  <div class="tldr">
+    <strong>Today at a glance:</strong> &nbsp;
+    September closed with the Dow down 4.9% and S&amp;P down 0.7% for the month, while the Nasdaq gained 1.7% — tech was the only major S&amp;P sector positive on the month (+5%), with 75% of S&amp;P 500 stocks posting a losing September &nbsp;·&nbsp;
+    Wednesday itself: S&amp;P -0.25% to 7,651.54, Dow -0.86%/-444pts to 50,906.05, Nasdaq +0.24% to 26,861.06, despite a softer-than-expected PCE inflation read (3.4% YoY vs. 3.7% expected) &nbsp;·&nbsp;
+    The 10Y Treasury yield still climbed to 5.29%, a fresh 24-year high, on federal-debt and economy concerns &nbsp;·&nbsp;
+    A government shutdown was averted — Congress passed a continuing resolution through December 11 — removing one near-term risk &nbsp;·&nbsp;
+    All eyes now on Friday's Nonfarm Payrolls (forecast: just 98,000 jobs added, down sharply from August's 162,000, unemployment seen holding at 4.1%)
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-card bearish">
+      <span class="stat-label">S&amp;P 500</span>
+      <span class="stat-value">7,651.54</span>
+      <span class="stat-change red">-0.25% Wed / -0.7% Sept</span>
+    </div>
+    <div class="stat-card bearish">
+      <span class="stat-label">Dow Jones</span>
+      <span class="stat-value">50,906.05</span>
+      <span class="stat-change red">-0.86% Wed / -4.9% Sept</span>
+    </div>
+    <div class="stat-card bullish">
+      <span class="stat-label">Nasdaq</span>
+      <span class="stat-value">26,861.06</span>
+      <span class="stat-change green">+0.24% Wed / +1.7% Sept</span>
+    </div>
+    <div class="stat-card neutral">
+      <span class="stat-label">Russell 2000</span>
+      <span class="stat-value">~2,790</span>
+      <span class="stat-change amber">Small-caps still lagging</span>
+    </div>
+    <div class="stat-card neutral">
+      <span class="stat-label">VIX</span>
+      <span class="stat-value">16.34</span>
+      <span class="stat-change amber">Slightly elevated</span>
+    </div>
+    <div class="stat-card neutral">
+      <span class="stat-label">Crude Oil (WTI)</span>
+      <span class="stat-value">$90-100</span>
+      <span class="stat-change amber">Range-bound post Hormuz easing</span>
+    </div>
+    <div class="stat-card bearish">
+      <span class="stat-label">Gold</span>
+      <span class="stat-value">$4,157.80</span>
+      <span class="stat-change red">-0.58% Wed</span>
+    </div>
+    <div class="stat-card bearish">
+      <span class="stat-label">10Y Treasury</span>
+      <span class="stat-value">5.29%</span>
+      <span class="stat-change red">24-year high</span>
+    </div>
+  </div>
+
+
+  <!-- SECTION 1 — MARKET SNAPSHOT -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">📊</span>
+      <span class="section-title">Market Snapshot</span>
+      <span class="section-tag tag-market">LIVE DATA</span>
+    </div>
+
+    <div class="story">
+      <h3>📉 "Broken Market": 75% of S&amp;P 500 Stocks Had a Lousy September</h3>
+      <p>Despite the S&amp;P 500 finishing the month down a modest 0.7%, the breadth underneath was ugly: three-quarters of S&amp;P 500 constituents posted a losing September. Technology (+5% MTD) was the only sector in positive territory, masking declines of -5% to -7% across Staples, Utilities, Consumer Discretionary, Financials, Materials, and REITs. This is a market being carried by a narrow slice of mega-cap AI winners.</p>
+    </div>
+
+    <div class="story">
+      <h3>📈 Inflation Cooled, But Yields Kept Climbing Anyway</h3>
+      <p>Wednesday's PCE inflation print came in better than feared — 0.3% monthly, 3.4% year-over-year versus a 3.7% forecast — yet the 10-year Treasury yield still pushed to 5.29%, a fresh 24-year high, on persistent worries about the federal debt load and a still-solid economy. That disconnect between cooling inflation and rising yields is the market's central tension heading into October.</p>
+    </div>
+
+    <div class="story">
+      <h3>🏛️ Shutdown Risk Removed — CR Funds Government Through Dec 11</h3>
+      <p>Congress passed and President Trump signed a continuing resolution on September 2 extending federal appropriations through December 11, with broad bipartisan support (Senate 90-6, House 370-48). That removes a government-shutdown risk that briefly worried markets heading into the October 1 fiscal year start, clearing the runway for Friday's payrolls report and Q3 earnings season to take center stage.</p>
+    </div>
+  </div>
+
+
+  <!-- SECTION 2 — SECTOR PERFORMANCE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🧭</span>
+      <span class="section-title">Sector Performance — September 2026 (Month)</span>
+      <span class="section-tag tag-market">11 SECTORS</span>
+    </div>
+    <div class="story">
+      <p style="margin-bottom:6px;">Technology was the lone bright spot for the full month, while nearly every other sector posted meaningful declines as yields surged throughout September.</p>
+      <div class="sector-grid">
+        <div class="sector-row"><span class="sector-name">Technology</span><span class="sector-pct green">+5.0% (Sept)</span></div>
+        <div class="sector-row"><span class="sector-name">Communication Services</span><span class="sector-pct amber">~flat (Sept)</span></div>
+        <div class="sector-row"><span class="sector-name">Health Care</span><span class="sector-pct amber">~-1% (Sept)</span></div>
+        <div class="sector-row"><span class="sector-name">Energy</span><span class="sector-pct amber">~-2% (Sept)</span></div>
+        <div class="sector-row"><span class="sector-name">Industrials</span><span class="sector-pct amber">~-3% (Sept)</span></div>
+        <div class="sector-row"><span class="sector-name">Consumer Staples</span><span class="sector-pct red">-5.0% (Sept)</span></div>
+        <div class="sector-row"><span class="sector-name">Utilities</span><span class="sector-pct red">-6.0% (Sept)</span></div>
+        <div class="sector-row"><span class="sector-name">Consumer Discretionary</span><span class="sector-pct red">-6.0% (Sept)</span></div>
+        <div class="sector-row"><span class="sector-name">Financials</span><span class="sector-pct red">-7.0% (Sept)</span></div>
+        <div class="sector-row"><span class="sector-name">Materials</span><span class="sector-pct red">-7.0% (Sept)</span></div>
+        <div class="sector-row"><span class="sector-name">Real Estate (REITs)</span><span class="sector-pct red">-7.0% (Sept)</span></div>
+      </div>
+      <p style="margin-top:10px;font-size:0.8rem;color:#8b949e;">Wednesday's session: Technology led (+0.61%), Consumer Staples lagged (-1.68%).</p>
+    </div>
+  </div>
+
+
+  <!-- SECTION 3 — TOP PICKS: MODERATE RISK -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🎯</span>
+      <span class="section-title">Top Picks — Moderate Risk Portfolio</span>
+      <span class="section-tag tag-pick">BUY THESIS</span>
+    </div>
+
+    <div class="tldr" style="border-left-color: #3fb950;">
+      <strong>Portfolio philosophy:</strong> &nbsp; September confirmed the narrow-breadth thesis: tech carried the index while nearly everything else fell. Heading into October earnings season and Friday's payrolls, we're staying overweight AI-exposed names (MSFT, NVDA) while holding the defensive/income sleeve as ballast against continued rotation volatility.
+    </div>
+
+    <div class="pick-grid">
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">MSFT</div><div class="pick-company">Microsoft Corporation</div></div>
+          <div class="pick-price"><div class="price-val">$515.80</div><div class="price-change green">+0.6% Wed</div></div>
+        </div>
+        <p class="pick-desc">Rode Wednesday's best-performing sector (Tech +0.61%) to close out September strong. JPMorgan's Buy rating and $625 target (+25% through end-2027) remain in place — the clearest single name benefiting from the market's narrow AI-led leadership.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Buy</span><span class="pick-badge badge-growth">AI Core</span><span class="pick-badge badge-income">Dividend</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$625</span></div><div class="target-pill">Upside: <span class="green">+21%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">NVDA</div><div class="pick-company">NVIDIA Corporation</div></div>
+          <div class="pick-price"><div class="price-val">$222.00</div><div class="price-change amber">Recent trading</div></div>
+        </div>
+        <p class="pick-desc">JPMorgan raised its target to $320 (from $280) on strong Blackwell demand following the latest earnings beat. Still the highest-beta name in the book — most sensitive to any reversal in tech's narrow leadership.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Overweight</span><span class="pick-badge badge-growth">AI Chips</span><span class="pick-badge badge-moderate">Higher Beta</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$320</span></div><div class="target-pill">Upside: <span class="green">+44%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">JNJ</div><div class="pick-company">Johnson &amp; Johnson</div></div>
+          <div class="pick-price"><div class="price-val">$270.50</div><div class="price-change red">-0.3% Wed</div></div>
+        </div>
+        <p class="pick-desc">Healthcare held up far better than Consumer Staples' -1.68% rout Wednesday, reinforcing its role as the steadier defensive within a rough month for non-tech sectors. 2026 sales guided to $99.5-100.5B; adjusted EPS seen growing ~7%.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Buy</span><span class="pick-badge badge-defensive">Defensive</span><span class="pick-badge badge-income">Dividend</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$281</span></div><div class="target-pill">Upside: <span class="green">+4%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">XOM</div><div class="pick-company">Exxon Mobil Corporation</div></div>
+          <div class="pick-price"><div class="price-val">$161.20</div><div class="price-change green">+0.4% Wed</div></div>
+        </div>
+        <p class="pick-desc">Oil has settled into a $90-100 range as Hormuz tensions ease but don't fully resolve. JPMorgan's $166-167 target and Overweight rating stand — a reasonable hedge sleeve even with crude off its highs.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Overweight</span><span class="pick-badge badge-income">Dividend</span><span class="pick-badge badge-defensive">Low Beta</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$167</span></div><div class="target-pill">Upside: <span class="green">+4%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">JPM</div><div class="pick-company">JPMorgan Chase</div></div>
+          <div class="pick-price"><div class="price-val">$338.56</div><div class="price-change green">+0.31%</div></div>
+        </div>
+        <p class="pick-desc">Financials finished September down ~7%, the sector's worst showing of the year, as surging yields pressured valuations. A stabilizing tape and Friday's payrolls print could mark the start of a rate-driven bottoming process.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Overweight</span><span class="pick-badge badge-income">Dividend</span><span class="pick-badge badge-defensive">Value</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$355</span></div><div class="target-pill">Upside: <span class="green">+5%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">NEE</div><div class="pick-company">NextEra Energy</div></div>
+          <div class="pick-price"><div class="price-val">$75.80</div><div class="price-change red">-1.0% Wed</div></div>
+        </div>
+        <p class="pick-desc">Utilities closed September down ~6%, among the month's worst sectors, as the 24-year-high 10Y yield weighed heavily on rate-sensitive names. Dominion merger thesis and AI-datacenter power-demand story remain intact for patient holders.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Buy</span><span class="pick-badge badge-defensive">Utility</span><span class="pick-badge badge-income">Dividend</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$105</span></div><div class="target-pill">Upside: <span class="green">+39%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">UPS</div><div class="pick-company">United Parcel Service</div></div>
+          <div class="pick-price"><div class="price-val">$98.30</div><div class="price-change red">-0.5% Wed</div></div>
+        </div>
+        <p class="pick-desc">Goldman Sachs' August Conviction List high-yield dividend pick — yield ~6.5%, $132 price target (+34% upside). Holding up reasonably given industrials' rough September relative to financials, materials, and REITs.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Conviction Buy</span><span class="pick-badge badge-income">High Yield</span><span class="pick-badge badge-defensive">Logistics</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$132</span></div><div class="target-pill">Upside: <span class="green">+34%</span></div></div>
+      </div>
+
+    </div>
+
+    <div class="story">
+      <h3>📦 ETF Core Position — Diversification Layer</h3>
+      <p><strong class="blue">SPY (S&amp;P 500 ETF) — ~$763 | Expense: 0.09% | Yield: 0.99%</strong> — September closed with the index down 0.7% but hiding brutal breadth underneath (75% of constituents lower). Maintain the 25% SPY core heading into October earnings season; Friday's payrolls print is the week's key catalyst.</p>
+    </div>
+  </div>
+
+
+  <!-- SECTION 4 — 30-60-90 DAY OUTLOOK TABLE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🗓️</span>
+      <span class="section-title">30–60–90 Day Outlook</span>
+      <span class="section-tag tag-market">PRICE TARGETS</span>
+    </div>
+
+    <div class="story" style="padding: 0; overflow-x: auto;">
+      <table class="outlook-table">
+        <thead>
+          <tr><th>Ticker</th><th>Current</th><th>30-Day Target</th><th>60-Day Target</th><th>90-Day Target</th><th>12-Mo Consensus</th><th>Key Catalyst</th><th>Risk Level</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="ticker-cell">MSFT</td><td class="price-cell">$516</td><td class="target-up">$536</td><td class="target-up">$560</td><td class="target-up">$585</td><td class="target-up">$625 <span class="upside-pct">+21%</span></td><td>Q1 FY27 Azure results; AI-agent momentum</td><td><span class="risk-low">LOW</span></td></tr>
+          <tr><td class="ticker-cell">NVDA</td><td class="price-cell">$222</td><td class="target-up">$248</td><td class="target-up">$275</td><td class="target-up">$300</td><td class="target-up">$320 <span class="upside-pct">+44%</span></td><td>Blackwell supply ramp; FQ3 earnings (Nov)</td><td><span class="risk-high">HIGH</span></td></tr>
+          <tr><td class="ticker-cell">JNJ</td><td class="price-cell">$271</td><td class="target-up">$275</td><td class="target-up">$278</td><td class="target-up">$281</td><td class="target-up">$281 <span class="upside-pct">+4%</span></td><td>Talc litigation rulings; Q3 earnings (mid-Oct)</td><td><span class="risk-low">LOW</span></td></tr>
+          <tr><td class="ticker-cell">XOM</td><td class="price-cell">$161</td><td class="target-up">$165</td><td class="target-up">$169</td><td class="target-up">$173</td><td class="target-up">$167 <span class="upside-pct">+4%</span></td><td>Oil range stability; Q3 earnings (early Nov)</td><td><span class="risk-med">MED</span></td></tr>
+          <tr><td class="ticker-cell">JPM</td><td class="price-cell">$339</td><td class="target-up">$345</td><td class="target-up">$352</td><td class="target-up">$360</td><td class="target-up">$355 <span class="upside-pct">+5%</span></td><td>Q3 earnings (mid-Oct); payrolls/Fed path; sector rebound watch</td><td><span class="risk-med">MED</span></td></tr>
+          <tr><td class="ticker-cell">NEE</td><td class="price-cell">$76</td><td class="target-up">$84</td><td class="target-up">$92</td><td class="target-up">$99</td><td class="target-up">$105 <span class="upside-pct">+39%</span></td><td>Dominion merger approvals; Q3 earnings</td><td><span class="risk-med">MED</span></td></tr>
+          <tr><td class="ticker-cell">UPS</td><td class="price-cell">$98</td><td class="target-up">$106</td><td class="target-up">$117</td><td class="target-up">$126</td><td class="target-up">$132 <span class="upside-pct">+34%</span></td><td>Q3 earnings (late Oct); Amazon volume trends; cost-cut progress</td><td><span class="risk-med">MED</span></td></tr>
+          <tr><td class="ticker-cell">SPY</td><td class="price-cell">$763</td><td class="target-up">$772</td><td class="target-up">$781</td><td class="target-up">$790</td><td class="target-up">~$790-800 <span class="upside-pct">+3%</span></td><td>Q3 earnings season (Oct); payrolls; Fed hike path</td><td><span class="risk-med">MED</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.75rem;color:#484f58;margin-top:10px;padding:0 4px;">
+      * 30/60/90-day targets are Jorge's estimates derived from analyst 12-month consensus targets scaled + technical levels. Not financial advice. Price data as of Wednesday, September 30, 2026 close (Yahoo Finance / CNBC / Bloomberg / TheStreet / Goldman Sachs / JPMorgan).
+    </p>
+  </div>
+
+
+  <!-- SECTION 5 — INVESTOR INSIGHTS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🧠</span>
+      <span class="section-title">Trusted Investor Insights</span>
+      <span class="section-tag tag-insight">MACRO VIEWS</span>
+    </div>
+
+    <div class="insight-card" style="border-left-color: #58a6ff;">
+      <span class="person" style="color: #58a6ff;">CNBC / Street Consensus — September Wrap</span>
+      <h3>A "Broken Market": Narrow Leadership Masks Broad Weakness</h3>
+      <p>Despite the S&amp;P 500's modest 0.7% September decline, 75% of its constituents finished the month lower — a stark reminder that headline index moves are being driven by a small group of AI/tech mega-caps. This narrow-breadth dynamic raises the stakes for Q3 earnings season: any stumble from the AI leaders could expose just how thin this rally's foundation really is.</p>
+    </div>
+
+    <div class="insight-card">
+      <span class="person">Warren Buffett / Berkshire Hathaway</span>
+      <h3>Still Waiting — Cash Pile Unmoved by September's Dip</h3>
+      <p>Buffett's continued reluctance to deploy Berkshire's roughly $397B cash reserve, even after a rough September for most of the market, signals he still views current valuations — especially among the narrow group of winners — as unattractive relative to his bar for deployment.</p>
+    </div>
+
+    <div class="insight-card" style="border-left-color: #a371f7;">
+      <span class="person" style="color: #a371f7;">Goldman Sachs Asset Management — Market Pulse</span>
+      <h3>Watching October Earnings as the Breadth Test</h3>
+      <p>With Technology the only sector positive in September, Goldman's house view is watching Q3 earnings season closely as the next catalyst to either validate the AI-led rally's staying power or trigger a broader rotation into the beaten-down cyclical and rate-sensitive sectors that lagged badly last month.</p>
+    </div>
+
+    <div class="insight-card" style="border-left-color: #e3b341;">
+      <span class="person">Ray Dalio / Bridgewater</span>
+      <h3>24-Year-High Yields Are the Debt Cycle Playing Out in Real Time</h3>
+      <p>Dalio's long-running thesis about debt-cycle stress looks increasingly literal as the 10Y yield touches levels not seen since 2002, even with inflation cooling. His framing: when yields rise on debt-load concerns rather than inflation fears, it's a structural warning sign, not a cyclical one.</p>
+    </div>
+  </div>
+
+
+  <!-- SECTION 6 — KEY RISKS & WATCHLIST -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">⚠️</span>
+      <span class="section-title">Key Risks &amp; Watchlist</span>
+      <span class="section-tag tag-risk">RISK MONITOR</span>
+    </div>
+
+    <div class="risk-grid">
+      <div class="risk-card">
+        <div class="risk-title">💰 Macro / Rate Risk — 24-Year High and Rising</div>
+        <ul>
+          <li>10Y Treasury at 5.29% despite cooling PCE inflation — a debt-load/fiscal concern, not purely an inflation story</li>
+          <li>Friday's Nonfarm Payrolls (forecast: just 98,000 jobs, down from 162,000 in August) is the week's key catalyst</li>
+          <li>A weak print could ease rate pressure; a hot print could reinforce the hawkish Fed path</li>
+        </ul>
+      </div>
+      <div class="risk-card">
+        <div class="risk-title">📉 Market Breadth — The "Broken Market" Risk</div>
+        <ul>
+          <li>75% of S&amp;P 500 stocks had a losing September — the rally's foundation is historically narrow</li>
+          <li>Technology (+5% MTD) was the only sector positive; a stumble here would have an outsized index impact</li>
+          <li>October earnings season is the key test of whether this narrow leadership can broaden out</li>
+        </ul>
+      </div>
+      <div class="risk-card">
+        <div class="risk-title">🪖 Geopolitical Risk — De-escalating but Unresolved</div>
+        <ul>
+          <li>Oil has settled into a $90-100 range as Hormuz flows partially normalize, but no formal Iran-US deal exists</li>
+          <li>Shutdown risk removed via the Dec 11 continuing resolution — one less macro headwind for October</li>
+        </ul>
+      </div>
+      <div class="risk-card">
+        <div class="risk-title">🔒 Portfolio-Specific Watch Items</div>
+        <ul>
+          <li>NEE/JPM: both coming off rough September months, watching for a rate-driven bottoming signal</li>
+          <li>NVDA: highest-beta name, most exposed to any stumble in the narrow AI-led rally</li>
+          <li>XOM: watch oil's $90-100 range for a breakout in either direction</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="story" style="margin-top: 16px;">
+      <h3>👁️ Watchlist — Names to Monitor Closely</h3>
+      <div class="wl-item"><div><span class="wl-ticker">Nonfarm Payrolls (Fri, Oct 2)</span><span class="wl-reason"> — forecast just 98,000 jobs vs. August's 162,000; the week's top catalyst</span></div><span class="red">⚠️ TOP WATCH</span></div>
+      <div class="wl-item"><div><span class="wl-ticker">10Y Treasury Yield</span><span class="wl-reason"> — at a 24-year high; a break lower would be a major relief signal for laggard sectors</span></div><span class="amber">📋 MONITOR</span></div>
+      <div class="wl-item"><div><span class="wl-ticker">Q3 Earnings Season (starts mid-Oct)</span><span class="wl-reason"> — the key test of whether narrow AI leadership can broaden</span></div><span class="amber">📋 MONITOR</span></div>
+      <div class="wl-item" style="border: none;"><div><span class="wl-ticker">S&amp;P 500 Breadth</span><span class="wl-reason"> — 75% of stocks had a losing September; watch for broadening participation</span></div><span class="green">👀 SECTOR SIGNAL</span></div>
+    </div>
+
+    <div class="story" style="margin-top: 14px;">
+      <h3>📐 Suggested Moderate-Risk Allocation — October 2026</h3>
+      <p style="margin-bottom:12px;">A balanced allocation for a sophisticated investor comfortable with moderate risk (~12-16% expected annual return, ~12-15% expected annual volatility). Carrying the same core structure into October's earnings season and payrolls catalyst:</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:0.83rem;">
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;"><span style="color:#58a6ff;font-weight:700;">Core ETF (25%)</span><br><span style="color:#8b949e;">SPY 25%</span></div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;"><span style="color:#3fb950;font-weight:700;">AI / Growth Tech (23%)</span><br><span style="color:#8b949e;">MSFT 15% · NVDA 8%</span></div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;"><span style="color:#e3b341;font-weight:700;">Income / Defensive (37%)</span><br><span style="color:#8b949e;">JNJ 8% · XOM 8% · NEE 7% · JPM 7% · UPS 7%</span></div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px; grid-column: 1/-1;"><span style="color:#f85149;font-weight:700;">Cash / Tactical (15%)</span><br><span style="color:#8b949e;">Dry powder for Friday's payrolls print or an October breadth-driven rotation opportunity</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>Investment Brief by Jorge</strong> &nbsp;·&nbsp; October 1, 2026 &nbsp;·&nbsp; September Closes With Narrow Breadth — Payrolls Friday Is the Next Test</p>
+    <p style="margin-top:6px;">Data sourced from Yahoo Finance, CNBC, Bloomberg, TheStreet, Investing.com, Goldman Sachs, JPMorgan (levels as of Wed Sep 30 close) · Not financial advice · For informational purposes only</p>
+    <p style="margin-top:6px;"><a href="index.html">← Full briefing archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
