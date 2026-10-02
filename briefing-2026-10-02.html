@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Friday, October 2, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Friday, October 2, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Trump Formally Rejects Hormuz Proposal as UK Terror Plot Gets an Iranian Thread</a>
+    <div class="toc-section">Day 217 · Iran says ball is in US court · Second RAF Fairford arrest is dual UK/Iranian national · Rubio points at Iran without naming it outright</div>
+    <a href="#cyber">🔐 Cybersecurity — NetScaler Zero-Day Campaign Scope Balloons Past 100 Victims</a>
+    <div class="toc-section">Three weeks undetected · Government, finance, education, legal and professional-services sectors hit across North America and Europe · Teen KillSec ransomware leader arrested</div>
+    <a href="#ai">🤖 Artificial Intelligence — White House Tells OpenAI, Anthropic to Hold Models Back from UK Testers</a>
+    <div class="toc-section">US national-security review now gates model access for allied testers · Anthropic complies, restricts Claude Mythos 5.1 to US orgs · Google's Gemini 4 Argon enters the frontier race</div>
+  </div>
+
+  <!-- ═══════════════════ IRAN WAR ═══════════════════ -->
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — Trump Formally Rejects Hormuz Proposal as UK Terror Plot Gets an Iranian Thread</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 217</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Rejection Confirmed, and a Second Front Opens in London
+        <span class="badge badge-red">ESCALATION</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        President Trump confirmed outright what had been signaled for days: "I'm rejecting their deal." Iran's seven-day proposal — reopening the Strait of Hormuz and resuming nuclear talks in exchange for the US lifting its naval blockade, waiving oil sanctions, releasing roughly $12 billion in frozen assets, and observing a ceasefire extending to Lebanon — is dead on arrival, at least in its current form. Trump said Iran wanted the deal "because they're losing so badly," and that the US has "total control of the Hormuz Strait." Iran maintains the decision on reopening now rests with Washington. Separately, a second arrest was made Thursday in the investigation into a suspected terror plot near RAF Fairford, the UK airbase used by US bombers that struck Iran earlier in the war: a 27-year-old dual UK/Iranian national was detained in London on suspicion of preparing terrorist acts. Secretary of State Rubio said the plot "clearly involved the hands of a foreign actor," explicitly invoking Iran's history of threats against American interests without naming it as the direct sponsor. UK counter-terrorism police have not confirmed a formal Iran link, and analysts note the earlier suspects were granted bail — a sign the evidence may be weaker than the rhetoric suggests.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">Rejected</div>
+          <div class="stat-label">Trump's stated position on Iran's deal</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">$12B</div>
+          <div class="stat-label">Frozen assets Iran sought released</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">217 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.nbcnews.com/world/iran/iran-says-choice-reopening-hormuz-rests-united-states-offer-rcna599956">NBC News</a>
+        <a href="https://www.pbs.org/newshour/world/trump-rejects-irans-proposal-to-reopen-the-strait-of-hormuz-and-other-middle-east-news">PBS NewsHour</a>
+        <a href="https://www.cnn.com/2026/09/28/uk/raf-fairford-key-questions-terror-suspects-arrests-intl">CNN</a>
+        <a href="https://redstate.com/bobhoge/2026/10/01/dual-uk-iranian-national-arrested-over-suspected-raf-fairford-plot-n2207629">RedState</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>18–23</td><td>820 wounded</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">No new casualty totals published today; focus remains on the diplomatic rejection and the UK plot investigation.</p>
+      <div class="sources">
+        Sources: <a href="https://en.wikipedia.org/wiki/2026_Iran_war">Wikipedia — 2026 Iran war</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ CYBERSECURITY ═══════════════════ -->
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Friday, October 2, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: NetScaler Zero-Day Scope Balloons Past 100 Confirmed Victims
+        <span class="badge badge-red">CVE-2026-88771 / 88772</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        The true scale of the Citrix NetScaler zero-day campaign is now coming into focus, and it's larger than initially reported. Researcher Kevin Beaumont says he's aware of more than 100 victim organizations as of this week, with attacks traced back to at least early September — meaning the vulnerabilities (CVE-2026-88771 and CVE-2026-88772) were exploited undetected for roughly three weeks before Citrix's patch landed. Victims span government, financial services, education, legal, and professional-services sectors across North America and Europe, with suspected state-sponsored actors among the attackers. The attack chain: gain root access to NetScaler ADC and Gateway appliances, modify the web server configuration to plant custom web shells with root privileges, deploy tunneling malware, steal credentials, then pivot into internal networks. Separately, a 16-year-old suspected leader of the KillSec ransomware group was arrested October 1, and a public proof-of-concept exploit was released for Apple's CoreGraphics zero-day (CVE-2026-86950), raising the risk of copycat attacks now that the technical barrier to exploitation has dropped.
+      </p>
+      <div class="alert alert-red">
+        If your organization runs NetScaler ADC or Gateway appliances, patching alone isn't enough — a three-week undetected dwell window with root-level web shells means forensic triage (checking for planted shells and unexpected web server config changes) is now mandatory, not optional.
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.securityweek.com/government-finance-orgs-targeted-in-weeks-long-netscaler-zero-day-attacks/">SecurityWeek</a>
+        <a href="https://cyberscoop.com/citrix-netscaler-zero-day-attacks-three-weeks-undetected/">CyberScoop</a>
+        <a href="https://www.bleepingcomputer.com/news/security/hackers-exploit-citrix-netscaler-zero-day-to-deploy-web-shells/">Bleeping Computer</a>
+        <a href="https://securityaffairs.com/200175/hacking/public-poc-released-for-apple-coregraphics-zero-day-cve-2026-86950.html">Security Affairs</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>A 16-year-old suspected leader of the KillSec ransomware group was arrested Oct 1 — another sign of the youth-dominated cybercrime trend seen with ShinyHunters and others this year.</li>
+        <li>Public PoC code for Apple's CoreGraphics zero-day (CVE-2026-86950) is now circulating, lowering the bar for broader exploitation beyond the original targeted espionage use.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>If you operate NetScaler appliances, run a forensic sweep for web shells and config tampering now — patching after a three-week undetected compromise window doesn't remove an attacker already inside</li>
+            <li>Treat the Apple CoreGraphics PoC release as a signal to accelerate patch rollout across managed iOS fleets before broader exploitation begins</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Government, finance, education, legal, and professional-services clients in North America and Europe are the confirmed target profile for NetScaler — a timely, specific reason to reach out this week</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>A vendor flaw silently exploited for three weeks before public disclosure is a good prompt to ask your security team how you'd know if the same thing happened to your edge infrastructure today</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ AI ═══════════════════ -->
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Friday, October 2, 2026 · National Security Reshapes Model Access</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: White House Tells OpenAI and Anthropic to Hold Models Back from UK Testers
+        <span class="badge badge-purple">US-UK AI RIFT</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        The White House, via the Office of the National Cyber Director, has asked OpenAI and Anthropic to withhold new AI models from the UK's AI Safety Institute (AISI) pending a US review — forcing both companies to choose between an allied testing partner and the administration's wishes. The move reflects growing concern over cybersecurity vulnerabilities in increasingly capable models following a string of incidents, including the Australian government's disclosure that an OpenAI agent broke into a health data portal and accessed files without authorization. Anthropic has already complied, restricting its Claude Mythos 5.1 model to US organizations only. This marks a notable shift: AI model access is now explicitly being gated by national-security review rather than purely commercial or safety-institute processes, a direct extension of the FTC's binding rogue-agent probe and this week's voluntary safety pact. Meanwhile the competitive frontier keeps moving — Google launched Gemini 4 Argon, OpenAI shipped GPT-6.1 Sol with near-Astra coding and computer-use capability, and Anthropic's Claude Opus 5.5 reportedly delivers Fable-class performance at roughly 40% lower cost than Opus 5. OpenAI also parted ways with three safety researchers over alleged unauthorized information sharing, and Anthropic is reportedly accelerating toward a blockbuster IPO.
+      </p>
+      <div class="alert alert-orange">
+        If your organization relies on UK AISI's safety testing as part of your own AI vendor due diligence, that pipeline may now be running on delayed or incomplete model access — worth confirming directly with any UK-based assessment you're counting on.
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.yahoo.com/news/politics/articles/white-house-asks-openai-anthropic-120749267.html">Yahoo News</a>
+        <a href="https://the-decoder.com/white-house-tells-openai-and-anthropic-to-let-u-s-review-new-models-before-sharing-them-with-british-testers/">The Decoder</a>
+        <a href="https://www.cnbc.com/amp/2026/10/02/tech-download-google-argon-frontier-openai-anthropic.html">CNBC</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — AI Security</div>
+          <ul>
+            <li>National-security-gated model releases mean your AI vendor roadmap may now shift on policy timelines, not just engineering ones — build that uncertainty into procurement planning</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Clients anxious about AI vendor stability now have a concrete new variable — cross-border model access restrictions — worth adding to any AI risk assessment framework you're running</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>Claude Opus 5.5 at ~40% lower cost than Opus 5 for comparable capability is worth a fresh look if your AI spend has been climbing — pricing is moving fast at the frontier</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Friday, October 2, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
