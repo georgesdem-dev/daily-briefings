@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Investment Brief — Sunday, October 4, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+    .header { text-align: center; padding: 52px 0 40px; border-bottom: 1px solid #21262d; margin-bottom: 48px; }
+    .header .label { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #f0c040; margin-bottom: 12px; }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
+    .header .date { font-size: 1rem; color: #8b949e; margin-bottom: 16px; }
+    .header .nav { font-size: 0.82rem; color: #484f58; }
+    .header .nav a { color: #6e7681; }
+    .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 48px; }
+    .stat-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 14px 16px; text-align: center; }
+    .stat-card .stat-label { font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8b949e; margin-bottom: 6px; display: block; }
+    .stat-card .stat-value { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; display: block; margin-bottom: 3px; }
+    .stat-card .stat-change { font-size: 0.78rem; font-weight: 600; }
+    .green { color: #3fb950; } .red { color: #f85149; } .amber { color: #e3b341; } .blue { color: #58a6ff; }
+    .stat-card.bullish { border-top: 2px solid #238636; }
+    .stat-card.bearish { border-top: 2px solid #da3633; }
+    .stat-card.neutral { border-top: 2px solid #9e6a03; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 2px solid #21262d; }
+    .section-icon { font-size: 1.6rem; }
+    .section-title { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; }
+    .section-tag { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; margin-left: auto; }
+    .tag-market { background: #1a1f3d; color: #79c0ff; border: 1px solid #2a3a6e; }
+    .tag-pick { background: #1a3d1a; color: #3fb950; border: 1px solid #2a6e2a; }
+    .tag-risk { background: #3d1a1a; color: #f85149; border: 1px solid #6e2a2a; }
+    .tag-insight { background: #3d2a0a; color: #e3b341; border: 1px solid #6e4a0a; }
+    .story { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 20px 22px; margin-bottom: 14px; }
+    .story:hover { border-color: #444c56; }
+    .story h3 { font-size: 1rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; line-height: 1.4; }
+    .story p { font-size: 0.88rem; color: #c9d1d9; line-height: 1.65; margin-bottom: 8px; }
+    .story p:last-child { margin-bottom: 0; }
+    .story .source { font-size: 0.76rem; color: #484f58; margin-top: 10px; }
+    .pick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 14px; }
+    .pick-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px; }
+    .pick-card:hover { border-color: #444c56; }
+    .pick-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
+    .pick-ticker { font-size: 1.2rem; font-weight: 800; color: #58a6ff; }
+    .pick-company { font-size: 0.78rem; color: #8b949e; margin-top: 2px; }
+    .pick-price { text-align: right; }
+    .pick-price .price-val { font-size: 1.1rem; font-weight: 700; color: #f0f6fc; }
+    .pick-price .price-change { font-size: 0.78rem; }
+    .pick-desc { font-size: 0.84rem; color: #c9d1d9; line-height: 1.6; margin-bottom: 12px; }
+    .pick-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .pick-badge { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; }
+    .badge-buy { background: #1a3d1a; color: #3fb950; border: 1px solid #2a5a2a; }
+    .badge-moderate { background: #1a2d3d; color: #58a6ff; border: 1px solid #2a4a6e; }
+    .badge-income { background: #3d2a0a; color: #e3b341; border: 1px solid #6e4a0a; }
+    .badge-growth { background: #1a1a3d; color: #a371f7; border: 1px solid #3a2a6e; }
+    .badge-etf { background: #1a3d3d; color: #56d364; border: 1px solid #2a5a5a; }
+    .badge-defensive { background: #2d1a3d; color: #d2a8ff; border: 1px solid #5a2a6e; }
+    .target-row { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+    .target-pill { background: #0d1117; border: 1px solid #21262d; border-radius: 6px; padding: 4px 10px; font-size: 0.76rem; color: #8b949e; }
+    .target-pill span { font-weight: 700; color: #f0f6fc; }
+    .outlook-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 6px; }
+    .outlook-table thead th { text-align: left; padding: 10px 12px; font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8b949e; background: #161b22; border-bottom: 2px solid #21262d; }
+    .outlook-table tbody tr { border-bottom: 1px solid #21262d; }
+    .outlook-table tbody tr:hover { background: #161b22; }
+    .outlook-table tbody td { padding: 11px 12px; color: #c9d1d9; vertical-align: top; }
+    .outlook-table .ticker-cell { font-weight: 800; color: #58a6ff; white-space: nowrap; }
+    .outlook-table .price-cell { font-weight: 700; color: #f0f6fc; }
+    .outlook-table .target-up { color: #3fb950; font-weight: 700; }
+    .outlook-table .target-dn { color: #f85149; font-weight: 700; }
+    .outlook-table .target-flat { color: #e3b341; font-weight: 700; }
+    .risk-low { color: #3fb950; font-size: 10px; font-weight: 700; }
+    .risk-med { color: #e3b341; font-size: 10px; font-weight: 700; }
+    .risk-high { color: #f85149; font-size: 10px; font-weight: 700; }
+    .insight-card { background: #161b22; border: 1px solid #30363d; border-left: 3px solid #e3b341; border-radius: 0 10px 10px 0; padding: 18px 20px; margin-bottom: 14px; }
+    .insight-card h3 { font-size: 0.96rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; }
+    .insight-card p { font-size: 0.86rem; color: #c9d1d9; line-height: 1.65; }
+    .insight-card .person { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #e3b341; margin-bottom: 8px; display: block; }
+    .risk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+    .risk-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 16px 18px; }
+    .risk-card .risk-title { font-size: 0.88rem; font-weight: 700; color: #f0f6fc; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .risk-card ul { list-style: none; padding: 0; }
+    .risk-card ul li { font-size: 0.82rem; color: #c9d1d9; margin-bottom: 6px; padding-left: 16px; position: relative; line-height: 1.5; }
+    .risk-card ul li::before { content: "›"; position: absolute; left: 0; color: #f85149; }
+    .wl-item { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #21262d; font-size: 0.82rem; }
+    .wl-item:last-child { border-bottom: none; }
+    .wl-ticker { font-weight: 700; color: #58a6ff; }
+    .wl-reason { color: #8b949e; font-size: 0.76rem; }
+    .tldr { background: #161b22; border: 1px solid #30363d; border-left: 3px solid #58a6ff; border-radius: 0 8px 8px 0; padding: 14px 18px; margin-bottom: 28px; font-size: 0.86rem; color: #8b949e; }
+    .tldr strong { color: #f0f6fc; }
+    .sector-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+    .sector-row { display: flex; justify-content: space-between; align-items: center; background: #0d1117; border: 1px solid #21262d; border-radius: 6px; padding: 7px 12px; font-size: 0.82rem; }
+    .sector-name { color: #c9d1d9; }
+    .sector-pct { font-weight: 700; }
+    .footer { text-align: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem; }
+    .footer strong { color: #6e7681; }
+    .upside-pct { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; background: #1a3d1a; color: #3fb950; margin-left: 6px; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="label">📈 Investment Brief · Moderate Risk Portfolio</div>
+    <h1>Sunday, October 4, 2026</h1>
+    <div class="date">Markets Closed for the Weekend &nbsp;·&nbsp; Levels as of Friday, Oct 2 close &nbsp;·&nbsp; For Georges</div>
+    <div class="nav"><a href="index.html">← Back to archive</a></div>
+  </div>
+
+  <div class="tldr">
+    <strong>Today at a glance:</strong> &nbsp;
+    Markets remain closed for the weekend; Friday's close is still the latest confirmed data &nbsp;·&nbsp;
+    OPEC+ met today and kept November production targets unchanged — a steady-as-she-goes decision with no fresh supply surprise for oil markets &nbsp;·&nbsp;
+    The week ahead is calendar-light: ISM Services PMI Monday, FOMC Minutes Wednesday, then PepsiCo (Thu) and Delta (Fri) kick off earnings season ahead of the real Q3 reporting wave starting October 13 &nbsp;·&nbsp;
+    With little hard data due, oil prices and the trajectory of the 10Y yield remain the market's primary drivers into next week &nbsp;·&nbsp;
+    Markets reopen Monday, October 5
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-card bullish">
+      <span class="stat-label">S&amp;P 500</span>
+      <span class="stat-value">7,719.52</span>
+      <span class="stat-change green">+0.7% Fri</span>
+    </div>
+    <div class="stat-card bullish">
+      <span class="stat-label">Dow Jones</span>
+      <span class="stat-value">51,181.19</span>
+      <span class="stat-change green">+0.5% Fri</span>
+    </div>
+    <div class="stat-card bullish">
+      <span class="stat-label">Nasdaq</span>
+      <span class="stat-value">27,194.84</span>
+      <span class="stat-change green">+1.2% Fri · record close</span>
+    </div>
+    <div class="stat-card neutral">
+      <span class="stat-label">Russell 2000</span>
+      <span class="stat-value">~2,820</span>
+      <span class="stat-change amber">Tracking the risk-on tone</span>
+    </div>
+    <div class="stat-card bullish">
+      <span class="stat-label">VIX</span>
+      <span class="stat-value">15.31</span>
+      <span class="stat-change green">-6.59% Fri</span>
+    </div>
+    <div class="stat-card neutral">
+      <span class="stat-label">Crude Oil (WTI)</span>
+      <span class="stat-value">$89.41</span>
+      <span class="stat-change amber">OPEC+ held Nov. output steady</span>
+    </div>
+    <div class="stat-card neutral">
+      <span class="stat-label">Gold</span>
+      <span class="stat-value">$4,239.50</span>
+      <span class="stat-change green">+0.87% Fri</span>
+    </div>
+    <div class="stat-card neutral">
+      <span class="stat-label">10Y Treasury</span>
+      <span class="stat-value">5.27%</span>
+      <span class="stat-change amber">Key driver into next week</span>
+    </div>
+  </div>
+
+
+  <!-- SECTION 1 — MARKET SNAPSHOT -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">📊</span>
+      <span class="section-title">Market Snapshot</span>
+      <span class="section-tag tag-market">LIVE DATA</span>
+    </div>
+
+    <div class="story">
+      <h3>🛢️ OPEC+ Holds November Output Steady — No Surprise, No Relief</h3>
+      <p>The OPEC+ Joint Ministerial Monitoring Committee met Sunday and kept November production targets unchanged, rolling over the same supply plan in place since September. Total permitted group-wide output stays at 36.206 million barrels per day. Actual production has been running below official targets all year, so the unchanged ceiling doesn't signal a meaningful change in real barrels reaching the market — a neutral outcome that leaves oil's near-term direction mostly in the hands of demand data and geopolitics rather than supply policy.</p>
+    </div>
+
+    <div class="story">
+      <h3>🗓️ A Quiet Calendar Before Earnings Season Proper</h3>
+      <p>Next week brings relatively little hard economic data: ISM Services PMI on Monday, FOMC Minutes from the September meeting on Wednesday (markets will parse these closely for how unified the committee was on the pause decision), then PepsiCo on Thursday and Delta Air Lines on Friday as the first notable earnings prints. The real Q3 reporting wave — and the test of whether 2026's narrow, tech-led rally can broaden — doesn't begin in earnest until October 13.</p>
+    </div>
+
+    <div class="story">
+      <h3>📈 Friday's Rally Still the Dominant Story Into the Weekend</h3>
+      <p>Friday's jobs-driven rally (S&amp;P +0.7%, Nasdaq +1.2% to a record, NVDA to a fresh all-time high) remains the freshest read on sentiment. With the data calendar light this week, follow-through — or a reversal — in that risk-on move is likely to hinge on Wednesday's FOMC Minutes and whatever tone emerges on the rate-pause consensus.</p>
+    </div>
+  </div>
+
+
+  <!-- SECTION 2 — SECTOR PERFORMANCE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🧭</span>
+      <span class="section-title">Sector Performance — Year-to-Date (through Oct 2)</span>
+      <span class="section-tag tag-market">11 SECTORS</span>
+    </div>
+    <div class="story">
+      <p style="margin-bottom:6px;">Unchanged from Friday's close — Technology remains the standout for 2026, with Financials also posting solid gains on the back of a steeper yield curve.</p>
+      <div class="sector-grid">
+        <div class="sector-row"><span class="sector-name">Technology</span><span class="sector-pct green">+20.75% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">Financials</span><span class="sector-pct green">+12.26% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">Communication Services</span><span class="sector-pct green">~+9% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">Industrials</span><span class="sector-pct green">~+5% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">Health Care</span><span class="sector-pct amber">~+2% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">Energy</span><span class="sector-pct amber">~flat YTD</span></div>
+        <div class="sector-row"><span class="sector-name">Consumer Discretionary</span><span class="sector-pct amber">~-1% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">Materials</span><span class="sector-pct red">~-3% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">Real Estate (REITs)</span><span class="sector-pct red">~-4% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">Consumer Staples</span><span class="sector-pct red">~-4% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">Utilities</span><span class="sector-pct red">~-5% YTD</span></div>
+      </div>
+      <p style="margin-top:10px;font-size:0.8rem;color:#8b949e;">Watch for sector rotation signals from Wednesday's FOMC Minutes and the early earnings prints Thursday/Friday.</p>
+    </div>
+  </div>
+
+
+  <!-- SECTION 3 — TOP PICKS: MODERATE RISK -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🎯</span>
+      <span class="section-title">Top Picks — Moderate Risk Portfolio</span>
+      <span class="section-tag tag-pick">BUY THESIS</span>
+    </div>
+
+    <div class="tldr" style="border-left-color: #3fb950;">
+      <strong>Portfolio philosophy:</strong> &nbsp; With a quiet data week ahead and OPEC+ delivering a non-event, we're holding positioning steady into Monday's reopen — staying overweight AI/tech leadership while letting the income/defensive sleeve continue to stabilize on rate-pause hopes.
+    </div>
+
+    <div class="pick-grid">
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">MSFT</div><div class="pick-company">Microsoft Corporation</div></div>
+          <div class="pick-price"><div class="price-val">$521.90</div><div class="price-change green">+1.1% Fri</div></div>
+        </div>
+        <p class="pick-desc">Carrying Friday's Fed-pause tech rally into the weekend. JPMorgan's $625 target and Buy rating remain in place, anchored on Azure growth and Copilot monetization.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Buy</span><span class="pick-badge badge-growth">AI Core</span><span class="pick-badge badge-income">Dividend</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$625</span></div><div class="target-pill">Upside: <span class="green">+20%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">NVDA</div><div class="pick-company">NVIDIA Corporation</div></div>
+          <div class="pick-price"><div class="price-val">$233.95</div><div class="price-change green">+1.34% Fri — new ATH</div></div>
+        </div>
+        <p class="pick-desc">Closed the week at a fresh all-time high ($237.88 intraday) as chip stocks led Friday's relief rally. 61-analyst consensus target $327.70; JPMorgan's Overweight target sits at $320 post-Blackwell earnings beat.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Strong Buy</span><span class="pick-badge badge-growth">AI Chips</span><span class="pick-badge badge-moderate">Higher Beta</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$320</span></div><div class="target-pill">Upside: <span class="green">+37%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">JNJ</div><div class="pick-company">Johnson &amp; Johnson</div></div>
+          <div class="pick-price"><div class="price-val">$259.10</div><div class="price-change amber">~flat Fri</div></div>
+        </div>
+        <p class="pick-desc">No earnings or litigation headlines over the weekend. 2026 sales guided to $99.5-100.5B, adjusted EPS growing ~7% — thesis unchanged heading into Monday.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Buy</span><span class="pick-badge badge-defensive">Defensive</span><span class="pick-badge badge-income">Dividend</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$281</span></div><div class="target-pill">Upside: <span class="green">+8%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">XOM</div><div class="pick-company">Exxon Mobil Corporation</div></div>
+          <div class="pick-price"><div class="price-val">$160.30</div><div class="price-change red">-2.2% Fri</div></div>
+        </div>
+        <p class="pick-desc">OPEC+'s decision to hold November output steady is a non-event for the stock — no fresh supply shock either way. JPMorgan's $166-167 target and Overweight rating stand, with the dividend providing ballast.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Overweight</span><span class="pick-badge badge-income">Dividend</span><span class="pick-badge badge-defensive">Low Beta</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$167</span></div><div class="target-pill">Upside: <span class="green">+4%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">JPM</div><div class="pick-company">JPMorgan Chase</div></div>
+          <div class="pick-price"><div class="price-val">$341.20</div><div class="price-change green">+0.8% Fri</div></div>
+        </div>
+        <p class="pick-desc">Financials (+12.26% YTD) remain supported by a steepened yield curve and strong capital-markets activity; Wednesday's FOMC Minutes are the next catalyst to watch for the rate-pause thesis.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Overweight</span><span class="pick-badge badge-income">Dividend</span><span class="pick-badge badge-defensive">Value</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$355</span></div><div class="target-pill">Upside: <span class="green">+4%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">NEE</div><div class="pick-company">NextEra Energy</div></div>
+          <div class="pick-price"><div class="price-val">$76.90</div><div class="price-change green">+1.5% Fri</div></div>
+        </div>
+        <p class="pick-desc">Benefiting from the pause in yield-climb pressure after a rough September. Dominion merger thesis and AI-datacenter power-demand story remain intact for patient holders.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Buy</span><span class="pick-badge badge-defensive">Utility</span><span class="pick-badge badge-income">Dividend</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$105</span></div><div class="target-pill">Upside: <span class="green">+37%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">UPS</div><div class="pick-company">United Parcel Service</div></div>
+          <div class="pick-price"><div class="price-val">$98.60</div><div class="price-change green">+0.3% Fri</div></div>
+        </div>
+        <p class="pick-desc">Goldman Sachs' Conviction List high-yield dividend pick — yield ~6.5%, $132 price target (+34% upside). Holding steady heading into a quiet pre-earnings week.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Conviction Buy</span><span class="pick-badge badge-income">High Yield</span><span class="pick-badge badge-defensive">Logistics</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$132</span></div><div class="target-pill">Upside: <span class="green">+34%</span></div></div>
+      </div>
+
+    </div>
+
+    <div class="story">
+      <h3>📦 ETF Core Position — Diversification Layer</h3>
+      <p><strong class="blue">SPY (S&amp;P 500 ETF) — ~$772 | Expense: 0.09% | Yield: 0.99%</strong> — Holding near highs for the year into a calendar-light week. Maintain the 25% SPY core heading toward the Q3 earnings season kickoff on October 13.</p>
+    </div>
+  </div>
+
+
+  <!-- SECTION 4 — 30-60-90 DAY OUTLOOK TABLE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🗓️</span>
+      <span class="section-title">30–60–90 Day Outlook</span>
+      <span class="section-tag tag-market">PRICE TARGETS</span>
+    </div>
+
+    <div class="story" style="padding: 0; overflow-x: auto;">
+      <table class="outlook-table">
+        <thead>
+          <tr><th>Ticker</th><th>Current</th><th>30-Day Target</th><th>60-Day Target</th><th>90-Day Target</th><th>12-Mo Consensus</th><th>Key Catalyst</th><th>Risk Level</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="ticker-cell">MSFT</td><td class="price-cell">$522</td><td class="target-up">$542</td><td class="target-up">$565</td><td class="target-up">$590</td><td class="target-up">$625 <span class="upside-pct">+20%</span></td><td>Q1 FY27 Azure results; AI-agent momentum</td><td><span class="risk-low">LOW</span></td></tr>
+          <tr><td class="ticker-cell">NVDA</td><td class="price-cell">$234</td><td class="target-up">$255</td><td class="target-up">$280</td><td class="target-up">$305</td><td class="target-up">$320-328 <span class="upside-pct">+37%</span></td><td>FQ3 earnings (Nov); Blackwell supply ramp</td><td><span class="risk-high">HIGH</span></td></tr>
+          <tr><td class="ticker-cell">JNJ</td><td class="price-cell">$259</td><td class="target-up">$265</td><td class="target-up">$272</td><td class="target-up">$278</td><td class="target-up">$281 <span class="upside-pct">+8%</span></td><td>Talc litigation rulings; Q3 earnings (mid-Oct)</td><td><span class="risk-low">LOW</span></td></tr>
+          <tr><td class="ticker-cell">XOM</td><td class="price-cell">$160</td><td class="target-up">$163</td><td class="target-up">$166</td><td class="target-up">$170</td><td class="target-up">$167 <span class="upside-pct">+4%</span></td><td>OPEC+ compliance trends; Q3 earnings (early Nov)</td><td><span class="risk-med">MED</span></td></tr>
+          <tr><td class="ticker-cell">JPM</td><td class="price-cell">$341</td><td class="target-up">$347</td><td class="target-up">$352</td><td class="target-up">$358</td><td class="target-up">$355 <span class="upside-pct">+4%</span></td><td>Q3 earnings (mid-Oct); FOMC Minutes Wed; yield curve</td><td><span class="risk-med">MED</span></td></tr>
+          <tr><td class="ticker-cell">NEE</td><td class="price-cell">$77</td><td class="target-up">$85</td><td class="target-up">$93</td><td class="target-up">$100</td><td class="target-up">$105 <span class="upside-pct">+37%</span></td><td>Dominion merger approvals; Q3 earnings</td><td><span class="risk-med">MED</span></td></tr>
+          <tr><td class="ticker-cell">UPS</td><td class="price-cell">$99</td><td class="target-up">$107</td><td class="target-up">$118</td><td class="target-up">$127</td><td class="target-up">$132 <span class="upside-pct">+34%</span></td><td>Q3 earnings (late Oct); Amazon volume trends</td><td><span class="risk-med">MED</span></td></tr>
+          <tr><td class="ticker-cell">SPY</td><td class="price-cell">$772</td><td class="target-up">$782</td><td class="target-up">$790</td><td class="target-up">$800</td><td class="target-up">~$800-810 <span class="upside-pct">+4%</span></td><td>Q3 earnings season kickoff (Oct 13); FOMC Minutes</td><td><span class="risk-med">MED</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.75rem;color:#484f58;margin-top:10px;padding:0 4px;">
+      * 30/60/90-day targets are Jorge's estimates derived from analyst 12-month consensus targets scaled + technical levels. Not financial advice. Price data as of Friday, October 2, 2026 close (Yahoo Finance / CNBC / Bloomberg / TheStreet / Goldman Sachs / JPMorgan).
+    </p>
+  </div>
+
+
+  <!-- SECTION 5 — INVESTOR INSIGHTS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🧠</span>
+      <span class="section-title">Trusted Investor Insights</span>
+      <span class="section-tag tag-insight">MACRO VIEWS</span>
+    </div>
+
+    <div class="insight-card" style="border-left-color: #58a6ff;">
+      <span class="person" style="color: #58a6ff;">CNBC / Street Consensus — Week Ahead</span>
+      <h3>A Calendar-Light Week Puts Oil and Yields Back in the Driver's Seat</h3>
+      <p>With Q3 earnings season not really starting until October 13, and this week's data limited to ISM Services and FOMC Minutes, the Street's view is that price action will largely track the two forces that dominated September: the path of Treasury yields and oil prices. OPEC+'s steady-targets decision Sunday removes one source of surprise, shifting more weight onto Wednesday's Fed Minutes.</p>
+    </div>
+
+    <div class="insight-card">
+      <span class="person">Warren Buffett / Berkshire Hathaway</span>
+      <h3>No Change in Posture Over the Weekend</h3>
+      <p>Buffett's reluctance to deploy Berkshire's ~$397B cash pile remains unchanged — a quiet weekend with an uneventful OPEC+ decision gives him no new reason to view current valuations as more attractive than they were Friday.</p>
+    </div>
+
+    <div class="insight-card" style="border-left-color: #e3b341;">
+      <span class="person">Howard Marks / Oaktree Capital</span>
+      <h3>A Quiet Week Is a Good Time to Reassess, Not Relax</h3>
+      <p>Marks's standing caution about nearly four years of investor optimism applies just as much in a slow news week as a volatile one — a market that rallies on a single weak jobs print, then goes quiet into an even lighter calendar, is exactly the kind of complacency he's flagged as a risk.</p>
+    </div>
+
+    <div class="insight-card" style="border-left-color: #a371f7;">
+      <span class="person" style="color: #a371f7;">Goldman Sachs Asset Management — Market Pulse</span>
+      <h3>Watching the FOMC Minutes for Confirmation, Not Surprise</h3>
+      <p>Goldman's house view heading into Wednesday is that the September meeting's minutes are unlikely to overturn the market's rate-pause assumption, but any hint of a split committee or lingering hawkish voices could unwind some of Friday's relief rally quickly given how thin this week's data calendar otherwise is.</p>
+    </div>
+  </div>
+
+
+  <!-- SECTION 6 — KEY RISKS & WATCHLIST -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">⚠️</span>
+      <span class="section-title">Key Risks &amp; Watchlist</span>
+      <span class="section-tag tag-risk">RISK MONITOR</span>
+    </div>
+
+    <div class="risk-grid">
+      <div class="risk-card">
+        <div class="risk-title">💼 Labor Market Risk — Confirmation Still Needed</div>
+        <ul>
+          <li>Friday's weak 29K payrolls print needs a second data point before the market can be confident it's a trend, not a one-off</li>
+          <li>Unemployment at 4.2% — watch October's report closely for confirmation or reversal</li>
+        </ul>
+      </div>
+      <div class="risk-card">
+        <div class="risk-title">🏦 FOMC Minutes Risk — Wednesday, Oct 7</div>
+        <ul>
+          <li>Markets are pricing a unified, dovish-leaning Fed; any sign of internal disagreement on the pause could spook the rally</li>
+          <li>Thin calendar otherwise means this single release carries outsized weight this week</li>
+        </ul>
+      </div>
+      <div class="risk-card">
+        <div class="risk-title">🛢️ Oil / OPEC+ Risk — Steady but Unresolved</div>
+        <ul>
+          <li>November targets held steady, but actual production running below target keeps real supply dynamics opaque</li>
+          <li>Demand-side data (not supply policy) likely to be oil's main swing factor into next week</li>
+        </ul>
+      </div>
+      <div class="risk-card">
+        <div class="risk-title">🔒 Portfolio-Specific Watch Items</div>
+        <ul>
+          <li>NVDA: at all-time highs — watch for profit-taking as the week opens</li>
+          <li>JPM/NEE: both leaning on the rate-pause narrative; sensitive to any hawkish Fed Minutes surprise</li>
+          <li>PEP/DAL earnings (Thu/Fri): early reads on consumer and travel demand ahead of the main Q3 season</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="story" style="margin-top: 16px;">
+      <h3>👁️ Watchlist — Names to Monitor Closely</h3>
+      <div class="wl-item"><div><span class="wl-ticker">FOMC Minutes (Wed, Oct 7)</span><span class="wl-reason"> — the week's key catalyst; tests how unified the Fed was on the pause decision</span></div><span class="red">⚠️ TOP WATCH</span></div>
+      <div class="wl-item"><div><span class="wl-ticker">ISM Services PMI (Mon, Oct 5)</span><span class="wl-reason"> — first read on the services economy since the weak jobs print</span></div><span class="amber">📋 MONITOR</span></div>
+      <div class="wl-item"><div><span class="wl-ticker">PEP / DAL earnings (Thu/Fri)</span><span class="wl-reason"> — early consumer and travel-demand signals ahead of Oct 13 earnings season kickoff</span></div><span class="amber">📋 MONITOR</span></div>
+      <div class="wl-item" style="border: none;"><div><span class="wl-ticker">NVDA</span><span class="wl-reason"> — fresh all-time highs; watch for follow-through vs. profit-taking Monday</span></div><span class="green">👀 SECTOR SIGNAL</span></div>
+    </div>
+
+    <div class="story" style="margin-top: 14px;">
+      <h3>📐 Suggested Moderate-Risk Allocation — Early October 2026</h3>
+      <p style="margin-bottom:12px;">A balanced allocation for a sophisticated investor comfortable with moderate risk (~12-16% expected annual return, ~12-15% expected annual volatility). Unchanged into Monday's reopen given the quiet weekend:</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:0.83rem;">
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;"><span style="color:#58a6ff;font-weight:700;">Core ETF (25%)</span><br><span style="color:#8b949e;">SPY 25%</span></div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;"><span style="color:#3fb950;font-weight:700;">AI / Growth Tech (23%)</span><br><span style="color:#8b949e;">MSFT 15% · NVDA 8%</span></div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;"><span style="color:#e3b341;font-weight:700;">Income / Defensive (37%)</span><br><span style="color:#8b949e;">JNJ 8% · XOM 8% · NEE 7% · JPM 7% · UPS 7%</span></div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px; grid-column: 1/-1;"><span style="color:#f85149;font-weight:700;">Cash / Tactical (15%)</span><br><span style="color:#8b949e;">Dry powder ahead of FOMC Minutes and the Oct 13 earnings-season kickoff</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>Investment Brief by Jorge</strong> &nbsp;·&nbsp; October 4, 2026 &nbsp;·&nbsp; OPEC+ Holds Steady, Quiet Week Ahead Before Earnings Season</p>
+    <p style="margin-top:6px;">Data sourced from Yahoo Finance, CNBC, Bloomberg, TheStreet, Investing.com, Goldman Sachs, JPMorgan (levels as of Fri Oct 2 close) · Not financial advice · For informational purposes only</p>
+    <p style="margin-top:6px;"><a href="index.html">← Full briefing archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
