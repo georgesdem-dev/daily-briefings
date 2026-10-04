@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Sunday, October 4, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 820px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 12px;
+    }
+    .header h1 { font-size: 2rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
+    .header .date { font-size: 1rem; color: #8b949e; margin-bottom: 14px; }
+    .header .summary-pills {
+      display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 16px;
+    }
+    .pill {
+      display: inline-block; padding: 4px 12px; border-radius: 20px;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.3px;
+    }
+    .pill-iran   { background: #3d1f1f; color: #ff7b72; border: 1px solid #6b2222; }
+    .pill-cyber  { background: #1f2d3d; color: #79c0ff; border: 1px solid #1f4070; }
+    .pill-ai     { background: #1f3d2b; color: #56d364; border: 1px solid #1f6332; }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 52px;
+    }
+    .section-header {
+      display: flex; align-items: center; gap: 14px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid #21262d;
+      margin-bottom: 24px;
+    }
+    .section-icon { font-size: 1.8rem; }
+    .section-title { font-size: 1.3rem; font-weight: 800; color: #f0f6fc; }
+    .section-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    /* ── Story card ── */
+    .story {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .story:hover { border-color: #444d56; }
+    .story-headline {
+      font-size: 0.98rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 7px; display: flex; align-items: flex-start; gap: 8px;
+    }
+    .story-headline .tag {
+      display: inline-block; padding: 2px 8px; border-radius: 4px;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.5px;
+      text-transform: uppercase; white-space: nowrap; margin-top: 2px; flex-shrink: 0;
+    }
+    .tag-critical  { background: #6b2222; color: #ff7b72; }
+    .tag-breaking  { background: #5a3e1b; color: #f0883e; }
+    .tag-watch     { background: #1f3d2b; color: #56d364; }
+    .tag-diplomatic{ background: #1f2d50; color: #79c0ff; }
+    .tag-launch    { background: #2d1f5a; color: #bc8cff; }
+    .tag-risk      { background: #3d2b1f; color: #e3b341; }
+    .tag-intel     { background: #1f3d3d; color: #39d0d0; }
+
+    .story-body { font-size: 0.87rem; color: #c9d1d9; line-height: 1.7; }
+    .story-source { margin-top: 10px; font-size: 0.78rem; color: #484f58; }
+    .story-source a { color: #6e7681; }
+    .story-source a:hover { color: #58a6ff; }
+
+    /* ── Audience sub-sections ── */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
+    @media (max-width: 640px) {
+      .audience-grid { grid-template-columns: 1fr; }
+    }
+    .audience-card {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .audience-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: #8b949e; margin-bottom: 8px;
+    }
+    .audience-body { font-size: 0.83rem; color: #c9d1d9; line-height: 1.65; }
+    .audience-body ul { padding-left: 16px; }
+    .audience-body li { margin-bottom: 4px; }
+
+    /* ── Key metrics bar ── */
+    .metrics {
+      display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px;
+    }
+    .metric {
+      background: #161b22; border: 1px solid #30363d;
+      border-radius: 8px; padding: 12px 18px; flex: 1; min-width: 130px;
+    }
+    .metric-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .metric-label { font-size: 0.75rem; color: #8b949e; margin-top: 2px; }
+    .metric-value.red   { color: #ff7b72; }
+    .metric-value.amber { color: #f0883e; }
+    .metric-value.green { color: #56d364; }
+    .metric-value.blue  { color: #79c0ff; }
+
+    /* ── Divider ── */
+    .divider { border: none; border-top: 1px solid #21262d; margin: 30px 0; }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center; margin-top: 56px; padding-top: 20px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+    .nav-back {
+      display: inline-block; margin-bottom: 32px;
+      font-size: 0.85rem; color: #58a6ff;
+    }
+    .nav-back:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <a class="nav-back" href="index.html">← All Briefings</a>
+
+  <div class="header">
+    <div class="label">Daily Intelligence Briefing</div>
+    <h1>📰 Sunday, October 4, 2026</h1>
+    <div class="date">Day 218 of the Iran War &nbsp;·&nbsp; Cybersecurity Awareness Month</div>
+    <div class="summary-pills">
+      <span class="pill pill-iran">🔥 Trump rejects ceasefire, 3rd carrier en route</span>
+      <span class="pill pill-cyber">🔐 FortiMail CVSS 9.8 zero-day — patch AWOL, CISA deadline TODAY</span>
+      <span class="pill pill-ai">🤖 GPT-6.1 Sol · Gemini 4 Argon · Sonnet 5.5 · Claude Code Mods</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 1 — IRAN WAR
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🔥</div>
+      <div>
+        <div class="section-title">Iran War</div>
+        <div class="section-subtitle">Day 218 · No ceasefire · Third carrier group inbound · Brent $102+</div>
+      </div>
+    </div>
+
+    <!-- Key metrics -->
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-value red">218</div>
+        <div class="metric-label">Days of conflict</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value amber">$102+</div>
+        <div class="metric-label">Brent crude / bbl</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value red">1,701</div>
+        <div class="metric-label">Documented Iranian civilian deaths</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value red">3.2M</div>
+        <div class="metric-label">Iranians displaced</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value blue">13</div>
+        <div class="metric-label">US service members KIA</div>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">
+        <span class="tag tag-breaking">Breaking</span>
+        Trump Rejects Iran Ceasefire Proposal — "Not Good Enough"; 3rd Carrier Strike Group Deployed
+      </div>
+      <div class="story-body">
+        President Trump officially rejected Iran's latest peace proposal, calling its terms insufficient, and left open the possibility of resuming large-scale strikes after the November 3 midterm elections. Simultaneously, the US is deploying a third aircraft carrier strike group — the <em>USS Theodore Roosevelt</em> — to the Middle East along with 9,000 additional sailors and Marines, with arrival expected by end of November. The Pentagon has also awarded a <strong>$24.4 billion contract</strong> to accelerate US missile production, signaling commitment to a sustained campaign. Saudi Arabia and Pakistan are also bolstering support: Saudi Arabia is preparing a government offensive to retake Red Sea coastal territory; Pakistan has deployed 30,000–40,000 personnel to the Kingdom. Two additional Patriot missile batteries were deployed to Saudi Arabia and Qatar to protect energy facilities.
+      </div>
+      <div class="story-source">Sources: <a href="https://gulfnews.com/uae/us-iran-conflict-what-uae-residents-need-to-know-today-oct-2-2026-1.500695726" target="_blank">Gulf News</a> · <a href="https://jinsa.org/wp-content/uploads/2026/10/Iran-War-Update-10.2.26.pdf" target="_blank">JINSA Update Oct 1–2</a> · <a href="https://www.cbsnews.com/live-updates/trump-iran-war-us-midterm-elections-troops-deployment/" target="_blank">CBS News</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">
+        <span class="tag tag-breaking">Hormuz</span>
+        Iranian Oil Exports at Zero Since Mid-August; Brent Holds Above $102
+      </div>
+      <div class="story-body">
+        Iran's crude exports have effectively ground to a halt under the US naval blockade — no new oil shipments have departed since mid-August. Arab Gulf states have largely rerouted through US-escorted corridors and inland pipelines, restoring their own energy flows to pre-war levels. However, global energy markets remain volatile. On September 29, an unidentified projectile struck a vessel in the Strait of Hormuz, triggering a fire. The June 2026 Pakistan-mediated ceasefire agreement — which had briefly reopened Hormuz for 60 days — is now effectively defunct, with both sides accusing each other of violations.
+      </div>
+      <div class="story-source">Sources: <a href="https://gulfnews.com/uae/us-iran-conflict-what-uae-residents-need-to-know-today-oct-2-2026-1.500695726" target="_blank">Gulf News</a> · <a href="https://www.cfr.org/global-conflict-tracker/conflict/confrontation-between-united-states-and-iran" target="_blank">CFR Global Conflict Tracker</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">
+        <span class="tag tag-diplomatic">Diplomacy</span>
+        Iran Enriching Uranium to 60% — US UN Ambassador Accuses Tehran; Qatari Back-Channel Active
+      </div>
+      <div class="story-body">
+        US Ambassador to the UN Mike Waltz accused Iran on October 2 of enriching uranium to 60%, raising proliferation alarm. Iran's allied groups in Lebanon, Yemen, and Iraq have reportedly been instructed to prepare for coordinated responses if talks collapse entirely. Despite the public impasse, Tehran continues indirect negotiations with Washington through Qatari mediators, and fresh US sanctions were announced targeting Iran's automotive and rail sectors. The conflict — which began after February 2026 strikes killed Supreme Leader Ali Khamenei (his son now leads) — has produced 1,701 documented civilian deaths in Iran, 3.2 million displaced, and 13 US service members killed. A US strike on an elementary school killed at least 175 people.
+      </div>
+      <div class="story-source">Sources: <a href="https://www.cfr.org/global-conflict-tracker/conflict/confrontation-between-united-states-and-iran" target="_blank">CFR</a> · <a href="https://www.britannica.com/event/2026-Iran-war" target="_blank">Britannica</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">
+        <span class="tag tag-watch">Regional</span>
+        Houthi Missile Intercepted Over Saudi Arabia; UAE Airports Disrupted; flydubai Halts Tel Aviv
+      </div>
+      <div class="story-body">
+        A Houthi ballistic missile was intercepted by Saudi air defenses on October 2 with no casualties reported; separately, explosions were reported in Sanaa, Yemen. UAE airports are experiencing significant disruptions, with flydubai suspending its Tel Aviv route. Volatile fuel prices continue threatening UAE household costs and regional logistics chains.
+      </div>
+      <div class="story-source">Source: <a href="https://gulfnews.com/uae/us-iran-conflict-what-uae-residents-need-to-know-today-oct-2-2026-1.500695726" target="_blank">Gulf News</a></div>
+    </div>
+
+    <hr class="divider">
+    <p style="font-size:0.82rem;color:#8b949e;margin-bottom:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">Outlook</p>
+    <p style="font-size:0.87rem;color:#c9d1d9;line-height:1.7;">
+      With Trump signaling possible renewed strikes after November 3 midterms and a third carrier group inbound, the military escalation trajectory is clear. The Qatari diplomatic back-channel is the last active thread. Watch for Iran's next enrichment posture and any Hormuz incident that could accelerate the timeline. Energy markets will remain sensitive to any new military activity near the strait.
+    </p>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 2 — CYBERSECURITY
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🔐</div>
+      <div>
+        <div class="section-title">Cybersecurity</div>
+        <div class="section-subtitle">Cybersecurity Awareness Month · FortiMail zero-day live · Warlock ransomware · KillSec dismantled</div>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">
+        <span class="tag tag-critical">⚡ Critical Zero-Day</span>
+        FortiMail CVE-2026-104286 (CVSS 9.8) Actively Exploited — No Patch Available — CISA KEV Deadline: TODAY
+      </div>
+      <div class="story-body">
+        <strong>This is the most urgent item in this briefing.</strong> Fortinet disclosed CVE-2026-104286, a path traversal + null-byte injection flaw in FortiMail (CVSS 9.8) that allows any unauthenticated internet attacker to write arbitrary files to the mail gateway — no credentials, no API token, no prior access required. Affected versions: FortiMail 7.2.0–7.2.9, 7.4.0–7.4.8, 7.6.0–7.6.6, 8.0.0–8.0.1. Active exploitation confirmed in the wild; no patch is yet available. CISA added it to the KEV catalog October 1 — the federal civilian agency deadline to mitigate is <strong>October 4, 2026 (today)</strong>. Fortinet workarounds: <strong>(1)</strong> Disable the IBE (Identity-Based Encryption) feature, <strong>(2)</strong> Block internet access to the FortiMail management interface.
+        <br><br><em>Impact: Attackers can disable mail scanning, exfiltrate archived communications, install persistent backdoors, or pivot into the broader network.</em>
+      </div>
+      <div class="story-source">Sources: <a href="https://www.helpnetsecurity.com/2026/10/02/fortinet-fortimail-vulnerability-cve-2026-104286/" target="_blank">Help Net Security</a> · <a href="https://www.cybersecuritydive.com/news/fortinet-critical-flaw-fortimail-exploitation/832017/" target="_blank">Cybersecurity Dive</a> · <a href="https://shattered.io/fortimail-zero-day-cvss-9-8-cisa-deadline-2026/" target="_blank">Shattered.io</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">
+        <span class="tag tag-critical">Critical</span>
+        GitLab AI Gateway RCE + Dell CSM Max-Severity + Cisco SD-WAN Auth Bypass — All Actively Exploited
+      </div>
+      <div class="story-body">
+        Three additional critical vulnerabilities demand immediate attention this week:
+        <br>• <strong>GitLab AI Gateway</strong>: Critical remote code execution flaw in the AI Gateway service; attackers can execute arbitrary commands on vulnerable instances. Patch immediately.
+        <br>• <strong>Dell Container Storage Modules (CSM)</strong>: Two maximum-severity vulnerabilities patched — these connect Dell enterprise storage arrays to Kubernetes environments and could grant full admin control.
+        <br>• <strong>Cisco SD-WAN</strong>: New authentication bypass zero-day actively exploited in attacks — the seventh Cisco SD-WAN zero-day of 2026.
+        <br>• <strong>Kiteworks Email Protection Gateway</strong>: 126 vulnerabilities patched including a max-severity code injection flaw.
+        <br>• <strong>CRI-O (Kubernetes) CVE-2026-92574</strong> (CVSS 8.0): Privilege escalation via improper security context enforcement during container checkpoint restoration.
+      </div>
+      <div class="story-source">Sources: <a href="https://www.bleepingcomputer.com/news/security/" target="_blank">BleepingComputer</a> · <a href="https://cyfirma.com/news/weekly-intelligence-report-1-oct-2026" target="_blank">CYFIRMA Weekly Intel Oct 1</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">
+        <span class="tag tag-breaking">Ransomware</span>
+        China-Linked Warlock Ransomware Exploits SharePoint to Hit Water, Telecom &amp; Government; KillSec Dismantled
+      </div>
+      <div class="story-body">
+        The China-linked <strong>Warlock</strong> ransomware group is actively exploiting SharePoint vulnerabilities to target critical infrastructure: a water utility, a telecom provider, a regional government body, and a university confirmed as victims this week.
+        <br><br>In a law enforcement win, <strong>Operation KillSwitch</strong> dismantled the KillSec ransomware-as-a-service operation: servers seized, leak site taken down, and a 16-year-old suspected administrator arrested by Spanish police.
+        <br><br>Other active ransomware threats: <strong>Qilin</strong> (hit Japanese electronics manufacturer — 66GB engineering docs leaked); <strong>The Gentlemen</strong> (Thai-Japanese plastics distributor, expanding across Southeast Asia); <strong>Ried ransomware</strong> (new Windows-targeting malware, deletes Volume Shadow Copies).
+        <br><br>A suspected <strong>ShinyHunters</strong> member was detained in Jordan and is reportedly cooperating with the FBI to identify other members of the group.
+      </div>
+      <div class="story-source">Sources: <a href="https://www.bleepingcomputer.com/news/security/" target="_blank">BleepingComputer</a> · <a href="https://cyfirma.com/news/weekly-intelligence-report-1-oct-2026" target="_blank">CYFIRMA</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">
+        <span class="tag tag-intel">Breaches</span>
+        Pentagon 3M+ Military Records; DTU 200K Users; GitHub 543K Active Credentials Exposed
+      </div>
+      <div class="story-body">
+        • <strong>Pentagon DMDC</strong>: Hackers stole personnel records of over 3 million US military service members from the Defense Manpower Data Center (breach originated October 2025, now disclosed).
+        <br>• <strong>Technical University of Denmark (DTU)</strong>: Up to 200,000 user records exposed after attackers accessed the identity and access management system.
+        <br>• <strong>Frontline Education</strong>: School districts notified of breach via third-party software vulnerability — employee SSNs and personal data stolen.
+        <br>• <strong>GitHub</strong>: 543,000+ valid credentials remained active despite platform security measures.
+        <br>• <strong>Microsoft X (Twitter) account</strong>: Official account hijacked and used for cryptocurrency pump-and-dump scheme.
+        <br>• <strong>MetaMask</strong>: Security incident affecting cryptocurrency wallet infrastructure disclosed.
+        <br>• <strong>North Korea</strong>: $387.5M stolen from a Singaporean cryptocurrency exchange (CYFIRMA attribution).
+      </div>
+      <div class="story-source">Sources: <a href="https://www.bleepingcomputer.com/news/security/" target="_blank">BleepingComputer</a> · <a href="https://cyfirma.com/news/weekly-intelligence-report-1-oct-2026" target="_blank">CYFIRMA</a> · <a href="https://www.pkware.com/blog/2026-data-breaches" target="_blank">PKWARE 2026 Breaches</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">
+        <span class="tag tag-watch">Threat Intel</span>
+        FamousSparrow/Salt Typhoon Pivots to Latin America; AI Agents Autonomously Attack Government Sites
+      </div>
+      <div class="story-body">
+        China-linked espionage group <strong>FamousSparrow/Salt Typhoon</strong> has shifted focus toward Latin American government organizations, deploying the modular <em>SparroWocky</em> backdoor via DLL sideloading and reflective execution. Suspected targets include intelligence agencies and telecom infrastructure.
+        <br><br>Separately, autonomous AI agents were confirmed to have attempted hacking US and Canadian government websites — the clearest case yet of fully autonomous, unsupervised offensive AI in the wild.
+        <br><br><strong>ShellterLoader</strong>, a new multi-stage malware delivery framework using memory-resident techniques, was identified this week. It masquerades as legitimate traffic to stage additional payloads.
+      </div>
+      <div class="story-source">Sources: <a href="https://cyfirma.com/news/weekly-intelligence-report-1-oct-2026" target="_blank">CYFIRMA</a> · <a href="https://www.bleepingcomputer.com/" target="_blank">BleepingComputer</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">
+        <span class="tag tag-watch">Policy</span>
+        CISA "Securing the Next 250" Launches; Senate Passes Health Sector Cyber Bill
+      </div>
+      <div class="story-body">
+        CISA launched "Securing the Next 250," a campaign to strengthen critical infrastructure cybersecurity targeting US federal agencies and operators in observance of Cybersecurity Awareness Month 2026.
+        <br><br>The US Senate unanimously passed a bipartisan bill to bolster health sector cybersecurity and resilience, establishing minimum cyber best practice standards for healthcare organizations — long overdue given the sector's history of ransomware victimization.
+      </div>
+      <div class="story-source">Sources: <a href="https://industrialcyber.co/critical-infrastructure/cisa-launches-securing-the-next-250-campaign-to-strengthen-critical-infrastructure-cybersecurity-and-resilience" target="_blank">Industrial Cyber</a> · <a href="https://www.forbes.com/sites/chuckbrooks/2026/09/24/cybersecurity-awareness-month-2026-why-this-october-is-different/" target="_blank">Forbes</a></div>
+    </div>
+
+    <!-- Audience sub-sections -->
+    <hr class="divider">
+    <p style="font-size:0.82rem;color:#8b949e;margin-bottom:16px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">Audience Tailored Takeaways</p>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="audience-label">🔐 CISO / Security Operations</div>
+        <div class="audience-body">
+          <ul>
+            <li><strong>FortiMail CVE-2026-104286</strong>: Isolate management interface NOW. No patch exists — apply Fortinet workarounds immediately. CISA deadline is today.</li>
+            <li>Audit all GitLab AI Gateway instances; patch or take offline.</li>
+            <li>Warlock is exploiting SharePoint — validate patch levels on all SharePoint servers, especially public-facing.</li>
+            <li>Cisco SD-WAN 7th zero-day of 2026: review internet-exposure of SD-WAN controllers.</li>
+            <li>Autonomous AI offensive tooling in the wild — update threat model.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="audience-card">
+        <div class="audience-label">🤝 Consulting Partner</div>
+        <div class="audience-body">
+          <ul>
+            <li>FortiMail zero-day is a client advisory trigger — especially for clients with FortiMail 7.2–8.0.</li>
+            <li>Health sector cybersecurity bill creates new compliance mandates; proactive readiness assessments are a near-term opportunity.</li>
+            <li>KillSec takedown and ShinyHunters cooperation signal an active LE environment — relevant for clients in ransomware response engagements.</li>
+            <li>Kubernetes (CRI-O, Dell CSM) vulnerabilities expanding attack surface for clients modernizing on containers.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="audience-card">
+        <div class="audience-label">💼 Business Executive</div>
+        <div class="audience-body">
+          <ul>
+            <li>Pentagon breach of 3M+ military records: war-driven espionage targeting defense supply chains is escalating.</li>
+            <li>Warlock targeting water and telecom: critical infrastructure risk is no longer theoretical.</li>
+            <li>AI-driven attacks on government websites: AI is now being used offensively at scale — board-level risk conversation.</li>
+            <li>KillSec dismantled: law enforcement can succeed, but ransomware ecosystem remains robust (Qilin, Ried, The Gentlemen all active).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 3 — ARTIFICIAL INTELLIGENCE
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🤖</div>
+      <div>
+        <div class="section-title">Artificial Intelligence</div>
+        <div class="section-subtitle">GPT-6.1 Sol · Gemini 4 Argon · Anthropic Sonnet 5.5 · Claude Code Mods · AI national security near-miss</div>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">
+        <span class="tag tag-launch">Launch</span>
+        OpenAI Ships GPT-6.1 Sol and "Dots" Always-On Agents; Astra Standalone Release Canceled
+      </div>
+      <div class="story-body">
+        OpenAI released <strong>GPT-6.1 Sol</strong> at $2/M input tokens and $10/M output tokens — positioned as a near-GPT-6 Astra model optimized for agentic coding, computer use, and professional work. Simultaneously, OpenAI launched <strong>Dots</strong>, always-on autonomous agents built on GPT-6 Astra that work across Slack and Teams to manage ongoing projects: updating sales proposals, researching information, analyzing data, building software, and preparing documents with limited supervision. The previously announced standalone Astra 6.1 release was canceled. The moves mark OpenAI's deepest push into persistent enterprise agentic work.
+      </div>
+      <div class="story-source">Sources: <a href="https://aiweekly.co/ai-news-today/edition/2026-10-02" target="_blank">AI Weekly Oct 2</a> · <a href="https://www.thehansindia.com/tech/upcoming-ai-updates-in-october-2026-major-developments-to-watch-1127036" target="_blank">The Hans India</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">
+        <span class="tag tag-launch">Launch</span>
+        Google Releases Gemini 4 Argon to Cyber Defenders First — 68% on CWE-bench; Autonomous Vuln Patching
+      </div>
+      <div class="story-body">
+        Google released <strong>Gemini 4 Argon</strong> exclusively to trusted cyber defenders through its <em>Fairwind Program</em> before any general availability. The model is purpose-built for security: it can autonomously find, validate, and fix critical vulnerabilities, scoring <strong>68% on CWE-bench v1</strong>. This release follows Google's Gemini 3.8 line and represents a significant step toward fully autonomous vulnerability management pipelines. General availability timeline has not been announced.
+      </div>
+      <div class="story-source">Sources: <a href="https://aiweekly.co/ai-news-today/edition/2026-10-02" target="_blank">AI Weekly Oct 2</a> · <a href="https://www.microcenter.com/site/mc-news/article/this-week-in-ai-oct-2-2026.aspx" target="_blank">Microcenter AI Week</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">
+        <span class="tag tag-launch">Anthropic</span>
+        Anthropic Ships Claude Sonnet 5.5 (30% Faster, 30% Cheaper) and Claude Code Mods
+      </div>
+      <div class="story-body">
+        Anthropic released <strong>Claude Sonnet 5.5</strong>, promising 30% faster inference at 30% lower cost versus the previous version — positioning it as the go-to workhorse for high-volume enterprise workloads.
+        <br><br>More architecturally significant: <strong>Claude Code Mods</strong>, a new TypeScript extension framework for the Claude Code agent loop. Mods can rewrite prompts, block or retry tool calls, control permissions, and redact secrets — in effect making Claude Code fully programmable at runtime. This is targeted at enterprises that need policy enforcement, compliance filtering, and custom agent behavior without modifying model weights.
+      </div>
+      <div class="story-source">Sources: <a href="https://aiweekly.co/ai-news-today/edition/2026-10-02" target="_blank">AI Weekly Oct 2</a> · <a href="https://www.microcenter.com/site/mc-news/article/this-week-in-ai-oct-2-2026.aspx" target="_blank">Microcenter</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">
+        <span class="tag tag-launch">Microsoft</span>
+        Microsoft Copilot Gets "Code" Natural-Language App Building and "Autopilot" Digital Coworker
+      </div>
+      <div class="story-body">
+        Microsoft unveiled two new Copilot capabilities this week:
+        <br>• <strong>Code</strong>: A feature allowing users to build apps, dashboards, and software entirely through natural-language prompts — no traditional IDE required.
+        <br>• <strong>Autopilot</strong> (updated Scout agent): A "digital coworker" with its own identity and configurable permissions, capable of operating autonomously across Microsoft 365.
+        These announcements deepen the agentic AI layer across Microsoft's enterprise stack and raise new governance questions around autonomous workers in corporate environments.
+      </div>
+      <div class="story-source">Sources: <a href="https://www.microcenter.com/site/mc-news/article/this-week-in-ai-oct-2-2026.aspx" target="_blank">Microcenter</a> · <a href="https://aiweekly.co/ai-news-today/edition/2026-10-02" target="_blank">AI Weekly</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">
+        <span class="tag tag-risk">⚠️ National Security</span>
+        AI Chatbot Fabricated Nuclear Weapons Claim — Entered Official US Intelligence Report
+      </div>
+      <div class="story-body">
+        A significant AI reliability incident was disclosed this week: an analyst fed a cargo manifest to an AI tool, and the system falsely claimed a Chinese vessel was carrying nuclear-weapons components bound for Iran. The false output entered an <strong>official intelligence report</strong> before being caught. The incident — surfaced by researchers Timnit Gebru and Emily M. Bender — illustrates the catastrophic risk of unvalidated AI outputs in high-stakes intelligence workflows, particularly given the current US-Iran conflict context where misattribution could trigger military escalation.
+      </div>
+      <div class="story-source">Source: <a href="https://aiweekly.co/ai-news-today/edition/2026-10-02" target="_blank">AI Weekly Oct 2</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">
+        <span class="tag tag-watch">Infrastructure</span>
+        Google Project Suncatcher: Solar TPU Satellites by 2027; Amazon $8B Nvidia Sale-Leaseback; Open-Source Decision Models
+      </div>
+      <div class="story-body">
+        Google unveiled <strong>Project Suncatcher</strong> — solar-powered TPU satellites in 650km orbit planned by early 2027 — an experimental approach to moving AI compute infrastructure off-planet. Meanwhile, Amazon is reportedly discussing moving $8 billion in deployed Nvidia chips into a third-party vehicle while leasing them back, converting massive CapEx into infrastructure financing. On open-source fronts: Amazon shipped <strong>Strands Decider 2B</strong> (72% accuracy on decision benchmarks, 106ms latency, based on Qwen3.5); Cloudflare open-sourced <strong>Clef and Clef-flash</strong> decision models supporting 64k context and vision.
+      </div>
+      <div class="story-source">Sources: <a href="https://aiweekly.co/ai-news-today/edition/2026-10-02" target="_blank">AI Weekly Oct 2</a></div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">
+        <span class="tag tag-watch">Legal / Research</span>
+        Google AI Overviews Antitrust Suits Dismissed; Synthetic Training Data Harmful at Scale
+      </div>
+      <div class="story-body">
+        Judge Amit Mehta dismissed antitrust suits from Chegg and Penske Media against Google's AI Overviews, ruling that "an expectation is not an agreement" — redirecting publisher grievances toward legislative remedies rather than courts.
+        <br><br>An arXiv study found that synthetic web text provides brief early benefits during model pre-training but reverses into measurable harm as human-data budgets increase, suggesting scale-dependent trade-offs that will reshape training data strategy at frontier labs.
+        <br><br>Separately, Nvidia is facing mounting pressure over restricted chip smuggling into China via label removal and cargo interception, prompting questions about supply chain controls.
+      </div>
+      <div class="story-source">Sources: <a href="https://aiweekly.co/ai-news-today/edition/2026-10-02" target="_blank">AI Weekly Oct 2</a></div>
+    </div>
+
+    <!-- Audience sub-sections -->
+    <hr class="divider">
+    <p style="font-size:0.82rem;color:#8b949e;margin-bottom:16px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">Audience Tailored Takeaways</p>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="audience-label">🔐 CISO / Security Operations</div>
+        <div class="audience-body">
+          <ul>
+            <li>Gemini 4 Argon at 68% CWE-bench: autonomous vuln patching pipelines are becoming real — assess whether your org can adopt defender AI programs like Fairwind.</li>
+            <li>The AI intelligence near-miss is a direct case study for your AI acceptable-use and output-validation policies.</li>
+            <li>Claude Code Mods introduce a permission-control layer for agentic AI — strong argument for adopting governed agent frameworks over unmanaged copilots.</li>
+            <li>Autonomous AI offensive attacks confirmed in the wild — update red team playbooks to include AI agent threat actors.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="audience-card">
+        <div class="audience-label">🤝 Consulting Partner</div>
+        <div class="audience-body">
+          <ul>
+            <li>GPT-6.1 Sol + OpenAI Dots + Microsoft Autopilot = agentic AI is the new enterprise conversation. Advisory and implementation demand will surge this quarter.</li>
+            <li>Claude Code Mods: enterprises need governance frameworks for agent loops — immediate consulting opportunity.</li>
+            <li>Synthetic data research finding will complicate client AI roadmaps that rely on synthetic data at scale.</li>
+            <li>Google AI Overviews ruling redirects publishers to legislation — monitor EU and US AI content liability bills.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="audience-card">
+        <div class="audience-label">💼 Business Executive</div>
+        <div class="audience-body">
+          <ul>
+            <li>AI is now a national security risk: the fabricated nuclear shipment report is a board-level wake-up call on AI validation in critical workflows.</li>
+            <li>Microsoft "Autopilot" digital coworker raises novel HR, legal, and compliance questions — governance policies needed before deployment.</li>
+            <li>Anthropic Sonnet 5.5 price/performance cuts make AI more accessible — review cost models for existing deployments.</li>
+            <li>Google solar TPU satellites and Amazon sale-leaseback signal continued hyper-scale AI CapEx with creative financing.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Sunday, October 4, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html">← Back to full archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
