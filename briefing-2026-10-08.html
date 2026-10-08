@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Thursday, October 8, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Thursday, October 8, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Trump: Decision Will Come "The Easy Way or the Hard Way" After Camp David Huddle</a>
+    <div class="toc-section">National security team met secretly at Camp David to weigh Iran and Yemen options · Tanker off Qatar hit by multiple projectiles on Oct 7 · Vance says US still open to a deal but demands concrete nuclear concessions</div>
+    <a href="#cyber">🔐 Cybersecurity — Cisco Patches a Dozen Critical Flaws as Atlassian Zero-Day Comes Under Active Attack</a>
+    <div class="toc-section">CVE-2026-76464 (CVSS 9.6) hits Meraki gateways and access points · Atlassian Data Center flaw CVE-2026-21589 (CVSS 9.3) exploited within hours of disclosure · Pwn2Own Ireland racks up 32 zero-days including a one-bug takedown of OpenAI Codex</div>
+    <a href="#ai">🤖 Artificial Intelligence — Anthropic Cuts Haiku Pricing 75% as Mistral Large 4 Hits Public Preview</a>
+    <div class="toc-section">Claude Haiku 5.5 launches at $0.10/$0.50 per million tokens with 1M context and effort controls · Mistral Large 4 preview API goes live, open weights due Oct 31 · Pwn2Own researchers break LiteLLM and Oracle's Autonomous AI Database</div>
+  </div>
+
+  <!-- ═══════════════════ IRAN WAR ═══════════════════ -->
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — Trump: Decision Will Come "The Easy Way or the Hard Way" After Camp David Huddle</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 223</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Camp David Meeting Precedes Trump's Starkest Warning Yet
+        <span class="badge badge-red">DECISION "IMMINENT"</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        Trump's senior national security team met at Camp David to review options on Iran alongside the separate Saudi-Houthi conflict in Yemen, after which Trump told reporters: "We have a decision that I'll make about Iran... Iran's been decimated, so the only question is, it'll either be the easy way or the hard way." The remark, widely read as a binary choice between a negotiated settlement or a resumption of large-scale strikes, lands as tensions on the water remain elevated — a tanker off Qatar reported being hit by multiple projectiles on October 7, continuing the near-daily pattern of attacks on shipping through the Gulf. Vice President Vance struck a more measured tone, saying the US remains open to an agreement but will require concrete, verifiable Iranian nuclear concessions before any blockade relief. Despite the rhetoric, Trump has reportedly told aides privately that he expects to authorize a renewed bombing campaign after the November 3 midterms if Tehran doesn't move — a timeline now baked into how both sides are posturing publicly.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">223 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">Oct 7</div>
+          <div class="stat-label">Latest tanker strike near Qatar</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">Nov 3</div>
+          <div class="stat-label">Midterms — Trump's stated strike threshold</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.cbsnews.com/live-updates/trump-iran-war-us-midterm-elections-troops-deployment/">CBS News — Trump Iran war live updates</a>
+        <a href="https://www.timesofisrael.com/liveblog-october-07-2026/">Times of Israel — Oct 7 liveblog</a>
+        <a href="https://www.reuters.com/world/middle-east/">Reuters — Middle East</a>
+        <a href="https://www.globalsecurity.org/military/ops/iran-war-oprep.htm">GlobalSecurity.org — Day 223 Update</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Vance's comments mark the clearest public statement yet that nuclear concessions, not just Hormuz access, are now a precondition the US is attaching to any blockade relief — a harder line than earlier rounds of the Islamabad MOU talks.</li>
+        <li>No new US or coalition strikes on Iranian territory were confirmed today; the posture remains declared intent pending Trump's decision.</li>
+        <li>Shipping insurers continue to price Hormuz transit risk at record levels following this week's tanker charter rate highs, with no signs of easing after the latest projectile strike.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>18–23</td><td>820 wounded</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">No new casualty totals published today; figures carried forward from the last confirmed update.</p>
+      <div class="sources">
+        Sources: <a href="https://en.wikipedia.org/wiki/2026_Iran_war">Wikipedia — 2026 Iran war</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ CYBERSECURITY ═══════════════════ -->
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Thursday, October 8, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Cisco's Biggest Patch Batch of the Month as Atlassian Zero-Day Is Exploited Within Hours
+        <span class="badge badge-red">CVE-2026-21589 · CVSS 9.3 · UNDER ATTACK</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Cisco's PSIRT published advisories on October 7 covering 35 vulnerabilities, including over a dozen critical-severity bugs stemming from an internal hardening review rather than external discovery. The most severe, CVE-2026-76464 (CVSS 9.6), is a memory-corruption flaw — buffer overflows and out-of-bounds writes — affecting Cisco Campus Gateway Software and the Meraki MR, MV and MX product lines; Cisco says it has no evidence of public exploitation so far. Less fortunate is Atlassian: a critical auth flaw in its self-hosted Data Center products, CVE-2026-21589 (CVSS 9.3), came under active attack within hours of Atlassian's October 5 disclosure, underscoring how quickly PoC-to-exploit windows have compressed this year. Separately, a public proof-of-concept dropped for CVE-2026-102489, a critical Zammad flaw letting unauthenticated attackers steal active session cookies and potentially chain to remote code execution, and four distinct attacker clusters are now exploiting the earlier Citrix NetScaler flaw CVE-2026-88771 to plant web shells on unpatched appliances.
+      </p>
+      <div class="alert alert-red">
+        Atlassian Data Center admins: patch CVE-2026-21589 now — active exploitation began within hours of disclosure. Cisco Meraki/Campus Gateway admins: prioritize CVE-2026-76464 even absent confirmed exploitation, given the CVSS 9.6 severity. NetScaler admins still on CVE-2026-88771: assume web-shell compromise and inspect, don't just patch.
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.securityweek.com/cisco-patches-a-dozen-critical-vulnerabilities/">SecurityWeek — Cisco patches</a>
+        <a href="https://securityweek.com/attackers-target-critical-atlassian-vulnerability-within-hours-of-poc-publication">SecurityWeek — Atlassian exploitation</a>
+        <a href="https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-notice-fBn58ELx">Cisco Security Advisories — Oct 7, 2026</a>
+        <a href="https://cybersecuritynews.com/poc-released-for-zammad-session-leak-flaw">Cybersecurity News — Zammad PoC</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Pwn2Own Ireland 2026's first two days produced 32 unique zero-days and over $608,500 in payouts, with successful exploit chains against the Samsung Galaxy S26, Pixel 10, Philips Hue Bridge Pro and Oracle's Autonomous AI Database.</li>
+        <li>A single argument-injection bug was enough to fully compromise OpenAI Codex's cloud-based AI coding agent — researchers flagged it as illustrative of a broader detection gap around AI coding-agent tool-call boundaries.</li>
+        <li>Taisic Yun of Xint chained an improper input-validation bug with code injection to get a reverse shell on LiteLLM, earning $40,000; HaeJung Yang of Out of Bounds separately took down Nvidia's Dynamo AI-infrastructure platform.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Patch CVE-2026-21589 (Atlassian Data Center) today — the disclosure-to-exploitation window was measured in hours, not days; treat any internet-facing Atlassian Data Center instance as compromised until confirmed otherwise</li>
+            <li>The OpenAI Codex and LiteLLM breaks at Pwn2Own are a concrete reminder that AI coding agents and LLM gateways need the same input-validation and argument-sanitization scrutiny as any other internet-facing service — don't exempt them because they're "just AI tooling"</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Pwn2Own's $608,500-and-counting payout across 32 zero-days in AI tools, mobile and IoT is a strong, quantified talking point for clients who treat bug-bounty and red-team investment as optional rather than core budget</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>Cisco's dozen-plus critical bugs came from its own internal hardening review, not an outside researcher — a useful example for boards of why proactive internal security investment pays off before attackers find the same flaws</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ AI ═══════════════════ -->
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Thursday, October 8, 2026 · Price War Intensifies at the Small-Model End</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Anthropic Slashes Haiku Pricing 75% as Mistral Large 4 Goes to Public Preview
+        <span class="badge badge-green">$0.10 / $0.50 PER MILLION TOKENS</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Anthropic launched Claude Haiku 5.5 at $0.10 input / $0.50 output per million tokens for prompts up to 100K tokens — roughly 75% cheaper than Haiku 4.5 — with 1M-token context, configurable effort controls, and a self-reported 72.4% on the OSWorld computer-use benchmark, signaling an aggressive push to own the low-cost, high-volume agentic workload tier. The move lands the same week Mistral took Large 4 to public preview, with the preview API live now and full open weights slated for October 31 on Hugging Face — a staged rollout similar to the pattern Google used for Gemini 4 Argon. Smaller but notable: Perplexity released pplx-embed-v2-late, a 0.6B edge embedding model plus a 9B variant scoring 92.4% on MADQA, and Google DeepMind shipped EmbeddingGemma 2, a 740M-parameter Apache 2.0 multimodal embedding model covering text, code, images, video and audio — both signs that the embedding-model layer is seeing as much competitive investment this month as flagship chat models.
+      </p>
+      <div class="sources">
+        Sources: <a href="https://www.anthropic.com/news">Anthropic — News</a>
+        <a href="https://mistral.ai/news/">Mistral AI — News</a>
+        <a href="https://www.technologyreview.com/">MIT Technology Review</a>
+        <a href="https://venturebeat.com/">VentureBeat</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>Pwn2Own Ireland's AI-infrastructure track delivered its own data point for the AI market story: Nvidia's Dynamo platform and Oracle's Autonomous AI Database were both successfully exploited, a reminder that the infrastructure layer underneath these model launches carries its own, separately-priced risk.</li>
+        <li>Haiku 5.5's effort-control feature — letting developers dial compute spend up or down per request — continues a 2026 trend of pricing models shifting from flat per-token rates toward tunable cost/quality tradeoffs.</li>
+        <li>Google DeepMind's EmbeddingGemma 2 and Perplexity's pplx-embed-v2-late both target the edge/on-device embedding niche, suggesting labs see real demand for retrieval infrastructure that doesn't require a round-trip to a hyperscaler API.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — AI Security</div>
+          <ul>
+            <li>Haiku 5.5's 75% price cut will accelerate adoption of cheap, high-volume AI agents inside your organization faster than governance processes typically move — now is the time to confirm agent-inventory and access-scoping controls can keep pace with usage growth, not after volume spikes</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>The simultaneous price war (Haiku) and open-weight staged rollout (Mistral) gives clients two live case studies this week for a build-vs-buy AI strategy conversation — cost-optimized proprietary API vs. a model they'll eventually host themselves</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>Anthropic's aggressive Haiku pricing move is a direct bid for the high-volume agentic workload market — worth checking whether your vendor contracts have pricing-review clauses given how fast per-token costs are dropping this year</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Thursday, October 8, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
