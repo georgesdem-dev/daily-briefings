@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Investment Brief — Saturday, October 10, 2026 (Weekend Edition)</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+    .header { text-align: center; padding: 52px 0 40px; border-bottom: 1px solid #21262d; margin-bottom: 48px; }
+    .header .label { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #f0c040; margin-bottom: 12px; }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
+    .header .date { font-size: 1rem; color: #8b949e; margin-bottom: 16px; }
+    .header .nav { font-size: 0.82rem; color: #484f58; }
+    .header .nav a { color: #6e7681; }
+    .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 48px; }
+    .stat-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 14px 16px; text-align: center; }
+    .stat-card .stat-label { font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8b949e; margin-bottom: 6px; display: block; }
+    .stat-card .stat-value { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; display: block; margin-bottom: 3px; }
+    .stat-card .stat-change { font-size: 0.78rem; font-weight: 600; }
+    .green { color: #3fb950; } .red { color: #f85149; } .amber { color: #e3b341; } .blue { color: #58a6ff; }
+    .stat-card.bullish { border-top: 2px solid #238636; }
+    .stat-card.bearish { border-top: 2px solid #da3633; }
+    .stat-card.neutral { border-top: 2px solid #9e6a03; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 2px solid #21262d; }
+    .section-icon { font-size: 1.6rem; }
+    .section-title { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; }
+    .section-tag { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; margin-left: auto; }
+    .tag-market { background: #1a1f3d; color: #79c0ff; border: 1px solid #2a3a6e; }
+    .tag-pick { background: #1a3d1a; color: #3fb950; border: 1px solid #2a6e2a; }
+    .tag-risk { background: #3d1a1a; color: #f85149; border: 1px solid #6e2a2a; }
+    .tag-insight { background: #3d2a0a; color: #e3b341; border: 1px solid #6e4a0a; }
+    .story { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 20px 22px; margin-bottom: 14px; }
+    .story:hover { border-color: #444c56; }
+    .story h3 { font-size: 1rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; line-height: 1.4; }
+    .story p { font-size: 0.88rem; color: #c9d1d9; line-height: 1.65; margin-bottom: 8px; }
+    .story p:last-child { margin-bottom: 0; }
+    .story .source { font-size: 0.76rem; color: #484f58; margin-top: 10px; }
+    .pick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 14px; }
+    .pick-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px; }
+    .pick-card:hover { border-color: #444c56; }
+    .pick-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
+    .pick-ticker { font-size: 1.2rem; font-weight: 800; color: #58a6ff; }
+    .pick-company { font-size: 0.78rem; color: #8b949e; margin-top: 2px; }
+    .pick-price { text-align: right; }
+    .pick-price .price-val { font-size: 1.1rem; font-weight: 700; color: #f0f6fc; }
+    .pick-price .price-change { font-size: 0.78rem; }
+    .pick-desc { font-size: 0.84rem; color: #c9d1d9; line-height: 1.6; margin-bottom: 12px; }
+    .pick-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .pick-badge { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; }
+    .badge-buy { background: #1a3d1a; color: #3fb950; border: 1px solid #2a5a2a; }
+    .badge-moderate { background: #1a2d3d; color: #58a6ff; border: 1px solid #2a4a6e; }
+    .badge-income { background: #3d2a0a; color: #e3b341; border: 1px solid #6e4a0a; }
+    .badge-growth { background: #1a1a3d; color: #a371f7; border: 1px solid #3a2a6e; }
+    .badge-etf { background: #1a3d3d; color: #56d364; border: 1px solid #2a5a5a; }
+    .badge-defensive { background: #2d1a3d; color: #d2a8ff; border: 1px solid #5a2a6e; }
+    .target-row { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+    .target-pill { background: #0d1117; border: 1px solid #21262d; border-radius: 6px; padding: 4px 10px; font-size: 0.76rem; color: #8b949e; }
+    .target-pill span { font-weight: 700; color: #f0f6fc; }
+    .outlook-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 6px; }
+    .outlook-table thead th { text-align: left; padding: 10px 12px; font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8b949e; background: #161b22; border-bottom: 2px solid #21262d; }
+    .outlook-table tbody tr { border-bottom: 1px solid #21262d; }
+    .outlook-table tbody tr:hover { background: #161b22; }
+    .outlook-table tbody td { padding: 11px 12px; color: #c9d1d9; vertical-align: top; }
+    .outlook-table .ticker-cell { font-weight: 800; color: #58a6ff; white-space: nowrap; }
+    .outlook-table .price-cell { font-weight: 700; color: #f0f6fc; }
+    .outlook-table .target-up { color: #3fb950; font-weight: 700; }
+    .outlook-table .target-dn { color: #f85149; font-weight: 700; }
+    .outlook-table .target-flat { color: #e3b341; font-weight: 700; }
+    .risk-low { color: #3fb950; font-size: 10px; font-weight: 700; }
+    .risk-med { color: #e3b341; font-size: 10px; font-weight: 700; }
+    .risk-high { color: #f85149; font-size: 10px; font-weight: 700; }
+    .insight-card { background: #161b22; border: 1px solid #30363d; border-left: 3px solid #e3b341; border-radius: 0 10px 10px 0; padding: 18px 20px; margin-bottom: 14px; }
+    .insight-card h3 { font-size: 0.96rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; }
+    .insight-card p { font-size: 0.86rem; color: #c9d1d9; line-height: 1.65; }
+    .insight-card .person { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #e3b341; margin-bottom: 8px; display: block; }
+    .risk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+    .risk-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 16px 18px; }
+    .risk-card .risk-title { font-size: 0.88rem; font-weight: 700; color: #f0f6fc; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .risk-card ul { list-style: none; padding: 0; }
+    .risk-card ul li { font-size: 0.82rem; color: #c9d1d9; margin-bottom: 6px; padding-left: 16px; position: relative; line-height: 1.5; }
+    .risk-card ul li::before { content: "›"; position: absolute; left: 0; color: #f85149; }
+    .wl-item { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #21262d; font-size: 0.82rem; }
+    .wl-item:last-child { border-bottom: none; }
+    .wl-ticker { font-weight: 700; color: #58a6ff; }
+    .wl-reason { color: #8b949e; font-size: 0.76rem; }
+    .tldr { background: #161b22; border: 1px solid #30363d; border-left: 3px solid #58a6ff; border-radius: 0 8px 8px 0; padding: 14px 18px; margin-bottom: 28px; font-size: 0.86rem; color: #8b949e; }
+    .tldr strong { color: #f0f6fc; }
+    .sector-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+    .sector-row { display: flex; justify-content: space-between; align-items: center; background: #0d1117; border: 1px solid #21262d; border-radius: 6px; padding: 7px 12px; font-size: 0.82rem; }
+    .sector-name { color: #c9d1d9; }
+    .sector-pct { font-weight: 700; }
+    .footer { text-align: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem; }
+    .footer strong { color: #6e7681; }
+    .upside-pct { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; background: #1a3d1a; color: #3fb950; margin-left: 6px; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="label">📈 Investment Brief · Moderate Risk Portfolio · Weekend Edition</div>
+    <h1>Saturday, October 10, 2026</h1>
+    <div class="date">Markets Closed for the Weekend &nbsp;·&nbsp; Levels as of Friday, Oct 9 close &nbsp;·&nbsp; For Georges</div>
+    <div class="nav"><a href="index.html">← Back to archive</a></div>
+  </div>
+
+  <div class="tldr">
+    <strong>Today at a glance:</strong> &nbsp;
+    Friday was a clean rebound — S&amp;P +0.59%, Dow +0.83%, Nasdaq +0.64% — fully reversing Thursday's AI-revenue-doubt dip after Bloomberg reported OpenAI's annualized revenue run rate near $70B, clarifying that Thursday's scarier $50B figure came from a different accounting methodology, not a retraction &nbsp;·&nbsp;
+    The 10Y Treasury eased to ~5.23-5.24%, down from Thursday's 24-year intraday high (5.357%) — near-term relief, though Dalio and Marks both argue the broader rising-yield trend isn't over &nbsp;·&nbsp;
+    <strong>Correction:</strong> Friday's Delta earnings were a miss, not a beat — adjusted EPS $1.72 vs. $1.77 consensus, with FY guidance cut sharply (to $5.10-5.60 from $6.50-7.50) on a 62% jump in fuel costs; the stock whipsawed intraday but closed essentially flat (+0.04%) on reassuring demand commentary &nbsp;·&nbsp;
+    Iran's Hormuz tanker-attack campaign hit a "wartime high" this week (11 strikes) and a fresh strike was claimed over the weekend — no de-escalation &nbsp;·&nbsp;
+    Next week's main event: bank earnings kick off Tuesday Oct 13 (JPM, GS, WFC, C)
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-card bullish">
+      <span class="stat-label">S&amp;P 500</span>
+      <span class="stat-value">7,811.51</span>
+      <span class="stat-change green">+0.59% Fri</span>
+    </div>
+    <div class="stat-card bullish">
+      <span class="stat-label">Dow Jones</span>
+      <span class="stat-value">51,655.01</span>
+      <span class="stat-change green">+0.83% Fri</span>
+    </div>
+    <div class="stat-card bullish">
+      <span class="stat-label">Nasdaq</span>
+      <span class="stat-value">27,366.17</span>
+      <span class="stat-change green">+0.64% Fri, fully reversed Thu's dip</span>
+    </div>
+    <div class="stat-card bullish">
+      <span class="stat-label">Russell 2000</span>
+      <span class="stat-value">2,806.98</span>
+      <span class="stat-change green">+0.46% Fri</span>
+    </div>
+    <div class="stat-card bullish">
+      <span class="stat-label">VIX</span>
+      <span class="stat-value">14.84</span>
+      <span class="stat-change green">-3.7% Fri, risk-off fading</span>
+    </div>
+    <div class="stat-card neutral">
+      <span class="stat-label">Crude Oil</span>
+      <span class="stat-value">~$90-91</span>
+      <span class="stat-change amber">WTI close unconfirmed; Brent -1.6% to $102.60</span>
+    </div>
+    <div class="stat-card bullish">
+      <span class="stat-label">Gold</span>
+      <span class="stat-value">~$4,165</span>
+      <span class="stat-change green">+0.8-1.5% Fri (sources vary $4,144-4,194)</span>
+    </div>
+    <div class="stat-card neutral">
+      <span class="stat-label">10Y Treasury</span>
+      <span class="stat-value">~5.23-5.24%</span>
+      <span class="stat-change amber">Eased ~9bp off Thu's 24-yr high</span>
+    </div>
+  </div>
+
+
+  <!-- SECTION 1 — MARKET SNAPSHOT -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">📊</span>
+      <span class="section-title">Market Snapshot — Friday's Rebound</span>
+      <span class="section-tag tag-market">LIVE DATA</span>
+    </div>
+
+    <div class="story">
+      <h3>💻 It Was a Methodology Mix-Up, Not a Retraction — Tech Rallies Back</h3>
+      <p>Friday's gains fully erased Thursday's AI-revenue-doubt selloff after Bloomberg reported OpenAI expects annualized revenue to reach or exceed $70B by year-end. The real story: Bloomberg clarified that Thursday's scarier Financial Times figure (~$50B run rate) and the newer $70B figure reflect different accounting methodologies between OpenAI and Anthropic for how cloud-provider revenue is treated — not a correction of a false number. Markets took the clarification as reassurance. One wrinkle: NVIDIA (-0.52%) didn't fully participate in the rebound even as the Nasdaq (+0.64%) and MSFT (+2.38%) did — worth watching for whether that's noise or an early signal.</p>
+    </div>
+
+    <div class="story">
+      <h3>✈️ Correcting Friday: Delta's Earnings Were a Miss, Not a Beat</h3>
+      <p>Our prior report said Delta beat Q3 estimates with EPS of $2.01. Fuller results show the opposite: Delta reported adjusted EPS of $1.72, missing the $1.77 consensus, driven by a 62% surge in fuel costs ($4.14B for the quarter). Management cut full-year 2026 guidance to adjusted EPS of $5.10-5.60, down sharply from a prior $6.50-7.50. The stock fell as much as 4.4% in early trading before recovering to close essentially flat (+0.04%) after the CEO said he sees "no cracks in travel demand." We're flagging the correction for the record — several sell-side desks (Bernstein SocGen, Susquehanna, Wells Fargo, BofA) had already trimmed targets to the $95-106 range ahead of the print while keeping Buy ratings.</p>
+    </div>
+
+    <div class="story">
+      <h3>🇮🇷 Hormuz Campaign Hits a "Wartime High" — No Weekend De-Escalation</h3>
+      <p>Eleven tankers were struck in the week ended October 4 — the most since the shadow conflict began in late February — with attacks continuing to spread beyond the strait itself (Qatar, Fujairah). Weekend reports (Oct 10) indicate Iran's IRGC claimed a fresh strike on an LPG tanker, suggesting the campaign is intensifying rather than cooling off. Oil-tanker traffic exiting Hormuz is running roughly 30% below normal pre-war levels; Brent fell 1.6% to $102.60 Friday even so, as the broader risk-on tone in equities dominated the session.</p>
+    </div>
+
+    <div class="story">
+      <h3>💵 Yields Ease Off the Highs — But the Bigger Debate Isn't Settled</h3>
+      <p>The 10-year Treasury eased to roughly 5.23-5.24% Friday, down about 9 basis points from Thursday's 24-year intraday high of 5.357% — consistent with the equity rebound as discount-rate pressure lifted. But Ray Dalio and Howard Marks both pushed back this week on reading too much into any single day's relief: Dalio called it a "bond bear market" with "more to go," while Marks's latest Oaktree memo argues rising long yields are a rational response to sticky inflation, a ~6%-of-GDP peacetime deficit, and AI-driven capital demand — not something Treasury buybacks can fix.</p>
+    </div>
+  </div>
+
+
+  <!-- SECTION 2 — SECTOR PERFORMANCE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🧭</span>
+      <span class="section-title">Sector Performance — Year-to-Date 2026</span>
+      <span class="section-tag tag-market">11 SECTORS</span>
+    </div>
+    <div class="story">
+      <p style="margin-bottom:6px;">Energy and Technology remain the only two sectors to meaningfully outperform the broader index since February 2026. Consumer Discretionary, Utilities, and Communication Services stay at the bottom. As in prior editions, third-party sector-return aggregators disagree materially on exact percentages — treat the relative ranking as reliable, the precise figures as directional only.</p>
+      <div class="sector-grid">
+        <div class="sector-row"><span class="sector-name">Energy</span><span class="sector-pct green">+38.9% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">Technology</span><span class="sector-pct green">+35.1% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">Materials</span><span class="sector-pct green">+15.0% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">Industrials</span><span class="sector-pct green">+12.0% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">Health Care</span><span class="sector-pct green">+10.6% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">Consumer Staples</span><span class="sector-pct green">+9.3% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">Real Estate</span><span class="sector-pct green">+8.0% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">Financials</span><span class="sector-pct red">-1.5% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">Communication Services</span><span class="sector-pct red">-5.6% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">Utilities</span><span class="sector-pct red">-8.1% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">Consumer Discretionary</span><span class="sector-pct red">-8.7% YTD</span></div>
+      </div>
+      <p style="margin-top:10px;font-size:0.8rem;color:#8b949e;">S&amp;P 500 overall ~+13.4% YTD as of Oct 9 close. Figures blend several data providers with slightly different snapshot dates.</p>
+    </div>
+  </div>
+
+
+  <!-- SECTION 3 — TOP PICKS: MODERATE RISK -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🎯</span>
+      <span class="section-title">Top Picks — Moderate Risk Portfolio</span>
+      <span class="section-tag tag-pick">BUY THESIS</span>
+    </div>
+
+    <div class="tldr" style="border-left-color: #3fb950;">
+      <strong>Portfolio philosophy:</strong> &nbsp; Friday's rebound confirms Thursday's AI-revenue scare was a headline/methodology issue, not a demand problem — holding the growth sleeve unchanged. Heading into next Tuesday's bank-earnings kickoff, watching whether JPM/GS/WFC/C echo Delta's fuel-cost-style guidance caution or confirm Goldman's still-constructive growth call.
+    </div>
+
+    <div class="pick-grid">
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">MSFT</div><div class="pick-company">Microsoft Corporation</div></div>
+          <div class="pick-price"><div class="price-val">$535.07</div><div class="price-change green">+2.38% Fri</div></div>
+        </div>
+        <p class="pick-desc">Led Friday's tech rebound outright. Strong Buy consensus intact, with JPMorgan's raised target (~$588) now looking well ahead of Thursday's dip-driven pessimism. Azure growth and Copilot monetization remain the core thesis.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Strong Buy</span><span class="pick-badge badge-growth">AI Core</span><span class="pick-badge badge-income">Dividend</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$588</span></div><div class="target-pill">Upside: <span class="green">+10%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">NVDA</div><div class="pick-company">NVIDIA Corporation</div></div>
+          <div class="pick-price"><div class="price-val">$229.28</div><div class="price-change red">-0.52% Fri</div></div>
+        </div>
+        <p class="pick-desc">Didn't fully join Friday's tech rebound despite the OpenAI-revenue clarification that drove the rest of the sector higher — a minor divergence worth watching into fiscal Q3 earnings. Strong Buy consensus; average target ~$328 (wide dispersion persists, $321-345).</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Strong Buy</span><span class="pick-badge badge-growth">AI Chips</span><span class="pick-badge badge-moderate">Higher Beta</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$328</span></div><div class="target-pill">Upside: <span class="green">+43%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">JNJ</div><div class="pick-company">Johnson &amp; Johnson</div></div>
+          <div class="pick-price"><div class="price-val">$259.18</div><div class="price-change green">+1.05% Fri</div></div>
+        </div>
+        <p class="pick-desc">Moderate Buy consensus, with fresh target hikes this week (Citi $303, RBC $290). Q3 earnings land Tuesday Oct 13 — a key defensive anchor the same day bank-earnings season kicks off.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Buy</span><span class="pick-badge badge-defensive">Defensive</span><span class="pick-badge badge-income">Dividend</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$276</span></div><div class="target-pill">Upside: <span class="green">+6%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">XOM</div><div class="pick-company">Exxon Mobil Corporation</div></div>
+          <div class="pick-price"><div class="price-val">$168.94</div><div class="price-change green">+0.1% Fri</div></div>
+        </div>
+        <p class="pick-desc">Roughly flat Friday despite Brent easing 1.6% — the stock is holding up on the Hormuz risk premium even as near-term oil prices wobble. The attack campaign hitting a "wartime high" this week keeps the supply-risk tailwind intact.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Buy</span><span class="pick-badge badge-income">Dividend</span><span class="pick-badge badge-defensive">Low Beta</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$173</span></div><div class="target-pill">Upside: <span class="green">+2%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">JPM</div><div class="pick-company">JPMorgan Chase</div></div>
+          <div class="pick-price"><div class="price-val">$332.99</div><div class="price-change green">+0.47% Fri</div></div>
+        </div>
+        <p class="pick-desc">Buy consensus. Reports Q3 earnings Tuesday Oct 13 (~7am ET; consensus ~$5.90 EPS / ~$51.5B revenue, +16%/+11% YoY) alongside Goldman, Wells Fargo, and Citigroup — next week's single biggest catalyst, with the market watching for NII commentary against still-elevated yields.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Buy</span><span class="pick-badge badge-income">Dividend</span><span class="pick-badge badge-defensive">Value</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$373</span></div><div class="target-pill">Upside: <span class="green">+12%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">NEE</div><div class="pick-company">NextEra Energy</div></div>
+          <div class="pick-price"><div class="price-val">$77.38</div><div class="price-change amber">~flat Fri</div></div>
+        </div>
+        <p class="pick-desc">Buy-leaning consensus; average target ~$98. The AI-datacenter power-demand story and Dominion merger thesis remain intact, with Friday's yield pullback a mild tailwind for rate-sensitive utilities. Earnings due Oct 27.</p>
+        <div class="pick-meta"><span class="pick-badge badge-buy">Buy</span><span class="pick-badge badge-defensive">Utility</span><span class="pick-badge badge-income">Dividend</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$98</span></div><div class="target-pill">Upside: <span class="green">+27%</span></div></div>
+      </div>
+
+      <div class="pick-card">
+        <div class="pick-header">
+          <div><div class="pick-ticker">UPS</div><div class="pick-company">United Parcel Service</div></div>
+          <div class="pick-price"><div class="price-val">~$94.30</div><div class="price-change amber">~flat Fri (intraday, close unconfirmed)</div></div>
+        </div>
+        <p class="pick-desc">Rating split persists: Citigroup cut its target to $122 and BofA to $108, both citing Amazon-volume softness, while the stock keeps holding up regardless. Watch closely into Oct 27 earnings for which view wins out — and whether Delta's fuel-cost-driven guidance cut this week is a preview of logistics-sector cost pressure broadly.</p>
+        <div class="pick-meta"><span class="pick-badge badge-moderate">Hold/Buy Split</span><span class="pick-badge badge-income">High Yield</span><span class="pick-badge badge-defensive">Logistics</span></div>
+        <div class="target-row"><div class="target-pill">Target: <span class="green">$114</span></div><div class="target-pill">Upside: <span class="green">+21%</span></div></div>
+      </div>
+
+    </div>
+
+    <div class="story">
+      <h3>📦 ETF Core Position — Diversification Layer</h3>
+      <p><strong class="blue">SPY (S&amp;P 500 ETF) — $778.57 | Expense: 0.09% | Yield: ~1.0%</strong> — Rose in line with the index Friday, confirming the rebound was broad-based rather than concentrated in a handful of names. Maintain the 25% SPY core heading into Tuesday's bank-earnings kickoff (JPM, GS, WFC, C).</p>
+    </div>
+  </div>
+
+
+  <!-- SECTION 4 — 30-60-90 DAY OUTLOOK TABLE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🗓️</span>
+      <span class="section-title">30–60–90 Day Outlook</span>
+      <span class="section-tag tag-market">PRICE TARGETS</span>
+    </div>
+
+    <div class="story" style="padding: 0; overflow-x: auto;">
+      <table class="outlook-table">
+        <thead>
+          <tr><th>Ticker</th><th>Current</th><th>30-Day Target</th><th>60-Day Target</th><th>90-Day Target</th><th>12-Mo Consensus</th><th>Key Catalyst</th><th>Risk Level</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="ticker-cell">MSFT</td><td class="price-cell">$535</td><td class="target-up">$550</td><td class="target-up">$566</td><td class="target-up">$578</td><td class="target-up">$588 <span class="upside-pct">+10%</span></td><td>Q1 FY27 Azure results; AI-agent momentum</td><td><span class="risk-low">LOW</span></td></tr>
+          <tr><td class="ticker-cell">NVDA</td><td class="price-cell">$229</td><td class="target-up">$257</td><td class="target-up">$288</td><td class="target-up">$311</td><td class="target-up">$328 <span class="upside-pct">+43%</span></td><td>FQ3 earnings (Nov); Blackwell supply ramp</td><td><span class="risk-high">HIGH</span></td></tr>
+          <tr><td class="ticker-cell">JNJ</td><td class="price-cell">$259</td><td class="target-up">$264</td><td class="target-up">$269</td><td class="target-up">$273</td><td class="target-up">$276 <span class="upside-pct">+6%</span></td><td>Q3 earnings Oct 13; talc litigation rulings</td><td><span class="risk-low">LOW</span></td></tr>
+          <tr><td class="ticker-cell">XOM</td><td class="price-cell">$169</td><td class="target-up">$170</td><td class="target-up">$171</td><td class="target-up">$172</td><td class="target-up">$173 <span class="upside-pct">+2%</span></td><td>Hormuz escalation; Q3 earnings (early Nov)</td><td><span class="risk-med">MED</span></td></tr>
+          <tr><td class="ticker-cell">JPM</td><td class="price-cell">$333</td><td class="target-up">$344</td><td class="target-up">$357</td><td class="target-up">$366</td><td class="target-up">$373 <span class="upside-pct">+12%</span></td><td>Q3 earnings Tue Oct 13; NII vs. 5.2%+ yields</td><td><span class="risk-med">MED</span></td></tr>
+          <tr><td class="ticker-cell">NEE</td><td class="price-cell">$77</td><td class="target-up">$83</td><td class="target-up">$90</td><td class="target-up">$94</td><td class="target-up">$98 <span class="upside-pct">+27%</span></td><td>Q3 earnings Oct 27; Dominion merger approvals</td><td><span class="risk-med">MED</span></td></tr>
+          <tr><td class="ticker-cell">UPS</td><td class="price-cell">$94</td><td class="target-up">$100</td><td class="target-up">$106</td><td class="target-up">$111</td><td class="target-up">$114 <span class="upside-pct">+21%</span></td><td>Q3 earnings Oct 27; rating-split resolution</td><td><span class="risk-med">MED</span></td></tr>
+          <tr><td class="ticker-cell">SPY</td><td class="price-cell">$779</td><td class="target-up">$786</td><td class="target-up">$793</td><td class="target-up">$797</td><td class="target-up">~$800 <span class="upside-pct">+3%</span></td><td>Bank earnings kickoff Tue Oct 13</td><td><span class="risk-med">MED</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.75rem;color:#484f58;margin-top:10px;padding:0 4px;">
+      * 30/60/90-day targets are Jorge's estimates derived from analyst 12-month consensus targets scaled + technical levels. Not financial advice. Price data as of Friday, October 9, 2026 close (Yahoo Finance / Barchart / Bloomberg / CNBC).
+    </p>
+  </div>
+
+
+  <!-- SECTION 5 — INVESTOR INSIGHTS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🧠</span>
+      <span class="section-title">Trusted Investor Insights</span>
+      <span class="section-tag tag-insight">MACRO VIEWS</span>
+    </div>
+
+    <div class="insight-card" style="border-left-color: #58a6ff;">
+      <span class="person" style="color: #58a6ff;">Goldman Sachs — Macro Research</span>
+      <h3>Still Constructive: 2026 Global Growth Seen at 2.8%, Above Consensus</h3>
+      <p>Goldman reiterates its above-consensus 2026 global growth call (2.8% vs. 2.5% consensus) and US outperformance (2.6% vs. 2.0%), with Q3 US GDP tracking around 3.4%. The desk flags that "hot valuations" paired with sturdy growth could raise volatility even as the overall backdrop stays constructive for equities — a useful counterweight to Dalio's and Marks's more cautious yield-driven warnings this week.</p>
+    </div>
+
+    <div class="insight-card">
+      <span class="person">Warren Buffett / Berkshire Hathaway</span>
+      <h3>Quiet Week — Steady Accumulation in Lennar Continues</h3>
+      <p>No major new market commentary from Buffett directly this week. Berkshire continued its measured buying of Lennar shares (+2.4M shares, ~$192.6M), building toward a ~12.2% stake — consistent with the firm's pattern of opportunistic, patient accumulation rather than any market-timing signal.</p>
+    </div>
+
+    <div class="insight-card" style="border-left-color: #a371f7;">
+      <span class="person" style="color: #a371f7;">Ray Dalio / Bridgewater</span>
+      <h3>"Bond Bear Market" With More to Go — Stocks Losing Their Buffer</h3>
+      <p>In an Oct 6 Bloomberg interview, Dalio reiterated his debt-crisis warning (within ~3 years) and said rates will "continue rising until brakes are put on the economy." He argues equities are losing the earnings-growth buffer that's cushioned them against rising yields so far, and continues to recommend a 5-15% gold allocation alongside short-duration positioning.</p>
+    </div>
+
+    <div class="insight-card" style="border-left-color: #e3b341;">
+      <span class="person">Howard Marks / Oaktree Capital</span>
+      <h3>Rising Yields Are a "Rational" Response — Not Something Buybacks Can Fix</h3>
+      <p>Marks's latest memo (third in a series) argues the climb in long-term Treasury yields reflects sticky inflation, a roughly 6%-of-GDP peacetime deficit, and AI-driven capital demand — a rational market adjustment, not a dysfunction that Treasury buybacks could "repeal." A companion memo examines how the current AI investment cycle compares with, and differs from, prior technology cycles.</p>
+    </div>
+  </div>
+
+
+  <!-- SECTION 6 — KEY RISKS & WATCHLIST -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">⚠️</span>
+      <span class="section-title">Key Risks &amp; Watchlist</span>
+      <span class="section-tag tag-risk">RISK MONITOR</span>
+    </div>
+
+    <div class="risk-grid">
+      <div class="risk-card">
+        <div class="risk-title">🇮🇷 Hormuz Campaign at a "Wartime High" — No Let-Up</div>
+        <ul>
+          <li>11 tankers struck in the week ended Oct 4 — the most since the shadow conflict began in late February</li>
+          <li>A fresh LPG-tanker strike was claimed by Iran's IRGC over the weekend (Oct 10) — escalation, not de-escalation</li>
+          <li>Hormuz tanker traffic running ~30% below normal pre-war levels</li>
+        </ul>
+      </div>
+      <div class="risk-card">
+        <div class="risk-title">⛽ Fuel-Cost Pressure — Delta's Guidance Cut May Not Be Isolated</div>
+        <ul>
+          <li>Delta's 62% YoY fuel-cost surge drove a guidance cut from $6.50-7.50 to $5.10-5.60 FY adjusted EPS</li>
+          <li>Worth watching whether other transport/logistics names (incl. UPS) echo similar cost commentary into their own earnings</li>
+        </ul>
+      </div>
+      <div class="risk-card">
+        <div class="risk-title">💵 Yield Relief May Be Temporary</div>
+        <ul>
+          <li>10Y eased to ~5.23-5.24% Friday, but Dalio and Marks both argue the underlying upward pressure (deficits, inflation, AI capex demand) hasn't gone away</li>
+          <li>Tuesday's bank earnings (JPM, GS, WFC, C) are the first real test of how financials are managing at these yield levels</li>
+        </ul>
+      </div>
+      <div class="risk-card">
+        <div class="risk-title">🔒 Portfolio-Specific Watch Items</div>
+        <ul>
+          <li>NVDA lagged Friday's broad tech rebound (-0.52% vs. Nasdaq +0.64%) — a minor divergence worth monitoring</li>
+          <li>UPS: still no confirmed official Friday close in our data — treat the ~$94.30 figure as provisional pending Monday's open</li>
+          <li>Next week's Tuesday Oct 13 bank-earnings kickoff is the single biggest near-term catalyst for the whole portfolio</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="story" style="margin-top: 16px;">
+      <h3>👁️ Watchlist — Names to Monitor Closely</h3>
+      <div class="wl-item"><div><span class="wl-ticker">Bank Earnings (Tue Oct 13)</span><span class="wl-reason"> — JPM, GS, WFC, C kick off Q3 season; tests how financials are coping with still-elevated long yields</span></div><span class="red">⚠️ TOP WATCH</span></div>
+      <div class="wl-item"><div><span class="wl-ticker">Strait of Hormuz</span><span class="wl-reason"> — attack campaign at a "wartime high"; fresh weekend strike claimed by Iran's IRGC</span></div><span class="red">⚠️ TOP WATCH</span></div>
+      <div class="wl-item"><div><span class="wl-ticker">NVDA</span><span class="wl-reason"> — watch whether Friday's lag versus the broader tech rebound persists into next week</span></div><span class="amber">📋 MONITOR</span></div>
+      <div class="wl-item" style="border: none;"><div><span class="wl-ticker">UPS / DAL</span><span class="wl-reason"> — logistics-sector fuel-cost pressure (per Delta's guidance cut) is a read-through risk worth tracking into UPS's Oct 27 print</span></div><span class="amber">👀 SECTOR SIGNAL</span></div>
+    </div>
+
+    <div class="story" style="margin-top: 14px;">
+      <h3>📐 Suggested Moderate-Risk Allocation — Early October 2026</h3>
+      <p style="margin-bottom:12px;">A balanced allocation for a sophisticated investor comfortable with moderate risk (~12-16% expected annual return, ~12-15% expected annual volatility). Unchanged heading into next week's bank-earnings kickoff:</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:0.83rem;">
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;"><span style="color:#58a6ff;font-weight:700;">Core ETF (25%)</span><br><span style="color:#8b949e;">SPY 25%</span></div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;"><span style="color:#3fb950;font-weight:700;">AI / Growth Tech (23%)</span><br><span style="color:#8b949e;">MSFT 15% · NVDA 8%</span></div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;"><span style="color:#e3b341;font-weight:700;">Income / Defensive (37%)</span><br><span style="color:#8b949e;">JNJ 8% · XOM 8% · NEE 7% · JPM 7% · UPS 7%</span></div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px; grid-column: 1/-1;"><span style="color:#f85149;font-weight:700;">Cash / Tactical (15%)</span><br><span style="color:#8b949e;">Dry powder ahead of Tuesday's bank-earnings kickoff and continued Hormuz developments</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>Investment Brief by Jorge</strong> &nbsp;·&nbsp; October 10, 2026 (Weekend Edition) &nbsp;·&nbsp; Tech's AI-Revenue Scare Was a Methodology Mix-Up — Markets Rebound Friday</p>
+    <p style="margin-top:6px;">Data sourced from Yahoo Finance, CNBC, Bloomberg, Barchart, Reuters, Goldman Sachs (levels as of Fri Oct 9 close) · Not financial advice · For informational purposes only</p>
+    <p style="margin-top:6px;"><a href="index.html">← Full briefing archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
