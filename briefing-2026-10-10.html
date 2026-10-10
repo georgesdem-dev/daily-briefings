@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Saturday, October 10, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Saturday, October 10, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Tanker Attacks Hit Highest Weekly Rate of the War as Vance Demands "Meaningful" Enrichment Cuts</a>
+    <div class="toc-section">UKMTO logs nine-plus attacks on shipping in and around Hormuz so far in October, the worst week since the war began · Tanker struck off Qatar's north coast with casualties reported, an unusual attack far from the strait · Russia reportedly supplying Iran with missiles as Trump again rules out strikes before the midterms</div>
+    <a href="#cyber">🔐 Cybersecurity — Ransomware Attack on Japan's IDCF Cloud Hits 495 Organizations</a>
+    <div class="toc-section">Threat actor claims 3.6 PB encrypted, with researchers probing a possible zero-day chain or hypervisor-management misconfiguration · Check Point VPN zero-day CVE-2026-50751 tied to a Qilin ransomware affiliate · SonicWall ships a second CVSS 10.0 SMA1000 flaw in five weeks</div>
+    <a href="#ai">🤖 Artificial Intelligence — a16z Leads $870M Round Into "Non-Chatbot" AI Startup TypeSafe at $7.5B Valuation</a>
+    <div class="toc-section">Jev's "System One" model returns calibrated decisions instead of text, embedded directly into software · 1 trillion tokens processed within three days of launch, used by roughly a third of the Fortune 500 · GPT-6 rollout completes across all ChatGPT tiers; Google Cloud ships a general-purpose Gemini Agent</div>
+  </div>
+
+  <!-- ═══════════════════ IRAN WAR ═══════════════════ -->
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — Tanker Attacks Hit Highest Weekly Rate of the War as Vance Demands "Meaningful" Enrichment Cuts</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 225</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Shipping Violence Surges Even as Diplomacy Edges Toward a Concrete Nuclear Ask
+        <span class="badge badge-red">9+ ATTACKS THIS WEEK</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        The security picture in the Strait of Hormuz has deteriorated sharply even as oil keeps moving. UKMTO has recorded at least one attack a day in the strait or Gulf of Aden since October 2, with Bloomberg citing nine attacks on commercial shipping in and around Hormuz so far this month — the highest weekly rate since the war began on February 28. The most unusual incident came October 7-8, when a tanker off Qatar's north coast, well outside the strait itself, was struck by multiple projectiles with casualties reported — the first attack in the western Gulf in weeks, suggesting Iran is widening its target set rather than concentrating fire on the chokepoint alone. Despite the violence, Middle East oil exports have climbed back above pre-war levels as shippers absorb higher costs and operational complexity, with Brent still near $100/barrel; senior IRGC commander Ali Fadavi countered that only 3-4 million bpd are moving along the US-supervised route, calling that "negligible" next to pre-war flows. On the diplomatic track, Vice President Vance told Reuters Iran must make a "meaningful" reduction in enrichment capacity — not just a promised future drawdown — asking bluntly "if you don't want a nuclear weapon, then why do you need 60% enriched fuel?" Iran pushed back, with an official saying Vance's comments are "at odds with Iran's demands," and parliament speaker Ghalibaf repeating that Hormuz stays closed until Iran's June conditions are met. Bloomberg also reported, citing a Western official, that Russia is supplying Iran with missiles after helping Tehran target US bases earlier in the war. Trump again promised no US strikes before the midterm elections, while warning operations could intensify afterward.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">9+</div>
+          <div class="stat-label">Tanker attacks in and around Hormuz this month</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">~$100</div>
+          <div class="stat-label">Brent crude, per barrel</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">225 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.cbsnews.com/live-updates/iran-war-nuclear-donald-trump-vance-rubio-strait-of-hormuz/">CBS News — Iran war live updates</a>
+        <a href="https://www.aljazeera.com/news/2026/10/8/tanker-hit-by-multiple-projectiles-off-north-coast-of-qatar-ukmto-says">Al Jazeera — Tanker hit off Qatar coast</a>
+        <a href="https://www.cnbc.com/2026/10/06/crude-oil-tanker-strait-hormuz-iran-attack.html">CNBC — Rebounding oil exports vulnerable to attacks</a>
+        <a href="https://thehill.com/homenews/administration/6133483-vance-iran-nuclear-enrichment/">The Hill — Vance on enrichment reduction</a>
+        <a href="https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_crisis">Wikipedia — 2026 Strait of Hormuz crisis</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Sri Lanka's foreign minister identified 19 vessels stranded off its coast for months as Iranian oil tankers, unable to return home under the US naval blockade.</li>
+        <li>US officials maintain Iran has "lost complete control" of Hormuz, per Secretary of State Rubio; an IRGC adviser rejected the claim and said the Guard would soon block "illegal routes."</li>
+        <li>Vance said Washington remains uncertain who holds decision-making authority in Tehran, even as talks continue with President Pezeshkian and Foreign Minister Araqchi.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>18–23</td><td>820 wounded</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">No updated aggregate casualty totals published today; figures carried forward. Casualties were reported from the October 7-8 tanker strike off Qatar but no confirmed count has been released.</p>
+      <div class="sources">
+        Sources: <a href="https://en.wikipedia.org/wiki/2026_Iran_war">Wikipedia — 2026 Iran war</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ CYBERSECURITY ═══════════════════ -->
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Saturday, October 10, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Ransomware Attack on Japan's IDCF Cloud Hits 495 Organizations
+        <span class="badge badge-red">3.6 PB CLAIMED ENCRYPTED</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        A ransomware attack has crippled IDCF Cloud, a Japanese cloud hosting provider, hitting 495 customer organizations including government clients. The attacking group claims to have encrypted 3.6 petabytes of data, and researchers are still working out how the compromise moved so fast across so many tenants — theories range from a potent zero-day exploit chain to a management-plane misconfiguration that could have granted unauthenticated or lightly authenticated access to hypervisor controls shared across customers. Either explanation points to the same structural risk: multi-tenant cloud and hosting providers remain a high-leverage target, where a single breach of the management layer can cascade into hundreds of downstream victims at once. Separately, a critical authentication-bypass flaw in Check Point Remote Access VPN and Mobile Access (CVE-2026-50751), rooted in a certificate-validation logic flaw that lets an attacker open a VPN session without a password, has been under exploitation for more than a month; one compromise was linked to an affiliate of the Qilin ransomware operation, and the same attacker infrastructure has also targeted VPN flaws in Palo Alto Networks, F5 and Fortinet gear. SonicWall, meanwhile, shipped hotfixes for a second maximum-severity SSRF flaw in its SMA1000 line within five weeks, and Citrix's NetScaler zero-day (CVE-2026-88779) was confirmed by WatchTowr to be a denial-of-service bug, suspected of being used deliberately to crash systems and mask exploitation of a related flaw.
+      </p>
+      <div class="alert alert-red">
+        If you run multi-tenant hosting/cloud infrastructure, review management-plane authentication and segmentation now — the IDCF Cloud blast radius (495 orgs from one compromise) is the scenario vendor-risk reviews should be modeling. Check Point VPN admins should patch CVE-2026-50751 immediately and audit for unauthenticated sessions over the past month.
+      </div>
+      <div class="sources">
+        Sources: <a href="https://thecybersecguru.com/news/idcf-cloud-ransomware-attack-japan/">The Cyber Sec Guru — IDCF Cloud ransomware attack</a>
+        <a href="https://www.cybersecuritydive.com/news/check-point-zero-day-ransomware/822372/">Cybersecurity Dive — Check Point zero-day tied to ransomware</a>
+        <a href="https://tech-insider.org/cisco-sonicwall-zero-days-cisa-kev-cvss-10-2026/">Tech Insider — Cisco, SonicWall zero-days hit KEV</a>
+        <a href="https://www.securityweek.com/exploitation-of-citrix-netscaler-zero-day-hits-appliances-patched-days-earlier/">SecurityWeek — NetScaler zero-day exploitation</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>North Korea-linked hackers breached crypto exchange Bitget via a zero-day in external software, draining hot and warm wallets in a $388M heist while cold storage stayed untouched.</li>
+        <li>AT&T agreed to pay $177 million to settle two data breaches that affected more than 100 million customers.</li>
+        <li>Microsoft's October 2026 Patch Tuesday was unusually light — just 4 updates fixing 1 CVE across Exchange Server, with nothing added to the CISA KEV list this cycle.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Patch Check Point Remote Access VPN/Mobile Access for CVE-2026-50751 today and review the past month of VPN session logs for authentication anomalies — the flaw has been exploited for over 30 days before this disclosure</li>
+            <li>If any vendor or subsidiary runs on multi-tenant hosting, ask specifically how their provider segments the management plane between tenants — the IDCF Cloud incident shows the blast radius when that segmentation fails</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>495 downstream victims from one cloud-provider compromise is a concrete, current data point for client conversations about fourth-party risk and concentration risk in hosting/cloud supply chains</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>The AT&T $177M breach settlement is a useful benchmark for quantifying downside exposure when sizing cyber-insurance coverage and breach-response budgets at board level</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ AI ═══════════════════ -->
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Saturday, October 10, 2026 · A "Non-Chatbot" Model Startup Hits a $7.5B Valuation in 24 Days</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: a16z Leads $870M Round Into TypeSafe AI's "System One" Model Jev
+        <span class="badge badge-purple">$7.5B VALUATION</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        TypeSafe AI has closed an $870 million Series A at a $7.5 billion valuation, led by Andreessen Horowitz with Sequoia Capital and early backer DCVC also participating — one of the largest and fastest funding rounds of the year, landing just 24 days after founder Diogo Almeida's company came out of stealth with a $40M seed round. The bet is on a different model architecture: TypeSafe calls Jev a "System One" model, built to be wired directly into software to return fast, calibrated decisions rather than to converse — the pitch is that most automated business decisions don't need a general-purpose chatbot reasoning step by step, they need a model trained to make the call directly. Adoption has been unusually fast for enterprise AI: the company says Jev processed 1 trillion tokens within three days of launch, passed 1 million users within days, and is now used by roughly a third of the Fortune 500. a16z general partner Martin Casado is joining TypeSafe's board. Reporting notes real caveats: a $7.5B valuation reflects investor conviction, not proof the model holds up outside demos, integrates cleanly into customers' existing systems, or saves money net of deployment costs. The raise lands in the same week OpenAI finished rolling GPT-6 and its "Intelligent UI" out to every ChatGPT tier, and Google Cloud introduced a general-purpose Gemini Agent for enterprise work — three different bets this week on where AI value accrues: embedded decisioning, richer chat interfaces, or general-purpose cloud agents.
+      </p>
+      <div class="sources">
+        Sources: <a href="https://panews.io/articles/01a120c8-d15d-7429-875c-c064d0a8314c">PANews — TypeSafe AI raises $870M at $7.5B valuation</a>
+        <a href="https://startupfortune.com/typesafe-ai-hits-75-billion-dollar-valuation-24-days-after-launching-jev/">Startup Fortune — TypeSafe hits $7.5B in 24 days</a>
+        <a href="https://www.techbooky.com/typesafe-ai-raises-870m-for-a-model-that-does-not-chat/">TechBooky — A model that does not chat</a>
+        <a href="https://www.technologyreview.com/">MIT Technology Review</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>OpenAI's GPT-6 and "Intelligent UI" rollout is now complete across Free, Go, Plus, Pro, Business and Enterprise tiers.</li>
+        <li>Google Cloud launched a cloud-hosted Gemini Agent positioned as a single enterprise agent that answers questions, does knowledge work, creates media, and writes and runs code.</li>
+        <li>Amazon Bedrock Managed Agents, powered by OpenAI models, entered public preview, adding another managed path to production AI agents alongside Google's and Anthropic's offerings.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — AI Security</div>
+          <ul>
+            <li>"System One" decision models embedded directly into software create a new class of risk: unlike a chatbot, a bad output isn't a bad answer a human reviews, it's a decision that may execute automatically — any integration of Jev-style models needs the same change-control rigor as a production code deploy, not a chatbot pilot</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>A third of the Fortune 500 reportedly already touching Jev in weeks is a strong signal to get ahead of client questions now about embedded-decisioning AI, vendor due diligence on unproven startups at nine-figure valuations, and how it differs from the chatbot-style AI governance frameworks most clients already have</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>Three distinct AI bets landed this week — embedded decisioning (TypeSafe), richer chat UI (OpenAI), general-purpose cloud agents (Google) — worth a board-level discussion on which of these shapes actually fits your own operating model before committing budget to any one of them</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Saturday, October 10, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
