@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Monday, October 12, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Monday, October 12, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — IRGC Claims Control of Hormuz Transit as Weekly Tanker Attacks Hit a Wartime High</a>
+    <div class="toc-section">IRGC Navy says it now controls which vessels may transit the strait, striking tankers on "unauthorized routes" and warning dark-navigation ships will be treated as hostile · 11 tankers attacked in the week ending October 4 — the most in any week since the war began · Iran's own oil exports have reportedly ground to a halt as the blockade enforcement campaign continues</div>
+    <a href="#cyber">🔐 Cybersecurity — GitLab Rushes Out Fix for Maximum-Severity CVE-2026-97229 as Probes Begin</a>
+    <div class="toc-section">Unauthenticated remote code execution via an integer overflow in GitLab's CI/CD regex compiler, CVSS 10.0, affecting self-managed CE/EE 18.1 through 19.4.1 · Patched same-day to 19.4.2/19.3.4/19.2.8 after disclosure via HackerOne · Internet-wide scanning already reported within hours of the advisory</div>
+    <a href="#ai">🤖 Artificial Intelligence — AMD Buys Fei-Fei Li's World Labs for $8.2B in All-Stock Deal</a>
+    <div class="toc-section">World Labs, the "spatial intelligence" startup Li co-founded after leaving Stanford, joins AMD as Dr. Li becomes EVP and Chief Scientist reporting directly to CEO Lisa Su · Deal expected to close by year-end 2026 · AMD's biggest AI-talent bet yet as it races Nvidia for position beyond chips alone</div>
+  </div>
+
+  <!-- ═══════════════════ IRAN WAR ═══════════════════ -->
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — IRGC Claims Control of Hormuz Transit as Weekly Tanker Attacks Hit a Wartime High</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 227</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Iran Asserts De Facto Control Over Who Transits the Strait
+        <span class="badge badge-red">11 TANKERS HIT THIS WEEK</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        Iran's IRGC Navy escalated its rhetoric and its actions on Monday, declaring that it now effectively controls which vessels are permitted to transit the Strait of Hormuz and striking at least one tanker it accused of sailing an "unauthorized route." Commanders repeated the warning first issued over the weekend that any ship transiting with its navigation and tracking systems switched off will be treated as hostile and targeted without further notice. Shipping-security trackers logged 11 tanker attacks in the week ending October 4 — the highest weekly count of the war to date, surpassing even the dozen-ship week reported a week earlier — as Tehran leans harder on tanker traffic to force concessions at the stalled diplomatic table. Separately, data cited by energy analysts suggests Iran's own crude exports through its southern ports have largely ground to a halt since around October 8, a sign the blockade and counter-blockade standoff is now cutting into Iran's own revenue, not just transit traffic. The cumulative toll from the US-led enforcement campaign continues to build on top of this: since mid-July, American forces have disabled four vessels, turned back 135 ships and destroyed 10 tankers tied to Iran, a tally unchanged from Sunday after no new US strikes were reported Monday. Diplomatically, the standoff remains frozen — Iran continues to condition any de-escalation on a return to the collapsed June memorandum of understanding and US endorsement of the already-finalized Iran-Oman arrangement, neither of which Washington has moved on.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">11</div>
+          <div class="stat-label">Tankers attacked, week ending Oct 4 — wartime high</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">10</div>
+          <div class="stat-label">Iran-linked tankers destroyed since mid-July</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">227 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.reuters.com/world/middle-east/">Reuters — Middle East coverage</a>
+        <a href="https://www.aljazeera.com/where/iran/">Al Jazeera — Iran</a>
+        <a href="https://en.wikipedia.org/wiki/List_of_ships_attacked_during_the_2026_Iran_war">Wikipedia — Ships attacked during the 2026 Iran war</a>
+        <a href="https://www.globalsecurity.org/military/world/war/iran-2026.htm">GlobalSecurity.org — Iran war day-by-day</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Monday's claimed IRGC strike follows Saturday's US jet attack on the Panama-flagged Ocean Molika, which disabled the blockade-running vessel's propulsion in the Gulf of Oman — covered in yesterday's briefing — with no indication yet of retaliation tied specifically to that strike.</li>
+        <li>Oil prices continue to hold near $100/barrel even as Iran's own export volumes reportedly stall, suggesting the broader regional market is absorbing the disruption via rerouted and offshore-transferred cargoes rather than a global supply shock.</li>
+        <li>The Yemen front remains active in parallel, with the Houthi offensive's casualty and displacement figures unchanged since the American fatality reported in Saturday's strikes on Saudi Arabia.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>18–23</td><td>820 wounded</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced; incl. 1 American killed Oct 10 in Saudi Arabia</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">No updated aggregate casualty totals published today; figures carried forward from the last confirmed update.</p>
+      <div class="sources">
+        Sources: <a href="https://en.wikipedia.org/wiki/2026_Iran_war">Wikipedia — 2026 Iran war</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ CYBERSECURITY ═══════════════════ -->
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Monday, October 12, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: GitLab Patches Maximum-Severity Unauthenticated RCE in CI/CD Pipeline Engine
+        <span class="badge badge-red">CVE-2026-97229 · CVSS 10.0</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        GitLab shipped an emergency patch on Monday for CVE-2026-97229, a maximum-severity (CVSS 10.0) unauthenticated remote code execution flaw in the regex compiler used by its CI/CD pipeline engine. The bug is an integer overflow that can be triggered through a crafted pipeline configuration, letting an attacker with no credentials at all achieve code execution on affected self-managed instances — one of the few CVSS 10.0 ratings assigned to GitLab in its history. The flaw affects self-managed Community and Enterprise Edition installations from version 18.1 up to 19.4.1; GitLab.com's SaaS offering was already protected and did not require customer action. Fixes landed in 19.4.2, 19.3.4 and 19.2.8, released same-day as the advisory, which credits an external researcher (handle "joaxcar") who reported the flaw through GitLab's HackerOne bug bounty program. Within hours of disclosure, CyberScoop reported internet-wide scanning activity consistent with attackers probing for unpatched instances, though no confirmed successful exploitation has been reported yet. Given GitLab's role as a CI/CD and source-code backbone for a huge share of enterprise software pipelines, an unauthenticated RCE at this severity is a textbook "patch today, not this sprint" situation.
+      </p>
+      <div class="alert alert-red">
+        If you run GitLab CE/EE self-managed between 18.1 and 19.4.1, patch to 19.4.2 / 19.3.4 / 19.2.8 immediately — scanning activity has already started, and an unauthenticated RCE on your CI/CD pipeline engine is a direct path to source-code and secrets compromise.
+      </div>
+      <div class="sources">
+        Sources: <a href="https://about.gitlab.com/releases/categories/releases/">GitLab — Security release notes</a>
+        <a href="https://cyberscoop.com/">CyberScoop — Vulnerability scanning coverage</a>
+        <a href="https://thehackernews.com/">The Hacker News</a>
+        <a href="https://www.bleepingcomputer.com/">Bleeping Computer</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>AhsayCBS backup console flaw CVE-2026-105133 has already been used to breach at least five organizations within 24 hours of exploitation starting October 7, per incident-response reporting.</li>
+        <li>SonicWall's CVE-2026-102255 continues to see sustained active exploitation weeks after disclosure, reinforcing this autumn's pattern of edge-appliance bugs with long active-exploitation tails.</li>
+        <li>CISA's KEV catalog additions this week continue to skew toward backup, VPN and CI/CD infrastructure rather than end-user software — a trend worth flagging to patch-prioritization teams.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Treat CVE-2026-97229 as a same-day emergency patch, not a scheduled maintenance item — scanning has already begun, and self-managed GitLab 18.1–19.4.1 is the exposure window</li>
+            <li>Audit whether your GitLab CI/CD runners and pipeline configs are internet-reachable at all; an unauthenticated RCE on this component is a direct line to source code and CI/CD secrets</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>A CVSS 10.0 on a platform this widely embedded in client software supply chains is a strong prompt for an unscheduled client check-in on patch status and CI/CD exposure, ahead of any incident</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>Development-tooling vendors (GitLab, GitHub, CI/CD platforms) are emerging as a distinct supply-chain risk category alongside VPN appliances — worth a line item in the next board cyber-risk update</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ AI ═══════════════════ -->
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Monday, October 12, 2026 · AMD Makes Its Boldest AI-Talent Bet Yet</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: AMD Acquires Fei-Fei Li's World Labs for $8.2B, Installs Her as Chief Scientist
+        <span class="badge badge-purple">ALL-STOCK · CLOSING END OF 2026</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        AMD announced an all-stock acquisition of World Labs, the "spatial intelligence" AI lab co-founded by Stanford computer scientist and former Google Cloud chief AI scientist Fei-Fei Li, in a deal valuing the startup at $8.2 billion. World Labs has focused on models that reason about 3D space and the physical world — a different bet from the text- and chat-centric frontier labs — generating interactive 3D environments from a single image or prompt. Under the deal, Dr. Li joins AMD as Executive Vice President and Chief Scientist, reporting directly to CEO Lisa Su, and will lead AMD's push into spatial and embodied AI alongside its existing silicon business. The acquisition is expected to close by the end of 2026, pending customary approvals. It is AMD's largest and highest-profile AI-talent acquisition to date, signaling the chipmaker wants to own research and model capability, not just supply the hardware underneath Nvidia's and others' AI stacks — a strategic shift that puts AMD in more direct competition with the frontier labs it currently counts as customers.
+      </p>
+      <div class="sources">
+        Sources: <a href="https://www.ft.com/">Financial Times — AI and dealmaking coverage</a>
+        <a href="https://www.theinformation.com/">The Information</a>
+        <a href="https://venturebeat.com/">VentureBeat</a>
+        <a href="https://www.technologyreview.com/">MIT Technology Review</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>Reflection AI unveiled "Beam," a new mixture-of-experts model with 501B total and 23B active parameters, positioning it against other large open-weight releases this quarter.</li>
+        <li>Anthropic launched a "Cyber Mission" initiative aimed at putting Claude's capabilities directly into the hands of defenders, continuing the industry's pivot toward framing frontier models as security tools rather than only security risks.</li>
+        <li>The "decision model" category started this past week by TypeSafe's Jev and Microsoft's Decision-1 saw no new entrants today, though analysts continue to flag it as the category to watch into November.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 AI Security</div>
+          <ul>
+            <li>Spatial/embodied AI expanding into enterprise use (robotics, digital twins, physical-world simulation) introduces a new class of attack surface — treat 3D-generation and world-model pipelines as a future audit category, not an edge case</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>AMD's move into model research signals hardware vendors increasingly want a stake in the application layer too — a useful data point when advising clients on vendor lock-in and multi-cloud/multi-silicon AI strategy</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>An $8.2B talent-and-technology acquisition from AMD, following a string of similar mega-deals this year, confirms spatial/embodied AI is now viewed as a core strategic battleground, not a research niche</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Monday, October 12, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
