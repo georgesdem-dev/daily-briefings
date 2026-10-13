@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Tuesday, October 13, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Tuesday, October 13, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Hormuz Attacks Surge to 12 Tankers in a Week as Traffic Hits a Two-Month Low</a>
+    <div class="toc-section">UKMTO confirms six vessel strikes in a single day, including a drone attack near Oman's Sohar anchorage · IRGC reiterates threats against any tanker defying the strait's "security and rules" · Joint Maritime Information Centre says the pattern shows Iran's intent to "assert presence" along transit lanes</div>
+    <a href="#cyber">🔐 Cybersecurity — Citrix NetScaler Zero-Days Under Active Global Exploitation, CISA Expands Alert</a>
+    <div class="toc-section">CVE-2026-88771 and CVE-2026-88772 (CVSS v4 9.5) let attackers execute code remotely on NetScaler ADC/Gateway appliances · CISA's alert now spans CVE-2026-88771 through 88779 plus newly added CVE-2026-107406 · Ivanti Connect Secure and FortiMail zero-days remain under parallel active exploitation</div>
+    <a href="#ai">🤖 Artificial Intelligence — Meta Ships Llama 4 and "Muse Wonder 1.0" as the Model Release Pace Accelerates</a>
+    <div class="toc-section">Meta claims Llama 4 leads on STEM and coding benchmarks among open models · Muse Wonder 1.0 lands a day later, Meta's second major release this week · NVIDIA, AMD and Microsoft all publish new open AI-infrastructure designs at OCP Global Summit as the industry pivots toward agent-inference hardware</div>
+  </div>
+
+  <!-- ═══════════════════ IRAN WAR ═══════════════════ -->
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — Hormuz Attacks Surge to 12 Tankers in a Week as Traffic Hits a Two-Month Low</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 228</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Shipping Attacks Intensify Further as Hormuz Traffic Collapses
+        <span class="badge badge-red">12 TANKERS HIT IN ONE WEEK</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        The surge in attacks on Strait of Hormuz shipping accelerated again this week, with at least 12 tankers carrying oil, LNG and LPG struck in the week spanning late September into early October — surpassing even the 11-tanker week reported two days ago as the new wartime high. The UK Maritime Trade Operations agency confirmed six separate vessel strikes in a single day this past Sunday alone, including a drone attack near Oman's Sohar anchorage, underscoring how the campaign has widened beyond the strait itself into nearby anchorages. On Monday, UKMTO reported yet another tanker struck by an unidentified projectile while exiting Hormuz, with all crew reported safe. Iran's IRGC Navy has repeated its warning that any tanker ignoring the strait's "security and rules" will face the same fate as vessels already hit, while the US Navy-led Joint Maritime Information Centre assessed the pattern as showing Iran's "intent to assert presence along key transit lanes and maintain pressure on transiting vessels." The cumulative effect is now visible in the data: Hormuz traffic has reportedly fallen to its lowest level in two months, the clearest sign yet that the blockade-and-counter-blockade standoff is materially disrupting one of the world's most important oil chokepoints, even as the diplomatic track remains completely frozen.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">12</div>
+          <div class="stat-label">Tankers attacked, latest weekly count — new wartime high</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">6</div>
+          <div class="stat-label">Vessel strikes confirmed in a single day (Sunday)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">228 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.thenationalnews.com/news/gulf/2026/10/13/strait-of-hormuz-attacks-surge-as-iran-steps-up-campaign-against-us-backed-oil-shipping/">The National — Hormuz attacks surge</a>
+        <a href="https://iranwire.com/en/news/158815-tanker-struck-in-strait-of-hormuz-amid-fresh-irgc-maritime-threats">IranWire — Tanker struck amid fresh IRGC threats</a>
+        <a href="https://www.cbsnews.com/live-updates/iran-war-us-strait-of-hormuz-oil-gas-price-strikes/">CBS News — US forces hit IRGC-linked tankers</a>
+        <a href="https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_campaign">Wikipedia — 2026 Strait of Hormuz campaign</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Reuters-cited maritime security sources and the International Maritime Organisation give differing counts for the same reporting window (12 vs. 9 incidents), a reminder that verification gaps persist even as the overall escalation trend is unambiguous.</li>
+        <li>Oil prices remain pinned near $100/barrel, with the market so far absorbing the disruption through rerouting rather than a broader supply shock.</li>
+        <li>No new US strikes on Iran-linked vessels were reported today, leaving the cumulative blockade-enforcement tally (4 vessels disabled, 135 ships turned back, 10 tankers destroyed since mid-July) unchanged from earlier in the week.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>18–23</td><td>820 wounded</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced; incl. 1 American killed Oct 10 in Saudi Arabia</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">No updated aggregate casualty totals published today; figures carried forward from the last confirmed update.</p>
+      <div class="sources">
+        Sources: <a href="https://en.wikipedia.org/wiki/2026_Iran_war">Wikipedia — 2026 Iran war</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ CYBERSECURITY ═══════════════════ -->
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Tuesday, October 13, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: CISA Expands Alert as Citrix NetScaler Zero-Days See Global Active Exploitation
+        <span class="badge badge-red">CVE-2026-88771 / 88772 · CVSS v4 9.5</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Threat actors are actively exploiting two critical zero-day vulnerabilities in Citrix NetScaler ADC and NetScaler Gateway appliances, tracked as CVE-2026-88771 and CVE-2026-88772, each carrying a CVSS v4 score of 9.5 and allowing full remote code execution. CISA added both to its Known Exploited Vulnerabilities catalog after confirming global exploitation activity from its own telemetry and partner intelligence. The agency has since widened the alert twice — first to add CVE-2026-107406, then to stress prompt patching across the entire CVE-2026-88771 through 88779 range — making this the sixth distinct exploited NetScaler flaw disclosed in 2026 alone. The NetScaler exploitation is not happening in isolation: Ivanti disclosed its own actively exploited Connect Secure zero-day (CVE-2026-104935, CVSS 8.6, reported by Volexity, no authentication or user interaction required) affecting ICS versions 22.8R2.4 and earlier, and Fortinet's FortiMail path-traversal flaw (CVE-2026-104286, CVSS 9.8) was already being exploited before a fix shipped on October 1. Taken together, this is now a half-dozen simultaneously-exploited edge-appliance zero-days across four vendors (Citrix, Ivanti, Fortinet, and last week's SonicWall/Palo Alto bugs) — the defining cybersecurity pattern of this autumn.
+      </p>
+      <div class="alert alert-red">
+        If you run NetScaler ADC/Gateway, Ivanti Connect Secure or FortiMail anywhere internet-facing, treat all three as emergency-patch items today — all are confirmed under active exploitation right now, not theoretical risk.
+      </div>
+      <div class="sources">
+        Sources: <a href="https://cybersecuritynews.com/citrix-netscaler-zero-day-exploits">Cybersecurity News — Citrix NetScaler zero-day exploits</a>
+        <a href="https://cybersecuritynews.com/ivanti-connect-secure-zero-day/">Cybersecurity News — Ivanti Connect Secure zero-day</a>
+        <a href="https://bleepingcomputer.com/news/security/ivanti-warns-of-connect-secure-zero-day-exploited-in-attacks">Bleeping Computer — Ivanti Connect Secure zero-day exploited</a>
+        <a href="https://tech-insider.org/fortimail-zero-day-cve-2026-104286-cisa-kev-2026">Tech Insider — FortiMail zero-day hits CISA KEV</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Interlock ransomware is confirmed to have exploited a Cisco FMC zero-day (CVE-2026-20131, CVSS 10.0) since January 26, 2026 — over a month before Cisco's public disclosure — per telemetry from the company's MadPot sensor network.</li>
+        <li>SAP's October Security Patch Day fixed a CVSS 10 flaw in Cloud SDK alongside issues in Visual Composer and S/4HANA; IBM separately patched three critical RCE flaws across IBM i, Db2 Mirror and Maximo AI Service.</li>
+        <li>A trojanized Terraform provider delivered malware ("FLATROOF"/"ROOFDECK") in a supply-chain attack attributed to suspected North Korea-linked TraderTraitor actors; a separate hardware supply-chain attack targeted Ledger wallet users across Europe.</li>
+        <li>Exchange Server 2016 and 2019 reached end-of-life today — no further security patches will be issued without an Extended Security Update purchase, a deadline worth flagging to any team still running on-prem Exchange.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Patch NetScaler, Ivanti Connect Secure and FortiMail today if any are internet-facing — all three are under confirmed active exploitation simultaneously, and this is the sixth exploited NetScaler flaw of the year</li>
+            <li>Flag the Exchange Server 2016/2019 end-of-life today as a hard deadline for any remaining on-prem deployments — no patches ship from here without an ESU contract</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Six simultaneously-exploited edge-appliance zero-days across four vendors this autumn is a strong, data-backed case for recommending clients move off single-vendor VPN/gateway concentration risk toward segmented, monitored access architectures</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>The Cisco FMC zero-day was exploited for over a month before public disclosure — a reminder for board risk discussions that "zero known incidents" from a vendor doesn't mean zero exposure, only zero visibility yet</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ AI ═══════════════════ -->
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Tuesday, October 13, 2026 · Model Releases and Infrastructure Bets Both Accelerate</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Meta Ships Llama 4 and Follows a Day Later with Muse Wonder 1.0
+        <span class="badge badge-blue">TWO MAJOR META RELEASES THIS WEEK</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Meta released the Llama 4 series of open models, claiming superior performance against rival open models on STEM and coding benchmarks, and followed it a day later with Muse Wonder 1.0, its second major model release in as many days. The back-to-back cadence lands in an already crowded release window — Reka Edge 2603, Microsoft-Decision-1, Alibaba's Qwen Image 2.1 Turbo and xAI's Grok Imagine Video 1.5 Lite all shipped within the past week — underscoring how compressed the frontier-and-open-model release cycle has become this quarter. In parallel, infrastructure announcements at the OCP Global Summit point to where the next phase of competition is heading: NVIDIA contributed its Vera Rubin rack and compute tray designs to the open MGX architecture and published open standards for AI-factory grid resilience, AMD unveiled an open rack blueprint supporting up to 32,768 CPU cores built specifically for running AI agents, and Microsoft detailed its third-generation in-house accelerator, Azure Maia 300, built on TSMC's N2P process with a chiplet design separating compute, memory and I/O. Together, the pattern is a visible pivot across the industry from training-focused infrastructure toward hardware optimized specifically for AI agent inference at scale.
+      </p>
+      <div class="sources">
+        Sources: <a href="https://riorundown.substack.com/p/ai-news-oct-13-2026-open-ai-infrastructure">Rio Rundown — Open AI infrastructure and agent computing</a>
+        <a href="https://aiweekly.co/ai-news-today">AI Weekly — Top stories, October 13</a>
+        <a href="https://llmgateway.io/timeline">LLM Gateway — October 2026 model release timeline</a>
+        <a href="https://www.technologyreview.com/">MIT Technology Review</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>SAP says its Joule AI assistants are now executing tasks in production workflows at major global companies, one of the more concrete enterprise-agent deployment claims this quarter.</li>
+        <li>Alibaba launched the Qwen Glasses N1, a $450 AI smart-glasses device with a 50MP camera and its Qwen Assistant built in.</li>
+        <li>The Financial Times reports Chinese tech firms purchased over 1 million Nvidia RTX Pro 6000D and 5000 chips in 2026 for basic AI workloads, a sign of continued large-scale compute demand despite export restrictions on top-tier chips.</li>
+        <li>Apple is holding its "Welcome Home" launch event today, expected to unveil a touchscreen home hub (rumored "HomePad"/"HomeView") alongside updated Apple TV 4K and HomePod mini models with Siri-AI-capable processors.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 AI Security</div>
+          <ul>
+            <li>As AMD, NVIDIA and Microsoft all ship hardware explicitly optimized for autonomous AI agent inference, now is the time to get agent-action authorization and audit logging requirements into procurement criteria, before agent-capable infrastructure is deployed faster than governance catches up</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>SAP's Joule assistants moving into production workflows at major enterprises is a concrete, citable proof point for client conversations about enterprise-agent ROI timelines — useful to counter "still just a pilot" skepticism</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>Four major labs/vendors shipping new models within a single week (Meta twice) signals the release cadence itself is now a competitive weapon — a relevant data point when evaluating vendor roadmap commitments and lock-in risk</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Tuesday, October 13, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
