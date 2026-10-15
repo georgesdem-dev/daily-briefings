@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Wednesday, October 14, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Wednesday, October 14, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Two Cargo Ships Sink Near Hormuz as Iran Expands Surveillance of the Strait</a>
+    <div class="toc-section">Singapore-flagged GFS Pride sinks after a projectile strike; a second container ship sinks after striking a naval mine on an "unauthorized route" · Iran's military says it has deployed new units to monitor and target shipping, and tells vessels to coordinate passage with Iranian forces · CENTCOM: "The only country attacking civilian mariners transiting regional waters is Iran"</div>
+    <a href="#cyber">🔐 Cybersecurity — Ivanti Connect Secure Zero-Day Hits Root-Level RCE on Patched Appliances; Microsoft's Record Patch Tuesday</a>
+    <div class="toc-section">CVE-2026-104935 exploited by actor "UTA0576" since October 3 — ten days before any patch — chaining auth bypass, RCE and privilege escalation to steal LAPS passwords and BitLocker keys · Ivanti patches two of three flaws October 13; the privilege-escalation component remains unpatched · Microsoft's October Patch Tuesday fixes a record 1,413 CVEs including an actively exploited Windows Shell MotW bypass</div>
+    <a href="#ai">🤖 Artificial Intelligence — Google Rolls Out Gemini 4 Argon to Developers and Enterprises Worldwide</a>
+    <div class="toc-section">Positioned as Google's new frontier model for complex, long-horizon problem-solving, now broadly available via the Gemini API, AI Studio and consumer apps · Lands the same week as a wave of enterprise AI-agent launches from Movable Ink, CreatorIQ, Cresta and others · OpenAI discloses it found a hidden recording device inside one of its offices, using its own models to help trace its origin</div>
+  </div>
+
+  <!-- ═══════════════════ IRAN WAR ═══════════════════ -->
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — Two Cargo Ships Sink Near Hormuz as Iran Expands Surveillance of the Strait</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 229</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Worst Week of Shipping Attacks Since the War Began
+        <span class="badge badge-red">2 CARGO SHIPS SUNK TODAY</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        Ships transiting the Strait of Hormuz are facing the worst spate of attacks since the US and Israel's war on Iran began in late February. Maritime tracking firm Kpler counted 10 tankers struck in the strait between September 28 and October 4, with another the day after; UKMTO separately logged 15 more attacks between October 6 and 14, with 11 of them in just the past four days. Wednesday brought two confirmed sinkings: the Singapore-flagged container ship GFS Pride, carrying 2,824 TEU, sank after being struck by an unidentified projectile, and a separate cargo vessel carrying more than 2,500 containers sank south of the strait after Iran's IRGC Navy said it struck a naval mine while sailing an "unauthorized and hazardous route" with navigation dark. Iran's military said Wednesday it has expanded surveillance of the strait by deploying new units specifically to monitor and target shipping, and is now telling vessels to coordinate directly with Iranian armed forces for safe passage — a de facto claim of control over who transits the waterway. A senior Iranian official told Reuters Tehran shifted to more aggressive tactics roughly ten days ago against vessels it deems in violation of its restrictions, which tracks with the sharp rise in attacks since early October. CENTCOM pushed back hard on Tehran's narrative, stating flatly: "The only country attacking civilian mariners transiting regional waters is Iran." Separately, Israeli Defense Minister Israel Katz threatened to seize more territory in southern Lebanon if Hezbollah joins Iran's fight, and Saudi Arabia launched new strikes on Houthi forces as the Yemen front stayed active in parallel.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">2</div>
+          <div class="stat-label">Cargo ships sunk near Hormuz today</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">15</div>
+          <div class="stat-label">UKMTO-logged attacks, Oct 6–14</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">229 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.aljazeera.com/news/2026/10/14/iran-steps-up-hormuz-surveillance-attacks-soar-oil-flows-crash-again">Al Jazeera — Iran steps up Hormuz surveillance</a>
+        <a href="https://abcnews.com/International/live-updates/iran-live-updates-trump-us-attack-iran-ahead/?id=137063637">ABC News — Houthis claim attacks on Riyadh, airport</a>
+        <a href="https://cbsnews.com/live-updates/iran-war-us-trump-saudi-arabia-houthi">CBS News — Saudi strikes on Houthis</a>
+        <a href="https://en.wikipedia.org/wiki/List_of_ships_attacked_during_the_2026_Iran_war">Wikipedia — Ships attacked during the 2026 Iran war</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>IRGC General Yadollah Javani said Iran's ongoing war carries consequences "for the entire world, comparable to those of a world war," rhetoric consistent with Tehran's escalating public posture this week.</li>
+        <li>An IRGC official warned that any miscalculation by adversaries would be met with a forceful response, while cautioning that the outcome of further confrontation "would not necessarily match the enemy's initial expectations."</li>
+        <li>The September 23 sinking of the Antigua and Barbuda-flagged Cape Dao, also near the strait, continues to be cited as part of the broader pattern of projectile strikes on commercial shipping this autumn.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>18–23</td><td>820 wounded</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced; incl. 1 American killed Oct 10 in Saudi Arabia</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">No updated aggregate casualty totals published today; figures carried forward from the last confirmed update. No crew casualties have been reported from today's two ship sinkings.</p>
+      <div class="sources">
+        Sources: <a href="https://en.wikipedia.org/wiki/2026_Iran_war">Wikipedia — 2026 Iran war</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ CYBERSECURITY ═══════════════════ -->
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Wednesday, October 14, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Ivanti Connect Secure Zero-Day Gives Root-Level Access to Fully Patched VPN Appliances
+        <span class="badge badge-red">CVE-2026-104935 · EXPLOITED 10 DAYS PRE-PATCH</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        CISA issued an urgent warning after researchers confirmed a sophisticated exploit chain against Ivanti Connect Secure, tracked as CVE-2026-104935, that combines an authentication bypass, remote code execution and a privilege-escalation flaw to achieve unauthenticated root-level code execution — on appliances that were already fully patched against prior issues. Security firm Volexity, which first identified the chain, found post-exploitation activity specifically targeting Active Directory credentials and secrets, including LAPS passwords and BitLocker recovery keys — exactly the material an attacker needs to pivot deep into a victim's domain. Threat intelligence firm Defused corroborated the timeline and attributed exploitation to a threat actor dubbed UTA0576, which has been actively using the flaw since October 3 — a full ten days before Ivanti shipped any fix. Ivanti patched two of the three chained vulnerabilities on October 13, but the third component, the privilege-escalation bug that converts file access into root, remains unpatched as of today. CISA added CVE-2026-104935 to its KEV catalog on October 13 with an October 16 remediation deadline for federal agencies. This lands in the same week as Microsoft's October Patch Tuesday, which fixed a record 1,413 CVEs — 1,102 of them in Windows alone — including an actively exploited Windows Shell zero-day (CVE-2026-96951, CVSS 8.8) that bypasses Mark of the Web protections, and a .NET Framework security flaw (CVE-2026-108398).
+      </p>
+      <div class="alert alert-red">
+        If you run Ivanti Connect Secure, assume compromise is possible even on fully patched instances until the third (privilege-escalation) component is fixed — hunt for LAPS/BitLocker credential access and anomalous AD activity now, not after a patch exists.
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.bleepingcomputer.com/news/security/cisa-warns-admins-to-immediately-fix-ivanti-flaw-exploited-as-zero-day/">Bleeping Computer — CISA warns on Ivanti zero-day</a>
+        <a href="https://www.decryptiondigest.com/blog/ivanti-connect-secure-cve-2026-104935-zero-day">Decryption Digest — CVE-2026-104935 root RCE</a>
+        <a href="https://www.darkreading.com/vulnerabilities-threats/zero-days-microsoft-october-patch-tuesday">Dark Reading — Zero-days in Microsoft's October Patch Tuesday</a>
+        <a href="https://www.securityweek.com/microsoft-patches-record-1413-vulnerabilities-including-exploited-windows-zero-day/">SecurityWeek — Microsoft patches record 1,413 vulnerabilities</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>A proof-of-concept exploit was publicly disclosed for GitLab's CVSS 10.0 RCE (CVE-2026-97229), reportedly affecting over 25,000 internet-facing hosts that remain unpatched since Monday's advisory.</li>
+        <li>A critical Nextcloud Collabora Online flaw (CVE-2026-110447) is being actively exploited in the wild to deploy webshells.</li>
+        <li>The DOJ announced it disrupted North Korean IT-worker schemes that had infiltrated more than 70 US companies, one of the larger enforcement actions against this threat category to date.</li>
+        <li>A European bank disclosed a breach via a poorly secured third-party gateway, with attackers subsequently attempting to target its WSUS infrastructure to spread further.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Treat any Ivanti Connect Secure deployment as potentially compromised regardless of patch level — the privilege-escalation component of CVE-2026-104935 has no fix yet, so credential-theft hunting matters more than patching right now</li>
+            <li>Prioritize the Microsoft Windows Shell zero-day (CVE-2026-96951) and the Ivanti KEV deadline (Oct 16) over the broader 1,413-CVE Patch Tuesday backlog — triage by active exploitation, not CVE count</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>A flaw exploited ten days before any patch existed is a strong, current talking point for clients overly reliant on patch-based vulnerability management rather than behavioral detection on edge appliances</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>The DOJ's disruption of North Korean IT-worker schemes across 70+ US companies is a useful board-level reminder that insider-risk vetting now extends to contractor and remote-hire screening, not just technical controls</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ AI ═══════════════════ -->
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Wednesday, October 14, 2026 · Gemini 4 Argon Goes Global as Enterprise Agents Multiply</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Google Rolls Out Gemini 4 Argon Broadly for Developers and Enterprises
+        <span class="badge badge-blue">NOW BROADLY AVAILABLE</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Google introduced Gemini 4 Argon as its new frontier model for tackling difficult, long-horizon problems, and says it is now broadly available to developers, enterprises, scientists and consumers through the Gemini API, AI Studio and consumer apps. The model is positioned specifically around sustained, complex workflows — code migration, enterprise research and cybersecurity tasks — rather than short single-turn exchanges, aiming it squarely at the kind of multi-step agentic work enterprises are increasingly trying to automate. The release lands amid a broader wave of enterprise-AI-agent activity this week: marketing and customer-experience vendors Movable Ink, CreatorIQ, Algolia, Cresta and ZEPIC all shipped new agent-based products on Tuesday, with Cresta's "Deputy Agent" notably running autonomously for days or weeks after a customer call ends — handling refunds, disputes and insurance claims under configurable approval rules with a full audit trail. Separately, in a more unusual story, OpenAI disclosed it discovered a hidden recording device inside one of its offices and used its own AI models to help investigate what the device was and where it came from — a reminder that frontier labs themselves are increasingly targets, not just producers, of sophisticated tradecraft.
+      </p>
+      <div class="sources">
+        Sources: <a href="https://theneuron.ai/digest/everything-that-happened-in-ai-today-tuesday-october-13-2026">The Neuron — Everything that happened in AI today</a>
+        <a href="https://agilebrandguide.com/yesterdays-marketing-technology-ai-news-october-14-2026/">The Agile Brand Guide — Marketing tech & AI news</a>
+        <a href="https://benchlm.ai/model-updates">BenchLM — New AI models live release tracker</a>
+        <a href="https://www.technologyreview.com/">MIT Technology Review</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>LiquidAI confirmed LFM2.5-24B-A2B, one of 14 tracked model releases across October 2026 so far — a pace that continues to outstrip last quarter's.</li>
+        <li>CreatorIQ unveiled "Q," a new agentic system for creator discovery, list building, recruiting and campaign setup, part of the same marketing-AI wave as Movable Ink's new Analytics, Brand Kit, Subject Line and Designer assistants.</li>
+        <li>Enterprise-agent deployment claims continue to accumulate alongside the model releases, reinforcing that this quarter's AI competition is increasingly about agentic task completion rather than raw benchmark scores alone.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 AI Security</div>
+          <ul>
+            <li>Google explicitly marketing Gemini 4 Argon for cybersecurity workflows signals frontier labs now see security operations as a core enterprise use case — worth evaluating as a defender tool, but also worth auditing before granting it access to sensitive security tooling or data</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Cresta's Deputy Agent running autonomously for days with configurable approval rules and an audit trail is a concrete reference architecture worth citing when advising clients on governance patterns for long-running agentic workflows</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>Five vendors shipping competing customer-experience agent products in a single day signals this category is consolidating fast — a reason to decide on a platform bet sooner rather than waiting for the field to narrow on its own</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Wednesday, October 14, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
