@@ -10,351 +10,560 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       background: #0d1117;
       color: #e6edf3;
-      line-height: 1.75;
+      line-height: 1.7;
       font-size: 15px;
     }
     a { color: #58a6ff; text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
 
-    .briefing-header {
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* Header */
+    .header {
       text-align: center;
       padding: 52px 0 40px;
       border-bottom: 1px solid #21262d;
       margin-bottom: 48px;
     }
-    .briefing-header .label {
+    .header .label {
       font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
-      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 12px;
     }
-    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
-    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
-    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
+    .header .date { font-size: 1rem; color: #8b949e; }
 
-    .toc {
-      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
-      padding: 20px 24px; margin-bottom: 44px;
+    /* Section headings */
+    .section {
+      margin-bottom: 52px;
     }
-    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
-    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
-    .toc a:hover { color: #58a6ff; }
-    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      border-radius: 10px;
+      margin-bottom: 24px;
+    }
+    .section-header.iran   { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-left: 4px solid #f85149; }
+    .section-header.cyber  { background: linear-gradient(135deg, #0d1b2a 0%, #0e2030 100%); border-left: 4px solid #3fb950; }
+    .section-header.ai     { background: linear-gradient(135deg, #1a1228 0%, #1a1a2e 100%); border-left: 4px solid #a371f7; }
+    .section-header .icon  { font-size: 1.7rem; }
+    .section-header h2     { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; }
+    .section-header .tag   { font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #8b949e; margin-top: 2px; }
 
-    .topic-section { margin-bottom: 56px; }
-    .topic-header {
-      display: flex; align-items: center; gap: 14px;
-      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    /* Audience pills */
+    .audience-section { margin-bottom: 28px; }
+    .audience-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.73rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 14px;
     }
-    .topic-icon { font-size: 2rem; }
-    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
-    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+    .audience-label.ciso   { background: #1f3a1f; color: #3fb950; border: 1px solid #3fb950; }
+    .audience-label.partner{ background: #1f2d3a; color: #58a6ff; border: 1px solid #58a6ff; }
+    .audience-label.exec   { background: #2d1f3a; color: #a371f7; border: 1px solid #a371f7; }
 
-    .card {
-      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
-      padding: 24px 28px; margin-bottom: 16px;
+    /* Story cards */
+    .story-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+      transition: border-color 0.15s;
     }
-    .card-title {
-      font-size: 1rem; font-weight: 700; color: #f0f6fc;
-      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    .story-card:hover { border-color: #58a6ff; }
+    .story-title {
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: #f0f6fc;
+      margin-bottom: 6px;
+      line-height: 1.4;
     }
-    .badge {
-      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
-      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    .story-meta {
+      font-size: 0.75rem;
+      color: #8b949e;
+      margin-bottom: 8px;
     }
-    .badge-red { background: #3d1e1e; color: #f85149; }
-    .badge-orange { background: #3d2a1e; color: #e3b341; }
-    .badge-blue { background: #1e2d3d; color: #58a6ff; }
-    .badge-green { background: #1e3d2a; color: #3fb950; }
-    .badge-purple { background: #2d1e3d; color: #bc8cff; }
-    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+    .story-meta .source { color: #58a6ff; }
+    .story-body { font-size: 0.88rem; color: #b1bac4; line-height: 1.65; }
 
-    ul.news-list { list-style: none; }
-    ul.news-list li {
-      padding: 8px 0; border-bottom: 1px solid #21262d;
-      font-size: 0.9rem; line-height: 1.65;
+    /* Key takeaways */
+    .takeaways {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-top: 20px;
     }
-    ul.news-list li:last-child { border-bottom: none; }
-    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+    .takeaways h3 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #8b949e;
+      margin-bottom: 12px;
+    }
+    .takeaways ul { list-style: none; }
+    .takeaways ul li {
+      font-size: 0.88rem;
+      color: #b1bac4;
+      padding: 5px 0;
+      border-bottom: 1px solid #21262d;
+      padding-left: 18px;
+      position: relative;
+    }
+    .takeaways ul li:last-child { border-bottom: none; }
+    .takeaways ul li::before { content: '→'; position: absolute; left: 0; color: #58a6ff; font-size: 0.85rem; }
 
-    .audience-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 14px; margin-top: 8px;
+    /* Stat pills */
+    .stat-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    .stat-pill {
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      color: #e6edf3;
     }
-    .audience-card {
-      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
-    }
-    .audience-card .aud-label {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
-      text-transform: uppercase; margin-bottom: 10px;
-    }
-    .aud-ciso { color: #f85149; }
-    .aud-partner { color: #e3b341; }
-    .aud-exec { color: #3fb950; }
-    .audience-card ul { list-style: none; font-size: 0.85rem; }
-    .audience-card ul li {
-      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
-    }
-    .audience-card ul li:last-child { border-bottom: none; }
-    .audience-card ul li::before { content: "• "; color: #484f58; }
+    .stat-pill .val { font-weight: 700; color: #f0f6fc; }
+    .stat-pill .lbl { color: #8b949e; }
 
-    .data-table {
-      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    /* Sub-dividers */
+    .sub-divider {
+      border: none;
+      border-top: 1px solid #21262d;
+      margin: 28px 0;
     }
-    .data-table th {
-      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
-      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
-      border-bottom: 1px solid #30363d;
-    }
-    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
-    .data-table tr:last-child td { border-bottom: none; }
-    .data-table .highlight { color: #f85149; font-weight: 700; }
-    .data-table .warn { color: #e3b341; font-weight: 600; }
-    .data-table .ok { color: #3fb950; }
 
-    .stat-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 12px; margin-top: 10px;
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid #21262d;
+      color: #484f58;
+      font-size: 0.78rem;
     }
-    .stat-box {
-      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
-      padding: 14px 16px; text-align: center;
-    }
-    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
-    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+    .footer strong { color: #6e7681; }
 
-    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
-    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
-    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
-    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
-
-    .sources {
-      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
-      font-size: 0.78rem; color: #6e7681;
+    /* Back link */
+    .back-link { margin-bottom: 28px; }
+    .back-link a {
+      font-size: 0.82rem;
+      color: #8b949e;
     }
-    .sources a { color: #58a6ff; margin-right: 10px; }
-
-    .briefing-footer {
-      text-align: center; margin-top: 64px; padding-top: 24px;
-      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
-    }
-    .briefing-footer strong { color: #6e7681; }
+    .back-link a:hover { color: #58a6ff; }
   </style>
 </head>
 <body>
 <div class="container">
 
-  <div class="briefing-header">
-    <div class="label">Evening Intelligence Briefing</div>
-    <h1>📰 Daily Briefing</h1>
-    <div class="meta">
-      Saturday, October 17, 2026
-      <span>·</span>
-      Iran War · Cybersecurity · AI
-      <span>·</span>
-      6:00 PM Paris
-    </div>
+  <!-- Back -->
+  <div class="back-link"><a href="index.html">← Back to Archive</a></div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="label">Daily Intelligence Briefing</div>
+    <h1>📰 Saturday, October 17, 2026</h1>
+    <div class="date">Iran War · Cybersecurity · Artificial Intelligence</div>
   </div>
 
-  <div class="toc">
-    <div class="toc-title">Contents</div>
-    <a href="#iran">🔥 Iran War — IRGC Declares Hormuz "Closed" as Iran Offers Qatar-Mediated 7-Day Reopening Plan</a>
-    <div class="toc-section">A second supertanker hits a mine and catches fire; two more tankers struck off Saudi Arabia's Jubail, one by RPG · Iran's FM Araghchi sends Washington a seven-day plan via Qatar to reopen the strait · Brent crude tops $110 for the first time since May; oil flow at 68% of pre-war baseline</div>
-    <a href="#cyber">🔐 Cybersecurity — Palo Alto PAN-OS Zero-Day Remediation Deadline Hits Today</a>
-    <div class="toc-section">CVE-2026-0322 (CVSS 8.6) confirmed exploited; CISA's federal remediation deadline is today, October 17 · BeyondTrust and Windows Shell zero-days continue as parallel open risks</div>
-    <a href="#ai">🤖 Artificial Intelligence — Claude Redesigns Quantum Circuits and Cracks a 20-Year NIST Mystery</a>
-    <div class="toc-section">Anthropic says Claude autonomously redesigned 8 quantum circuits, cutting gate counts up to 17x · Claude also traced NIST's decades-old ECDSA curve seeds to a predictable RNG in 30 minutes · Anthropic's AI-agent hours now outnumber its employees 6:1; DeepSeek ships V4.1 Flash 1017</div>
-  </div>
 
-  <!-- ═══════════════════ IRAN WAR ═══════════════════ -->
-  <div class="topic-section" id="iran">
-    <div class="topic-header">
-      <div class="topic-icon">🔥</div>
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  SECTION 1: IRAN WAR                        -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header iran">
+      <div class="icon">⚔️</div>
       <div>
-        <div class="topic-title">Iran War — IRGC Declares Hormuz "Closed" as Iran Offers Qatar-Mediated 7-Day Reopening Plan</div>
-        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 232</div>
+        <h2>Iran War — Day 231</h2>
+        <div class="tag">Battlefield · Diplomacy · Hormuz · Geopolitics</div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">
-        🌟 Top Story: Escalation and a Diplomatic Opening Arrive on the Same Day
-        <span class="badge badge-orange">7-DAY PLAN SENT VIA QATAR</span>
-      </div>
-      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
-        Iran's Foreign Minister Abbas Araghchi said Saturday that Tehran has sent Washington, through mediator Qatar, a seven-day plan under which the Strait of Hormuz could reopen and normal maritime traffic resume if Iran's conditions are met — the most concrete diplomatic move toward de-escalation since the shipping crisis intensified. It lands the same day the IRGC Navy's own posture hardened further: its navy warned the strait is now effectively "closed," and claimed a second supertanker, reportedly carrying more than two million barrels of crude, struck a naval mine and caught fire while attempting to pass through what Iran calls an "illegal" route. Separately, two tankers were hit off Saudi Arabia's Jubail on Friday — one struck by a rocket-propelled grenade fired from a small boat, the other by an unidentified projectile — bringing the tally to at least four tankers hit since Friday alone. Markets are pricing in the risk: Brent crude touched $110 a barrel on Friday, its highest since May, while oil flows through Hormuz over the seven days to October 13 were measured at 11.6 million barrels per day, roughly 68% of the 17.1 million bpd pre-war baseline. The juxtaposition — an active blockade-like posture alongside a formal reopening offer — suggests Tehran may be using maximum pressure on shipping as leverage heading into negotiations rather than as an end in itself.
-      </p>
-      <div class="stat-grid">
-        <div class="stat-box">
-          <div class="stat-value" style="color:#f85149;">4+</div>
-          <div class="stat-label">Tankers hit since Friday</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-value" style="color:#e3b341;">$110</div>
-          <div class="stat-label">Brent crude, highest since May</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-value" style="color:#3fb950;">68%</div>
-          <div class="stat-label">Hormuz oil flow vs. pre-war baseline</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-value" style="color:#58a6ff;">232 days</div>
-          <div class="stat-label">War duration</div>
-        </div>
-      </div>
-      <div class="sources">
-        Sources: <a href="https://www.aljazeera.com/news/2026/10/17/us-and-iran-both-claim-control-of-strait-of-hormuz-amid-attacks-on-vessels">Al Jazeera — US and Iran both claim control of Strait of Hormuz</a>
-        <a href="https://www.aljazeera.com/news/liveblog/2026/10/17/draft-2">Al Jazeera Live — IRGC warns Hormuz Strait "closed" as 4 tankers reported hit</a>
-        <a href="https://www.euronews.com/2026/10/17/super-tanker-ablaze-after-striking-mine-in-strait-of-hormuz-irgc-says">Euronews — Super tanker ablaze after striking mine in Strait of Hormuz</a>
-        <a href="https://www.thenationalnews.com/news/mena/2026/10/17/live-iran-war-hormuz-houthis-saudi-arabia-yemen/">The National — Middle East latest: oil tanker struck in Strait of Hormuz</a>
-        <a href="https://newarab.com/news/irgc-say-tanker-exploded-after-hitting-mine-hormuz-strait">The New Arab — IRGC say tanker exploded after hitting mine in Hormuz Strait</a>
+    <!-- Live stats -->
+    <div class="stat-row">
+      <div class="stat-pill"><span class="val">~3,400–3,684</span> <span class="lbl">Iranian KIA</span></div>
+      <div class="stat-pill"><span class="val">21–24</span> <span class="lbl">US KIA</span></div>
+      <div class="stat-pill"><span class="val">$106.58</span> <span class="lbl">Brent Crude/bbl</span></div>
+      <div class="stat-pill"><span class="val">2.9M bbl/day</span> <span class="lbl">Hormuz throughput (vs 17.1M pre-war)</span></div>
+      <div class="stat-pill"><span class="val">$43.6B</span> <span class="lbl">US war cost (as of Sep)</span></div>
+    </div>
+
+    <!-- Stories -->
+    <div class="story-card">
+      <div class="story-title">Iran Threatens Retaliation if US Strikes Energy Infrastructure; Hormuz "Stays Closed Until US Respects Iranian Rights"</div>
+      <div class="story-meta"><span class="source">The New Arab · Reuters</span> — Oct 16–17, 2026</div>
+      <div class="story-body">
+        Iran's Acting Oil Minister Hamid Bovard issued a formal warning of "precise, appropriate retaliatory measures" if the US follows through on threatened strikes against Iranian energy infrastructure. Simultaneously, Iran's military command declared the Strait of Hormuz would remain closed until Washington "respected Iranian rights." President Trump has publicly floated a MOAB strike on Pickaxe Mountain, a site linked to Iran's nuclear program, while ruling out nuclear weapons or ground troops.
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">📋 Also Today</div>
-      <ul class="news-list">
-        <li>UKMTO reported two tankers attacked off Saudi Arabia, one hit by an RPG fired from a small boat — a tactic distinct from the mine and projectile strikes dominating recent weeks.</li>
-        <li>Iran's offer is explicitly conditional; Araghchi did not disclose the specific terms Tehran is demanding from Washington in exchange for reopening the strait.</li>
+    <div class="story-card">
+      <div class="story-title">Near-Daily Ship Attacks in Hormuz — Two Cargo Vessels Sunk This Month</div>
+      <div class="story-meta"><span class="source">USNI News · CNN</span> — Oct 9 & Oct 15, 2026 &nbsp;|&nbsp; <a href="https://news.usni.org/2026/10/09/october-sees-near-daily-strikes-on-ships-in-hormuz" target="_blank">USNI ↗</a></div>
+      <div class="story-body">
+        The IMO confirmed at least 15 ship strikes in the Strait of Hormuz between October 6–14 alone — approximately one attack per day. Two vessels have been sunk, including the Singapore-registered GFS Pride, attributed by CENTCOM to an Iranian projectile. The US claims it controls the waterway with 40+ transits in a 24-hour period; Iran contests that claim through daily harassment.
+      </div>
+    </div>
+
+    <div class="story-card">
+      <div class="story-title">Iran Deploys Navy East of Hormuz; Oil Throughput Crashes to 2.9M bbl/day</div>
+      <div class="story-meta"><span class="source">Al Jazeera</span> — Oct 14, 2026 &nbsp;|&nbsp; <a href="https://www.aljazeera.com/news/2026/10/14/iran-steps-up-hormuz-surveillance-attacks-soar-oil-flows-crash-again" target="_blank">Al Jazeera ↗</a></div>
+      <div class="story-body">
+        Iran's Navy deployed new surveillance units east of Hormuz and into the Sea of Oman, coinciding with the worst attack surge of the war. Only 2.9 million barrels transited the strait on October 11, versus a pre-war daily average of 17.1 million. Brent crude climbed to $106.58/barrel. Analysts say Iran is deliberately escalating to pressure US midterm voters ahead of November 3.
+      </div>
+    </div>
+
+    <div class="story-card">
+      <div class="story-title">Iran Designates US-UAE Oil Shuttle System as Military Target; UAE Digital Infrastructure Threatened</div>
+      <div class="story-meta"><span class="source">Al Jazeera</span> — Oct 12, 2026 &nbsp;|&nbsp; <a href="https://www.aljazeera.com/economy/2026/10/12/iran-sets-crosshairs-on-us-uae-oil-shuttle-out-of-strait-of-hormuz" target="_blank">Al Jazeera ↗</a></div>
+      <div class="story-body">
+        Iran's security chief Mohsen Rezaei declared the US-UAE ship-to-ship crude transfer system operating off Oman's coast is now an explicit military target. The shuttle system emerged after Iran's port blockades and has become a key workaround for Gulf exporters. Freight costs have ballooned to 25–30% of crude's value (vs. 1–3% pre-war), with national oil companies discounting up to $35/barrel. Rezaei also threatened UAE digital infrastructure — a potential trigger for a broader regional escalation.
+      </div>
+    </div>
+
+    <div class="story-card">
+      <div class="story-title">Trump Weighs MOAB Strike on Pickaxe Mountain; No Ceasefire Talks Active</div>
+      <div class="story-meta"><span class="source">Fox News Live</span> — Oct 16, 2026</div>
+      <div class="story-body">
+        Trump confirmed the Pentagon is preparing conventional strike scenarios against Pickaxe Mountain, a nuclear-linked site. He stated "we may have to go there — we'll knock it out fast," while reiterating "I wouldn't use nuclear." No formal ceasefire negotiations are underway; the July collapse of the Islamabad Memorandum has left a diplomatic vacuum. Trump hinted the conflict's trajectory will become clear after the November 3 midterms.
+      </div>
+    </div>
+
+    <div class="story-card">
+      <div class="story-title">Ceasefire Collapsed in July — Islamabad Memorandum Framework Inactive</div>
+      <div class="story-meta"><span class="source">International Crisis Group · Wikipedia</span></div>
+      <div class="story-body">
+        Pakistan brokered a ceasefire on April 8, and the Islamabad Memorandum (signed June 17) established a 60-day negotiation window. However, the ceasefire collapsed July 8 after Iranian attacks on commercial vessels resumed. The core sticking point: Pakistan declared the ceasefire covered Lebanon, but both Trump and Netanyahu excluded it, allowing Israel to continue Operation Eternal Darkness. No replacement framework has emerged.
+      </div>
+    </div>
+
+    <div class="story-card">
+      <div class="story-title">Houthi Attacks on Riyadh Airport Kill 17, Injure 333 — Oct 7–11</div>
+      <div class="story-meta"><span class="source">Reuters · Al-Monitor</span> — Oct 11, 2026</div>
+      <div class="story-body">
+        Houthi forces carried out a wave of drone and missile strikes on King Khalid International Airport in Riyadh over five days, killing 17 and injuring 333. Saudi Arabia scrambled additional Patriot batteries and requested additional US support. The attacks represent the Houthis' deepest strike into Saudi territory this war, signaling an expanded Iranian proxy strategy amid the Hormuz escalation.
+      </div>
+    </div>
+
+    <div class="takeaways">
+      <h3>Key Takeaways</h3>
+      <ul>
+        <li><strong>Hormuz is the active front:</strong> Iran has shifted to asymmetric maritime warfare — near-daily ship strikes are more sustainable and harder for the US to counter than massed missile salvos.</li>
+        <li><strong>New economic pressure point:</strong> Iran targeting the US-UAE oil shuttle directly threatens the workaround that has kept Gulf crude flowing — could spike oil prices sharply if successful.</li>
+        <li><strong>Post-midterm decision:</strong> Trump has effectively paused major escalation decisions until after November 3 — the next six weeks are the geopolitical inflection point.</li>
+        <li><strong>MOAB decision looming:</strong> If Trump orders the Pickaxe Mountain strike, Iran has pre-warned of energy infrastructure retaliation — which could trigger a full Gulf energy crisis.</li>
       </ul>
     </div>
-
-    <div class="card">
-      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
-      <table class="data-table">
-        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
-        <tbody>
-          <tr><td>US military</td><td>18–23</td><td>820 wounded</td></tr>
-          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
-          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
-          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
-          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced; incl. 1 American killed Oct 10 in Saudi Arabia</td></tr>
-        </tbody>
-      </table>
-      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">No updated aggregate casualty totals published today; figures carried forward from the last confirmed update.</p>
-    </div>
   </div>
 
-  <!-- ═══════════════════ CYBERSECURITY ═══════════════════ -->
-  <div class="topic-section" id="cyber">
-    <div class="topic-header">
-      <div class="topic-icon">🔐</div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  SECTION 2: CYBERSECURITY                   -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header cyber">
+      <div class="icon">🛡️</div>
       <div>
-        <div class="topic-title">Cybersecurity</div>
-        <div class="topic-subtitle">Saturday, October 17, 2026</div>
+        <h2>Cybersecurity</h2>
+        <div class="tag">CVEs · Ransomware · Nation-State · Compliance</div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">
-        🌟 Top Story: Palo Alto PAN-OS Zero-Day Remediation Deadline Hits Today
-        <span class="badge badge-red">CVE-2026-0322 · CISA DEADLINE TODAY</span>
+    <!-- CISO -->
+    <div class="audience-section">
+      <div class="audience-label ciso">🔐 CISO — Threats, CVEs &amp; Zero-Days</div>
+
+      <div class="story-card">
+        <div class="story-title">Microsoft October Patch Tuesday: Record 1,411+ Vulnerabilities — 3 Zero-Days Including Active MotW Bypass</div>
+        <div class="story-meta"><span class="source">Bleeping Computer · Krebs on Security · Dark Reading</span> &nbsp;|&nbsp; <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-october-2026-patch-tuesday-fixes-1-411-flaws-3-zero-days/" target="_blank">Bleeping Computer ↗</a></div>
+        <div class="story-body">
+          Microsoft's October Patch Tuesday addressed a record-breaking 1,411+ vulnerabilities including three zero-days. The most critical — <strong>CVE-2026-96951</strong> — is a Windows Shell Mark-of-the-Web bypass actively exploited in the wild, allowing attackers to sidestep SmartScreen, Office Protected View, and macro blocks entirely. Two others address a .NET WDAC enforcement bypass (discovered by Google Project Zero) and a MessagePack DoS flaw. <strong>Patch CVE-2026-96951 immediately</strong> — it's the trivial entry point into any unpatched Windows environment.
+        </div>
       </div>
-      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
-        Today, October 17, is CISA's federal remediation deadline for CVE-2026-0322, a PAN-OS management-interface vulnerability that Palo Alto Networks confirmed is being actively exploited in the wild. The flaw carries a CVSS score of 8.6 and allows an attacker who is already authenticated and has network access to the management interface to run arbitrary code with root privileges — a significant escalation path for any environment where that interface is reachable beyond a tightly controlled management network. CISA added the vulnerability to its Known Exploited Vulnerabilities catalog on October 14, giving agencies a short three-day window that closes today. This is the third major edge-device zero-day deadline in a week, following Wednesday's Ivanti Connect Secure KEV deadline and Thursday's Windows Shell deadline, reinforcing a pattern: perimeter and remote-access appliances remain the preferred initial-access vector across unrelated campaigns this month. Organizations that have not restricted management-interface access to a dedicated, isolated network should treat that architectural gap — not just missing patches — as the root issue these deadlines keep surfacing.
-      </p>
-      <div class="alert alert-red">
-        Confirm PAN-OS management-interface exposure today. If it is reachable from anything other than a dedicated management network, treat that as the primary risk regardless of patch status — restrict access first, patch second.
+
+      <div class="story-card">
+        <div class="story-title">Ivanti Connect Secure Zero-Day (CVE-2026-104935) Actively Exploited — 3 Flaws Chained for Root Access</div>
+        <div class="story-meta"><span class="source">Bleeping Computer · The Hacker News · CISA</span> &nbsp;|&nbsp; <a href="https://www.bleepingcomputer.com/news/security/ivanti-warns-of-connect-secure-zero-day-exploited-in-attacks/" target="_blank">Bleeping Computer ↗</a></div>
+        <div class="story-body">
+          A high-severity authentication bypass in Ivanti Connect Secure is being actively chained with two additional unpatched zero-days to achieve full root access — no credentials or user interaction required. CISA issued an emergency directive for federal agencies. Honeypots are logging 105+ active exploit attempts. If your organization runs Ivanti Connect Secure, treat this as an emergency patch event.
+        </div>
       </div>
-      <div class="sources">
-        Sources: <a href="https://www.securityweek.com/palo-alto-networks-patches-pan-os-zero-day-exploited-for-remote-code-execution/">SecurityWeek — Palo Alto Networks patches PAN-OS zero-day exploited for RCE</a>
-        <a href="https://pasqualepillitteri.it/en/news/24168/palo-alto-pan-os-zero-day-cve-2026-0322-exploited">Pasquale Pillitteri — Palo Alto PAN-OS zero-day CVE-2026-0322 exploited</a>
-        <a href="https://www.darkreading.com/vulnerabilities-threats/zero-days-microsoft-october-patch-tuesday">Dark Reading — Zero-days lurk in Microsoft's overgrown October Patch Tuesday</a>
+
+      <div class="story-card">
+        <div class="story-title">Citrix NetScaler SAML Zero-Day (CVE-2026-88779, CVSS 8.7) — Targeted Enterprise Attacks Confirmed</div>
+        <div class="story-meta"><span class="source">The Hacker News · Bleeping Computer</span> &nbsp;|&nbsp; <a href="https://thehackernews.com/2026/10/new-netscaler-zero-day-exploited-in.html" target="_blank">THN ↗</a></div>
+        <div class="story-body">
+          A flaw in Citrix NetScaler ADC and Gateway can knock SAML-based authentication deployments fully offline when exploited. Targeted attacks against enterprise and government networks have been confirmed. Citrix has released patches — immediate upgrade is advised.
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-title">Cisco Secure Email Gateway Zero-Day (CVE-2026-76519) — Path Traversal Actively Abused</div>
+        <div class="story-meta"><span class="source">Bleeping Computer · The Hacker News</span> &nbsp;|&nbsp; <a href="https://www.bleepingcomputer.com/news/security/cisco-patches-actively-exploited-secure-email-gateway-zero-day/" target="_blank">Bleeping Computer ↗</a></div>
+        <div class="story-body">
+          A path-traversal zero-day in the AMP feature of Cisco Secure Email Gateway is being actively exploited in the wild. Any organization relying on Cisco email security infrastructure should treat this as a priority patch.
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-title">China-Linked "Antino" Backdoor Abuses Outlook &amp; OneDrive for C2 — Targets APAC Governments</div>
+        <div class="story-meta"><span class="source">The Hacker News</span> &nbsp;|&nbsp; <a href="https://thehackernews.com/2026/10/antino-backdoor-uses-outlook-and.html" target="_blank">THN ↗</a></div>
+        <div class="story-body">
+          A China-nexus APT deployed a previously undocumented backdoor called Antino against government and policy organizations across Taiwan, India, the Philippines, Cambodia, Pakistan, Thailand, and Myanmar. The malware tunnels C2 traffic through legitimate Microsoft Outlook and OneDrive APIs — making detection by traditional network monitoring nearly impossible without cloud-layer monitoring.
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-title">China-Aligned TA419 Targets U.S. AI Policy Experts via AiTM Phishing</div>
+        <div class="story-meta"><span class="source">The Hacker News</span> &nbsp;|&nbsp; <a href="https://thehackernews.com/2026/10/china-aligned-ta419-targets-us-ai.html" target="_blank">THN ↗</a></div>
+        <div class="story-body">
+          Newly tracked threat actor TA419 (China-aligned) is running adversary-in-the-middle phishing campaigns against AI policy experts at US think tanks, universities, and law firms — harvesting credentials and MFA tokens. The targeting suggests intelligence collection around US AI governance strategy at a critical regulatory moment.
+        </div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">📋 Also Today</div>
-      <ul class="news-list">
-        <li>The Hacker News published a detailed technical writeup on China-linked exploitation of the BeyondTrust Remote Support zero-day (CVE-2026-102764), reinforcing the seven-week-dwell-time attribution reported earlier this week.</li>
-        <li>CISA's Windows Shell zero-day deadline (CVE-2026-96951) passed yesterday; organizations still unpatched should treat remediation as overdue rather than routine.</li>
+    <hr class="sub-divider"/>
+
+    <!-- Consulting Partner -->
+    <div class="audience-section">
+      <div class="audience-label partner">🤝 Consulting Partner — Trends, Compliance &amp; Client Risk</div>
+
+      <div class="story-card">
+        <div class="story-title">KillSec Ransomware Gang Dismantled — Alleged Leader a 16-Year-Old, 110TB of Victim Data Seized</div>
+        <div class="story-meta"><span class="source">The Hacker News · Bleeping Computer · Dark Reading</span> &nbsp;|&nbsp; <a href="https://thehackernews.com/2026/10/police-arrest-16-year-old-suspected-of.html" target="_blank">THN ↗</a></div>
+        <div class="story-body">
+          Spanish police (Guardia Civil and Mossos d'Esquadra), acting on German prosecution leads, arrested three suspects including a 16-year-old believed to be KillSec's main operator. Police seized 5 servers and secured 110 TB of stolen victim data. KillSec is linked to 280+ victim organizations. While this dismantles the brand, expect copycat and rebrand activity from surviving operators — a pattern consistent with LockBit and BlackCat takedowns.
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-title">FBI Arrests Ransomware Negotiation Firm Executive Tied to ShinyHunters — $70M+ Extorted in 2026</div>
+        <div class="story-meta"><span class="source">Krebs on Security</span> &nbsp;|&nbsp; <a href="https://krebsonsecurity.com/2026/10/fbi-arrests-founder-of-ransomware-negotiation-firm/" target="_blank">Krebs ↗</a></div>
+        <div class="story-body">
+          The FBI arrested a Canadian cybersecurity executive in Pennsylvania on charges of cyber extortion conspiracy, alleging ties to the ShinyHunters group — which has extorted over $70M in 2026 alone. This reinforces ongoing scrutiny of ransomware negotiation firms and their potential conflicts of interest. Client advisement: incident response retainer selection now carries reputational and legal risk.
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-title">Denmark National Population Registry Breach — 8.8 Million Records (Near Entire Population) Exposed</div>
+        <div class="story-meta"><span class="source">The Hacker News</span> &nbsp;|&nbsp; <a href="https://thehackernews.com/2026/10/denmark-says-attackers-accessed-cpr-data.html" target="_blank">THN ↗</a></div>
+        <div class="story-body">
+          Attackers accessed Denmark's national CPR registry through a compromised third-party vendor account, exfiltrating names, addresses, and national ID numbers for ~8.8 million people over approximately 10 days in September. This is among the most comprehensive national identity dataset breaches in European history — a major client risk discussion point for EU-based engagements around third-party vendor risk programs.
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-title">CISA BOD 26-04: New 3-Day Emergency Patch Mandate for Highest-Risk Federal Flaws</div>
+        <div class="story-meta"><span class="source">Dark Reading · Bleeping Computer</span> &nbsp;|&nbsp; <a href="https://www.darkreading.com/cyber-risk/cisa-rewrites-federal-patching-requirements-ai-threat-era" target="_blank">Dark Reading ↗</a></div>
+        <div class="story-body">
+          CISA's new Binding Operational Directive 26-04 overhauled federal vulnerability remediation using a four-factor risk matrix (KEV status, public exposure, exploitability, and impact). The highest-risk flaws now require a 3-day remediation window. Federal agencies have 60 days to update policies — and private sector clients often follow federal frameworks within 12–18 months. Good opportunity to position vulnerability management maturity assessments.
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-title">CISA &amp; 16 Partner Agencies Release Updated SBOM Guidance — 10 New Required Elements</div>
+        <div class="story-meta"><span class="source">Dark Reading</span> &nbsp;|&nbsp; <a href="https://www.darkreading.com/cybersecurity-operations/cisa-issues-fresh-sbom-guidance" target="_blank">Dark Reading ↗</a></div>
+        <div class="story-body">
+          Updated SBOM guidance from CISA and 16 government partners supersedes 2021 NTIA standards. The new framework requires 10 elements including digital signatures and tool provenance metadata. Software supply chain engagements are a growing consulting revenue stream — clients with federal contracts will need compliance roadmaps before the December effective date.
+        </div>
+      </div>
+    </div>
+
+    <hr class="sub-divider"/>
+
+    <!-- Business Executive -->
+    <div class="audience-section">
+      <div class="audience-label exec">💼 Business Executive — Strategic Risks &amp; Board Topics</div>
+
+      <div class="story-card">
+        <div class="story-title">ConnectWise Credential Breach Hits 173 Microsoft 365 Business Tenants</div>
+        <div class="story-meta"><span class="source">The Hacker News · Huntress</span> &nbsp;|&nbsp; <a href="https://thehackernews.com/2026/10/hackers-use-compromised-connectwise.html" target="_blank">THN ↗</a></div>
+        <div class="story-body">
+          A single compromised ConnectWise Cloud Backup credential cascaded into unauthorized access across 173 Microsoft 365 tenants. ConnectWise has suspended Cloud Backup entirely. This illustrates the board-level risk of IT supply chain exposure — one vendor credential can compromise hundreds of downstream businesses simultaneously.
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-title">North Korea Pivots to Phishing Ukrainian Officials for War Intelligence</div>
+        <div class="story-meta"><span class="source">Dark Reading</span> &nbsp;|&nbsp; <a href="https://www.darkreading.com/cyberattacks-data-breaches/north-korea-phishes-ukrainians-war-intel" target="_blank">Dark Reading ↗</a></div>
+        <div class="story-body">
+          North Korean state-sponsored actors are spear-phishing Ukrainian government, policy, and academic contacts to gather geopolitical intelligence on Ukraine's strategic position. The campaign reflects Pyongyang's broader intelligence collection pivot beyond financial theft — and signals that organizations with any Ukraine-related work may be targets.
+        </div>
+      </div>
+    </div>
+
+    <div class="takeaways">
+      <h3>Key Takeaways</h3>
+      <ul>
+        <li><strong>Patch priority this week:</strong> CVE-2026-96951 (Windows MotW), CVE-2026-104935 (Ivanti), CVE-2026-88779 (Citrix), CVE-2026-76519 (Cisco) — all actively exploited in the wild.</li>
+        <li><strong>Cloud C2 is the new normal:</strong> The Antino backdoor's use of Outlook/OneDrive for C2 means network-layer defenses are insufficient — cloud API monitoring and behavioral analytics are now required.</li>
+        <li><strong>Supply chain risk is systemic:</strong> ConnectWise and Denmark CPR breaches both trace to a single third-party credential compromise — vendor risk programs need continuous monitoring, not annual audits.</li>
+        <li><strong>Regulatory acceleration:</strong> BOD 26-04 and updated SBOM guidance signal a fast-moving compliance landscape — clients should be proactively reviewing their frameworks now.</li>
       </ul>
     </div>
-
-    <div class="card">
-      <div class="card-title">📣 Audience-Tailored Takeaways</div>
-      <div class="audience-grid">
-        <div class="audience-card">
-          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
-          <ul>
-            <li>Treat today's PAN-OS deadline as the third edge-device KEV deadline this week — if your team is only reacting to each one individually, it's time for a standing review of all internet-facing management interfaces, not just PAN-OS</li>
-          </ul>
-        </div>
-        <div class="audience-card">
-          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
-          <ul>
-            <li>Three perimeter-appliance zero-days with KEV deadlines in a single week is a strong, data-backed case for clients to invest in management-interface network segmentation as a standing control, not a per-incident fix</li>
-          </ul>
-        </div>
-        <div class="audience-card">
-          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
-          <ul>
-            <li>Ask whether your security team can state, right now, which management interfaces are internet-reachable — the recurring theme this month is that the answer is often "we're not sure," which is itself the finding</li>
-          </ul>
-        </div>
-      </div>
-    </div>
   </div>
 
-  <!-- ═══════════════════ AI ═══════════════════ -->
-  <div class="topic-section" id="ai">
-    <div class="topic-header">
-      <div class="topic-icon">🤖</div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  SECTION 3: ARTIFICIAL INTELLIGENCE          -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header ai">
+      <div class="icon">🤖</div>
       <div>
-        <div class="topic-title">Artificial Intelligence</div>
-        <div class="topic-subtitle">Saturday, October 17, 2026 · Anthropic Highlights Claude's Autonomous Research Results</div>
+        <h2>Artificial Intelligence</h2>
+        <div class="tag">Models · Market · Security · Governance</div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">
-        🌟 Top Story: Claude Redesigns Quantum Circuits and Cracks a 20-Year-Old NIST Mystery
-        <span class="badge badge-purple">AUTONOMOUS RESEARCH RESULTS</span>
+    <!-- CISO AI -->
+    <div class="audience-section">
+      <div class="audience-label ciso">🔐 CISO — AI Security Risks &amp; Adversarial AI</div>
+
+      <div class="story-card">
+        <div class="story-title">Adversaries Compromised AI Security Tools at 90+ Organizations — Next Wave Has Firewall Write Access</div>
+        <div class="story-meta"><span class="source">VentureBeat</span> &nbsp;|&nbsp; <a href="https://venturebeat.com/security/adversaries-hijacked-ai-security-tools-at-90-organizations-the-next-wave-has-write-access-to-the-firewall" target="_blank">VentureBeat ↗</a></div>
+        <div class="story-body">
+          A major investigation found adversaries have compromised AI security tools at 90+ organizations. The emerging threat frontier involves AI agents with write access to firewalls and IAM policies — a scenario that outpaces existing governance frameworks. AI-enabled adversary operations rose 89% year-over-year, and 88% of enterprises reported AI agent security incidents in the past 12 months. This is a structural problem, not a configuration issue.
+        </div>
       </div>
-      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
-        Anthropic published results from two experiments showcasing Claude working largely autonomously on hard research problems. In the first, Claude redesigned quantum circuits for eight computational tasks, cutting gate counts by as much as 17x and beating previously published algorithms for several of them — a concrete demonstration of frontier models contributing original engineering improvements rather than just reproducing known techniques. In the second, Anthropic researchers say Claude solved a roughly 20-year-old open question about NIST's elliptic-curve cryptography seeds in about 30 minutes, discovering that the "random" seeds used to generate the P-256 and related curves actually originated from the C library's lrand48 pseudo-random number generator, initialized with Unix timestamps — a far more predictable and lower-entropy source than long assumed, with implications for how much residual trust those curve parameters deserve. Anthropic also disclosed that its AI agents now log more working hours internally than its human employees, by a ratio of roughly 6 to 1, illustrating how quickly agentic workloads are scaling inside frontier labs themselves. Separately, DeepSeek released V4.1 Flash 1017, which the company says beats larger rival models on agentic benchmarks while cutting per-task inference costs — continuing the pattern of smaller, cheaper models closing the gap with frontier-scale ones on practical agent tasks.
-      </p>
-      <div class="sources">
-        Sources: <a href="https://aiweekly.co/ai-news-today">AI Weekly — AI News Today, October 17</a>
-        <a href="https://llm-stats.com/ai-news">LLM Stats — LLM News Today (October 2026)</a>
+
+      <div class="story-card">
+        <div class="story-title">China-Aligned TA419 Targeting AI Policy Experts with AiTM Phishing — Credential &amp; MFA Harvesting</div>
+        <div class="story-meta"><span class="source">The Hacker News</span> &nbsp;|&nbsp; <a href="https://thehackernews.com/2026/10/china-aligned-ta419-targets-us-ai.html" target="_blank">THN ↗</a></div>
+        <div class="story-body">
+          China-aligned TA419 is specifically targeting AI experts at US think tanks and law firms to harvest intelligence around AI governance strategy. CISOs at AI-adjacent organizations (research, consulting, government contractors) should brief their AI and policy teams on AiTM phishing tradecraft and enforce hardware-based MFA (FIDO2) for high-value accounts.
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-title">Pluto Security Raises $42M as AI Agent Threats Drive New Security Category</div>
+        <div class="story-meta"><span class="source">TechCrunch</span> &nbsp;|&nbsp; <a href="https://techcrunch.com/2026/10/13/pluto-security-raises-42m-as-ai-gives-enterprise-security-teams-a-new-headache/" target="_blank">TechCrunch ↗</a></div>
+        <div class="story-body">
+          Pluto Security's $42M raise signals a new security sub-market specifically targeting AI agent threats. Traditional cybersecurity tools were not designed for agentic AI behaviors — budget cycles should now include a dedicated AI security tooling evaluation.
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-title">AI Governance Moving to Runtime — Regulated Industries Pioneering Enforcement</div>
+        <div class="story-meta"><span class="source">VentureBeat</span> &nbsp;|&nbsp; <a href="https://venturebeat.com/security/ai-governance-is-moving-to-runtime-and-regulated-industries-are-getting-there-first" target="_blank">VentureBeat ↗</a></div>
+        <div class="story-body">
+          Pre-deployment AI governance is proving insufficient as agentic AI operates in real time. Banks (SR 11-7), pharma (GxP), and government (FedRAMP) are pioneering runtime enforcement. SAP committed to EU AI Act runtime enforcement capabilities before end-2026. CISOs need to shift from "review before deploy" to continuous runtime guardrails — especially for LLM-based agents.
+        </div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">📊 Also Today</div>
-      <ul class="news-list">
-        <li>RobotX AI launched its first robot brain, Xmind, ahead of TechCrunch Disrupt 2026.</li>
-        <li>Google's Universal Cart agentic-checkout rollout (launched yesterday) continues to draw scrutiny over fraud and consumer-protection implications.</li>
+    <hr class="sub-divider"/>
+
+    <!-- Partner AI -->
+    <div class="audience-section">
+      <div class="audience-label partner">🤝 Consulting Partner — Market Moves &amp; Opportunities</div>
+
+      <div class="story-card">
+        <div class="story-title">Google Gemini 4 Argon Broadly Available — $2/$10 per 1M Tokens, Half the Price of Claude Opus 5.5</div>
+        <div class="story-meta"><span class="source">VentureBeat · The Information</span> &nbsp;|&nbsp; <a href="https://venturebeat.com/technology/google-makes-gemini-4-argon-broadly-available-with-limited-time-low-api-pricing-of-2-10-per-1m-token" target="_blank">VentureBeat ↗</a></div>
+        <div class="story-body">
+          Google made its flagship Gemini 4 Argon multimodal model broadly available on October 13 with aggressive introductory pricing at $2/$10 per million input/output tokens — half the cost of Claude Opus 5.5 — through November 30. This pricing pressure is significant for enterprise AI budget conversations and will likely accelerate multi-model procurement strategies for clients.
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-title">Mistral Large 4 "Le Chonk" (1T Parameters) — European Open-Weight Model, Open Weights October 27</div>
+        <div class="story-meta"><span class="source">VentureBeat</span> &nbsp;|&nbsp; <a href="https://venturebeat.com/technology/mistral-debuts-large-4-le-chonk-a-1-trillion-parameter-text-output-model-with-high-benchmarks-planned-for-open-weights-release" target="_blank">VentureBeat ↗</a></div>
+        <div class="story-body">
+          Mistral's 1-trillion-parameter model (only 49B active during inference) is in developer preview, with open weights releasing October 27. Built in European data centers, it's positioned for use cases requiring data sovereignty — coding, cybersecurity, finance, and satellite imagery. Open weights on October 27 will be a significant event for clients considering on-premise or private-cloud AI deployments.
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-title">Nvidia Acquires Hugging Face for $12.9B — Closing H1 2027, Pending Regulatory Review</div>
+        <div class="story-meta"><span class="source">TechCrunch · The Information</span> &nbsp;|&nbsp; <a href="https://techcrunch.com/2026/09/03/nvidia-confirms-it-will-buy-hugging-face-for-12-9-billion/" target="_blank">TechCrunch ↗</a></div>
+        <div class="story-body">
+          NVIDIA confirmed the $12.9B Hugging Face acquisition (closing H1 2027 pending regulators). With 3M+ models and 18M+ active developers on HF, Nvidia is making a bold move to own the open AI ecosystem layer on top of its silicon. This could reshape open-source AI tooling pricing, licensing, and ecosystem dynamics — worth tracking for any client with significant Hugging Face dependencies.
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-title">China's Manus Raises $500M+ After Meta Acquisition Blocked — Backed by Tencent, IDG, Boyu</div>
+        <div class="story-meta"><span class="source">TechCrunch</span> &nbsp;|&nbsp; <a href="https://techcrunch.com/2026/10/08/chinas-manus-raises-over-500m-in-first-funding-round-since-split-with-meta/" target="_blank">TechCrunch ↗</a></div>
+        <div class="story-body">
+          Butterfly Effect (Manus's parent) raised $500M+ — its first major funding since Meta's $2B acquisition attempt was blocked. With Tencent and HSG (formerly Sequoia China) backing, Manus remains a significant Chinese AI agent competitor. The geopolitical blocking of the Meta deal signals continued fragmentation of the global AI ecosystem.
+        </div>
+      </div>
+    </div>
+
+    <hr class="sub-divider"/>
+
+    <!-- Executive AI -->
+    <div class="audience-section">
+      <div class="audience-label exec">💼 Business Executive — Major Launches &amp; Competitive Landscape</div>
+
+      <div class="story-card">
+        <div class="story-title">Meta Releases Muse Spark Open — 816B Parameters, "Most Capable US Open-Weight Model," Runs on Two Mac Desktops</div>
+        <div class="story-meta"><span class="source">VentureBeat</span> &nbsp;|&nbsp; <a href="https://venturebeat.com/technology/meta-unveils-muse-spark-open-the-new-top-u-s-open-weights-model-and-it-runs-on-two-paired-mac-desktops" target="_blank">VentureBeat ↗</a></div>
+        <div class="story-body">
+          Meta released Muse Spark Open on October 15, an 816-billion-parameter model it claims is the most capable US-built open-weight model to date — and it runs on two paired Mac desktops. This dramatically lowers the barrier to deploying powerful AI locally, without cloud dependency. Meta also launched closed models (Muse Wonder, Muse Wonder Full) via API at $4/$20 per million tokens.
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-title">Ramp Hits $60B Valuation in 4 Months (+$16B), Launches AI Automation Workspace "Glass"</div>
+        <div class="story-meta"><span class="source">TechCrunch</span> &nbsp;|&nbsp; <a href="https://techcrunch.com/2026/10/15/ramp-reaches-60b-valuation-as-it-pushes-deeper-into-ai/" target="_blank">TechCrunch ↗</a></div>
+        <div class="story-body">
+          Ramp closed a $1.85B round at $60B valuation (up from $44B four months ago) with $2B annualized revenue. It launched "Glass," a workspace for collecting and managing AI automations and agent skills. The rapid valuation jump reflects strong enterprise demand for AI-integrated finance tooling — and validates the "AI-native" business application category.
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-title">Enterprise AI Agent Trust Drops from 75% to 56% — Adoption Broad in Pilots, Low in Production</div>
+        <div class="story-meta"><span class="source">VentureBeat</span> &nbsp;|&nbsp; <a href="https://venturebeat.com/" target="_blank">VentureBeat ↗</a></div>
+        <div class="story-body">
+          New survey data shows the share of enterprises trusting AI agents to make autonomous production changes has fallen from 75% to 56% over the past year. Agentic AI adoption remains broad in pilots but consistently fails to cross into production. The drop reflects growing awareness of governance gaps — organizations that solve the trust/governance problem first will gain meaningful competitive advantage.
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-title">Chinese Models Continue Closing Gap — Z.ai GLM-5.3 Beats Claude Fable 5, DeepSeek Flagship Imminent</div>
+        <div class="story-meta"><span class="source">Interconnects AI · The Information</span> &nbsp;|&nbsp; <a href="https://www.interconnects.ai/archive" target="_blank">Interconnects ↗</a></div>
+        <div class="story-body">
+          China's Z.ai released GLM-5.3, which reportedly outperforms Claude Fable 5 and GPT-5.6-Sol on select benchmarks. Separately, The Information reports DeepSeek is nearing release of a next flagship with strong coding capabilities. The sustained competitive pressure from Chinese labs is reshaping enterprise AI vendor selection — clients should avoid single-vendor lock-in as performance dynamics shift rapidly.
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-title">White House AI Safety Pledge — Trump Convenes Tech CEOs for "Morally Binding" Commitment</div>
+        <div class="story-meta"><span class="source">VentureBeat</span> &nbsp;|&nbsp; <a href="https://venturebeat.com/security/ai-governance-is-moving-to-runtime-and-regulated-industries-are-getting-there-first" target="_blank">VentureBeat ↗</a></div>
+        <div class="story-body">
+          The White House convened major tech CEOs to sign what Trump called a "morally binding" AI safety pledge. While lacking legal enforcement, the pledge signals the administration's evolving posture on AI governance — and may presage executive orders ahead of the midterms. Boards should ensure AI risk is on the agenda for Q4 meetings.
+        </div>
+      </div>
+    </div>
+
+    <div class="takeaways">
+      <h3>Key Takeaways</h3>
+      <ul>
+        <li><strong>Model price war intensifying:</strong> Gemini 4 Argon at $2/$10 per million tokens forces every enterprise AI budget conversation — multi-model procurement will become standard within 6 months.</li>
+        <li><strong>Open weights are going 1T+:</strong> Mistral Large 4 open weights drop October 27 — organizations with private-cloud or sovereign AI requirements should evaluate immediately.</li>
+        <li><strong>AI agents are the new attack surface:</strong> 88% of enterprises hit by AI agent security incidents; 90+ organizations had their AI security tools compromised. This is now a board-level risk, not just a CISO topic.</li>
+        <li><strong>Chinese AI closing benchmark gap:</strong> GLM-5.3 and imminent DeepSeek flagship challenge Western model dominance — competitive AI landscape is truly global and accelerating.</li>
+        <li><strong>Production AI trust declining:</strong> The trust gap (75%→56%) is the key bottleneck for agentic AI ROI — governance and observability solutions are the next major consulting opportunity.</li>
       </ul>
     </div>
-
-    <div class="card">
-      <div class="card-title">📣 Audience-Tailored Takeaways</div>
-      <div class="audience-grid">
-        <div class="audience-card">
-          <div class="aud-label aud-ciso">🔐 AI Security</div>
-          <ul>
-            <li>Claude's finding that NIST's curve seeds trace to a predictable, timestamp-seeded RNG is a reminder to revisit assumptions about the provenance of "random" cryptographic constants in your own stack, not just NIST's — low-entropy seed generation is a broader pattern risk, not a one-off</li>
-          </ul>
-        </div>
-        <div class="audience-card">
-          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
-          <ul>
-            <li>Anthropic's internal 6:1 agent-to-employee working-hour ratio is a concrete, citable data point for clients asking "how far along is agentic adoption really" at a frontier lab actually building these systems</li>
-          </ul>
-        </div>
-        <div class="audience-card">
-          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
-          <ul>
-            <li>DeepSeek continuing to match larger frontier models on agentic tasks at lower cost keeps pressure on per-token pricing across the board — worth revisiting vendor cost assumptions rather than assuming current pricing is stable</li>
-          </ul>
-        </div>
-      </div>
-    </div>
   </div>
 
-  <div class="briefing-footer">
-    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Saturday, October 17, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
-    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+
+  <!-- Footer -->
+  <div class="footer">
+    <strong>Generated by Jorge</strong> &nbsp;·&nbsp; Daily Briefing for Saturday, October 17, 2026 &nbsp;·&nbsp; Iran War · Cybersecurity · AI
   </div>
 
 </div>
