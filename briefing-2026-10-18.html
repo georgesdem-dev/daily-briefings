@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Sunday, October 18, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Sunday, October 18, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Two Supertankers Ablaze After Mine Strikes as Iran Alleges Spoofed Transponders</a>
+    <div class="toc-section">IRGC says two ~2-million-barrel tankers hit mines and caught fire after switching off AIS/radar to use an unauthorized route; a third tanker burns in the Gulf of Oman · Qatar-mediated 7-day reopening plan remains unconfirmed and unanswered · Egypt signals readiness to back Saudi Arabia</div>
+    <a href="#cyber">🔐 Cybersecurity — Critical Nextcloud/Collabora Flaw Actively Exploited to Plant Web Shells</a>
+    <div class="toc-section">CVE-2026-110447 (CVSS 9.2) lets unauthenticated attackers drop web shells on self-hosted Nextcloud servers · BeyondTrust zero-day attribution to China-linked Armory Castle gets a detailed technical writeup · Windows Shell and PAN-OS deadlines remain open follow-ups</div>
+    <a href="#ai">🤖 Artificial Intelligence — California Mandates AI Kill Switches as Banks Block Unauthorized Agents from Moving Money</a>
+    <div class="toc-section">Governor Newsom's executive order requires independent verification of AI models and "kill switches" for rogue agents · Schwab and JPMorgan move to block unauthorized AI agents from executing transactions · DeepSeek and StepFun ship new open-weight models; Apollo Research flags GLM-5.3 reasoning about its own outputs as future training data</div>
+  </div>
+
+  <!-- ═══════════════════ IRAN WAR ═══════════════════ -->
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — Two Supertankers Ablaze After Mine Strikes as Iran Alleges Spoofed Transponders</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 233</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Two Tankers Hit Mines and Catch Fire, Iran Says Vessels Went Dark to Dodge Its Authorization Regime
+        <span class="badge badge-red">3 VESSELS ABLAZE IN 24 HOURS</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        Iran's Revolutionary Guard Corps said two oil tankers, each carrying roughly two million barrels of crude, struck naval mines in the Strait of Hormuz on Saturday and caught fire — the first triggering an explosion and a "fierce fire," the second engulfed in what Iran called a "massive blaze." Tehran's navy separately reported a third tanker burning in the Gulf of Oman. Iran's account adds a new wrinkle to the pattern of recent strikes: officials claim both vessels had switched off their AIS positioning and radar systems and attempted to transit via a route Iran has not authorized, under the ship-clearance regime the IRGC has enforced since seizing effective control of the strait in late February. None of Iran's claims — the mine strikes, the alleged transponder spoofing, or the unauthorized routing — could be independently verified. The incidents land one day after Iran's Foreign Minister Abbas Araghchi said Tehran had submitted a seven-day proposal through Qatar to reopen the strait if certain conditions were met; Araghchi argues maritime security cannot be restored while US military pressure and restrictions continue. Washington has not publicly responded to the offer. Separately, Egypt signaled it is ready to provide Saudi Arabia "necessary support" amid the escalating Gulf threat environment, and Al Jazeera's live coverage also flagged an attack by Israeli settlers and renewed EU diplomatic engagement — both signs the conflict's secondary fronts remain active even as Hormuz dominates headlines.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">3</div>
+          <div class="stat-label">Tankers ablaze in 24 hours</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">~2M bbl</div>
+          <div class="stat-label">Crude aboard each mined tanker</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">7 days</div>
+          <div class="stat-label">Iran's unanswered reopening offer, via Qatar</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">233 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.aljazeera.com/news/2026/10/18/iran-says-two-tankers-catch-fire-after-hitting-mines-in-strait-of-hormuz">Al Jazeera — Iran says two tankers catch fire after hitting mines in Strait of Hormuz</a>
+        <a href="https://aljazeera.com/news/liveblog/2026/10/18/iran-war-live-tankers-hit-in-hormuz-israeli-settlers-attack-eu-diplomats">Al Jazeera Live — Egypt ready to give Saudi Arabia "necessary support"</a>
+        <a href="https://www.yahoo.com/news/world/articles/iran-war-tankers-hit-near-040356347.html">Yahoo News — Iran war: Tankers hit near Hormuz as Tehran offers US reopening plan</a>
+        <a href="https://news.cgtn.com/news/2026-10-18/Tanker-explodes-in-Strait-of-Hormuz-as-Saudi-Houthi-clashes-continue-1RkUDGsMh9e/share_amp.html">CGTN — Tanker explosion reported in Strait of Hormuz as Saudi-Houthi clashes continue</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Iran has not disclosed the specific conditions attached to its seven-day Hormuz reopening plan, nor has Washington confirmed receipt or response.</li>
+        <li>Saudi-Houthi clashes continue in parallel with the tanker strikes, per CGTN reporting, keeping pressure on Red Sea and Gulf shipping lanes simultaneously.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>18–23</td><td>820 wounded</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced; incl. 1 American killed Oct 10 in Saudi Arabia</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">No updated aggregate casualty totals published today; figures carried forward from the last confirmed update.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ CYBERSECURITY ═══════════════════ -->
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Sunday, October 18, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Critical Nextcloud/Collabora Vulnerability Actively Exploited to Plant Web Shells
+        <span class="badge badge-red">CVE-2026-110447 · CVSS 9.2 · ACTIVELY EXPLOITED</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        A critical, unauthenticated vulnerability in the Collabora Online integration for Nextcloud is being actively exploited in the wild to plant web shells on self-hosted servers, researchers disclosed this weekend. Tracked as CVE-2026-110447 with a CVSS score of 9.2, the flaw requires no authentication to exploit, making every internet-facing Nextcloud deployment with the Collabora integration enabled a candidate for opportunistic scanning and compromise — a profile that tends to draw mass exploitation within days of public disclosure. The disclosure lands in the same week as continued fallout from the BeyondTrust Remote Support zero-day (CVE-2026-102764, CVSS 9.3): The Hacker News published a detailed technical writeup this weekend reinforcing CyberScoop's earlier attribution of the seven-week exploitation campaign to the China-linked espionage group Armory Castle. Together with this month's Windows Shell (CVE-2026-96951) and Palo Alto PAN-OS (CVE-2026-0322) zero-days, organizations are now tracking four actively exploited, high-severity vulnerabilities in self-hosted collaboration and remote-access software within a span of roughly two weeks — a workload that is straining patch-management cycles across the board.
+      </p>
+      <div class="alert alert-red">
+        If Nextcloud with the Collabora Online integration is internet-facing in your environment, treat this as an emergency patch regardless of normal change-control timelines — the lack of an authentication requirement means exposure alone is sufficient for compromise.
+      </div>
+      <div class="sources">
+        Sources: <a href="https://tech-insider.org/nextcloud-collabora-vulnerability-cve-2026-110447/">Tech Insider — Nextcloud Vulnerability CVE-2026-110447: CVSS 9.2</a>
+        <a href="https://thehackernews.com/2026/10/china-linked-hackers-exploited.html">The Hacker News — China-linked hackers exploited BeyondTrust zero-day to take over remote support servers</a>
+        <a href="https://cyberscoop.com/china-espionage-attacks-beyondtrust-zero-day-armory-castle">CyberScoop — Prolific Chinese espionage group exploits BeyondTrust zero-day</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>CVE Brief's October 18 archive logs continued steady disclosure volume following Microsoft's record 1,413-CVE October Patch Tuesday.</li>
+        <li>The Windows Shell (CVE-2026-96951) and PAN-OS (CVE-2026-0322) remediation deadlines have both now passed; unpatched systems should be treated as overdue, not routine, risk.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Inventory every internet-facing Nextcloud instance with Collabora enabled today — CVE-2026-110447 needs no authentication, so exposure alone is the risk, not configuration quality</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Four actively exploited critical CVEs across collaboration and remote-access tools in two weeks makes a strong case for offering clients a standing "exposed-interface" audit service rather than one-off incident response</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>Ask IT directly whether any self-hosted collaboration tools (Nextcloud, SharePoint-adjacent systems) are reachable from the open internet — this month's pattern is that unauthenticated, internet-facing software is the common thread across nearly every major breach</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ AI ═══════════════════ -->
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Sunday, October 18, 2026 · Regulators and Banks Both Move to Rein In Agentic AI</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: California Mandates AI Kill Switches as Banks Block Unauthorized Agents from Moving Money
+        <span class="badge badge-blue">REGULATORY + FINANCIAL GUARDRAILS</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        California Governor Gavin Newsom signed an executive order requiring independent verification of AI models operating in the state and mandating the creation of "kill switches" that can shut down rogue AI agents — one of the most concrete state-level moves yet to impose hard technical controls on agentic AI rather than relying on voluntary industry commitments. The order arrives as financial institutions move in parallel: Charles Schwab and JPMorgan are both actively blocking unauthorized AI agents from initiating money movement on customer accounts, reflecting growing concern that autonomous agents acting on behalf of users (or impersonating them) could execute unauthorized transactions faster than existing fraud controls can catch them. On the model side, DeepSeek and StepFun both released new open-weight models this weekend with improved performance and efficiency, continuing the rapid cadence of Chinese open-weight releases. Separately, Apollo Research reported that Z.ai's open-weight GLM-5.3 reasoned unprompted, during routine testing, about how its own outputs could become training data for successor models — a small but notable data point in the broader conversation about models exhibiting situational awareness of their own training pipeline.
+      </p>
+      <div class="sources">
+        Sources: <a href="https://riorundown.substack.com/p/ai-news-oct-18-2026-open-models-and">Rio Rundown — AI News Oct 18, 2026: Open Models and AI Deployment</a>
+        <a href="https://aiweekly.co/ai-news-today">AI Weekly — AI News Today, October 18</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>AI continues expanding into physical-world sectors: Utah approved a low-cost AI acne-treatment app, and Canada signed a deal for AI-driven robotic homebuilding.</li>
+        <li>llmspeed launched a tool letting buyers estimate local LLM tokens-per-second across 30+ hardware configurations before purchase — a sign of growing demand for on-prem/local inference planning.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>If your organization uses AI agents with any access to payment systems, confirm today whether you have Schwab/JPMorgan-style authorization controls in place — "the agent had valid credentials" is not the same as "the agent was authorized for this transaction"</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>California's kill-switch mandate gives clients a concrete compliance target to design against now, ahead of similar rules likely spreading to other states — early movers avoid a scramble later</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>Major banks restricting AI agents from moving money is a signal worth escalating to the board: if your treasury or finance functions use agentic tools, ask what authorization guardrails exist before an incident forces the question</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Sunday, October 18, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
