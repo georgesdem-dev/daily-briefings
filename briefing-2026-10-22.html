@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Thursday, October 22, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Thursday, October 22, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Seven Tankers Hit Overnight in the Worst Single Night Since the War Began as US/Israel Plan a Possible Post-Midterms Strike</a>
+    <div class="toc-section">Iran reports seven tankers on fire or damaged around Hormuz overnight — the largest single-night toll since February — though UKMTO has not corroborated the claims · US and Israel are reportedly planning for a possible attack on Iran in early November, after the midterms · Brent crude tops $111 as Houthi strikes on Saudi Arabia kill three and prompt a partial US diplomat withdrawal</div>
+    <a href="#cyber">🔐 Cybersecurity — Emergency Patches Ship for "PHP2Shell," a 9.2-Severity Pre-Auth RCE Already Under Mass Exploitation</a>
+    <div class="toc-section">PHP rushes out patches for CVE-2026-109618/109619 after exploit details leaked before coordinated disclosure, with active exploitation observed since October 17 · A backdoored LiteLLM 1.107.0 release stole credentials and planted an RCE loader on PyPI and Docker Hub for 104 minutes · INTERPOL disrupts nearly 11,000 malicious networks and recovers $105M in a 21-country operation</div>
+    <a href="#ai">🤖 Artificial Intelligence — Anthropic Launches Claude Duet as It Races Toward a Mid-November IPO While OpenAI's Own Flaw-Hunting AI Dominates Cyber News</a>
+    <div class="toc-section">Anthropic ships Claude Duet, a proactive agent that works autonomously on its own VM and browser between check-ins · Anthropic pushes ahead with an IPO as early as mid-November while OpenAI shelves its own 2026 listing for another private round · AI-assisted vulnerability discovery helped surface the PHP2Shell flaws, putting "AI finding bugs faster than defenders can patch" squarely in the news</div>
+  </div>
+
+  <!-- ═══════════════════ IRAN WAR ═══════════════════ -->
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — Seven Tankers Hit Overnight as US/Israel Plan a Possible Post-Midterms Strike</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 237</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Iran Reports Its Worst Single Night of Tanker Attacks Yet as Washington and Israel Plan a Possible November Strike
+        <span class="badge badge-red">7 TANKERS ABLAZE OR DAMAGED OVERNIGHT</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        Iranian state television reported Thursday that seven oil tankers caught fire or were damaged overnight in and around the Strait of Hormuz — four targeted and set ablaze while transferring oil, and three immobilized after hitting naval mines — in what may be the largest single-night toll on shipping since the war began on February 28. As with most recent incident reports, the claims come solely from Iranian state media; UK Maritime Trade Operations, the British military shipping monitor, has not corroborated the latest attacks, though it separately confirms October has seen the most reported attacks on commercial shipping since the war's opening weeks in March. Iran's report also carried an explicit warning that its Revolutionary Guard may target US bases in the region if Washington tries to route tankers through other parts of the strait. The escalation lands just as NPR reports that the US and Israel are actively planning for a possible attack on Iran in early November — timed, per sourcing, to land after both the US midterms and Israel's closely contested elections, in which Prime Minister Netanyahu faces a real risk of losing power. Trump has publicly denied any active US-Iran talks even as Tehran insists indirect negotiations continue through Pakistani and Qatari mediators, leaving the diplomatic and military tracks moving forward almost entirely out of sync with each other.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">7</div>
+          <div class="stat-label">Tankers hit overnight — largest single night yet</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">$111.97</div>
+          <div class="stat-label">Brent crude, up 2.9% on the day</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">Early Nov</div>
+          <div class="stat-label">Window reportedly eyed for a US/Israel strike</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">237 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.ksat.com/business/2026/10/22/iran-says-7-tankers-on-fire-or-damaged-in-the-strait-of-hormuz-and-other-mideast-news/">AP via KSAT — Iran says 7 tankers on fire or damaged in the Strait of Hormuz</a>
+        <a href="https://www.kosu.org/news/2026-10-22/u-s-and-israel-are-planning-for-a-possible-attack-on-iran-source-tells-npr">NPR via KOSU — US and Israel are planning for a possible attack on Iran</a>
+        <a href="https://oilprice.com/Latest-Energy-News/World-News/Oil-Prices-Surge-Above-111-as-Houthis-Strike-Saudi-Targets.html">OilPrice — Oil Prices Surge Above $111 as Houthis Strike Saudi Targets</a>
+        <a href="https://www.cbsnews.com/live-updates/iran-war-trump-us-ceasefire-talks-ongoing/">CBS News — Iran War Updates: US reduces troop footprint as indirect talks continue</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Houthi strikes on Saudi Arabia killed three people and injured eight, hitting a civilian airport and an oilfield; the US has ordered some diplomats out of Saudi Arabia in response.</li>
+        <li>Foreign Minister Araghchi said Thursday "we are just as prepared for diplomacy as we are for war," insisting the negotiating table remains open and blaming Washington for closing the path — a notably more conciliatory tone than Trump's public denial of any talks.</li>
+        <li>The timing of a possible US/Israel strike being pegged to "after the midterms" and "after Israel's close election" suggests both governments are weighing domestic political risk as heavily as the military calculus.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>18–23</td><td>820 wounded</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+          <tr><td>Saudi Arabia (Houthi strikes, today)</td><td class="warn">3</td><td>8 wounded; civilian airport and oilfield hit</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">Saudi Arabia casualty figures are new today; other totals carried forward from the last confirmed update.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ CYBERSECURITY ═══════════════════ -->
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Thursday, October 22, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Emergency Patches Ship for "PHP2Shell," a 9.2-Severity Pre-Auth RCE Already Under Mass Exploitation
+        <span class="badge badge-red">CVE-2026-109618 / CVE-2026-109619 · CVSS 9.2</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Details of two critical, pre-authentication remote-code-execution flaws in PHP's core — nicknamed "PHP2Shell" and tracked as CVE-2026-109618 and CVE-2026-109619 — leaked online on October 20 ahead of coordinated disclosure, forcing the PHP team to move its security release forward a day to October 21. The bugs stem from a heap use-after-free in PHP's session upload-progress mechanism and allow full remote code execution over HTTP against default Apache/mod_php configurations before any application code even runs, affecting every actively maintained PHP 8.2–8.5 branch (and PHP 5/7 in principle). watchTowr and Hadrian both report exploitation attempts at scale, concentrated on the same session upload-progress path, with activity observed as early as October 17 — three days before the leak became public. Fixed versions (8.5.12, 8.4.27, 8.3.36, 8.2.35) are now available, but given PHP's footprint across the web, unpatched self-hosted sites and legacy CMS installs are expected to remain a mass-exploitation target for weeks. Separately, LiteLLM — a popular open-source LLM gateway — shipped a backdoored 1.107.0 release to PyPI and Docker Hub on October 21 that silently installed a credential stealer and RCE loader via Python's .pth/sitecustomize mechanism, meaning the malware ran on any Python process on an affected host, whether or not LiteLLM itself was ever imported; the stealer targeted SSH keys, cloud credentials, CI/CD secrets, browser passwords, and LLM provider API keys before the package was pulled 104 minutes after publication.
+      </p>
+      <div class="alert alert-red">
+        Patch PHP to 8.5.12/8.4.27/8.3.36/8.2.35 today on anything internet-facing — exploitation predates the public leak — and if your organization pulled LiteLLM 1.107.0 between 11:39–13:23 UTC on October 21, treat every credential on that host as compromised and rotate immediately.
+      </div>
+      <div class="sources">
+        Sources: <a href="https://thehackernews.com/2026/10/php-issues-emergency-patches-for-two.html">The Hacker News — PHP Issues Emergency Patches for Two Critical PHP2Shell RCE Flaws</a>
+        <a href="https://www.securityweek.com/php2shell-mass-exploitation-looms-for-leaked-critical-php-flaws/">SecurityWeek — PHP2Shell: Mass Exploitation Looms for Leaked Critical PHP Flaws</a>
+        <a href="https://thehackernews.com/2026/10/litellm-compromised-in-supply-chain.html">The Hacker News — LiteLLM Compromised in Supply-Chain Attack Delivering Credential Stealer and Backdoor</a>
+        <a href="https://www.wiz.io/blog/litellm-compromised-steals-credentials">Wiz — LiteLLM Compromised, Steals Credentials</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>INTERPOL announced a 21-country operation that disrupted 10,909 malicious networks, recovered more than $105 million in illicit funds, and led to 1,462 arrests — one of the larger coordinated law-enforcement cybercrime actions this year.</li>
+        <li>SafePay ransomware's confirmed toll has grown past 600 critical-infrastructure victims since 2024, with FBI/CISA now describing it as one of the world's most active ransomware operations.</li>
+        <li>LiteLLM suspects the compromise traces back to a leaked GitHub token found in AI gateway logs — a reminder that LLM-adjacent tooling is now a direct supply-chain target, not just a theoretical one.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Patch PHP to the fixed point releases today on every internet-facing host — exploitation began before public disclosure — and audit for LiteLLM 1.107.0 anywhere in your build pipeline; if found, rotate every credential the host could reach</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>The LiteLLM compromise is a clean case study for a client conversation about AI-tooling supply-chain risk — most clients have adopted LLM gateways and proxies faster than they've extended software-composition-analysis coverage to them</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>A pre-disclosure leak turning a patch cycle into an emergency same-day release is now a recurring pattern (BeyondTrust, Plex2Shell, now PHP2Shell) — ask whether your vendor-patch SLA assumes hours or weeks, because attackers are assuming hours</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ AI ═══════════════════ -->
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Thursday, October 22, 2026 · Claude Duet Launches as Anthropic's IPO Clock Ticks</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Anthropic Launches Claude Duet, a Proactive Autonomous Agent, as Its IPO Clock Ticks Toward Mid-November
+        <span class="badge badge-blue">BUILT ON CLAUDE OPUS 5.5</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Anthropic launched Claude Duet, a proactive agent app built on Claude Opus 5.5 that sends morning briefs tailored to what it thinks the user needs to pay attention to, checks accounts every few hours, and keeps working on its own virtual machine and browser even when the user's own devices are off — a meaningful step beyond reactive chat-based assistants toward always-on autonomous agents. The launch lands in the middle of Anthropic's own high-stakes corporate moment: the company is pushing ahead with a planned IPO as early as mid-November, while OpenAI has reportedly shelved its own previously planned 2026 listing in favor of another private funding round, leaving Anthropic positioned as the AI industry's first major public listing. Anthropic is simultaneously pressing a federal legislative proposal that would let the Commerce Department seek court-ordered suspension of models that cross specified catastrophic-risk thresholds — a notable juxtaposition of shipping an always-on autonomous agent product the same week it's lobbying for stronger government power to shut models down. Separately, Google Cloud added OpenAI's GPT-Astra, GPT-6.1 Sol, and GPT-6 Luna to its Model Garden in private preview alongside Gemini and Claude, continuing this week's trend of frontier labs distributing their models across rivals' cloud platforms rather than guarding exclusivity.
+      </p>
+      <div class="sources">
+        Sources: <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-thursday-october-22-2026/">The Neuron — Everything That Happened in AI Today, October 22</a>
+        <a href="https://fool.com/investing/2026/10/22/why-anthropic-is-racing-to-ipo-while-openai-waits">The Motley Fool — Why Anthropic Is Racing to IPO While OpenAI Waits Until 2027</a>
+        <a href="https://techtrendsnewsupdate.substack.com/p/tech-trends-news-update-morning-brief-d15">Tech Trends News Update — OpenAI Lands on Google Cloud</a>
+        <a href="https://cryptobriefing.com/citi-warns-investor-caution-ai-ipos/">CryptoBriefing — Citi warns investors are getting picky about AI-linked IPOs</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>Citi warned that investors are growing more selective about AI-linked IPOs as concerns about AI infrastructure spending mount — a note of caution directly relevant to Anthropic's own listing timeline.</li>
+        <li>Several Google DeepMind employees reportedly resigned over the company's military AI work, while Anthropic's CEO separately defended the company's safety record publicly.</li>
+        <li>AI-assisted vulnerability research is increasingly credited with surfacing flaws like PHP2Shell faster than before, reinforcing that AI is now accelerating both offensive and defensive sides of the vulnerability-discovery race.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 AI Security</div>
+          <ul>
+            <li>Claude Duet's always-on access to a user's accounts, VM, and browser — even when the user's devices are off — expands the attack surface for agent-hijacking well beyond session-bound assistants; treat it like a standing privileged service account, not a chat app</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Citi's caution on AI IPO valuations is a timely talking point for clients weighing AI-vendor concentration risk — pair it with Anthropic's looming public listing to frame a vendor-diversification conversation now, before the market re-rates</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>OpenAI shelving its 2026 IPO while Anthropic pushes ahead flips the competitive narrative — Anthropic goes first to public markets, and its audited numbers will become the industry benchmark investors compare every private AI valuation against</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Thursday, October 22, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
