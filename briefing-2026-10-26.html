@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Monday, October 26, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Monday, October 26, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — US Forces Ready to Strike Within 96 Hours of a Trump Order as Saudi, Pakistani and Turkish Delegations Rush to Tehran</a>
+    <div class="toc-section">CNN reports US forces in the region can launch a major new campaign — beyond the "mow the lawn" strikes of recent months, with a target list including energy infrastructure, military sites and nuclear facilities — within 96 hours of a go-order, most likely timed after the US midterms · Saudi Defense Minister Khalid bin Salman, Pakistani army chief Asim Munir and Turkish intelligence chief Ibrahim Kalin met Iranian security officials in Tehran to push for a US-Iran deal · Iran says it is still open to Pakistan-brokered talks and reiterates it would reopen Hormuz only if the US naval blockade is lifted, a trade Trump has rejected</div>
+    <a href="#cyber">🔐 Cybersecurity — Hackers Breach Japan's Onamae Desktop Cloud, Hitting Up to 26,739 Servers and Disrupting Forex Trading at 70+ Brokerages</a>
+    <div class="toc-section">GMO Internet Group shut down all customer servers on its Onamae Desktop Cloud VPS platform after attackers installed malware across up to 26,739 environments, triggering fraudulent trades at more than 70 forex brokerages and forcing OANDA Japan to delay withdrawals; GMO rejected an extortion demand · Today is also the federal remediation deadline for the actively-exploited Arista VeloCloud Orchestrator zero-day (CVE-2026-114625, CVSS 9.9) · Microsoft's October Patch Tuesday wrapped with 1,413–1,771 CVEs fixed across trackers, including the actively exploited Windows Shell zero-day CVE-2026-96951</div>
+    <a href="#ai">🤖 Artificial Intelligence — Anthropic Files Its S-1, Setting Up a Nasdaq Listing Under "ANT" With $16.3B in Half-Year Revenue</a>
+    <div class="toc-section">Anthropic publicly filed its IPO registration statement, disclosing $16.3 billion in first-half 2026 revenue (up from $1.16 billion a year earlier) against an $80.7 billion net loss — almost entirely non-cash fair-value accounting on convertible instruments, with the real operating loss just $693 million and Q2 alone turning operating-income positive · The filing also discloses roughly $390 billion in combined cloud and compute commitments to Amazon, Google, Microsoft and SpaceX, and warns in its own risk factors that AI models could pose a "catastrophic or existential risk to humanity"</div>
+  </div>
+
+  <!-- ═══════════════════ IRAN WAR ═══════════════════ -->
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — US Forces Ready to Strike Within 96 Hours as Regional Powers Rush to Avert It</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 241</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: CNN Reports US Forces Can Strike Within 96 Hours as Saudi, Pakistani and Turkish Delegations Meet Iran's Leadership
+        <span class="badge badge-red">TARGET LIST INCLUDES NUCLEAR SITES · TIMING LINKED TO US MIDTERMS</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        CNN reported Monday that US forces now have sufficient strength positioned in the Middle East to launch a major new campaign against Iran within 96 hours of a presidential go-order, according to two US officials. Unlike the limited "mow the lawn" strikes on quickly-reconstituted radars and launchers that have defined the lull since Trump halted full combat operations earlier this year, this plan is described as "a big effort": CENTCOM and the Pentagon have built a wide-ranging target list covering Iranian energy infrastructure, military sites and nuclear facilities. Officials say it is now a question of when, not if, Trump issues the order, with most expecting it after the November 3 midterms as part of a push to end a conflict that has dragged on for nearly eight months. Netanyahu reportedly urged Trump to authorize a joint Israeli-American strike before the election, but Trump withheld approval; Israeli officials denied any imminent joint operation as "fake news." Against that backdrop, Saudi Defense Minister Khalid bin Salman, Pakistani army chief Asim Munir and Turkish intelligence chief Ibrahim Kalin convened in Tehran Monday with Iran's top security officials, pressing for a negotiated deal with Washington. Iran's ambassador to Pakistan said Tehran remains open to talks under the Pakistan-brokered June interim framework and has offered to reopen the Strait of Hormuz if the US lifts its naval blockade — an offer Trump has so far rejected by insisting the blockade continue. A declassified DNI memo from October 23 found Iran "has substantially increased efforts to target US personnel," with plotting in "advanced stages," prompting continued US embassy drawdowns across the region; Riyadh's embassy is currently the only one under an ordered departure.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">96 hours</div>
+          <div class="stat-label">Time to launch after a Trump go-order</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">3,000+</div>
+          <div class="stat-label">Vessels escorted through Hormuz in 6 months</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">1.5B bbl</div>
+          <div class="stat-label">Crude exported since summer under US escort</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">241 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.cnn.com/2026/10/26/politics/us-iran-strike-plans-trump">CNN — US has plans for major Iran strikes if Trump chooses</a>
+        <a href="https://www.washingtonpost.com/world/2026/10/26/iran-israel-us-war-10-26-2026/">Washington Post — Delegations meet in Iran with Mideast region on edge over potential for renewed fighting</a>
+        <a href="https://www.pbs.org/newshour/world/delegations-meet-in-iran-with-the-middle-east-on-edge-over-potential-for-renewed-fighting">PBS NewsHour — Delegations meet in Iran with Mideast on edge over renewed fighting</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Gulf crude exports have recovered to pre-war levels despite no confirmed US strikes on Iranian territory in over a month, though oil prices remain elevated on the threat of renewed Iranian attacks.</li>
+        <li>Iranian President Pezeshkian blamed Washington for the collapse of the earlier interim deal but said Tehran should attempt a new one; Turkish FM Hakan Fidan warned any renewed attack on Iran would "exacerbate tensions and further expand the conflict."</li>
+        <li>Iranian security officials told Reuters Tehran has drawn up detailed plans to target undersea communications cables in the Gulf if the US and Israel strike again.</li>
+        <li>CENTCOM commander Gen. Brad Cooper visited the Strait of Hormuz Sunday as the US Navy maintains its blockade on Iranian ports.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>18–23</td><td>820 wounded</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">Figures carried forward from the last confirmed update; no new casualty tolls were independently verified today.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ CYBERSECURITY ═══════════════════ -->
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Monday, October 26, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Hackers Breach Japan's Onamae Desktop Cloud, Hitting Up to 26,739 Servers and Disrupting Forex Trading at 70+ Brokerages
+        <span class="badge badge-red">EXTORTION DEMAND REJECTED · PLATFORM SHUT DOWN</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        GMO Internet Group confirmed on October 20 that an unauthorized third party breached its Onamae Desktop Cloud VPS platform — widely marketed in Japan for running continuous MetaTrader 4 forex automation — and installed malware across as many as 26,739 customer server environments. GMO began shutting down affected servers at 4am local time on October 21 to contain the intrusion, rejected an extortion demand from the attackers, and has not set a restart date; instead it will offer customers a free replacement service on separate infrastructure for six months, plus 5,000 yen goodwill payments and loss compensation. The breach triggered fraudulent trades across more than 70 forex brokerages reliant on the platform, and OANDA Securities Japan delayed customer withdrawals on October 22 over concerns that MetaTrader credentials stored on compromised servers had been exposed. GMO says payment card data was unaffected because it sits on separate infrastructure, but it is urging all affected customers to rotate any passwords or secrets stored on their servers and to watch for phishing attempts exploiting the incident. One security researcher has tentatively linked the intrusion to abuse of AI-assisted penetration-testing tools, part of a broader warning from Japanese officials about "AI cyber saturation attacks" that overwhelm conventional defenses.
+      </p>
+      <div class="alert alert-red">
+        If you or your clients run trading infrastructure, CI/CD runners, or any automation on third-party VPS platforms, this is a reminder that credential exposure from a hosting-layer breach can cascade into fraudulent transactions within hours — rotate any secrets stored on hosted infrastructure proactively rather than waiting for a breach notice.
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.scworld.com/brief/onamae-desktop-cloud-suffers-security-breach-affecting-thousands-of-servers">SC World — Onamae Desktop Cloud suffers security breach affecting thousands of servers</a>
+        <a href="https://www.teiss.co.uk/news/japanese-vps-provider-onamae-desktop-cloud-halts-service-after-hackers-install-malware-on-customer-servers-18343">teiss — Japanese VPS provider Onamae Desktop Cloud halts service after hackers install malware</a>
+        <a href="https://time.news/gmo-internet-group-shuts-down-servers-after-security-breach/">Time News — GMO Internet Group Shuts Down Servers After Security Breach</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Today, October 26, is the US federal remediation deadline for the actively-exploited Arista VeloCloud Orchestrator zero-day (CVE-2026-114625, CVSS 9.9 SQL injection), added to CISA's KEV catalog on October 23.</li>
+        <li>Microsoft's October Patch Tuesday wrapped with 1,413–1,771 CVEs fixed depending on tracker, including the actively exploited Windows Shell bypass CVE-2026-96951 (CVSS 8.8) and two publicly disclosed but not-yet-exploited zero-days in .NET Framework and MessagePack-CSharp.</li>
+        <li>GitLab patched a maximum-severity flaw, CVE-2026-110264 (CVSS 10.0); critical PHP vulnerabilities CVE-2026-109618/109619 are now seeing mass exploitation attempts, with roughly 97.5% of public PHP instances still unpatched as of October 23.</li>
+        <li>A "Gheist" campaign was found abusing stolen GitHub tokens across 850 accounts to steal secrets; CVE Watchtower logged 4,222 new CVEs in the week of October 19–25.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Treat today's Arista VeloCloud KEV deadline as a hard stop if you run self-managed VCO; separately, audit any hosted VPS or trading-automation infrastructure for credential exposure the way Onamae customers now must</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>The Onamae incident is a strong case study for clients running financial automation on third-party hosting — credential-rotation hygiene and hosting-provider risk assessment are underinvested areas worth a proactive conversation</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>A single hosting-provider breach disrupted trading operations at 70+ independent brokerages — ask whether your own critical vendors concentrate similar single-point-of-failure risk across your operations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ AI ═══════════════════ -->
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Monday, October 26, 2026 · Anthropic Goes Public With Its Numbers</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Anthropic Files Its S-1, Targeting a Nasdaq Listing Under "ANT" With $16.3B in Half-Year Revenue
+        <span class="badge badge-purple">GOLDMAN SACHS + MORGAN STANLEY LEAD 22-BANK SYNDICATE</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Anthropic publicly filed its S-1 registration statement with the SEC on Monday, confirming plans to list Class A common stock on the Nasdaq Global Select Market under ticker ANT, with Goldman Sachs and Morgan Stanley leading a 22-bank underwriting syndicate. The filing discloses $16.286 billion in revenue for the six months ended June 30, 2026 — up roughly 1,300% from $1.163 billion a year earlier — with second-quarter revenue alone hitting $11.56 billion and turning operating-income positive at $974 million, following a $1.667 billion operating loss in Q1. The headline net loss of $80.748 billion is dominated by $72.388 billion of non-cash fair-value accounting changes on convertible notes and derivative liabilities tied to the company's soaring valuation; the real operating loss for the half was $693 million, down sharply from $2.135 billion a year earlier. The filing also details roughly $390 billion in combined committed cloud and compute spending — $110 billion with Amazon through April 2036, $120 billion with SpaceX through 2029, $115 billion with Google and $45 billion with Microsoft, both through 2033 — alongside a $125.2 billion five-year equipment lease. Seven co-founders retain 50.1% of voting control via a single Class F share, and the prospectus's own risk factors warn that AI models "might pose a catastrophic or existential risk to humanity, particularly if such systems were misused, replicated, weaponized, or allowed to operate with a high degree of autonomy." The price range, share count and valuation target remain blank, though reporting has floated figures as high as $2 trillion, with some investors reportedly pushing back toward $1.5 trillion given the headline loss.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">$16.3B</div>
+          <div class="stat-label">H1 2026 revenue, up from $1.16B</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">$80.7B</div>
+          <div class="stat-label">Net loss, mostly non-cash accounting</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">$693M</div>
+          <div class="stat-label">Real H1 operating loss</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">~$390B</div>
+          <div class="stat-label">Committed cloud/compute spend</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://finance.yahoo.com/technology/live/anthropic-ipo-live-updates-frontier-ai-lab-discloses-revenue-and-risks-in-highly-anticipated-s-1-filing-141702607.html">Yahoo Finance — Anthropic IPO live updates: S-1 discloses $16.3B revenue, plans to list as "ANT"</a>
+        <a href="https://www.npr.org/2026/10/26/nx-s1-6014772/anthropic-ai-ipo-could-break-records">NPR — AI giant Anthropic files for an IPO that could break records</a>
+        <a href="https://www.nbcnews.com/business/markets/anthropic-releases-ipo-filing-ahead-highly-anticipated-stock-debut-rcna605676">NBC News — Anthropic reveals $80 billion loss, huge spending spree ahead of IPO</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>Fintech firm Ramp reports 43.8% of US businesses paid for Anthropic in September versus OpenAI's 40.6% — but OpenAI is closing the gap on price: Replit and Rippling both swung sharply toward OpenAI after discounts exceeding 30%, with Rippling's coding workload share moving from 57%/16% (Anthropic/OpenAI) in May to 18%/52% today.</li>
+        <li>OpenAI is reportedly racing to close a $30 billion round at a $1.4 trillion+ valuation before Anthropic's IPO completes.</li>
+        <li>Google committed up to $40 billion at a $350 billion valuation for 5GW of Cloud capacity over five years; Amazon matched with $25 billion and equivalent Trainium capacity days earlier.</li>
+        <li>Gartner projects global AI spending across services, software and infrastructure will reach roughly $3.6 trillion in 2027, up from $1.8 trillion in 2025.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 AI Security</div>
+          <ul>
+            <li>Anthropic's own S-1 risk factors naming "catastrophic or existential risk" sets a new disclosure bar — expect this language to become a template item other labs are pressed to match or explain the absence of</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>The Replit/Rippling discount-driven vendor swings confirm model contracts are now actively shopped on price — this is the moment to help clients build multi-vendor model strategies rather than lock into one lab</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>Anthropic's real operating loss ($693M) is far smaller than the headline $80.7B suggests — don't let the accounting number drive your read of the business; watch the underlying unit economics (now $2.08 revenue per $1 of compute, up from $0.40) instead</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Monday, October 26, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
