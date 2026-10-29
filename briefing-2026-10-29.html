@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Thursday, October 29, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Thursday, October 29, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Three Tankers Hit Mines in Hormuz as Iran Presses a 7-Day Plan to Reopen the Strait</a>
+    <div class="toc-section">Iran says three oil tankers struck naval mines and caught fire in the Strait of Hormuz over 24 hours after ignoring IRGC navy warnings on an unauthorized route · Foreign Minister Araghchi says Tehran is in close contact with mediators on a seven-day confidence-building plan that would reopen Hormuz if a region-wide ceasefire, sanctions relief, and an end to the US naval blockade are agreed — and says the timeline could be shortened · Trump downplays a letter sent to Tehran via VP Vance, and denies active peace talks, as Saudi Arabia intercepts a Houthi missile</div>
+    <a href="#cyber">🔐 Cybersecurity — Volt Typhoon-Linked Group Exploits Maximum-Severity Cisco SD-WAN Flaw to Steal Encryption Keys</a>
+    <div class="toc-section">Cisco Talos discloses that state-linked group UAT-11473 exploited CVE-2026-20127 (CVSS 10.0), an authentication-bypass flaw in Catalyst SD-WAN Controller/Manager/Validator, to plant "KeyDrift" malware that silently harvests AES-256 IPsec keys from space, satellite, defense and policy-research targets, with infrastructure ties to Volt Typhoon's covert relay network · Also today: a critical Cisco ASA/FTD SSL VPN zero-day (CVE-2026-76418) patched after DoS exploitation, and a new ClickFix campaign spoofing Cloudflare verification pages to hijack Windows and Mac machines</div>
+    <a href="#ai">🤖 Artificial Intelligence — Anthropic Says an Unreleased Claude Model Built Five Working Exploit Chains, Including a Zero-Click Linux Root</a>
+    <div class="toc-section">Anthropic's Frontier Red Team discloses that an unreleased Claude research model independently chained vulnerabilities into five working exploit chains spanning Chrome, Safari, Android, Windows and Linux — including a zero-click remote-root chain against Linux's multipath TCP stack requiring no login or user action — all responsibly disclosed and patched before publication · Google ships Gemini 4 Carbon, a cyber-defense-only model restricted to vetted defenders, which edges out Anthropic and OpenAI by a single point on a newly overhauled benchmark · OpenAI and Anthropic publicly diverge over who should hold the "kill switch" on risky AI systems, as OpenAI faces a wrongful-death lawsuit over ChatGPT's medical advice</div>
+  </div>
+
+  <!-- ═══════════════════ IRAN WAR ═══════════════════ -->
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — Mines Strike Three Tankers as Iran Presses Its 7-Day Hormuz Plan</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 244</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Three Tankers Struck Mines in Hormuz as Iran Discusses a Seven-Day Plan to Reopen the Strait
+        <span class="badge badge-red">3 TANKERS AFIRE · TRUMP DOWNPLAYS VANCE LETTER</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        Iran's military said three oil tankers exploded and caught fire after striking naval mines over the past 24 hours while attempting to transit an unauthorized route through the Strait of Hormuz, part of a restricted corridor east of the strait. The Iranian army said the vessels had switched off their radar and navigation systems and disregarded IRGC navy warnings before the strikes. No side has claimed responsibility for laying the mines. On the diplomatic track, Foreign Minister Abbas Araghchi said Tehran remains in close and ongoing contact with mediators — including Oman, Pakistan and Qatar — over a seven-day confidence-building plan, first floated to Washington via Qatar in September, that would reopen Hormuz within a week if conditions are met: a ceasefire across the Middle East, the unfreezing of Iran's foreign assets, relief from oil-sector sanctions, and an end to the US naval blockade of Iranian ports. Araghchi said the timeline could potentially be compressed to less than a week if mediators find a workable sequencing. Separately, Iranian media confirmed Tehran received a letter from US Vice President JD Vance but has not yet formally responded; Trump downplayed the letter's significance to reporters and denied that active peace talks are underway, even as his administration continues signaling that any major military or diplomatic move likely waits until after the November 3 midterms. Elsewhere in the region, Saudi Arabia intercepted a Houthi missile, and Iran again warned Israel against resuming strikes.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">3</div>
+          <div class="stat-label">Tankers hit by mines in 24 hours</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">7 days</div>
+          <div class="stat-label">Iran's proposed plan to reopen Hormuz</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">Nov. 3</div>
+          <div class="stat-label">US midterms, still seen as the decision point</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">244 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.washingtontimes.com/news/2026/oct/29/mideast-news-iran-says-3-oil-tankers-struck-mines/">Washington Times — Iran says 3 oil tankers struck mines in the Strait of Hormuz</a>
+        <a href="https://www.thestar.com.my/news/world/2026/10/29/iran-says-discussing-plan-with-mediators-to-end-war-reopen-hormuz">The Star — Iran says discussing plan with mediators to end war, reopen Hormuz</a>
+        <a href="https://www.kurdistan24.net/en/story/949224/iran-discusses-seven-day-plan-to-reopen-strait-of-hormuz-araghchi-says">Kurdistan24 — Iran Discusses Seven-Day Plan to Reopen Strait of Hormuz, Araghchi Says</a>
+        <a href="https://www.thenationalnews.com/news/gulf/2026/10/29/trump-downplays-vance-letter-sent-to-iran">The National — Trump downplays Vance letter sent to Iran</a>
+        <a href="https://gulfnews.com/world/mena/middle-east-war-saudi-intercepts-houthi-missile-as-iran-warns-israel-against-strikes-1.500727751">Gulf News — Saudi intercepts Houthi missile as Iran warns Israel against strikes</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Iran's seven conditions, set out by Ali Bagheri Kani earlier this week, remain the baseline Tehran says Washington must meet before substantive talks — unchanged since Monday's Tehran meeting.</li>
+        <li>The four-nation (Saudi/Turkey/Pakistan/Iran) communiqué from Monday's talks produced no ceasefire, defense pact, or date for a follow-up meeting — only a pledge to keep talking.</li>
+        <li>No new US or Israeli strikes on Iranian territory have been confirmed; both sides appear to be holding position ahead of the midterms.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>18–23</td><td>820 wounded</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">Figures carried forward from the last confirmed update; no new casualty tolls were independently verified today.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ CYBERSECURITY ═══════════════════ -->
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Thursday, October 29, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Volt Typhoon-Linked Group Exploits Maximum-Severity Cisco SD-WAN Flaw to Steal Encryption Keys
+        <span class="badge badge-red">CVSS 10.0 · UAT-11473 · "KEYDRIFT" MALWARE</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Cisco Talos disclosed that a state-linked advanced persistent threat group it tracks as UAT-11473 exploited CVE-2026-20127, a maximum-severity (CVSS 10.0) authentication-bypass flaw in Catalyst SD-WAN Controller, Manager and Validator, to plant a custom malware framework called KeyDrift. The vulnerability sits in the peering authentication of SD-WAN controllers, letting a remote attacker send crafted requests to log in as a high-privileged internal user with no password — opening access to NETCONF and full control over network configuration. Once inside, KeyDrift sits quietly in the control plane and harvests AES-256 encryption keys protecting inter-site traffic, decrypts network messages, and doubles as a backdoor; a companion component called LittleFilch targets the vdaemon process and exfiltrates collected data encrypted with RSA. Talos found strong infrastructure overlaps between this campaign and Volt Typhoon's covert relay network, and named space and satellite services, defense and aerospace firms, and policy research organizations among confirmed targets. Separately, Cisco also patched a actively exploited ASA/FTD SSL VPN zero-day (CVE-2026-76418) used for denial-of-service attacks.
+      </p>
+      <div class="alert alert-red">
+        A CVSS 10.0 authentication bypass in core network infrastructure, exploited by a group with Volt Typhoon ties, targeting defense/aerospace and critical infrastructure sectors: patch Catalyst SD-WAN controllers immediately and treat any unexplained NETCONF configuration changes as a potential compromise indicator, not routine drift.
+      </div>
+      <div class="sources">
+        Sources: <a href="https://cybersecuritynews.com/critical-cisco-sd-wan-0-day-flaw/">Cyber Security News — Hackers Exploit Critical Cisco SD-WAN 0-Day Flaw to Deploy KeyDrift Malware</a>
+        <a href="https://gbhackers.com/sd-wan-controllers-targeted/">GBHackers — Cisco Talos Uncovers KeyDrift Malware Targeting SD-WAN Controllers</a>
+        <a href="https://securityonline.info/keydrift-malware-uat-11473-cisco-sd-wan/">SecurityOnline — UAT-11473 Deploys KeyDrift Malware on Cisco SD-WAN Controllers via CVE-2026-20127</a>
+        <a href="https://radar.offseq.com/threat/cisco-sd-wan-zero-day-exploitation-tied-to-volt-typhoons-silent-train-network-055dc4e8187187f9">OffSeq Radar — Cisco SD-WAN Zero-Day Exploitation Tied to Volt Typhoon's "Silent Train" Network</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Cisco patched CVE-2026-76418, an actively exploited ASA/FTD SSL VPN zero-day that was being used for denial-of-service attacks.</li>
+        <li>A new ClickFix campaign is spoofing Cloudflare verification pages on compromised legitimate websites to trick Windows and Mac users into running malicious commands themselves.</li>
+        <li>HackerFeeds recorded 977 ransomware victims posted to leak sites so far this month — already above September's full-month total of 894 — with manufacturing the most-targeted sector (14.4% of victims).</li>
+        <li>The University of New Mexico Health Sciences Center disclosed a cybersecurity incident, with attackers claiming compromise of 36,000 systems.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Patch CVE-2026-20127 on all Catalyst SD-WAN Controller/Manager/Validator instances immediately and audit NETCONF change logs for unexplained configuration pushes going back to early October</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Defense, aerospace and satellite-sector clients are confirmed targets of a Volt Typhoon-linked campaign — a timely prompt for network infrastructure compromise assessments, not just endpoint reviews</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>This month's ransomware victim count has already exceeded all of September — a useful data point for board risk discussions on whether current ransomware insurance and response budgets still match the trend</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ AI ═══════════════════ -->
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Thursday, October 29, 2026 · AI-Built Exploits and a Defender-Only Model</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Anthropic Says an Unreleased Claude Model Built Five Working Exploit Chains, Including a Zero-Click Linux Root
+        <span class="badge badge-orange">RESPONSIBLY DISCLOSED · ZERO-CLICK LINUX ROOT, ONE-CLICK CHROME</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Anthropic's Frontier Red Team disclosed that an unreleased Claude research model independently chained known and newly identified vulnerabilities into five working, cross-platform exploit chains against Chrome, Safari, Android, Windows and Linux. The most serious is a zero-click remote-root exploit against Linux servers running a multipath TCP listener: it requires no login and no user action, first leaking a kernel pointer to defeat KASLR, then reusing a race-condition bug to overwrite a callback pointer and execute a shell command. A separate one-click Chrome chain strung together four bugs — memory corruption in the V8 JavaScript engine, a sandbox escape that defeated ASLR and hijacked the renderer process, a CacheStorage race condition that leaked the browser process's memory layout, and a use-after-free in the FedCM sign-in feature to complete the escape. The model also chained exploits against Safari, Android and Windows. Anthropic says every vulnerability was reported to the relevant vendor first and fixes have been released; these were controlled lab tests, not real-world incidents, but the model was never specifically trained for offensive security research. Separately, Google DeepMind released Gemini 4 Carbon, a cyber-defense-specialized model restricted to vetted security defenders rather than general release, which narrowly edged out Anthropic and OpenAI models by a single point on a newly overhauled frontier benchmark. OpenAI and Anthropic also publicly diverged this week over who should control the "kill switch" for risky AI systems — OpenAI argues a single kill switch doesn't fit how differently AI systems are deployed — while OpenAI separately faces a wrongful-death lawsuit alleging ChatGPT's medical advice contributed to a user's death.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">5</div>
+          <div class="stat-label">Cross-platform exploit chains built by Claude</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">0-click</div>
+          <div class="stat-label">Linux remote-root exploit, no user action needed</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">4 bugs</div>
+          <div class="stat-label">Chained into the one-click Chrome exploit</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://cybersecuritynews.com/claude-ai-builds-exploit/">Cyber Security News — Claude AI Builds One-Click Chrome and Zero-Click Linux Exploit Chains</a>
+        <a href="https://gbhackers.com/anthropics-claude-chains-one-click-and-zero-click-exploits/">GBHackers — Anthropic's Claude Chains One-Click and Zero-Click Exploits</a>
+        <a href="https://securityonline.info/claude-ai-vulnerability-research/">SecurityOnline — Anthropic's AI Vulnerability Research Uncovers Critical RCE Chains</a>
+        <a href="https://computerworld.com/article/4242101/anthropic-and-openai-diverge-on-who-should-pull-the-plug-on-risky-ai.html">Computerworld — Anthropic and OpenAI diverge on who should pull the plug on risky AI</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>OpenAI is being sued following the death of a 31-year-old Amazon software engineer who allegedly took medical advice from ChatGPT; separately, an API spec update exposed an unannounced GPT Image 2.6 model with a new "markup" image-edit option.</li>
+        <li>Google's Gemini 4 Carbon, restricted to cyber defenders, edged out Anthropic and OpenAI by a single point in the latest Artificial Analysis intelligence index overhaul.</li>
+        <li>Anthropic rolled out "smart reports" and pooled usage budgets for Claude Enterprise, plus Claude Academy — 26 free courses on using Claude — now live.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 AI Security</div>
+          <ul>
+            <li>If frontier models can now independently chain zero-click remote-root exploits, treat "we'll patch when something is found" as insufficient — prioritize patching multipath TCP and FedCM-adjacent sign-in flows proactively, since AI-assisted vuln discovery will likely find them faster than before</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Gemini 4 Carbon being restricted to vetted defenders signals a coming wave of access-gated "defender-only" AI tooling — worth tracking for clients building SOC or threat-hunting capability roadmaps</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>OpenAI and Anthropic are now publicly disagreeing on basic AI safety governance (the "kill switch" debate) while OpenAI faces real-world liability exposure — a sign the industry's safety consensus is fragmenting just as regulatory and legal scrutiny intensifies</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Thursday, October 29, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
