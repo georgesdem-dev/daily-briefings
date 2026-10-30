@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Investment Brief — Friday, October 30, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #f0c040; margin-bottom: 12px;
+    }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
+    .header .date { font-size: 1rem; color: #8b949e; margin-bottom: 16px; }
+    .header .nav { font-size: 0.82rem; color: #484f58; }
+    .header .nav a { color: #6e7681; }
+
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      margin-bottom: 48px;
+    }
+    .stat-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-align: center;
+    }
+    .stat-card .stat-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; color: #8b949e; margin-bottom: 6px;
+      display: block;
+    }
+    .stat-card .stat-value {
+      font-size: 1.25rem; font-weight: 800; color: #f0f6fc;
+      display: block; margin-bottom: 3px;
+    }
+    .stat-card .stat-change {
+      font-size: 0.78rem; font-weight: 600;
+    }
+    .green  { color: #3fb950; }
+    .red    { color: #f85149; }
+    .amber  { color: #e3b341; }
+    .blue   { color: #58a6ff; }
+    .stat-card.bullish { border-top: 2px solid #238636; }
+    .stat-card.bearish { border-top: 2px solid #da3633; }
+    .stat-card.neutral { border-top: 2px solid #9e6a03; }
+
+    .section { margin-bottom: 52px; }
+    .section-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 22px; padding-bottom: 14px;
+      border-bottom: 2px solid #21262d;
+    }
+    .section-icon { font-size: 1.6rem; }
+    .section-title { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; }
+    .section-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 3px 9px; border-radius: 20px;
+      margin-left: auto;
+    }
+    .tag-market  { background: #1a1f3d; color: #79c0ff; border: 1px solid #2a3a6e; }
+    .tag-pick    { background: #1a3d1a; color: #3fb950; border: 1px solid #2a6e2a; }
+    .tag-risk    { background: #3d1a1a; color: #f85149; border: 1px solid #6e2a2a; }
+    .tag-insight { background: #3d2a0a; color: #e3b341; border: 1px solid #6e4a0a; }
+
+    .story {
+      background: #161b22; border: 1px solid #30363d;
+      border-radius: 10px; padding: 20px 22px; margin-bottom: 14px;
+    }
+    .story:hover { border-color: #444c56; }
+    .story h3 { font-size: 1rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; line-height: 1.4; }
+    .story p { font-size: 0.88rem; color: #c9d1d9; line-height: 1.65; margin-bottom: 8px; }
+    .story p:last-child { margin-bottom: 0; }
+    .story .source { font-size: 0.76rem; color: #484f58; margin-top: 10px; }
+
+    .pick-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .pick-card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .pick-card:hover { border-color: #444c56; }
+    .pick-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .pick-ticker {
+      font-size: 1.2rem; font-weight: 800; color: #58a6ff;
+    }
+    .pick-company {
+      font-size: 0.78rem; color: #8b949e; margin-top: 2px;
+    }
+    .pick-price {
+      text-align: right;
+    }
+    .pick-price .price-val {
+      font-size: 1.1rem; font-weight: 700; color: #f0f6fc;
+    }
+    .pick-price .price-change {
+      font-size: 0.78rem;
+    }
+    .pick-desc { font-size: 0.84rem; color: #c9d1d9; line-height: 1.6; margin-bottom: 12px; }
+    .pick-meta {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;
+    }
+    .pick-badge {
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 3px 8px; border-radius: 20px;
+    }
+    .badge-buy      { background: #1a3d1a; color: #3fb950; border: 1px solid #2a5a2a; }
+    .badge-moderate { background: #1a2d3d; color: #58a6ff; border: 1px solid #2a4a6e; }
+    .badge-income   { background: #3d2a0a; color: #e3b341; border: 1px solid #6e4a0a; }
+    .badge-growth   { background: #1a1a3d; color: #a371f7; border: 1px solid #3a2a6e; }
+    .badge-etf      { background: #1a3d3d; color: #56d364; border: 1px solid #2a5a5a; }
+    .badge-defensive { background: #2d1a3d; color: #d2a8ff; border: 1px solid #5a2a6e; }
+    .badge-watch    { background: #3d2a0a; color: #e3b341; border: 1px solid #6e4a0a; }
+
+    .target-row {
+      display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap;
+    }
+    .target-pill {
+      background: #0d1117; border: 1px solid #21262d; border-radius: 6px;
+      padding: 4px 10px; font-size: 0.76rem; color: #8b949e;
+    }
+    .target-pill span { font-weight: 700; color: #f0f6fc; }
+
+    .outlook-table {
+      width: 100%; border-collapse: collapse; font-size: 0.82rem;
+      margin-top: 6px;
+    }
+    .outlook-table thead th {
+      text-align: left; padding: 10px 12px; font-size: 10px;
+      font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+      color: #8b949e; background: #161b22; border-bottom: 2px solid #21262d;
+    }
+    .outlook-table tbody tr {
+      border-bottom: 1px solid #21262d;
+    }
+    .outlook-table tbody tr:hover { background: #161b22; }
+    .outlook-table tbody td {
+      padding: 11px 12px; color: #c9d1d9; vertical-align: top;
+    }
+    .outlook-table .ticker-cell {
+      font-weight: 800; color: #58a6ff; white-space: nowrap;
+    }
+    .outlook-table .price-cell { font-weight: 700; color: #f0f6fc; }
+    .outlook-table .target-up { color: #3fb950; font-weight: 700; }
+    .outlook-table .target-dn { color: #f85149; font-weight: 700; }
+    .outlook-table .target-flat { color: #e3b341; font-weight: 700; }
+    .risk-low    { color: #3fb950; font-size: 10px; font-weight: 700; }
+    .risk-med    { color: #e3b341; font-size: 10px; font-weight: 700; }
+    .risk-high   { color: #f85149; font-size: 10px; font-weight: 700; }
+
+    .insight-card {
+      background: #161b22; border: 1px solid #30363d;
+      border-left: 3px solid #e3b341;
+      border-radius: 0 10px 10px 0; padding: 18px 20px; margin-bottom: 14px;
+    }
+    .insight-card h3 { font-size: 0.96rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; }
+    .insight-card p { font-size: 0.86rem; color: #c9d1d9; line-height: 1.65; }
+    .insight-card .person { font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: #e3b341; margin-bottom: 8px; display: block; }
+
+    .risk-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+    }
+    .risk-card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .risk-card .risk-title {
+      font-size: 0.88rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+    }
+    .risk-card ul { list-style: none; padding: 0; }
+    .risk-card ul li {
+      font-size: 0.82rem; color: #c9d1d9; margin-bottom: 6px;
+      padding-left: 16px; position: relative; line-height: 1.5;
+    }
+    .risk-card ul li::before { content: "›"; position: absolute; left: 0; color: #f85149; }
+
+    .watchlist-card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .watchlist-card .wl-title {
+      font-size: 0.88rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+    }
+    .wl-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 6px 0; border-bottom: 1px solid #21262d; font-size: 0.82rem;
+    }
+    .wl-item:last-child { border-bottom: none; }
+    .wl-ticker { font-weight: 700; color: #58a6ff; }
+    .wl-reason { color: #8b949e; font-size: 0.76rem; }
+
+    .tldr {
+      background: #161b22; border: 1px solid #30363d;
+      border-left: 3px solid #58a6ff;
+      border-radius: 0 8px 8px 0; padding: 14px 18px; margin-bottom: 28px;
+      font-size: 0.86rem; color: #8b949e;
+    }
+    .tldr strong { color: #f0f6fc; }
+
+    .divider { border: none; border-top: 1px solid #21262d; margin: 14px 0 20px; }
+
+    .sector-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px;
+    }
+    .sector-row {
+      display: flex; justify-content: space-between; align-items: center;
+      background: #0d1117; border: 1px solid #21262d; border-radius: 6px;
+      padding: 7px 12px; font-size: 0.82rem;
+    }
+    .sector-name { color: #c9d1d9; }
+    .sector-pct  { font-weight: 700; }
+
+    .footer {
+      text-align: center; margin-top: 60px; padding-top: 20px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+
+    .upside-pct { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; background: #1a3d1a; color: #3fb950; margin-left: 6px; }
+    .downside-pct { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; background: #3d1a1a; color: #f85149; margin-left: 6px; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="label">📈 Investment Brief · Moderate Risk Portfolio</div>
+    <h1>Friday, October 30, 2026</h1>
+    <div class="date">Mega-Cap Earnings Split the Market &nbsp;·&nbsp; HII Soars 13% on Record Quarter, GOOGL Suffers Worst Day Ever &nbsp;·&nbsp; AAPL Hits New All-Time High &nbsp;·&nbsp; For Georges</div>
+    <div class="nav"><a href="index.html">← Back to archive</a></div>
+  </div>
+
+  <div class="tldr">
+    <strong>Today at a glance:</strong> &nbsp;
+    Levels below reflect Thursday Oct 29's close, the most recent completed session &nbsp;·&nbsp;
+    Earnings night delivered a split verdict on Big Tech: Alphabet suffered its worst single-day decline ever (-12.6%) following its Q3 miss, and Amazon slid after-hours (AWS grew a strong 39%, but heavy AI capex and negative free cash flow spooked investors) &nbsp;·&nbsp;
+    Meanwhile Apple beat estimates and closed at a fresh all-time high, and Huntington Ingalls jumped 13% on a blowout quarter and raised shipbuilding guidance &nbsp;·&nbsp;
+    The broad market actually held up well despite the Nasdaq's -1.38% drag: Health Care (+2.4%), Real Estate (+2.2%) and Consumer Staples (+1.5%) led a rotation into defensives &nbsp;·&nbsp;
+    Friday's premarket futures are lower again (Nasdaq ~-2%) as investors continue digesting Amazon's and Intel's results
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-card bearish">
+      <span class="stat-label">S&amp;P 500</span>
+      <span class="stat-value">7,720.39</span>
+      <span class="stat-change red">-0.30% &nbsp;Thu close</span>
+    </div>
+    <div class="stat-card bearish">
+      <span class="stat-label">Dow Jones</span>
+      <span class="stat-value">52,342.56</span>
+      <span class="stat-change red">-0.25% &nbsp;Thu close</span>
+    </div>
+    <div class="stat-card bearish">
+      <span class="stat-label">Nasdaq</span>
+      <span class="stat-value">26,184.72</span>
+      <span class="stat-change red">-1.38% &nbsp;Thu close</span>
+    </div>
+    <div class="stat-card bullish">
+      <span class="stat-label">Russell 2000</span>
+      <span class="stat-value">2,859.22</span>
+      <span class="stat-change green">+1.01% &nbsp;Thu close</span>
+    </div>
+    <div class="stat-card bearish">
+      <span class="stat-label">VIX</span>
+      <span class="stat-value">17.20</span>
+      <span class="stat-change red">+1.71% &nbsp;Thu close</span>
+    </div>
+    <div class="stat-card bullish">
+      <span class="stat-label">Oil (WTI)</span>
+      <span class="stat-value">$102.20</span>
+      <span class="stat-change green">~flat &nbsp;Thu close</span>
+    </div>
+    <div class="stat-card bearish">
+      <span class="stat-label">Gold</span>
+      <span class="stat-value">~$4,025</span>
+      <span class="stat-change red">-1.0% &nbsp;Thu close</span>
+    </div>
+    <div class="stat-card neutral">
+      <span class="stat-label">10Y Treasury</span>
+      <span class="stat-value">~4.99%</span>
+      <span class="stat-change amber">Strong GDP keeps Fed hike odds alive</span>
+    </div>
+  </div>
+
+
+  <!-- SECTION 1 — MARKET SNAPSHOT -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">📊</span>
+      <span class="section-title">Market Snapshot</span>
+      <span class="section-tag tag-market">LIVE DATA</span>
+    </div>
+
+    <div class="story">
+      <h3>🔀 A Tale of Two Earnings Nights: AAPL Soars, HII Jumps, GOOGL and AMZN Slide</h3>
+      <p>Thursday's after-the-bell earnings produced a genuine split verdict on the AI-capex question. <strong>Alphabet</strong> extended Wednesday's selloff into its worst day ever, closing down roughly 12.6% at $283.82, as investors kept punishing the combination of an EPS miss and negative free cash flow. <strong>Amazon</strong> delivered a standout AWS quarter (+39% growth, record 13.9% operating margin, $578B backlog) but still fell after hours — first -4.25% in the regular session to $243.79, then another leg down of roughly 7-9% after hours toward the low-$220s* — as the market again focused on heavy AI infrastructure capex and weak free cash flow rather than the top-line beat.</p>
+      <p>On the other side of the ledger, <strong>Apple</strong> beat estimates ($2.02 EPS vs. $1.99 expected) and closed at a fresh all-time high of $348.91, extending to a new peak after hours — a reminder that the market is discriminating between AI spenders with clean balance sheets and those burning cash. <strong>Huntington Ingalls</strong> was the day's biggest single-stock winner in the portfolio, gapping up 13% to roughly $316 on a record quarter and raised 2026 shipbuilding revenue guidance.</p>
+    </div>
+
+    <div class="story">
+      <h3>🔄 Defensive Rotation Cushions the Broader Market</h3>
+      <p>Despite the Nasdaq's -1.38% drag from Alphabet's crash, most stocks in the S&amp;P 500 actually rose Thursday. Health Care (+2.4%) and Real Estate (+2.2%) led, followed by Consumer Staples (+1.5%), as capital rotated out of mega-cap growth/communication-services names and into defensives — exactly the kind of broadening this portfolio's healthcare and dividend sleeve is designed to capture. The Russell 2000 small-cap index also outperformed, up 1.0% to 2,859.22, a sign that risk appetite outside of AI-capex-exposed mega-caps remains intact.</p>
+      <p style="font-size:0.75rem;color:#484f58;">*AMZN's exact after-hours/premarket print varied across sources ($221.87 to ~$226); the figure above reflects the more frequently-cited range and should be confirmed against Friday's opening print.</p>
+    </div>
+  </div>
+
+
+  <!-- SECTION 2 — TOP PICKS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🎯</span>
+      <span class="section-title">Top Picks — Moderate Risk Portfolio</span>
+      <span class="section-tag tag-pick">BUY THESIS</span>
+    </div>
+
+    <div class="tldr" style="border-left-color: #3fb950;">
+      <strong>Portfolio note:</strong> &nbsp; Huntington Ingalls' blowout quarter is the standout today — raising conviction there. AMZN's selloff looks more like a capex-sentiment overreaction than a fundamentals problem given 39% AWS growth and a record operating margin; treating this as a potential add-on-weakness opportunity rather than a reason to exit. GOOGL remains the portfolio's highest-risk name after two straight brutal sessions — holding a smaller position, not adding until free-cash-flow trends stabilize.
+    </div>
+
+    <div class="pick-grid">
+
+      <!-- HII -->
+      <div class="pick-card">
+        <div class="pick-header">
+          <div>
+            <div class="pick-ticker">HII</div>
+            <div class="pick-company">Huntington Ingalls Industries</div>
+          </div>
+          <div class="pick-price">
+            <div class="price-val">~$316</div>
+            <div class="price-change green">+13.2% Thu</div>
+          </div>
+        </div>
+        <p class="pick-desc">Huntington Ingalls posted a record Q3, beat estimates on both lines, and raised its 2026 shipbuilding revenue guidance — triggering the day's biggest single-stock gain in the portfolio. Still Goldman Sachs' #1 October Conviction List pick, underpinned by sustained Pentagon shipbuilding investment.</p>
+        <div class="pick-meta">
+          <span class="pick-badge badge-buy">GS #1 Conviction</span>
+          <span class="pick-badge badge-defensive">Defense/Industrial</span>
+          <span class="pick-badge badge-watch">Earnings Beat</span>
+        </div>
+        <div class="target-row">
+          <div class="target-pill">Price: <span>~$316</span></div>
+          <div class="target-pill">GS Target: <span class="green">$439</span></div>
+          <div class="target-pill">Upside: <span class="green">+39.0%</span></div>
+        </div>
+      </div>
+
+      <!-- UNH -->
+      <div class="pick-card">
+        <div class="pick-header">
+          <div>
+            <div class="pick-ticker">UNH</div>
+            <div class="pick-company">UnitedHealth Group</div>
+          </div>
+          <div class="pick-price">
+            <div class="price-val">$410.05</div>
+            <div class="price-change green">+0.72% Thu</div>
+          </div>
+        </div>
+        <p class="pick-desc">UnitedHealth benefited directly from Thursday's rotation into defensives, part of Health Care's sector-leading +2.4% day. JPMorgan's $524 target (Overweight) is unchanged and remains the portfolio's cleanest counterweight to mega-cap tech volatility.</p>
+        <div class="pick-meta">
+          <span class="pick-badge badge-buy">JPM Overweight</span>
+          <span class="pick-badge badge-defensive">Healthcare</span>
+        </div>
+        <div class="target-row">
+          <div class="target-pill">Price: <span>$410.05</span></div>
+          <div class="target-pill">JPM Target: <span class="green">$524</span></div>
+          <div class="target-pill">Upside: <span class="green">+27.8%</span></div>
+        </div>
+      </div>
+
+      <!-- AMZN -->
+      <div class="pick-card">
+        <div class="pick-header">
+          <div>
+            <div class="pick-ticker">AMZN</div>
+            <div class="pick-company">Amazon.com, Inc.</div>
+          </div>
+          <div class="pick-price">
+            <div class="price-val">~$222*</div>
+            <div class="price-change red">-4.25% + after-hours slide</div>
+          </div>
+        </div>
+        <p class="pick-desc">Amazon's fundamentals were genuinely strong — AWS growth accelerated to 39.3%, operating margin hit a record 13.9%, and the AWS backlog reached $578B — but the stock fell anyway as investors focused on AI capex and negative free cash flow, the same pattern that hit GOOGL. Treating this drop as a sentiment-driven buying opportunity given the underlying AWS momentum, while watching Friday's open closely for confirmation.</p>
+        <div class="pick-meta">
+          <span class="pick-badge badge-buy">GS Conviction List</span>
+          <span class="pick-badge badge-watch">Post-Earnings Dip</span>
+        </div>
+        <div class="target-row">
+          <div class="target-pill">Price: <span>~$222*</span></div>
+          <div class="target-pill">GS Target: <span class="green">$375</span></div>
+          <div class="target-pill">Upside: <span class="green">+68.9%</span></div>
+        </div>
+      </div>
+
+      <!-- JNJ -->
+      <div class="pick-card">
+        <div class="pick-header">
+          <div>
+            <div class="pick-ticker">JNJ</div>
+            <div class="pick-company">Johnson &amp; Johnson</div>
+          </div>
+          <div class="pick-price">
+            <div class="price-val">$275.20</div>
+            <div class="price-change green">+1.53% Thu</div>
+          </div>
+        </div>
+        <p class="pick-desc">Johnson &amp; Johnson rode the same defensive rotation as UNH, closing above JPMorgan's prior $285 target range milestone. The dividend income layer and low-beta profile make this one of the portfolio's steadiest performers through this week's tech-earnings turbulence.</p>
+        <div class="pick-meta">
+          <span class="pick-badge badge-buy">Buy</span>
+          <span class="pick-badge badge-defensive">Low Beta</span>
+          <span class="pick-badge badge-income">Dividend</span>
+        </div>
+        <div class="target-row">
+          <div class="target-pill">Price: <span>$275.20</span></div>
+          <div class="target-pill">JPM Target: <span class="green">$285</span></div>
+          <div class="target-pill">Upside: <span class="green">+3.6%</span></div>
+        </div>
+      </div>
+
+      <!-- OXY -->
+      <div class="pick-card">
+        <div class="pick-header">
+          <div>
+            <div class="pick-ticker">OXY</div>
+            <div class="pick-company">Occidental Petroleum</div>
+          </div>
+          <div class="pick-price">
+            <div class="price-val">$63.01</div>
+            <div class="price-change green">+0.24% Thu</div>
+          </div>
+        </div>
+        <p class="pick-desc">Occidental held steady as WTI stayed firm near $102. Stephens' $80 target (the Street's most bullish) remains in play, and the stock continues to function as the portfolio's cleanest energy hedge — unaffected by this week's tech-earnings volatility.</p>
+        <div class="pick-meta">
+          <span class="pick-badge badge-buy">GS Conviction List</span>
+          <span class="pick-badge badge-income">Energy</span>
+        </div>
+        <div class="target-row">
+          <div class="target-pill">Price: <span>$63.01</span></div>
+          <div class="target-pill">Stephens Target: <span class="green">$80</span></div>
+          <div class="target-pill">Upside: <span class="green">+27.0%</span></div>
+        </div>
+      </div>
+
+      <!-- JPM -->
+      <div class="pick-card">
+        <div class="pick-header">
+          <div>
+            <div class="pick-ticker">JPM</div>
+            <div class="pick-company">JPMorgan Chase</div>
+          </div>
+          <div class="pick-price">
+            <div class="price-val">~$339*</div>
+            <div class="price-change green">+1.11% Thu</div>
+          </div>
+        </div>
+        <p class="pick-desc">JPM extended its gain Thursday as Treasury yields held near 5%, supportive of net interest margin. The stock remains a steady complement to the portfolio's more volatile tech exposure this week.</p>
+        <div class="pick-meta">
+          <span class="pick-badge badge-buy">Moderate Buy</span>
+          <span class="pick-badge badge-defensive">Rate-sensitive</span>
+        </div>
+        <div class="target-row">
+          <div class="target-pill">Price: <span>~$339*</span></div>
+          <div class="target-pill">Consensus: <span class="green">~$372</span></div>
+          <div class="target-pill">Upside: <span class="green">+9.7%</span></div>
+        </div>
+      </div>
+
+      <!-- GOOGL -->
+      <div class="pick-card">
+        <div class="pick-header">
+          <div>
+            <div class="pick-ticker">GOOGL</div>
+            <div class="pick-company">Alphabet Inc.</div>
+          </div>
+          <div class="pick-price">
+            <div class="price-val">$283.82</div>
+            <div class="price-change red">Worst day ever, -12.6% Thu</div>
+          </div>
+        </div>
+        <p class="pick-desc"><strong>Conviction stays low after a second brutal session.</strong> The stock has now fallen over 20% across two days following the Q3 miss and negative free-cash-flow swing. Cloud growth and the Berkshire stake are reasons to hold a small position rather than exit outright, but this is firmly a "wait for FCF stabilization" name now, not a buy-the-dip — the revised ~$350 target implies real upside, but with much higher volatility risk than a week ago.</p>
+        <div class="pick-meta">
+          <span class="pick-badge badge-watch">Low Conviction</span>
+          <span class="pick-badge badge-growth">Two-Day Crash</span>
+        </div>
+        <div class="target-row">
+          <div class="target-pill">Price: <span>$283.82</span></div>
+          <div class="target-pill">Revised Target: <span class="amber">~$350</span></div>
+          <div class="target-pill">Upside: <span class="green">+23.3%</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="story">
+      <h3>📦 ETF Core Positions — Diversification Layer</h3>
+      <p><strong class="blue">SPY (S&amp;P 500 ETF)</strong> — Held up far better than the Nasdaq Thursday thanks to the healthcare/real estate/staples rotation, a textbook example of why broad-market exposure cushions single-stock earnings shocks like GOOGL's.</p>
+      <hr class="divider">
+      <p><strong class="blue">VIG (Vanguard Dividend Appreciation ETF)</strong> — Benefited directly from the defensive rotation (UNH, JNJ) and remains a useful ballast while AI-capex earnings reactions stay volatile.</p>
+    </div>
+  </div>
+
+
+  <!-- SECTION 3 — 30-60-90 DAY OUTLOOK -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🗓️</span>
+      <span class="section-title">30–60–90 Day Outlook</span>
+      <span class="section-tag tag-market">PRICE TARGETS</span>
+    </div>
+
+    <div class="story" style="padding: 0; overflow-x: auto;">
+      <table class="outlook-table">
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th>Today</th>
+            <th>30-Day</th>
+            <th>60-Day</th>
+            <th>90-Day</th>
+            <th>12-Mo Target</th>
+            <th>Key Catalyst</th>
+            <th>Risk</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="ticker-cell">HII</td>
+            <td class="price-cell">~$316</td>
+            <td class="target-up">$335</td>
+            <td class="target-up">$365</td>
+            <td class="target-up">$405</td>
+            <td class="target-up">$439 <span class="upside-pct">+39.0%</span></td>
+            <td>Follow-through on raised guidance; Navy contract awards</td>
+            <td><span class="risk-low">LOW</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">UNH</td>
+            <td class="price-cell">$410</td>
+            <td class="target-up">$438</td>
+            <td class="target-up">$468</td>
+            <td class="target-up">$498</td>
+            <td class="target-up">$524 <span class="upside-pct">+27.8%</span></td>
+            <td>Medical-cost ratio trend; Q4 guidance</td>
+            <td><span class="risk-low">LOW</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">AMZN</td>
+            <td class="price-cell">~$222*</td>
+            <td class="target-up">$255</td>
+            <td class="target-up">$290</td>
+            <td class="target-up">$330</td>
+            <td class="target-up">$375 <span class="upside-pct">+68.9%</span></td>
+            <td>Friday's opening print; Q4 holiday-quarter guidance; AWS momentum</td>
+            <td><span class="risk-high">HIGH</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">JNJ</td>
+            <td class="price-cell">$275</td>
+            <td class="target-up">$279</td>
+            <td class="target-up">$282</td>
+            <td class="target-up">$284</td>
+            <td class="target-up">$285 <span class="upside-pct">+3.6%</span></td>
+            <td>Oncology pipeline readouts; Q4 guidance</td>
+            <td><span class="risk-low">LOW</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">OXY</td>
+            <td class="price-cell">$63</td>
+            <td class="target-up">$68</td>
+            <td class="target-up">$73</td>
+            <td class="target-up">$77</td>
+            <td class="target-up">$80 <span class="upside-pct">+27.0%</span></td>
+            <td>WTI/Brent trend; Permian output; Iran de-escalation talks</td>
+            <td><span class="risk-high">HIGH</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">JPM</td>
+            <td class="price-cell">~$339*</td>
+            <td class="target-up">$350</td>
+            <td class="target-up">$360</td>
+            <td class="target-up">$368</td>
+            <td class="target-up">~$372 <span class="upside-pct">+9.7%</span></td>
+            <td>NIM trend; Fed hike odds; buyback execution</td>
+            <td><span class="risk-low">LOW</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">GOOGL</td>
+            <td class="price-cell">$283.82</td>
+            <td class="target-up">$300</td>
+            <td class="target-up">$320</td>
+            <td class="target-up">$335</td>
+            <td class="target-up">~$350 <span class="upside-pct">+23.3%</span></td>
+            <td>Free-cash-flow stabilization; 2027 capex clarity; cloud growth sustain</td>
+            <td><span class="risk-high">HIGH</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">SPY</td>
+            <td class="price-cell">~$772</td>
+            <td class="target-up">$788</td>
+            <td class="target-up">$806</td>
+            <td class="target-up">$824</td>
+            <td class="target-up">~$850 <span class="upside-pct">+10.1%</span></td>
+            <td>Breadth of defensive rotation; more Mag-7 earnings digestion</td>
+            <td><span class="risk-med">MED</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">VIG</td>
+            <td class="price-cell">~$249</td>
+            <td class="target-up">$253</td>
+            <td class="target-up">$258</td>
+            <td class="target-up">$263</td>
+            <td class="target-up">~$267 <span class="upside-pct">+7.2%</span></td>
+            <td>Healthcare/staples relative strength continuing</td>
+            <td><span class="risk-low">LOW</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.75rem;color:#484f58;margin-top:10px;padding:0 4px;">
+      30/60/90-day figures are Jorge's estimates derived from analyst 12-month consensus targets scaled with technical levels. Not financial advice. Prices reflect Thursday Oct 29 closes where available; AMZN reflects an estimated after-hours/premarket level pending Friday's open (marked *), and JPM's exact Thursday close was approximated from a percentage move off Wednesday's level (marked *).
+    </p>
+  </div>
+
+
+  <!-- SECTION 4 — INVESTOR INSIGHTS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🧠</span>
+      <span class="section-title">Trusted Investor Insights</span>
+      <span class="section-tag tag-insight">MACRO VIEWS</span>
+    </div>
+
+    <div class="insight-card" style="border-left-color: #f85149;">
+      <span class="person" style="color: #f85149;">Ray Dalio / Bridgewater</span>
+      <h3>Two Mag-7 Cash-Flow Scares in Two Days Reinforce the Bubble Warning</h3>
+      <p>Dalio's "classic bubble nearing its bursting point" framing from the Forbes Global CEO Conference looks more prescient after both Alphabet and Amazon were punished this week for heavy AI capex and weak free cash flow — even though Amazon's underlying AWS growth accelerated. The pattern now spans two of the largest hyperscalers, not just one.</p>
+    </div>
+
+    <div class="insight-card">
+      <span class="person">Howard Marks / Oaktree Capital</span>
+      <h3>The Market's Harsh Discrimination Between Spenders Supports His "Not a Classic Bubble" View</h3>
+      <p>Marks has argued that broad awareness of bubble risk is itself evidence against a classic bubble. This week's divergence — Apple hitting an all-time high on a clean beat while Alphabet and Amazon get punished for capex and cash burn — is exactly the kind of discriminating, fundamentals-driven market behavior Marks says you wouldn't see in a true mania, where everything would simply be bid up together.</p>
+    </div>
+
+    <div class="insight-card" style="border-left-color: #58a6ff;">
+      <span class="person" style="color: #58a6ff;">Goldman Sachs & JPMorgan — Rotation Playbook</span>
+      <h3>Defensive Rotation Validates the Portfolio's Healthcare/Industrial Tilt</h3>
+      <p>Thursday's leadership from Health Care, Real Estate and Consumer Staples — alongside Huntington Ingalls' earnings-driven surge — is the exact rotation GS and JPM analysts have been flagging as a hedge against mega-cap AI-capex volatility. This portfolio's UNH/JNJ/HII weighting is positioned to benefit directly if this rotation persists into November.</p>
+    </div>
+  </div>
+
+
+  <!-- SECTION 5 — KEY RISKS & WATCHLIST -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">⚠️</span>
+      <span class="section-title">Key Risks &amp; Watchlist</span>
+      <span class="section-tag tag-risk">RISK MONITOR</span>
+    </div>
+
+    <div class="risk-grid">
+      <div class="risk-card">
+        <div class="risk-title">💸 AI Capex & Cash Flow Risk — Now a Two-Name Pattern</div>
+        <ul>
+          <li>GOOGL and AMZN both sold off this week on capex/free-cash-flow concerns despite one outright miss and one largely in-line/beat quarter</li>
+          <li>Watch whether this spreads to the rest of Big Tech or stays contained to the two names already hit</li>
+          <li>Intel's underwhelming results are also weighing on Friday's premarket tone</li>
+        </ul>
+      </div>
+
+      <div class="risk-card">
+        <div class="risk-title">📅 Friday's Open — Confirmation or Reversal?</div>
+        <ul>
+          <li>Nasdaq futures down ~2% premarket; watch whether AMZN and GOOGL stabilize or extend losses at the open</li>
+          <li>After-hours moves of this size sometimes overshoot; the regular session print matters more than the premarket quote</li>
+        </ul>
+      </div>
+
+      <div class="risk-card">
+        <div class="risk-title">🏛️ Rates & Fed Policy</div>
+        <ul>
+          <li>10Y yield near 4.99% after Wednesday's hawkish 10-2 Fed hold; strong GDP data this week keeps a further 2026 hike in play</li>
+          <li>Rate path remains a swing factor for both financials (JPM, tailwind) and richly-valued growth names (headwind)</li>
+        </ul>
+      </div>
+
+      <div class="risk-card">
+        <div class="risk-title">🪖 Geopolitical Risk — Easing, Not Resolved</div>
+        <ul>
+          <li>Oil held steady near $102 WTI; Qatari-mediated Iran talks remain ongoing</li>
+          <li>Any breakdown in talks would quickly reignite the energy risk premium</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="story" style="margin-top: 16px;">
+      <h3>👁️ Watchlist — Names and Events to Monitor Closely</h3>
+      <div class="wl-item">
+        <div>
+          <span class="wl-ticker">AMZN</span>
+          <span class="wl-reason"> — Watch Friday's regular-session open closely; strong AWS fundamentals vs. capex-driven selling pressure</span>
+        </div>
+        <span class="amber">👁️ MONITOR</span>
+      </div>
+      <div class="wl-item">
+        <div>
+          <span class="wl-ticker">GOOGL</span>
+          <span class="wl-reason"> — Two consecutive brutal sessions; look for signs of stabilization before considering adding</span>
+        </div>
+        <span class="red">⚠️ HIGH RISK</span>
+      </div>
+      <div class="wl-item">
+        <div>
+          <span class="wl-ticker">HII</span>
+          <span class="wl-reason"> — Follow-through strength after the earnings beat; watch for analyst target upgrades this weekend</span>
+        </div>
+        <span class="green">📈 MOMENTUM</span>
+      </div>
+      <div class="wl-item" style="border: none;">
+        <div>
+          <span class="wl-ticker">AAPL</span>
+          <span class="wl-reason"> — Not currently a portfolio holding, but its all-time high is worth tracking as the "clean AI spender" benchmark; reports fiscal Q4 Nov 2</span>
+        </div>
+        <span class="blue">📅 NOV 2</span>
+      </div>
+    </div>
+
+    <div class="story" style="margin-top: 14px;">
+      <h3>📐 Suggested Moderate-Risk Allocation — October 2026</h3>
+      <p style="margin-bottom:12px;">Bumping HII's weight on its earnings beat; holding AMZN steady on the dip; keeping GOOGL trimmed (~10-15% expected annual return, ~13-17% expected annual volatility):</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:0.83rem;">
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;">
+          <span style="color:#58a6ff;font-weight:700;">Core ETFs (40%)</span><br>
+          <span style="color:#8b949e;">SPY 24% · VIG 16%</span>
+        </div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;">
+          <span style="color:#3fb950;font-weight:700;">Mega-Cap Growth (17%)</span><br>
+          <span style="color:#8b949e;">AMZN 10% · GOOGL 7% (trimmed)</span>
+        </div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;">
+          <span style="color:#d2a8ff;font-weight:700;">Healthcare / Income (21%)</span><br>
+          <span style="color:#8b949e;">UNH 11% · JNJ 10%</span>
+        </div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;">
+          <span style="color:#e3b341;font-weight:700;">Defense / Financials (13%)</span><br>
+          <span style="color:#8b949e;">HII 7% (raised) · JPM 6%</span>
+        </div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px; grid-column: 1/-1;">
+          <span style="color:#f85149;font-weight:700;">Energy / Tactical (9%)</span><br>
+          <span style="color:#8b949e;">OXY 6% · Cash 3% held for Friday's open confirmation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>Investment Brief by Jorge</strong> &nbsp;·&nbsp; October 30, 2026 &nbsp;·&nbsp; Mega-Cap Earnings Split the Market as HII Soars and GOOGL Suffers Worst Day Ever</p>
+    <p style="margin-top:6px;">Data sourced from CNBC, Reuters, Bloomberg, Yahoo Finance, TheStreet, GuruFocus, TipRanks, StockAnalysis, TradingEconomics · Prices reflect Thursday Oct 29, 2026 closes unless noted · Not financial advice · For informational purposes only</p>
+    <p style="margin-top:6px;"><a href="index.html">← Full briefing archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
