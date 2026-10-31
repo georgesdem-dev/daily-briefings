@@ -15,531 +15,366 @@
     }
     a { color: #58a6ff; text-decoration: none; }
     a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
 
-    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
-
-    /* ── Header ── */
-    .header {
+    .briefing-header {
       text-align: center;
       padding: 52px 0 40px;
       border-bottom: 1px solid #21262d;
       margin-bottom: 48px;
     }
-    .header .label {
+    .briefing-header .label {
       font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
       text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
     }
-    .header h1 { font-size: 2rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
-    .header .date { font-size: 1.05rem; color: #8b949e; margin-bottom: 18px; }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
     .toc {
-      display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 10px;
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
     }
-    .toc-pill {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 6px 16px; border-radius: 20px;
-      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.5px;
-      text-decoration: none;
-      border: 1px solid;
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
     }
-    .toc-iran   { background: #1a1020; border-color: #c75a3a; color: #f0866a; }
-    .toc-cyber  { background: #0d1a2a; border-color: #1f6feb; color: #58a6ff; }
-    .toc-ai     { background: #111a12; border-color: #2ea043; color: #56d364; }
-    .toc-iran:hover   { background: #2a1828; }
-    .toc-cyber:hover  { background: #122037; }
-    .toc-ai:hover     { background: #172519; }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
 
-    /* ── Section block ── */
-    .section { margin-bottom: 56px; }
-    .section-header {
-      display: flex; align-items: center; gap: 12px;
-      padding: 14px 20px;
-      border-radius: 10px 10px 0 0;
-      margin-bottom: 0;
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
     }
-    .section-header .icon { font-size: 1.5rem; }
-    .section-header h2 { font-size: 1.2rem; font-weight: 800; letter-spacing: 0.3px; }
-    .section-header .day-badge {
-      margin-left: auto;
-      font-size: 0.75rem; font-weight: 700; letter-spacing: 1px;
-      padding: 3px 10px; border-radius: 12px;
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
     }
-
-    .section-iran   .section-header { background: #1a1020; border: 1px solid #c75a3a; border-bottom: none; }
-    .section-iran   .section-header h2 { color: #f0866a; }
-    .section-iran   .section-header .day-badge { background: #2a1828; color: #f0866a; border: 1px solid #c75a3a; }
-
-    .section-cyber  .section-header { background: #0d1a2a; border: 1px solid #1f6feb; border-bottom: none; }
-    .section-cyber  .section-header h2 { color: #79c0ff; }
-
-    .section-ai     .section-header { background: #111a12; border: 1px solid #2ea043; border-bottom: none; }
-    .section-ai     .section-header h2 { color: #56d364; }
-
-    /* ── Card inside section ── */
-    .section-body {
-      border: 1px solid;
-      border-top: none;
-      border-radius: 0 0 10px 10px;
-      padding: 22px 24px 24px;
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
     }
-    .section-iran  .section-body { border-color: #c75a3a; background: #120c17; }
-    .section-cyber .section-body { border-color: #1f6feb; background: #0a1220; }
-    .section-ai    .section-body { border-color: #2ea043; background: #0c1610; }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
 
-    /* ── SITREP banner ── */
-    .sitrep {
-      padding: 12px 16px;
-      border-radius: 7px;
-      font-size: 0.88rem;
-      margin-bottom: 20px;
-      line-height: 1.6;
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
     }
-    .sitrep-iran  { background: #200c14; border-left: 4px solid #e05c38; color: #f0c0a8; }
-    .sitrep-cyber { background: #091525; border-left: 4px solid #388bfd; color: #a8c8f0; }
-    .sitrep-ai    { background: #0b1a0d; border-left: 4px solid #2ea043; color: #a0d8a8; }
-    .sitrep strong { color: #f0f6fc; }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
 
-    /* ── News items ── */
-    .news-item {
-      padding: 14px 0;
-      border-bottom: 1px solid #21262d;
-    }
-    .news-item:last-child { border-bottom: none; padding-bottom: 0; }
-
-    .news-meta {
-      display: flex; align-items: center; gap: 8px;
-      margin-bottom: 5px; flex-wrap: wrap;
-    }
-    .news-source {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-      padding: 2px 8px; border-radius: 4px;
-    }
-    .src-iran  { background: #2a1828; color: #f0866a; }
-    .src-cyber { background: #0d2040; color: #79c0ff; }
-    .src-ai    { background: #0e1e12; color: #56d364; }
-
-    .severity {
-      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.5px;
-      padding: 2px 7px; border-radius: 4px;
-    }
-    .sev-critical { background: #4a0e0e; color: #ff6b6b; border: 1px solid #7a2020; }
-    .sev-high     { background: #3a2000; color: #f0a030; border: 1px solid #6a4000; }
-    .sev-medium   { background: #1a2030; color: #79c0ff; border: 1px solid #2040a0; }
-    .sev-info     { background: #1a2520; color: #56d364; border: 1px solid #204030; }
-
-    .news-title {
-      font-size: 0.97rem; font-weight: 700; color: #f0f6fc; margin-bottom: 5px;
-    }
-    .news-body { font-size: 0.87rem; color: #b0bcc8; line-height: 1.65; }
-    .news-body strong { color: #e6edf3; }
-
-    /* ── Audience sub-sections ── */
     .audience-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
-      margin-top: 14px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
     }
     .audience-card {
-      padding: 12px 14px;
-      border-radius: 7px;
-      font-size: 0.83rem;
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
     }
-    .aud-ciso    { background: #100820; border: 1px solid #6a35c0; }
-    .aud-partner { background: #0a1830; border: 1px solid #1f6feb; }
-    .aud-exec    { background: #0c1808; border: 1px solid #2ea043; }
-
-    .aud-label {
-      font-size: 0.72rem; font-weight: 800; letter-spacing: 1px;
-      text-transform: uppercase; margin-bottom: 6px;
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
     }
-    .aud-ciso    .aud-label { color: #a78bfa; }
-    .aud-partner .aud-label { color: #58a6ff; }
-    .aud-exec    .aud-label { color: #56d364; }
-    .aud-body { color: #9ba8b8; line-height: 1.5; }
-    .aud-body strong { color: #e6edf3; }
-
-    /* ── Metrics bar ── */
-    .metrics {
-      display: flex; flex-wrap: wrap; gap: 10px;
-      margin-bottom: 20px;
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
     }
-    .metric {
-      flex: 1; min-width: 120px;
-      padding: 10px 14px;
-      border-radius: 7px;
-      text-align: center;
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
     }
-    .metric-iran  { background: #1e0c18; border: 1px solid #c75a3a; }
-    .metric-cyber { background: #0d1a2a; border: 1px solid #1f6feb; }
-    .metric-ai    { background: #111a12; border: 1px solid #2ea043; }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
 
-    .metric-value { font-size: 1.35rem; font-weight: 800; }
-    .metric-iran  .metric-value { color: #f0866a; }
-    .metric-cyber .metric-value { color: #79c0ff; }
-    .metric-ai    .metric-value { color: #56d364; }
-    .metric-label { font-size: 0.7rem; color: #6e7681; margin-top: 2px; letter-spacing: 0.3px; }
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
 
-    /* ── Footer ── */
-    .footer {
-      text-align: center; margin-top: 60px; padding-top: 24px;
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
       border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
     }
-    .footer strong { color: #6e7681; }
-    .back-link {
-      display: inline-block; margin-top: 14px;
-      font-size: 0.82rem; color: #58a6ff;
-    }
-    .divider { border: none; border-top: 1px solid #21262d; margin: 16px 0; }
+    .briefing-footer strong { color: #6e7681; }
   </style>
 </head>
 <body>
 <div class="container">
 
-  <!-- ══════════ HEADER ══════════ -->
-  <div class="header">
-    <div class="label">Intelligence Briefing</div>
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
     <h1>📰 Daily Briefing</h1>
-    <div class="date">Saturday, October 31, 2026 &nbsp;·&nbsp; 6:00 PM Paris</div>
-    <div class="toc">
-      <a class="toc-pill toc-iran"  href="#iran">🔴 Iran War — Day 246</a>
-      <a class="toc-pill toc-cyber" href="#cyber">🔵 Cybersecurity</a>
-      <a class="toc-pill toc-ai"    href="#ai">🟢 Artificial Intelligence</a>
+    <div class="meta">
+      Saturday, October 31, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
     </div>
   </div>
 
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — October Shipping Attacks Hit a Wartime Record as Trump Says the Conflict Will "Get Wrapped Up Soon"</a>
+    <div class="toc-section">UKMTO logs more than 30 attacks on vessels transiting Hormuz in October — the highest monthly total since the war began — even as four more tankers caught fire from mines on "unauthorized routes" and Oman rescued 25 crew · Trump tells reporters the war will "get wrapped up soon" provided the US gets a "guarantee there'll never be a nuclear weapon," while Araghchi calls Washington's outreach a "positive step" after a 12-hour Qatari mediation marathon in Tehran — though a senior Iranian official called Doha's latest ideas "unacceptable" and Khamenei's office warned any new threat would draw an "immediate, impactful, geographically unrestricted response"</div>
+    <a href="#cyber">🔐 Cybersecurity — "Black October" Closes With a Chainalysis Breach Blamed on "Offensive Agentic" AI Techniques</a>
+    <div class="toc-section">Chainalysis confirms an external actor used "offensive agentic techniques" to breach internal tools and access customer names, emails, user IDs and role labels — unrelated to the Binance hack it's helping trace — capping a month researchers are calling "Black October" for its AI-accelerated zero-day and supply-chain breach wave · Also today: Apple sends fresh mercenary-spyware threat notifications to users in 99 countries, including journalists and filmmakers, just as the Pall Mall Process nears final guidelines on commercial spyware</div>
+    <a href="#ai">🤖 Artificial Intelligence — OpenAI Cuts Its Funding Target by $10 Billion as the AI Stock Selloff Deepens</a>
+    <div class="toc-section">The Financial Times reports OpenAI slashed its funding round target from $30B to about $20B and its valuation goal from $1.4T to $1.25T, as the Nasdaq's 7.8% slide from its October 6 peak and investor jitters over AI infrastructure spending bite — with OpenAI reportedly racing to close before Anthropic's IPO draws from the same investor pool · Separately, Google, OpenAI, Anthropic and Microsoft jointly commit to honoring a new robots.txt-based AI-training opt-out standard proposed to the IETF by Anthropic's Kevin Kelley, while Claude Code/Opus 5.5 draws developer complaints for over-blocking legitimate reverse-engineering and troubleshooting tasks</div>
+  </div>
 
-  <!-- ══════════ 1. IRAN WAR ══════════ -->
-  <div class="section section-iran" id="iran">
-    <div class="section-header">
-      <span class="icon">🔴</span>
-      <h2>IRAN WAR</h2>
-      <span class="day-badge">DAY 246</span>
+  <!-- ═══════════════════ IRAN WAR ═══════════════════ -->
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — Record Hormuz Attacks as Trump Predicts the War Will "Get Wrapped Up Soon"</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 246</div>
+      </div>
     </div>
-    <div class="section-body">
 
-      <div class="sitrep sitrep-iran">
-        <strong>SITREP:</strong> Washington and Tehran are locked in a pre-midterm standoff. The U.S. administration has briefed allies on potential strikes as early as <strong>November 4</strong> (post-midterms), while Iran's foreign minister calls renewed U.S. dialogue overtures a <strong>"positive step"</strong> and dispatched a delegation to Doha. Crude oil holds at <strong>$117.64/bbl</strong> (+62% since hostilities began) after the IRGC reported <strong>four tankers struck mines</strong> in the Strait of Hormuz. Supreme Leader Khamenei has ordered forces to retaliate "without geographical restriction" if attacked.
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: October's Shipping Attacks Hit a Wartime Record as Diplomacy and Military Pressure Both Intensify
+        <span class="badge badge-red">30+ HORMUZ INCIDENTS THIS MONTH · 4 MORE TANKERS AFIRE TODAY</span>
       </div>
-
-      <!-- Key metrics -->
-      <div class="metrics">
-        <div class="metric metric-iran">
-          <div class="metric-value">$117.64</div>
-          <div class="metric-label">Brent Crude / bbl</div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        The UK's maritime trade agency (UKMTO) confirmed that attacks on commercial vessels transiting the Strait of Hormuz reached their highest monthly total since the war began in February, with more than 30 incidents logged in October alone — a tally that grew further today when Iran's IRGC reported four more oil tankers catching fire and exploding after striking mines while traveling "unauthorized routes," and Oman's navy rescued 25 crew from a burning tanker. Against that backdrop, President Trump told reporters the conflict is "going to get wrapped up soon," conditioning any resolution on a "guarantee there'll never be a nuclear weapon" in Iran. Iranian Foreign Minister Abbas Araghchi told Al Jazeera that Tehran has studied the letter sent by Vice President JD Vance and called Washington's attempt to open dialogue a "positive step," while confirming an Iranian delegation is in Doha examining mediator proposals on the nuclear issue as a "second phase" of talks — even as he ruled out direct meetings with US officials for now. Qatari mediators had spent more than 12 hours in marathon talks with Iranian officials in Tehran on Friday pushing to revive direct US-Iran negotiations before the window closes after Tuesday's midterms. But the diplomatic temperature cooled quickly: a senior Iranian official told Reuters that Doha had only brought "unacceptable" ideas and that Tehran's nuclear stance would not change, and a statement posted to Supreme Leader Khamenei's office warned that "any level or type of threat must be met with an immediate, impactful, and geographically unrestricted response." Washington, for its part, is reportedly preparing strike options to have ready after the November 3 vote regardless of how talks proceed.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">30+</div>
+          <div class="stat-label">Hormuz shipping attacks in October — a wartime record</div>
         </div>
-        <div class="metric metric-iran">
-          <div class="metric-value">+62.3%</div>
-          <div class="metric-label">Oil above pre-war level</div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">12 hrs</div>
+          <div class="stat-label">Qatari mediation marathon in Tehran on Friday</div>
         </div>
-        <div class="metric metric-iran">
-          <div class="metric-value">4</div>
-          <div class="metric-label">Tankers hit today (Hormuz)</div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">Nov. 3</div>
+          <div class="stat-label">US midterms, still the key decision point</div>
         </div>
-        <div class="metric metric-iran">
-          <div class="metric-value">Nov 4</div>
-          <div class="metric-label">Earliest strike window</div>
-        </div>
-      </div>
-
-      <!-- Story 1 -->
-      <div class="news-item">
-        <div class="news-meta">
-          <span class="news-source src-iran">Al Jazeera · Fox News Live</span>
-          <span class="severity sev-critical">CRITICAL</span>
-        </div>
-        <div class="news-title">Washington eyes November 4 strikes; Tehran orders retaliation "without geographical restriction"</div>
-        <div class="news-body">
-          The White House briefed key allies that a short, intense round of strikes could begin as soon as <strong>November 4</strong> — the day after U.S. midterm elections. Supreme Leader Mojtaba Khamenei responded by ordering IRGC forces to retaliate immediately and <strong>"without geographical restriction"</strong> if Iran is attacked, signalling the possibility of strikes on U.S. bases across the Middle East. The IRGC confirmed it is <strong>"closely monitoring America's movements in the region."</strong>
-          <br/><br/>
-          Sources: <a href="https://www.foxnews.com/live-news/us-iran-war-trump-israel-strait-hormuz-10-31-26" target="_blank">Fox News Live (Oct 31)</a> · <a href="https://williamusher.substack.com/p/washington-eyes-nov-4-strikes-as" target="_blank">Washington Eyes Nov. 4 Strikes</a>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">246 days</div>
+          <div class="stat-label">War duration</div>
         </div>
       </div>
-
-      <!-- Story 2 -->
-      <div class="news-item">
-        <div class="news-meta">
-          <span class="news-source src-iran">CNBC · Manila Times · Iran Intl.</span>
-          <span class="severity sev-critical">CRITICAL — HORMUZ</span>
-        </div>
-        <div class="news-title">IRGC: Four tankers hit mines in Strait of Hormuz; one carried 2M+ barrels</div>
-        <div class="news-body">
-          Iran's Revolutionary Guard claimed that <strong>four oil tankers</strong> struck mines along an "unauthorized southern route" near the Omani coast on October 30–31. Three tankers caught fire; a fourth burned east of the strait. One vessel reportedly carried more than <strong>2 million barrels</strong> of crude. CENTCOM says the route was cleared. Brent settled at <strong>$117.64/bbl</strong>, continuing a streak of double-digit oil prices that have prevailed since the war began. This is part of a broader wave of <strong>more than a dozen shipping strikes since late September</strong>.
-          <br/><br/>
-          Sources: <a href="https://www.cnbc.com/2026/10/30/iran-trump-hormuz-oil-middle-east-.html" target="_blank">CNBC</a> · <a href="https://www.manilatimes.net/2026/11/01/world/americas-emea/iran-says-4-tankers-hit-mines-catch-fire-in-hormuz-strait/2458755" target="_blank">Manila Times</a>
-        </div>
+      <div class="sources">
+        Sources: <a href="https://www.thenationalnews.com/news/mena/2026/10/31/attacks-on-ships-transiting-hormuz-in-october-highest-since-start-of-war/">The National — Attacks on ships transiting Hormuz in October highest since start of war</a>
+        <a href="https://www.aljazeera.com/news/liveblog/2026/10/31/iran-war-live-oil-tankers-hit-in-hormuz-trump-says-conflict-will-end-soon">Al Jazeera — Iran war live: 4 tankers hit in Hormuz; Trump says conflict will end soon</a>
+        <a href="https://www.axios.com/2026/10/31/qatari-mediators-iran-war-deal-before-midterms">Axios — Qataris hold marathon talks in Tehran in bid for US-Iran deal before midterms</a>
+        <a href="https://www.cbsnews.com/live-updates/iran-war-us-trump-diplomacy-threat-resume-attacks/">CBS News — Iran's supreme leader warns US, Israel against new attacks</a>
+        <a href="https://www.usnews.com/news/world/articles/2026-10-31/iranian-envoys-meet-qatari-mediators-as-threat-looms-of-us-strikes-after-midterms">US News — Iranian Envoys Meet Qatari Mediators as Threat Looms of US Strikes After Midterms</a>
       </div>
-
-      <!-- Story 3 -->
-      <div class="news-item">
-        <div class="news-meta">
-          <span class="news-source src-iran">Al Jazeera · Iran Intl. · ANI</span>
-          <span class="severity sev-high">DIPLOMATIC</span>
-        </div>
-        <div class="news-title">Iran FM Araghchi calls U.S. dialogue bid "positive step"; Doha delegation dispatched</div>
-        <div class="news-body">
-          Foreign Minister Abbas Araghchi told Al Jazeera that Tehran has <strong>studied a letter sent by VP JD Vance</strong> and considers Washington's renewed outreach a "positive step." Iran has dispatched a delegation to <strong>Doha</strong> for indirect talks with mediators. However, Trump told reporters the U.S. would <strong>not strike before November 3 midterms</strong>, describing the conflict as "not typical" while saying it will end "very soon." Pakistan described itself as "cautiously optimistic" about mediation. Germany's Foreign Office stated most <strong>G20 nations</strong> agree Iran must return to the negotiating table.
-          <br/><br/>
-          Sources: <a href="https://www.aljazeera.com/news/liveblog/2026/10/31/iran-war-live-oil-tankers-hit-in-hormuz-trump-says-conflict-will-end-soon" target="_blank">Al Jazeera Live</a> · <a href="https://www.aninews.in/news/world/us/we-have-time-trump-calls-iran-war-not-typical-as-peace-efforts-stall20261031070130/" target="_blank">ANI</a> · <a href="https://www.iranintl.com/en/liveblog/202610312594" target="_blank">Iran International</a>
-        </div>
-      </div>
-
-      <!-- Story 4 -->
-      <div class="news-item">
-        <div class="news-meta">
-          <span class="news-source src-iran">CGTN · Iran Intl.</span>
-          <span class="severity sev-high">REGIONAL</span>
-        </div>
-        <div class="news-title">Houthis claim fresh wave of strikes on Saudi airports and oil facilities</div>
-        <div class="news-body">
-          Iran-backed Houthis claimed responsibility for a new series of drone and missile strikes targeting <strong>Saudi airports and oil infrastructure</strong>, adding pressure on Riyadh and keeping the Gulf on high alert ahead of the post-midterm window. Regional officials and analysts remain concerned that the combination of IRGC mine operations in Hormuz and Houthi strikes across the Arabian Peninsula could trigger a wider escalation after November 3.
-          <br/><br/>
-          Sources: <a href="https://news.cgtn.com/news/2026-10-31/US-Iran-tensions-continue-amid-military-buildup-and-diplomatic-efforts-1RGovYEv2Le/share_amp.html" target="_blank">CGTN</a> · <a href="https://www.iranintl.com/en/liveblog/202610312594" target="_blank">Iran International</a>
-        </div>
-      </div>
-
-    </div><!-- /section-body -->
-  </div><!-- /section-iran -->
-
-
-  <!-- ══════════ 2. CYBERSECURITY ══════════ -->
-  <div class="section section-cyber" id="cyber">
-    <div class="section-header">
-      <span class="icon">🔵</span>
-      <h2>CYBERSECURITY</h2>
     </div>
-    <div class="section-body">
 
-      <div class="sitrep sitrep-cyber">
-        <strong>SITREP:</strong> Microsoft's October Patch Tuesday closed out as a <strong>record-shattering event</strong> — up to 1,413 CVEs in a single month, including an <strong>actively exploited Windows Shell zero-day</strong> (CVE-2026-96951). Simultaneously, a Cisco ASA/FTD SSL VPN flaw and a new NetScaler zero-day targeting SAML deployments are under active exploitation. China-nexus actor <strong>Volt Typhoon</strong> ("Silent Train") is conducting strategic pre-positioning via zero-day chains. Qilin ransomware has now claimed <strong>900+ victims</strong> in 2026.
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>A senior Iranian official's dismissal of Qatar's latest proposals as "unacceptable" suggests the "positive step" framing from Araghchi reflects tone, not substance — the core sequencing dispute over nuclear concessions versus sanctions relief remains unresolved.</li>
+        <li>Khamenei's office statement is among the most explicit threats of retaliation issued by Tehran's top leadership since the limpet-mine escalation reported yesterday.</li>
+        <li>No new US or Israeli strikes on Iranian territory have been confirmed, consistent with reporting that Washington is holding strike options in reserve for after the midterms.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>18–23</td><td>820 wounded</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">Figures carried forward from the last confirmed update; no new casualty tolls were independently verified today.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ CYBERSECURITY ═══════════════════ -->
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Saturday, October 31, 2026</div>
       </div>
+    </div>
 
-      <!-- Key metrics -->
-      <div class="metrics">
-        <div class="metric metric-cyber">
-          <div class="metric-value">1,413</div>
-          <div class="metric-label">CVEs — October Patch Tuesday</div>
-        </div>
-        <div class="metric metric-cyber">
-          <div class="metric-value">3</div>
-          <div class="metric-label">Zero-days (1 actively exploited)</div>
-        </div>
-        <div class="metric metric-cyber">
-          <div class="metric-value">900+</div>
-          <div class="metric-label">Qilin ransomware victims 2026</div>
-        </div>
-        <div class="metric metric-cyber">
-          <div class="metric-value">80%</div>
-          <div class="metric-label">Patch Tuesday CVEs = Windows</div>
-        </div>
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: "Black October" Closes With a Chainalysis Breach Blamed on "Offensive Agentic" AI Techniques
+        <span class="badge badge-orange">AI-DRIVEN ATTACK · NAMES, EMAILS, USER IDS EXPOSED</span>
       </div>
-
-      <!-- Story 1 -->
-      <div class="news-item">
-        <div class="news-meta">
-          <span class="news-source src-cyber">Bleeping Computer · SecurityWeek · Tenable</span>
-          <span class="severity sev-critical">PATCH NOW</span>
-        </div>
-        <div class="news-title">Microsoft October Patch Tuesday: Record 1,413 CVEs — Windows Shell zero-day CVE-2026-96951 actively exploited</div>
-        <div class="news-body">
-          Microsoft's October 2026 update is the <strong>largest security release in company history</strong>, addressing up to <strong>1,413 vulnerabilities</strong> across Windows (1,102 CVEs — ~80%), Office, Exchange, SharePoint, and developer tools. Three zero-days were disclosed:
-          <ul style="margin: 8px 0 8px 16px; color: #9ba8b8;">
-            <li><strong style="color:#ff6b6b;">CVE-2026-96951</strong> — Windows Shell Security Feature Bypass (Mark of the Web bypass), <strong>actively exploited in the wild</strong>. Third Windows Shell zero-day exploited in 2026. CVSS 8.8.</li>
-            <li><strong style="color:#f0a030;">CVE-2026-108398</strong> — .NET Framework Security Feature Bypass (publicly disclosed).</li>
-            <li><strong style="color:#f0a030;">CVE-2026-92707</strong> — MessagePack-CSharp Denial of Service (publicly disclosed).</li>
-          </ul>
-          <strong>Action:</strong> Prioritize CVE-2026-96951 patching across all Windows endpoints immediately — MotW bypasses are a known ransomware initial-access vector.
-          <br/><br/>
-          Sources: <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-october-2026-patch-tuesday-fixes-1-411-flaws-3-zero-days/" target="_blank">Bleeping Computer</a> · <a href="https://www.securityweek.com/microsoft-patches-record-1413-vulnerabilities-including-exploited-windows-zero-day/" target="_blank">SecurityWeek</a> · <a href="https://www.tenable.com/blog/microsofts-october-2026-patch-tuesday-addresses-1407-cves-cve-2026-96951" target="_blank">Tenable</a>
-        </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Blockchain analytics firm Chainalysis confirmed that an external actor used "offensive agentic techniques" to gain unauthorized access to its internal tools, exposing customer user IDs, full names, email addresses and organization role labels. The company said investigative data and passwords were untouched, and stressed the breach is unrelated to the record $6.36 billion Binance hack it has been helping trace this week — a notable irony, given Chainalysis's role tracking crypto crime. The term "offensive agentic techniques" implies an AI system capable of carrying out multi-step attack tasks with limited human direction was used to execute the intrusion, though Chainalysis has disclosed no further detail on the specific tooling, exploited vulnerabilities, or number of affected customers. The disclosure caps a month researchers are already calling "Black October" — a stretch marked by AI-accelerated zero-day exploitation and software supply-chain poisoning hitting core web runtimes, cloud platforms and developer toolchains, including this week's Ivanti, Cisco SD-WAN and Cisco ASA/FTD zero-days. Separately, Apple sent a fresh wave of mercenary-spyware threat notifications to iPhone users in 99 countries on October 30 — including journalists and documentary filmmakers — in a campaign researchers say is distinct from August's notifications and linked to new attack activity, arriving just as the multilateral Pall Mall Process nears final guidelines on commercial spyware use.
+      </p>
+      <div class="alert alert-orange">
+        An analytics firm built to trace crypto crime getting breached by an AI-agent-driven attacker, in the same week an AI-coding-tool-assisted ransomware crew (Aur0ra, via Cursor) was reported gaining domain admin access elsewhere, suggests offensive AI tooling has crossed from proof-of-concept to routine tradecraft — assume attackers now have agentic capability and audit detection coverage for multi-step, low-human-touch intrusion patterns specifically, not just signature-based alerts.
       </div>
-
-      <!-- Story 2 -->
-      <div class="news-item">
-        <div class="news-meta">
-          <span class="news-source src-cyber">SOC Prime · Cisco PSIRT</span>
-          <span class="severity sev-critical">ACTIVELY EXPLOITED</span>
-        </div>
-        <div class="news-title">CVE-2026-76418: Cisco ASA / FTD SSL VPN zero-day — firewall reload DoS under active exploitation</div>
-        <div class="news-body">
-          Cisco disclosed <strong>CVE-2026-76418</strong> on October 28 after detecting active exploitation. The flaw affects <strong>Cisco ASA and Firepower Threat Defense (FTD)</strong> SSL VPN interfaces and can trigger <strong>firewall reloads and denial-of-service conditions</strong>, effectively taking perimeter security offline. Threat actors are targeting this to enable follow-on access once firewalls are disrupted. Patches are available; organizations relying on Cisco edge security should apply them and review VPN logs for anomalous connection patterns from October onward.
-          <br/><br/>
-          Sources: <a href="https://socprime.com/blog/cve-2026-76418-cisco-secure-firewall-zero-day/" target="_blank">SOC Prime</a>
-        </div>
+      <div class="sources">
+        Sources: <a href="https://thehackernews.com/2026/10/chainalysis-confirms-intrusion-into.html">The Hacker News — Chainalysis Confirms Intrusion Into Internal Tools and Exposure of Customer Identity Data</a>
+        <a href="https://www.theblock.co/news/business/2026-10-31-chainalysis-says-hacker-using-offensive-agentic-techniques-accessed-its-customers-names-and-emails-432244">The Block — Chainalysis says hacker using "offensive agentic techniques" accessed customers' names and emails</a>
+        <a href="https://cyberscoop.com/apple-spyware-notifications-pall-mall-process/">CyberScoop — Apple notifications alert victims in 99 countries about mercenary spyware infections</a>
+        <a href="https://lumu.io/blog/black-october-2026">Lumu — Black October: A Sign of the Times?</a>
       </div>
+    </div>
 
-      <!-- Story 3 -->
-      <div class="news-item">
-        <div class="news-meta">
-          <span class="news-source src-cyber">The Hacker News</span>
-          <span class="severity sev-critical">TARGETED ATTACKS</span>
-        </div>
-        <div class="news-title">New NetScaler zero-day exploited in targeted attacks — can knock SAML SSO deployments offline</div>
-        <div class="news-body">
-          A newly disclosed Citrix/NetScaler vulnerability is being exploited in targeted attacks and can <strong>disable SAML-based SSO authentication</strong>, effectively locking users out of enterprise applications or enabling session hijacking. This is the <strong>third NetScaler zero-day of 2026</strong>. Organizations using NetScaler for SAML federation should isolate appliances, apply available patches, and audit authentication logs for anomalies. This follows previous NetScaler zero-days (CVE-2026-88779) that were exploited to persist on devices even after patching.
-          <br/><br/>
-          Sources: <a href="https://thehackernews.com/2026/10/new-netscaler-zero-day-exploited-in.html" target="_blank">The Hacker News</a>
-        </div>
-      </div>
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Apple's October 30 spyware notifications are described as separate from August's wave, with researcher Costin Raiu linking them to new, ongoing attacks rather than a re-notification of previously known infections.</li>
+        <li>The FBI and CISA flagged aggressive multi-sector ransomware campaigns that have compromised over 600 victims this year via network-edge flaws and brute-force credential attacks.</li>
+        <li>October's breach volume pushed Texas alone to 99 reported incidents for the month, illustrating how broadly this month's AI-accelerated attack wave has been felt beyond headline victims.</li>
+      </ul>
+    </div>
 
-      <!-- Story 4 -->
-      <div class="news-item">
-        <div class="news-meta">
-          <span class="news-source src-cyber">Mandiant / Google Threat Intel</span>
-          <span class="severity sev-high">NATION-STATE</span>
-        </div>
-        <div class="news-title">Volt Typhoon "Silent Train": China APT builds covert strategic access network via zero-day chains</div>
-        <div class="news-body">
-          Mandiant/Google Threat Intelligence has attributed a covert pre-positioning network called <strong>"Silent Train"</strong> to Volt Typhoon, a China-nexus espionage actor focused on critical infrastructure. The network leverages zero-day exploitation — including the VMware ESXi logging flaw <strong>CVE-2026-41709</strong> (exploited October 29) to reduce audit trail visibility — to maintain long-dwell-time access across U.S. and allied networks. The campaign is consistent with pre-conflict positioning against utilities, water systems, and transportation networks.
-        </div>
-      </div>
-
-      <!-- Story 5 — Ransomware -->
-      <div class="news-item">
-        <div class="news-meta">
-          <span class="news-source src-cyber">Dark Reading · Bleeping Computer</span>
-          <span class="severity sev-high">RANSOMWARE</span>
-        </div>
-        <div class="news-title">Qilin ransomware: 900+ victims in 2026 — VMware ESXi and healthcare the primary targets</div>
-        <div class="news-body">
-          Qilin ransomware has claimed <strong>900+ victims in 2026</strong>, cementing its status as one of the most prolific ransomware-as-a-service operations of the year. Primary targets include <strong>VMware ESXi server farms and healthcare networks</strong>. Separately, an Ivanti Connect Secure zero-day chain <strong>(CVE-2026-104935)</strong> is also under active exploitation, providing another ransomware initial-access vector. Organizations with unpatched Ivanti VPN appliances or ESXi environments should treat these as urgent.
-          <br/><br/>
-          Sources: <a href="https://www.darkreading.com/vulnerabilities-threats/zero-days-microsoft-october-patch-tuesday" target="_blank">Dark Reading</a>
-        </div>
-      </div>
-
-      <!-- Audience grid -->
-      <hr class="divider"/>
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
       <div class="audience-grid">
-        <div class="audience-card aud-ciso">
-          <div class="aud-label">🔐 CISO Priorities</div>
-          <div class="aud-body">
-            <strong>Patch now:</strong> CVE-2026-96951 (Windows Shell MotW bypass, actively exploited), CVE-2026-76418 (Cisco ASA/FTD DoS), NetScaler SAML zero-day. <strong>Hunt:</strong> VMware ESXi for Volt Typhoon IOCs (CVE-2026-41709 — check audit logs Oct 29+). <strong>Ransomware:</strong> Qilin targeting ESXi + healthcare; validate Ivanti CVE-2026-104935 patch status. Review all Windows endpoints across 1,413-CVE update — triage by CVSS first.
-          </div>
-        </div>
-        <div class="audience-card aud-partner">
-          <div class="aud-label">🤝 Consulting Partner</div>
-          <div class="aud-body">
-            Record Patch Tuesday creates massive client backlog — upsell <strong>emergency patch triage and prioritization engagements</strong>. Volt Typhoon "Silent Train" is a compelling board narrative around critical infrastructure risk. Qilin's 900-victim milestone + healthcare focus is a strong pitch for IR retainer renewals. NetScaler SAML zero-day creates IAM/SSO remediation opportunities for Citrix-heavy clients.
-          </div>
-        </div>
-        <div class="audience-card aud-exec">
-          <div class="aud-label">💼 Business Executive</div>
-          <div class="aud-body">
-            Microsoft's record-setting 1,413-CVE update is a stark reminder that <strong>patch backlog is a business risk</strong>. One actively exploited zero-day was already in use before the patch was released. Ransomware (Qilin, 900+ victims) is disproportionately hitting healthcare and virtualized environments. Confirm your CISO has escalation plans for both the Cisco firewall and NetScaler issues — perimeter failure = prolonged outage risk.
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /section-body -->
-  </div><!-- /section-cyber -->
-
-
-  <!-- ══════════ 3. AI ══════════ -->
-  <div class="section section-ai" id="ai">
-    <div class="section-header">
-      <span class="icon">🟢</span>
-      <h2>ARTIFICIAL INTELLIGENCE</h2>
-    </div>
-    <div class="section-body">
-
-      <div class="sitrep sitrep-ai">
-        <strong>SITREP:</strong> The October AI race closes with <strong>Claude Opus 5.5 holding the #1 position</strong> on the Intelligence Index v5 (score: 58.4), ahead of GPT-6 Astra (56.9). Mistral Large 4 open weights dropped October 29 and is <strong>#1 trending on Hacker News</strong>. On the hardware side, <strong>AMD commits $1B to Meta</strong> for next-gen AI infrastructure. A concerning development: a jailbroken DeepSeek V4.1 Flash checkpoint with <strong>refusal filtering removed</strong> is now publicly served. Kimi K3.1 Pro open weights arrive November 4.
-      </div>
-
-      <!-- Story 1 — Model Landscape -->
-      <div class="news-item">
-        <div class="news-meta">
-          <span class="news-source src-ai">Multiple Sources · Intelligence Index v5</span>
-          <span class="severity sev-info">MODEL RANKINGS</span>
-        </div>
-        <div class="news-title">October 2026 model landscape: Claude Opus 5.5 leads at 58.4; GPT-6.1 Terra fastest; Google Gemini 4 Argon holds third</div>
-        <div class="news-body">
-          As of the <strong>Intelligence Index v5 (Oct 27)</strong>, the competitive frontier stands:
-          <ul style="margin: 8px 0 8px 16px; color: #9ba8b8;">
-            <li>🥇 <strong style="color:#56d364;">Claude Opus 5.5</strong> — 58.4 (Anthropic)</li>
-            <li>🥈 <strong style="color:#e6edf3;">GPT-6 Astra</strong> — 56.9 (OpenAI)</li>
-            <li>🥉 <strong style="color:#e6edf3;">GPT-6.1 Sol</strong> — 54.5 (OpenAI)</li>
-            <li>4th <strong style="color:#e6edf3;">Claude Sonnet 5.5</strong> — 54.2 (Anthropic)</li>
-            <li>5th <strong style="color:#e6edf3;">Gemini 4 Argon</strong> (Google)</li>
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Treat "offensive agentic techniques" disclosures as a signal, not noise — review whether your detection stack can flag multi-step, AI-orchestrated intrusion chains, which differ in pattern from traditional scripted attacks</li>
           </ul>
-          <strong>GPT-6.1 Terra</strong> (launched Oct 15) is the speed leader — 3× faster than GPT-6 Astra at tasks — targeting coding, visual reasoning, and computer use. Full Anthropic October lineup: Claude Haiku 5.5 (Oct 7), Sonnet 5.5 (Sep 28), Opus 5.5 (Sep 22), plus Fable 5.1 and Mythos 5.1.
-          <br/><br/>
-          Sources: <a href="https://hassannazir.dev/blogs/anthropic-claude-models-october-2026-lineup-roadmap" target="_blank">Anthropic October Lineup</a> · <a href="https://cleus.ai/blog/new-ai-models-october-2026" target="_blank">New AI Models Oct 2026</a> · <a href="https://thursdai.news/releases/2026-10" target="_blank">ThursdAI October Releases</a>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>"Black October" is a ready-made narrative for year-end client briefings on how AI has changed the offensive threat landscape — pair it with concrete examples (Chainalysis, Aur0ra/Cursor) to make the pitch tangible rather than abstract</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>Even a company whose core business is tracking cybercrime got breached by an AI-driven attacker this month — a useful, humbling data point for board discussions about whether "we take security seriously" is still a sufficient answer</li>
+          </ul>
         </div>
       </div>
+    </div>
+  </div>
 
-      <!-- Story 2 — Mistral -->
-      <div class="news-item">
-        <div class="news-meta">
-          <span class="news-source src-ai">Hacker News · AI Weekly</span>
-          <span class="severity sev-info">OPEN WEIGHTS</span>
+  <!-- ═══════════════════ AI ═══════════════════ -->
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Saturday, October 31, 2026 · A Funding Pullback and an Industry-Wide Opt-Out Standard</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: OpenAI Cuts Its Funding Target by $10 Billion as the AI Stock Selloff Deepens
+        <span class="badge badge-purple">$30B → $20B TARGET · $1.4T → $1.25T VALUATION GOAL</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        The Financial Times reported that OpenAI has slashed the target for its latest funding round from $30 billion to about $20 billion, and lowered its desired valuation from $1.4 trillion to $1.25 trillion, as a broader selloff in AI-exposed tech stocks weighs on investor appetite. The Nasdaq fell 2.9% on Friday and is now down 7.8% from its all-time closing high set on October 6, with investors increasingly nervous about the scale of debt-fueled AI infrastructure spending across the industry and uncertain near-term returns. OpenAI had set a Friday deadline for investors to commit, but the "first close" is now expected to raise less than the already-reduced $20 billion target after some investors trimmed their allocations. Reports suggest OpenAI was also racing to close its round before Anthropic's own IPO draws from an overlapping investor base — a dynamic that adds competitive pressure on top of the broader market jitters. In a rare moment of unified action, Google, OpenAI, Anthropic and Microsoft jointly committed to honoring a new robots.txt-based directive — proposed to the IETF by Anthropic standards lead Kevin Kelley — that would let publishers explicitly opt their content out of generative AI training scraping, a notable industry consensus amid otherwise fierce competition. Separately, developers reported that Anthropic's Claude Code and Opus 5.5 are over-aggressively blocking legitimate reverse-engineering and troubleshooting tasks — including use of the popular "Reverse Engineer Anything" (REA) tool — alongside intended blocks on video-game cloning, drawing complaints that the new restrictions are catching non-malicious work in the net.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">-$10B</div>
+          <div class="stat-label">Cut to OpenAI's funding round target</div>
         </div>
-        <div class="news-title">Mistral Large 4 open weights released — #1 on Hacker News with 1,679 points</div>
-        <div class="news-body">
-          Mistral released the <strong>open weights of Mistral Large 4</strong> on October 29, making it the top item on Hacker News as of October 31 with <strong>1,679 points</strong>. The model builds on Mistral's 1-trillion-parameter architecture and 1M-context window, and is expected to further democratize access to frontier-class reasoning for open-source developers. Separately, <strong>Moonshot's Kimi K3.1 Pro open weights</strong> are scheduled for release on <strong>November 4</strong>.
-          <br/><br/>
-          Sources: <a href="https://aiweekly.co/ai-news-today" target="_blank">AI Weekly</a> · <a href="https://riorundown.substack.com/p/ai-news-oct-31-2026-ai-training-preferences" target="_blank">Rio Rundown Oct 31</a>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">$1.25T</div>
+          <div class="stat-label">New target valuation (down from $1.4T)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">-7.8%</div>
+          <div class="stat-label">Nasdaq decline from its Oct. 6 closing high</div>
         </div>
       </div>
-
-      <!-- Story 3 — Phonic + Hardware -->
-      <div class="news-item">
-        <div class="news-meta">
-          <span class="news-source src-ai">VentureBeat · AI Weekly</span>
-          <span class="severity sev-info">NEW LAUNCH</span>
-        </div>
-        <div class="news-title">Phonic-1 speech-to-speech model debuts at #1 on voice index; AMD commits $1B to Meta AI infrastructure</div>
-        <div class="news-body">
-          <strong>Phonic</strong> launched <strong>Phonic-1</strong>, a speech-to-speech model built specifically for agentic voice tasks that debuted at #1 on the Artificial Analysis Speech-to-Speech Index, alongside a <strong>$27.5M Series A</strong> led by First Round Capital. The launch underscores growing investment in real-time voice-native AI agents. On the infrastructure side, <strong>AMD committed $1 billion to Meta</strong> to support next-generation AI infrastructure development — a significant hardware partnership that diversifies Meta's GPU supply chain beyond Nvidia. Separately, <strong>AgiBot</strong> unveiled the AHA3 humanoid platform with liquid cooling, the GO-3 embodied foundation model, and Link-U OS 1.0.
-          <br/><br/>
-          Sources: <a href="https://aiweekly.co/ai-news-today" target="_blank">AI Weekly</a> · <a href="https://github.com/diclogic/ai-daily-digest/issues/199" target="_blank">AI Daily Digest #199</a>
-        </div>
+      <div class="sources">
+        Sources: <a href="https://www.cnbc.com/2026/10/31/openai-funding-target-cut-10-billion.html">CNBC — OpenAI slashes funding target by $10 billion amid tech rout, FT reports</a>
+        <a href="https://dealroom.co/news/168544-openai-cuts-its-funding-round-target-by-10b-to-about-20b-as-the-ai-sell/">Dealroom — OpenAI cuts its funding round target by $10B to about $20B as the AI sell-off bites</a>
+        <a href="https://thenextweb.com/news/ai-training-opt-out-robots-txt-google-openai-microsoft-anthropic">TNW — Google, Microsoft, OpenAI and Anthropic back one AI training opt-out</a>
+        <a href="https://tomshardware.com/tech-industry/artificial-intelligence/anthropics-ai-model-is-now-blocking-attempts-at-video-game-recreation-and-cloning-users-also-claim-non-malicious-generic-reverse-engineering-tasks-are-blocked">Tom's Hardware — Anthropic's Claude AI blocks video game cloning and reverse-engineering</a>
       </div>
+    </div>
 
-      <!-- Story 4 — Security Risk -->
-      <div class="news-item">
-        <div class="news-meta">
-          <span class="news-source src-ai">Inference.net</span>
-          <span class="severity sev-high">SECURITY RISK</span>
-        </div>
-        <div class="news-title">Jailbroken DeepSeek V4.1 Flash checkpoint — refusal filtering removed — now publicly served</div>
-        <div class="news-body">
-          Inference.net has begun serving <strong>deepseek-v4.1-flash-1017-cyber</strong>, an October 17 DeepSeek V4.1 Flash checkpoint with <strong>refusal/safety filtering explicitly removed</strong>. This is a significant AI security development: an uncensored frontier-class model is now accessible via API with no safety rails. For CISOs and boards, this directly raises the risk floor for AI-enabled attack tooling — threat actors no longer need to fine-tune their own jailbreaks, they can simply call a commercial endpoint.
-        </div>
-      </div>
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>Google currently holds a clear lead over Anthropic, Meta and OpenAI in frontier model benchmark rankings for October, per Seeking Alpha's roundup of the latest comparisons.</li>
+        <li>The robots.txt AI-training opt-out directive, if adopted at IETF, would be the first cross-industry technical standard giving publishers a uniform way to block AI training scraping across all four major labs simultaneously.</li>
+        <li>OpenAI's funding-round pressure arrives in the same week Anthropic disclosed audited IPO economics, intensifying scrutiny on whether private AI-lab valuations can hold up against public-market benchmarks.</li>
+      </ul>
+    </div>
 
-      <!-- Audience grid -->
-      <hr class="divider"/>
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
       <div class="audience-grid">
-        <div class="audience-card aud-ciso">
-          <div class="aud-label">🔐 CISO Priorities</div>
-          <div class="aud-body">
-            <strong>Key risk:</strong> The jailbroken DeepSeek V4.1 checkpoint lowers the barrier to AI-assisted attack tooling — update threat models accordingly. Claude Opus 5.5 (#1 on intelligence index) means frontier AI for offense/defense is now widely available. Audit which AI APIs your teams are using; uncensored model endpoints like deepseek-v4.1-flash-cyber may appear in shadow IT. Review AI acceptable-use policies before November 4 geopolitical window.
-          </div>
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 AI Security</div>
+          <ul>
+            <li>Over-aggressive blocking in coding assistants (as with Claude Code's reverse-engineering restrictions) can push legitimate security and troubleshooting work toward less-controlled tools — factor this into internal AI-tool policy rather than assuming stricter guardrails are strictly safer</li>
+          </ul>
         </div>
-        <div class="audience-card aud-partner">
-          <div class="aud-label">🤝 Consulting Partner</div>
-          <div class="aud-body">
-            <strong>Opportunities:</strong> Mistral Large 4 open weights + Kimi K3.1 (Nov 4) create private-deployment conversations with regulated clients. AMD's $1B Meta deal signals GPU supply diversification — relevant for clients building on-prem AI. Phonic-1 voice agent launch opens agentic voice workflow engagements. Position the jailbroken DeepSeek situation as a board-level AI governance conversation.
-          </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>The new cross-lab robots.txt opt-out standard gives you a concrete, near-term compliance item to raise with publisher and content-owner clients evaluating their AI-training exposure</li>
+          </ul>
         </div>
-        <div class="audience-card aud-exec">
-          <div class="aud-label">💼 Business Executive</div>
-          <div class="aud-body">
-            <strong>Competitive landscape:</strong> Claude Opus 5.5 leads the frontier; OpenAI counters with speed (GPT-6.1 Terra 3× faster). Google Gemini 4 Argon rounds out the Big Three. Mistral's open-weight release pressures pricing across the board — good for buyers, bad for vendor lock-in strategies. <strong>Watch Nov 4:</strong> Kimi K3.1 Pro open weights arrive the same day as the potential U.S. strike window — AI news may be overshadowed.
-          </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>OpenAI trimming its valuation target by over 10% mid-raise is a concrete signal that even the best-funded AI labs are not immune to the broader AI-spending skepticism now showing up in public markets — useful context for your own AI capex planning conversations</li>
+          </ul>
         </div>
       </div>
+    </div>
+  </div>
 
-    </div><!-- /section-body -->
-  </div><!-- /section-ai -->
-
-
-  <!-- ══════════ FOOTER ══════════ -->
-  <div class="footer">
-    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Saturday, October 31, 2026 at 6:00 PM Paris time</p>
-    <p style="margin-top:6px;">Sources: Al Jazeera · Fox News · Iran Intl · CNBC · Bleeping Computer · SecurityWeek · Tenable · The Hacker News · SOC Prime · Dark Reading · AI Weekly · VentureBeat · ThursdAI</p>
-    <a class="back-link" href="index.html">← Back to All Briefings</a>
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Saturday, October 31, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
   </div>
 
 </div>
