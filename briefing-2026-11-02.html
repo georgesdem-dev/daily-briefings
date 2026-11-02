@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Monday, November 2, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Monday, November 2, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Qatari-Mediated Talks End With No Breakthrough as Trump's Midterm Pledge Expires Tomorrow</a>
+    <div class="toc-section">Araghchi calls days-long Qatari-mediated indirect talks "very intense" but acknowledges they ended Monday with no significant movement, as a senior Iranian official again dismisses Doha's ideas as "unacceptable" on the nuclear file · Trump's pledge of no new attack before Tuesday's US midterms expires tomorrow, leaving the Strait of Hormuz the central flashpoint as a Qatari LNG carrier remains among the ships hit over the weekend</div>
+    <a href="#cyber">🔐 Cybersecurity — Microsoft: Three North Korean Hacking Units Have "Operationalized" AI Across Their Entire Attack Workflow</a>
+    <div class="toc-section">Microsoft Threat Intelligence names Jade Sleet, Coral Sleet and Jasper Sleet as the first North Korea-linked groups to reach the top "Operationalized" tier of AI adoption, using it for phishing-PDF generation, malware development and identity spoofing — with the Binance-hack-linked group among the top adopters · Also today: cloud host Northflank confirms a breach letting attackers abuse customers' stolen OpenAI and Anthropic API keys, urging all secrets be rotated</div>
+    <a href="#ai">🤖 Artificial Intelligence — Publishers Report Click-Through Collapses of Up to 89% as Google's AI Overviews Expand</a>
+    <div class="toc-section">DMG Media, publisher of the Daily Mail and Metro, tells the UK's competition regulator that desktop click-through rates fell from 25.2% to just 2.8% — an 89% drop — on searches where users saw a Google AI Overview, part of a broader 33% global decline in search traffic to publishers over the past year · Also today: SemiAnalysis launches GDPx, a new frontier AI benchmark spanning 11 high-value domains, and Apple confirms its first Apple Intelligence features for China</div>
+  </div>
+
+  <!-- ═══════════════════ IRAN WAR ═══════════════════ -->
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — No Breakthrough in Doha as the Midterm Deadline Looms</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 248</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Qatari-Mediated Talks End With No Breakthrough — Trump's Midterm Pledge Expires Tomorrow
+        <span class="badge badge-red">TRUMP'S NO-STRIKE PLEDGE EXPIRES NOV. 3</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        Foreign Minister Abbas Araghchi described the days-long, Qatari-mediated indirect talks between Tehran and Washington as "very intense," but by Monday the negotiations had ended without any significant movement toward a deal to end the war. Iranian negotiators had been in Doha over the weekend pressing a proposal that would have the US lift its blockade on Iranian ports and waive sanctions on Iranian oil sales in exchange for Iran reopening the Strait of Hormuz and halting attacks on shipping — with Araghchi having offered Saturday to compress the implementation window from seven days to just two. But a senior Iranian official told Reuters that Qatar had brought only "unacceptable" ideas, and government spokesman Baghaei reiterated that Tehran's underlying position — that nuclear-program talks can only resume once Iran verifies all its own conditions have been met — remains unchanged regardless of how quickly any interim deal might be compressed. No new US or Israeli strikes on Iranian territory were reported over the weekend, but Iranian-linked projectiles kept striking shipping near Hormuz, including the Qatari LNG carrier hit Friday. The clock now shifts to Washington: President Trump's pledge not to order new strikes before Tuesday's US midterm elections expires tomorrow, November 3, making the Strait the main kinetic flashpoint to watch regardless of whether the diplomatic track revives.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">Nov. 3</div>
+          <div class="stat-label">Trump's no-strike pledge expires</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">2 days</div>
+          <div class="stat-label">Iran's compressed Hormuz-reopening proposal</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">3rd day</div>
+          <div class="stat-label">Of Qatari mediation across Doha and Tehran</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">248 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.cbsnews.com/live-updates/iran-war-us-trump-negotiations-midterms/">CBS News — Iran says "ball is in the U.S. court" on deal to end war as Trump keeps his intentions veiled</a>
+        <a href="http://www.jpost.com/middle-east/iran-news/article-913580">Jerusalem Post — Qatari-mediated US-Iran talks end with no breakthrough towards deal</a>
+        <a href="https://www.cnbc.com/amp/2026/10/31/qatar-iran-us-talks-mediation.html">CNBC — Qatar in talks with Iran to restart U.S. negotiations, source says</a>
+        <a href="https://www.globalsecurity.org/military/ops/iran-war-oprep.htm">GlobalSecurity.org — Iran War 2026 Day 247/248 Updates</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Qatar is reportedly turning to US LNG suppliers to cushion its own losses from the war's disruption of Gulf shipping, a sign the conflict's economic toll is now reshaping Doha's own energy strategy, not just its mediator role.</li>
+        <li>Baghaei's insistence that Iran's nuclear stance is non-negotiable "from the start" suggests the core deadlock predates the Qatari shuttle diplomacy and is unlikely to be resolved by sequencing or timeline tweaks alone.</li>
+        <li>No new casualty figures were independently verified today; figures below remain carried forward.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>18–23</td><td>820 wounded</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">Figures carried forward from the last confirmed update; no new casualty tolls were independently verified today.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ CYBERSECURITY ═══════════════════ -->
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Monday, November 2, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Microsoft Confirms North Korean Hackers Have "Operationalized" AI Across Their Attack Workflow
+        <span class="badge badge-red">3 GROUPS AT TOP TIER · BINANCE-LINKED ACTOR AMONG THEM</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Microsoft Threat Intelligence released a report on October 30 assessing the AI adoption maturity of eight North Korea-linked hacking groups across a four-stage scale, finding that three — Jade Sleet, Coral Sleet and Jasper Sleet — have reached the top "Operationalized" tier, meaning AI is now integrated into their daily attack workflow rather than used occasionally. A further four groups sit in the "Accelerating" stage and one in "Expanding." The groups use AI to generate phishing PDFs — one group alone sent more than 100 AI-generated phishing documents to South Korean targets this year — develop malware, and spoof identities, and Microsoft's analysis suggests they may be leaning on mainstream AI coding tools such as Cursor to help generate, debug and evade detection for malicious code. Notably, two Reconnaissance General Bureau-affiliated groups, Onyx Sleet (known in South Korea as Andariel) and Pearl Sleet, have actively used the open-source ARTEX AI penetration-testing framework in real-world operations — the same tool CrowdStrike attributed to the China-linked "Vapor Panda" campaign against 200+ organizations reported yesterday, underscoring how quickly agentic offensive tooling is spreading across unrelated state-linked actor groups. Microsoft's assessment is that while AI has meaningfully sped up these groups' operations, none has yet reached full attack autonomy. Separately, cloud application-hosting platform Northflank confirmed a breach beginning October 30 that let an unauthorized party access and abuse customers' AI API keys — including keys for OpenAI and Anthropic services — alongside database passwords, cloud credentials and authentication tokens; Northflank is telling customers to assume all stored secrets were decrypted and to rotate everything immediately.
+      </p>
+      <div class="alert alert-red">
+        ARTEX now appears in both a Chinese state-linked campaign (reported yesterday) and North Korean operations (per Microsoft) — the same AI-powered penetration-testing framework being adopted across unrelated state actors in the span of two weeks is a strong signal that agentic offensive tooling has become commoditized infrastructure, not a bespoke capability limited to one nation-state's toolkit.
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.cryptopolitan.com/binance-hack-north-korea-ai-microsoft/">Cryptopolitan — Group blamed for Binance hack ranks among North Korea's top AI adopters, Microsoft says</a>
+        <a href="https://cryptonews.net/news/security/33678022/">CryptoNews — North Korea's top hacking units have operationalized AI, Microsoft says</a>
+        <a href="https://www.bleepingcomputer.com/news/security/northflank-security-breach-leads-to-abuse-of-customers-ai-api-keys/">BleepingComputer — Northflank security breach leads to abuse of customers' AI API keys</a>
+        <a href="https://www.startuphub.ai/ai-news/artificial-intelligence/2026/northflank-says-assume-all-secrets-were-decrypted">StartupHub.ai — Northflank says assume all secrets were decrypted</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>CISA directed federal agencies to remediate two actively exploited Ivanti Connect Secure flaws — CVE-2026-111357 (CVSS 8.8, missing authentication enabling privilege escalation) and CVE-2026-118527 (CVSS 4.3, predictable number generation enabling attacker-controlled file uploads).</li>
+        <li>WS Audiology, parent of hearing-aid brands Widex and Signia, is investigating a cybersecurity incident after unauthorized access to parts of its IT infrastructure disrupted services.</li>
+        <li>Attackers exploited previously patched 2024-era Synology NAS vulnerabilities to deploy C3RB3R ransomware against devices that were never updated — a reminder that patch-lag, not zero-days, remains many organizations' biggest exposure.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>If you or any vendor store API keys on Northflank, rotate every credential now and audit AI-provider billing for unauthorized usage ("LLMjacking") rather than waiting for Northflank's own investigation to conclude</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Microsoft's four-stage AI-adoption maturity scale for threat actors is a reusable framework for client threat briefings — it gives you a structured way to talk about "how AI-enabled is this specific adversary" instead of generic warnings</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>AI-development platforms are now explicitly named as high-value targets because they concentrate expensive API credentials — worth asking which of your own AI vendors store your keys, and how</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ AI ═══════════════════ -->
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Monday, November 2, 2026 · AI Search Is Reshaping Publisher Economics</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Publishers Report Click-Through Collapses of Up to 89% as Google's AI Overviews Expand
+        <span class="badge badge-orange">25.2% → 2.8% DESKTOP CTR · DMG MEDIA</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        DMG Media, the publisher behind the Daily Mail and Metro, told the UK's Competition and Markets Authority that its desktop click-through rate collapsed from 25.2% to just 2.8% — an 89% drop — on searches where users were shown a Google AI Overview instead of a standard results page. The figure is one of the starkest data points yet in a pattern publishers have been flagging for over a year: Google search traffic to publishers fell 33% globally in the twelve months to November 2025, and the "zero-click rate" for news-related searches — where users get their answer without visiting any site — rose to 69% in the year after AI Overviews launched broadly. Reddit's CEO has separately said Google's AI Mode and AI Overviews are now the primary driver of declining search-referral traffic to that platform. The commercial logic is straightforward and, for publishers, alarming: AI Overviews answer the query using content scraped from the same sites losing the clicks, generating no corresponding referral revenue or ad impressions in return. Separately, SemiAnalysis launched GDPx on November 2 — a new frontier AI benchmark spanning 11 high-value domains including chip design, cybersecurity, biology, legal and quantitative trading, aimed at giving enterprises a more commercially relevant yardstick than general-knowledge benchmarks. Apple also confirmed its first Apple Intelligence features for the Chinese market, with developer testing beginning November 4 ahead of a December rollout alongside iOS 27.3.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">-89%</div>
+          <div class="stat-label">DMG Media desktop CTR drop under AI Overviews</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">-33%</div>
+          <div class="stat-label">Global publisher search traffic decline, year to Nov. 2025</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">69%</div>
+          <div class="stat-label">Zero-click rate for news searches post-AI Overviews</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.searchenginejournal.com/impact-of-ai-overviews-how-publishers-need-to-adapt/556843/">Search Engine Journal — Google AI Overviews Impact On Publishers & How To Adapt Into 2026</a>
+        <a href="https://mediacopilot.ai/google-ai-overviews-publisher-traffic/">MediaCopilot — Publishers report traffic losses as Google expands AI search</a>
+        <a href="https://www.mmm-online.com/news/how-much-should-publishers-fret-about-google-ai-overviews/">MM+M — 'The weather is changing': How much should publishers fret about Google AI Overviews?</a>
+        <a href="https://quickseo.ai/blog/google-ai-overviews-statistics-2026-60-data-points-every-seo-should-know">QuickSEO — Google AI Overviews Statistics 2026</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>WIRED linked more than 400 apps and domains to a network of sexually abusive deepfake services hidden behind ordinary-looking products, including a pet-portrait app; Apple has already removed 19 apps after WIRED shared its findings.</li>
+        <li>LG CNS completed a 30-megawatt hyperscale AI data center in Jakarta for a Sinar Mas–Korea Investment joint venture, a sign AI infrastructure buildout is accelerating in Southeast Asia alongside the US and Gulf markets.</li>
+        <li>iQIYI opened China's first dedicated AI film studio in Shanghai, beginning production on an AI-generated internet feature.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 AI Security</div>
+          <ul>
+            <li>The deepfake-app network WIRED uncovered hiding behind ordinary consumer products is a useful reminder to extend app-vetting and brand-abuse monitoring beyond obviously "AI-branded" apps</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>SemiAnalysis's new GDPx benchmark, spanning commercially relevant domains like chip design and legal, gives you a more credible, client-facing way to evaluate which frontier model actually fits a given vertical use case</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>If your business depends on organic search referral traffic, DMG Media's 89% CTR collapse under AI Overviews is a concrete worst-case data point worth stress-testing against your own traffic mix now, not after a similar drop shows up in your analytics</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Monday, November 2, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
