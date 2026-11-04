@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Wednesday, November 4, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── Header ─────────────────────────────────── */
+    .header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 52px;
+    }
+    .header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .header h1 { font-size: 2rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
+    .header .date { font-size: 1.05rem; color: #8b949e; margin-bottom: 14px; }
+    .header .pills { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+    .pill {
+      font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 20px;
+    }
+    .pill-iran  { background: rgba(248,81,73,0.15);  color: #f85149; border: 1px solid rgba(248,81,73,0.35);  }
+    .pill-cyber { background: rgba(255,166,0,0.12);  color: #f0a500; border: 1px solid rgba(255,166,0,0.3);   }
+    .pill-ai    { background: rgba(63,185,80,0.12);  color: #3fb950; border: 1px solid rgba(63,185,80,0.3);   }
+
+    /* ── Section ─────────────────────────────────── */
+    .section { margin-bottom: 56px; }
+    .section-header {
+      display: flex; align-items: center; gap: 12px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid;
+      margin-bottom: 28px;
+    }
+    .section-header.iran   { border-color: #f85149; }
+    .section-header.cyber  { border-color: #f0a500; }
+    .section-header.ai     { border-color: #3fb950; }
+    .section-icon { font-size: 1.6rem; }
+    .section-title { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; }
+    .section-subtitle { font-size: 0.8rem; color: #8b949e; margin-left: auto; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ── Story cards ─────────────────────────────── */
+    .story {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .story:hover { border-color: #444c56; }
+    .story-meta {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 8px; flex-wrap: wrap;
+    }
+    .story-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; padding: 3px 9px; border-radius: 4px;
+    }
+    .tag-breaking   { background: rgba(248,81,73,0.2);  color: #f85149; }
+    .tag-diplomatic { background: rgba(88,166,255,0.15); color: #58a6ff; }
+    .tag-military   { background: rgba(248,81,73,0.15);  color: #f85149; }
+    .tag-critical   { background: rgba(248,81,73,0.2);  color: #f85149; }
+    .tag-threat     { background: rgba(255,166,0,0.15); color: #f0a500; }
+    .tag-breach     { background: rgba(255,100,50,0.15); color: #ff7b55; }
+    .tag-vuln       { background: rgba(255,166,0,0.12); color: #f0a500; }
+    .tag-launch     { background: rgba(63,185,80,0.15); color: #3fb950; }
+    .tag-business   { background: rgba(88,166,255,0.15); color: #58a6ff; }
+    .tag-policy     { background: rgba(163,113,247,0.15); color: #a371f7; }
+    .story-source { font-size: 11px; color: #6e7681; margin-left: auto; }
+    .story h3 { font-size: 1rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; line-height: 1.4; }
+    .story p  { font-size: 0.9rem; color: #8b949e; line-height: 1.65; }
+    .story p + p { margin-top: 8px; }
+    .story .read-more { display: inline-block; margin-top: 10px; font-size: 0.82rem; color: #58a6ff; }
+
+    /* ── Audience lens boxes ─────────────────────── */
+    .lens-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-top: 22px; }
+    .lens {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+    .lens-title { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 10px; }
+    .lens-ciso   .lens-title { color: #f0a500; }
+    .lens-partner .lens-title { color: #58a6ff; }
+    .lens-exec   .lens-title { color: #a371f7; }
+    .lens ul { list-style: none; }
+    .lens ul li { font-size: 0.85rem; color: #8b949e; padding: 4px 0; border-bottom: 1px solid #21262d; }
+    .lens ul li:last-child { border-bottom: none; }
+    .lens ul li::before { content: "▸ "; color: #484f58; }
+
+    /* ── Status bar (Iran) ───────────────────────── */
+    .status-bar {
+      display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px;
+    }
+    .status-item {
+      flex: 1; min-width: 140px;
+      background: #161b22; border: 1px solid #30363d; border-radius: 8px;
+      padding: 12px 14px; text-align: center;
+    }
+    .status-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #6e7681; margin-bottom: 4px; }
+    .status-value { font-size: 0.95rem; font-weight: 700; color: #f0f6fc; }
+    .status-sub   { font-size: 0.75rem; color: #8b949e; }
+    .status-red   { color: #f85149; }
+    .status-yellow{ color: #f0a500; }
+    .status-green { color: #3fb950; }
+
+    /* ── Divider ─────────────────────────────────── */
+    .divider { border: none; border-top: 1px solid #21262d; margin: 28px 0; }
+
+    /* ── Footer ─────────────────────────────────── */
+    .footer {
+      text-align: center; margin-top: 60px; padding-top: 20px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+    .back-link { display: inline-block; margin-bottom: 48px; font-size: 0.85rem; color: #58a6ff; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <a class="back-link" href="index.html">← Back to Archive</a>
+
+  <!-- ── HEADER ─────────────────────────────────── -->
+  <div class="header">
+    <div class="label">Intelligence Briefing · Day 250</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="date">Wednesday, November 4, 2026</div>
+    <div class="pills">
+      <span class="pill pill-iran">🔥 Iran War</span>
+      <span class="pill pill-cyber">🔐 Cybersecurity</span>
+      <span class="pill pill-ai">🤖 AI</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 1 — IRAN WAR
+  ══════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header iran">
+      <span class="section-icon">🔥</span>
+      <span class="section-title">Iran War — Day 250</span>
+      <span class="section-subtitle">Nov 4, 2026</span>
+    </div>
+
+    <!-- Status bar -->
+    <div class="status-bar">
+      <div class="status-item">
+        <div class="status-label">Conflict Day</div>
+        <div class="status-value status-red">250</div>
+        <div class="status-sub">Since outbreak</div>
+      </div>
+      <div class="status-item">
+        <div class="status-label">Hormuz Status</div>
+        <div class="status-value status-red">BLOCKED</div>
+        <div class="status-sub">Tankers on fire</div>
+      </div>
+      <div class="status-item">
+        <div class="status-label">Diplomacy</div>
+        <div class="status-value status-yellow">STALLED</div>
+        <div class="status-sub">Qatar bridging</div>
+      </div>
+      <div class="status-item">
+        <div class="status-label">US Carriers</div>
+        <div class="status-value status-red">3 in Region</div>
+        <div class="status-sub">Post-midterms</div>
+      </div>
+    </div>
+
+    <!-- Story 1 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="story-tag tag-breaking">Breaking</span>
+        <span class="story-tag tag-military">Military</span>
+        <span class="story-source">Al Jazeera · PBS NewsHour · EA WorldView</span>
+      </div>
+      <h3>Trump Confirms Post-Election Strike on Qeshm Island; Four Tankers Catch Fire Near Hormuz</h3>
+      <p>President Trump confirmed the United States struck an anti-aircraft facility on Qeshm Island in the Strait of Hormuz on election eve, calling it a "minor attack" after Iran's IRGC fired on a US aircraft. The strike — the latest in a series of limited operations — came hours before midterm polls closed.</p>
+      <p>Four oil tankers subsequently caught fire after striking mines while attempting to transit the Strait of Hormuz, dramatically escalating tensions around the world's most critical oil chokepoint. Trump's camp has warned of potential additional strikes now that midterms have concluded, with three US aircraft carriers positioned in the region.</p>
+      <a class="read-more" href="https://www.aljazeera.com/news/2026/11/4/iran-says-us-reply-to-hormuz-plan-unconvincing-trump-confirms-strikes" target="_blank">Read at Al Jazeera →</a>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="story-tag tag-diplomatic">Diplomatic</span>
+        <span class="story-source">CBS News · Al Jazeera · Khaleej Times</span>
+      </div>
+      <h3>Iran Calls US Response to 7 Hormuz Demands "Unconvincing" — Qatar Attempts to Bridge Gap</h3>
+      <p>Tehran formally declared the US reply to its seven-point Hormuz reopening plan "unconvincing," insisting all demands must be met before the strait reopens. Iran's conditions include a permanent ceasefire across all Middle East fronts (including Hamas/Hezbollah operations), lifting the US naval blockade, withdrawal of US forces, lifting sanctions, payment of war reparations, and recognition of new Iranian-controlled shipping arrangements in the Strait.</p>
+      <p>Qatar says it is actively working to "bridge the gap" between the two sides, with both reviewing the latest round of proposals through Doha's mediation channel. Senior Iranian officials separately told Reuters a deal remains "far off," citing what they characterize as Washington's "excessive demands."</p>
+      <a class="read-more" href="https://www.cbsnews.com/live-updates/iran-war-us-trump-negotiations-midterms/" target="_blank">Read at CBS News →</a>
+    </div>
+
+    <!-- Story 3 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="story-tag tag-diplomatic">Geopolitics</span>
+        <span class="story-source">ABC News · Gulf News</span>
+      </div>
+      <h3>Midterm Results Interpreted as "No to War" Signal — But Carriers Stay in Place</h3>
+      <p>Iran's parliament speaker Ghalibaf declared that American midterm voters "said NO TO WAR," pointing to any gains by anti-war candidates as a sign that domestic US pressure may temper escalation. Gulf News reports Trump had warned of a "heavy hit" before the elections; tankers remain at risk as long as both sides hold conflicting claims over Hormuz navigation rights.</p>
+      <p>The Pakistan-mediated ceasefire and June MOU remain nominally in force, but both sides continue trading strikes citing alleged violations. The June framework stopped large-scale operations; it has not stopped limited tit-for-tat strikes.</p>
+      <a class="read-more" href="https://abcnews.com/International/live-updates/iran-live-updates-trump-good-call-netanyahu/?id=137762456" target="_blank">Read at ABC News →</a>
+    </div>
+
+    <!-- Story 4 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="story-tag tag-military">Strait</span>
+        <span class="story-source">Wikipedia · PBS</span>
+      </div>
+      <h3>2026 Hormuz Campaign: Oil Markets on Edge as Global Shipping Reroutes</h3>
+      <p>The ongoing Strait of Hormuz campaign — with the US enforcing a naval blockade of Iran's Persian Gulf and Gulf of Oman ports, and Iran claiming authority over the waterway — continues to shock global energy markets. With today's tanker fires, shipping firms face renewed pressure to reroute via the Cape of Good Hope, adding weeks and costs to global oil supply chains.</p>
+      <a class="read-more" href="https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_campaign" target="_blank">Background on Wikipedia →</a>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 2 — CYBERSECURITY
+  ══════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header cyber">
+      <span class="section-icon">🔐</span>
+      <span class="section-title">Cybersecurity</span>
+      <span class="section-subtitle">Nov 4, 2026</span>
+    </div>
+
+    <!-- Story 1 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="story-tag tag-breach">Breach</span>
+        <span class="story-source">The Hacker News</span>
+      </div>
+      <h3>Chainstack Production Breach: AI-Powered Attack Campaign Exposes Customer Data & Password Hashes</h3>
+      <p>Blockchain infrastructure provider Chainstack disclosed that its production systems were compromised in a large-scale, AI-powered attack campaign. Customer data and password hashes were exposed. The attack is notable for leveraging AI automation to accelerate lateral movement through enterprise infrastructure — an emerging TTPs trend threat intelligence teams are tracking closely.</p>
+      <a class="read-more" href="https://thehackernews.com/2026/11/chainstack-reports-production-systems.html" target="_blank">Read at The Hacker News →</a>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="story-tag tag-critical">Critical CVE</span>
+        <span class="story-source">Cybersecurity News</span>
+      </div>
+      <h3>Critical Android Zero-Day CVE-2026-58868: Remote Code Execution on Android 14–17, No User Interaction</h3>
+      <p>A critical flaw in Android versions 14 through 17 allows an attacker to execute arbitrary code on a device entirely remotely — no user interaction required. The severity of a zero-click RCE across current Android versions represents a significant consumer and enterprise mobile risk. Patch status and exploitation in the wild are under active monitoring by threat intelligence teams.</p>
+    </div>
+
+    <!-- Story 3 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="story-tag tag-threat">Ransomware</span>
+        <span class="story-source">The Hacker News · Bleeping Computer</span>
+      </div>
+      <h3>C3RB3R Ransomware Wave Hits Synology NAS Globally — CVE-2026-13684/13639 (CVSS 9.8)</span></h3>
+      <p>Synology is urging customers to immediately patch DiskStation Manager (DSM) after C3RB3R ransomware exploited two critical vulnerabilities (CVE-2026-13684 and CVE-2026-13639, both CVSS 9.8) patched in September 2026. Victims find files locked with a ".L0CK3D" extension. With NAS devices widely used in SMBs and home labs, the attack surface is broad. Synology fixed both flaws in September; unpatched devices remain fully exposed.</p>
+      <a class="read-more" href="https://thehackernews.com/2026/11/synology-nas-devices-targeted-in.html" target="_blank">Read at The Hacker News →</a>
+    </div>
+
+    <!-- Story 4 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="story-tag tag-vuln">KEV · Deadline Nov 6</span>
+        <span class="story-source">Tech Insider · CISA</span>
+      </div>
+      <h3>WordPress CVE-2026-119977 Added to CISA KEV — Patch Deadline November 6</h3>
+      <p>CISA added a WordPress Core vulnerability (CVE-2026-119977) to its Known Exploited Vulnerabilities catalog, confirming active exploitation just 6 days after WordPress shipped the patch. Federal civilian agencies must remediate by November 6. The vulnerability affects a massive global footprint of WordPress installations; any internet-exposed WordPress site running an unpatched version is at risk.</p>
+      <a class="read-more" href="https://tech-insider.org/wordpress-cve-2026-119977-cisa-kev-7-1-4-deadline-nov-6-2026" target="_blank">Read at Tech Insider →</a>
+    </div>
+
+    <!-- Story 5 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="story-tag tag-vuln">Auth Bypass</span>
+        <span class="story-source">Cybersecurity News</span>
+      </div>
+      <h3>Barracuda Critical Flaws CVE-2026-116606 &amp; CVE-2026-111560: Auth Bypass + Root Access</h3>
+      <p>Barracuda disclosed two critical vulnerabilities on November 2 that together allow an attacker to bypass authentication and gain root access on affected appliances. Barracuda appliances are commonly deployed at network perimeters in enterprise environments; authentication bypass + root shell is about as severe as it gets for a network appliance. Organizations should apply vendor patches immediately and check appliance logs for signs of prior compromise.</p>
+      <a class="read-more" href="https://cybersecuritynews.com/critical-barracuda-security-flaws" target="_blank">Read at Cybersecurity News →</a>
+    </div>
+
+    <!-- Story 6 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="story-tag tag-threat">Nation-State</span>
+        <span class="story-source">Various Threat Intel</span>
+      </div>
+      <h3>APT29 Runs Large-Scale Watering Hole Campaign on iOS &amp; Android; European Food Chain Hit by Cyberattacks</h3>
+      <p>Russia-linked APT29 is behind a broad watering hole campaign targeting iOS and Android users through compromised websites and fake domains — a renewed focus on mobile device compromise. Separately, cyberattacks on European refrigeration facilities have expanded, with reported impact on the British food supply chain and a near-miss incident at France's public blood bank (Établissement Français du Sang), highlighting the growing threat to critical infrastructure.</p>
+      <p>Meanwhile, Russian authorities arrested three suspected members of the VasyGrek threat group and dismantled its criminal infrastructure — a rare law enforcement win in the ransomware space.</p>
+    </div>
+
+    <!-- Ransomware stat -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="story-tag tag-threat">Intelligence</span>
+        <span class="story-source">Threat Intelligence Tracking</span>
+      </div>
+      <h3>1,026 Confirmed Enterprise Ransomware Victims Across 83 Active Groups (Rolling 30-Day Window)</h3>
+      <p>Threat intelligence tracking through early November recorded 1,026 confirmed enterprise ransomware victims across 83 active groups in the past 30 days. The volume underscores the industrialization of ransomware operations, with AI-automation now reported as a force multiplier for attack throughput.</p>
+    </div>
+
+    <!-- Audience Lens -->
+    <hr class="divider">
+    <div class="lens-grid">
+      <div class="lens lens-ciso">
+        <div class="lens-title">🔐 CISO Priorities</div>
+        <ul>
+          <li>Android CVE-2026-58868 — zero-click RCE, mobilize MDM patch</li>
+          <li>Synology NAS — patch CVE-2026-13684/13639 or isolate devices</li>
+          <li>WordPress KEV deadline Nov 6 — urgent patch cycle</li>
+          <li>Barracuda appliances — auth bypass + root, check immediately</li>
+          <li>Ivanti Connect Secure — CISA Nov 13 deadline still active</li>
+          <li>Chainstack breach: AI-powered lateral movement — review detection rules</li>
+        </ul>
+      </div>
+      <div class="lens lens-partner">
+        <div class="lens-title">🤝 Consulting Partner Trends</div>
+        <ul>
+          <li>AI-automated attacks accelerating — client advisory opportunity</li>
+          <li>Ransomware at 1,026 victims/month — incident response demand high</li>
+          <li>Critical infrastructure (food, healthcare) now primary target</li>
+          <li>APT29 mobile campaign — mobile security assessments in demand</li>
+          <li>Appliance security (Barracuda, Ivanti) — perimeter review engagements</li>
+        </ul>
+      </div>
+      <div class="lens lens-exec">
+        <div class="lens-title">💼 Executive Radar</div>
+        <ul>
+          <li>Android zero-click RCE — board-level mobile device risk</li>
+          <li>AI-powered attacks on the rise — strategic cyber spend question</li>
+          <li>European food supply chain attacked — supply chain resilience</li>
+          <li>Ransomware record pace — cyber insurance terms hardening</li>
+          <li>Russia VasyGrek arrests — rare enforcement, geopolitical context</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 3 — AI
+  ══════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header ai">
+      <span class="section-icon">🤖</span>
+      <span class="section-title">Artificial Intelligence</span>
+      <span class="section-subtitle">Nov 4, 2026</span>
+    </div>
+
+    <!-- Story 1 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="story-tag tag-policy">Policy</span>
+        <span class="story-source">AI Weekly · The Neuron</span>
+      </div>
+      <h3>Trump Signs Voluntary AI Accord with OpenAI, Anthropic, Google, Meta, xAI &amp; Nvidia at White House</h3>
+      <p>President Trump signed a voluntary AI governance accord with the CEOs of OpenAI, Anthropic, Google, Meta, xAI, and Nvidia at the White House on Wednesday — marking the first formal industry-government alignment on AI practices under the current administration. The accord is non-binding but signals growing convergence between the administration and major AI labs on safety and competitiveness standards heading into what analysts expect to be a highly competitive 2027.</p>
+      <a class="read-more" href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-wednesday-november-4-2026/" target="_blank">Read at The Neuron →</a>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="story-tag tag-launch">New Model</span>
+        <span class="story-source">Kill the AI · AI Weekly</span>
+      </div>
+      <h3>Google Gemini 4 Argon: 1M Token Output, Advanced Reasoning — Google &amp; Meta Releases Expected Tomorrow</h3>
+      <p>Google's latest frontier model, Gemini 4 Argon, features advanced reasoning capabilities and a remarkable 1-million-token output limit — a step-change in long-context generation. Forecasts from multiple AI tracking outlets point to additional Google and Meta model releases around November 5, with DeepSeek's next major release expected near November 23. The pace of frontier model releases has accelerated significantly in Q4 2026.</p>
+      <a class="read-more" href="https://killtheai.com/news/top-10-ai-news-today-november-4-2026/" target="_blank">Read at Kill the AI →</a>
+    </div>
+
+    <!-- Story 3 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="story-tag tag-business">OpenAI</span>
+        <span class="story-source">AI Weekly · AI Codesit</span>
+      </div>
+      <h3>OpenAI: 1.2B Weekly ChatGPT Users, Search Volume Now 20% of Google's</h3>
+      <p>OpenAI disclosed that ChatGPT now serves 1.2 billion weekly users, with its search query volume reaching approximately 20% of Google's — a figure that would have seemed implausible just 18 months ago. OpenAI also demonstrated AI-designed hardware built in under a week and raised bug-bounty rewards with new bonuses for critical vulnerability discoveries after hiring researchers who previously breached Anthropic's systems.</p>
+      <a class="read-more" href="https://aiweekly.co/ai-news-today/openai-news" target="_blank">Read at AI Weekly →</a>
+    </div>
+
+    <!-- Story 4 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="story-tag tag-launch">Robotics</span>
+        <span class="story-source">Rio Rundown · Blog.Mean.CEO</span>
+      </div>
+      <h3>Google DeepMind Gemini Robotics 2: Whole-Body Intelligence for Real-World Tasks</h3>
+      <p>Google DeepMind unveiled Gemini Robotics 2, bringing what it describes as "whole body intelligence" to robotic systems — enabling embodied reasoning for real-world physical tasks. The system builds on the original Gemini Robotics framework, closing the gap between language-model reasoning and physical manipulation in unstructured environments. This follows a broader trend: OSWorld benchmark agent success rates jumped from ~12% to ~66% in under a year.</p>
+      <a class="read-more" href="https://riorundown.substack.com/p/ai-news-nov-04-2026-ai-infrastructure" target="_blank">Read at Rio Rundown →</a>
+    </div>
+
+    <!-- Story 5 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="story-tag tag-business">Meta</span>
+        <span class="story-source">AI Codesit · The Neuron</span>
+      </div>
+      <h3>Meta Seeks $20–25B in Bonds as AI Spending Turns Cash Flow Negative</h3>
+      <p>Meta is seeking $20–25 billion in bonds as AI infrastructure spending has turned its free cash flow negative — a significant financial milestone for the company. The move underscores how capital-intensive the frontier AI race has become: OpenAI is valued at $1.25 trillion, AMD signed a $60 billion chip deal with Meta, and even the largest tech firms are turning to debt markets to fund compute buildouts.</p>
+      <a class="read-more" href="https://aicodesit.com/post/ai-news-november-2026" target="_blank">Read at AICODESIT →</a>
+    </div>
+
+    <!-- Story 6 -->
+    <div class="story">
+      <div class="story-meta">
+        <span class="story-tag tag-policy">Education</span>
+        <span class="story-source">Kill the AI</span>
+      </div>
+      <h3>Google to Disable Search for K-12 Schools Rejecting AI Tools</h3>
+      <p>Google announced it will disable Search for K-12 educational institutions that reject its AI tools, unless they explicitly opt in. The move signals an aggressive integration strategy for Gemini in education markets — and raises questions about institutional dependency, student data privacy, and the coercive dynamics of bundling essential tools with AI adoption mandates.</p>
+      <a class="read-more" href="https://killtheai.com/news/top-10-ai-news-today-november-4-2026/" target="_blank">Read at Kill the AI →</a>
+    </div>
+
+    <!-- Audience Lens -->
+    <hr class="divider">
+    <div class="lens-grid">
+      <div class="lens lens-ciso">
+        <div class="lens-title">🔐 CISO: AI Security Risks</div>
+        <ul>
+          <li>AI-powered attacks confirmed at Chainstack — model the threat</li>
+          <li>OpenAI hired researchers who breached Anthropic — supply chain risk signal</li>
+          <li>GPT-6 Astra (AGI-class) means more capable adversarial AI</li>
+          <li>Gemini 4 Argon 1M output — potential for large-scale data exfil automation</li>
+          <li>AI-designed hardware in &lt;1 week — faster attack tooling development</li>
+        </ul>
+      </div>
+      <div class="lens lens-partner">
+        <div class="lens-title">🤝 Partner: Market Opportunities</div>
+        <ul>
+          <li>Trump AI accord — compliance/governance advisory wave incoming</li>
+          <li>Meta $20–25B debt raise — enterprise AI infrastructure buildout accelerating</li>
+          <li>Robotics 2 + OSWorld 66% — agentic AI deployment advisory demand</li>
+          <li>Google K-12 AI mandate — education sector transformation engagements</li>
+          <li>DeepSeek release Nov 23 — open-source AI strategy for clients</li>
+        </ul>
+      </div>
+      <div class="lens lens-exec">
+        <div class="lens-title">💼 Executive: Strategic Landscape</div>
+        <ul>
+          <li>ChatGPT at 20% of Google search — search market disruption is real</li>
+          <li>OpenAI at $1.25T valuation — AI is the dominant strategic bet</li>
+          <li>Meta cash flow negative from AI spend — board-level capex question</li>
+          <li>Trump voluntary AI accord — regulatory runway for AI deployment</li>
+          <li>Gemini 4 + DeepSeek releases coming — competitive intelligence needed</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ──────────────────────────────────── -->
+  <div class="footer">
+    <p>Generated by <strong>Jorge</strong> · Wednesday, November 4, 2026 · 6:00 PM</p>
+    <p style="margin-top:6px;">Sources: Al Jazeera · CBS News · PBS NewsHour · ABC News · EA WorldView · The Hacker News · Bleeping Computer · Cybersecurity News · Tech Insider · The Neuron · AI Weekly · Kill the AI · Rio Rundown · AICODESIT</p>
+  </div>
+
+</div>
+</body>
+</html>
