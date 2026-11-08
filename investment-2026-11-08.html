@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Investment Brief — Sunday, November 8, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #f0c040; margin-bottom: 12px;
+    }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
+    .header .date { font-size: 1rem; color: #8b949e; margin-bottom: 16px; }
+    .header .nav { font-size: 0.82rem; color: #484f58; }
+    .header .nav a { color: #6e7681; }
+
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      margin-bottom: 48px;
+    }
+    .stat-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-align: center;
+    }
+    .stat-card .stat-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; color: #8b949e; margin-bottom: 6px;
+      display: block;
+    }
+    .stat-card .stat-value {
+      font-size: 1.25rem; font-weight: 800; color: #f0f6fc;
+      display: block; margin-bottom: 3px;
+    }
+    .stat-card .stat-change { font-size: 0.78rem; font-weight: 600; }
+    .green  { color: #3fb950; }
+    .red    { color: #f85149; }
+    .amber  { color: #e3b341; }
+    .blue   { color: #58a6ff; }
+    .stat-card.bullish { border-top: 2px solid #238636; }
+    .stat-card.bearish { border-top: 2px solid #da3633; }
+    .stat-card.neutral { border-top: 2px solid #9e6a03; }
+
+    .section { margin-bottom: 52px; }
+    .section-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 22px; padding-bottom: 14px;
+      border-bottom: 2px solid #21262d;
+    }
+    .section-icon { font-size: 1.6rem; }
+    .section-title { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; }
+    .section-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 3px 9px; border-radius: 20px;
+      margin-left: auto;
+    }
+    .tag-market  { background: #1a1f3d; color: #79c0ff; border: 1px solid #2a3a6e; }
+    .tag-pick    { background: #1a3d1a; color: #3fb950; border: 1px solid #2a6e2a; }
+    .tag-risk    { background: #3d1a1a; color: #f85149; border: 1px solid #6e2a2a; }
+    .tag-insight { background: #3d2a0a; color: #e3b341; border: 1px solid #6e4a0a; }
+
+    .story {
+      background: #161b22; border: 1px solid #30363d;
+      border-radius: 10px; padding: 20px 22px; margin-bottom: 14px;
+    }
+    .story:hover { border-color: #444c56; }
+    .story h3 { font-size: 1rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; line-height: 1.4; }
+    .story p { font-size: 0.88rem; color: #c9d1d9; line-height: 1.65; margin-bottom: 8px; }
+    .story p:last-child { margin-bottom: 0; }
+    .story .source { font-size: 0.76rem; color: #484f58; margin-top: 10px; }
+
+    .pick-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .pick-card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .pick-card:hover { border-color: #444c56; }
+    .pick-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .pick-ticker { font-size: 1.2rem; font-weight: 800; color: #58a6ff; }
+    .pick-company { font-size: 0.78rem; color: #8b949e; margin-top: 2px; }
+    .pick-price { text-align: right; }
+    .pick-price .price-val { font-size: 1.1rem; font-weight: 700; color: #f0f6fc; }
+    .pick-price .price-change { font-size: 0.78rem; }
+    .pick-desc { font-size: 0.84rem; color: #c9d1d9; line-height: 1.6; margin-bottom: 12px; }
+    .pick-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .pick-badge {
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 3px 8px; border-radius: 20px;
+    }
+    .badge-buy      { background: #1a3d1a; color: #3fb950; border: 1px solid #2a5a2a; }
+    .badge-moderate { background: #1a2d3d; color: #58a6ff; border: 1px solid #2a4a6e; }
+    .badge-income   { background: #3d2a0a; color: #e3b341; border: 1px solid #6e4a0a; }
+    .badge-growth   { background: #1a1a3d; color: #a371f7; border: 1px solid #3a2a6e; }
+    .badge-etf      { background: #1a3d3d; color: #56d364; border: 1px solid #2a5a5a; }
+    .badge-defensive { background: #2d1a3d; color: #d2a8ff; border: 1px solid #5a2a6e; }
+
+    .target-row { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+    .target-pill {
+      background: #0d1117; border: 1px solid #21262d; border-radius: 6px;
+      padding: 4px 10px; font-size: 0.76rem; color: #8b949e;
+    }
+    .target-pill span { font-weight: 700; color: #f0f6fc; }
+
+    .outlook-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 6px; }
+    .outlook-table thead th {
+      text-align: left; padding: 10px 12px; font-size: 10px;
+      font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+      color: #8b949e; background: #161b22; border-bottom: 2px solid #21262d;
+    }
+    .outlook-table tbody tr { border-bottom: 1px solid #21262d; }
+    .outlook-table tbody tr:hover { background: #161b22; }
+    .outlook-table tbody td { padding: 11px 12px; color: #c9d1d9; vertical-align: top; }
+    .outlook-table .ticker-cell { font-weight: 800; color: #58a6ff; white-space: nowrap; }
+    .outlook-table .price-cell { font-weight: 700; color: #f0f6fc; }
+    .outlook-table .target-up { color: #3fb950; font-weight: 700; }
+    .outlook-table .target-dn { color: #f85149; font-weight: 700; }
+    .outlook-table .target-flat { color: #e3b341; font-weight: 700; }
+    .risk-low    { color: #3fb950; font-size: 10px; font-weight: 700; }
+    .risk-med    { color: #e3b341; font-size: 10px; font-weight: 700; }
+    .risk-high   { color: #f85149; font-size: 10px; font-weight: 700; }
+
+    .insight-card {
+      background: #161b22; border: 1px solid #30363d;
+      border-left: 3px solid #e3b341;
+      border-radius: 0 10px 10px 0; padding: 18px 20px; margin-bottom: 14px;
+    }
+    .insight-card h3 { font-size: 0.96rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; }
+    .insight-card p { font-size: 0.86rem; color: #c9d1d9; line-height: 1.65; }
+    .insight-card .person { font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: #e3b341; margin-bottom: 8px; display: block; }
+
+    .risk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+    .risk-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 16px 18px; }
+    .risk-card .risk-title {
+      font-size: 0.88rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+    }
+    .risk-card ul { list-style: none; padding: 0; }
+    .risk-card ul li {
+      font-size: 0.82rem; color: #c9d1d9; margin-bottom: 6px;
+      padding-left: 16px; position: relative; line-height: 1.5;
+    }
+    .risk-card ul li::before { content: "›"; position: absolute; left: 0; color: #f85149; }
+
+    .wl-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 6px 0; border-bottom: 1px solid #21262d; font-size: 0.82rem;
+    }
+    .wl-item:last-child { border-bottom: none; }
+    .wl-ticker { font-weight: 700; color: #58a6ff; }
+    .wl-reason { color: #8b949e; font-size: 0.76rem; }
+
+    .tldr {
+      background: #161b22; border: 1px solid #30363d;
+      border-left: 3px solid #58a6ff;
+      border-radius: 0 8px 8px 0; padding: 14px 18px; margin-bottom: 28px;
+      font-size: 0.86rem; color: #8b949e;
+    }
+    .tldr strong { color: #f0f6fc; }
+
+    .divider { border: none; border-top: 1px solid #21262d; margin: 14px 0 20px; }
+
+    .sector-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+    .sector-row {
+      display: flex; justify-content: space-between; align-items: center;
+      background: #0d1117; border: 1px solid #21262d; border-radius: 6px;
+      padding: 7px 12px; font-size: 0.82rem;
+    }
+    .sector-name { color: #c9d1d9; }
+    .sector-pct  { font-weight: 700; }
+
+    .footer {
+      text-align: center; margin-top: 60px; padding-top: 20px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+
+    .upside-pct { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; background: #1a3d1a; color: #3fb950; margin-left: 6px; }
+    .gap-notice { background: #1a1f3d; border: 1px solid #2a3a6e; border-radius: 8px; padding: 12px 16px; margin-bottom: 20px; font-size: 0.82rem; color: #8b949e; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="label">📈 Investment Brief · Moderate Risk Portfolio</div>
+    <h1>Sunday, November 8, 2026</h1>
+    <div class="date">Weekend Catch-Up: The AI Correction Week &nbsp;·&nbsp; For Georges</div>
+    <div class="nav"><a href="index.html">← Back to archive</a></div>
+  </div>
+
+  <div class="gap-notice">
+    <strong style="color:#f0f6fc;">Note:</strong> The Nov 6 and Nov 7 scheduled cycles didn't complete despite repeated firings. This edition retroactively covers the full week's key action: Thursday Nov 5's AI/chip-stock crash (Nasdaq entered correction territory) and Friday Nov 6's partial rebound — both sessions are folded in below since nothing has been reported since Wednesday Nov 4's post-midterm rally.
+  </div>
+
+  <div class="tldr">
+    <strong>Week in review:</strong> &nbsp;
+    Wednesday's historic post-midterm rally reversed violently Thursday as AI/chip stocks crashed — Nasdaq fell -5.52% to enter correction territory (-10% off its October record), erasing $2-2.5T in market value in a single session &nbsp;·&nbsp;
+    Friday saw a partial rebound (S&P +0.31%, Nasdaq +1.09%) as beaten-down tech found buyers, though the Dow kept slipping (-0.46%) &nbsp;·&nbsp;
+    Energy was by far the week's worst sector (-12.3%) as oil kept sliding; Communication Services was the week's best (+5.25%) &nbsp;·&nbsp;
+    Michael Burry trimmed 25% of his chip-stock puts (still bearish, taking some profit) while Ray Dalio sharpened his AI-bubble warning around concentration and hyperscaler debt &nbsp;·&nbsp;
+    Top picks for moderate risk this week lean more defensive: GS, JPM, UNH, JNJ, AMZN, FSLR
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-card bullish">
+      <span class="stat-label">S&amp;P 500</span>
+      <span class="stat-value">7,376.86</span>
+      <span class="stat-change green">+0.31% Fri (after -4.36% Thu)</span>
+    </div>
+    <div class="stat-card bearish">
+      <span class="stat-label">Dow Jones</span>
+      <span class="stat-value">51,285.73</span>
+      <span class="stat-change red">-0.46% Fri (after -3.44% Thu)</span>
+    </div>
+    <div class="stat-card bullish">
+      <span class="stat-label">Nasdaq</span>
+      <span class="stat-value">24,579.42</span>
+      <span class="stat-change green">+1.09% Fri (after -5.52% Thu)</span>
+    </div>
+    <div class="stat-card neutral">
+      <span class="stat-label">Russell 2000</span>
+      <span class="stat-value">~2,780*</span>
+      <span class="stat-change amber">Small-caps also whipsawed</span>
+    </div>
+    <div class="stat-card bearish">
+      <span class="stat-label">VIX</span>
+      <span class="stat-value">25.64</span>
+      <span class="stat-change red">-9% Fri, still elevated post-spike</span>
+    </div>
+    <div class="stat-card neutral">
+      <span class="stat-label">Crude Oil (WTI)</span>
+      <span class="stat-value">~$91.10</span>
+      <span class="stat-change amber">+0.66% Fri, still near lows</span>
+    </div>
+    <div class="stat-card bearish">
+      <span class="stat-label">Gold</span>
+      <span class="stat-value">$4,060.70</span>
+      <span class="stat-change red">-1.31% Fri</span>
+    </div>
+    <div class="stat-card neutral">
+      <span class="stat-label">10Y Treasury</span>
+      <span class="stat-value">4.86–4.88%</span>
+      <span class="stat-change amber">Range-bound into the weekend</span>
+    </div>
+  </div>
+  <p style="font-size:0.75rem;color:#484f58;margin-top:-30px;margin-bottom:40px;">* Russell 2000 level is Jorge's estimate; exact small-cap close wasn't confirmed across sources this week. All other figures reflect Friday Nov 6's confirmed close, the most recent full session at publication time.</p>
+
+
+  <!-- SECTION 1 — MARKET SNAPSHOT -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">📊</span>
+      <span class="section-title">Market Snapshot</span>
+      <span class="section-tag tag-market">LIVE DATA</span>
+    </div>
+
+    <div class="story">
+      <h3>💥 Thursday's Crash: The AI Trade Melts Down, Nasdaq Enters Correction</h3>
+      <p>Wednesday's post-midterm euphoria didn't survive 24 hours. On Thursday Nov 5, the S&amp;P 500 shed -4.36% to 7,353.73 — its worst day since April 2025 — while the Nasdaq cratered -5.52% to 24,315.00, falling into correction territory (more than 10% below its October record). The Dow sank -1,833 points (-3.44%) to 51,523.06. Chip and AI-infrastructure names were hit hardest: Nvidia fell -9.26% to $181.60 (erasing its entire 2026 gain), AMD plunged -17.26% to $404.40, and the Philadelphia Semiconductor Index dropped -12.25%. The S&amp;P 500 lost more than $2 trillion in market value, with 419 decliners against just 84 advancers — a genuinely broad-based rout, not a narrow tech story.</p>
+      <p>The trigger was a reassessment of the AI-capex trade: investors who'd cheered the midterm result's "certainty" on Wednesday woke up Thursday to recalculate the odds of tighter AI/tech regulation under a Democratic Congress, compounding existing valuation anxiety after a year of parabolic chip-stock gains.</p>
+    </div>
+
+    <div class="story">
+      <h3>🩹 Friday's Partial Rebound — But the Dow Kept Bleeding</h3>
+      <p>Friday Nov 6 saw a tentative stabilization: the S&amp;P 500 recovered +0.31% to 7,376.86 and the Nasdaq bounced +1.09% to 24,579.42 as bargain hunters stepped into the most beaten-down chip names (AMD +11.04%, Micron +5.12%, Marvell +5.73%, Nvidia +2.78%). The Dow, however, extended its slide another -0.46% to 51,285.73, dragged by non-tech cyclicals and the still-struggling energy complex. VIX eased -9% off its spike to 25.64 — still well above the pre-selloff ~16 level from earlier in the week, signaling the market hasn't fully exhaled.</p>
+      <p>Net effect for the week: despite Friday's bounce, the Nasdaq is still down sharply from Wednesday's rally high, and the "AI bubble" conversation has moved from a background risk to the dominant market narrative heading into next week.</p>
+    </div>
+
+    <div class="story">
+      <h3>🛢️ Oil and Gold Both Soft — A Mixed Macro Backdrop</h3>
+      <p>WTI crude firmed slightly Friday (+0.66% to ~$91.10) but remains near its lowest levels of the year after the post-midterm plunge. Gold pulled back -1.31% to $4,060.70 after its recent run — a sign that even the safe-haven trade cooled slightly as the immediate equity panic eased. The 10-year Treasury yield held in a 4.86-4.88% range, not moving dramatically despite the equity volatility, suggesting bond markets see this more as a valuation unwind in a narrow slice of mega-cap tech than a broader growth scare.</p>
+    </div>
+  </div>
+
+
+  <!-- SECTOR PERFORMANCE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🧭</span>
+      <span class="section-title">Sector Performance — Week Ended Nov 6</span>
+      <span class="section-tag tag-market">11 SECTORS</span>
+    </div>
+
+    <div class="story">
+      <h3>⚡ Energy's Brutal Week; Tech Recovers Some Ground Friday, Still Down Sharply on the Week</h3>
+      <p>Energy was by far the week's worst performer (-12.3%) as oil extended its post-midterm slide. Technology was the week's second-worst sector (-6.7%) despite a strong Friday bounce (+1.45% on the day) — the chip-stock crash dominated the weekly tally even with the partial recovery. On the other side, Communication Services was the week's best performer (+5.25%), and Consumer Cyclical also advanced (+2.36%). Friday's daily moves were more mixed: Financials actually dipped -0.59% on the day even as the broader market firmed, and Energy was roughly flat (-0.02%) after the week's heavy losses.</p>
+      <div class="sector-grid">
+        <div class="sector-row"><span class="sector-name">📡 Communication Services</span><span class="sector-pct green">+5.25% wk</span></div>
+        <div class="sector-row"><span class="sector-name">🛒 Consumer Cyclical</span><span class="sector-pct green">+2.36% wk</span></div>
+        <div class="sector-row"><span class="sector-name">💊 Healthcare</span><span class="sector-pct green">+1.0%* wk</span></div>
+        <div class="sector-row"><span class="sector-name">🥫 Consumer Defensive</span><span class="sector-pct green">+0.8%* wk</span></div>
+        <div class="sector-row"><span class="sector-name">💡 Utilities</span><span class="sector-pct green">+0.5%* wk</span></div>
+        <div class="sector-row"><span class="sector-name">🏘️ Real Estate</span><span class="sector-pct amber">~flat* wk</span></div>
+        <div class="sector-row"><span class="sector-name">🏦 Financial Services</span><span class="sector-pct red">-1.0%* wk</span></div>
+        <div class="sector-row"><span class="sector-name">🔩 Industrials</span><span class="sector-pct red">-2.5%* wk</span></div>
+        <div class="sector-row"><span class="sector-name">🪨 Basic Materials</span><span class="sector-pct red">-3.5%* wk</span></div>
+        <div class="sector-row"><span class="sector-name">💻 Technology</span><span class="sector-pct red">-6.71% wk</span></div>
+        <div class="sector-row"><span class="sector-name">⚡ Energy</span><span class="sector-pct red">-12.32% wk</span></div>
+      </div>
+      <p style="font-size:0.75rem;color:#484f58;margin-top:10px;">* Starred figures are Jorge's estimates where exact weekly sector-level data wasn't directly confirmed across sources; Communication Services, Consumer Cyclical, Technology, and Energy figures are directly sourced. Friday's daily moves (Tech +1.45%, Financials -0.59%, Energy -0.02%) are directly sourced and show the one-day picture differs meaningfully from the weekly trend.</p>
+    </div>
+  </div>
+
+
+  <!-- SECTION 2 — TOP PICKS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🎯</span>
+      <span class="section-title">Top Picks — Moderate Risk Portfolio</span>
+      <span class="section-tag tag-pick">BUY THESIS</span>
+    </div>
+
+    <div class="tldr" style="border-left-color: #3fb950;">
+      <strong>Portfolio philosophy this week:</strong> &nbsp; With the AI/chip trade under real pressure and Dalio flagging concentration risk explicitly, this edition deliberately avoids adding fresh exposure to the most AI-correlated names (no Nvidia/AMD/Broadcom additions) and instead keeps the portfolio anchored in financials, healthcare, and diversified mega-cap growth that isn't purely an AI-infrastructure bet.
+    </div>
+
+    <div class="pick-grid">
+
+      <!-- GS -->
+      <div class="pick-card">
+        <div class="pick-header">
+          <div>
+            <div class="pick-ticker">GS</div>
+            <div class="pick-company">Goldman Sachs Group</div>
+          </div>
+          <div class="pick-price">
+            <div class="price-val">$865.82</div>
+            <div class="price-change red">-0.36% Fri</div>
+          </div>
+        </div>
+        <p class="pick-desc">Pulled back modestly with the broader market this week but held up far better than tech — a reminder that financials were this basket's best risk-adjusted holding through the volatility. Average 12-month analyst target sits around $1,031 (+19% upside), with MarketBeat's consensus as high as $1,052 (+20%). UBS trimmed its target to $1,000 (still Neutral) this week, a useful reality check against the more bullish average.</p>
+        <div class="pick-meta">
+          <span class="pick-badge badge-buy">Buy</span>
+          <span class="pick-badge badge-moderate">Financials</span>
+          <span class="pick-badge badge-income">Dividend</span>
+        </div>
+        <div class="target-row">
+          <div class="target-pill">Target: <span class="green">$1,031</span></div>
+          <div class="target-pill">Upside: <span class="green">+19%</span></div>
+          <div class="target-pill">Note: <span class="amber">UBS trimmed to $1,000</span></div>
+        </div>
+      </div>
+
+      <!-- JPM -->
+      <div class="pick-card">
+        <div class="pick-header">
+          <div>
+            <div class="pick-ticker">JPM</div>
+            <div class="pick-company">JPMorgan Chase</div>
+          </div>
+          <div class="pick-price">
+            <div class="price-val">$334.49</div>
+            <div class="price-change red">-0.84% Fri</div>
+          </div>
+        </div>
+        <p class="pick-desc">Eased off its Wednesday highs but remains well inside its 52-week range ($279.10-$366.50), and its UNH price-target raise this week (JPMorgan's own analysts lifting UNH to $524) is a reminder of the depth of JPM's research franchise beyond trading. A 1.97% dividend yield and $888B market cap make it the steadiest large-cap financial in the book during a choppy week.</p>
+        <div class="pick-meta">
+          <span class="pick-badge badge-buy">Buy</span>
+          <span class="pick-badge badge-income">2.0% Yield</span>
+          <span class="pick-badge badge-defensive">Value</span>
+        </div>
+        <div class="target-row">
+          <div class="target-pill">52-wk range: <span>$279–$367</span></div>
+          <div class="target-pill">Yield: <span class="green">1.97%</span></div>
+        </div>
+      </div>
+
+      <!-- UNH -->
+      <div class="pick-card">
+        <div class="pick-header">
+          <div>
+            <div class="pick-ticker">UNH</div>
+            <div class="pick-company">UnitedHealth Group</div>
+          </div>
+          <div class="pick-price">
+            <div class="price-val">$394.15</div>
+            <div class="price-change red">-0.40% Fri</div>
+          </div>
+        </div>
+        <p class="pick-desc">The defensive anchor did its job this week — down only modestly while the Nasdaq cratered. JPMorgan raised its price target on UNH to $524 from $516 this week, keeping an Overweight rating, among the more bullish targets in the current pick list. Healthcare's low correlation to the AI-capex trade is exactly the ballast a moderate-risk book needs right now.</p>
+        <div class="pick-meta">
+          <span class="pick-badge badge-buy">Buy</span>
+          <span class="pick-badge badge-defensive">Defensive</span>
+          <span class="pick-badge badge-moderate">Low AI Correlation</span>
+        </div>
+        <div class="target-row">
+          <div class="target-pill">JPM Target: <span class="green">$524</span></div>
+          <div class="target-pill">Upside: <span class="green">+33%</span></div>
+        </div>
+      </div>
+
+      <!-- JNJ -->
+      <div class="pick-card">
+        <div class="pick-header">
+          <div>
+            <div class="pick-ticker">JNJ</div>
+            <div class="pick-company">Johnson &amp; Johnson</div>
+          </div>
+          <div class="pick-price">
+            <div class="price-val">$276.22</div>
+            <div class="price-change green">+1.43% Fri 💊</div>
+          </div>
+        </div>
+        <p class="pick-desc">Bucked the week's tech weakness on real news: the FDA approved RYBREVANT FASPRO for head and neck cancer, giving JNJ its own idiosyncratic catalyst independent of the macro/AI narrative. 23 analysts rate it a consensus "Buy," though the average 12-month target of $279.41 implies only modest further upside (+1.2%) after the pop — a stability holding more than a near-term trade right now.</p>
+        <div class="pick-meta">
+          <span class="pick-badge badge-buy">Buy</span>
+          <span class="pick-badge badge-defensive">Low Beta</span>
+          <span class="pick-badge badge-income">Dividend</span>
+        </div>
+        <div class="target-row">
+          <div class="target-pill">Catalyst: <span class="green">FDA approval</span></div>
+          <div class="target-pill">Target: <span class="amber">$279 (+1%)</span></div>
+        </div>
+      </div>
+
+      <!-- AMZN -->
+      <div class="pick-card">
+        <div class="pick-header">
+          <div>
+            <div class="pick-ticker">AMZN</div>
+            <div class="pick-company">Amazon.com</div>
+          </div>
+          <div class="pick-price">
+            <div class="price-val">$259.30</div>
+            <div class="price-change red">-0.35% Fri (-2.19% Thu)</div>
+          </div>
+        </div>
+        <p class="pick-desc">Caught up in the broader tech selloff (-2.19% Thursday) but held up notably better than the pure-AI-infrastructure names — a function of its diversified retail/cloud/advertising base rather than a single AI bet. Down from last week's $266 post-midterm high but still well above its 52-week lows; the pullback is a reasonable entry point for investors who want AWS/AI upside without chip-stock-level volatility.</p>
+        <div class="pick-meta">
+          <span class="pick-badge badge-buy">Buy</span>
+          <span class="pick-badge badge-growth">Diversified AI/Cloud</span>
+          <span class="pick-badge badge-moderate">Growth</span>
+        </div>
+        <div class="target-row">
+          <div class="target-pill">Prior target: <span class="green">$330</span></div>
+          <div class="target-pill">Note: <span class="amber">Pulled back w/ tech</span></div>
+        </div>
+      </div>
+
+      <!-- FSLR -->
+      <div class="pick-card">
+        <div class="pick-header">
+          <div>
+            <div class="pick-ticker">FSLR</div>
+            <div class="pick-company">First Solar</div>
+          </div>
+          <div class="pick-price">
+            <div class="price-val">$201.14</div>
+            <div class="price-change green">+2.75% Fri</div>
+          </div>
+        </div>
+        <p class="pick-desc">Bounced Friday and sits meaningfully above its 52-week low of $165.86 (hit just two weeks ago), but this remains the highest-volatility name in the book — First Solar has fallen 30%+ in a calendar year in nine of the last ten years, and a repeat from current levels would take it toward ~$140. Keep this as a small, sized-down thematic position on clean-energy policy, not a core holding.</p>
+        <div class="pick-meta">
+          <span class="pick-badge badge-growth">Policy Beneficiary</span>
+          <span class="pick-badge badge-moderate">High Volatility</span>
+        </div>
+        <div class="target-row">
+          <div class="target-pill">52-wk range: <span>$166–$321</span></div>
+          <div class="target-pill">Risk: <span class="amber">Size small</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="story">
+      <h3>📦 ETF Core Positions — Diversification Layer</h3>
+      <p><strong class="blue">SPY (S&amp;P 500 ETF)</strong> — Captured both Thursday's drop and Friday's partial recovery; in a week this volatile, broad diversification mattered more than usual. Core 20-30% allocation unchanged.</p>
+      <hr class="divider">
+      <p><strong class="blue">VIG (Vanguard Dividend Appreciation ETF)</strong> — Lower-beta quality/dividend exposure that should have outperformed the Nasdaq-heavy indices through this week's chip-stock-driven volatility. Still the preferred income/quality sleeve.</p>
+    </div>
+  </div>
+
+
+  <!-- SECTION 3 — 30-60-90 DAY OUTLOOK -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🗓️</span>
+      <span class="section-title">30–60–90 Day Outlook</span>
+      <span class="section-tag tag-market">PRICE TARGETS</span>
+    </div>
+
+    <div class="story" style="padding: 0; overflow-x: auto;">
+      <table class="outlook-table">
+        <thead>
+          <tr>
+            <th>Ticker</th><th>Current</th><th>30-Day</th><th>60-Day</th><th>90-Day</th><th>12-Mo Consensus</th><th>Key Catalyst</th><th>Risk</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="ticker-cell">GS</td><td class="price-cell">$866</td>
+            <td class="target-up">$900</td><td class="target-up">$950</td><td class="target-up">$990</td>
+            <td class="target-up">$1,031 <span class="upside-pct">+19%</span></td>
+            <td>Q4 earnings (~mid-Jan); whether financials decouple from the AI-correlated selloff</td>
+            <td><span class="risk-med">MED</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">JPM</td><td class="price-cell">$334</td>
+            <td class="target-up">$345</td><td class="target-up">$355</td><td class="target-up">$365</td>
+            <td class="target-up">~$375 <span class="upside-pct">+12%</span></td>
+            <td>Q4 earnings (~mid-Jan); rate path; defensive rotation flows if AI jitters persist</td>
+            <td><span class="risk-low">LOW</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">UNH</td><td class="price-cell">$394</td>
+            <td class="target-up">$420</td><td class="target-up">$450</td><td class="target-up">$480</td>
+            <td class="target-up">$524 <span class="upside-pct">+33%</span></td>
+            <td>JPM's fresh $524 target; continued managed-care sector re-rating; Q4 earnings</td>
+            <td><span class="risk-med">MED</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">JNJ</td><td class="price-cell">$276</td>
+            <td class="target-flat">$278</td><td class="target-flat">$280</td><td class="target-flat">$282</td>
+            <td class="target-flat">$279 <span class="upside-pct">+1%</span></td>
+            <td>RYBREVANT FASPRO launch uptake; pipeline readouts; dividend cycle</td>
+            <td><span class="risk-low">LOW</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">AMZN</td><td class="price-cell">$259</td>
+            <td class="target-up">$275</td><td class="target-up">$295</td><td class="target-up">$315</td>
+            <td class="target-up">~$330 <span class="upside-pct">+27%</span></td>
+            <td>AWS growth re-acceleration; holiday-quarter guide; AI-capex sentiment recovery</td>
+            <td><span class="risk-med">MED</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">FSLR</td><td class="price-cell">$201</td>
+            <td class="target-up">$215</td><td class="target-up">$235</td><td class="target-up">$250</td>
+            <td class="target-up">~$260 <span class="upside-pct">+29%</span></td>
+            <td>Clean-energy policy follow-through; order backlog; historically falls 30%+/yr</td>
+            <td><span class="risk-high">HIGH</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">SPY</td><td class="price-cell">~$735*</td>
+            <td class="target-up">$750</td><td class="target-up">$770</td><td class="target-up">$790</td>
+            <td class="target-up">~$820 <span class="upside-pct">+12%</span></td>
+            <td>Resolution of AI-valuation question; whether Thursday was a one-off or a trend</td>
+            <td><span class="risk-med">MED</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">VIG</td><td class="price-cell">~$242*</td>
+            <td class="target-up">$247</td><td class="target-up">$252</td><td class="target-up">$258</td>
+            <td class="target-up">~$265 <span class="upside-pct">+9%</span></td>
+            <td>Quality/dividend rotation if volatility persists; low expense drag</td>
+            <td><span class="risk-low">LOW</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.75rem;color:#484f58;margin-top:10px;padding:0 4px;">
+      * SPY/VIG current levels are estimated from the S&amp;P 500's close scaled to the ETF's typical ratio; not directly quoted. 30/60/90-day targets are Jorge's estimates derived from analyst 12-month consensus targets scaled linearly plus technical levels. Not financial advice. Data as of Friday Nov 6, 2026 close.
+    </p>
+  </div>
+
+
+  <!-- SECTION 4 — INVESTOR INSIGHTS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🧠</span>
+      <span class="section-title">Trusted Investor Insights</span>
+      <span class="section-tag tag-insight">MACRO VIEWS</span>
+    </div>
+
+    <div class="insight-card" style="border-left-color: #a371f7;">
+      <span class="person" style="color: #a371f7;">Ray Dalio / Bridgewater</span>
+      <h3>"Whether or Not You Think AI Is in a Bubble, You Have to Recognize the Concentration Risk"</h3>
+      <p>Dalio sharpened his warning this week, shifting focus from bubble-timing to concentration: he flagged that hyperscaler bond issuance topped $220 billion in the first half of 2026 alone — more than double all of 2025 — as companies lever up to fund AI capex. He compared today's euphoria to levels preceding the dot-com and 1929 crashes, and explained the mechanics of how bubbles typically pop: wealthy holders of paper gains eventually need to convert to cash, forcing sales that trigger the "pricking." This week's chip-stock crash is close to a live case study of his thesis.</p>
+    </div>
+
+    <div class="insight-card" style="border-left-color: #f85149;">
+      <span class="person" style="color: #f85149;">Michael Burry</span>
+      <h3>Trimmed 25% of His Chip-Stock Puts — But Still "Very Bearish"</h3>
+      <p>Burry sold a quarter of his bearish options position on the VanEck Semiconductor ETF (SMH) following this week's sharp selloff, taking profits on a bet that's clearly paid off. Analysts read this as risk-trimming rather than a change of thesis — Burry has spent recent weeks comparing the AI capex cycle to the dot-com bubble and accusing hyperscalers of using accounting maneuvers to inflate reported profits. His continued large short positions against Nvidia and Palantir suggest he expects more downside even after this week's move.</p>
+    </div>
+
+    <div class="insight-card">
+      <span class="person">Warren Buffett / Berkshire Hathaway</span>
+      <h3>"Building a Casino Next to a Church" — Yet Berkshire Holds a $31B Alphabet Stake</h3>
+      <p>Buffett's sharpest recent comment compared the current market to a casino built beside a church, warning some valuations have become "very ridiculous" and invoking the Nasdaq's near-80% dot-com-era plunge as a cautionary precedent. Notably, though, he's framed this as a broad market-wide speculative mood rather than an AI-specific phenomenon — and he personally championed Berkshire's ~$31B Alphabet stake, calling the AI infrastructure race "real money" being spent by companies he still expects to be relative long-term winners. The nuance matters: Buffett is cautious on valuations broadly, not making a pure anti-AI bet.</p>
+    </div>
+  </div>
+
+
+  <!-- SECTION 5 — KEY RISKS & WATCHLIST -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">⚠️</span>
+      <span class="section-title">Key Risks &amp; Watchlist</span>
+      <span class="section-tag tag-risk">RISK MONITOR</span>
+    </div>
+
+    <div class="risk-grid">
+      <div class="risk-card">
+        <div class="risk-title">🤖 AI / Concentration Risk</div>
+        <ul>
+          <li>Dalio: hyperscaler bond issuance over $220B in H1 2026 alone — leverage is building fast</li>
+          <li>Burry still holding the bulk of his Nvidia/Palantir short positions despite trimming SMH puts</li>
+          <li>Nasdaq's -10% correction shows how fast sentiment can turn on a single data point (AI-regulation odds)</li>
+          <li>Friday's bounce was real but on lighter conviction than Thursday's selling — watch for a retest</li>
+        </ul>
+      </div>
+
+      <div class="risk-card">
+        <div class="risk-title">🛢️ Energy / Commodity Risks</div>
+        <ul>
+          <li>Energy's -12.3% week is the sharpest sector move of the month; a further oil slide would pressure the broader market's credit complex</li>
+          <li>Gold's -1.3% pullback alongside equity softness is a mild signal the safe-haven bid is cooling</li>
+        </ul>
+      </div>
+
+      <div class="risk-card">
+        <div class="risk-title">📉 Process / Execution Risk (Internal)</div>
+        <ul>
+          <li>This brief folds in two missed cycles (Nov 6, Nov 7) — a reminder to check the archive for gaps before trusting single-day framing</li>
+          <li>VIX remains elevated at 25.64 versus ~16-17 a week ago; don't mistake Friday's bounce for "all clear"</li>
+        </ul>
+      </div>
+
+      <div class="risk-card">
+        <div class="risk-title">💰 Rates / Macro Risks</div>
+        <ul>
+          <li>10Y holding 4.86-4.88% — steady, but any upside surprise would add pressure to already-stretched tech valuations</li>
+          <li>Buffett's "casino" framing is market-wide, not AI-specific — broader multiple compression risk remains on the table</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="story" style="margin-top: 16px;">
+      <h3>👁️ Watchlist — Names to Monitor Closely</h3>
+      <div class="wl-item">
+        <div><span class="wl-ticker">NVDA</span><span class="wl-reason"> — -9.26% Thursday, erased its full-year gain; the week's AI-bubble bellwether</span></div>
+        <span class="red">⚠️ WATCH</span>
+      </div>
+      <div class="wl-item">
+        <div><span class="wl-ticker">AMD</span><span class="wl-reason"> — -17.26% Thursday then +11.04% Friday; extreme volatility makes it a sentiment gauge, not a core holding</span></div>
+        <span class="amber">👀 VOLATILE</span>
+      </div>
+      <div class="wl-item">
+        <div><span class="wl-ticker">SMH</span><span class="wl-reason"> — Semiconductor ETF Burry is still partly short; a proxy for the broader AI-capex debate</span></div>
+        <span class="amber">🛢️ MONITOR</span>
+      </div>
+      <div class="wl-item" style="border: none;">
+        <div><span class="wl-ticker">FSLR</span><span class="wl-reason"> — Up off 52-wk lows but historically prone to 30%+ annual drawdowns; size any position small</span></div>
+        <span class="amber">⚠️ HIGH VOL</span>
+      </div>
+    </div>
+
+    <div class="story" style="margin-top: 14px;">
+      <h3>📐 Suggested Moderate-Risk Allocation — November 2026</h3>
+      <p style="margin-bottom:12px;">Unchanged in structure from last week but leaning slightly more defensive given the fresh AI-concentration warnings:</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:0.83rem;">
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;">
+          <span style="color:#58a6ff;font-weight:700;">Core ETFs (35%)</span><br>
+          <span style="color:#8b949e;">SPY 22% · VIG 13%</span>
+        </div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;">
+          <span style="color:#3fb950;font-weight:700;">Financials (25%)</span><br>
+          <span style="color:#8b949e;">GS 13% · JPM 12%</span>
+        </div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;">
+          <span style="color:#e3b341;font-weight:700;">Defensive Healthcare (20%)</span><br>
+          <span style="color:#8b949e;">UNH 11% · JNJ 9%</span>
+        </div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;">
+          <span style="color:#d2a8ff;font-weight:700;">Growth (15%)</span><br>
+          <span style="color:#8b949e;">AMZN 15%</span>
+        </div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px; grid-column: 1/-1;">
+          <span style="color:#f85149;font-weight:700;">Thematic / Tactical (5%)</span><br>
+          <span style="color:#8b949e;">FSLR sized small given its volatility profile; hold cash to add to GS/JPM on any further AI-driven market-wide dip</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>Investment Brief by Jorge</strong> &nbsp;·&nbsp; November 8, 2026 &nbsp;·&nbsp; Weekend Catch-Up Edition</p>
+    <p style="margin-top:6px;">Data sourced from Reuters, Bloomberg, CNBC, Yahoo Finance, and analyst consensus aggregators · Not financial advice · For informational purposes only</p>
+    <p style="margin-top:6px;"><a href="index.html">← Full briefing archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
