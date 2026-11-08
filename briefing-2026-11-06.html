@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Friday, November 6, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Friday, November 6, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — IRGC Says It Downed a US Drone Over Qeshm as Trump Warns He May "Destroy the Rest" of Iran</a>
+    <div class="toc-section">IRGC claims it shot down a US MQ-1 drone over Qeshm Island as three more tankers are hit in the Strait of Hormuz; Trump, meeting his national security team for the first time since the midterms, refuses to rule out resuming full-scale war · Qatar floats a two-day off-ramp; Iran's Rezaei says the strait stays closed until Tehran's seven conditions are met</div>
+    <a href="#cyber">🔐 Cybersecurity — A Quiet Patch Day Keeps the Spotlight on Open WooCommerce and WordPress Plugin Flaws</a>
+    <div class="toc-section">A critical insecure-deserialization bug in the Radius Booking plugin and a high-severity RCE in the Product Feed Manager for WooCommerce lead a routine disclosure day</div>
+    <a href="#ai">🤖 Artificial Intelligence — GPT-6 Cyber Rated "Critical" as Markets Tie an AI Correction to Post-Midterm Politics</a>
+    <div class="toc-section">OpenAI's GPT-6 Cyber becomes the first model it has rated Critical for cyber capability, solving 48.5% of ExploitGym tasks versus 32.1% for its predecessor; the Nasdaq enters correction as chip stocks fall 12% following the midterms; Five9 agrees to buy Level AI for $325M and Meta acquires AI coding startup Conductor</div>
+  </div>
+
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — Drone Downed Over Qeshm as Trump Weighs "Destroying the Rest" of Iran</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 252</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: IRGC Claims It Downed a US Drone Over Qeshm; Trump Won't Rule Out "Destroying the Rest" of Iran
+        <span class="badge badge-red">FIRST POST-MIDTERM NSC MEETING ON IRAN</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        Iran's Revolutionary Guard Corps said it shot down a US MQ-1 drone over Qeshm Island, as three more tankers were reported hit while transiting the Strait of Hormuz — part of a week-long run of disputed shipping and surveillance incidents in the strait. Despite his party's drubbing in Tuesday's midterms, which Trump has himself partly attributed to war fatigue over Iran, the president told reporters on Thursday he may have to "destroy the rest" of Iran and that people will "know soon enough" what he decides. The remarks came after Trump met his national security team for their first discussion on Iran since the election — a meeting officials described as inconclusive. Qatar's Emir Sheikh Tamim bin Hamad Al Thani proposed a two-day diplomatic off-ramp in a call with Trump, urging continued dialogue, but Iran's Supreme National Security Council secretary Mohsen Rezaei said the Strait of Hormuz will stay closed and no talks will resume until Tehran's seven conditions are met — effectively rejecting any near-term de-escalation.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">1 drone</div>
+          <div class="stat-label">US MQ-1 claimed downed over Qeshm</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">3 tankers</div>
+          <div class="stat-label">Newly hit in Hormuz</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">252 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.aljazeera.com/news/liveblog/2026/11/6/iran-war-live-trump-warns-us-may-have-to-destroy-rest-of-iran">Al Jazeera — Iran war live: IRGC says US drone downed, tankers hit in Strait of Hormuz</a>
+        <a href="https://www.redlakenationnews.com/story/2026/11/06/news/tankers-hit-in-hormuz-as-iran-keeps-up-pressure-after-us-vote/143894.html">Red Lake Nation News — Tankers hit in Hormuz as Iran keeps up pressure after US vote</a>
+        <a href="https://www.globalsecurity.org/military/ops/iran-war-oprep.htm">GlobalSecurity.org — Iran War 2026, Day 252 Update</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Iranian state media said Tehran's missile bases have "a suitable range" to hit Israel and American bases, warning any response to new aggression "will not be geographically limited."</li>
+        <li>Russia stepped up diplomatic outreach to the UAE and Iran, according to Al Jazeera, as regional powers try to manage the risk of renewed major escalation.</li>
+        <li>No new independently verified casualty figures were reported today; table below is carried forward.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>18–23</td><td>820 wounded</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">Figures carried forward from the last confirmed update; no new independently verified casualty tolls today.</p>
+    </div>
+  </div>
+
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Friday, November 6, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Critical Deserialization Flaw in Radius Booking Plugin Leads a Routine Disclosure Day
+        <span class="badge badge-orange">CVSS 9.8 · WORDPRESS ECOSYSTEM</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Today's disclosures were dominated by WordPress-ecosystem plugin flaws rather than a single marquee incident. CVE-2026-119516, a critical-severity insecure deserialization bug (CVSS 9.8) in the Radius Booking calendar plugin, tops the list, alongside CVE-2026-87964, a high-severity remote code execution flaw (CVSS 7.2) in the Product Feed Manager for WooCommerce. Several medium-severity issues were also disclosed, including a cross-site scripting bug (CVE-2026-65022) and an account-lockout weakness (CVE-2026-66987). None of today's CVEs have confirmed ransomware campaigns tied to them yet, and the Radius Booking flaw has not been added to CISA's Known Exploited Vulnerabilities catalog as of this briefing — but a CVSS 9.8 deserialization bug on a widely installed booking plugin is the kind of vulnerability that typically draws mass scanning within days of disclosure.
+      </p>
+      <div class="sources">
+        Sources: <a href="https://www.thehackerwire.com/vulnerability/CVE-2026-119516/">The Hacker Wire — CVE-2026-119516: Insecure Deserialization</a>
+        <a href="https://www.thehackerwire.com/vulnerability/CVE-2026-87964/">The Hacker Wire — CVE-2026-87964: Remote Code Execution (RCE)</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>CVE-2026-123653, a medium-severity flaw affecting esengine DeepSeek-Reasonix, was also disclosed (CVSS 6.3).</li>
+        <li>CVE-2026-35113, an information-disclosure issue (CVSS 4.8), and CVE-2026-109994, a missing-authorization flaw, round out today's lower-severity batch.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Patch or disable the Radius Booking plugin immediately given its CVSS 9.8 rating — deserialization bugs on booking/calendar plugins are a recurring mass-exploitation pattern</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>A quiet CVE day is a good moment to push clients on WordPress/WooCommerce plugin inventory hygiene before the next mass-scanning wave hits</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>If your e-commerce stack runs WooCommerce plugins, ask whether IT tracks third-party plugin CVEs as closely as core platform CVEs — most breaches in this category come through add-ons, not the core software</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Friday, November 6, 2026 · Markets Price In an AI Correction</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: GPT-6 Cyber Rated "Critical" as Nasdaq Enters Correction on Post-Midterm AI Jitters
+        <span class="badge badge-red">CHIP STOCKS DOWN 12% · FIRST "CRITICAL"-RATED OPENAI MODEL</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        OpenAI formally rated its new GPT-6 Cyber model "Critical" for cyber capability under its own Preparedness Framework — the first time the company has applied its top risk tier to a released model — reporting that it solves 48.5% of ExploitGym benchmark tasks, up sharply from 32.1% for GPT-5.6 Cyber. The announcement landed the same day broader markets absorbed a sharp post-midterm "AI bubble" repricing: the Nasdaq entered correction territory as chip stocks fell roughly 12%, with Bloomberg framing the sell-off as evidence that the AI industry is now driving the fate of markets and the economy as a whole, not just the tech sector. Dealmaking continued regardless of the volatility — Five9 agreed to acquire Level AI for about $325 million in cash, and Meta acquired AI coding startup Conductor — while Visa reported that AI shopping agents still fail 42.8% of benchmark runs, a reminder that commercial AI-agent reliability lags the capability headlines.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">48.5%</div>
+          <div class="stat-label">GPT-6 Cyber's ExploitGym solve rate</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">-12%</div>
+          <div class="stat-label">Chip-stock decline as Nasdaq corrects</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">$325M</div>
+          <div class="stat-label">Five9's cash deal for Level AI</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://bloomberg.com/graphics/2026-ai-bubble-financial-markets">Bloomberg — AI Bubble Risk: Stock Selloff Shows Markets' Dependence on Tech</a>
+        <a href="https://aiagentsdirectory.com/news/ai-agents-news-brief-november-6-2026">AI Agents Directory — AI Agents News Brief: November 6, 2026</a>
+        <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-friday-november-6-2026/">The Neuron — Everything That Happened in AI Today, Friday November 6</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>Google released Gemini Omni 1.2 Flash for AI video generation and editing, positioned as a speed-and-cost play.</li>
+        <li>Airbnb said it plans to launch an AI travel agent in the first half of 2027.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 AI Security</div>
+          <ul>
+            <li>A "Critical"-rated model that solves nearly half of a cyber-exploit benchmark is a concrete signal to accelerate patch-cycle speed, since the time between vulnerability disclosure and working exploit is about to compress further</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Visa's 42.8% AI-agent failure rate on benchmark shopping tasks is a useful data point for scoping realistic AI-agent deployments with clients rather than overselling capability</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>The Nasdaq correction and 12% chip-stock drop are worth watching for second-order effects on your own AI vendor roadmaps and capex plans, not just portfolio exposure</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Friday, November 6, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
