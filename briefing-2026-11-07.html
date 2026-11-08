@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Saturday, November 7, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Saturday, November 7, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Fresh Qeshm Strikes Knock Out Air Defenses in 15 Minutes as Trump Claims "A Lot of Progress" in Talks</a>
+    <div class="toc-section">Trump confirms new "minor" strikes on Qeshm Island that disabled an anti-aircraft system in roughly 15 minutes, even as he claims talks are making "a lot of progress"; Qatar's Emir calls Trump directly; four more tankers reported hit by mines in the Strait of Hormuz</div>
+    <a href="#cyber">🔐 Cybersecurity — SonicWall SAML/MFA Bypass Joins CISA's Known Exploited Vulnerabilities List as October Ransomware Tally Hits 855 Incidents</a>
+    <div class="toc-section">CISA adds an actively exploited SonicWall authentication-bypass flaw to its KEV catalog; ZeroFox counts 855 ransomware and extortion incidents in October, with manufacturing the hardest-hit sector; Interlock ransomware is linked to a Cisco Firepower Management Center zero-day</div>
+    <a href="#ai">🤖 Artificial Intelligence — OpenAI Closes $11B Funding at $1.25T as GPT-6 Cyber Becomes Its First "Critical"-Rated Model</a>
+    <div class="toc-section">OpenAI closes an $11 billion funding round at a $1.25 trillion valuation, down from earlier $30B/$1.4T talk, as GPT-6 Cyber earns the company's first "Critical" Preparedness Framework rating; Anthropic faces investor pushback on its IPO valuation target ahead of a planned mid-November Nasdaq debut; Google DeepMind reports an AI-assisted cryptanalysis breakthrough against legacy 1024-bit RSA</div>
+  </div>
+
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — New Qeshm Strikes Disable Air Defenses in 15 Minutes</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 253</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Trump Confirms New Qeshm Strikes Knocked Out Air Defenses in 15 Minutes; Claims "A Lot of Progress" in Talks
+        <span class="badge badge-red">4 MORE TANKERS MINED IN HORMUZ</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        Trump confirmed a fresh round of US strikes on Qeshm Island, describing them as "minor" and saying they knocked out an Iranian anti-aircraft system in roughly 15 minutes. In the same breath, he claimed negotiators are making "a lot of progress" toward a deal — a familiar pattern of oscillating between military pressure and claims of diplomatic headway that has defined his messaging all week. Qatar's Emir Sheikh Tamim bin Hamad Al Thani placed a direct call to Trump, continuing Doha's mediation push first floated as a two-day off-ramp on Thursday. Meanwhile four additional tankers were reported hit by mines while transiting the Strait of Hormuz, bringing the week's total disputed shipping incidents into double digits. Iran's negotiating position has not moved: Tehran continues to call Washington's response to its seven conditions for reopening the strait "unconvincing," and there is no sign of the strait reopening in the near term.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">~15 min</div>
+          <div class="stat-label">Time to disable Qeshm air-defense system</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">4 tankers</div>
+          <div class="stat-label">Newly mined in Hormuz</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">253 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.reuters.com/world/middle-east/">Reuters — Middle East</a>
+        <a href="https://www.bbc.com/news/world/middle_east">BBC News — Middle East</a>
+        <a href="https://www.aljazeera.com/news/liveblog/2026/11/7/iran-war-live">Al Jazeera — Iran war live, Day 253</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Qatar's mediation continues to be the most active diplomatic channel; no breakthrough reported yet from the Emir's call with Trump.</li>
+        <li>Iran's rejection of Washington's response to its seven conditions suggests the strait closure extends into at least a second week.</li>
+        <li>No new independently verified casualty figures were reported today; table below is carried forward.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>18–23</td><td>820 wounded</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">Figures carried forward from the last confirmed update; no new independently verified casualty tolls today.</p>
+    </div>
+  </div>
+
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Saturday, November 7, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: SonicWall SAML/MFA Bypass Added to CISA's KEV Catalog as October Ransomware Tally Hits 855 Incidents
+        <span class="badge badge-red">CVE-2026-19868 · ACTIVELY EXPLOITED</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        CISA added CVE-2026-19868, a SAML authentication and MFA bypass affecting SonicWall devices, to its Known Exploited Vulnerabilities catalog, confirming active exploitation in the wild and giving federal agencies a mandated remediation deadline. The disclosure lands amid a grim monthly tally from ZeroFox: 855 ransomware and extortion incidents recorded in October, with manufacturing the hardest-hit sector at 151 incidents. Separately, the Interlock ransomware group has been linked to exploitation of a Cisco Firepower Management Center zero-day (CVE-2026-20131), giving attackers a path into FMC-managed security infrastructure itself — a notable escalation since FMC is the control plane for Cisco firewall deployments.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">855</div>
+          <div class="stat-label">Ransomware/extortion incidents in October (ZeroFox)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">151</div>
+          <div class="stat-label">Manufacturing-sector incidents, the hardest-hit</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.cisa.gov/news-events/alerts">CISA — Known Exploited Vulnerabilities Catalog</a>
+        <a href="https://www.bleepingcomputer.com/">Bleeping Computer</a>
+        <a href="https://www.zerofox.com/blog/">ZeroFox — October Ransomware Report</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Several newly disclosed CVEs span XSS, missing-authorization, and information-disclosure categories, continuing the week's steady drip of mid-severity plugin and appliance bugs.</li>
+        <li>Interlock's use of a Cisco FMC zero-day underscores a broader trend of ransomware crews targeting the security tooling meant to stop them.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Patch SonicWall devices against CVE-2026-19868 immediately — it bypasses both SAML and MFA, meaning compromised credentials alone are enough to get in</li>
+            <li>Audit Cisco FMC exposure; the Interlock/CVE-2026-20131 link means your firewall management plane is now an active ransomware target, not just the firewalls themselves</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>855 October incidents with manufacturing leading is a strong data point for sector-specific ransomware-readiness engagements</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>If you run SonicWall VPN/firewall gear, ask IT directly whether CVE-2026-19868 has been patched — an MFA bypass on perimeter equipment is board-reportable risk</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Saturday, November 7, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: OpenAI Closes $11B at $1.25T Valuation as GPT-6 Cyber Becomes Its First "Critical"-Rated Model
+        <span class="badge badge-purple">DOWN FROM $30B/$1.4T TALK · ANTHROPIC IPO VALUATION UNDER PRESSURE</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        OpenAI closed an $11 billion funding round at a $1.25 trillion valuation — notably below the $30 billion raise and $1.4 trillion valuation floated in earlier reporting, a sign investors are pricing in more caution after the week's broader Nasdaq correction. The round closed the same week GPT-6 Cyber became the first OpenAI model rated "Critical" under its Preparedness Framework. In parallel, Anthropic is reportedly facing investor pushback on the roughly $1.5 trillion valuation it's seeking ahead of a planned Nasdaq debut targeted for mid-November, with investors pressing to negotiate the number down. Elsewhere in AI research, Google DeepMind reported an AI-assisted cryptanalysis breakthrough, finding two exploitable weaknesses in legacy 1024-bit RSA encryption — a reminder that frontier AI is now being pointed at cryptographic primitives themselves, not just code-level vulnerabilities.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#bc8cff;">$1.25T</div>
+          <div class="stat-label">OpenAI's closing valuation, down from $1.4T talk</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">$19B/20yr</div>
+          <div class="stat-label">Google-backed TeraWulf Kentucky lease (recurring)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">1024-bit</div>
+          <div class="stat-label">RSA key size with new AI-found weaknesses</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.theinformation.com/">The Information</a>
+        <a href="https://www.ft.com/artificial-intelligence">Financial Times — Artificial Intelligence</a>
+        <a href="https://deepmind.google/discover/blog/">Google DeepMind Blog</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>Google's Gemini Omni 1.2 Flash reached general availability for AI video generation and editing.</li>
+        <li>METR's finding that Anthropic's capability gains are progressing at roughly 2x the prior pace continues to shape investor expectations around the IPO valuation debate.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 AI Security</div>
+          <ul>
+            <li>DeepMind's AI-assisted RSA cryptanalysis is a long-horizon signal worth tracking — 1024-bit RSA was already deprecated in most standards, but the method matters more than the target</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>OpenAI's valuation coming in below earlier reporting, alongside Anthropic's IPO pushback, is a useful talking point for clients asking whether AI vendor valuations are cooling</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>Watch Anthropic's mid-November Nasdaq debut closely — the final IPO valuation will be a real-time market verdict on frontier-lab economics that affects your own AI vendor negotiating leverage</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Saturday, November 7, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
