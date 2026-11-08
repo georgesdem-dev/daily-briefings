@@ -15,441 +15,362 @@
     }
     a { color: #58a6ff; text-decoration: none; }
     a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
 
-    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
-
-    /* ── Header ─────────────────────────────────── */
-    .header {
+    .briefing-header {
       text-align: center;
       padding: 52px 0 40px;
       border-bottom: 1px solid #21262d;
-      margin-bottom: 52px;
+      margin-bottom: 48px;
     }
-    .header .label {
+    .briefing-header .label {
       font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
       text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
     }
-    .header h1 { font-size: 2rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
-    .header .date { font-size: 1.05rem; color: #8b949e; margin-bottom: 14px; }
-    .header .pills { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-    .pill {
-      font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-      padding: 4px 12px; border-radius: 20px;
-    }
-    .pill-iran  { background: rgba(248,81,73,0.15);  color: #f85149; border: 1px solid rgba(248,81,73,0.35);  }
-    .pill-cyber { background: rgba(255,166,0,0.12);  color: #f0a500; border: 1px solid rgba(255,166,0,0.3);   }
-    .pill-ai    { background: rgba(63,185,80,0.12);  color: #3fb950; border: 1px solid rgba(63,185,80,0.3);   }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
 
-    /* ── Section ─────────────────────────────────── */
-    .section { margin-bottom: 56px; }
-    .section-header {
-      display: flex; align-items: center; gap: 12px;
-      padding-bottom: 16px;
-      border-bottom: 2px solid;
-      margin-bottom: 28px;
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
     }
-    .section-header.iran   { border-color: #f85149; }
-    .section-header.cyber  { border-color: #f0a500; }
-    .section-header.ai     { border-color: #3fb950; }
-    .section-icon { font-size: 1.6rem; }
-    .section-title { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; }
-    .section-subtitle { font-size: 0.8rem; color: #8b949e; margin-left: auto; text-transform: uppercase; letter-spacing: 1px; }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
 
-    /* ── Story cards ─────────────────────────────── */
-    .story {
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 10px;
-      padding: 20px 22px;
-      margin-bottom: 14px;
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
     }
-    .story:hover { border-color: #444c56; }
-    .story-meta {
-      display: flex; align-items: center; gap: 10px;
-      margin-bottom: 8px; flex-wrap: wrap;
-    }
-    .story-tag {
-      font-size: 10px; font-weight: 700; letter-spacing: 1.2px;
-      text-transform: uppercase; padding: 3px 9px; border-radius: 4px;
-    }
-    .tag-breaking   { background: rgba(248,81,73,0.2);  color: #f85149; }
-    .tag-diplomatic { background: rgba(88,166,255,0.15); color: #58a6ff; }
-    .tag-military   { background: rgba(248,81,73,0.15);  color: #f85149; }
-    .tag-critical   { background: rgba(248,81,73,0.2);  color: #f85149; }
-    .tag-threat     { background: rgba(255,166,0,0.15); color: #f0a500; }
-    .tag-breach     { background: rgba(255,100,50,0.15); color: #ff7b55; }
-    .tag-vuln       { background: rgba(255,166,0,0.12); color: #f0a500; }
-    .tag-launch     { background: rgba(63,185,80,0.15); color: #3fb950; }
-    .tag-business   { background: rgba(88,166,255,0.15); color: #58a6ff; }
-    .tag-policy     { background: rgba(163,113,247,0.15); color: #a371f7; }
-    .tag-geopolitics { background: rgba(163,113,247,0.15); color: #a371f7; }
-    .story-source { font-size: 11px; color: #6e7681; margin-left: auto; }
-    .story h3 { font-size: 1rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; line-height: 1.4; }
-    .story p  { font-size: 0.9rem; color: #8b949e; line-height: 1.65; }
-    .story p + p { margin-top: 8px; }
-    .story .read-more { display: inline-block; margin-top: 10px; font-size: 0.82rem; color: #58a6ff; }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
 
-    /* ── Audience lens boxes ─────────────────────── */
-    .lens-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-top: 22px; }
-    .lens {
-      background: #0d1117;
-      border: 1px solid #30363d;
-      border-radius: 8px;
-      padding: 16px 18px;
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
     }
-    .lens-title { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 10px; }
-    .lens-ciso   .lens-title { color: #f0a500; }
-    .lens-partner .lens-title { color: #58a6ff; }
-    .lens-exec   .lens-title { color: #a371f7; }
-    .lens ul { list-style: none; }
-    .lens ul li { font-size: 0.85rem; color: #8b949e; padding: 4px 0; border-bottom: 1px solid #21262d; }
-    .lens ul li:last-child { border-bottom: none; }
-    .lens ul li::before { content: "▸ "; color: #484f58; }
-
-    /* ── Status bar (Iran) ───────────────────────── */
-    .status-bar {
-      display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px;
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
     }
-    .status-item {
-      flex: 1; min-width: 140px;
-      background: #161b22; border: 1px solid #30363d; border-radius: 8px;
-      padding: 12px 14px; text-align: center;
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
     }
-    .status-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #6e7681; margin-bottom: 4px; }
-    .status-value { font-size: 0.95rem; font-weight: 700; color: #f0f6fc; }
-    .status-sub   { font-size: 0.75rem; color: #8b949e; }
-    .status-red   { color: #f85149; }
-    .status-yellow{ color: #f0a500; }
-    .status-green { color: #3fb950; }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
 
-    /* ── Divider ─────────────────────────────────── */
-    .divider { border: none; border-top: 1px solid #21262d; margin: 28px 0; }
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
 
-    /* ── Footer ─────────────────────────────────── */
-    .footer {
-      text-align: center; margin-top: 60px; padding-top: 20px;
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
       border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
     }
-    .footer strong { color: #6e7681; }
-    .back-link { display: inline-block; margin-bottom: 48px; font-size: 0.85rem; color: #58a6ff; }
+    .briefing-footer strong { color: #6e7681; }
   </style>
 </head>
 <body>
 <div class="container">
 
-  <a class="back-link" href="index.html">← Back to Archive</a>
-
-  <!-- ── HEADER ─────────────────────────────────── -->
-  <div class="header">
-    <div class="label">Intelligence Briefing · Day 254</div>
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
     <h1>📰 Daily Briefing</h1>
-    <div class="date">Sunday, November 8, 2026</div>
-    <div class="pills">
-      <span class="pill pill-iran">🔥 Iran War</span>
-      <span class="pill pill-cyber">🔐 Cybersecurity</span>
-      <span class="pill pill-ai">🤖 AI</span>
+    <div class="meta">
+      Sunday, November 8, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════════
-       SECTION 1 — IRAN WAR
-  ══════════════════════════════════════════════ -->
-  <div class="section">
-    <div class="section-header iran">
-      <span class="section-icon">🔥</span>
-      <span class="section-title">Iran War — Day 254</span>
-      <span class="section-subtitle">Nov 8, 2026</span>
-    </div>
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — First Post-Midterm Strikes Hit Qeshm Air Defenses as Netanyahu Pushes for Renewed Strikes</a>
+    <div class="toc-section">Fresh US strikes on Qeshm Island's air-defense system are the first since the midterms; Trump accuses Iran of fabricating shipping incidents to inflate energy prices; Netanyahu pushes for renewed strikes as Trump's own advisers are reportedly divided, while Bessent enlists Beijing to pressure Tehran</div>
+    <a href="#cyber">🔐 Cybersecurity — DigiCert Discloses Internal Account Breach as Supermarket Fridges Are Remotely Hacked Across Europe</a>
+    <div class="toc-section">DigiCert confirms a breach of an internal account exposing customer names, emails, phone numbers and business addresses; researchers report remote hacking of supermarket refrigeration systems across Europe; three actively exploited CVEs — Palo Alto PAN-OS, JetBrains TeamCity, and Check Point Security Gateway — demand urgent attention</div>
+    <a href="#ai">🤖 Artificial Intelligence — Unreleased OpenAI Model Finds 948 Linux Kernel Exploits in a $1.2M Run as Anthropic Commits $3.4B to Power</a>
+    <div class="toc-section">An unreleased OpenAI model autonomously found 948 working Linux kernel root exploits during a $1.2 million compute run; Anthropic commits $3.4 billion to gas-generator power purchases — reportedly the largest known single power-generation equipment buy by an AI lab — alongside a $100M Claude Frontier Academy investment targeting 10,000 Frontier Deployed Engineers by the end of 2027</div>
+  </div>
 
-    <!-- Status bar -->
-    <div class="status-bar">
-      <div class="status-item">
-        <div class="status-label">Conflict Day</div>
-        <div class="status-value status-red">254</div>
-        <div class="status-sub">Since outbreak</div>
-      </div>
-      <div class="status-item">
-        <div class="status-label">Hormuz Status</div>
-        <div class="status-value status-red">BLOCKED</div>
-        <div class="status-sub">3 ships burning</div>
-      </div>
-      <div class="status-item">
-        <div class="status-label">Diplomacy</div>
-        <div class="status-value status-yellow">ACTIVE</div>
-        <div class="status-sub">Qatar bridging</div>
-      </div>
-      <div class="status-item">
-        <div class="status-label">US Strikes</div>
-        <div class="status-value status-red">RESUMED</div>
-        <div class="status-sub">Post-midterms</div>
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — First Post-Midterm Strikes Hit Qeshm as Netanyahu Pushes to Escalate</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 254</div>
       </div>
     </div>
 
-    <!-- Story 1 -->
-    <div class="story">
-      <div class="story-meta">
-        <span class="story-tag tag-breaking">Breaking</span>
-        <span class="story-tag tag-military">Strait</span>
-        <span class="story-source">The National News · Straits.live</span>
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Fresh Strikes on Qeshm Air Defenses — First Since the Midterms — as Netanyahu Pushes for Escalation
+        <span class="badge badge-red">TRUMP ACCUSES IRAN OF FABRICATING INCIDENTS</span>
       </div>
-      <h3>Smoke Blankets Strait of Hormuz — Three Ships Ablaze After IRGC Mine Strikes</h3>
-      <p>Iran's Islamic Revolutionary Guard Corps reported that three naval mine explosions set ships ablaze in the Strait of Hormuz early Sunday as Tehran intensified pressure on the United States and Gulf states. The IRGC said the vessels had attempted to circumvent Iran's blockade. Shipping traffic remains at approximately 20% of pre-war levels as commercial operators reroute around the Cape of Good Hope.</p>
-      <p>The Strait of Hormuz has now been effectively closed to commercial traffic for over 250 days, with mine incidents, enforced blockade actions, and unresolved diplomacy all active simultaneously. Insurance premiums on Gulf-bound tankers have reached record highs.</p>
-      <a class="read-more" href="https://www.thenationalnews.com/news/mena/2026/11/08/smoke-blanketing-the-strait-iran-steps-up-campaign-of-threats-to-shipping/" target="_blank">Read at The National →</a>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        US forces carried out fresh strikes near the Strait of Hormuz, hitting an air-defense system on Qeshm Island — the first such strikes since Tuesday's midterm elections, in which Trump's party lost control of both chambers of Congress amid war fatigue cited as a contributing factor. Trump's rhetoric continued to swing between threat and resolution: he accused Iran of fabricating shipping incidents in the strait specifically to drive up energy prices, even as IRGC claims of downed drones and mined tankers continued. According to the Wall Street Journal, Trump's own national security advisers are divided over next steps, while Israeli Prime Minister Netanyahu is pushing Washington toward renewed, larger-scale strikes. Treasury Secretary Bessent has separately asked China to pressure Iran into de-escalating, and the Washington Post reports Beijing relayed the message to Tehran — an unusual instance of US-China cooperation emerging from the crisis even as military pressure continues.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">1st</div>
+          <div class="stat-label">Strikes since the midterm elections</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">Divided</div>
+          <div class="stat-label">Trump's advisers, per WSJ</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">254 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.wsj.com/world/middle-east">Wall Street Journal — Middle East</a>
+        <a href="https://www.washingtonpost.com/world/">Washington Post — World</a>
+        <a href="https://www.reuters.com/world/middle-east/">Reuters — Middle East</a>
+      </div>
     </div>
 
-    <!-- Story 2 -->
-    <div class="story">
-      <div class="story-meta">
-        <span class="story-tag tag-military">US Strikes</span>
-        <span class="story-source">CBS News · Al Jazeera · Fox News</span>
-      </div>
-      <h3>Fresh US Strikes on Iranian Air Defence Despite Qatar Mediation Push</h3>
-      <p>The United States carried out new strikes on November 6, targeting an Iranian air defence system even as Qatar stepped up negotiations between Washington and Tehran. Iran shot down two US reconnaissance drones near Qeshm Island and warned of retaliation if larger strikes resume. Trump has signalled he is weighing options, with CENTCOM reportedly preparing contingency plans for expanded operations now that midterms are concluded.</p>
-      <p>Iran's foreign minister said negotiations "are proceeding very intensively" through Qatari mediators, but Tehran simultaneously insists it will respond forcefully to any renewed large-scale US action — a dual-track strategy of diplomacy and deterrence.</p>
-      <a class="read-more" href="https://www.cbsnews.com/live-updates/iran-war-us-trump-negotiations-midterms/" target="_blank">Read at CBS News →</a>
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Netanyahu's push for renewed strikes represents the most explicit Israeli pressure on Washington to escalate since the ceasefire-adjacent lull earlier in the war.</li>
+        <li>Bessent's outreach to Beijing and China's relay of the pressure message to Tehran is a notable new diplomatic channel, separate from Qatar's ongoing mediation.</li>
+        <li>No new independently verified casualty figures were reported today; table below is carried forward.</li>
+      </ul>
     </div>
 
-    <!-- Story 3 -->
-    <div class="story">
-      <div class="story-meta">
-        <span class="story-tag tag-diplomatic">Diplomacy</span>
-        <span class="story-source">Al Jazeera · Outlook India</span>
-      </div>
-      <h3>Iran Pushes Accelerated Ceasefire Timeline — But Conditions Remain Extensive</h3>
-      <p>Tehran has proposed an "accelerated plan" for ceasefire talks, reportedly offering to reopen the Strait of Hormuz within two days rather than seven if the US meets its demands — a marginal concession that Washington has not accepted. Iran's seven-point list includes a permanent ceasefire, end to the US naval blockade, lifting of all sanctions, return of frozen assets, withdrawal of US forces from the region, and war reparations.</p>
-      <p>Qatar's emir called Trump on November 6 urging dialogue and pressing for the strait to remain open. Trump publicly signalled "progress on a deal" but stopped short of any commitment, and the White House has not officially acknowledged Iran's latest proposal.</p>
-      <a class="read-more" href="https://www.aljazeera.com/news/2026/11/2/iran-pushing-accelerated-plan-for-ceasefire-talks-with-us" target="_blank">Read at Al Jazeera →</a>
-    </div>
-
-    <!-- Story 4 -->
-    <div class="story">
-      <div class="story-meta">
-        <span class="story-tag tag-geopolitics">Geopolitics</span>
-        <span class="story-source">Various · Reuters</span>
-      </div>
-      <h3>Russia-Iran Pipeline Talks, Midterm Fallout, and $25B in Lost Iranian Oil Revenue</h3>
-      <p>Iran's Mohsen Rezaei met Russian President Putin in Moscow on November 5 to discuss a proposed gas pipeline from Russia to Iran — a signal of deepening strategic ties amid the war. The US estimates that the blockade has deprived Iran of revenue from more than $25 billion in oil exports to date.</p>
-      <p>Post-midterm analysis in Washington is reading election results as a mixed signal: some anti-war candidates performed well, but Republican hawks largely retained seats, giving Trump continued political latitude for military operations. Democrats broadly oppose an expansion of the conflict.</p>
-      <a class="read-more" href="https://www.outlookindia.com/international/us-iran-war-latest-us-strikes-qatar-nuclear-talks-strait-of-hormuz" target="_blank">Read at Outlook India →</a>
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>18–23</td><td>820 wounded</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">Figures carried forward from the last confirmed update; no new independently verified casualty tolls today.</p>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════════
-       SECTION 2 — CYBERSECURITY
-  ══════════════════════════════════════════════ -->
-  <div class="section">
-    <div class="section-header cyber">
-      <span class="section-icon">🔐</span>
-      <span class="section-title">Cybersecurity</span>
-      <span class="section-subtitle">Nov 8, 2026</span>
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Sunday, November 8, 2026</div>
+      </div>
     </div>
 
-    <!-- Story 1 -->
-    <div class="story">
-      <div class="story-meta">
-        <span class="story-tag tag-critical">Critical · 3 CVEs</span>
-        <span class="story-source">Bleeping Computer · SecurityWeek · CISA</span>
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: DigiCert Confirms Internal Account Breach; Supermarket Refrigeration Systems Hacked Remotely Across Europe
+        <span class="badge badge-red">NAMES, EMAILS, PHONES, BUSINESS ADDRESSES EXPOSED</span>
       </div>
-      <h3>Ivanti Connect Secure Zero-Day Chain: Three CVEs Enable Unauthenticated Root Access on Fully Patched VPNs</h3>
-      <p>The Ivanti Connect Secure zero-day chain — first disclosed in October, with the latest patches on November 2 — has become one of the most dangerous attack vectors of 2026. Three CVEs chain together to give attackers unauthenticated root-level code execution on fully patched systems:</p>
-      <p><strong style="color:#f0f6fc;">CVE-2026-104935</strong> (CVSS 8.6): Authentication bypass by spoofing — the initial entry point. <strong style="color:#f0f6fc;">CVE-2026-111357</strong> (CVSS 8.8): Local privilege escalation. <strong style="color:#f0f6fc;">CVE-2026-118527</strong> (CVSS 4.3): Authenticated file upload to a known path. Together, threat actor UTA0576 (tracked by Volexity) has chained these since at least October 3 to achieve full root shell access. The chain has been weaponised as a ransomware deployment gateway.</p>
-      <p>CISA deadlines: October 16 (CVE-104935), November 2 (CVE-111357 &amp; 118527), <strong style="color:#f85149;">November 13 (final deadline — still active)</strong>. Federal agencies must comply; all enterprises should treat this as urgent.</p>
-      <a class="read-more" href="https://www.bleepingcomputer.com/news/security/ivanti-warns-of-connect-secure-zero-day-exploited-in-attacks/" target="_blank">Read at Bleeping Computer →</a>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Certificate authority DigiCert disclosed that an internal account was compromised, exposing customer names, email addresses, phone numbers, and business addresses — a reminder that even security-critical infrastructure providers remain attractive credential-theft targets. Separately, researchers reported that supermarket refrigeration and freezer systems across Europe were remotely hacked, a novel OT/IoT exposure with direct food-safety implications rather than the usual data-theft framing. On the vulnerability side, CISA's KEV catalog saw three fresh additions this week: CVE-2026-0257 (Palo Alto PAN-OS authentication bypass), CVE-2026-63077 (JetBrains TeamCity deserialization), and CVE-2026-50751 (Check Point Security Gateway improper authentication) — all confirmed under active exploitation. D-Link DGS-3130 switches also received zero-day disclosures, echoing the still-unresolved Zyxel GS1900 situation from earlier in the week.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">3</div>
+          <div class="stat-label">New actively-exploited CVEs added to CISA KEV</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">2</div>
+          <div class="stat-label">Major new ransomware victims (Company #135, Erowa)</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://krebsonsecurity.com/">Krebs on Security</a>
+        <a href="https://www.bleepingcomputer.com/">Bleeping Computer</a>
+        <a href="https://www.darkreading.com/">Dark Reading</a>
+      </div>
     </div>
 
-    <!-- Story 2 -->
-    <div class="story">
-      <div class="story-meta">
-        <span class="story-tag tag-threat">Ransomware</span>
-        <span class="story-source">QUE.com · SecurityWeek</span>
-      </div>
-      <h3>Ivanti Zero-Day Chain Becomes Active Ransomware Gateway — 38 Victims/Day Average</h3>
-      <p>Threat intelligence teams confirm the Ivanti Connect Secure chain is actively being leveraged as a ransomware launchpad, with criminals pivoting from initial access to full enterprise encryption within hours of exploitation. The seven-day rolling average for ransomware leak-site postings has reached <strong style="color:#f0f6fc;">38.1 new victims per day</strong> as of early November 2026 — a record high for the year.</p>
-      <p>Organisations with unpatched Ivanti Connect Secure deployments should assume compromise and begin incident response procedures immediately, particularly checking for signs of UTA0576 activity and lateral movement.</p>
-      <a class="read-more" href="https://que.com/ivanti-connect-secure-zero-day-chain-becomes-ransomware-gateway/" target="_blank">Read at QUE.com →</a>
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Company #135 and industrial toolmaker Erowa were both named as new victims of N0n and Akira ransomware respectively, continuing the week's steady drumbeat of manufacturing-sector hits.</li>
+        <li>The French blood bank cyberattack disclosed earlier in the week remains under investigation, with no confirmed data-exfiltration scope yet.</li>
+        <li>The Zyxel GS1900 zero-day (CVE-2026-107441) remains only partially mitigated after a patch that failed to fully stop exploitation, with roughly 1,000 switches across 10 affected models still compromised.</li>
+      </ul>
     </div>
 
-    <!-- Story 3 -->
-    <div class="story">
-      <div class="story-meta">
-        <span class="story-tag tag-vuln">Zero-Day</span>
-        <span class="story-source">GBHackers · SecurityWeek</span>
-      </div>
-      <h3>Zyxel GS1900 Zero-Day CVE-2026-107441: ~1,000 Network Switches Compromised</h3>
-      <p>Attackers exploited a previously unknown zero-day in Zyxel GS1900 series network switches — an out-of-bounds write flaw (CVE-2026-107441) that allows OS command execution via crafted HTTP requests. Nearly 1,000 devices were compromised before the vulnerability was identified. Notably, the initial incident response attributed the attack to a previously patched vulnerability; forensic investigation revealed the actual exploit was an undisclosed zero-day.</p>
-      <p>Zyxel switches are widely deployed in SMB and enterprise LAN infrastructure. Organisations should audit switch firmware versions and check device logs for signs of compromise.</p>
-      <a class="read-more" href="https://securityweek.com/zyxel-switch-hacks-blamed-on-patched-flaw-actually-exploited-a-zero-day" target="_blank">Read at SecurityWeek →</a>
-    </div>
-
-    <!-- Story 4 -->
-    <div class="story">
-      <div class="story-meta">
-        <span class="story-tag tag-vuln">KEV · CISA</span>
-        <span class="story-source">Senserva · CISA</span>
-      </div>
-      <h3>Four New CVEs Added to CISA KEV This Week — Active Exploitation Confirmed</h3>
-      <p>CISA added four new vulnerabilities to its Known Exploited Vulnerabilities (KEV) catalog this week, including the latest Ivanti CVEs and the Apple dyld memory corruption flaw <strong style="color:#f0f6fc;">CVE-2026-20700</strong> (CVSS 7.8) — a zero-day in Apple's Dynamic Link Editor affecting macOS and iOS. Apple has shipped a patch; federal agencies have a mandatory remediation deadline. All organisations running unpatched Apple devices should prioritise this update.</p>
-      <a class="read-more" href="https://senserva.com/exploited-this-week.html" target="_blank">Read at Senserva →</a>
-    </div>
-
-    <!-- Story 5 -->
-    <div class="story">
-      <div class="story-meta">
-        <span class="story-tag tag-threat">Ransomware · Zero-Day</span>
-        <span class="story-source">GBHackers</span>
-      </div>
-      <h3>Interlock Ransomware Exploits Cisco FMC Zero-Day CVE-2026-20131 for Root Access</h3>
-      <p>The Interlock ransomware group exploited CVE-2026-20131, a critical zero-day in Cisco Firepower Management Center (FMC), to gain root access to victim environments. The flaw was silently exploited from at least January 26, 2026 — more than a month before public disclosure — giving attackers a lengthy dwell-time window. Cisco FMC is a widely deployed security management platform, making this a high-impact supply-chain-level security failure.</p>
-      <p>Organisations running Cisco FMC should verify patch status and examine logs for anomalous activity going back to late January.</p>
-    </div>
-
-    <!-- Audience Lens -->
-    <hr class="divider">
-    <div class="lens-grid">
-      <div class="lens lens-ciso">
-        <div class="lens-title">🔐 CISO Priorities</div>
-        <ul>
-          <li>Ivanti Connect Secure — CISA deadline Nov 13, patch all three CVEs NOW</li>
-          <li>Cisco FMC CVE-2026-20131 — check logs back to Jan 26 for Interlock</li>
-          <li>Apple CVE-2026-20700 — KEV listed, dyld zero-day, patch macOS/iOS</li>
-          <li>Zyxel GS1900 — CVE-2026-107441, audit all network switches immediately</li>
-          <li>Ransomware at 38.1 victims/day — IR retainer and playbooks on standby</li>
-          <li>UTA0576 TTPs: unauthenticated root → ransomware in hours, update detections</li>
-        </ul>
-      </div>
-      <div class="lens lens-partner">
-        <div class="lens-title">🤝 Consulting Partner Trends</div>
-        <ul>
-          <li>Ivanti chain: massive patching backlog across enterprise clients — urgent advisory</li>
-          <li>Ransomware record pace (38/day) — incident response engagements surging</li>
-          <li>Zero-day dwell time (Cisco FMC: 30+ days) — detection gap assessments</li>
-          <li>Network appliance security (Zyxel, Ivanti, Cisco) — perimeter review pipeline</li>
-          <li>CISA KEV compliance — federal contractors need rapid remediation support</li>
-        </ul>
-      </div>
-      <div class="lens lens-exec">
-        <div class="lens-title">💼 Executive Radar</div>
-        <ul>
-          <li>Ransomware at all-time high — board needs cyber insurance review</li>
-          <li>Critical infrastructure exposed: VPNs, firewalls, network switches all hit</li>
-          <li>Ivanti VPN chain: attackers walk straight through "fully patched" defences</li>
-          <li>Apple devices also at risk — no platform is immune this quarter</li>
-          <li>Cyber spend: network appliance refresh &amp; IR retainer ROI now obvious</li>
-        </ul>
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Patch Palo Alto PAN-OS, JetBrains TeamCity, and Check Point Security Gateway against the three newly KEV-listed CVEs this week — all three are confirmed under active exploitation</li>
+            <li>If you operate refrigerated retail or food-service environments, check whether OT/IoT refrigeration controllers are network-segmented from corporate IT, given the new European supermarket hacking reports</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>The DigiCert breach is a good prompt for client conversations about vetting the security posture of their own certificate authorities and other upstream trust providers</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>DigiCert handling your organization's certificates means its breach is your exposure too — ask whether any of your business contacts were in the exposed dataset</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════════
-       SECTION 3 — ARTIFICIAL INTELLIGENCE
-  ══════════════════════════════════════════════ -->
-  <div class="section">
-    <div class="section-header ai">
-      <span class="section-icon">🤖</span>
-      <span class="section-title">Artificial Intelligence</span>
-      <span class="section-subtitle">Nov 8, 2026</span>
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Sunday, November 8, 2026</div>
+      </div>
     </div>
 
-    <!-- Story 1 -->
-    <div class="story">
-      <div class="story-meta">
-        <span class="story-tag tag-launch">Security · AI</span>
-        <span class="story-source">CyberScoop · Security Boulevard · DEV.to</span>
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Unreleased OpenAI Model Finds 948 Linux Kernel Root Exploits in a $1.2M Compute Run; Anthropic Commits $3.4B to Power
+        <span class="badge badge-purple">LARGEST KNOWN SINGLE POWER-EQUIPMENT PURCHASE BY AN AI LAB</span>
       </div>
-      <h3>OpenAI Launches GPT-6 Cyber: Breaks Into 79.4% of Simulated Enterprise Targets — Under Strict Gating</h3>
-      <p>OpenAI unveiled GPT-6 Cyber on November 5, a specialised reasoning model designed for vulnerability discovery and offensive security research. In internal benchmarks, the model autonomously broke into <strong style="color:#f0f6fc;">79.4% of simulated enterprise targets in under 9 minutes</strong>. OpenAI rated it "Critical" under its Preparedness Framework — one notch above GPT-5.6 Cyber's "High" rating.</p>
-      <p>Access is restricted to a limited cohort within OpenAI's Daybreak Red program. New safeguards include stricter identity verification, frequent model check-ins when high-risk behaviours are requested, and enhanced "misalignment" monitoring. Critics argue the model's capabilities represent a significant asymmetric threat if released broadly or stolen.</p>
-      <a class="read-more" href="https://cyberscoop.com/openai-gpt-6-cyber-security-model/" target="_blank">Read at CyberScoop →</a>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        An unreleased OpenAI model autonomously discovered 948 working root-level exploits in the Linux kernel during a single $1.2 million compute run — a striking escalation from GPT-6 Cyber's already "Critical"-rated capability, and a figure that underscores how automated vulnerability discovery is now operating at a scale no human team could match. On the infrastructure side, Anthropic committed $3.4 billion to gas-generator power purchases, which Bloomberg and the FT describe as the largest known single power-generation equipment purchase by an AI lab to date, alongside the previously announced $19 billion, 20-year TeraWulf Kentucky data-center lease backed by Google credit support. Anthropic also detailed its $100 million Claude Frontier Academy investment, targeting 10,000 "Frontier Deployed Engineers" by the end of 2027, and introduced FlashProve, a new formal-verification product. OpenAI's own financing continues to draw scrutiny after this week's $11 billion round closed at $1.25 trillion — below the $1.4 trillion figure floated earlier. In prediction markets, Google now leads at 76% odds of having the best AI model by the end of November 2026.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">948</div>
+          <div class="stat-label">Linux kernel root exploits found autonomously</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#bc8cff;">$3.4B</div>
+          <div class="stat-label">Anthropic's gas-generator power commitment</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">76%</div>
+          <div class="stat-label">Google's odds of best AI model by end of Nov.</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.technologyreview.com/">MIT Technology Review</a>
+        <a href="https://www.ft.com/artificial-intelligence">Financial Times — Artificial Intelligence</a>
+        <a href="https://www.anthropic.com/news">Anthropic — News</a>
+      </div>
     </div>
 
-    <!-- Story 2 -->
-    <div class="story">
-      <div class="story-meta">
-        <span class="story-tag tag-business">IPO · $2T</span>
-        <span class="story-source">CNN · Tech Insider · TechRepublic</span>
-      </div>
-      <h3>Anthropic Files for $2 Trillion IPO — Warns of "Catastrophic or Existential Risks to Humanity"</h3>
-      <p>Anthropic filed with the SEC for a public market debut, targeting trading as early as November 16. The amended prospectus disclosed a near-$17 billion revenue quarter and hundreds of billions in compute commitments — and candidly warned investors that advanced AI could pose "catastrophic or existential risks to humanity." The filing values the company at approximately $2 trillion.</p>
-      <p>Meanwhile, OpenAI ruled out its own IPO in 2026, with Sam Altman calling this an "ill-advised moment" to go public, citing AI safety concerns. Tech stocks dropped Thursday as traders assessed the implications of Democratic midterm gains on AI regulation.</p>
-      <a class="read-more" href="https://www.cnn.com/2026/10/26/tech/anthropic-files-ipo" target="_blank">Read at CNN →</a>
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>Anthropic's Claude Frontier Academy aims to train 10,000 Frontier Deployed Engineers by the end of 2027, part of its broader enterprise-adoption push.</li>
+        <li>OpenAI's $1.25T close (recurring from Saturday) continues to be read as a signal of investor caution following the Nasdaq correction.</li>
+      </ul>
     </div>
 
-    <!-- Story 3 -->
-    <div class="story">
-      <div class="story-meta">
-        <span class="story-tag tag-launch">Market</span>
-        <span class="story-source">DEV.to · AI Daily Digest</span>
-      </div>
-      <h3>OpenAI $11B Funding Round Anchors $8.5T Data-Centre Forecast; Meta Buys Conductor</h3>
-      <p>OpenAI closed an $11 billion funding round this week, complementing a broader industry forecast of $8.5 trillion in data-centre investment through the decade. Meta acquired Conductor, an AI infrastructure orchestration company, in a move analysts interpret as bolstering Meta AI's enterprise offering and reducing reliance on third-party cloud providers.</p>
-      <p>Separately, Anthropic locked down Claude Enterprise with new access controls, and Google announced expanded educator controls for its Gemini classroom tools — a sign of growing regulatory and institutional demand for AI governance features.</p>
-      <a class="read-more" href="https://dev.to/hiroki-ii-ai/ai-daily-digest-november-6-2026-openai-ships-gpt-6-cyber-meta-buys-conductor-anthropic-locks-1jij" target="_blank">Read at DEV.to →</a>
-    </div>
-
-    <!-- Story 4 -->
-    <div class="story">
-      <div class="story-meta">
-        <span class="story-tag tag-policy">Governance</span>
-        <span class="story-source">Various</span>
-      </div>
-      <h3>Big Four AI Labs Agree on Shared Opt-Out Signal for Training Data; $129M AI Fraud Surge</h3>
-      <p>Google, Microsoft, OpenAI, and Anthropic jointly agreed to honour a single <code style="background:#1c2128;padding:2px 5px;border-radius:3px;font-size:0.85rem;">robots.txt</code>-style opt-out signal for AI training preferences — a significant industry self-regulation step that could ease regulatory pressure in the EU and US. The agreement simplifies compliance for content publishers and organisations managing intellectual property.</p>
-      <p>On the downside, an AI-related fraud wave has resulted in $129 million in confirmed losses this quarter, driven by deepfake CFO impersonation, AI-generated phishing at scale, and AI-hallucinated legal judgments used in fraudulent filings. Regulators in three jurisdictions have opened probes.</p>
-    </div>
-
-    <!-- Story 5 -->
-    <div class="story">
-      <div class="story-meta">
-        <span class="story-tag tag-launch">Hardware · Capability</span>
-        <span class="story-source">Various · Weekly AI Recap</span>
-      </div>
-      <h3>Sora 2 Video, 20x Faster Coding Agents, Optical Processors Cutting AI Energy by 100x</h3>
-      <p>This week's capability milestones: OpenAI quietly released Sora 2 with significantly improved video generation coherence; coding agent benchmarks show 20x speed improvements over six months ago; and multiple labs reported breakthroughs in optical computing that could reduce AI energy consumption by up to 100x — a potential turning point for sustainability and cost economics.</p>
-      <p>Lucyd smart glasses now carry Claude as an on-device assistant. Elon Musk unveiled an AI device prototype to SpaceX investors. AI scribes are now being deployed in clinical settings to draft patient notes in real-time, with early data showing measurable improvements in physician engagement time per patient.</p>
-      <a class="read-more" href="https://aisparkhub.com/weekly-recap-nov-1-nov-7-2026/" target="_blank">Read at AI Spark Hub →</a>
-    </div>
-
-    <!-- Audience Lens -->
-    <hr class="divider">
-    <div class="lens-grid">
-      <div class="lens lens-ciso">
-        <div class="lens-title">🔐 CISO AI Risks</div>
-        <ul>
-          <li>GPT-6 Cyber: 79.4% enterprise breach rate — adversarial AI now enterprise-grade</li>
-          <li>AI-hallucinated legal docs used in fraud — verify any AI-generated compliance output</li>
-          <li>$129M AI fraud wave: deepfake CFO, AI phishing — update awareness training NOW</li>
-          <li>Claude on consumer devices (Lucyd glasses) — data leakage surface widens</li>
-          <li>Anthropic Claude Enterprise lock-down: review access control changes for your tenant</li>
-        </ul>
-      </div>
-      <div class="lens lens-partner">
-        <div class="lens-title">🤝 Consulting Partner Trends</div>
-        <ul>
-          <li>Anthropic $2T IPO: validates enterprise AI market size — positioning opportunity</li>
-          <li>Big Four opt-out signal: IP governance advisory now a client deliverable</li>
-          <li>AI fraud surge ($129M): AI risk assessment &amp; audit services in high demand</li>
-          <li>GPT-6 Cyber: offensive AI red-team services now require AI-native tooling</li>
-          <li>Data-centre $8.5T forecast: infrastructure strategy engagements opening up</li>
-        </ul>
-      </div>
-      <div class="lens lens-exec">
-        <div class="lens-title">💼 Executive Radar</div>
-        <ul>
-          <li>Anthropic IPO at $2T — landmark valuation signals AI is core infrastructure</li>
-          <li>OpenAI $11B round + $8.5T data-centre build: arms race continues at scale</li>
-          <li>AI fraud $129M: board must mandate AI-deepfake verification protocols</li>
-          <li>Big Four opt-out: IP policy update needed for content your company publishes</li>
-          <li>Optical AI chips: 100x energy reduction — watch for cost disruption in 18–24 months</li>
-        </ul>
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 AI Security</div>
+          <ul>
+            <li>948 autonomously discovered Linux kernel exploits from a single $1.2M run is a concrete capability benchmark to cite when arguing for faster internal patch cadence and kernel-hardening investment</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Anthropic's Frontier Deployed Engineers program and FlashProve launch are worth tracking as potential channel/partnership angles for clients building on Claude</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>Anthropic's $3.4B power commitment signals frontier labs now see energy procurement, not just chips, as a core competitive bottleneck — a useful lens for your own AI vendor's long-term viability</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- ── FOOTER ─────────────────────────────────── -->
-  <div class="footer">
-    <p>Generated by <strong>Jorge</strong> · Sunday, November 8, 2026 · 6:00 PM</p>
-    <p style="margin-top:6px;">Sources: Reuters · Al Jazeera · CBS News · The National · Bleeping Computer · SecurityWeek · CISA · CyberScoop · CNN · DEV.to · AI Spark Hub</p>
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Sunday, November 8, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
   </div>
 
 </div>
