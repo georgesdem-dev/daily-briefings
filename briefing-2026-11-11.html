@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Wednesday, November 11, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Wednesday, November 11, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Trump Demands "Total Victory" on Veterans Day as Trump-Netanyahu Call Reportedly Erupts Into Shouting Match</a>
+    <div class="toc-section">At Arlington, Trump says the US has "already won" but wants "total victory" before withdrawing; a leaked account describes a furious Trump-Netanyahu call over whether to restart the war; Iran threatens distant US bases and unveils an underground "missile city"; Vance weighs face-to-face talks as Qatar keeps mediating</div>
+    <a href="#cyber">🔐 Cybersecurity — Microsoft's Record 1,094-Flaw Patch Tuesday Headlined by an Actively Exploited Outlook Zero-Day</a>
+    <div class="toc-section">CVE-2026-124194, an Outlook flaw that leaks NTLMv2 hashes, is confirmed under active exploitation and lands on CISA's KEV list with a Nov 24 deadline; a second, unpatched Windows privilege-escalation zero-day ("SignDrop") surfaces with public PoC code; Google patches its eighth actively exploited Chrome zero-day of the year</div>
+    <a href="#ai">🤖 Artificial Intelligence — Four Nonprofits Sue to Freeze Frontier AI Training at Anthropic, OpenAI, Google, Meta and SpaceX</a>
+    <div class="toc-section">A California lawsuit seeks an emergency injunction against next-generation model training and deployment, citing the labs' own warnings about advanced AI risk; Anthropic's IPO roadshow draws reportedly six-times oversubscribed demand even as OpenAI trims its own funding round to a $1.25T valuation; new access restrictions take effect this week at both companies</div>
+  </div>
+
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — Trump Demands "Total Victory" as Trump-Netanyahu Call Reportedly Turns Into a Shouting Match</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 257</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Trump Says the US Has "Already Won" But Wants "Total Victory"; Netanyahu Clash Reported
+        <span class="badge badge-red">IRAN THREATENS DISTANT US BASES · VANCE WEIGHS DIRECT TALKS</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        Speaking at a Veterans Day event at Arlington National Cemetery, Trump told the crowd the US has "already won" the war against Iran but that "we must have a total victory" before any pullback, adding — as he has for months — that the conflict would end "soon." The rhetoric sat awkwardly next to a reported rupture with Israel: Trump and Netanyahu's latest phone call reportedly erupted into a "shouting match from hell" over whether to restart major operations against Iran, with Netanyahu insisting he won't consider the war over until enriched uranium leaves Iran, its proxy funding ends, and its ballistic missile program is dismantled. Iran pushed back hard on any renewed escalation: Supreme National Security Council Secretary Mohsen Rezaei warned Arabic-language media that Iran would strike distant US bases if attacked again, and separately told Lebanese TV that Tehran will not allow "a single particle" of enriched material to leave the country. Iran also unveiled an IRGC underground "missile city" housing ballistic and cruise missiles with their launchers. On the diplomatic track, Vice President JD Vance is reportedly considering face-to-face talks with a senior Iranian security official, Secretary of State Rubio said economic pressure has made major combat operations largely unnecessary (while leaving the door open to force if Iran "crosses certain red lines"), and Qatar continued shuttle diplomacy with consultations in Paris involving Saudi Arabia and European governments. Treasury Secretary Scott Bessent was moved onto a military base after threats traced to the Iranian regime.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">257 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">5x</div>
+          <div class="stat-label">Scale Trump says a bigger escalation would be</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">2</div>
+          <div class="stat-label">Houthi missile waves intercepted near Riyadh, Nov 10–11</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.timesofisrael.com/liveblog-november-11-2026/">Times of Israel — Trump claims US has already won the Iran war, now wants "total victory"</a>
+        <a href="https://www.foxnews.com/live-news/rubio-iran-war-strikes-economic-crackdown-continues-11-11-26">Fox News — Trump, Netanyahu clash in explosive call over Iran war as Tehran threatens US bases</a>
+        <a href="https://www.criticalthreats.org/analysis/iran-update-november-11-2026">Critical Threats — Iran Update, November 11, 2026</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>The US House voted down a resolution to impeach Defense Secretary Pete Hegseth over his handling of the war, halting the effort to remove him.</li>
+        <li>Saudi air defenses destroyed Houthi cruise missiles aimed at the Riyadh region for a second consecutive day, intercepting two more late on Nov 11; Houthis separately claimed strikes on King Khalid International Airport and an oil pumping station in Yanbu.</li>
+        <li>No new independently verified casualty figures were reported today; table below is carried forward.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>23</td><td>820 wounded (Pentagon)</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">Figures carried forward from the last confirmed update; no new independently verified casualty tolls today.</p>
+    </div>
+  </div>
+
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Wednesday, November 11, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Record 1,094-Flaw Patch Tuesday Headlined by Actively Exploited Outlook Zero-Day
+        <span class="badge badge-red">CVE-2026-124194 · CISA KEV DEADLINE NOV 24</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Microsoft's November Patch Tuesday addressed 1,094 vulnerabilities — the second-largest monthly release on record, with 63 rated Critical — across Windows 10/11, Windows Server 2016–2025, Office, Exchange Server Subscription Edition, Edge, and the Malware Protection Engine. The headline fix is CVE-2026-124194, an Outlook flaw (CVSS 6.5) that discloses a victim's NTLMv2 authentication hash when a malicious file is opened, letting attackers impersonate the user; Microsoft confirmed active exploitation, and CISA added it to the KEV catalog on Nov 10 with a November 24 remediation deadline. A second, more concerning issue remains unpatched: "SignDrop," a Windows privilege-escalation zero-day with public exploit code abusing the CLFS logging driver — a component with a history of ransomware abuse (10 prior CLFS flaws have appeared in CISA's KEV) — to gain SYSTEM access. As of today Microsoft has not assigned it a CVE or confirmed in-the-wild attacks. Separately, Google shipped an emergency Chrome update for CVE-2026-125350, a high-severity use-after-free already exploited in the wild — the eighth actively exploited Chrome zero-day of 2026.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">1,094</div>
+          <div class="stat-label">Flaws fixed, 2nd-largest Patch Tuesday on record</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">Nov 24</div>
+          <div class="stat-label">Federal remediation deadline for Outlook flaw</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">8th</div>
+          <div class="stat-label">Actively exploited Chrome zero-day in 2026</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://socradar.io/blog/november-2026-patch-tuesday-zero-day/">SOCRadar — November 2026 Patch Tuesday: 1,094 Flaws, One Exploited</a>
+        <a href="https://thehackernews.com/2026/11/new-signdrop-zero-day-exploit-turns.html">The Hacker News — New SignDrop Zero-Day Exploit Turns Windows CLFS Into Skeleton Key</a>
+        <a href="https://thehackernews.com/2026/11/google-issues-chrome-security-update.html">The Hacker News — Google Issues Chrome Security Update for Eighth Zero-Day</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>CISA confirmed active exploitation of the Outlook zero-day independently of Microsoft's own disclosure, underscoring real-world attacker interest in NTLM hash theft.</li>
+        <li>No CVE or official confirmation yet exists for SignDrop, but researchers note CLFS has been a repeat target in past ransomware campaigns, including one in April 2025.</li>
+        <li>Patch volume this month spans foundational Windows, Office, Exchange, Edge, and cloud deployment platforms — expect an unusually heavy patch-management cycle through month-end.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Prioritize CVE-2026-124194 (Outlook) ahead of the Nov 24 CISA deadline given confirmed active exploitation of NTLMv2 hash theft</li>
+            <li>Track SignDrop closely even without a CVE yet — CLFS has a ransomware-abuse history, and PoC code is already public</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>A record 1,094-flaw Patch Tuesday is a timely prompt to help clients benchmark their patch-cycle SLAs against this month's volume</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>Ask IT directly whether the Outlook patch has been deployed org-wide — this is a confirmed active exploit, not a theoretical risk, with a hard Nov 24 deadline for regulated entities</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Wednesday, November 11, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Four Nonprofits Sue to Freeze Frontier AI Training at Anthropic, OpenAI, Google, Meta and SpaceX
+        <span class="badge badge-purple">CALIFORNIA UNFAIR COMPETITION LAW · EMERGENCY INJUNCTION SOUGHT</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Irreplaceable Education Fund, Public Citizen, Heat Initiative, and Alliance for Secure AI filed suit in San Francisco Superior Court seeking an emergency injunction to freeze training and deployment of next-generation frontier models at Anthropic, Google, Meta, OpenAI, and SpaceX's AI unit, arguing under California's Unfair Competition Law that the companies should have to prove their systems are under human control before proceeding. The complaint leans heavily on the labs' own leadership warnings about advanced AI risk. The suit lands as both AI labs' capital-raising plans draw intense scrutiny: Anthropic's IPO roadshow is reportedly running roughly six times oversubscribed even after its valuation target settled near $1.4 trillion, while OpenAI — after initially floating $30 billion in new capital at a $1.4 trillion valuation — lowered its target to a $1.25 trillion valuation and cut its funding goal by a third amid investor pushback and a broader market selloff, fueling Bloomberg-reported VC fears of a startup correction. Both companies also tightened access rules this week: Anthropic's ban on Claude use from mainland China and other unsupported regions takes effect Thursday, Nov. 12, while OpenAI's new approval requirement for third-party platforms reselling GPT access takes effect Nov. 20.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#bc8cff;">5</div>
+          <div class="stat-label">Labs named in the injunction request</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">~6x</div>
+          <div class="stat-label">Reported oversubscription on Anthropic's IPO</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">$1.25T</div>
+          <div class="stat-label">OpenAI's trimmed funding-round valuation target</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.bloomberg.com/news/articles/2026-11-11/openai-anthropic-valuations-fuel-vc-fears-of-startup-correction">Bloomberg — OpenAI, Anthropic Valuations Fuel VC Fears of Startup Correction</a>
+        <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-wednesday-november-11-2026/">The Neuron — Everything That Happened in AI Today, Nov 11</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>Anthropic is reportedly pursuing a separate Japan stock offering targeting $3–3.5 billion, alongside its main US IPO.</li>
+        <li>OpenAI will retire Advanced and Standard Voice on December 11, moving users to Live Voice, and is capping multi-account paid access across Go, Plus, and Pro plans.</li>
+        <li>OpenAI reported roughly $10 billion in quarterly revenue; Google highlighted AI-verified Signal encryption as part of its own announcements today.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 AI Security</div>
+          <ul>
+            <li>The nonprofit lawsuit's framing — that labs can't yet prove human control over frontier systems — is a useful external citation for internal AI-risk governance discussions</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>OpenAI's trimmed valuation and Anthropic's oversubscribed IPO give conflicting signals worth unpacking with clients weighing AI-vendor concentration risk</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>If your organization operates in mainland China or relies on third-party GPT resellers, confirm compliance ahead of Anthropic's Nov 12 and OpenAI's Nov 20 access-rule changes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Wednesday, November 11, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
