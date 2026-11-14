@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Saturday, November 14, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── Header ─────────────────────────────────── */
+    .header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 52px;
+    }
+    .header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .header h1 { font-size: 2.2rem; font-weight: 800; color: #f0f6fc; margin-bottom: 10px; }
+    .header .date { font-size: 1rem; color: #8b949e; }
+    .header .edition { font-size: 0.82rem; color: #484f58; margin-top: 6px; }
+
+    /* ── Section headers ─────────────────────────── */
+    .section {
+      margin-bottom: 52px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      border-radius: 10px 10px 0 0;
+      margin-bottom: 0;
+    }
+    .section-header.iran    { background: linear-gradient(135deg, #1a1f35 0%, #161b2e 100%); border: 1px solid #2d3561; }
+    .section-header.cyber   { background: linear-gradient(135deg, #1a2a1a 0%, #172217 100%); border: 1px solid #2d5230; }
+    .section-header.ai      { background: linear-gradient(135deg, #2a1a2a 0%, #221722 100%); border: 1px solid #52305a; }
+    .section-header .icon   { font-size: 1.8rem; }
+    .section-header h2      { font-size: 1.1rem; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
+    .section-header.iran  h2  { color: #79b8ff; }
+    .section-header.cyber h2  { color: #56d364; }
+    .section-header.ai    h2  { color: #bc8cff; }
+    .section-header .day-badge {
+      margin-left: auto;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1px;
+      padding: 3px 10px; border-radius: 20px;
+    }
+    .section-header.iran .day-badge { background: #2d3561; color: #79b8ff; }
+
+    /* ── Story cards ─────────────────────────────── */
+    .stories-wrap {
+      border: 1px solid #21262d;
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      overflow: hidden;
+    }
+    .story {
+      padding: 22px 24px;
+      border-bottom: 1px solid #21262d;
+    }
+    .story:last-child { border-bottom: none; }
+    .story-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .story-tag {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 2px 9px; border-radius: 20px;
+    }
+    .tag-breaking { background: #3d1a1a; color: #ff7b72; }
+    .tag-diplomatic { background: #1a2d3d; color: #79b8ff; }
+    .tag-military { background: #2d1a1a; color: #ffa657; }
+    .tag-regional { background: #1a2d1a; color: #56d364; }
+    .tag-critical { background: #3d1a1a; color: #ff7b72; }
+    .tag-patch  { background: #2d2a1a; color: #e3b341; }
+    .tag-threat { background: #2a1a2d; color: #bc8cff; }
+    .tag-trend  { background: #1a2d2a; color: #3fb950; }
+    .tag-launch { background: #2a1a2d; color: #bc8cff; }
+    .tag-market { background: #2d2a1a; color: #e3b341; }
+    .tag-risk   { background: #3d1a1a; color: #ff7b72; }
+
+    .story-source {
+      font-size: 0.72rem; color: #484f58; margin-left: auto;
+    }
+    .story h3 {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 10px; line-height: 1.4;
+    }
+    .story p {
+      font-size: 0.88rem; color: #8b949e; line-height: 1.7;
+      margin-bottom: 10px;
+    }
+    .story p:last-child { margin-bottom: 0; }
+
+    /* ── Audience sub-sections ───────────────────── */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .audience-card {
+      padding: 14px 16px;
+      border-radius: 8px;
+      border: 1px solid #21262d;
+    }
+    .audience-card.ciso   { background: #101820; border-color: #1f3a50; }
+    .audience-card.partner{ background: #0f1a10; border-color: #1f3a1f; }
+    .audience-card.exec   { background: #17101a; border-color: #3a1f3a; }
+    .audience-label {
+      font-size: 0.68rem; font-weight: 800; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .audience-card.ciso   .audience-label { color: #58a6ff; }
+    .audience-card.partner .audience-label{ color: #56d364; }
+    .audience-card.exec   .audience-label { color: #bc8cff; }
+    .audience-card p { font-size: 0.82rem; color: #8b949e; }
+
+    /* ── Dividers & misc ─────────────────────────── */
+    .story-divider {
+      height: 1px; background: #21262d; margin: 0;
+    }
+    .toc {
+      background: #161b22; border: 1px solid #21262d;
+      border-radius: 10px; padding: 20px 24px; margin-bottom: 48px;
+    }
+    .toc h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: #484f58; margin-bottom: 14px; }
+    .toc ul { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
+    .toc ul li a {
+      font-size: 0.82rem; color: #8b949e;
+      padding: 4px 12px; background: #0d1117;
+      border: 1px solid #30363d; border-radius: 20px;
+    }
+    .toc ul li a:hover { border-color: #58a6ff; color: #58a6ff; }
+
+    .footer {
+      text-align: center; margin-top: 60px; padding-top: 20px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="date">Saturday, November 14, 2026</div>
+    <div class="edition">Iran War · Cybersecurity · Artificial Intelligence</div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <h3>Contents</h3>
+    <ul>
+      <li><a href="#iran">🪖 Iran War — Day 258+</a></li>
+      <li><a href="#cyber">🔐 Cybersecurity</a></li>
+      <li><a href="#ai">🤖 Artificial Intelligence</a></li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════ IRAN WAR ═══════════════ -->
+  <div class="section" id="iran">
+    <div class="section-header iran">
+      <div class="icon">🪖</div>
+      <h2>Iran War</h2>
+      <div class="day-badge">DAY ~258</div>
+    </div>
+    <div class="stories-wrap">
+
+      <div class="story">
+        <div class="story-meta">
+          <span class="story-tag tag-military">Military</span>
+          <span class="story-source">CBS News · Times of Israel</span>
+        </div>
+        <h3>US Strikes Qeshm Island; Iran Claims 16th Drone Interception</h3>
+        <p>US forces conducted what President Trump described as "minor strikes" on Qeshm Island in the Strait of Hormuz. Separately, Iran's Revolutionary Guards claimed to have intercepted their 16th American MQ-1 drone of the conflict — the second in two days. Iran has also <strong>lifted its self-imposed 1,200-mile missile range limit</strong>, signaling potential escalation capacity. US forces disabled a commercial vessel in the Gulf of Oman that was attempting to violate the blockade.</p>
+      </div>
+
+      <div class="story">
+        <div class="story-meta">
+          <span class="story-tag tag-breaking">Breaking</span>
+          <span class="story-source">CBS News</span>
+        </div>
+        <h3>Task Force Iron Gate: US Extends Blockade to Overland Routes</h3>
+        <p>Washington launched <strong>Task Force Iron Gate</strong>, a 20-person unit aimed at choking off Iran's overland trade routes, including via the Caspian Sea, following the naval blockade's success. Iran's military dismissed it as "merely wordplay," claiming the US "cannot achieve their objectives" through such an approach. The move widens economic pressure as diplomatic channels remain frozen.</p>
+      </div>
+
+      <div class="story">
+        <div class="story-meta">
+          <span class="story-tag tag-diplomatic">Diplomatic</span>
+          <span class="story-source">CBS News · ABC News</span>
+        </div>
+        <h3>Diplomacy Stalled: Iran Demands "Outrageous," Mediators Gone Dark</h3>
+        <p>Iran's foreign minister acknowledged that mediators have not traveled since the US midterm elections, blaming "the shock" of election results for the freeze. He said negotiations would resume when the atmosphere becomes "favorable." Secretary of State Rubio countered that the US and Iran are not "on the verge of a breakthrough," calling Iranian demands "outrageous and ridiculous."</p>
+        <p>Meanwhile, Iran's Supreme National Security Council head vowed that Tehran would not allow "even a single particle of enriched nuclear material" to be removed from the country — a red line that blocks the conditions set by both Prime Minister Netanyahu (who also demands dismantling of ballistic missile capability) and the US.</p>
+      </div>
+
+      <div class="story">
+        <div class="story-meta">
+          <span class="story-tag tag-breaking">Trump</span>
+          <span class="story-source">Times of Israel · ABC News</span>
+        </div>
+        <h3>Trump: "We Already Won" — But Wants "Total Victory"</h3>
+        <p>President Trump claimed on Friday that the US has already won the war against Iran but does not want to pull out until there has been a "knockout." He stated that resuming full-scale war is "highly unlikely" if negotiations progress, while maintaining military options remain on the table. The gap between Trump's victory declaration and Netanyahu's stricter conditions continues to strain US–Israel coordination.</p>
+      </div>
+
+      <div class="story">
+        <div class="story-meta">
+          <span class="story-tag tag-regional">Regional</span>
+          <span class="story-source">CBS News</span>
+        </div>
+        <h3>Houthi Escalation: Aramco Building Hit in Riyadh</h3>
+        <p>Houthi attacks on Saudi Arabia intensified this week, with casualties reported in Yemen. An <strong>Aramco building in Riyadh's financial district</strong> sustained damage from intercepted rockets — a notable escalation in terms of target profile. Saudi air defenses intercepted the projectiles, but the symbolism of striking Saudi Aramco's real estate carries significant weight for energy markets.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════ CYBERSECURITY ═══════════════ -->
+  <div class="section" id="cyber">
+    <div class="section-header cyber">
+      <div class="icon">🔐</div>
+      <h2>Cybersecurity</h2>
+    </div>
+    <div class="stories-wrap">
+
+      <div class="story">
+        <div class="story-meta">
+          <span class="story-tag tag-patch">Patch Tuesday</span>
+          <span class="story-source">Bleeping Computer</span>
+        </div>
+        <h3>Microsoft Patches Record 1,235 Flaws Including Actively-Exploited Outlook Zero-Day</h3>
+        <p>November's Patch Tuesday is Microsoft's largest ever, addressing <strong>1,235 security vulnerabilities</strong> — including 66 Critical RCE flaws. The headline is <strong>CVE-2026-124194</strong>, an actively exploited Outlook zero-day that lets unauthenticated attackers capture NTLM authentication hashes by tricking a user into opening a specially crafted message file. No security warnings are displayed, making it a potent phishing enabler.</p>
+        <p>The breakdown: 536 Elevation of Privilege, 296 RCE, 157 Information Disclosure, 142 Edge/Chromium, 46 DoS, 27 Security Feature Bypass, 22 Spoofing. ~639 flaws affected Windows or Windows products. This follows October's even larger 1,411-flaw release, reflecting Microsoft's expanded AI-driven vuln detection pipeline.</p>
+        <div class="audience-grid">
+          <div class="audience-card ciso">
+            <div class="audience-label">🔐 CISO</div>
+            <p>Prioritize CVE-2026-124194 (Outlook NTLM) for emergency patching — NTLM relay attacks can pivot to full AD compromise. Verify email gateway controls block malicious .msg files. With 536 EoP flaws, endpoint hygiene is critical.</p>
+          </div>
+          <div class="audience-card partner">
+            <div class="audience-label">🤝 Consulting Partner</div>
+            <p>Use this as a managed patching SLA conversation-starter with clients. The sheer volume (1,235) signals AI-augmented vuln discovery is accelerating the patch cadence challenge. Clients need automated patch management.</p>
+          </div>
+          <div class="audience-card exec">
+            <div class="audience-label">💼 Executive</div>
+            <p>Microsoft's growing patch volume reflects systemic complexity risk. Organizations using Outlook should be patched within 24–48 hours. Confirm with IT that emergency patching procedures were followed this week.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-meta">
+          <span class="story-tag tag-critical">Critical</span>
+          <span class="story-source">The Hacker News · Bleeping Computer</span>
+        </div>
+        <h3>SignDrop: Windows CLFS Zero-Day Grants SYSTEM Access via Signed Driver Trick</h3>
+        <p>A new Windows zero-day dubbed <strong>SignDrop</strong> exploits the Common Log File System (CLFS) driver to escalate local privileges to SYSTEM. Public PoC code was released November 12, and exploitation is now being observed in the wild. The flaw bypasses existing CLFS security hardening that Microsoft implemented after prior CLFS zero-days. No CVE has been assigned yet as of publication.</p>
+        <div class="audience-grid">
+          <div class="audience-card ciso">
+            <div class="audience-label">🔐 CISO</div>
+            <p>Local privilege escalation post-initial access — monitor EDR for CLFS driver anomalies and unusual SYSTEM-level process spawning. Patch urgently once Microsoft releases the fix. Treat as critical given existing PoC.</p>
+          </div>
+          <div class="audience-card partner">
+            <div class="audience-label">🤝 Consulting Partner</div>
+            <p>CLFS has now been a repeated attack surface (Nokoyawa ransomware used earlier CLFS flaws in 2023). Recommend clients audit CLFS exposure in their Windows Server estates.</p>
+          </div>
+          <div class="audience-card exec">
+            <div class="audience-label">💼 Executive</div>
+            <p>Ransomware groups typically use local privilege escalation flaws like this to fully take over systems after an initial phishing foothold. Verify endpoint protection is current.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-meta">
+          <span class="story-tag tag-critical">Actively Exploited</span>
+          <span class="story-source">Bleeping Computer</span>
+        </div>
+        <h3>Check Point CVE-2026-123039: Root Access via World-Writable IPC Socket</h3>
+        <p>Check Point disclosed and patched <strong>CVE-2026-123039</strong>, a local privilege escalation in the DynamicCLI IPC daemon on Gaia OS. The daemon operated with root privileges and listened on a world-writable socket (<code>/tmp/dynamic_socket</code>) without authenticating connecting processes. Attackers exploited it after gaining initial access via PHP2Shell vulnerabilities in Mobile Access portals, then escalated to root, deployed webshells and backdoors, and pivoted to VMware ESXi to <strong>deploy destructive wipers</strong>. Active exploitation since late October; ~24 customers confirmed compromised. This is now the fifth Check Point flaw on CISA's Known Exploited Vulnerabilities catalog in two years.</p>
+        <div class="audience-grid">
+          <div class="audience-card ciso">
+            <div class="audience-label">🔐 CISO</div>
+            <p>If using Check Point firewalls or Gaia OS: apply emergency hotfixes immediately. The VMware ESXi pivot + wiper deployment pattern is a destructive ransomware precursor. Audit Mobile Access portals for PHP2Shell IOCs.</p>
+          </div>
+          <div class="audience-card partner">
+            <div class="audience-label">🤝 Consulting Partner</div>
+            <p>Five CISA KEV entries in 2 years is a vendor-level red flag for clients using Check Point. This is a contract renewal and diversification conversation. Consider including in vendor risk assessments.</p>
+          </div>
+          <div class="audience-card exec">
+            <div class="audience-label">💼 Executive</div>
+            <p>Threat actors are chaining vulnerabilities (network access → privilege escalation → wiper) in coordinated multi-stage attacks. This isn't opportunistic — it's targeted destruction. Confirm backup resilience for critical infrastructure.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-meta">
+          <span class="story-tag tag-critical">Zero-Day Wave</span>
+          <span class="story-source">Bleeping Computer · The Hacker News</span>
+        </div>
+        <h3>N-able "4EverAble2Shell" & Google Chrome 8th Zero-Day of 2026</h3>
+        <p><strong>N-able N-central</strong> was hit by a zero-day dubbed "4EverAble2Shell," exploited hours after PoC release to compromise servers and deploy cryptocurrency miners (21+ affected systems confirmed). N-able released emergency hotfixes. Separately, Google patched <strong>CVE-2026-125350</strong>, a high-severity use-after-free in Chrome's XML component — the <strong>8th actively exploited Chrome zero-day this year</strong>. Chrome users should ensure auto-update is enabled.</p>
+      </div>
+
+      <div class="story">
+        <div class="story-meta">
+          <span class="story-tag tag-trend">H1 2026 Trends</span>
+          <span class="story-source">Recorded Future / Insikt Group</span>
+        </div>
+        <h3>Recorded Future H1 2026: 215 Exploited CVEs (+34%), AI-Enabled Malware Rising</h3>
+        <p>Insikt Group's H1 2026 report identified 215 actively exploited vulnerabilities — a <strong>34% jump</strong> from H1 2025. Microsoft led with 40 unique CVEs, followed by Red Hat (15) and Fortinet (9). Android NFC malware surged <strong>188% YoY</strong> enabling payment fraud relay attacks. Ransomware operators adopted triple extortion en masse, while ClickFix social engineering campaigns dominated initial access. AI-enabled malware (e.g. PromptSpy, CANFAIL) remains supplementary — augmenting tradecraft rather than replacing it.</p>
+        <div class="audience-grid">
+          <div class="audience-card ciso">
+            <div class="audience-label">🔐 CISO</div>
+            <p>34% CVE exploitation growth means patch windows are shrinking. Prioritize network-accessible unauthenticated flaws (142 of 146 in this category were exploited). Mobile NFC attack surface deserves dedicated policy review.</p>
+          </div>
+          <div class="audience-card partner">
+            <div class="audience-label">🤝 Consulting Partner</div>
+            <p>Triple extortion (data theft + encryption + customer/regulator notification threats) requires clients to revisit incident response playbooks and cyber insurance policy terms. Good board-level topic.</p>
+          </div>
+          <div class="audience-card exec">
+            <div class="audience-label">💼 Executive</div>
+            <p>ClickFix phishing campaigns are bypassing traditional security awareness by exploiting browser-crash lures — employees need updated training. Supply-chain npm package attacks (TeamPCP) are a growing risk for tech-heavy firms.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════ ARTIFICIAL INTELLIGENCE ═══════════════ -->
+  <div class="section" id="ai">
+    <div class="section-header ai">
+      <div class="icon">🤖</div>
+      <h2>Artificial Intelligence</h2>
+    </div>
+    <div class="stories-wrap">
+
+      <div class="story">
+        <div class="story-meta">
+          <span class="story-tag tag-launch">Launch</span>
+          <span class="story-source">VentureBeat</span>
+        </div>
+        <h3>Google Launches Gemini 4 Hydrogen: 2.5× Faster Flash Successor for Agents &amp; Code</h3>
+        <p>Google released <strong>Gemini 4 Hydrogen</strong>, a faster, reasoning-optimized model targeted at agentic workflows, coding, and document processing. It completes tasks <strong>2.5× faster than Gemini 3.8 Flash</strong> at default reasoning, with an Intelligence Index score of 51 (vs. Flash's 31 at high reasoning). Terminal task success jumped from 18.2% to 57% on Terminal-Bench 4.1. Pricing: <strong>$1.50/$7.50 per million tokens</strong> (input/output), with batch/flex/contributor tiers at half that rate. Available via Gemini API, AI Studio, Gemini app, and Google Search.</p>
+        <div class="audience-grid">
+          <div class="audience-card ciso">
+            <div class="audience-label">🔐 CISO</div>
+            <p>Faster, more reliable agentic models accelerate the threat actor toolchain — the same terminal automation improvements benefit red teamers and attackers. Revisit AI usage policies for autonomous agent deployments.</p>
+          </div>
+          <div class="audience-card partner">
+            <div class="audience-label">🤝 Consulting Partner</div>
+            <p>Hydrogen's 57% terminal task success makes it a strong candidate for DevOps/automation use cases. At $1.50/M input, cost is competitive. Opportunity to build agentic workflow proposals around it.</p>
+          </div>
+          <div class="audience-card exec">
+            <div class="audience-label">💼 Executive</div>
+            <p>Google now has a dedicated fast-model tier (Hydrogen) alongside its frontier model (Carbon), reflecting the market's maturation into specialist model tiers. Evaluate whether your AI vendor strategy needs diversification.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-meta">
+          <span class="story-tag tag-market">Market</span>
+          <span class="story-source">VentureBeat</span>
+        </div>
+        <h3>Gemini 4 Carbon Goes Public at $2/$10 — Undercutting Claude Fable 5.2 by 75%</h3>
+        <p>Google's frontier model <strong>Gemini 4 Carbon</strong> is now generally available to paid API users. Through November 30, it's priced at <strong>$2/$10 per million tokens</strong> (input/output), rising to $4/$20 afterward. For comparison, Anthropic's Claude Fable 5.2 runs $8/$40 — making Carbon <strong>one-quarter the price</strong> during the promotional window. On Artificial Analysis's intelligence index, Carbon scores 60 vs. Fable's 65. Carbon leads on specific enterprise automation workflows (53.88% accuracy). A specialized cybersecurity variant is available through Google's restricted Fairwind program.</p>
+        <div class="audience-grid">
+          <div class="audience-card ciso">
+            <div class="audience-label">🔐 CISO</div>
+            <p>The Fairwind cybersecurity-specialized variant warrants evaluation for SOC tooling. Gemini Carbon's broad availability also means threat actors get affordable frontier-class AI for attack automation. Expect AI-generated phishing quality to increase.</p>
+          </div>
+          <div class="audience-card partner">
+            <div class="audience-label">🤝 Consulting Partner</div>
+            <p>Carbon's promotional pricing is a client conversation: now is the time to run cost-benefit analyses on AI vendor switching. The 75% discount window closes Nov 30 — act fast if recommending carbon for pilots.</p>
+          </div>
+          <div class="audience-card exec">
+            <div class="audience-label">💼 Executive</div>
+            <p>Google is using aggressive pricing to displace Anthropic in the enterprise. The frontier model price war benefits buyers short-term but creates vendor dependency risk. Negotiate multi-vendor contracts now while leverage is high.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-meta">
+          <span class="story-tag tag-launch">Launch</span>
+          <span class="story-source">VentureBeat</span>
+        </div>
+        <h3>Thinking Machines Inkling 2 Small: Near-Frontier Enterprise Performance from Mira Murati's Startup</h3>
+        <p>Thinking Machines Lab — led by former OpenAI CTO <strong>Mira Murati</strong> — launched <strong>Inkling 2 Small</strong>, a sparse architecture model combining 594 billion total parameters with a 17B active-per-token footprint. It claims near-frontier performance on enterprise benchmarks while dramatically reducing inference costs. The release positions Thinking Machines as a credible third-tier option between frontier labs and open-source models for enterprise use cases.</p>
+      </div>
+
+      <div class="story">
+        <div class="story-meta">
+          <span class="story-tag tag-launch">New Model</span>
+          <span class="story-source">VentureBeat</span>
+        </div>
+        <h3>Google Gemini Decision 1: 1,000 Questions Per API Call at $0.10/M Tokens</h3>
+        <p>Google DeepMind released <strong>Gemini Decision 1</strong>, a specialized model for rapid serial judgment tasks. It can answer <strong>up to 1,000 questions about the same material in a single API call</strong> at just $0.10 per million input tokens. Targeted at automated decision pipelines, compliance workflows, and document classification at scale — a category previously unaddressed by general-purpose models.</p>
+        <div class="audience-grid">
+          <div class="audience-card ciso">
+            <div class="audience-label">🔐 CISO</div>
+            <p>Potential for high-volume security classification tasks: log triage, alert scoring, policy compliance checking. At $0.10/M tokens it's cheap enough to run continuously. Evaluate against existing SIEM enrichment pipelines.</p>
+          </div>
+          <div class="audience-card partner">
+            <div class="audience-label">🤝 Consulting Partner</div>
+            <p>Decision 1 enables entirely new audit/compliance automation use cases — 1,000 contract clauses checked in one pass. Strong product concept for clients in financial services, legal, or healthcare.</p>
+          </div>
+          <div class="audience-card exec">
+            <div class="audience-label">💼 Executive</div>
+            <p>This is a workflow automation breakthrough for data-heavy decisions. Procurement, compliance, and risk functions could dramatically accelerate routine review cycles. Worth a strategic conversation with your AI team.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-meta">
+          <span class="story-tag tag-risk">Caution</span>
+          <span class="story-source">VentureBeat</span>
+        </div>
+        <h3>MiniMax M3.1 Flash: 70% Cost Reduction — but 93% Hallucination Rate</h3>
+        <p><strong>MiniMax M3.1 Flash</strong> offers impressive performance-per-dollar (3× faster than its predecessor, $0.75/M tokens combined, 70% cost reduction for agentic use). It beats DeepSeek V4.1 on Automation-Bench (62.2 vs 60.5) and ties Claude Opus 5 on BankerToolBench (76.2). However, Artificial Analysis flagged a critical limitation: when the model encounters questions it cannot answer correctly, it <strong>overwhelmingly chooses to give an incorrect answer</strong> rather than abstain — resulting in a <strong>93% hallucination rate</strong> under their benchmark definition. Not suitable for knowledge-intensive production workloads without robust verification layers.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>Generated by <strong>Jorge</strong> · Saturday, November 14, 2026 · 6:00 PM</p>
+    <p style="margin-top:4px;">Sources: CBS News · Times of Israel · ABC News · Bleeping Computer · The Hacker News · Recorded Future · VentureBeat · MIT Technology Review</p>
+  </div>
+
+</div>
+</body>
+</html>
