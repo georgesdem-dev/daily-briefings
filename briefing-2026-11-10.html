@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Tuesday, November 10, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Tuesday, November 10, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Trump Calls War "Effectively Over" After Qatar Talks, But Daily Strikes on Qeshm Continue</a>
+    <div class="toc-section">Trump and Qatar's PM hail "positive momentum" at the White House and Trump says further action "won't be necessary," even as the US keeps striking Qeshm Island nightly and Iran-linked tanker attacks hit the highest rate of the war; Brent crude falls below $90 for the first time since August</div>
+    <a href="#cyber">🔐 Cybersecurity — Google Patches Eighth Chrome Zero-Day of 2026 as N-able Takes N-central Offline Over 33 Disclosed Flaws</a>
+    <div class="toc-section">An actively exploited Chrome use-after-free (CVE-2026-125350) gets an emergency patch; a researcher's mass disclosure of 30+ unpatched N-central vulnerabilities forces N-able to pull hosted environments offline worldwide; Fireworks AI confirms a third-party breach exposing customer data</div>
+    <a href="#ai">🤖 Artificial Intelligence — Anthropic Launches Roadshow, Raises IPO Target to $1.4 Trillion with Nasdaq Debut Set for Nov 19</a>
+    <div class="toc-section">Anthropic sets an IPO price range implying a $1.4 trillion valuation, with Google and Nvidia each investing $10 billion; run-rate revenue hits $81 billion by end of October; the offering tests whether the largest-ever AI IPO can clear a market still rattled from last week's selloff</div>
+  </div>
+
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — "Effectively Over," Trump Says, as Qeshm Strikes and Tanker Attacks Continue Daily</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 256</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Trump and Qatar's PM Hail "Positive Momentum"; Trump Calls War "Effectively" Over
+        <span class="badge badge-orange">BRENT CRUDE FALLS BELOW $90 · TANKER ATTACKS AT HIGHEST RATE OF THE WAR</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        Trump and Qatar's Prime Minister Sheikh Mohammed bin Abdulrahman bin Jassim Al Thani hailed "positive momentum" after closed-door White House talks, with Trump declaring he considers the war "effectively" at an end and that further military action "won't be necessary." On Truth Social, Trump claimed Gulf states favor maintaining Iran's economic blockade over a bigger escalation, which he said would be "approximately five times" the scale of the original strikes. Yet the diplomatic optimism sits uneasily against continued military reality: US forces struck Qeshm Island again overnight, Iranian state TV claims 11 tankers have been "disabled" in the past 10 days, and Reuters-cited maritime-agency data shows Gulf and Hormuz tanker attacks now running at the highest rate of the entire war. Brent crude fell below $90 for the first time since August as traders priced in restraint despite the ongoing strikes. Senior US and Gulf officials reportedly remain doubtful an imminent deal is at hand, and one analyst floated the possibility that Trump could order a largely symbolic strike on Iran's nuclear facilities to claim a clean victory and close out the war.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">&lt;$90</div>
+          <div class="stat-label">Brent crude, lowest since August</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">11 tankers</div>
+          <div class="stat-label">Claimed "disabled" by Iran over 10 days</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">256 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.aljazeera.com/news/2026/11/10/positive-momentum-is-the-us-war-on-iran-about-to-end">Al Jazeera — 'Positive momentum': Is the US war on Iran about to end?</a>
+        <a href="https://www.detroitnews.com/story/news/world/2026/11/10/trump-says-he-will-hold-off-on-fresh-iran-strikes-for-now/92704591007/">Detroit News — Trump says he will hold off on fresh Iran strikes for now</a>
+        <a href="https://www.newarab.com/news/iran-war-really-effectively-over-trump-says">The New Arab — Is the Iran war really 'effectively over,' as Trump says?</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>A Qeshm provincial official said Sunday night's strikes did not impact vital infrastructure or services, per Fars news agency.</li>
+        <li>Netanyahu faces an uncertain political future domestically after Israel's October 27 election, adding pressure on Trump's main wartime ally.</li>
+        <li>No new independently verified casualty figures were reported today; table below is carried forward.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>23</td><td>820 wounded (Pentagon)</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">Figures carried forward from the last confirmed update; no new independently verified casualty tolls today.</p>
+    </div>
+  </div>
+
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Tuesday, November 10, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Google Patches Eighth Actively Exploited Chrome Zero-Day of 2026 as N-able Pulls N-central Offline Over 33 Disclosed Flaws
+        <span class="badge badge-red">CVE-2026-125350 · N-ABLE: 4 EXPLOIT CHAINS, 3 LEADING TO RCE</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Google shipped an emergency Chrome update fixing nine flaws, including CVE-2026-125350, a high-severity use-after-free in the XML component that Google confirms is being actively exploited in the wild — the eighth actively-exploited Chrome zero-day patched so far this year. Separately, in a major disclosure incident, independent researcher Sean Bales published proof-of-concept code for over 30 unpatched vulnerabilities in N-able's N-central RMM platform on GitHub, after N-able allegedly failed to patch defects he'd previously reported in another product. Huntress analysis shows the flaws chain into four distinct exploit paths — three leading to remote code execution and one to root-level privilege escalation — forcing N-able to take hosted N-central environments offline worldwide while urging on-premises customers to do the same until patches land. Elsewhere, Fireworks AI confirmed a breach via a third-party cloud provider that exposed customer data, and a critical unauthenticated RCE in Apache Airflow was also reported today.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">8th</div>
+          <div class="stat-label">Actively exploited Chrome zero-day in 2026</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">33</div>
+          <div class="stat-label">Unpatched N-central flaws publicly disclosed with PoCs</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://thehackernews.com/2026/11/google-issues-chrome-security-update.html">The Hacker News — Google Issues Chrome Security Update for Eighth Zero-Day</a>
+        <a href="https://www.securityweek.com/n-able-takes-n-central-offline-as-researcher-drops-over-30-zero-days/">SecurityWeek — N-able Takes N-central Offline as Researcher Drops 30+ Zero-Days</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Active exploitation also reported against GPUStack (CVE-2026-102895), OpenBSD OpenSSH password-auth bypass in narrow configurations (CVE-2026-123158), and SignalWire FreeSWITCH telephony routing (CVE-2026-116779).</li>
+        <li>A ForgeRock RCE exploited via default "admin:admin" credentials was reportedly used in at least one case to remotely unlock vehicles.</li>
+        <li>A widely shared "Terminal2Shell" zero-day claim (CVSS 11.0, exceeding the scale's 10.0 maximum) should be treated as unverified and likely overstated.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Update Chrome to the latest build immediately across all managed endpoints given confirmed in-the-wild exploitation of CVE-2026-125350</li>
+            <li>If you run N-able N-central (hosted or on-prem), keep it offline until official patches land — PoC code for RCE chains is already public</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>The N-able disclosure is a strong case study for clients on vendor patch-responsiveness risk when evaluating RMM/MSP tooling vendors</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>If your MSP or IT team uses N-able N-central, confirm directly whether your environment was taken offline and what the remediation timeline is — this is a live operational risk, not a theoretical one</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Tuesday, November 10, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Anthropic Launches IPO Roadshow, Raises Target to $1.4 Trillion Valuation, Nasdaq Debut Set for Nov 19
+        <span class="badge badge-purple">TICKER: ANT · GOOGLE & NVIDIA EACH INVESTING $10B</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Anthropic formally kicked off its US IPO roadshow, initially seeking up to $64.4 billion at a $1 trillion valuation before an amended filing raised the ambition further: a roughly $1.4 trillion valuation, selling 825 million shares priced between $70 and $78 each under the ticker ANT on Nasdaq, with trading expected to begin around November 19. Google and Nvidia are each investing $10 billion in the offering, and Anthropic estimates net proceeds between $84.6 billion and $93.7 billion if underwriters (including Goldman Sachs and Morgan Stanley) exercise their option on an additional 123.75 million shares; up to 20% of the offering is earmarked for retail investors. The amended filing shows run-rate revenue reaching $81 billion by the end of October — about $10 billion more than a month earlier — alongside a $26 billion private placement backed by AMD and Broadcom and nearly $900 billion in data-center compute commitments. The listing is widely seen as a test of whether the largest AI IPO yet can clear a market still rattled by last week's selloff, with risks including slowing sequential growth (47% in Q3) and roughly $70 billion of compute commitments due within 12 months. OpenAI, valued at $1.25 trillion after its own $11 billion raise last week, is expected to follow with a listing of its own, making Anthropic's pricing a likely template for private AI valuations broadly.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#bc8cff;">$1.4T</div>
+          <div class="stat-label">Anthropic's revised IPO valuation target</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">$81B</div>
+          <div class="stat-label">Run-rate revenue by end of October</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">Nov 19</div>
+          <div class="stat-label">Expected Nasdaq trading start</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://techcrunch.com/2026/11/10/anthropic-sets-ipo-price-range-of-70-to-78-per-share-to-reach-an-implied-valuation-of-1-404-trillion/">TechCrunch — Anthropic Sets IPO Price Range of $70–$78/Share</a>
+        <a href="https://finance.yahoo.com/markets/stocks/articles/anthropic-ipo-targets-november-debut-162209958.html">Yahoo Finance — Anthropic IPO Targets November Debut as Valuation Expectations Fall</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>Anthropic reportedly warned that its AI models are advancing faster than the company's ability to implement adequate safety measures.</li>
+        <li>The IPO prospectus reveals Amazon and Alphabet (Google's parent) as two of Anthropic's largest backers, tracing back to its 2021 founding by OpenAI exiles including the Amodei siblings.</li>
+        <li>Reports note new model releases under the names "Fable 5.2" and "Mythos 5.2," described as bringing science and coding upgrades.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 AI Security</div>
+          <ul>
+            <li>Anthropic's own warning that safety measures are lagging capability gains is worth citing internally when scoping AI governance and red-teaming budgets for 2027</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Anthropic's roadshow financials ($81B run-rate, $900B compute commitments) are a useful benchmark when advising clients on realistic AI-vendor growth assumptions versus marketing narratives</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>Anthropic's Nov 19 Nasdaq debut will be the definitive market test of frontier-AI valuations this year — worth tracking closely given its likely influence on OpenAI's own pending listing and your AI vendor negotiations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Tuesday, November 10, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
