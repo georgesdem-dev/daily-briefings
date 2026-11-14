@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Monday, November 9, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Monday, November 9, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Trump Declares "We Won," Downplays Fatalities as Pentagon's Count Stands at 23</a>
+    <div class="toc-section">Trump says renewed fighting is "highly unlikely" and claims no US fatalities even as the Pentagon's official toll stands at 23; new US strikes still hit Qeshm Island overnight; Rubio reports no progress in talks despite a Trump-Qatar PM meeting</div>
+    <a href="#cyber">🔐 Cybersecurity — SonicWall SAML/MFA Bypass Confirmed Exploited and Added to CISA's KEV List</a>
+    <div class="toc-section">CVE-2026-19868 gets a federal remediation deadline of November 20; Sega discloses a breach of 2.2 million customer emails tied to a new "PHP2Shell" PHP core flaw; Anubis ransomware deploys a new "Lindnor" backdoor</div>
+    <a href="#ai">🤖 Artificial Intelligence — Anthropic's IPO Moment of Truth Nears as Market Rout Pressures Both Labs' Valuations</a>
+    <div class="toc-section">Anthropic can begin formally marketing its IPO as early as Tuesday despite a volatility spike that typically causes companies to delay; both OpenAI and Anthropic reportedly chase lower-valuation financing after last week's selloff; Anthropic and OpenAI both claim subexponential algorithm breakthroughs on long-standing computational hypotheses</div>
+  </div>
+
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — Trump Claims Victory, Downplays Casualties as Qeshm Strikes Continue</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 255</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Trump Says US Has "Won" the War and Suffered No Fatalities; Pentagon Count Says 23 Killed
+        <span class="badge badge-red">QESHM STRUCK AGAIN OVERNIGHT · RUBIO: NO PROGRESS IN TALKS</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        Trump declared the US has "won" the war with Iran and that renewed large-scale fighting is "highly unlikely," while separately claiming the US suffered no fatalities — a claim directly contradicted by the Pentagon's own official count of 23 service members killed since the conflict began in late February. The declarations came even as US forces fired projectiles toward Qeshm Island overnight Sunday into Monday, causing at least four explosions according to Iranian state media, with Iran's Tasnim news agency confirming a strike hit Qeshm while other reported explosion sites (Mahshahr, Sirik, Bandar Abbas) were not. Secretary of State Rubio reported no progress in negotiations despite a scheduled Trump meeting with Qatar's prime minister aimed at reviving mediation. In a 60 Minutes interview, Trump acknowledged the war contributed to his party's historic midterm losses, citing voters' dislike of rising gas prices and the war itself.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">23</div>
+          <div class="stat-label">US service members killed (Pentagon's own count)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">4</div>
+          <div class="stat-label">Explosions reported on/near Qeshm overnight</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">255 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.cbsnews.com/live-updates/iran-war-trump-us-strait-hormuz-persian-gulf/">CBS News — Iran War Live Updates</a>
+        <a href="https://www.euronews.com/2026/11/09/trump-says-us-has-won-iran-war-as-rubio-reports-no-progress-in-talks">Euronews — Trump says US has 'won' Iran war as Rubio reports no progress in talks</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Trump told CNN that as long as negotiations show progress, resuming strikes is "highly unlikely to be necessary" — a notably softer line than his "destroy the rest of Iran" remarks earlier in the week.</li>
+        <li>Qatari mediation continued with a Trump–Qatar PM meeting, though no breakthrough was announced.</li>
+        <li>No new independently verified casualty figures beyond the Pentagon's 23 were reported today; table below is carried forward.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>23</td><td>820 wounded (Pentagon)</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">Pentagon's US death toll now explicitly confirmed at 23; other figures carried forward from last confirmed update.</p>
+    </div>
+  </div>
+
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Monday, November 9, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: SonicWall SAML/MFA Bypass Confirmed Exploited, Joins CISA's KEV with a Nov 20 Deadline
+        <span class="badge badge-red">CVE-2026-19868 · FEDERAL REMEDIATION DUE NOV 20</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        SonicWall confirmed active exploitation of CVE-2026-19868, an authentication-enforcement bug that lets attackers with valid credentials bypass SAML-enforced MFA on SonicOS SSL-VPN logins. CISA added it to the Known Exploited Vulnerabilities catalog, giving US civilian federal agencies until November 20 to remediate. SonicWall SSL-VPN appliances carry a troubled history — Akira ransomware affiliates compromised them even with OTP-based MFA enabled back in 2025 — making this bypass a high-value target for ransomware crews. Separately, Sega Corporation formally disclosed that an unauthorized third party exfiltrated 2,196,044 customer newsletter email addresses, tracing the intrusion to a pair of critical PHP core memory-safety flaws dubbed "PHP2Shell" (CVE-2026-109618/109619). Anubis ransomware operators were also reported deploying a new custom backdoor called "Lindnor" alongside 13 security-evasion tools in an October intrusion against a US organization.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">Nov 20</div>
+          <div class="stat-label">Federal remediation deadline for CVE-2026-19868</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">2.2M</div>
+          <div class="stat-label">Sega customer emails exposed</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.helpnetsecurity.com/2026/11/09/exploited-sonicwall-ssl-vpn-flaw-lets-attackers-bypass-saml-enforced-mfa-cve-2026-19868/">Help Net Security — SonicWall SSL-VPN SAML/MFA bypass</a>
+        <a href="https://gbhackers.com/anubis-ransomware-attack/">GBHackers — Anubis Ransomware / Lindnor Backdoor</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Android's November security update patches CVE-2026-58868 for devices on versions 14 through 17.</li>
+        <li>Barracuda Email Security Gateway appliances need patching against CVE-2026-116606 and CVE-2026-111560.</li>
+        <li>A "GhostAction" supply-chain campaign reportedly hit tens of thousands of GitHub repositories to steal cloud and AI credentials; a separate npm package compromise used Ethereum blockchain for payload delivery.</li>
+        <li>A critical React Server Components RCE (CVSS 9.5) continues to warrant urgent patching attention across affected deployments.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Patch SonicWall SSL-VPN against CVE-2026-19868 before Nov 20 — the SAML/MFA bypass combined with SonicWall's ransomware-targeting history makes this urgent regardless of the federal deadline applying to you</li>
+            <li>Audit GitHub Actions and npm dependencies for the GhostAction supply-chain campaign's indicators given the scale (tens of thousands of repos reportedly affected)</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>The Sega breach traced to a newly disclosed PHP core flaw is a timely reminder to push clients on patch-latency audits — the gap between disclosure and exploitation is shrinking</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>If your VPN infrastructure runs SonicWall, ask IT for written confirmation of patch status against CVE-2026-19868 — an MFA bypass on remote-access infrastructure is a material risk disclosure topic</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Monday, November 9, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Anthropic's IPO Moment of Truth Nears as Market Rout Pressures Both Frontier Labs' Valuations
+        <span class="badge badge-purple">VIX BRIEFLY ABOVE 25 · $895B PURCHASE COMMITMENTS</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Anthropic can begin formally marketing its IPO as early as Tuesday, making its case to investors that now is the right time to list despite last week's AI-stock swoon briefly pushing the Cboe Volatility Index above 25 — a zone where companies typically postpone offerings, according to Renaissance Capital. Bloomberg reports both OpenAI and Anthropic are simultaneously chasing new financing at lower-than-previously-expected valuations in the wake of the rout. Anthropic's amended IPO prospectus (filed November 2) shows quarterly revenue reaching $17 billion — up from $11.6 billion the prior quarter — against a $567 million operating loss, with roughly $895.4 billion in purchase commitments (mostly compute) and $146.6 billion of liquidity. In research news, OpenAI and Anthropic each published competing claims of subexponential-time algorithms bearing on a 25-year-old computing hypothesis — Anthropic notably lists its Claude model as a co-author, saying an internal Claude model found the result and an AI system produced a formal Lean 4 proof — though both companies caution the results are asymptotic and don't resolve general NP-hardness questions in practice.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#bc8cff;">$17B</div>
+          <div class="stat-label">Anthropic's latest quarterly revenue</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">25+</div>
+          <div class="stat-label">VIX spike that typically delays IPOs</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">1.54M</div>
+          <div class="stat-label">DeepSeek Harness agent's daily active users</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.bloomberg.com/news/newsletters/2026-11-09/openai-and-anthropic-valuations-fall-as-ai-market-rout-hits-fundraising">Bloomberg — OpenAI and Anthropic Valuations Fall as AI Market Rout Hits Fundraising</a>
+        <a href="https://bloomberg.com/news/articles/2026-11-09/anthropic-ipo-s-moment-of-truth-nears-as-waiting-period-expires">Bloomberg — Anthropic IPO's Moment of Truth Nears</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>Anthropic emailed enterprise customers that their account data was accessed, according to a separate report — details on scope remain limited.</li>
+        <li>OpenAI's help-center update confirms Plus, Pro, and Business plans will share one token allowance across ChatGPT and Codex starting in December.</li>
+        <li>AI companies collectively sold or priced over $300 billion in stock and mandatory convertibles in 2026 so far, excluding Anthropic's pending IPO, with roughly $100 billion more expected.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 AI Security</div>
+          <ul>
+            <li>Anthropic's enterprise customer data access disclosure is worth a direct follow-up if your organization uses Claude Enterprise — request details on scope and remediation</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>DeepSeek's Harness framework hitting 1.54M daily active users in under three months is a fast-moving competitive signal worth flagging to clients evaluating agent frameworks beyond Codex/Claude Code</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>Watch Anthropic's IPO pricing closely this week — it will set the real-world benchmark for frontier-AI valuations that affects every AI vendor negotiation you have going forward</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Monday, November 9, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
