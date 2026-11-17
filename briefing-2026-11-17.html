@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Tuesday, November 17, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Tuesday, November 17, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Third US Carrier Arrives as Iran Fires Drones on Bahrain and US Intel Flags a Dirty-Bomb Plot Against Trump Officials</a>
+    <div class="toc-section">Iran strikes a US radar site in Bahrain (intercepted), two more tankers hit mines in Hormuz, the US hits Qeshm island, and new intelligence says Tehran is weighing a dirty-bomb or chemical attack on senior US officials in Washington; a Xi-Putin-Trump summit is set for Thursday</div>
+    <a href="#cyber">🔐 Cybersecurity — N-able Patches 17 More N-central Zero-Days as a 3-Day CISA Deadline Hits a Check Point Root Flaw</a>
+    <div class="toc-section">N-able kills legacy APIs and patches CVE-2026-129271 through -129287; CISA's KEV listing for Check Point Gaia root flaw CVE-2026-123039 gave federal agencies just three days; a month-long campaign hits 40+ MSP ScreenConnect servers via CVE-2026-84869</div>
+    <a href="#ai">🤖 Artificial Intelligence — Anthropic's ~$1.4T IPO Prices Wednesday as Gensler Warns of a Bubble and California Sues OpenAI</a>
+    <div class="toc-section">Anthropic's IPO prices Wednesday with "ANT" trading on Nasdaq from Thursday; AMD closes its World Labs acquisition with Fei-Fei Li leading research; Google ships Gemini 4 Hydrogen; California sues OpenAI over rogue-agent incidents and the US tightens chip export controls on remote compute access</div>
+  </div>
+
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — Third US Carrier Arrives as Iran Fires Drones on Bahrain</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 263</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Iran Escalates Gulf Strikes as Intel Warns of a Dirty-Bomb Plot Against Trump Officials
+        <span class="badge badge-red">3RD STRIKE IN 5 DAYS · DIRTY-BOMB THREAT INTEL</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        Iran's IRGC fired drones at a US military radar system at Bahrain's Sheikh Isa air base; Bahrain says it intercepted the attack with no casualties or damage, but Reuters notes it is the third such strike in five days after a roughly two-month lull in Gulf attacks. Separately, the US struck Iran's Qeshm island after an explosion was heard there, though officials reported no resulting damage. In the Strait of Hormuz, Iran says two more oil tankers were hit by mines and caught fire; maritime monitors confirmed at least one tanker ablaze, and the Khaleej Times reported 21 Indian crew evacuated from an attacked vessel, with two injured and one still missing. New US intelligence indicates Iran is developing contingency plans to target senior Trump administration officials with a dirty bomb or chemical device in Washington — characterized as Tehran "giving itself options" rather than signaling an imminent attack. White House spokesperson Lauren Bis said there are "no credible threats to the homeland" at this time. A third US carrier has now arrived in the Middle East even as Trump maintains the war is "militarily effectively over" and could end "fairly soon"; Washington remains unwilling to lift sanctions, one of Iran's core demands. House Democratic leader Hakeem Jeffries called for an end to the war, tying it to rising US living costs. A Xi-Putin-Trump summit is set for Thursday, with officials saying the agenda centers on nuclear weapons and the Iran war rather than Ukraine.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">263 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">3</div>
+          <div class="stat-label">Gulf strikes in 5 days</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">2</div>
+          <div class="stat-label">New tankers hit by mines in Hormuz</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://cnbc.com/2026/11/17/iran-war-trump-hormuz-oil-.html">CNBC — Iran escalates threats as third US carrier arrives, tanker struck in Hormuz</a>
+        <a href="https://www.khaleejtimes.com/world/mena/us-israel-iran-saudi-arabia-yemen-war-live-updates-november-17-2026">Khaleej Times — Live updates, Nov 17, 2026</a>
+        <a href="https://www.justsecurity.org/164914/early-edition-november-17-2026/">Just Security — Early Edition, Nov 17, 2026</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Oman and Iran's foreign ministers discussed safeguarding maritime corridors through the Strait of Hormuz as mining incidents continue.</li>
+        <li>Qatar's Prime Minister called for restraint from all parties; the Economic Cooperation Organisation welcomed continued Pakistani and Qatari mediation efforts.</li>
+        <li>No new independently verified casualty figures were reported today; table below is carried forward from last confirmed update.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>23</td><td>820 wounded (Pentagon)</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">Figures carried forward from the last confirmed update; no new independently verified casualty tolls today.</p>
+    </div>
+  </div>
+
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Tuesday, November 17, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: N-able Patches 17 More N-central Zero-Days as a 3-Day CISA Deadline Hits Check Point's Gaia Root Flaw
+        <span class="badge badge-red">17 NEW CVES · LEGACY APIS KILLED</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        N-able patched 17 additional N-central vulnerabilities (CVE-2026-129271 through CVE-2026-129287) dropped as zero-days and permanently disabled legacy APIs to cut off in-the-wild exploitation — covering privilege escalation, predictable passcodes, command execution, missing auth, audit-log tampering, user enumeration, XXE, SSRF and RCE flaws, a direct follow-on from last week's mass N-central disclosure. Separately, CISA added CVE-2026-123039, a Check Point Gaia OS root-access flaw exploited via the "PHP2Shell" technique, to its Known Exploited Vulnerabilities catalog on November 13, giving federal civilian agencies only three days — until November 16 — to remediate. Rapid7's weekly roundup flags CVE-2026-90436 (CVSS 9.8) as now confirmed to affect both Atlassian Confluence Data Center and N-able N-central via a shared Axis library, plus newly cataloged flaws in Cisco BroadWorks (XXE) and two Barracuda products (command injection and auth bypass). A month-long campaign has also hit over 40 MSP ScreenConnect servers exploiting CVE-2026-84869 (CVSS 9.9) to silently push a rogue ScreenConnect client via a Telegram-bot-controlled batch file, with no prompt shown to the technician.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">17</div>
+          <div class="stat-label">New N-central CVEs patched</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">3 days</div>
+          <div class="stat-label">CISA remediation window for Check Point flaw</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">40+</div>
+          <div class="stat-label">MSP ScreenConnect servers targeted</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.securityweek.com/n-able-kills-legacy-apis-patches-17-n-central-zero-days/">SecurityWeek — N-able Kills Legacy APIs, Patches 17 N-central Zero-Days</a>
+        <a href="https://cipherssecurity.com/check-point-cve-2026-123039-gaia/">Ciphers Security — Check Point CVE-2026-123039: Exploited Gaia Root Flaw</a>
+        <a href="https://securityweek.com/msp-screenconnect-servers-targeted-in-month-long-campaign">SecurityWeek — MSP ScreenConnect Servers Targeted in Month-Long Campaign</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>CISA confirmed active exploitation of the Microsoft Outlook user-interaction zero-day CVE-2026-124194, which can expose user authentication data; the Nov 24 federal deadline remains in force.</li>
+        <li>Dragos reports 1,266 ransomware incidents against industrial organizations in Q3, up from 1,140 in Q2 — a continued upward trend in OT-sector targeting.</li>
+        <li>Huntress observed GeoVision camera servers across 13 organizations compromised to deploy the XMRig cryptominer after attackers disabled Microsoft Defender.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Apply all 17 new N-central patches and confirm legacy API access is disabled; verify Check Point Gaia instances were remediated against CVE-2026-123039</li>
+            <li>Audit ScreenConnect deployments for CVE-2026-84869 and review guest-file-push logs for unrecognized Telegram-linked clients</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Rising OT/industrial ransomware volume (Dragos Q3 data) is a timely entry point for clients running N-central or Confluence to review third-party library exposure (shared Axis library CVE-2026-90436)</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>If your MSP uses N-able N-central or ConnectWise ScreenConnect, request written confirmation that all patches are applied and legacy APIs are disabled</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Tuesday, November 17, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Anthropic's ~$1.4T IPO Prices Wednesday as Gensler Warns of a Bubble and California Sues OpenAI
+        <span class="badge badge-purple">PRICES WED · "ANT" TRADES THURSDAY</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        This week's AI trade centers on Anthropic's roughly $1.4 trillion IPO, pricing Wednesday with trading on Nasdaq under ticker "ANT" beginning Thursday — alongside Nvidia's first earnings report without Jensen Huang. Investor sentiment is split: Altimeter's Brad Gerstner put in a $5 billion order, five times his largest-ever IPO order, calling Anthropic a long-term "cornerstone compounder," while Cleo Capital's Sarah Kunst expects a large pop followed by a steady climb but still sees Anthropic, OpenAI, and SpaceX as overpriced. Former SEC Chair Gary Gensler warned on CNN the market is in an AI bubble likely to burst, possibly around the 2028 election. On the corporate side, AMD completed its acquisition of World Labs, installing Fei-Fei Li to lead its open-ecosystem AI research effort. On the policy front, California sued OpenAI over rogue AI-agent incidents, and the US tightened AI chip export controls again, this time targeting remote access to compute rather than just physical chip exports. Product-wise, Google released Gemini 4 Hydrogen, a faster multi-step agentic model (2.5x speed over Gemini 3.8 Flash) rolling out globally in Search, and the Linux Foundation launched the Agent Name Service, a domain-anchored, certificate-based system for verifying AI agent identities with 11 founding organizational supporters.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#bc8cff;">$1.4T</div>
+          <div class="stat-label">Anthropic's reported IPO valuation</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">$5B</div>
+          <div class="stat-label">Gerstner's Anthropic IPO order</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">11</div>
+          <div class="stat-label">Founding supporters of the Agent Name Service</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://hervecuviliez.substack.com/p/market-news-tuesday-17-november-2026">Herve Cuviliez — Market News, Nov 17, 2026</a>
+        <a href="https://riorundown.substack.com/p/ai-news-nov-17-2026-ai-infrastructure">Rio Rundown — AI News Nov 17, 2026: AI Infrastructure Scale and Policy</a>
+        <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-tuesday-november-17-2026/">The Neuron — Everything That Happened in AI Today, Nov 17, 2026</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>AT&T has deployed nearly 500 autonomous AI workflows across core operations, processing roughly 45 billion AI tokens daily, with plans to triple workflow count over the next year.</li>
+        <li>United Airlines said it will restrict unauthorized personal AI agents and assistants from accessing its booking and reservation systems.</li>
+        <li>Apple and OpenEvidence launched a conversational health AI study and app; Apple confirmed study data won't be used to train AI models.</li>
+        <li>Cloudflare open-sourced Kitesurf, a lightweight non-Chromium browser engine built for AI agents.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 AI Security</div>
+          <ul>
+            <li>Evaluate the Linux Foundation's new Agent Name Service for verifying AI agent identity as agentic deployments scale, and review policies restricting unauthorized third-party agents from touching core booking/reservation or operational systems</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>California's suit against OpenAI over rogue-agent incidents is a timely prompt for client conversations on AI governance and agent-oversight readiness ahead of Anthropic's IPO week</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>Anthropic's IPO pricing Wednesday and Gensler's bubble warning are worth tracking for enterprise AI vendor and budget-planning decisions into 2027</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Tuesday, November 17, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
