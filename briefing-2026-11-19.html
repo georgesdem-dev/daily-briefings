@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Thursday, November 19, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Thursday, November 19, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Trump Weighs New Strikes Over Dirty-Bomb Intel as Houthi Missile Hits a Riyadh Tower</a>
+    <div class="toc-section">Trump says the US will "see what happens" after Jan. 1 as he weighs a strike tied to dirty-bomb intelligence under heavy Israeli pressure; a Houthi missile damages Riyadh's Public Investment Fund Tower; Iran hits a Kuwait base again and warns it will not accept the US-imposed blockade; the IEA calls the war the "largest threat" to energy security in history</div>
+    <a href="#cyber">🔐 Cybersecurity — Ransomware Incidents Surge 38% in Q3 as OpsAgent Malware Disables Defenses Before Encryption</a>
+    <div class="toc-section">Q3 ransomware incidents jump 38% quarter-on-quarter with exploited vulnerabilities now the entry point in 28% of cases; the AuditTeam gang's modular OpsAgent framework disables endpoint defenses before encrypting files; Osaki Electric halts smart-meter production after a ransomware hit; Cisco Expressway and Synology flaws see active exploitation</div>
+    <a href="#ai">🤖 Artificial Intelligence — Anthropic's $81.3B IPO Becomes the Largest in History as ANT Begins Trading on Nasdaq</a>
+    <div class="toc-section">Anthropic prices at $83/share, raising $81.3B at a ~$1.5T valuation, and starts trading as "ANT"; Google ships Gemini 4 Neon; Nvidia halts certain China chip shipments despite US clearance; internal Meta chats reveal Muse read users' encrypted Signal messages; Citi shifts AI-agent breach liability onto customers</div>
+  </div>
+
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — Trump Weighs New Strikes as a Houthi Missile Hits Riyadh</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 265</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Trump Weighs Striking Iran Over Dirty-Bomb Intelligence as a Houthi Missile Damages a Riyadh Tower
+        <span class="badge badge-red">RIYADH TOWER HIT · STRIKE DECISION PENDING</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        President Trump said the US would "see what happens" in the war after January 1, 2027, as he actively weighs a new strike on Iran tied to intelligence about a potential dirty-bomb plot, under intensifying pressure from Israel to move quickly and aggressively. A New York Times reporter in Riyadh witnessed direct damage to the Public Investment Fund Tower from an apparent Houthi missile attack, marking one of the most prominent strikes yet on the Saudi capital's skyline. Iran's army said it again targeted US military equipment at a base in Kuwait, continuing the pattern of Gulf-wide strikes seen earlier this week. Tehran stated flatly that it will not allow the US-imposed blockade on its shipping to continue, keeping the Strait of Hormuz standoff unresolved. Separately, the Times of Israel reported Netanyahu asked the Mossad chief to prepare a covert operation against Iran without informing the IDF — a sign of friction within Israel's own chain of command. The International Energy Agency said the war has become the "largest threat" to global energy security on record. Western officials increasingly see a growing risk of large-scale US strikes in the days ahead.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">265 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">1</div>
+          <div class="stat-label">Riyadh tower hit by Houthi missile</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">Jan 1, 2027</div>
+          <div class="stat-label">Trump's stated review point for next steps</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.justsecurity.org/165250/early-edition-november-19-2026/">Just Security — Early Edition, Nov 19, 2026</a>
+        <a href="https://aljazeera.com/news/liveblog/2026/11/19/iran-war-live-saudi-led-coalition-strikes-yemen-ships-on-fire-in-hormuz">Al Jazeera — Iran war live: Tower in Riyadh hit by Houthi attack</a>
+        <a href="https://www.timesofisrael.com/liveblog-november-19-2026/">Times of Israel — Netanyahu asked Mossad head to prep covert operation against Iran without telling IDF</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Iran International reports Tehran says it is prepared for a potential US ground operation as the risk of broader war rises.</li>
+        <li>Ships remain on fire in the Strait of Hormuz per Al Jazeera's live coverage, continuing the maritime pressure campaign from recent days.</li>
+        <li>No new independently verified casualty figures were reported today; table below is carried forward.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>23</td><td>820 wounded (Pentagon)</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">Figures carried forward from the last confirmed update; no new independently verified casualty tolls today.</p>
+    </div>
+  </div>
+
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Thursday, November 19, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Ransomware Incidents Surge 38% in Q3 as OpsAgent Malware Disables Defenses Before Encrypting
+        <span class="badge badge-red">+38% QoQ · EXPLOITED-VULN ENTRY DOUBLED TO 28%</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Reported ransomware incidents rose 38% from Q2 to Q3 2026, and the share of cases that began with an exploited vulnerability — rather than phishing or stolen credentials — doubled to 28%, underscoring how patch lag is increasingly the weak link. The AuditTeam ransomware group is using a new modular Windows framework called OpsAgent to disable endpoint defenses, move laterally through compromised networks, and encrypt files, while dressing up its extortion demands as "security consulting" invoices. Japanese manufacturer Osaki Electric disclosed it discovered encrypted server data on November 17, disconnected external networks, and halted production at its Saitama site and two associated plants, suspending shipments of smart meters and other products. On the vulnerability side, CISA added the actively exploited Synology DiskStation Manager flaw CVE-2024-10441 to its KEV catalog, and threat actors exploited Cisco Expressway's CVE-2026-76466 within days of a public PoC release, compromising at least one Russian organization. Cisco also flagged CVE-2026-114938, an OpenJDK remote-code-execution flaw affecting Catalyst Center and Secure Network Analytics, while CVE-2026-123007 affects NGINX Plus/Open Source deployments using HTTP/2.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">+38%</div>
+          <div class="stat-label">Ransomware incident growth, Q2 → Q3</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">28%</div>
+          <div class="stat-label">Share starting from an exploited vulnerability</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">3</div>
+          <div class="stat-label">Osaki Electric plants halted by the attack</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.prnewswire.com/news-releases/ransomware-incidents-surged-38-in-q3-302944597.html">PR Newswire — Ransomware incidents surged 38% in Q3</a>
+        <a href="https://gbhackers.com/opsagent-malware-attack/">GBHackers — Hackers Use OpsAgent Malware to Disable Antivirus Protection and Launch Ransomware Attacks</a>
+        <a href="https://securityweek.com/hackers-exploit-cisco-expressway-vulnerability-soon-after-poc-release">SecurityWeek — Hackers Exploit Cisco Expressway Vulnerability Soon After PoC Release</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>CISA continues to confirm active exploitation of the Microsoft Outlook user-interaction zero-day disclosed earlier this week.</li>
+        <li>A new Google Chrome zero-day is being exploited in the wild to execute malicious code remotely.</li>
+        <li>Daily OT security roundups continue flagging industrial-sector targeting alongside the broader Q3 ransomware surge.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>With exploited vulnerabilities now the entry point in 28% of ransomware cases (up from 14%), reprioritize patch SLAs for internet-facing systems over phishing-only defenses</li>
+            <li>Patch the actively exploited Synology DiskStation Manager (CVE-2024-10441) and Cisco Expressway (CVE-2026-76466) flaws immediately if deployed</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>The 38% Q3 ransomware surge and OpsAgent's "security consulting" extortion disguise are timely talking points for client incident-response tabletop exercises</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>Osaki Electric's multi-plant shutdown is a useful case study for board discussion on manufacturing/OT ransomware business-continuity planning</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Thursday, November 19, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Anthropic's $81.3B IPO Becomes the Largest in History as "ANT" Begins Trading on Nasdaq
+        <span class="badge badge-purple">LARGEST IPO EVER · ~$1.5T VALUATION</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Anthropic priced its IPO at $83 a share, raising $81.3 billion — the largest IPO in history — and valuing the company at roughly $1.5 trillion on a fully diluted basis; shares began trading Thursday on Nasdaq under ticker "ANT." Google introduced Gemini 4 Neon, a model built for fast task completion across software engineering, knowledge work, and science, extending its agentic model lineup released this week. On the security and policy side, Nvidia has stopped shipping certain AI chips to China even after Washington cleared them for sale, a notable instance of a company exceeding government export restrictions on its own initiative. Internal Meta chats reportedly show employees flagged that Muse, the AI product launched in September 2026, read users' encrypted Signal messages on Android via push notifications and mixed data across user accounts — a serious privacy lapse inside a major lab's own product. Citi updated its online user agreement to make clear that customers who grant account access to third-party AI agents are responsible for any resulting activity, including damage from a breached or leaking agent — shifting AI-agent security liability onto end users. AMD also completed its acquisition of World Labs, appointing Fei-Fei Li as EVP and chief scientist, and Coinbase's AI fraud defenses blocked $4.7 million in losses during a two-hour livestream scam featuring an AI-generated deepfake of Elon Musk.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#bc8cff;">$81.3B</div>
+          <div class="stat-label">Anthropic's IPO raise</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">$1.5T</div>
+          <div class="stat-label">Fully diluted valuation</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">$4.7M</div>
+          <div class="stat-label">Fraud blocked by Coinbase during deepfake livestream scam</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://riorundown.substack.com/p/ai-news-nov-19-2026-agentic-ai-infrastructure">Rio Rundown — AI News Nov 19, 2026: Agentic AI Infrastructure and Security</a>
+        <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-thursday-november-19-2026/">The Neuron — Everything That Happened in AI Today, Nov 19, 2026</a>
+        <a href="https://samonai.substack.com/p/ai-brief-november-19-2026">Sam on AI — AI Brief, November 19, 2026</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>AMD's completed acquisition of World Labs installs Fei-Fei Li as EVP and chief scientist, deepening AMD's push into AI research.</li>
+        <li>Nvidia halting certain China-bound chip shipments despite US government clearance signals corporate caution exceeding regulatory requirements.</li>
+        <li>Citi's liability shift on third-party AI agents sets a precedent other financial institutions may follow as agentic banking tools spread.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 AI Security</div>
+          <ul>
+            <li>Meta Muse's reported reading of encrypted Signal messages is a reminder to audit any AI assistant's notification/accessibility permissions before deployment on corporate or personal devices</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Citi's new AI-agent liability clause is a model clients in regulated industries may want to adopt — a good prompt for contract and terms-of-service review engagements</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>Anthropic's record-breaking IPO confirms frontier AI remains the dominant capital story heading into 2027 budget planning</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Thursday, November 19, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
