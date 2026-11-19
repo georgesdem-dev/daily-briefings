@@ -15,367 +15,536 @@
     }
     a { color: #58a6ff; text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
 
-    .briefing-header {
+    /* ── Header ──────────────────────────────────── */
+    .header {
       text-align: center;
       padding: 52px 0 40px;
       border-bottom: 1px solid #21262d;
-      margin-bottom: 48px;
+      margin-bottom: 52px;
     }
-    .briefing-header .label {
+    .header .label {
       font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
       text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
     }
-    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
-    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
-    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+    .header h1 { font-size: 2.2rem; font-weight: 800; color: #f0f6fc; margin-bottom: 10px; }
+    .header .date { font-size: 1rem; color: #8b949e; }
 
-    .toc {
-      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
-      padding: 20px 24px; margin-bottom: 44px;
+    /* ── Category Sections ───────────────────────── */
+    .category {
+      margin-bottom: 56px;
     }
-    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
-    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
-    .toc a:hover { color: #58a6ff; }
-    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-bottom: 24px;
+    }
+    .category-header.iran   { background: linear-gradient(135deg, #1f1a2e, #2d1b1b); border-left: 4px solid #f78166; }
+    .category-header.cyber  { background: linear-gradient(135deg, #1a1f2e, #1b2d1b); border-left: 4px solid #3fb950; }
+    .category-header.ai     { background: linear-gradient(135deg, #1a2238, #1b1f2d); border-left: 4px solid #58a6ff; }
+    .category-icon { font-size: 2rem; }
+    .category-title { font-size: 1.3rem; font-weight: 800; color: #f0f6fc; }
+    .category-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
 
-    .topic-section { margin-bottom: 56px; }
-    .topic-header {
-      display: flex; align-items: center; gap: 14px;
-      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    /* ── Story Cards ─────────────────────────────── */
+    .story {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-bottom: 14px;
     }
-    .topic-icon { font-size: 2rem; }
-    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
-    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+    .story-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #f0f6fc;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .story-title .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 20px;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .badge-breaking { background: #da3633; color: #fff; }
+    .badge-developing { background: #d29922; color: #0d1117; }
+    .badge-analysis   { background: #388bfd; color: #fff; }
+    .badge-critical   { background: #da3633; color: #fff; }
+    .badge-high       { background: #d29922; color: #0d1117; }
+    .badge-medium     { background: #3fb950; color: #0d1117; }
+    .badge-launch     { background: #58a6ff; color: #0d1117; }
+    .badge-ipo        { background: #bc8cff; color: #0d1117; }
+    .badge-risk       { background: #f78166; color: #0d1117; }
 
-    .card {
-      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
-      padding: 24px 28px; margin-bottom: 16px;
-    }
-    .card-title {
-      font-size: 1rem; font-weight: 700; color: #f0f6fc;
-      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-    }
-    .badge {
-      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
-      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
-    }
-    .badge-red { background: #3d1e1e; color: #f85149; }
-    .badge-orange { background: #3d2a1e; color: #e3b341; }
-    .badge-blue { background: #1e2d3d; color: #58a6ff; }
-    .badge-green { background: #1e3d2a; color: #3fb950; }
-    .badge-purple { background: #2d1e3d; color: #bc8cff; }
-    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+    .story-body { font-size: 0.9rem; color: #c9d1d9; line-height: 1.7; }
+    .story-body p { margin-bottom: 8px; }
+    .story-body p:last-child { margin-bottom: 0; }
 
-    ul.news-list { list-style: none; }
-    ul.news-list li {
-      padding: 8px 0; border-bottom: 1px solid #21262d;
-      font-size: 0.9rem; line-height: 1.65;
+    /* ── Audience Lenses ─────────────────────────── */
+    .lenses {
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
-    ul.news-list li:last-child { border-bottom: none; }
-    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+    .lens {
+      display: flex;
+      gap: 10px;
+      background: #0d1117;
+      border: 1px solid #21262d;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.84rem;
+    }
+    .lens-icon { flex-shrink: 0; font-size: 1rem; }
+    .lens-label { font-weight: 700; color: #f0f6fc; }
+    .lens-text  { color: #8b949e; }
 
-    .audience-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 14px; margin-top: 8px;
-    }
-    .audience-card {
-      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
-    }
-    .audience-card .aud-label {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
-      text-transform: uppercase; margin-bottom: 10px;
-    }
-    .aud-ciso { color: #f85149; }
-    .aud-partner { color: #e3b341; }
-    .aud-exec { color: #3fb950; }
-    .audience-card ul { list-style: none; font-size: 0.85rem; }
-    .audience-card ul li {
-      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
-    }
-    .audience-card ul li:last-child { border-bottom: none; }
-    .audience-card ul li::before { content: "• "; color: #484f58; }
-
-    .data-table {
-      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
-    }
-    .data-table th {
-      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
-      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
-      border-bottom: 1px solid #30363d;
-    }
-    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
-    .data-table tr:last-child td { border-bottom: none; }
-    .data-table .highlight { color: #f85149; font-weight: 700; }
-    .data-table .warn { color: #e3b341; font-weight: 600; }
-    .data-table .ok { color: #3fb950; }
-
-    .stat-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 12px; margin-top: 10px;
-    }
-    .stat-box {
-      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
-      padding: 14px 16px; text-align: center;
-    }
-    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
-    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
-
-    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
-    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
-    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
-    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
-
+    /* ── Source Tags ─────────────────────────────── */
     .sources {
-      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
-      font-size: 0.78rem; color: #6e7681;
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
     }
-    .sources a { color: #58a6ff; margin-right: 10px; }
+    .source-tag {
+      font-size: 0.74rem;
+      color: #8b949e;
+      background: #21262d;
+      border-radius: 20px;
+      padding: 2px 10px;
+    }
+    .source-tag a { color: #58a6ff; }
 
-    .briefing-footer {
-      text-align: center; margin-top: 64px; padding-top: 24px;
-      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    /* ── Divider ─────────────────────────────────── */
+    .divider { border: none; border-top: 1px solid #21262d; margin: 32px 0; }
+
+    /* ── Summary Bar ─────────────────────────────── */
+    .summary-bar {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 52px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
     }
-    .briefing-footer strong { color: #6e7681; }
+    .summary-item { flex: 1; min-width: 200px; }
+    .summary-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #8b949e; margin-bottom: 4px; }
+    .summary-value { font-size: 0.9rem; color: #e6edf3; }
+
+    /* ── Footer ──────────────────────────────────── */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid #21262d;
+      color: #484f58;
+      font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 24px;
+      font-size: 0.85rem;
+      color: #58a6ff;
+    }
+    .back-link:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 <div class="container">
 
-  <div class="briefing-header">
-    <div class="label">Evening Intelligence Briefing</div>
-    <h1>📰 Daily Briefing</h1>
-    <div class="meta">
-      Thursday, November 19, 2026
-      <span>·</span>
-      Iran War · Cybersecurity · AI
-      <span>·</span>
-      6:00 PM Paris
+  <a class="back-link" href="index.html">← All Briefings</a>
+
+  <div class="header">
+    <div class="label">Intelligence Briefing</div>
+    <h1>📰 Daily Brief</h1>
+    <div class="date">Thursday, November 19, 2026 &nbsp;·&nbsp; 6:00 PM</div>
+  </div>
+
+  <!-- Summary Bar -->
+  <div class="summary-bar">
+    <div class="summary-item">
+      <div class="summary-label">🪖 Iran War — Day ~263</div>
+      <div class="summary-value">3rd US carrier in CENTCOM; Hormuz declared "minefield"; Pakistan mediating revival of June accord</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-label">🔐 Cyber Top Threat</div>
+      <div class="summary-value">Java4Shell (CVE-2026-114938) — pre-auth RCE in Jira, Jenkins, Keycloak; active scanning underway</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-label">🤖 AI Top Story</div>
+      <div class="summary-value">Anthropic opens at $111.50/share on Nasdaq (ANT) — $1.5T valuation in record $81.3B IPO</div>
     </div>
   </div>
 
-  <div class="toc">
-    <div class="toc-title">Contents</div>
-    <a href="#iran">🔥 Iran War — Trump Weighs New Strikes Over Dirty-Bomb Intel as Houthi Missile Hits a Riyadh Tower</a>
-    <div class="toc-section">Trump says the US will "see what happens" after Jan. 1 as he weighs a strike tied to dirty-bomb intelligence under heavy Israeli pressure; a Houthi missile damages Riyadh's Public Investment Fund Tower; Iran hits a Kuwait base again and warns it will not accept the US-imposed blockade; the IEA calls the war the "largest threat" to energy security in history</div>
-    <a href="#cyber">🔐 Cybersecurity — Ransomware Incidents Surge 38% in Q3 as OpsAgent Malware Disables Defenses Before Encryption</a>
-    <div class="toc-section">Q3 ransomware incidents jump 38% quarter-on-quarter with exploited vulnerabilities now the entry point in 28% of cases; the AuditTeam gang's modular OpsAgent framework disables endpoint defenses before encrypting files; Osaki Electric halts smart-meter production after a ransomware hit; Cisco Expressway and Synology flaws see active exploitation</div>
-    <a href="#ai">🤖 Artificial Intelligence — Anthropic's $81.3B IPO Becomes the Largest in History as ANT Begins Trading on Nasdaq</a>
-    <div class="toc-section">Anthropic prices at $83/share, raising $81.3B at a ~$1.5T valuation, and starts trading as "ANT"; Google ships Gemini 4 Neon; Nvidia halts certain China chip shipments despite US clearance; internal Meta chats reveal Muse read users' encrypted Signal messages; Citi shifts AI-agent breach liability onto customers</div>
-  </div>
 
-  <div class="topic-section" id="iran">
-    <div class="topic-header">
-      <div class="topic-icon">🔥</div>
+  <!-- ═══════════════════════════════════════════
+       SECTION 1: IRAN WAR
+  ════════════════════════════════════════════ -->
+  <div class="category">
+    <div class="category-header iran">
+      <div class="category-icon">🪖</div>
       <div>
-        <div class="topic-title">Iran War — Trump Weighs New Strikes as a Houthi Missile Hits Riyadh</div>
-        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 265</div>
+        <div class="category-title">Iran War — Day ~263</div>
+        <div class="category-subtitle">Battlefield · Diplomacy · Hormuz · Geopolitics</div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">
-        🌟 Top Story: Trump Weighs Striking Iran Over Dirty-Bomb Intelligence as a Houthi Missile Damages a Riyadh Tower
-        <span class="badge badge-red">RIYADH TOWER HIT · STRIKE DECISION PENDING</span>
+    <!-- Story 1 -->
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-breaking">Breaking</span>
+        Third US Carrier Arrives in CENTCOM; IRGC Claims Two Supertankers Struck by Mines
       </div>
-      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
-        President Trump said the US would "see what happens" in the war after January 1, 2027, as he actively weighs a new strike on Iran tied to intelligence about a potential dirty-bomb plot, under intensifying pressure from Israel to move quickly and aggressively. A New York Times reporter in Riyadh witnessed direct damage to the Public Investment Fund Tower from an apparent Houthi missile attack, marking one of the most prominent strikes yet on the Saudi capital's skyline. Iran's army said it again targeted US military equipment at a base in Kuwait, continuing the pattern of Gulf-wide strikes seen earlier this week. Tehran stated flatly that it will not allow the US-imposed blockade on its shipping to continue, keeping the Strait of Hormuz standoff unresolved. Separately, the Times of Israel reported Netanyahu asked the Mossad chief to prepare a covert operation against Iran without informing the IDF — a sign of friction within Israel's own chain of command. The International Energy Agency said the war has become the "largest threat" to global energy security on record. Western officials increasingly see a growing risk of large-scale US strikes in the days ahead.
-      </p>
-      <div class="stat-grid">
-        <div class="stat-box">
-          <div class="stat-value" style="color:#f85149;">265 days</div>
-          <div class="stat-label">War duration</div>
+      <div class="story-body">
+        <p>The USS Theodore Roosevelt entered the CENTCOM area of operations on November 15, giving the United States three carrier strike groups simultaneously positioned in the region — an unprecedented post-Cold War deployment. The IRGC claimed that two supertankers totaling more than 2 million barrels of capacity caught fire after striking mines in the southern Strait of Hormuz while under US naval escort.</p>
+        <p>Iran's Revolutionary Guard Navy separately warned all shipping companies that the US-backed southern route through the Strait of Hormuz is "fully closed" and constitutes a "minefield of fire." The IRGC also claims to have captured a US MQM-170 drone near Qeshm Island.</p>
+        <p>On November 18, the US Embassy issued a security alert reporting Iranian attacks targeting US assets in Kuwait and Bahrain, with IRGC drones striking a helicopter base in Bahrain. The UK Maritime Trade Operations separately confirmed a tanker was struck by an unidentified projectile in the Strait, subsequently catching fire.</p>
+      </div>
+      <div class="sources">
+        <span class="source-tag"><a href="https://www.cnbc.com/2026/11/17/iran-war-trump-hormuz-oil-.html">CNBC</a></span>
+        <span class="source-tag"><a href="https://abcnews.com/International/live-updates/iran-live-updates-americans-tired-forever-wars-araghchi/?id=137967256">ABC News</a></span>
+        <span class="source-tag"><a href="https://iranintl.com/en/liveblog/202611143682">Iran International</a></span>
+      </div>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-developing">Developing</span>
+        Pakistan &amp; Qatar Mediate Ceasefire Revival; June Accord Framework Still Alive
+      </div>
+      <div class="story-body">
+        <p>Pakistan's Prime Minister confirmed Islamabad remains in active contact with both Tehran and Washington to revive the collapsed June ceasefire accord. Pakistan and Qatar co-brokered the original June agreement, which briefly halted fighting and outlined a path toward nuclear monitoring talks and a phased reopening of the Strait of Hormuz.</p>
+        <p>Iran has proposed reopening the strait within 48 hours of a finalized agreement, subject to conditions: sanctions relief, an end to the US naval blockade of Iranian ports, and a halt to US airstrikes. Tehran and Washington remain divided on the sequencing of nuclear concessions and sanctions rollback.</p>
+        <p>UN Secretary-General Guterres called on November 16 for an end to the "neither peace nor war" situation, urging a "serious diplomatic process." After more than eight months of conflict, Iran has not agreed to renewed monitoring of its nuclear program or removal of highly-enriched uranium stockpiles.</p>
+      </div>
+      <div class="sources">
+        <span class="source-tag"><a href="https://www.arabnews.pk/pakistan/pakistan-pm-says-islamabad-remains-in-contact-with-iran-us-to-restore-regional-peace-3007506">Arab News</a></span>
+        <span class="source-tag"><a href="https://www.cbsnews.com/live-updates/iran-war-us-trump-deal-negotiations/">CBS News</a></span>
+        <span class="source-tag"><a href="https://en.wikipedia.org/wiki/2026_Iran_war_ceasefire">Wikipedia: 2026 Iran War Ceasefire</a></span>
+      </div>
+    </div>
+
+    <!-- Story 3 -->
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-analysis">Analysis</span>
+        Gulf States Under Fire: Houthis Hit Saudi Infrastructure, Iranian Drones Target Bahrain
+      </div>
+      <div class="story-body">
+        <p>The conflict continues to widen regionally. Houthi forces have escalated strikes on civilian airports and critical infrastructure across Saudi Arabia. Iran's IRGC launched six drones targeting a helicopter base in Bahrain on November 18, the most direct attack on a GCC member since the conflict began.</p>
+        <p>Secretary of State Rubio told reporters the US has "no need" to restart major combat operations in Iran at this time, suggesting Washington sees current naval and air operations as sufficient pressure to bring Tehran to the table. Analysts note, however, that Iran's mine warfare in Hormuz is escalating daily, raising the risk of an accidental escalation that could trigger a broader response.</p>
+        <p>Oil markets remain on edge: Brent crude is trading near multi-year highs as shipping insurance costs for the Persian Gulf route have spiked by over 400% since the conflict began.</p>
+      </div>
+      <div class="sources">
+        <span class="source-tag"><a href="https://www.globalsecurity.org/military/ops/iran-war-oprep.htm">Global Security</a></span>
+        <span class="source-tag"><a href="https://www.cbsnews.com/live-updates/iran-war-us-trump-deal-negotiations/">CBS News</a></span>
+        <span class="source-tag"><a href="https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_campaign">Wikipedia: Hormuz Campaign</a></span>
+      </div>
+    </div>
+
+  </div><!-- /category iran -->
+
+  <hr class="divider">
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 2: CYBERSECURITY
+  ════════════════════════════════════════════ -->
+  <div class="category">
+    <div class="category-header cyber">
+      <div class="category-icon">🔐</div>
+      <div>
+        <div class="category-title">Cybersecurity</div>
+        <div class="category-subtitle">Threats · CVEs · Ransomware · Compliance</div>
+      </div>
+    </div>
+
+    <!-- Story 1: Java4Shell -->
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-critical">Critical CVE</span>
+        Java4Shell (CVE-2026-114938): Pre-Auth RCE in Java 17–27 — Active Scanning Begins
+      </div>
+      <div class="story-body">
+        <p><strong>What it is:</strong> A memory corruption bug in OpenJDK's Base64 handling (Java 17.0.6+ and Java 21, 25, 27) allows an unauthenticated remote attacker to corrupt heap memory and achieve remote code execution. Dubbed "Java4Shell" for its Log4Shell-esque blast radius, it requires x86-64 processors with AVX-512 VBMI support (most modern Intel/AMD server CPUs; ARM not affected).</p>
+        <p><strong>Affected applications (default-config, no login needed):</strong> Keycloak, Atlassian Jira, Atlassian Confluence, JFrog Artifactory, Jenkins, PingFederate. Additional apps (login required): Apache Kafka, Solr, Elasticsearch, Gerrit, Spinnaker.</p>
+        <p><strong>Exploitation status:</strong> As of 6 AM ET today, GreyNoise recorded 150+ requests matching Java4Shell attack signatures from 5 IP addresses. No confirmed in-the-wild RCE yet — researchers are withholding full exploits while organizations patch. Oracle and OpenJDK released patches on November 17.</p>
+      </div>
+      <div class="lenses">
+        <div class="lens">
+          <div class="lens-icon">🔐</div>
+          <div>
+            <div class="lens-label">CISO:</div>
+            <div class="lens-text">Emergency patching required for all Java 17+ environments. Prioritize Jira, Confluence, Jenkins, Keycloak — internet-exposed instances are critically at risk. AVX-512 CPU check can triage internal exposure. Expect working RCE exploits public within days.</div>
+          </div>
         </div>
-        <div class="stat-box">
-          <div class="stat-value" style="color:#e3b341;">1</div>
-          <div class="stat-label">Riyadh tower hit by Houthi missile</div>
+        <div class="lens">
+          <div class="lens-icon">🤝</div>
+          <div>
+            <div class="lens-label">Consulting Partner:</div>
+            <div class="lens-text">Expect urgent client inquiries today. Highest-risk clients: software dev shops (Jenkins, Jira), financial/healthcare orgs (Keycloak for identity). Patch assessment and emergency advisory engagement opportunity.</div>
+          </div>
         </div>
-        <div class="stat-box">
-          <div class="stat-value" style="color:#3fb950;">Jan 1, 2027</div>
-          <div class="stat-label">Trump's stated review point for next steps</div>
+        <div class="lens">
+          <div class="lens-icon">💼</div>
+          <div>
+            <div class="lens-label">Business Executive:</div>
+            <div class="lens-text">Similar scale to Log4Shell (2021). Companies relying on Atlassian or JFrog tools in development pipelines face supply-chain risk. Ask IT/security teams today: "Are we patched? What's our exposure?" A breach via this vector could compromise your entire software delivery pipeline.</div>
+          </div>
         </div>
       </div>
       <div class="sources">
-        Sources: <a href="https://www.justsecurity.org/165250/early-edition-november-19-2026/">Just Security — Early Edition, Nov 19, 2026</a>
-        <a href="https://aljazeera.com/news/liveblog/2026/11/19/iran-war-live-saudi-led-coalition-strikes-yemen-ships-on-fire-in-hormuz">Al Jazeera — Iran war live: Tower in Riyadh hit by Houthi attack</a>
-        <a href="https://www.timesofisrael.com/liveblog-november-19-2026/">Times of Israel — Netanyahu asked Mossad head to prep covert operation against Iran without telling IDF</a>
+        <span class="source-tag"><a href="https://www.securityweek.com/java4shell-exploitation-attempts-begin-as-vendors-rush-out-advisories/">SecurityWeek</a></span>
+        <span class="source-tag"><a href="https://thehackernews.com/2026/11/java4shell-cve-2026-114938-enables-pre.html">The Hacker News</a></span>
+        <span class="source-tag"><a href="https://censys.com/advisory/cve-2026-114938/">Censys Advisory</a></span>
+        <span class="source-tag"><a href="https://watchtowr.com/intelligence/java4shell-cve-2026-114938-faq/">watchTowr FAQ</a></span>
+        <span class="source-tag"><a href="https://blog.qualys.com/vulnerabilities-threat-research/2026/11/17/how-to-find-mitigate-and-patch-the-critical-java4shell-flaw-cve-2026-114938-now">Qualys</a></span>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">📋 Also Today</div>
-      <ul class="news-list">
-        <li>Iran International reports Tehran says it is prepared for a potential US ground operation as the risk of broader war rises.</li>
-        <li>Ships remain on fire in the Strait of Hormuz per Al Jazeera's live coverage, continuing the maritime pressure campaign from recent days.</li>
-        <li>No new independently verified casualty figures were reported today; table below is carried forward.</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
-      <table class="data-table">
-        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
-        <tbody>
-          <tr><td>US military</td><td>23</td><td>820 wounded (Pentagon)</td></tr>
-          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
-          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
-          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
-          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
-        </tbody>
-      </table>
-      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">Figures carried forward from the last confirmed update; no new independently verified casualty tolls today.</p>
-    </div>
-  </div>
-
-  <div class="topic-section" id="cyber">
-    <div class="topic-header">
-      <div class="topic-icon">🔐</div>
-      <div>
-        <div class="topic-title">Cybersecurity</div>
-        <div class="topic-subtitle">Thursday, November 19, 2026</div>
+    <!-- Story 2: Cisco Expressway + nginx2root -->
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-critical">Critical CVE</span>
+        Cisco Expressway CVE-2026-76466 (CVSS 9.8) Exploited + nginx2root (CVE-2026-123007) Disclosed
       </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">
-        🌟 Top Story: Ransomware Incidents Surge 38% in Q3 as OpsAgent Malware Disables Defenses Before Encrypting
-        <span class="badge badge-red">+38% QoQ · EXPLOITED-VULN ENTRY DOUBLED TO 28%</span>
+      <div class="story-body">
+        <p><strong>Cisco Expressway (CVE-2026-76466):</strong> A critical unauthenticated RCE flaw (CVSS 9.8) in Cisco Expressway is being actively exploited shortly after a public PoC was released. Attackers with network access to the device can execute commands as root with no credentials required. Organizations with internet-exposed Expressway deployments (common in hybrid Webex/CUCM environments) should treat this as urgent.</p>
+        <p><strong>nginx2root (CVE-2026-123007):</strong> A local privilege escalation flaw in NGINX open-source has been present since version 1.9.5 (released September 2015). An attacker with limited local access can escalate to root. Affects a massive installed base — NGINX powers ~34% of the world's web servers. Patch or mitigate worker-process permissions immediately.</p>
+        <p><strong>PHP RCE (CVE-2026-115560):</strong> A critical RCE flaw in PHP's session upload progress feature has patches releasing today. Apply immediately if running PHP on any publicly accessible server.</p>
       </div>
-      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
-        Reported ransomware incidents rose 38% from Q2 to Q3 2026, and the share of cases that began with an exploited vulnerability — rather than phishing or stolen credentials — doubled to 28%, underscoring how patch lag is increasingly the weak link. The AuditTeam ransomware group is using a new modular Windows framework called OpsAgent to disable endpoint defenses, move laterally through compromised networks, and encrypt files, while dressing up its extortion demands as "security consulting" invoices. Japanese manufacturer Osaki Electric disclosed it discovered encrypted server data on November 17, disconnected external networks, and halted production at its Saitama site and two associated plants, suspending shipments of smart meters and other products. On the vulnerability side, CISA added the actively exploited Synology DiskStation Manager flaw CVE-2024-10441 to its KEV catalog, and threat actors exploited Cisco Expressway's CVE-2026-76466 within days of a public PoC release, compromising at least one Russian organization. Cisco also flagged CVE-2026-114938, an OpenJDK remote-code-execution flaw affecting Catalyst Center and Secure Network Analytics, while CVE-2026-123007 affects NGINX Plus/Open Source deployments using HTTP/2.
-      </p>
-      <div class="stat-grid">
-        <div class="stat-box">
-          <div class="stat-value" style="color:#f85149;">+38%</div>
-          <div class="stat-label">Ransomware incident growth, Q2 → Q3</div>
+      <div class="lenses">
+        <div class="lens">
+          <div class="lens-icon">🔐</div>
+          <div>
+            <div class="lens-label">CISO:</div>
+            <div class="lens-text">Three critical patches in one day: Cisco Expressway, NGINX, and PHP. Prioritize internet-exposed Expressway and PHP servers first (active exploitation). nginx2root requires local access but is a severe post-compromise escalation path.</div>
+          </div>
         </div>
-        <div class="stat-box">
-          <div class="stat-value" style="color:#e3b341;">28%</div>
-          <div class="stat-label">Share starting from an exploited vulnerability</div>
+        <div class="lens">
+          <div class="lens-icon">🤝</div>
+          <div>
+            <div class="lens-label">Consulting Partner:</div>
+            <div class="lens-text">Clients running legacy unified comms (Cisco Expressway) are especially at risk. PHP-based clients (CMS platforms, e-commerce) need same-day patching. Good opportunity for a quick-turn patch validation engagement.</div>
+          </div>
         </div>
-        <div class="stat-box">
-          <div class="stat-value" style="color:#58a6ff;">3</div>
-          <div class="stat-label">Osaki Electric plants halted by the attack</div>
+        <div class="lens">
+          <div class="lens-icon">💼</div>
+          <div>
+            <div class="lens-label">Business Executive:</div>
+            <div class="lens-text">The sheer volume of critical vulnerabilities this week — Java4Shell, Cisco, NGINX, PHP — represents a systemic patch management stress test. Organizations without automated patching pipelines are most vulnerable. This is a board-level discussion about patch velocity.</div>
+          </div>
         </div>
       </div>
       <div class="sources">
-        Sources: <a href="https://www.prnewswire.com/news-releases/ransomware-incidents-surged-38-in-q3-302944597.html">PR Newswire — Ransomware incidents surged 38% in Q3</a>
-        <a href="https://gbhackers.com/opsagent-malware-attack/">GBHackers — Hackers Use OpsAgent Malware to Disable Antivirus Protection and Launch Ransomware Attacks</a>
-        <a href="https://securityweek.com/hackers-exploit-cisco-expressway-vulnerability-soon-after-poc-release">SecurityWeek — Hackers Exploit Cisco Expressway Vulnerability Soon After PoC Release</a>
+        <span class="source-tag"><a href="https://www.securityweek.com/hackers-exploit-cisco-expressway-vulnerability-soon-after-poc-release/">SecurityWeek — Cisco</a></span>
+        <span class="source-tag"><a href="https://www.securityweek.com/php-readies-critical-security-updates-to-patch-another-rce-flaw/">SecurityWeek — PHP</a></span>
+        <span class="source-tag"><a href="https://zinbiel.net/daily-security-vulnerability-brief-2026-11-19/">Zinbiel CVE Brief</a></span>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">📋 Also Today</div>
-      <ul class="news-list">
-        <li>CISA continues to confirm active exploitation of the Microsoft Outlook user-interaction zero-day disclosed earlier this week.</li>
-        <li>A new Google Chrome zero-day is being exploited in the wild to execute malicious code remotely.</li>
-        <li>Daily OT security roundups continue flagging industrial-sector targeting alongside the broader Q3 ransomware surge.</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <div class="card-title">📣 Audience-Tailored Takeaways</div>
-      <div class="audience-grid">
-        <div class="audience-card">
-          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
-          <ul>
-            <li>With exploited vulnerabilities now the entry point in 28% of ransomware cases (up from 14%), reprioritize patch SLAs for internet-facing systems over phishing-only defenses</li>
-            <li>Patch the actively exploited Synology DiskStation Manager (CVE-2024-10441) and Cisco Expressway (CVE-2026-76466) flaws immediately if deployed</li>
-          </ul>
-        </div>
-        <div class="audience-card">
-          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
-          <ul>
-            <li>The 38% Q3 ransomware surge and OpsAgent's "security consulting" extortion disguise are timely talking points for client incident-response tabletop exercises</li>
-          </ul>
-        </div>
-        <div class="audience-card">
-          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
-          <ul>
-            <li>Osaki Electric's multi-plant shutdown is a useful case study for board discussion on manufacturing/OT ransomware business-continuity planning</li>
-          </ul>
-        </div>
+    <!-- Story 3: Ransomware Surge + Arrests -->
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-high">Ransomware</span>
+        Q3 Ransomware Surged 38%; FBI + Ukrainian Police Arrest Gang Members Tied to $40.5M in Ransoms
       </div>
-    </div>
-  </div>
-
-  <div class="topic-section" id="ai">
-    <div class="topic-header">
-      <div class="topic-icon">🤖</div>
-      <div>
-        <div class="topic-title">Artificial Intelligence</div>
-        <div class="topic-subtitle">Thursday, November 19, 2026</div>
+      <div class="story-body">
+        <p>New data shows ransomware incidents rose 38% from Q2 to Q3 2026, with the share of incidents that began via an exploited vulnerability doubling to 28% — reinforcing the critical importance of rapid patching (see Java4Shell above). Manufacturing and healthcare remain the most targeted sectors.</p>
+        <p>In a significant law enforcement win, the FBI and Ukrainian National Police jointly arrested suspected members of a ransomware gang responsible for $40.5 million in ransom payments across multiple countries. Identities have not been publicly disclosed pending extradition proceedings.</p>
+        <p>Separately, Japan's Osaki Electric (smart-meter manufacturer) disclosed a ransomware attack on November 17 after discovering encrypted server data. Operational technology (OT) environments remain a growing ransomware target.</p>
       </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">
-        🌟 Top Story: Anthropic's $81.3B IPO Becomes the Largest in History as "ANT" Begins Trading on Nasdaq
-        <span class="badge badge-purple">LARGEST IPO EVER · ~$1.5T VALUATION</span>
-      </div>
-      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
-        Anthropic priced its IPO at $83 a share, raising $81.3 billion — the largest IPO in history — and valuing the company at roughly $1.5 trillion on a fully diluted basis; shares began trading Thursday on Nasdaq under ticker "ANT." Google introduced Gemini 4 Neon, a model built for fast task completion across software engineering, knowledge work, and science, extending its agentic model lineup released this week. On the security and policy side, Nvidia has stopped shipping certain AI chips to China even after Washington cleared them for sale, a notable instance of a company exceeding government export restrictions on its own initiative. Internal Meta chats reportedly show employees flagged that Muse, the AI product launched in September 2026, read users' encrypted Signal messages on Android via push notifications and mixed data across user accounts — a serious privacy lapse inside a major lab's own product. Citi updated its online user agreement to make clear that customers who grant account access to third-party AI agents are responsible for any resulting activity, including damage from a breached or leaking agent — shifting AI-agent security liability onto end users. AMD also completed its acquisition of World Labs, appointing Fei-Fei Li as EVP and chief scientist, and Coinbase's AI fraud defenses blocked $4.7 million in losses during a two-hour livestream scam featuring an AI-generated deepfake of Elon Musk.
-      </p>
-      <div class="stat-grid">
-        <div class="stat-box">
-          <div class="stat-value" style="color:#bc8cff;">$81.3B</div>
-          <div class="stat-label">Anthropic's IPO raise</div>
+      <div class="lenses">
+        <div class="lens">
+          <div class="lens-icon">🔐</div>
+          <div>
+            <div class="lens-label">CISO:</div>
+            <div class="lens-text">Exploitation-based ransomware is growing fast — 28% of Q3 incidents started with a vuln, up from ~14% a quarter ago. Vuln management is now directly tied to ransomware prevention. OT environments remain soft targets; prioritize segmentation and OT-specific EDR.</div>
+          </div>
         </div>
-        <div class="stat-box">
-          <div class="stat-value" style="color:#58a6ff;">$1.5T</div>
-          <div class="stat-label">Fully diluted valuation</div>
+        <div class="lens">
+          <div class="lens-icon">🤝</div>
+          <div>
+            <div class="lens-label">Consulting Partner:</div>
+            <div class="lens-text">Q3 surge data gives you compelling ROI framing for security modernization proposals. Exploitation-sourced ransomware is a winnable argument for investing in vulnerability management and attack surface reduction services.</div>
+          </div>
         </div>
-        <div class="stat-box">
-          <div class="stat-value" style="color:#3fb950;">$4.7M</div>
-          <div class="stat-label">Fraud blocked by Coinbase during deepfake livestream scam</div>
+        <div class="lens">
+          <div class="lens-icon">💼</div>
+          <div>
+            <div class="lens-label">Business Executive:</div>
+            <div class="lens-text">38% quarterly ransomware surge with more attacks coming from unpatched vulnerabilities means cyber insurance underwriters will increasingly require faster patch SLAs. Review your policy terms now — many have added patching-velocity clauses to coverage conditions.</div>
+          </div>
         </div>
       </div>
       <div class="sources">
-        Sources: <a href="https://riorundown.substack.com/p/ai-news-nov-19-2026-agentic-ai-infrastructure">Rio Rundown — AI News Nov 19, 2026: Agentic AI Infrastructure and Security</a>
-        <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-thursday-november-19-2026/">The Neuron — Everything That Happened in AI Today, Nov 19, 2026</a>
-        <a href="https://samonai.substack.com/p/ai-brief-november-19-2026">Sam on AI — AI Brief, November 19, 2026</a>
+        <span class="source-tag"><a href="https://www.prnewswire.com/news-releases/ransomware-incidents-surged-38-in-q3-302944597.html">PR Newswire</a></span>
+        <span class="source-tag"><a href="https://securityboulevard.com/2026/11/daily-ot-security-news-november-19-2026/">Security Boulevard (OT)</a></span>
+        <span class="source-tag"><a href="https://health-isac.org/health-isac-daily-cyber-headlines-november-19-2026/">Health-ISAC</a></span>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">📊 Also Today</div>
-      <ul class="news-list">
-        <li>AMD's completed acquisition of World Labs installs Fei-Fei Li as EVP and chief scientist, deepening AMD's push into AI research.</li>
-        <li>Nvidia halting certain China-bound chip shipments despite US government clearance signals corporate caution exceeding regulatory requirements.</li>
-        <li>Citi's liability shift on third-party AI agents sets a precedent other financial institutions may follow as agentic banking tools spread.</li>
-      </ul>
-    </div>
+  </div><!-- /category cyber -->
 
-    <div class="card">
-      <div class="card-title">📣 Audience-Tailored Takeaways</div>
-      <div class="audience-grid">
-        <div class="audience-card">
-          <div class="aud-label aud-ciso">🔐 AI Security</div>
-          <ul>
-            <li>Meta Muse's reported reading of encrypted Signal messages is a reminder to audit any AI assistant's notification/accessibility permissions before deployment on corporate or personal devices</li>
-          </ul>
-        </div>
-        <div class="audience-card">
-          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
-          <ul>
-            <li>Citi's new AI-agent liability clause is a model clients in regulated industries may want to adopt — a good prompt for contract and terms-of-service review engagements</li>
-          </ul>
-        </div>
-        <div class="audience-card">
-          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
-          <ul>
-            <li>Anthropic's record-breaking IPO confirms frontier AI remains the dominant capital story heading into 2027 budget planning</li>
-          </ul>
-        </div>
+  <hr class="divider">
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 3: ARTIFICIAL INTELLIGENCE
+  ════════════════════════════════════════════ -->
+  <div class="category">
+    <div class="category-header ai">
+      <div class="category-icon">🤖</div>
+      <div>
+        <div class="category-title">Artificial Intelligence</div>
+        <div class="category-subtitle">Launches · Market Moves · Security Risks · Business Impact</div>
       </div>
     </div>
-  </div>
 
-  <div class="briefing-footer">
-    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Thursday, November 19, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
-    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+    <!-- Story 1: Anthropic IPO -->
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-ipo">IPO</span>
+        Anthropic Opens at $111.50 on Nasdaq (ANT) — Record $81.3B Offering, $1.5T Market Cap
+      </div>
+      <div class="story-body">
+        <p>Anthropic, maker of the Claude AI family, today became the largest IPO in history. Priced at $83/share (above the $70–$78 expected range), the company sold ~980 million Class A shares, raising $81.3 billion — surpassing SpaceX's June 2026 record. Shares opened at $111.50, implying a ~34% first-day pop and a fully diluted market cap of approximately $1.5 trillion.</p>
+        <p>The IPO cements Anthropic as the most valuable AI safety-focused company ever public and positions it alongside Apple and Microsoft in the top-tier of global technology companies by market cap. CEO Dario Amodei rang the Nasdaq opening bell this morning.</p>
+        <p>Anthropic's core products — the Claude 3.x/4.x model family and the Claude API — are deployed widely in enterprise and developer contexts. The IPO proceeds will primarily fund continued frontier AI research, expanded compute infrastructure, and global go-to-market expansion.</p>
+      </div>
+      <div class="lenses">
+        <div class="lens">
+          <div class="lens-icon">🔐</div>
+          <div>
+            <div class="lens-label">CISO:</div>
+            <div class="lens-text">Anthropic's public debut brings increased scrutiny to AI safety and security disclosures. Expect its Constitutional AI approach and red-teaming practices to become public benchmarks. Watch for activist shareholders pushing for greater transparency on model capabilities and dual-use risks.</div>
+          </div>
+        </div>
+        <div class="lens">
+          <div class="lens-icon">🤝</div>
+          <div>
+            <div class="lens-label">Consulting Partner:</div>
+            <div class="lens-text">The $1.5T valuation validates the AI platform market. Clients will accelerate AI adoption — consultants who can help govern, integrate, and secure AI tools will be in high demand. Consider building Anthropic/Claude implementation practices alongside existing OpenAI/Azure AI ones.</div>
+          </div>
+        </div>
+        <div class="lens">
+          <div class="lens-icon">💼</div>
+          <div>
+            <div class="lens-label">Business Executive:</div>
+            <div class="lens-text">The largest IPO in history signals that AI platforms are now foundational infrastructure — not experimental tools. Boards that haven't yet adopted an AI strategy are behind. The competitive gap between AI-native and AI-laggard organizations is widening rapidly; $1.5T says investors agree.</div>
+          </div>
+        </div>
+      </div>
+      <div class="sources">
+        <span class="source-tag"><a href="https://www.cnbc.com/2026/11/18/anthropic-ipo-ai-offering-price.html">CNBC</a></span>
+        <span class="source-tag"><a href="https://edition.cnn.com/2026/11/19/business/live-news/anthropic-ipo">CNN Business</a></span>
+        <span class="source-tag"><a href="https://www.forbes.com/sites/fionariley/2026/11/19/anthropic-ipo-live-nasdaq-futures-jump-as-record-stock-debut-could-open-25-higher/">Forbes</a></span>
+        <span class="source-tag"><a href="https://cryptobriefing.com/anthropic-nasdaq-bell-record-ant-ipo/">Crypto Briefing</a></span>
+      </div>
+    </div>
+
+    <!-- Story 2: Google Gemini 4 Neon -->
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-launch">Launch</span>
+        Google Releases Gemini 4 Neon at $3/M Tokens — Scores 61 on AI Intelligence Index
+      </div>
+      <div class="story-body">
+        <p>Google today released Gemini 4 Neon, a new efficiency-focused model priced at $3 per million input tokens, purpose-built for fast task completion across software engineering, knowledge work, and science. At its "xhigh thinking" level, Neon scores 61 on the Artificial Analysis Intelligence Index — third overall in the industry, behind only larger and slower frontier models.</p>
+        <p>The launch is positioned as Google's answer to the growing demand for capable-but-affordable models in the enterprise segment. At $3/M tokens, Neon competes directly with mid-tier offerings from OpenAI and Anthropic while leveraging Google's TPU infrastructure for lower latency.</p>
+        <p>Neon joins a rapidly crowding model landscape: earlier this week saw the launch of Palo Alto Networks' Applied Compute acquisition ($4.5B in stock) aimed at running customized open-weight AI on enterprise data.</p>
+      </div>
+      <div class="lenses">
+        <div class="lens">
+          <div class="lens-icon">🔐</div>
+          <div>
+            <div class="lens-label">CISO:</div>
+            <div class="lens-text">Neon's software engineering focus makes it attractive for developer teams — which means shadow AI adoption risk. Establish AI usage policies that account for coding assistants accessing codebases and credentials. Evaluate whether Gemini 4 Neon deployments meet your data residency and privacy requirements.</div>
+          </div>
+        </div>
+        <div class="lens">
+          <div class="lens-icon">🤝</div>
+          <div>
+            <div class="lens-label">Consulting Partner:</div>
+            <div class="lens-text">Neon's pricing creates a compelling ROI story for clients hesitant about AI costs. Its strong benchmark positioning at a competitive price point makes it a credible alternative in AI strategy engagements. Multi-model architecture recommendations are increasingly relevant.</div>
+          </div>
+        </div>
+        <div class="lens">
+          <div class="lens-icon">💼</div>
+          <div>
+            <div class="lens-label">Business Executive:</div>
+            <div class="lens-text">Google's aggressive pricing underscores that AI is becoming a commodity. The real differentiation for businesses is no longer which model you use, but how effectively you integrate AI into your workflows. Focus on internal process redesign, not model selection.</div>
+          </div>
+        </div>
+      </div>
+      <div class="sources">
+        <span class="source-tag"><a href="https://aiweekly.co/ai-news-today/edition/2026-11-19">AI Weekly</a></span>
+        <span class="source-tag"><a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-thursday-november-19-2026/">The Neuron</a></span>
+      </div>
+    </div>
+
+    <!-- Story 3: AI Agent Account Liability + Meta Muse -->
+    <div class="story">
+      <div class="story-title">
+        <span class="badge badge-risk">Risk</span>
+        Banks Shift AI Agent Liability to Customers; Meta's Muse Caught Reading Encrypted Messages
+      </div>
+      <div class="story-body">
+        <p><strong>Banking AI Agent Liability Shift:</strong> Citi, PNC, and Citizens Bank updated their online user agreements this week to place full liability on customers who grant account access to third-party AI agents — including losses from hacks, credential leaks, or agent malfunction. If a user grants an AI assistant access to their bank account and that tool is breached, the bank is explicitly not liable. This marks a significant policy shift with major implications for enterprise AI agent deployments.</p>
+        <p><strong>Meta Muse Data Scandal:</strong> Internal Meta communications obtained by reporters show that employees flagged concerns after the launch of Muse (September 2026) that the app was reading encrypted Signal messages on Android via push notification metadata and mixing data across user accounts. The disclosures raise serious questions about Meta's AI data practices and may trigger regulatory scrutiny in the EU under the AI Act.</p>
+        <p><strong>Palo Alto / Applied Compute Deal:</strong> Palo Alto Networks agreed to acquire Applied Compute for $4.5 billion in stock. The one-year-old startup runs customized open-weight AI models on enterprise data — a capability Palo Alto intends to integrate into its security platform for AI-driven threat detection and response.</p>
+      </div>
+      <div class="lenses">
+        <div class="lens">
+          <div class="lens-icon">🔐</div>
+          <div>
+            <div class="lens-label">CISO:</div>
+            <div class="lens-text">The banking liability shift is a preview of enterprise policy: organizations that allow AI agents to access sensitive systems may inherit full liability for resulting breaches. Meta Muse is a reminder that AI products can inadvertently create surveillance vectors. Conduct a full audit of AI tools with access to sensitive data/systems — focus on OAuth scopes and push notification permissions.</div>
+          </div>
+        </div>
+        <div class="lens">
+          <div class="lens-icon">🤝</div>
+          <div>
+            <div class="lens-label">Consulting Partner:</div>
+            <div class="lens-text">The liability shift creates a new consulting category: AI agent governance and risk transfer. Help clients draft AI agent usage policies, vendor evaluation frameworks, and contractual liability protections before they're exposed. The Palo Alto / Applied Compute deal signals that AI-native security vendors are pulling ahead.</div>
+          </div>
+        </div>
+        <div class="lens">
+          <div class="lens-icon">💼</div>
+          <div>
+            <div class="lens-label">Business Executive:</div>
+            <div class="lens-text">If your employees use AI agents connected to company systems or bank accounts, your organization may now bear full liability for breaches caused by those tools. This is not hypothetical — three major US banks just codified it. Update your AI tool governance policies before legal exposure becomes a board issue.</div>
+          </div>
+        </div>
+      </div>
+      <div class="sources">
+        <span class="source-tag"><a href="https://samonai.substack.com/p/ai-brief-november-19-2026">Sam on AI</a></span>
+        <span class="source-tag"><a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-thursday-november-19-2026/">The Neuron</a></span>
+        <span class="source-tag"><a href="https://aiweekly.co/ai-news-today/edition/2026-11-19">AI Weekly</a></span>
+      </div>
+    </div>
+
+  </div><!-- /category ai -->
+
+  <div class="footer">
+    Generated by <strong>Jorge</strong> &nbsp;·&nbsp; Thursday, November 19, 2026 &nbsp;·&nbsp; 6:00 PM
+    <br><br>
+    <a href="index.html">← Back to Archive</a>
   </div>
 
 </div>
