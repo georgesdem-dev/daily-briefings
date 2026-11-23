@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Friday, November 20, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Friday, November 20, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Trump Says No Decision Until the New Year as Senate Republicans Block a War-Powers Resolution</a>
+    <div class="toc-section">Trump tells Axios he won't decide on next steps until the new year even as a missile strikes Qeshm Island again; the Senate narrowly blocks (51-48) a bipartisan resolution requiring Trump to end the war or seek congressional approval; Mossad chief Roman Gofman pushed Washington for a renewed multiday strike campaign; a Pentagon study flags a "persistent" munitions shortfall</div>
+    <a href="#cyber">🔐 Cybersecurity — China-Linked Hackers Exploited a VMware vCenter Zero-Day Since September to Hijack Admin Accounts</a>
+    <div class="toc-section">Armory Castle chained a BeyondTrust Remote Support zero-day into a critical vCenter flaw (CVE-2026-123890, CVSS 9.8) for over two months before Broadcom's Nov 19 patch; the group used a custom tool, Bonesaw, to steal SSO signing material; a new unpatched Windows "FastUnlock" technique lets attackers with physical access run programs without signing in</div>
+    <a href="#ai">🤖 Artificial Intelligence — Anthropic Shares Pop 33% on Nasdaq Debut as an ARTEX-Linked Attack Disrupts the European Commission</a>
+    <div class="toc-section">Anthropic opens at $111.50, a 33% premium over its $83 IPO price, pushing the company toward $220B in cash reserves; an AI-assisted attack using the ARTEX toolkit disrupts European Commission payroll and medical-reimbursement systems; Commerce approves 879,000+ AI chips for sale to Alibaba and Tencent; Apple reportedly builds its own computer-using AI agent</div>
+  </div>
+
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — No Decision Until the New Year, Trump Says, as Senate Blocks War-Powers Vote</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 266</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Trump Punts Decision to 2027 as Senate Narrowly Blocks War-Powers Resolution
+        <span class="badge badge-orange">SENATE VOTE: 51-48 · QESHM STRUCK AGAIN</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        President Trump told Axios he will not decide on the war's next phase until the new year, even as Iran's Tasnim news agency reported a fresh missile strike on Qeshm Island near the Strait of Hormuz, with no immediate word on damage. In Congress, Senate Republicans blocked by a vote of 51-48 a bipartisan resolution — which had passed the House in September by the largest bipartisan margin yet on the issue — that would have required Trump to either end the war or seek formal congressional authorization to continue it; it was the first Senate vote on the war since the midterms. Behind the scenes, Mossad chief Roman Gofman visited Washington last week pushing Trump administration officials to launch a renewed multiday campaign of US-Israeli airstrikes against Iran, presenting fresh intelligence on Tehran's nuclear program. A congressionally mandated Pentagon study released Thursday found the war has "heightened the importance" of addressing a "persistent" shortfall in key US munitions stockpiles — a warning about sustainment capacity if the conflict drags into 2027. In Israel, former chief of staff Gadi Eisenkot said he would form an "emergency" government if efforts to build a broader coalition fail.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">266 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">51-48</div>
+          <div class="stat-label">Senate vote blocking war-powers resolution</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">2027</div>
+          <div class="stat-label">Trump's stated timeline for a decision</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://time.com/article/2026/11/20/iran-war-trump-strikes-major-decision-january-2027/">TIME — "We've Got Time": Trump Suggests Iran War Will Continue Into 2027</a>
+        <a href="https://www.justsecurity.org/165471/early-edition-november-20-2026/">Just Security — Early Edition, Nov 20, 2026</a>
+        <a href="https://www.fdd.org/overnight-brief/november-20-2026/">FDD — Overnight Brief, Nov 20, 2026</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Former Israeli chief of staff Gadi Eisenkot says he will form an "emergency" government if broad-coalition talks collapse, per the Times of Israel liveblog.</li>
+        <li>The Pentagon's munitions-shortfall study adds pressure on Congress to accelerate production funding regardless of how the war's next phase unfolds.</li>
+        <li>No new independently verified casualty figures were reported today; table below is carried forward.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>23</td><td>820 wounded (Pentagon)</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">Figures carried forward from the last confirmed update; no new independently verified casualty tolls today.</p>
+    </div>
+  </div>
+
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Friday, November 20, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: China-Linked "Armory Castle" Exploited a VMware vCenter Zero-Day Since September to Hijack Admin Accounts
+        <span class="badge badge-red">EXPLOITED SINCE SEPTEMBER · CVSS 9.8</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        A suspected China-nexus espionage group tracked as Armory Castle has been exploiting a critical VMware vCenter zero-day, CVE-2026-123890 (CVSS 9.8), since at least early September — nearly two and a half months before Broadcom patched it on November 19 in advisory VMSA-2026-0009, alongside four other flaws affecting VMware SDDC Manager and VMware Tools for Windows. The flaw sits in VMware Directory Service and lets remote, unauthenticated attackers obtain an administrator-level authenticated session. The group's initial entry came through a separate zero-day, CVE-2026-102764, in BeyondTrust Remote Support, which it then chained into vCenter using a custom tool called Bonesaw — stealing the Lightning Memory-Mapped Database, extracting SAML signing material, and creating a rogue single sign-on administrator account to maintain persistent, stealthy access across victim environments. Separately, researchers disclosed FastUnlock (CVE-2026-126714), an unpatched Windows technique letting anyone with physical access to a locked computer launch programs without signing in, and a Linux KVM hypervisor flaw (CVE-2026-99312) affecting AMD hosts with nested virtualization enabled let researchers read roughly 127GB of a cloud server's memory from inside a guest VM.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">9.8</div>
+          <div class="stat-label">CVSS score of CVE-2026-123890</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">~2.5 mo</div>
+          <div class="stat-label">Exploited before patch released</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">127GB</div>
+          <div class="stat-label">Memory read via AMD KVM flaw</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://thehackernews.com/2026/11/china-linked-hackers-exploit-critical.html">The Hacker News — China-Linked Hackers Exploit Critical VMware vCenter Zero-Day</a>
+        <a href="https://www.helpnetsecurity.com/2026/11/20/vmware-vcenter-zero-day-cve-2026-123890-exploited/">Help Net Security — VMware vCenter zero-day exploited for months before patch</a>
+        <a href="https://securityweek.com/newly-patched-vmware-vcenter-flaw-exploited-as-zero-day-by-chinese-apt">SecurityWeek — Newly Patched VMware vCenter Flaw Exploited as Zero-Day by Chinese APT</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>CISA's weekly KEV update adds seven newly confirmed exploited CVEs across vendors this week.</li>
+        <li>Hackaday's weekly security roundup flags Java4Shell, Optimizely malware, shrinking vendor disclosure deadlines, and an "unpatchable" smart-freezer flaw as ongoing concerns.</li>
+        <li>Broadcom's VMSA-2026-0009 advisory also covers separate flaws in VMware SDDC Manager and VMware Tools for Windows — patch alongside the vCenter fix.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Patch VMware vCenter (CVE-2026-123890) and BeyondTrust Remote Support immediately, and audit for rogue SSO admin accounts or unexpected SAML signing-material changes given the ~2.5-month exploitation window</li>
+            <li>Review physical-access controls for locked Windows workstations in light of the unpatched FastUnlock technique</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>The two-month dwell time on the vCenter zero-day is a strong case study for clients on virtualization-layer detection gaps and the value of SSO/identity anomaly monitoring</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>If your organization runs VMware vCenter, request immediate written confirmation from IT/infrastructure teams that VMSA-2026-0009 has been applied and admin accounts audited</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Friday, November 20, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Anthropic Shares Pop 33% on Nasdaq Debut as an ARTEX-Linked Attack Disrupts the European Commission
+        <span class="badge badge-purple">+33% DEBUT POP · $220B CASH RESERVES</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Anthropic shares opened trading on Nasdaq Thursday at $111.50, a 33% premium over the $83 IPO price, after the record $81.3 billion raise; combined with earlier fundraising and new private offerings timed to the debut, Anthropic now expects roughly $220 billion in cash reserves. On the security side, an AI-assisted cyberattack disrupted the European Commission, temporarily affecting staff payroll and medical-reimbursement systems — investigators identified ARTEX, an AI-assisted security-testing tool, as the mechanism behind the intrusion, continuing a troubling pattern of ARTEX-linked incidents this month. On policy, the US Commerce Department approved sales of more than 879,000 AI chips to Chinese companies including Alibaba and Tencent, a notable loosening even as export-control tightening continued elsewhere this week. AMD executives said agentic AI workloads are shifting data-center processor-to-GPU ratios from 1:4 to 1:1, repositioning the server CPU at the center of AI infrastructure demand. On products, Google shipped Gemini 4 Neon — its fourth new Gemini model in a month — Gemini on Mac can now operate local apps directly, Apple is reportedly building its own computer-using AI agent that browses the web and writes code, and xAI made Grok's video generator free for US users. Separately, over 500 Google employees petitioned the company to let schools disable AI-generated answers in search while keeping traditional search available.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#bc8cff;">+33%</div>
+          <div class="stat-label">Anthropic's first-day stock pop</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">$220B</div>
+          <div class="stat-label">Anthropic's projected cash reserves</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">879K+</div>
+          <div class="stat-label">AI chips approved for sale to Alibaba/Tencent</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://riorundown.substack.com/p/ai-news-nov-20-2026-agentic-ai-infrastructure">Rio Rundown — AI News Nov 20, 2026: Agentic AI Infrastructure and Policy</a>
+        <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-friday-november-20-2026/">The Neuron — Everything That Happened in AI Today, Nov 20, 2026</a>
+        <a href="https://samonai.substack.com/p/ai-brief-november-20-2026">Sam on AI — AI Brief, November 20, 2026</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>Google's Gemini 4 Neon rollout marks the company's fourth new Gemini model release this month alone, an unusually fast release cadence.</li>
+        <li>Apple's reported push to build its own computer-using AI agent signals a direct response to Google's and OpenAI's agentic-browser products.</li>
+        <li>The ARTEX-linked European Commission disruption is at least the third publicly reported ARTEX-related incident this month, following earlier hits on WorkOS and other targets.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 AI Security</div>
+          <ul>
+            <li>ARTEX's repeated use in real-world intrusions (now hitting the European Commission) means AI-assisted attack tooling is operational, not theoretical — prioritize detection signatures tuned to AI-driven recon and exploitation patterns</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>The European Commission's payroll/benefits disruption is a timely, high-visibility example for client conversations on public-sector and critical-system resilience against AI-assisted attacks</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>Anthropic's strong debut and AMD's 1:1 GPU-to-CPU ratio shift both point to sustained AI infrastructure capex continuing well into 2027 budget cycles</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Friday, November 20, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
