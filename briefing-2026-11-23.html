@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Monday, November 23, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 10px;
+    }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
+    .header .date { font-size: 1rem; color: #8b949e; margin-bottom: 16px; }
+    .header .day-badge {
+      display: inline-block;
+      background: #161b22; border: 1px solid #30363d;
+      border-radius: 20px; padding: 4px 14px;
+      font-size: 0.82rem; color: #f78166; font-weight: 600; letter-spacing: 0.5px;
+    }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 52px;
+    }
+    .section-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #21262d;
+    }
+    .section-icon { font-size: 1.6rem; }
+    .section-title { font-size: 1.3rem; font-weight: 800; color: #f0f6fc; }
+    .section-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    /* ── Story cards ── */
+    .story {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .story:hover { border-color: #444c56; }
+    .story-headline {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 8px; line-height: 1.4;
+    }
+    .story-body { font-size: 0.88rem; color: #c9d1d9; line-height: 1.7; }
+    .story-body p { margin-bottom: 6px; }
+    .story-body p:last-child { margin-bottom: 0; }
+    .story-source {
+      margin-top: 10px; font-size: 0.78rem; color: #484f58;
+    }
+    .story-source a { color: #388bfd; }
+
+    /* ── Audience tags ── */
+    .audience-block { margin-top: 14px; }
+    .audience-row {
+      display: flex; gap: 8px; align-items: flex-start;
+      margin-bottom: 8px; font-size: 0.84rem;
+    }
+    .audience-tag {
+      flex-shrink: 0;
+      background: #21262d; border: 1px solid #30363d;
+      border-radius: 4px; padding: 2px 8px;
+      font-size: 0.75rem; font-weight: 700; color: #8b949e;
+      white-space: nowrap;
+    }
+    .tag-ciso { border-color: #f78166; color: #f78166; }
+    .tag-partner { border-color: #d2a8ff; color: #d2a8ff; }
+    .tag-exec { border-color: #79c0ff; color: #79c0ff; }
+    .audience-text { color: #c9d1d9; line-height: 1.5; }
+
+    /* ── Status pill ── */
+    .status-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .status-pill {
+      background: #21262d; border: 1px solid #30363d;
+      border-radius: 20px; padding: 4px 12px;
+      font-size: 0.78rem; color: #8b949e;
+    }
+    .status-pill strong { color: #f0f6fc; }
+    .status-pill.red { border-color: #f85149; color: #f85149; }
+    .status-pill.yellow { border-color: #d29922; color: #d29922; }
+    .status-pill.green { border-color: #3fb950; color: #3fb950; }
+
+    /* ── CVE severity ── */
+    .cve-critical { color: #f85149; font-weight: 700; }
+    .cve-high { color: #f0883e; font-weight: 700; }
+    .cve-medium { color: #d29922; font-weight: 700; }
+
+    /* ── Divider ── */
+    .divider { border: none; border-top: 1px solid #21262d; margin: 20px 0; }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center; margin-top: 56px; padding-top: 20px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+    .back-link {
+      display: inline-block; margin-bottom: 32px;
+      font-size: 0.85rem; color: #58a6ff;
+    }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <a class="back-link" href="index.html">← Back to Archive</a>
+
+  <div class="header">
+    <div class="label">Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="date">Monday, November 23, 2026</div>
+    <div class="day-badge">⚔️ Iran War — Day ~268</div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 1 — IRAN WAR
+       ═══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🪖</div>
+      <div>
+        <div class="section-title">Iran War</div>
+        <div class="section-subtitle">Battlefield · Diplomacy · Hormuz · Regional</div>
+      </div>
+    </div>
+
+    <!-- Status bar -->
+    <div class="status-row">
+      <div class="status-pill red"><strong>Hormuz:</strong> Near-Closed · 22 attacks in Nov (highest since war began)</div>
+      <div class="status-pill yellow"><strong>Diplomacy:</strong> Stalled — Iran's 7 conditions unmet</div>
+      <div class="status-pill yellow"><strong>US Strike:</strong> Postponed ≥1 week (Netanyahu pressure resisted)</div>
+      <div class="status-pill red"><strong>Brent:</strong> Elevated (ongoing blockade)</div>
+    </div>
+
+    <!-- Story 1 -->
+    <div class="story">
+      <div class="story-headline">🔥 Hormuz Attacks Hit Record High: 22 Incidents in November</div>
+      <div class="story-body">
+        <p>Attacks on commercial shipping in and around the Strait of Hormuz have reached their highest level since the conflict began in late February, with at least 22 incidents recorded in November — the second highest single-month figure of the war. The IRGC has intensified operations over the past week, hitting tankers and downing US drones at an unprecedented rate.</p>
+        <p>The IRGC claimed to have downed its 20th US drone of this type since the war began — with four shot down in the past 24 hours alone — signalling a surge in both capability and operational tempo. Iranian forces also struck a civilian industrial facility in Bahrain on Saturday, following a November 17 US strike on an IRGC missile site on Qeshm Island.</p>
+        <p>Iran unveiled a new dual-missile launcher and underground missile facility, demonstrating continued military capacity despite prolonged US bombardment campaigns targeting infrastructure and air defences.</p>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://www.aljazeera.com/news/liveblog/2026/11/22/iran-war-live-tankers-set-ablaze-in-hormuz-as-irgc-warns-of-unrest-threat" target="_blank">Al Jazeera Liveblog</a> · <a href="https://www.cnn.com/2026/11/22/middleeast/hormuz-attacks-highest-levels-iran-war-intl" target="_blank">CNN</a> · <a href="https://www.aljazeera.com/news/2026/11/22/whats-behind-irans-escalation-of-attacks-in-the-gulf" target="_blank">Al Jazeera Analysis</a>
+      </div>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story">
+      <div class="story-headline">🕊️ Diplomacy: US Postpones Strike; Iran Holds 7 Conditions Firm</div>
+      <div class="story-body">
+        <p>The United States has decided to delay any potential military strike on Iran by at least one week, despite intense pressure from Israeli Prime Minister Benjamin Netanyahu for a joint offensive. The pause follows Rubio's engagement with Qatari leadership — with the Iran conflict high on the agenda — as Washington weighs diplomatic channels against escalation risk.</p>
+        <p>Iran's Foreign Minister Abbas Araghchi reiterated that Tehran still seeks a diplomatic settlement through mediators, but Iran will continue to refuse UN nuclear inspections until its seven conditions for ending the war are met, according to a senior Iranian lawmaker. Iran's offer of a two-day Hormuz reopening remains on the table, contingent on the US first lifting its naval blockade.</p>
+        <p>Secretary of State Rubio stated the US has "no need" to restart full combat operations — a signal of limited appetite for re-escalation, even as Tehran warns it may use "any means" under international law to break the naval siege bludgeoning its economy.</p>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://gulfnews.com/uae/usisrael-iran-war-what-uae-residents-need-to-know-today-nov-23-2026-1.500757486" target="_blank">Gulf News</a> · <a href="https://www.cbsnews.com/live-updates/iran-war-us-trump-deal-negotiations/" target="_blank">CBS News</a> · <a href="https://www.cbsnews.com/live-updates/iran-war-us-gulf-retaliation-strikes-strait-of-hormuz/" target="_blank">CBS News (Hormuz)</a>
+      </div>
+    </div>
+
+    <!-- Story 3 -->
+    <div class="story">
+      <div class="story-headline">🌍 Regional: Saudi Strikes Intensify at Bab al-Mandeb; Iraq Consolidation</div>
+      <div class="story-body">
+        <p>Saudi Arabia has intensified airstrikes on Houthi positions near the strategic Bab al-Mandeb Strait, with Houthi rebels pledging reciprocal attacks. The dual chokepoint threat — Hormuz in the east, Bab al-Mandeb in the west — continues to reshape global shipping patterns and insurance costs.</p>
+        <p>In Iraq, Iran continues consolidating influence despite Baghdad's recent deal with the Iran-backed Kataib Hezbollah militia in Jurf al-Sakhar. Meanwhile, Trump says the US is "talking to Tehran's representatives" through third-party channels, though no breakthrough framework has emerged.</p>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://www.aljazeera.com/news/liveblog/2026/11/22/iran-war-live-tankers-set-ablaze-in-hormuz-as-irgc-warns-of-unrest-threat" target="_blank">Al Jazeera Liveblog</a> · <a href="https://www.aljazeera.com/amp/news/liveblog/2026/11/6/iran-war-live-trump-warns-us-may-have-to-destroy-rest-of-iran" target="_blank">Al Jazeera (Trump)</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 2 — CYBERSECURITY
+       ═══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🔐</div>
+      <div>
+        <div class="section-title">Cybersecurity</div>
+        <div class="section-subtitle">Threats · CVEs · Ransomware · Incidents</div>
+      </div>
+    </div>
+
+    <!-- Story 1 — VMware vCenter -->
+    <div class="story">
+      <div class="story-headline">🚨 VMware vCenter Zero-Day CVE-2026-123890 — China APT Exploited for 2+ Months Before Patch</div>
+      <div class="story-body">
+        <p>Broadcom patched <span class="cve-critical">CVE-2026-123890</span> (CVSS <strong>9.8</strong>) on November 19 — a critical VMware vCenter Server flaw that Google's threat intelligence team confirmed had been exploited in the wild since at least early September. A China-nexus espionage group tracked as <strong>Armory Castle</strong> (formerly UNC5221) operated undetected for over two months before the patch was released.</p>
+        <p>The vulnerability allows unauthenticated remote code execution against vCenter infrastructure, putting virtualisation layers and hosted workloads at severe risk. Organizations should patch immediately and hunt for retrospective indicators of compromise dating to September.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-tag tag-ciso">🔐 CISO</span>
+          <span class="audience-text">Patch vCenter immediately (CVE-2026-123890, CVSS 9.8). Hunt for lateral movement from September onwards — Armory Castle used this for 60+ days. Check for unusual admin account creation on ESXi hosts.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-partner">🤝 Partner</span>
+          <span class="audience-text">Priority client advisory for all VMware vSphere environments. China-nexus attribution raises data exfiltration risk beyond ransomware — scope and dwell time analysis is billable and urgent.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-exec">💼 Executive</span>
+          <span class="audience-text">If your infrastructure runs VMware vCenter (most enterprise and cloud data centres do), assume possible intrusion since September. Engage security team immediately for a targeted assessment.</span>
+        </div>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://www.helpnetsecurity.com/2026/11/20/vmware-vcenter-zero-day-cve-2026-123890-exploited/" target="_blank">Help Net Security</a> · <a href="https://pasqualepillitteri.it/en/news/35457/vmware-vcenter-zero-day-cve-2026-123890-exploited" target="_blank">CVE Analysis</a>
+      </div>
+    </div>
+
+    <!-- Story 2 — Outlook Zero-Day -->
+    <div class="story">
+      <div class="story-headline">⚠️ Microsoft Outlook Zero-Day CVE-2026-124194 — CISA Deadline TOMORROW (Nov 24)</div>
+      <div class="story-body">
+        <p>November's Patch Tuesday (1,093 CVEs total) included <span class="cve-medium">CVE-2026-124194</span> (CVSS <strong>6.5</strong>), a Microsoft Outlook spoofing zero-day actively exploited in the wild. The flaw allows attackers to steal hashed NTLM credentials — which can then be relayed or cracked for lateral movement — via a malicious email that requires no user interaction beyond opening/previewing. CISA added it to KEV with a <strong>federal patching deadline of November 24</strong>.</p>
+        <p>The November Patch Tuesday also addressed <span class="cve-critical">CVE-2026-109469</span> (CVSS <strong>10.0</strong>, Entra Device Registration), <span class="cve-critical">CVE-2026-120002</span> (CVSS <strong>9.9</strong>, SharePoint), and multiple CVSS 9.8 flaws in Kerberos, LDAP, DNS, and DHCP — all unauthenticated.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-tag tag-ciso">🔐 CISO</span>
+          <span class="audience-text">CISA KEV deadline is <strong>tomorrow</strong> for CVE-2026-124194. Beyond the Outlook patch, the CVSS 10.0 Entra flaw and unauthenticated Kerberos/LDAP RCEs on domain controllers require immediate prioritisation. Total: 536 EoP + 296 RCE flaws in this release.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-partner">🤝 Partner</span>
+          <span class="audience-text">Emergency patching advisory for all clients. NTLM relay attacks from the Outlook flaw are trivially automated. Many clients will need hands-on support triaging domain controllers against the CVSS 10.0 Entra bug.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-exec">💼 Executive</span>
+          <span class="audience-text">Microsoft issued 1,093 security fixes this month. The Outlook flaw means attackers can steal credentials by sending you an email. Ensure IT confirms patch deployment by end of day Monday.</span>
+        </div>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://www.csoonline.com/article/4247015/november-2026-patch-tuesday-63-critical-microsoft-fixes-plus-an-outlook-zero-day-that-allows-theft-of-hashed-credentials.html" target="_blank">CSO Online</a> · <a href="https://securityonline.info/november-2026-patch-tuesday/" target="_blank">Security Online</a> · <a href="https://senserva.com/patch-tuesday.html" target="_blank">Senserva CVE Ranking</a>
+      </div>
+    </div>
+
+    <!-- Story 3 — Chrome + OpenSSH -->
+    <div class="story">
+      <div class="story-headline">🌐 Chrome Zero-Day #8 of 2026 + OpenSSH "SSHole" Actively Exploited</div>
+      <div class="story-body">
+        <p>Google patched <span class="cve-high">CVE-2026-125350</span> in Chrome 157.0.8103.50 — the browser's eighth zero-day of 2026 and actively exploited in the wild. Users should update Chrome immediately.</p>
+        <p>Separately, <span class="cve-high">CVE-2026-123158</span> — dubbed <strong>"SSHole"</strong> — is an OpenSSH authentication bypass actively exploited on Alpine Linux and other musl-based systems. CISA added it to KEV with a November 12 federal deadline (already passed for federal agencies, but private sector remediation is urgent).</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-tag tag-ciso">🔐 CISO</span>
+          <span class="audience-text">Force Chrome update across endpoints. For SSHole: audit all Alpine/musl Linux systems (containers, edge devices, CI runners) — this is a pre-auth bypass with active exploitation. Check container base images urgently.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-partner">🤝 Partner</span>
+          <span class="audience-text">Containerised client environments are at particular risk from SSHole given Alpine Linux's prevalence in Docker base images. Good assessment opportunity with high client urgency.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-exec">💼 Executive</span>
+          <span class="audience-text">Two more actively exploited vulnerabilities — Chrome (browser) and SSH (server access protocol). Both have patches available. Confirm IT deployment this week.</span>
+        </div>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://cybersecurityhunter.com/daily-cybersecurity-news-roundup-november-12-2026/" target="_blank">CybersecurityHunter</a> · <a href="https://thelaymansecurity.com/cybersecurity-news-this-week-2026-11-22/" target="_blank">The Layman Security (week of Nov 22)</a>
+      </div>
+    </div>
+
+    <!-- Story 4 — Maersk -->
+    <div class="story">
+      <div class="story-headline">🚢 Maersk Confirms Data Breach — WhiteArmor Ransomware Demands $5M</div>
+      <div class="story-body">
+        <p>The WhiteArmor ransomware group claimed on November 7 to have exfiltrated ~100GB of data from Maersk's supply-chain platform. A.P. Moller-Maersk confirmed a cybersecurity incident on November 11, stating the breach was isolated to a legacy system inherited from the LF Logistics acquisition (from Li &amp; Fung, 2022).</p>
+        <p>WhiteArmor claims the stolen data includes driver records, plaintext passwords, admin accounts, logistics data, and 27,000+ mobile device logs (phone numbers, email addresses, IMEI identifiers). The group demanded $5 million in Bitcoin with a 30-day deadline. The company says no impact was detected on other Maersk systems or partner integrations.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-tag tag-ciso">🔐 CISO</span>
+          <span class="audience-text">Classic M&amp;A attack vector: inherited legacy systems with unreviewed security posture. If your org has acquired companies in the past 3 years, audit inherited systems for patching gaps, default credentials, and segmentation from core networks.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-partner">🤝 Partner</span>
+          <span class="audience-text">M&amp;A cybersecurity due diligence is becoming a standard practice. Maersk's breach reinforces the case for post-acquisition security reviews as a consulting service line. Logistics sector clients should be briefed.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-exec">💼 Executive</span>
+          <span class="audience-text">Maersk — the world's largest shipping company — has been breached again via an acquired company's legacy system. Supply chain data exposure affects partners throughout the logistics network. Review vendor risk posture.</span>
+        </div>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://www.securityweek.com/maersk-confirms-data-theft-amid-5-million-extortion-attempt/" target="_blank">SecurityWeek</a> · <a href="https://industrialcyber.co/ransomware/maersk-investigates-legacy-system-breach-after-whitearmor-ransomware-group-claims-100gb-logistics-data-theft/" target="_blank">Industrial Cyber</a> · <a href="https://cybersecuritynews.com/hackers-breach-maersk/" target="_blank">CybersecurityNews</a>
+      </div>
+    </div>
+
+    <!-- Story 5 — Optimizely + ScreenConnect -->
+    <div class="story">
+      <div class="story-headline">📦 Supply Chain Attack on Optimizely + ScreenConnect Vulnerability</div>
+      <div class="story-body">
+        <p>This week also saw a significant <strong>Optimizely supply chain compromise</strong> identified as a primary incident — attackers embedded malicious code into the Optimizely CMS/DXP software distribution pipeline, potentially affecting thousands of downstream enterprise web properties. Additionally, a critical <strong>ScreenConnect vulnerability</strong> was flagged as requiring immediate patching, with active threat actors scanning for exposed instances.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-tag tag-ciso">🔐 CISO</span>
+          <span class="audience-text">If you use Optimizely (formerly Episerver) in your web stack, treat as potentially compromised. Verify software integrity, check for unexpected outbound connections. ScreenConnect deployments: patch immediately and audit connection logs.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-partner">🤝 Partner</span>
+          <span class="audience-text">Supply chain attacks continue to proliferate in 2026. Clients using Optimizely for digital experience platforms (common in retail, finance, media) need urgent notification and verification.</span>
+        </div>
+      </div>
+      <div class="story-source">
+        Source: <a href="https://thelaymansecurity.com/cybersecurity-news-this-week-2026-11-22/" target="_blank">The Layman Security</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 3 — ARTIFICIAL INTELLIGENCE
+       ═══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🤖</div>
+      <div>
+        <div class="section-title">Artificial Intelligence</div>
+        <div class="section-subtitle">Models · Policy · Security · Market</div>
+      </div>
+    </div>
+
+    <!-- Story 1 — OpenAI Safety Limits -->
+    <div class="story">
+      <div class="story-headline">🛡️ OpenAI Proposes Industry-Wide AI Safety Thresholds; Governors Push for Federal Law</div>
+      <div class="story-body">
+        <p>OpenAI's chief scientist proposed <strong>shared development limits</strong> tied to log-perplexity measurements — essentially a voluntary industry cap on frontier capability gains. The company published internal scores (GPT-3.5 at 0.99, GPT-4 at 0.91) and warned that "capability gains could accelerate significantly in 2027," framing the proposal as a pre-emptive coordination mechanism among frontier labs.</p>
+        <p>Simultaneously, a bipartisan group of US governors from Maryland, Indiana, North Carolina and Utah asked Congress to establish <strong>national AI rules</strong> while preserving state-level consumer protections — a sign that pressure for federal regulation is building from state executives, not just Congress.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-tag tag-ciso">🔐 CISO</span>
+          <span class="audience-text">OpenAI's GPT-6 Cyber was already rated "Critical" under its Preparedness Framework — shared safety thresholds may slow the pace of offensive-capable model releases, but the threat landscape is already elevated. AI security governance planning is now urgent.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-partner">🤝 Partner</span>
+          <span class="audience-text">Federal AI legislation is now a bipartisan state-level demand. Clients in regulated industries should begin AI governance gap assessments. The window before mandatory frameworks is narrowing.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-exec">💼 Executive</span>
+          <span class="audience-text">AI regulation is moving from discussion to legislation. A bipartisan coalition of governors is pushing Congress for a federal framework. Begin mapping your organisation's AI use cases against emerging compliance requirements.</span>
+        </div>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://killtheai.com/news/top-10-ai-news-today-november-23-2026/" target="_blank">Kill the AI (Nov 23)</a> · <a href="https://joineta.org/blog/ai-news-roundup-november-2026" target="_blank">ETA AI Roundup</a>
+      </div>
+    </div>
+
+    <!-- Story 2 — Anthropic IPO aftermath -->
+    <div class="story">
+      <div class="story-headline">📈 Anthropic Post-IPO: Safety Mission Under Scrutiny; Claude Fable 5.2 in Market</div>
+      <div class="story-body">
+        <p>Four days after Anthropic's historic IPO (priced at $83/share, raising ~$81B, ticker <strong>ANT</strong>, briefly touching ~$2T market cap), critics and NPR are asking whether being a public company will test Anthropic's commitment to put safety first. The pressure to deliver shareholder returns now coexists with the company's safety-first founding mandate.</p>
+        <p><strong>Claude Fable 5.2</strong> (released Nov 9) scores 65 on the AI Intelligence Index and runs 30% faster than Fable 5.1 with 55% fewer false-positive safety blocks. Its restricted sibling, <strong>Claude Mythos 5.2</strong>, is available only to vetted cybersecurity and life sciences organizations. <strong>OpenAI's GPT-6 Cyber</strong> — rated "Critical" under the Preparedness Framework — remains gated behind strict access controls, the first OpenAI model to reach that designation.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-tag tag-ciso">🔐 CISO</span>
+          <span class="audience-text">Claude Mythos 5.2 (vetted org access) and GPT-6 Cyber (gated) represent the current frontier of AI-assisted security tooling. Apply for access if your SOC needs autonomous threat-hunting capabilities. Monitor Dragos research: 2M canary prompts traced AI data leakage to production AI services.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-partner">🤝 Partner</span>
+          <span class="audience-text">Anthropic (ANT) is now a publicly traded company — a major inflection for the AI market. The IPO at ~$2T valuation establishes a new benchmark. Clients should factor Anthropic's public market performance into their AI vendor risk assessments.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-exec">💼 Executive</span>
+          <span class="audience-text">Anthropic is now public (ticker: ANT). The company that makes Claude — widely used in enterprise AI — is under new scrutiny balancing commercial growth vs. safety principles. Watch for shifts in model availability and pricing as public market pressures emerge.</span>
+        </div>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://www.npr.org/2026/11/21/nx-s1-6048678/anthropic-ipo-mission-ai-safety" target="_blank">NPR</a> · <a href="https://www.pymnts.com/news/artificial-intelligence/2026/anthropics-claude-tops-ai-rankings-as-openai-limits-cyber-model/" target="_blank">PYMNTS</a> · <a href="https://www.taskade.com/blog/anthropic-claude-history" target="_blank">Taskade (Anthropic Timeline)</a>
+      </div>
+    </div>
+
+    <!-- Story 3 — AI agents fail + banks block -->
+    <div class="story">
+      <div class="story-headline">🏦 Banks Block AI Agents; SWE-CoWork Finds Agents Complete &lt;8% of Real Tasks</div>
+      <div class="story-body">
+        <p>The SWE-CoWork benchmark — a new evaluation simulating real software-engineering workplace conditions across 101 repositories — found that leading AI coding agents <strong>"fully completed fewer than 8% of assignments,"</strong> struggling especially with cross-team coordination, context handoffs, and long-horizon planning. This paints a sobering picture against the hype around autonomous AI agents.</p>
+        <p>Meanwhile, major US banks are pushing back against customer-directed AI agents: <strong>Wells Fargo</strong> updated terms to state customers use third-party AI agents "at their own risk," while <strong>JPMorgan Chase</strong> and others have restricted credential-based agent access to prevent unauthorised transactions. The move signals a coming showdown between financial institutions and the agent economy.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-tag tag-ciso">🔐 CISO</span>
+          <span class="audience-text">Banks blocking AI agents highlights the unresolved identity and authorisation problem: how do you distinguish a human customer from an AI agent acting on their behalf? This is a governance gap across all financial and enterprise APIs. Review your own API authentication policies for agent access.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-partner">🤝 Partner</span>
+          <span class="audience-text">SWE-CoWork's &lt;8% completion rate will recalibrate enterprise expectations on agentic AI ROI. Opportunity: help clients design realistic AI agent workflows with appropriate human-in-the-loop checkpoints rather than fully autonomous pipelines.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-exec">💼 Executive</span>
+          <span class="audience-text">Two reality checks: AI coding agents complete less than 8% of real software tasks without human help, and major banks are actively blocking AI agents from accessing customer accounts. Temper autonomous AI automation ambitions with human oversight requirements.</span>
+        </div>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://killtheai.com/news/top-10-ai-news-today-november-23-2026/" target="_blank">Kill the AI (Nov 23)</a> · <a href="https://joineta.org/blog/ai-news-roundup-november-2026" target="_blank">ETA AI Roundup Nov 2026</a>
+      </div>
+    </div>
+
+    <!-- Story 4 — South Korea + Dragos -->
+    <div class="story">
+      <div class="story-headline">🎓 South Korea Education Minister Resigns Over AI Exam Cheating; Dragos Traces AI Data Leaks</div>
+      <div class="story-body">
+        <p>South Korea's Education Minister Choi Kyo-jin resigned after 111 documented AI-device misconduct cases were detected during the national university entrance exam (Suneung). The scandal highlights the profound near-term disruption AI is creating in education and credentialing systems globally.</p>
+        <p>In OT/ICS security research, <strong>Dragos</strong> sent approximately 2 million canary prompts to commercial AI services from July to November 2026 and successfully traced data leakage back to production AI platforms — a significant finding for organisations relying on third-party AI tools to process sensitive operational data.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-tag tag-ciso">🔐 CISO</span>
+          <span class="audience-text">Dragos's canary-prompt research is a wake-up call: sensitive data fed into third-party AI services can be tracked leaking out. Audit which AI tools your teams use with what data, particularly in OT/ICS environments. Data classification policies need an AI-services addendum.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-tag tag-partner">🤝 Partner</span>
+          <span class="audience-text">AI data leakage is becoming measurable and traceable — a new audit capability for clients. Propose AI data hygiene assessments that map data flows to third-party AI services and assess data retention/training policies.</span>
+        </div>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://killtheai.com/news/top-10-ai-news-today-november-23-2026/" target="_blank">Kill the AI (Nov 23)</a> · <a href="https://joineta.org/blog/ai-news-roundup-november-2026" target="_blank">ETA AI Roundup</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Monday, November 23, 2026 at 6:00 PM (Paris time)</p>
+    <p style="margin-top:6px;">Sources: Reuters · Al Jazeera · CNN · CBS News · Gulf News · Help Net Security · SecurityWeek · CSO Online · Kill the AI · NPR · PYMNTS · Dragos</p>
+  </div>
+
+</div>
+</body>
+</html>
