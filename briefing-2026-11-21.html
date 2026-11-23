@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Saturday, November 21, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Saturday, November 21, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Tehran Claims Drone Downing Over Hormuz as Tanker Fire and New Mine Strike Rattle Shipping</a>
+    <div class="toc-section">IRGC says it downed a US MQ-9 Reaper over the Strait of Hormuz with a newly deployed air-defense system; a tanker catches fire after hitting a sea mine east of the strait; UKMTO logs two more tanker attacks near Khasab; CENTCOM denies any new Qeshm strike; Hormuz traffic now ~65% below pre-war levels, the worst since the war began; US/Israel reportedly weighing a strike campaign that could launch within 2-4 days of an order</div>
+    <a href="#cyber">🔐 Cybersecurity — Rackspace Confirms Spot Cloud Breach Exposed Customer Kubernetes Secrets</a>
+    <div class="toc-section">Attackers used leaked credentials to access Rackspace's Spot platform on Nov 17, reading Kubernetes secrets, creating pods, and listing nodes/volumes across customer clusters before service was fully restored Nov 21; separately, Chinese-nexus hackers used AI agents (Cairn) to find and exploit a zero-day in medical-imaging tool MONAI Label; Microsoft Entra Connect Health flaw exploited for tenant data; FBI's NCIC database reportedly breached again</div>
+    <a href="#ai">🤖 Artificial Intelligence — Anthropic's Market Cap Hits $2 Trillion as Nvidia's Earnings Beat Is Overshadowed by Huang CEO Standoff</a>
+    <div class="toc-section">Anthropic's Nasdaq debut puts its fully diluted value at roughly $2 trillion; Nvidia posts $115.8B in Q3 revenue (+103% YoY) but its board confirms it won't reinstate Jensen Huang as CEO; OpenAI cuts GPT-6.2 Astra "reasoning extraction" attack success from 54% to 0.2%; an Anthropic mathematician says Claude helped him prove the Riemann Hypothesis; a honeypot study finds at least three AI providers and resellers were breached via logged prompts</div>
+  </div>
+
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — Drone Downing Claimed Over Hormuz as Tanker Fire, New Mine Strike Rattle Shipping</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 267</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Iran Claims Drone Kill Over Hormuz; Tanker Fire and New Mine Strike Add to Blockade Pressure
+        <span class="badge badge-orange">DAY 267 · DRONE DOWNED (CLAIMED) · CENTCOM DENIES QESHM STRIKE</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        Iran's IRGC Aerospace Force said it destroyed a US MQ-9 Reaper drone over the Strait of Hormuz early Saturday using a newly deployed air-defense system — the latest in a string of claimed drone downings that Tehran now puts in the high teens, though US Central Command has not confirmed any loss and independent trackers could not corroborate the claim. Iran's navy separately reported that an oil tanker transiting east of the strait caught fire after striking a sea mine, while the UK Maritime Trade Operations center logged two more tanker attacks near Khasab, Oman — one hitting an engine room roughly 17 nautical miles out, another striking a stern about 11 nautical miles out. Combined, Strait of Hormuz traffic is now running roughly 65% below pre-war levels for the week ending November 18, the sharpest disruption since the war began in February. CENTCOM flatly denied carrying out any new strike on Qeshm Island Saturday, directly contradicting earlier Iranian state-media claims — muddying the picture a day after Trump told Axios "we've got time" on further action. Trump separately told reporters Tehran "wants to make a deal" but reiterated he won't accept "a fake deal... that they've been doing for 51 years." Behind the scenes, US and Israeli officials are reportedly weighing a renewed strike campaign that could launch within two to four days of an order, driven by Israeli concern over Iranian missile-stockpile reconstitution and underground nuclear-site work. In Iraq, government forces entered Kataib Hezbollah's Jurf al-Sakhar stronghold under a negotiated compromise and set up pipeline checkpoints, a sign of the war's spillover into Iran-aligned militias regionally.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">267 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">~65%</div>
+          <div class="stat-label">Hormuz traffic drop vs. pre-war (week to Nov 18)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">2-4 days</div>
+          <div class="stat-label">Reported lead time for a new US/Israeli strike order</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.criticalthreats.org/analysis/iran-update-november-21-2026">Critical Threats (ISW/AEI) — Iran Update, November 21, 2026</a>
+        <a href="https://www.aljazeera.com/news/2026/11/21/irans-irgc-downs-us-drone-over-hormuz-as-efforts-to-end-war-remain-stalled">Al Jazeera — Iran Says It Downed US Drone Over Hormuz as Bid to End War Remains Stalled</a>
+        <a href="https://iranwarlive.com/recaps/day-267">Iran War Live — Day 267 Recap: Two More Tankers Hit, US Denies Qeshm Strike</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>CENTCOM's on-record denial of a new Qeshm strike directly conflicts with Iranian state media reporting from the same day — an unresolved discrepancy worth watching for correction either way.</li>
+        <li>Iraqi government forces entering Kataib Hezbollah's Jurf al-Sakhar stronghold under a negotiated compromise, with pipeline checkpoints now in place, is a notable de-escalation move involving an Iran-aligned militia.</li>
+        <li>No new independently verified casualty figures were reported today; table below is carried forward from the last confirmed update.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>23</td><td>820 wounded (Pentagon)</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">Figures carried forward from the last confirmed update; no new independently verified casualty tolls today.</p>
+    </div>
+  </div>
+
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Saturday, November 21, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Rackspace Confirms Spot Cloud Breach Let Attackers Read Customer Kubernetes Secrets
+        <span class="badge badge-red">LEAKED CREDENTIALS · SERVICE RESTORED NOV 21</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Rackspace disclosed that an unauthorized party used leaked credentials to access parts of its Spot cloud platform on November 17 (roughly 00:20-22:00 UTC), with the company confirming the intrusion on November 18 after a customer reported suspicious activity. Rackspace said attackers were able to act as legitimate users within some customer organizations — creating pods in Kubernetes clusters, reading Kubernetes Secrets (including database credentials, API keys, and TLS certificates), and listing nodes and volumes — before full service restoration was announced on November 21. Rackspace published indicators of compromise, including source IP 23.224.79.106 and the range 23.224.0.0/15, plus suspicious pod/object name prefixes ("i1", "glm-", "probe"), and is advising affected customers to reissue API tokens and rotate all credentials stored in their clusters. Separately, Chinese-nexus hackers reportedly used Cairn AI agents to autonomously discover and exploit a zero-day (CVE-2026-133968) in MONAI Label, an open-source medical-imaging annotation tool — an early real-world example of AI-agent-driven vulnerability discovery against healthcare infrastructure. Microsoft also warned that attackers exploited a flaw in its Entra Connect Health service to obtain administrator email addresses and tenant configuration data, the FBI is investigating a reported fresh breach of its National Crime Information Center (NCIC) database, and the BADBOX malware family has returned to large-scale ad-fraud operations on Android TV boxes, now generating a reported 40 billion daily ad requests. New, as-yet-unexploited PAN-OS NGINX flaws were also disclosed, and CISA added Cisco Expressway, SAP NetWeaver, Broadcom VMware vCenter, and Apache Roller flaws to its Known Exploited Vulnerabilities catalog this week.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">Nov 17-21</div>
+          <div class="stat-label">Rackspace Spot breach-to-restoration window</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">4</div>
+          <div class="stat-label">New CISA KEV additions this week</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">40B/day</div>
+          <div class="stat-label">BADBOX ad-fraud requests</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.bleepingcomputer.com/news/security/rackspace-spot-breach-let-hackers-access-customer-kubernetes-secrets/">BleepingComputer — Rackspace Spot Breach Let Hackers Access Customer Kubernetes Secrets</a>
+        <a href="https://www.scworld.com/brief/rackspace-discloses-security-breach-of-spot-cloud-platform">SC World — Rackspace Discloses Security Breach of Spot Cloud Platform</a>
+        <a href="https://labs.cloudsecurityalliance.org/research/alt-ciso-briefing-2026-11-21/">Cloud Security Alliance — CISO Daily Briefing, Nov 21, 2026</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Microsoft's Entra Connect Health flaw exposure lets attackers pull admin email addresses and tenant configuration data — check hybrid-identity logging for unusual Connect Health API calls.</li>
+        <li>The MONAI Label zero-day (CVE-2026-133968), reportedly found and exploited via AI agents rather than manual research, is an early signal that AI-accelerated vulnerability discovery is moving from red-team demos into real intrusions.</li>
+        <li>CISA's latest KEV additions (Cisco Expressway, SAP NetWeaver, Broadcom VMware vCenter, Apache Roller) should be prioritized alongside the Rackspace advisory this patch cycle.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>If your org uses Rackspace Spot, rotate all API tokens and in-cluster credentials now and hunt for the published IOCs regardless of whether you received a direct notification</li>
+            <li>Patch this week's CISA KEV additions (Cisco Expressway, SAP NetWeaver, Broadcom VMware vCenter, Apache Roller) and track MONAI Label exposure if you run medical-imaging workloads</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>The Rackspace Spot breach is a clean case study for client conversations on multi-tenant cloud-platform credential hygiene and the blast radius of leaked platform-level credentials across Kubernetes clusters</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>Ask IT/cloud teams directly whether the organization uses Rackspace Spot; if so, require written confirmation that credentials have been rotated and exposure scoped</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Saturday, November 21, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Anthropic's Market Cap Hits $2 Trillion as Nvidia's Earnings Beat Is Overshadowed by Huang CEO Standoff
+        <span class="badge badge-purple">$2T MARKET CAP · NVIDIA +103% YoY</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Anthropic's Nasdaq debut carried into its second session with shares holding near $111.50 — about 34% above the $83 IPO price — pushing the company's fully diluted market capitalization to roughly $2 trillion, among the fastest climbs to that milestone by a newly public company and a strong signal that investors are pricing in sustained frontier-AI demand. The milestone landed the same week as Nvidia's fiscal Q3 report: revenue of $115.8 billion, up 103% year-over-year and 20% quarter-over-quarter, with GAAP/non-GAAP EPS of $2.70/$2.68 — yet the earnings call was overshadowed by Nvidia's board confirming it will not reinstate Jensen Huang as CEO, leaving a leadership question open even as the numbers beat estimates across the board. On the security-of-AI front, OpenAI said hardened defenses in GPT-6.2 Astra cut "reasoning extraction" attacks — attempts to distill a model's hidden chain-of-thought via adversarial querying — from a 54.0% success rate down to 0.2% for prior-request attacks, and from 22.9% to 0.9% for active-request attacks, while the company is now suspending thousands of accounts weekly over coordinated distillation campaigns. Separately, a security researcher who seeded roughly two million fake secrets into AI prompts found that at least three AI providers, plus resellers in the inference market, had been compromised by attackers harvesting logged prompts — a reminder that AI-provider supply chains are now an active exfiltration surface. On the research side, an Anthropic mathematician said he used Claude to produce a proof of the Riemann Hypothesis, publishing within hours of a Stanford researcher's independent claim of the same result; neither has been peer-verified. Google Cloud and OpenAI also confirmed OpenAI models are now available in Google's Model Garden, deepening a compete-and-cooperate dynamic between the two labs.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#bc8cff;">$2T</div>
+          <div class="stat-label">Anthropic's fully diluted market cap</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">$115.8B</div>
+          <div class="stat-label">Nvidia Q3 revenue (+103% YoY)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">0.2%</div>
+          <div class="stat-label">GPT-6.2 Astra reasoning-extraction success (down from 54%)</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.theinformation.com/briefings/anthropic-opens-trading-111-5-passes-2-trillion-market-cap">The Information — Anthropic Opens Trading at $111.5, Passes $2 Trillion Market Cap</a>
+        <a href="https://finance.yahoo.com/technology/live/nvidia-earnings-live-nvidia-posts-q3-beat-board-says-it-will-not-reinstate-jensen-huang-as-ceo-221428433.html">Yahoo Finance — Nvidia Posts Q3 Beat as Revenue Rose 103% YoY; Board Won't Reinstate Huang as CEO</a>
+        <a href="https://the-decoder.com/openai-makes-it-much-harder-for-attackers-to-extract-how-its-latest-ai-models-think/">The Decoder — OpenAI Makes It Much Harder for Attackers to Extract How Its Latest Models Think</a>
+        <a href="https://samonai.substack.com/p/ai-brief-november-21-2026">Sam on AI — AI Brief, November 21, 2026</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>Google Cloud now hosts OpenAI models in its Model Garden, a notable multi-cloud distribution move even as the two labs ship competing frontier models within days of each other.</li>
+        <li>The Anthropic/Riemann Hypothesis proof claim and the independent Stanford claim arriving within hours of each other has sparked debate in the math community over verification and AI-assisted-proof provenance.</li>
+        <li>The "two million fake secrets" honeypot research is already being cited by AI-security teams as the clearest public evidence yet that logged prompts across inference resellers are being actively harvested.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 AI Security</div>
+          <ul>
+            <li>The honeypot finding that AI providers and inference resellers were breached via logged prompts means prompt-logging retention by third parties is now a confirmed exfiltration vector — review what your AI vendors and their downstream resellers log and retain</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Anthropic's $2T debut and Nvidia's blowout quarter both confirm AI infrastructure capex isn't slowing into 2027 budget cycles; OpenAI's new anti-distillation defenses also open an IP-protection advisory angle for clients fine-tuning on frontier models</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>Nvidia's unresolved Huang-CEO question alongside record earnings is a governance-versus-performance tension worth board visibility, especially for any organization dependent on Nvidia supply commitments</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Saturday, November 21, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
