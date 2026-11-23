@@ -15,443 +15,370 @@
     }
     a { color: #58a6ff; text-decoration: none; }
     a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
 
-    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
-
-    /* ── Header ── */
-    .header {
+    .briefing-header {
       text-align: center;
       padding: 52px 0 40px;
       border-bottom: 1px solid #21262d;
       margin-bottom: 48px;
     }
-    .header .label {
+    .briefing-header .label {
       font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
-      text-transform: uppercase; color: #58a6ff; margin-bottom: 10px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
     }
-    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
-    .header .date { font-size: 1rem; color: #8b949e; margin-bottom: 16px; }
-    .header .day-badge {
-      display: inline-block;
-      background: #161b22; border: 1px solid #30363d;
-      border-radius: 20px; padding: 4px 14px;
-      font-size: 0.82rem; color: #f78166; font-weight: 600; letter-spacing: 0.5px;
-    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
 
-    /* ── Section ── */
-    .section {
-      margin-bottom: 52px;
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
     }
-    .section-header {
-      display: flex; align-items: center; gap: 12px;
-      margin-bottom: 24px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid #21262d;
-    }
-    .section-icon { font-size: 1.6rem; }
-    .section-title { font-size: 1.3rem; font-weight: 800; color: #f0f6fc; }
-    .section-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
 
-    /* ── Story cards ── */
-    .story {
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 10px;
-      padding: 20px 22px;
-      margin-bottom: 14px;
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
     }
-    .story:hover { border-color: #444c56; }
-    .story-headline {
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
       font-size: 1rem; font-weight: 700; color: #f0f6fc;
-      margin-bottom: 8px; line-height: 1.4;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
     }
-    .story-body { font-size: 0.88rem; color: #c9d1d9; line-height: 1.7; }
-    .story-body p { margin-bottom: 6px; }
-    .story-body p:last-child { margin-bottom: 0; }
-    .story-source {
-      margin-top: 10px; font-size: 0.78rem; color: #484f58;
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
     }
-    .story-source a { color: #388bfd; }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
 
-    /* ── Audience tags ── */
-    .audience-block { margin-top: 14px; }
-    .audience-row {
-      display: flex; gap: 8px; align-items: flex-start;
-      margin-bottom: 8px; font-size: 0.84rem;
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
     }
-    .audience-tag {
-      flex-shrink: 0;
-      background: #21262d; border: 1px solid #30363d;
-      border-radius: 4px; padding: 2px 8px;
-      font-size: 0.75rem; font-weight: 700; color: #8b949e;
-      white-space: nowrap;
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
     }
-    .tag-ciso { border-color: #f78166; color: #f78166; }
-    .tag-partner { border-color: #d2a8ff; color: #d2a8ff; }
-    .tag-exec { border-color: #79c0ff; color: #79c0ff; }
-    .audience-text { color: #c9d1d9; line-height: 1.5; }
-
-    /* ── Status pill ── */
-    .status-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-    .status-pill {
-      background: #21262d; border: 1px solid #30363d;
-      border-radius: 20px; padding: 4px 12px;
-      font-size: 0.78rem; color: #8b949e;
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
     }
-    .status-pill strong { color: #f0f6fc; }
-    .status-pill.red { border-color: #f85149; color: #f85149; }
-    .status-pill.yellow { border-color: #d29922; color: #d29922; }
-    .status-pill.green { border-color: #3fb950; color: #3fb950; }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
 
-    /* ── CVE severity ── */
-    .cve-critical { color: #f85149; font-weight: 700; }
-    .cve-high { color: #f0883e; font-weight: 700; }
-    .cve-medium { color: #d29922; font-weight: 700; }
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
 
-    /* ── Divider ── */
-    .divider { border: none; border-top: 1px solid #21262d; margin: 20px 0; }
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
 
-    /* ── Footer ── */
-    .footer {
-      text-align: center; margin-top: 56px; padding-top: 20px;
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
       border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
     }
-    .footer strong { color: #6e7681; }
-    .back-link {
-      display: inline-block; margin-bottom: 32px;
-      font-size: 0.85rem; color: #58a6ff;
-    }
-    .back-link:hover { text-decoration: underline; }
+    .briefing-footer strong { color: #6e7681; }
   </style>
 </head>
 <body>
 <div class="container">
 
-  <a class="back-link" href="index.html">← Back to Archive</a>
-
-  <div class="header">
-    <div class="label">Intelligence Briefing</div>
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
     <h1>📰 Daily Briefing</h1>
-    <div class="date">Monday, November 23, 2026</div>
-    <div class="day-badge">⚔️ Iran War — Day ~268</div>
+    <div class="meta">
+      Monday, November 23, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
   </div>
 
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Hormuz Attacks Hit a War-High as Iran Masses 14 Tankers to Break the US Blockade</a>
+    <div class="toc-section">UKMTO logs two more tanker incidents near Oman's Khasab over the weekend; shipping through the strait stays ~65% below pre-war levels; Iran calls the US naval blockade "an act of war" and masses 14+ tankers near Kharg Island to challenge it; Iran claims to have downed a US drone over Qeshm; Bahrain is hit again</div>
+    <a href="#cyber">🔐 Cybersecurity — Critical ScreenConnect Flaw Lets Attackers Hijack MSP Technicians' PCs in Nine Seconds</a>
+    <div class="toc-section">A monthlong campaign sprayed 688,000 malicious "run file" requests across 42 MSP ScreenConnect servers exploiting CVE-2026-84869 (CVSS 9.9); Chrome's eighth zero-day of the year (CVE-2026-125350) faces a Nov 24 CISA patch deadline; the Armory Castle VMware vCenter zero-day's three-day federal remediation window lapses this week</div>
+    <a href="#ai">🤖 Artificial Intelligence — Nvidia Reinstates Jensen Huang as CEO 11 Days After Spy-Scandal Resignation; Stock Jumps 30%+</a>
+    <div class="toc-section">Nvidia's board votes unanimously to reinstate Huang with input "from senior levels of the US government"; OpenAI says its agents now complete 46% of multi-hour research tasks, up from 23% in March; AMD-HUMAIN unveil a $10B Saudi AI infrastructure deal; Deutsche Telekom commits €100M to Mistral</div>
+  </div>
 
-  <!-- ═══════════════════════════════════════════
-       SECTION 1 — IRAN WAR
-       ═══════════════════════════════════════════ -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-icon">🪖</div>
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
       <div>
-        <div class="section-title">Iran War</div>
-        <div class="section-subtitle">Battlefield · Diplomacy · Hormuz · Regional</div>
+        <div class="topic-title">Iran War — Hormuz Attacks Hit a War-High as Iran Masses Tankers to Break the US Blockade</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 269</div>
       </div>
     </div>
 
-    <!-- Status bar -->
-    <div class="status-row">
-      <div class="status-pill red"><strong>Hormuz:</strong> Near-Closed · 22 attacks in Nov (highest since war began)</div>
-      <div class="status-pill yellow"><strong>Diplomacy:</strong> Stalled — Iran's 7 conditions unmet</div>
-      <div class="status-pill yellow"><strong>US Strike:</strong> Postponed ≥1 week (Netanyahu pressure resisted)</div>
-      <div class="status-pill red"><strong>Brent:</strong> Elevated (ongoing blockade)</div>
-    </div>
-
-    <!-- Story 1 -->
-    <div class="story">
-      <div class="story-headline">🔥 Hormuz Attacks Hit Record High: 22 Incidents in November</div>
-      <div class="story-body">
-        <p>Attacks on commercial shipping in and around the Strait of Hormuz have reached their highest level since the conflict began in late February, with at least 22 incidents recorded in November — the second highest single-month figure of the war. The IRGC has intensified operations over the past week, hitting tankers and downing US drones at an unprecedented rate.</p>
-        <p>The IRGC claimed to have downed its 20th US drone of this type since the war began — with four shot down in the past 24 hours alone — signalling a surge in both capability and operational tempo. Iranian forces also struck a civilian industrial facility in Bahrain on Saturday, following a November 17 US strike on an IRGC missile site on Qeshm Island.</p>
-        <p>Iran unveiled a new dual-missile launcher and underground missile facility, demonstrating continued military capacity despite prolonged US bombardment campaigns targeting infrastructure and air defences.</p>
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Strait of Hormuz Attacks at Highest Level of the War as Iran Preps 14-Tanker Convoy to Break the Blockade
+        <span class="badge badge-red">HORMUZ ATTACKS AT WAR-HIGH · BLOCKADE STANDOFF</span>
       </div>
-      <div class="story-source">
-        Sources: <a href="https://www.aljazeera.com/news/liveblog/2026/11/22/iran-war-live-tankers-set-ablaze-in-hormuz-as-irgc-warns-of-unrest-threat" target="_blank">Al Jazeera Liveblog</a> · <a href="https://www.cnn.com/2026/11/22/middleeast/hormuz-attacks-highest-levels-iran-war-intl" target="_blank">CNN</a> · <a href="https://www.aljazeera.com/news/2026/11/22/whats-behind-irans-escalation-of-attacks-in-the-gulf" target="_blank">Al Jazeera Analysis</a>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        Iranian attacks in the Strait of Hormuz have climbed to their highest level since the war began, with at least 22 attacks reported in November alone, CNN and ABC News reported over the weekend. UKMTO logged two more tanker incidents near Oman's Khasab: one vessel hit on its stern by an unidentified projectile roughly 11 nautical miles north of Khasab, and another hit in the engine room about 17 nautical miles east of it. Shipping volume through the strait remains roughly 65% below pre-war levels. Tehran insists the strait is under its control and that any transiting vessel must coordinate with Iranian authorities; Deputy Foreign Minister Kazem Gharibabadi called the US naval blockade of Iranian ports "an act of war" and said Iran would act to break the economic restrictions. More than 14 Iranian tankers are now massed near Kharg Island preparing to challenge the blockade — a move that risks fresh clashes with the US Navy escorts now accompanying tankers through the waterway. Iran also claims to have shot down a US drone near Qeshm Island, and a fresh Iranian attack on Bahrain over the weekend set fire to a civilian industrial facility and injured two people, following the Nov 17 US strike on an IRGC missile site on Qeshm. Foreign Ministry spokesman Esmaeil Baghaei reiterated that Iran's "two-day plan" to reopen the strait remains on the table only if Washington lifts the blockade first and meets Iran's other demands. The standoff unfolds against the backdrop of last week's Senate vote blocking a war-powers resolution 51-48 and Trump's comment to Axios that he won't decide on next steps until the new year.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">269 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">22+</div>
+          <div class="stat-label">Hormuz attacks reported in November</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">14+ tankers</div>
+          <div class="stat-label">Massed near Kharg Island to break blockade</div>
+        </div>
       </div>
-    </div>
-
-    <!-- Story 2 -->
-    <div class="story">
-      <div class="story-headline">🕊️ Diplomacy: US Postpones Strike; Iran Holds 7 Conditions Firm</div>
-      <div class="story-body">
-        <p>The United States has decided to delay any potential military strike on Iran by at least one week, despite intense pressure from Israeli Prime Minister Benjamin Netanyahu for a joint offensive. The pause follows Rubio's engagement with Qatari leadership — with the Iran conflict high on the agenda — as Washington weighs diplomatic channels against escalation risk.</p>
-        <p>Iran's Foreign Minister Abbas Araghchi reiterated that Tehran still seeks a diplomatic settlement through mediators, but Iran will continue to refuse UN nuclear inspections until its seven conditions for ending the war are met, according to a senior Iranian lawmaker. Iran's offer of a two-day Hormuz reopening remains on the table, contingent on the US first lifting its naval blockade.</p>
-        <p>Secretary of State Rubio stated the US has "no need" to restart full combat operations — a signal of limited appetite for re-escalation, even as Tehran warns it may use "any means" under international law to break the naval siege bludgeoning its economy.</p>
-      </div>
-      <div class="story-source">
-        Sources: <a href="https://gulfnews.com/uae/usisrael-iran-war-what-uae-residents-need-to-know-today-nov-23-2026-1.500757486" target="_blank">Gulf News</a> · <a href="https://www.cbsnews.com/live-updates/iran-war-us-trump-deal-negotiations/" target="_blank">CBS News</a> · <a href="https://www.cbsnews.com/live-updates/iran-war-us-gulf-retaliation-strikes-strait-of-hormuz/" target="_blank">CBS News (Hormuz)</a>
+      <div class="sources">
+        Sources: <a href="https://edition.cnn.com/2026/11/22/middleeast/hormuz-attacks-highest-levels-iran-war-intl">CNN — Iranian Attacks in the Strait of Hormuz Are at the Highest Levels Since the Conflict Began</a>
+        <a href="https://abcnews.com/International/strait-hormuz-attacks-increased-highest-level-iran-war/story?id=138304456">ABC News — Strait of Hormuz Attacks Have Increased to Highest Level Since Iran War Began</a>
+        <a href="https://gulfnews.com/world/mena/middle-east-conflict-bahrain-intercepts-iranian-attacks-as-tehran-prepares-14-oil-tankers-to-breach-us-naval-blockade-1.500756662">Gulf News — Bahrain Intercepts Iranian Attacks as Tehran Prepares 14 Oil Tankers to Breach US Naval Blockade</a>
+        <a href="https://www.cbsnews.com/live-updates/iran-war-trump-us-strait-hormuz-persian-gulf/">CBS News — Iran War Live Updates: Strait of Hormuz, Persian Gulf</a>
       </div>
     </div>
 
-    <!-- Story 3 -->
-    <div class="story">
-      <div class="story-headline">🌍 Regional: Saudi Strikes Intensify at Bab al-Mandeb; Iraq Consolidation</div>
-      <div class="story-body">
-        <p>Saudi Arabia has intensified airstrikes on Houthi positions near the strategic Bab al-Mandeb Strait, with Houthi rebels pledging reciprocal attacks. The dual chokepoint threat — Hormuz in the east, Bab al-Mandeb in the west — continues to reshape global shipping patterns and insurance costs.</p>
-        <p>In Iraq, Iran continues consolidating influence despite Baghdad's recent deal with the Iran-backed Kataib Hezbollah militia in Jurf al-Sakhar. Meanwhile, Trump says the US is "talking to Tehran's representatives" through third-party channels, though no breakthrough framework has emerged.</p>
-      </div>
-      <div class="story-source">
-        Sources: <a href="https://www.aljazeera.com/news/liveblog/2026/11/22/iran-war-live-tankers-set-ablaze-in-hormuz-as-irgc-warns-of-unrest-threat" target="_blank">Al Jazeera Liveblog</a> · <a href="https://www.aljazeera.com/amp/news/liveblog/2026/11/6/iran-war-live-trump-warns-us-may-have-to-destroy-rest-of-iran" target="_blank">Al Jazeera (Trump)</a>
-      </div>
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Bahrain intercepted Iranian attacks over the weekend; a strike still set fire to a civilian industrial facility, injuring two — the first such hit on Bahrain since the Nov 17 Qeshm IRGC strike.</li>
+        <li>Iran claims to have downed a US drone over Qeshm Island; there is no independent US confirmation as of this writing.</li>
+        <li>Deputy FM Gharibabadi calls the US blockade "an act of war"; FM spokesman Baghaei reiterates Iran's two-day Hormuz reopening plan is contingent on Washington lifting the blockade first.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>23</td><td>820 wounded (Pentagon)</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">Figures carried forward from the last confirmed update (Nov 20); no new independently verified casualty tolls today — reporting sources show conflicting, unconfirmed figures that fall within the same range.</p>
     </div>
   </div>
 
-
-  <!-- ═══════════════════════════════════════════
-       SECTION 2 — CYBERSECURITY
-       ═══════════════════════════════════════════ -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-icon">🔐</div>
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
       <div>
-        <div class="section-title">Cybersecurity</div>
-        <div class="section-subtitle">Threats · CVEs · Ransomware · Incidents</div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Monday, November 23, 2026</div>
       </div>
     </div>
 
-    <!-- Story 1 — VMware vCenter -->
-    <div class="story">
-      <div class="story-headline">🚨 VMware vCenter Zero-Day CVE-2026-123890 — China APT Exploited for 2+ Months Before Patch</div>
-      <div class="story-body">
-        <p>Broadcom patched <span class="cve-critical">CVE-2026-123890</span> (CVSS <strong>9.8</strong>) on November 19 — a critical VMware vCenter Server flaw that Google's threat intelligence team confirmed had been exploited in the wild since at least early September. A China-nexus espionage group tracked as <strong>Armory Castle</strong> (formerly UNC5221) operated undetected for over two months before the patch was released.</p>
-        <p>The vulnerability allows unauthenticated remote code execution against vCenter infrastructure, putting virtualisation layers and hosted workloads at severe risk. Organizations should patch immediately and hunt for retrospective indicators of compromise dating to September.</p>
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Critical ScreenConnect Flaw Lets Attackers Hijack MSP Technicians' PCs in Nine Seconds
+        <span class="badge badge-red">CVSS 9.9 · 688K MALICIOUS REQUESTS</span>
       </div>
-      <div class="audience-block">
-        <div class="audience-row">
-          <span class="audience-tag tag-ciso">🔐 CISO</span>
-          <span class="audience-text">Patch vCenter immediately (CVE-2026-123890, CVSS 9.8). Hunt for lateral movement from September onwards — Armory Castle used this for 60+ days. Check for unusual admin account creation on ESXi hosts.</span>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Huntress and SecurityWeek detailed a monthlong campaign (Oct 20–Nov 16) exploiting CVE-2026-84869, a critical ScreenConnect client flaw (CVSS 9.9) that lets a connecting "guest" session push and execute a malicious file on a technician's host the instant they join a support session. Attackers blindly sprayed roughly 688,000 "run file" requests for files named update.bat or update_&lt;hex&gt;.bat from 29 source IPs against 42 MSP ScreenConnect servers, waiting for any technician to connect. On November 12, Huntress caught a technician workstation triggering one of these batch files, which phoned a Telegram bot, downloaded an MSI, and launched a rogue ScreenConnect client — fully compromising the machine in roughly nine seconds. ConnectWise has shipped a fix in host client version 26.6.5+, but because the exploit lives on the technician's side rather than the server, MSPs that only patched their servers remain exposed unless every technician's local client is force-updated too. Separately, Google's Chrome zero-day CVE-2026-125350 — an XML use-after-free flaw and the eighth Chrome zero-day patched this year — sits under a CISA KEV patch deadline of November 24; Microsoft has shipped a matching Edge fix. The three-day federal remediation deadline CISA set on November 20 for the China-linked Armory Castle VMware vCenter zero-day (CVE-2026-123890) also lapses this week.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">9.9</div>
+          <div class="stat-label">CVSS score of CVE-2026-84869</div>
         </div>
-        <div class="audience-row">
-          <span class="audience-tag tag-partner">🤝 Partner</span>
-          <span class="audience-text">Priority client advisory for all VMware vSphere environments. China-nexus attribution raises data exfiltration risk beyond ransomware — scope and dwell time analysis is billable and urgent.</span>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">688K</div>
+          <div class="stat-label">Malicious "run file" requests sprayed</div>
         </div>
-        <div class="audience-row">
-          <span class="audience-tag tag-exec">💼 Executive</span>
-          <span class="audience-text">If your infrastructure runs VMware vCenter (most enterprise and cloud data centres do), assume possible intrusion since September. Engage security team immediately for a targeted assessment.</span>
-        </div>
-      </div>
-      <div class="story-source">
-        Sources: <a href="https://www.helpnetsecurity.com/2026/11/20/vmware-vcenter-zero-day-cve-2026-123890-exploited/" target="_blank">Help Net Security</a> · <a href="https://pasqualepillitteri.it/en/news/35457/vmware-vcenter-zero-day-cve-2026-123890-exploited" target="_blank">CVE Analysis</a>
-      </div>
-    </div>
-
-    <!-- Story 2 — Outlook Zero-Day -->
-    <div class="story">
-      <div class="story-headline">⚠️ Microsoft Outlook Zero-Day CVE-2026-124194 — CISA Deadline TOMORROW (Nov 24)</div>
-      <div class="story-body">
-        <p>November's Patch Tuesday (1,093 CVEs total) included <span class="cve-medium">CVE-2026-124194</span> (CVSS <strong>6.5</strong>), a Microsoft Outlook spoofing zero-day actively exploited in the wild. The flaw allows attackers to steal hashed NTLM credentials — which can then be relayed or cracked for lateral movement — via a malicious email that requires no user interaction beyond opening/previewing. CISA added it to KEV with a <strong>federal patching deadline of November 24</strong>.</p>
-        <p>The November Patch Tuesday also addressed <span class="cve-critical">CVE-2026-109469</span> (CVSS <strong>10.0</strong>, Entra Device Registration), <span class="cve-critical">CVE-2026-120002</span> (CVSS <strong>9.9</strong>, SharePoint), and multiple CVSS 9.8 flaws in Kerberos, LDAP, DNS, and DHCP — all unauthenticated.</p>
-      </div>
-      <div class="audience-block">
-        <div class="audience-row">
-          <span class="audience-tag tag-ciso">🔐 CISO</span>
-          <span class="audience-text">CISA KEV deadline is <strong>tomorrow</strong> for CVE-2026-124194. Beyond the Outlook patch, the CVSS 10.0 Entra flaw and unauthenticated Kerberos/LDAP RCEs on domain controllers require immediate prioritisation. Total: 536 EoP + 296 RCE flaws in this release.</span>
-        </div>
-        <div class="audience-row">
-          <span class="audience-tag tag-partner">🤝 Partner</span>
-          <span class="audience-text">Emergency patching advisory for all clients. NTLM relay attacks from the Outlook flaw are trivially automated. Many clients will need hands-on support triaging domain controllers against the CVSS 10.0 Entra bug.</span>
-        </div>
-        <div class="audience-row">
-          <span class="audience-tag tag-exec">💼 Executive</span>
-          <span class="audience-text">Microsoft issued 1,093 security fixes this month. The Outlook flaw means attackers can steal credentials by sending you an email. Ensure IT confirms patch deployment by end of day Monday.</span>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">42</div>
+          <div class="stat-label">MSP ScreenConnect servers targeted</div>
         </div>
       </div>
-      <div class="story-source">
-        Sources: <a href="https://www.csoonline.com/article/4247015/november-2026-patch-tuesday-63-critical-microsoft-fixes-plus-an-outlook-zero-day-that-allows-theft-of-hashed-credentials.html" target="_blank">CSO Online</a> · <a href="https://securityonline.info/november-2026-patch-tuesday/" target="_blank">Security Online</a> · <a href="https://senserva.com/patch-tuesday.html" target="_blank">Senserva CVE Ranking</a>
+      <div class="sources">
+        Sources: <a href="https://www.huntress.com/blog/cve-2026-84869-screenconnect-technician-exploitation">Huntress — CVE-2026-84869 in ScreenConnect Exploited to Run Malicious Files on MSP Technician Accounts</a>
+        <a href="https://www.securityweek.com/msp-screenconnect-servers-targeted-in-month-long-campaign/">SecurityWeek — MSP ScreenConnect Servers Targeted in Month-Long Campaign</a>
+        <a href="https://thehackernews.com/2026/11/hackers-exploit-critical-screenconnect.html">The Hacker News — Hackers Exploit Critical ScreenConnect Flaw to Hijack MSP Technician PCs</a>
+        <a href="https://threatprotect.qualys.com/2026/11/10/google-chrome-patches-eighth-zero-day-vulnerability-of-the-year-cve-2026-125350/">Qualys ThreatPROTECT — Google Chrome Patches Eighth Zero-Day of the Year (CVE-2026-125350)</a>
       </div>
     </div>
 
-    <!-- Story 3 — Chrome + OpenSSH -->
-    <div class="story">
-      <div class="story-headline">🌐 Chrome Zero-Day #8 of 2026 + OpenSSH "SSHole" Actively Exploited</div>
-      <div class="story-body">
-        <p>Google patched <span class="cve-high">CVE-2026-125350</span> in Chrome 157.0.8103.50 — the browser's eighth zero-day of 2026 and actively exploited in the wild. Users should update Chrome immediately.</p>
-        <p>Separately, <span class="cve-high">CVE-2026-123158</span> — dubbed <strong>"SSHole"</strong> — is an OpenSSH authentication bypass actively exploited on Alpine Linux and other musl-based systems. CISA added it to KEV with a November 12 federal deadline (already passed for federal agencies, but private sector remediation is urgent).</p>
-      </div>
-      <div class="audience-block">
-        <div class="audience-row">
-          <span class="audience-tag tag-ciso">🔐 CISO</span>
-          <span class="audience-text">Force Chrome update across endpoints. For SSHole: audit all Alpine/musl Linux systems (containers, edge devices, CI runners) — this is a pre-auth bypass with active exploitation. Check container base images urgently.</span>
-        </div>
-        <div class="audience-row">
-          <span class="audience-tag tag-partner">🤝 Partner</span>
-          <span class="audience-text">Containerised client environments are at particular risk from SSHole given Alpine Linux's prevalence in Docker base images. Good assessment opportunity with high client urgency.</span>
-        </div>
-        <div class="audience-row">
-          <span class="audience-tag tag-exec">💼 Executive</span>
-          <span class="audience-text">Two more actively exploited vulnerabilities — Chrome (browser) and SSH (server access protocol). Both have patches available. Confirm IT deployment this week.</span>
-        </div>
-      </div>
-      <div class="story-source">
-        Sources: <a href="https://cybersecurityhunter.com/daily-cybersecurity-news-roundup-november-12-2026/" target="_blank">CybersecurityHunter</a> · <a href="https://thelaymansecurity.com/cybersecurity-news-this-week-2026-11-22/" target="_blank">The Layman Security (week of Nov 22)</a>
-      </div>
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>CISA's KEV patch deadline for Chrome zero-day CVE-2026-125350 (XML use-after-free, 8th Chrome zero-day of the year) falls on November 24; Microsoft Edge has a matching fix available.</li>
+        <li>The three-day federal remediation deadline CISA set November 20 for the Armory Castle VMware vCenter zero-day (CVE-2026-123890, CVSS 9.8) lapses this week.</li>
+        <li>The Hacker News and SecurityWeek flag related "SCKit" malware turning ordinary ScreenConnect support sessions into a broader MSP attack path beyond the 42-server spray campaign.</li>
+      </ul>
     </div>
 
-    <!-- Story 4 — Maersk -->
-    <div class="story">
-      <div class="story-headline">🚢 Maersk Confirms Data Breach — WhiteArmor Ransomware Demands $5M</div>
-      <div class="story-body">
-        <p>The WhiteArmor ransomware group claimed on November 7 to have exfiltrated ~100GB of data from Maersk's supply-chain platform. A.P. Moller-Maersk confirmed a cybersecurity incident on November 11, stating the breach was isolated to a legacy system inherited from the LF Logistics acquisition (from Li &amp; Fung, 2022).</p>
-        <p>WhiteArmor claims the stolen data includes driver records, plaintext passwords, admin accounts, logistics data, and 27,000+ mobile device logs (phone numbers, email addresses, IMEI identifiers). The group demanded $5 million in Bitcoin with a 30-day deadline. The company says no impact was detected on other Maersk systems or partner integrations.</p>
-      </div>
-      <div class="audience-block">
-        <div class="audience-row">
-          <span class="audience-tag tag-ciso">🔐 CISO</span>
-          <span class="audience-text">Classic M&amp;A attack vector: inherited legacy systems with unreviewed security posture. If your org has acquired companies in the past 3 years, audit inherited systems for patching gaps, default credentials, and segmentation from core networks.</span>
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Update every ScreenConnect technician host client to 26.6.5+ immediately — server-side patching alone does not close CVE-2026-84869, since the exploit runs on the technician's machine</li>
+            <li>Confirm Chrome/Edge fleets are on 157.0.8103.50+ ahead of the Nov 24 CISA KEV deadline for CVE-2026-125350</li>
+          </ul>
         </div>
-        <div class="audience-row">
-          <span class="audience-tag tag-partner">🤝 Partner</span>
-          <span class="audience-text">M&amp;A cybersecurity due diligence is becoming a standard practice. Maersk's breach reinforces the case for post-acquisition security reviews as a consulting service line. Logistics sector clients should be briefed.</span>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>The ScreenConnect campaign is a strong talking point for MSP/MSSP clients on supply-chain risk from remote-support tooling — technician endpoints, not just servers, are now an attack surface</li>
+          </ul>
         </div>
-        <div class="audience-row">
-          <span class="audience-tag tag-exec">💼 Executive</span>
-          <span class="audience-text">Maersk — the world's largest shipping company — has been breached again via an acquired company's legacy system. Supply chain data exposure affects partners throughout the logistics network. Review vendor risk posture.</span>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>If your organization outsources IT support, ask your MSP in writing whether their ScreenConnect technician clients (not just servers) are patched against CVE-2026-84869</li>
+          </ul>
         </div>
-      </div>
-      <div class="story-source">
-        Sources: <a href="https://www.securityweek.com/maersk-confirms-data-theft-amid-5-million-extortion-attempt/" target="_blank">SecurityWeek</a> · <a href="https://industrialcyber.co/ransomware/maersk-investigates-legacy-system-breach-after-whitearmor-ransomware-group-claims-100gb-logistics-data-theft/" target="_blank">Industrial Cyber</a> · <a href="https://cybersecuritynews.com/hackers-breach-maersk/" target="_blank">CybersecurityNews</a>
-      </div>
-    </div>
-
-    <!-- Story 5 — Optimizely + ScreenConnect -->
-    <div class="story">
-      <div class="story-headline">📦 Supply Chain Attack on Optimizely + ScreenConnect Vulnerability</div>
-      <div class="story-body">
-        <p>This week also saw a significant <strong>Optimizely supply chain compromise</strong> identified as a primary incident — attackers embedded malicious code into the Optimizely CMS/DXP software distribution pipeline, potentially affecting thousands of downstream enterprise web properties. Additionally, a critical <strong>ScreenConnect vulnerability</strong> was flagged as requiring immediate patching, with active threat actors scanning for exposed instances.</p>
-      </div>
-      <div class="audience-block">
-        <div class="audience-row">
-          <span class="audience-tag tag-ciso">🔐 CISO</span>
-          <span class="audience-text">If you use Optimizely (formerly Episerver) in your web stack, treat as potentially compromised. Verify software integrity, check for unexpected outbound connections. ScreenConnect deployments: patch immediately and audit connection logs.</span>
-        </div>
-        <div class="audience-row">
-          <span class="audience-tag tag-partner">🤝 Partner</span>
-          <span class="audience-text">Supply chain attacks continue to proliferate in 2026. Clients using Optimizely for digital experience platforms (common in retail, finance, media) need urgent notification and verification.</span>
-        </div>
-      </div>
-      <div class="story-source">
-        Source: <a href="https://thelaymansecurity.com/cybersecurity-news-this-week-2026-11-22/" target="_blank">The Layman Security</a>
       </div>
     </div>
   </div>
 
-
-  <!-- ═══════════════════════════════════════════
-       SECTION 3 — ARTIFICIAL INTELLIGENCE
-       ═══════════════════════════════════════════ -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-icon">🤖</div>
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
       <div>
-        <div class="section-title">Artificial Intelligence</div>
-        <div class="section-subtitle">Models · Policy · Security · Market</div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Monday, November 23, 2026</div>
       </div>
     </div>
 
-    <!-- Story 1 — OpenAI Safety Limits -->
-    <div class="story">
-      <div class="story-headline">🛡️ OpenAI Proposes Industry-Wide AI Safety Thresholds; Governors Push for Federal Law</div>
-      <div class="story-body">
-        <p>OpenAI's chief scientist proposed <strong>shared development limits</strong> tied to log-perplexity measurements — essentially a voluntary industry cap on frontier capability gains. The company published internal scores (GPT-3.5 at 0.99, GPT-4 at 0.91) and warned that "capability gains could accelerate significantly in 2027," framing the proposal as a pre-emptive coordination mechanism among frontier labs.</p>
-        <p>Simultaneously, a bipartisan group of US governors from Maryland, Indiana, North Carolina and Utah asked Congress to establish <strong>national AI rules</strong> while preserving state-level consumer protections — a sign that pressure for federal regulation is building from state executives, not just Congress.</p>
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Nvidia Reinstates Jensen Huang as CEO 11 Days After Spy-Scandal Resignation; Stock Jumps 30%+
+        <span class="badge badge-purple">+30%+ STOCK POP · 11 DAYS AFTER RESIGNATION</span>
       </div>
-      <div class="audience-block">
-        <div class="audience-row">
-          <span class="audience-tag tag-ciso">🔐 CISO</span>
-          <span class="audience-text">OpenAI's GPT-6 Cyber was already rated "Critical" under its Preparedness Framework — shared safety thresholds may slow the pace of offensive-capable model releases, but the threat landscape is already elevated. AI security governance planning is now urgent.</span>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Nvidia's board voted unanimously Monday to reinstate Jensen Huang as president, CEO, and board director, effective immediately — just 11 days after he resigned amid a scandal over his relationship with Alice Huang, a Chinese tech executive the FBI says was recruited by China's Ministry of State Security to gather intelligence on Nvidia's AI chip technology. CFO Colette Kress had served as interim CEO while Nvidia shares traded at their lowest earnings multiple in 14 years amid congressional and FBI scrutiny. The board said its decision followed extensive discussions with Huang and input "from senior levels of the United States government," concluding his reinstatement poses no national security risk — a characterization the Trump administration echoed. Shares jumped more than 30% Monday morning on the news. Elsewhere in AI: OpenAI said its agents now complete 46% of multi-hour (2–4 hour human-equivalent) research assignments, up from 23% in March, and disclosed its models helped optimize circuits in its in-house "Jalapeño" chip design; Perplexity launched an always-on Monitor API for scheduled web searches and page tracking; OpenAI introduced "ChatGPT for Sales," a CRM-integrated prospecting plugin; AMD and Saudi Arabia's HUMAIN announced up to a $10 billion AI infrastructure partnership; Deutsche Telekom committed €100 million to Mistral AI; and banks began syndicating the $63 billion financing behind Anthropic's Google TPU chip lease, days after Anthropic's Nasdaq debut.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#bc8cff;">+30%+</div>
+          <div class="stat-label">Nvidia's stock jump on reinstatement</div>
         </div>
-        <div class="audience-row">
-          <span class="audience-tag tag-partner">🤝 Partner</span>
-          <span class="audience-text">Federal AI legislation is now a bipartisan state-level demand. Clients in regulated industries should begin AI governance gap assessments. The window before mandatory frameworks is narrowing.</span>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">11 days</div>
+          <div class="stat-label">Huang's time away from the CEO role</div>
         </div>
-        <div class="audience-row">
-          <span class="audience-tag tag-exec">💼 Executive</span>
-          <span class="audience-text">AI regulation is moving from discussion to legislation. A bipartisan coalition of governors is pushing Congress for a federal framework. Begin mapping your organisation's AI use cases against emerging compliance requirements.</span>
-        </div>
-      </div>
-      <div class="story-source">
-        Sources: <a href="https://killtheai.com/news/top-10-ai-news-today-november-23-2026/" target="_blank">Kill the AI (Nov 23)</a> · <a href="https://joineta.org/blog/ai-news-roundup-november-2026" target="_blank">ETA AI Roundup</a>
-      </div>
-    </div>
-
-    <!-- Story 2 — Anthropic IPO aftermath -->
-    <div class="story">
-      <div class="story-headline">📈 Anthropic Post-IPO: Safety Mission Under Scrutiny; Claude Fable 5.2 in Market</div>
-      <div class="story-body">
-        <p>Four days after Anthropic's historic IPO (priced at $83/share, raising ~$81B, ticker <strong>ANT</strong>, briefly touching ~$2T market cap), critics and NPR are asking whether being a public company will test Anthropic's commitment to put safety first. The pressure to deliver shareholder returns now coexists with the company's safety-first founding mandate.</p>
-        <p><strong>Claude Fable 5.2</strong> (released Nov 9) scores 65 on the AI Intelligence Index and runs 30% faster than Fable 5.1 with 55% fewer false-positive safety blocks. Its restricted sibling, <strong>Claude Mythos 5.2</strong>, is available only to vetted cybersecurity and life sciences organizations. <strong>OpenAI's GPT-6 Cyber</strong> — rated "Critical" under the Preparedness Framework — remains gated behind strict access controls, the first OpenAI model to reach that designation.</p>
-      </div>
-      <div class="audience-block">
-        <div class="audience-row">
-          <span class="audience-tag tag-ciso">🔐 CISO</span>
-          <span class="audience-text">Claude Mythos 5.2 (vetted org access) and GPT-6 Cyber (gated) represent the current frontier of AI-assisted security tooling. Apply for access if your SOC needs autonomous threat-hunting capabilities. Monitor Dragos research: 2M canary prompts traced AI data leakage to production AI services.</span>
-        </div>
-        <div class="audience-row">
-          <span class="audience-tag tag-partner">🤝 Partner</span>
-          <span class="audience-text">Anthropic (ANT) is now a publicly traded company — a major inflection for the AI market. The IPO at ~$2T valuation establishes a new benchmark. Clients should factor Anthropic's public market performance into their AI vendor risk assessments.</span>
-        </div>
-        <div class="audience-row">
-          <span class="audience-tag tag-exec">💼 Executive</span>
-          <span class="audience-text">Anthropic is now public (ticker: ANT). The company that makes Claude — widely used in enterprise AI — is under new scrutiny balancing commercial growth vs. safety principles. Watch for shifts in model availability and pricing as public market pressures emerge.</span>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">46%</div>
+          <div class="stat-label">OpenAI agent task-completion rate, up from 23% in March</div>
         </div>
       </div>
-      <div class="story-source">
-        Sources: <a href="https://www.npr.org/2026/11/21/nx-s1-6048678/anthropic-ipo-mission-ai-safety" target="_blank">NPR</a> · <a href="https://www.pymnts.com/news/artificial-intelligence/2026/anthropics-claude-tops-ai-rankings-as-openai-limits-cyber-model/" target="_blank">PYMNTS</a> · <a href="https://www.taskade.com/blog/anthropic-claude-history" target="_blank">Taskade (Anthropic Timeline)</a>
+      <div class="sources">
+        Sources: <a href="https://nvidianews.nvidia.com/news/nvidia-board-reinstates-jensen-huang-as-president-ceo-and-board-director">NVIDIA Newsroom — NVIDIA Board Reinstates Jensen Huang as President, CEO and Board Director</a>
+        <a href="https://www.cnbc.com/2026/11/23/nvidia-jensen-huang-ceo.html">CNBC — Jensen Huang Reinstated as Nvidia CEO; Stock Jumps</a>
+        <a href="https://www.bloomberg.com/news/articles/2026-11-23/nvidia-reinstates-jensen-huang-as-ceo-with-government-input">Bloomberg — Nvidia Reinstates Huang as CEO, Trump Says No Risk to Security</a>
+        <a href="https://riorundown.substack.com/p/ai-news-nov-23-2026-autonomous-operations">Rio Rundown — AI News Nov 23, 2026: Autonomous Operations and Agent Governance</a>
       </div>
     </div>
 
-    <!-- Story 3 — AI agents fail + banks block -->
-    <div class="story">
-      <div class="story-headline">🏦 Banks Block AI Agents; SWE-CoWork Finds Agents Complete &lt;8% of Real Tasks</div>
-      <div class="story-body">
-        <p>The SWE-CoWork benchmark — a new evaluation simulating real software-engineering workplace conditions across 101 repositories — found that leading AI coding agents <strong>"fully completed fewer than 8% of assignments,"</strong> struggling especially with cross-team coordination, context handoffs, and long-horizon planning. This paints a sobering picture against the hype around autonomous AI agents.</p>
-        <p>Meanwhile, major US banks are pushing back against customer-directed AI agents: <strong>Wells Fargo</strong> updated terms to state customers use third-party AI agents "at their own risk," while <strong>JPMorgan Chase</strong> and others have restricted credential-based agent access to prevent unauthorised transactions. The move signals a coming showdown between financial institutions and the agent economy.</p>
-      </div>
-      <div class="audience-block">
-        <div class="audience-row">
-          <span class="audience-tag tag-ciso">🔐 CISO</span>
-          <span class="audience-text">Banks blocking AI agents highlights the unresolved identity and authorisation problem: how do you distinguish a human customer from an AI agent acting on their behalf? This is a governance gap across all financial and enterprise APIs. Review your own API authentication policies for agent access.</span>
-        </div>
-        <div class="audience-row">
-          <span class="audience-tag tag-partner">🤝 Partner</span>
-          <span class="audience-text">SWE-CoWork's &lt;8% completion rate will recalibrate enterprise expectations on agentic AI ROI. Opportunity: help clients design realistic AI agent workflows with appropriate human-in-the-loop checkpoints rather than fully autonomous pipelines.</span>
-        </div>
-        <div class="audience-row">
-          <span class="audience-tag tag-exec">💼 Executive</span>
-          <span class="audience-text">Two reality checks: AI coding agents complete less than 8% of real software tasks without human help, and major banks are actively blocking AI agents from accessing customer accounts. Temper autonomous AI automation ambitions with human oversight requirements.</span>
-        </div>
-      </div>
-      <div class="story-source">
-        Sources: <a href="https://killtheai.com/news/top-10-ai-news-today-november-23-2026/" target="_blank">Kill the AI (Nov 23)</a> · <a href="https://joineta.org/blog/ai-news-roundup-november-2026" target="_blank">ETA AI Roundup Nov 2026</a>
-      </div>
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>OpenAI's research agents now complete 46% of 2–4 hour human-equivalent research tasks, up from 23% in March — a marker of fast-improving long-horizon agentic capability.</li>
+        <li>AMD and Saudi Arabia's HUMAIN unveil an up-to-$10B AI infrastructure partnership; Deutsche Telekom commits €100M to Mistral AI.</li>
+        <li>Banks begin syndicating the $63B financing behind Anthropic's Google TPU chip lease, days after Anthropic's Nasdaq debut and first-day stock pop.</li>
+      </ul>
     </div>
 
-    <!-- Story 4 — South Korea + Dragos -->
-    <div class="story">
-      <div class="story-headline">🎓 South Korea Education Minister Resigns Over AI Exam Cheating; Dragos Traces AI Data Leaks</div>
-      <div class="story-body">
-        <p>South Korea's Education Minister Choi Kyo-jin resigned after 111 documented AI-device misconduct cases were detected during the national university entrance exam (Suneung). The scandal highlights the profound near-term disruption AI is creating in education and credentialing systems globally.</p>
-        <p>In OT/ICS security research, <strong>Dragos</strong> sent approximately 2 million canary prompts to commercial AI services from July to November 2026 and successfully traced data leakage back to production AI platforms — a significant finding for organisations relying on third-party AI tools to process sensitive operational data.</p>
-      </div>
-      <div class="audience-block">
-        <div class="audience-row">
-          <span class="audience-tag tag-ciso">🔐 CISO</span>
-          <span class="audience-text">Dragos's canary-prompt research is a wake-up call: sensitive data fed into third-party AI services can be tracked leaking out. Audit which AI tools your teams use with what data, particularly in OT/ICS environments. Data classification policies need an AI-services addendum.</span>
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 AI Security</div>
+          <ul>
+            <li>Huang's reinstatement despite an active espionage probe into Chinese intelligence recruitment of a company insider is a reminder to revisit insider-threat and foreign-influence screening for executives and key technical staff with access to sensitive AI/chip IP</li>
+          </ul>
         </div>
-        <div class="audience-row">
-          <span class="audience-tag tag-partner">🤝 Partner</span>
-          <span class="audience-text">AI data leakage is becoming measurable and traceable — a new audit capability for clients. Propose AI data hygiene assessments that map data flows to third-party AI services and assess data retention/training policies.</span>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Nvidia's 30%+ single-day pop shows markets pricing governance/leadership risk as transient when AI-infrastructure fundamentals stay intact — useful context for clients weighing key-person risk in AI-dependent supply chains</li>
+          </ul>
         </div>
-      </div>
-      <div class="story-source">
-        Sources: <a href="https://killtheai.com/news/top-10-ai-news-today-november-23-2026/" target="_blank">Kill the AI (Nov 23)</a> · <a href="https://joineta.org/blog/ai-news-roundup-november-2026" target="_blank">ETA AI Roundup</a>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>AMD-HUMAIN, Deutsche Telekom-Mistral, and the Anthropic chip-lease financing all point to AI infrastructure capex accelerating into 2027 — budget accordingly regardless of this week's leadership headlines</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="footer">
-    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Monday, November 23, 2026 at 6:00 PM (Paris time)</p>
-    <p style="margin-top:6px;">Sources: Reuters · Al Jazeera · CNN · CBS News · Gulf News · Help Net Security · SecurityWeek · CSO Online · Kill the AI · NPR · PYMNTS · Dragos</p>
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Monday, November 23, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
   </div>
 
 </div>
