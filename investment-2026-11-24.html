@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Investment Brief — Tuesday, November 24, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #f0c040; margin-bottom: 12px;
+    }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
+    .header .date { font-size: 1rem; color: #8b949e; margin-bottom: 16px; }
+    .header .nav { font-size: 0.82rem; color: #484f58; }
+    .header .nav a { color: #6e7681; }
+
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      margin-bottom: 48px;
+    }
+    .stat-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-align: center;
+    }
+    .stat-card .stat-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; color: #8b949e; margin-bottom: 6px;
+      display: block;
+    }
+    .stat-card .stat-value {
+      font-size: 1.25rem; font-weight: 800; color: #f0f6fc;
+      display: block; margin-bottom: 3px;
+    }
+    .stat-card .stat-change {
+      font-size: 0.78rem; font-weight: 600;
+    }
+    .green  { color: #3fb950; }
+    .red    { color: #f85149; }
+    .amber  { color: #e3b341; }
+    .blue   { color: #58a6ff; }
+    .stat-card.bullish { border-top: 2px solid #238636; }
+    .stat-card.bearish { border-top: 2px solid #da3633; }
+    .stat-card.neutral { border-top: 2px solid #9e6a03; }
+
+    .section { margin-bottom: 52px; }
+    .section-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 22px; padding-bottom: 14px;
+      border-bottom: 2px solid #21262d;
+    }
+    .section-icon { font-size: 1.6rem; }
+    .section-title { font-size: 1.25rem; font-weight: 800; color: #f0f6fc; }
+    .section-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 3px 9px; border-radius: 20px;
+      margin-left: auto;
+    }
+    .tag-market  { background: #1a1f3d; color: #79c0ff; border: 1px solid #2a3a6e; }
+    .tag-pick    { background: #1a3d1a; color: #3fb950; border: 1px solid #2a6e2a; }
+    .tag-risk    { background: #3d1a1a; color: #f85149; border: 1px solid #6e2a2a; }
+    .tag-insight { background: #3d2a0a; color: #e3b341; border: 1px solid #6e4a0a; }
+
+    .story {
+      background: #161b22; border: 1px solid #30363d;
+      border-radius: 10px; padding: 20px 22px; margin-bottom: 14px;
+    }
+    .story:hover { border-color: #444c56; }
+    .story h3 { font-size: 1rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; line-height: 1.4; }
+    .story p { font-size: 0.88rem; color: #c9d1d9; line-height: 1.65; margin-bottom: 8px; }
+    .story p:last-child { margin-bottom: 0; }
+    .story .source { font-size: 0.76rem; color: #484f58; margin-top: 10px; }
+
+    .pick-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .pick-card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .pick-card:hover { border-color: #444c56; }
+    .pick-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .pick-ticker {
+      font-size: 1.2rem; font-weight: 800; color: #58a6ff;
+    }
+    .pick-company {
+      font-size: 0.78rem; color: #8b949e; margin-top: 2px;
+    }
+    .pick-price {
+      text-align: right;
+    }
+    .pick-price .price-val {
+      font-size: 1.1rem; font-weight: 700; color: #f0f6fc;
+    }
+    .pick-price .price-change {
+      font-size: 0.78rem;
+    }
+    .pick-desc { font-size: 0.84rem; color: #c9d1d9; line-height: 1.6; margin-bottom: 12px; }
+    .pick-meta {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;
+    }
+    .pick-badge {
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 3px 8px; border-radius: 20px;
+    }
+    .badge-buy      { background: #1a3d1a; color: #3fb950; border: 1px solid #2a5a2a; }
+    .badge-moderate { background: #1a2d3d; color: #58a6ff; border: 1px solid #2a4a6e; }
+    .badge-income   { background: #3d2a0a; color: #e3b341; border: 1px solid #6e4a0a; }
+    .badge-growth   { background: #1a1a3d; color: #a371f7; border: 1px solid #3a2a6e; }
+    .badge-etf      { background: #1a3d3d; color: #56d364; border: 1px solid #2a5a5a; }
+    .badge-defensive { background: #2d1a3d; color: #d2a8ff; border: 1px solid #5a2a6e; }
+
+    .target-row {
+      display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap;
+    }
+    .target-pill {
+      background: #0d1117; border: 1px solid #21262d; border-radius: 6px;
+      padding: 4px 10px; font-size: 0.76rem; color: #8b949e;
+    }
+    .target-pill span { font-weight: 700; color: #f0f6fc; }
+
+    .outlook-table {
+      width: 100%; border-collapse: collapse; font-size: 0.82rem;
+      margin-top: 6px;
+    }
+    .outlook-table thead th {
+      text-align: left; padding: 10px 12px; font-size: 10px;
+      font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+      color: #8b949e; background: #161b22; border-bottom: 2px solid #21262d;
+    }
+    .outlook-table tbody tr {
+      border-bottom: 1px solid #21262d;
+    }
+    .outlook-table tbody tr:hover { background: #161b22; }
+    .outlook-table tbody td {
+      padding: 11px 12px; color: #c9d1d9; vertical-align: top;
+    }
+    .outlook-table .ticker-cell {
+      font-weight: 800; color: #58a6ff; white-space: nowrap;
+    }
+    .outlook-table .price-cell { font-weight: 700; color: #f0f6fc; }
+    .outlook-table .target-up { color: #3fb950; font-weight: 700; }
+    .outlook-table .target-dn { color: #f85149; font-weight: 700; }
+    .outlook-table .target-flat { color: #e3b341; font-weight: 700; }
+    .risk-low    { color: #3fb950; font-size: 10px; font-weight: 700; }
+    .risk-med    { color: #e3b341; font-size: 10px; font-weight: 700; }
+    .risk-high   { color: #f85149; font-size: 10px; font-weight: 700; }
+
+    .insight-card {
+      background: #161b22; border: 1px solid #30363d;
+      border-left: 3px solid #e3b341;
+      border-radius: 0 10px 10px 0; padding: 18px 20px; margin-bottom: 14px;
+    }
+    .insight-card h3 { font-size: 0.96rem; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; }
+    .insight-card p { font-size: 0.86rem; color: #c9d1d9; line-height: 1.65; }
+    .insight-card .person { font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: #e3b341; margin-bottom: 8px; display: block; }
+
+    .risk-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+    }
+    .risk-card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .risk-card .risk-title {
+      font-size: 0.88rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+    }
+    .risk-card ul { list-style: none; padding: 0; }
+    .risk-card ul li {
+      font-size: 0.82rem; color: #c9d1d9; margin-bottom: 6px;
+      padding-left: 16px; position: relative; line-height: 1.5;
+    }
+    .risk-card ul li::before { content: "›"; position: absolute; left: 0; color: #f85149; }
+
+    .watchlist-card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .watchlist-card .wl-title {
+      font-size: 0.88rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+    }
+    .wl-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 6px 0; border-bottom: 1px solid #21262d; font-size: 0.82rem;
+    }
+    .wl-item:last-child { border-bottom: none; }
+    .wl-ticker { font-weight: 700; color: #58a6ff; }
+    .wl-reason { color: #8b949e; font-size: 0.76rem; }
+
+    .tldr {
+      background: #161b22; border: 1px solid #30363d;
+      border-left: 3px solid #58a6ff;
+      border-radius: 0 8px 8px 0; padding: 14px 18px; margin-bottom: 28px;
+      font-size: 0.86rem; color: #8b949e;
+    }
+    .tldr strong { color: #f0f6fc; }
+
+    .divider { border: none; border-top: 1px solid #21262d; margin: 14px 0 20px; }
+
+    .sector-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px;
+    }
+    .sector-row {
+      display: flex; justify-content: space-between; align-items: center;
+      background: #0d1117; border: 1px solid #21262d; border-radius: 6px;
+      padding: 7px 12px; font-size: 0.82rem;
+    }
+    .sector-name { color: #c9d1d9; }
+    .sector-pct  { font-weight: 700; }
+
+    .footer {
+      text-align: center; margin-top: 60px; padding-top: 20px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+
+    .badge-critical { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; padding:2px 7px; border-radius:4px; background:#6e1f1f; color:#f85149; margin-right:6px; letter-spacing:0.8px; }
+    .badge-watch    { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; padding:2px 7px; border-radius:4px; background:#3d2a0a; color:#e3b341; margin-right:6px; letter-spacing:0.8px; }
+    .badge-new      { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; padding:2px 7px; border-radius:4px; background:#1a2d1a; color:#3fb950; margin-right:6px; letter-spacing:0.8px; }
+    .upside-pct { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; background: #1a3d1a; color: #3fb950; margin-left: 6px; }
+    .gap-notice { background: #2d1a0a; border: 1px solid #6e4a0a; border-radius: 8px; padding: 12px 18px; margin-bottom: 20px; font-size: 0.82rem; color: #e3b341; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ═══════════════ HEADER ═══════════════ -->
+  <div class="header">
+    <div class="label">📈 Investment Brief · Moderate Risk Portfolio</div>
+    <h1>Tuesday, November 24, 2026</h1>
+    <div class="date">The Huang-Return Rally &nbsp;·&nbsp; AI Trade Roars Back &nbsp;·&nbsp; For Georges</div>
+    <div class="nav"><a href="index.html">← Back to archive</a></div>
+  </div>
+
+  <div class="gap-notice">
+    ⚠️ <strong>Gap notice:</strong> Monday Nov 23 did not get its own edition. This brief is anchored on Monday's close (the most dramatic single session in weeks) and carries it forward into today. Index/macro figures are Monday Nov 23 confirmed closes; a handful of individual stock prices (JPM, AMZN, JNJ, HII) are last confirmed Nov 18 quotes, now stale — verify live before trading.
+  </div>
+
+  <!-- ═══════════════ TL;DR ═══════════════ -->
+  <div class="tldr">
+    <strong>Today at a glance:</strong> &nbsp;
+    Nvidia's board reinstated Jensen Huang as CEO before Monday's open, less than two weeks after he resigned — NVDA surged +31.5% in a single session, adding ~$950B in market value &nbsp;·&nbsp;
+    The AI trade roared back broadly: S&amp;P 500 +4.73% to 7,237.17 (best day since April 2025), Nasdaq +6.51% to 24,089.56, Dow +3.01% to 49,595.31 &nbsp;·&nbsp;
+    VIX collapsed -25.8% to 26.62 as hedges unwound; gold still rose +3.4% to ~$3,634 even as risk appetite returned &nbsp;·&nbsp;
+    Top picks pivot back toward the AI-chip rebound: NVDA, AMD, AVGO alongside continued financials/defensive holdings
+  </div>
+
+  <!-- ═══════════════ STATS BAR ═══════════════ -->
+  <div class="stats-bar">
+    <div class="stat-card bullish">
+      <span class="stat-label">S&amp;P 500</span>
+      <span class="stat-value">7,237.17</span>
+      <span class="stat-change green">+326.78 &nbsp;+4.73%</span>
+    </div>
+    <div class="stat-card bullish">
+      <span class="stat-label">Dow Jones</span>
+      <span class="stat-value">49,595.31</span>
+      <span class="stat-change green">+1,447.98 &nbsp;+3.01%</span>
+    </div>
+    <div class="stat-card bullish">
+      <span class="stat-label">Nasdaq</span>
+      <span class="stat-value">24,089.56</span>
+      <span class="stat-change green">+6.51%</span>
+    </div>
+    <div class="stat-card bullish">
+      <span class="stat-label">Russell 2000</span>
+      <span class="stat-value">n/a*</span>
+      <span class="stat-change amber">Not confirmed</span>
+    </div>
+    <div class="stat-card bullish">
+      <span class="stat-label">VIX</span>
+      <span class="stat-value">26.62</span>
+      <span class="stat-change green">-25.83% &nbsp;(from 35.89)</span>
+    </div>
+    <div class="stat-card bearish">
+      <span class="stat-label">Crude Oil (WTI)</span>
+      <span class="stat-value">$80.17</span>
+      <span class="stat-change red">Down with risk-on rotation</span>
+    </div>
+    <div class="stat-card neutral">
+      <span class="stat-label">Gold</span>
+      <span class="stat-value">~$3,634</span>
+      <span class="stat-change amber">+3.4% — up despite rally</span>
+    </div>
+    <div class="stat-card neutral">
+      <span class="stat-label">10Y Treasury</span>
+      <span class="stat-value">4.92%</span>
+      <span class="stat-change amber">Unchanged</span>
+    </div>
+  </div>
+  <p style="font-size:0.72rem;color:#484f58;margin-top:-34px;margin-bottom:34px;">* Russell 2000 Monday close not independently confirmed across sources at publish time.</p>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 1 — MARKET SNAPSHOT
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">📊</span>
+      <span class="section-title">Market Snapshot</span>
+      <span class="section-tag tag-market">LIVE DATA</span>
+    </div>
+
+    <div class="story">
+      <h3>🏭 Sector Performance — YTD Context (Pre-Monday-Rally Baseline)</h3>
+      <p>Using the most internally-consistent recent table: Energy led YTD at +42.8%, with Consumer Staples +20.0% and Healthcare +22.2% close behind. Materials (+13.4%), Real Estate (+11.3%) and Industrials (+10.1%) held the middle. Technology's YTD gain had compressed to roughly +14.5% during last week's AI-capex selloff — Monday's +6.5% Nasdaq surge likely restored several points of that overnight, though a fresh sector cut isn't yet available. Communication Services remains the lone solidly negative sector (-6.4% YTD). <em>Note: sector YTD figures have varied materially across sources in recent weeks — treat as directional.</em></p>
+      <div class="sector-grid">
+        <div class="sector-row"><span class="sector-name">⚡ Energy</span><span class="sector-pct green">+42.8% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">💊 Healthcare</span><span class="sector-pct green">+22.2% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">🛒 Consumer Staples</span><span class="sector-pct green">+20.0% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">💻 Technology</span><span class="sector-pct green">+14.5%+ YTD (rising)</span></div>
+        <div class="sector-row"><span class="sector-name">🪨 Materials</span><span class="sector-pct green">+13.4% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">🏘️ Real Estate</span><span class="sector-pct green">+11.3% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">🔩 Industrials</span><span class="sector-pct green">+10.1% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">🏦 Financials</span><span class="sector-pct green">+6.8% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">💡 Utilities</span><span class="sector-pct green">+2.6% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">🚗 Consumer Discretionary</span><span class="sector-pct green">+1.7% YTD</span></div>
+        <div class="sector-row"><span class="sector-name">📡 Comm. Services</span><span class="sector-pct red">-6.4% YTD</span></div>
+      </div>
+    </div>
+
+    <div class="story">
+      <h3>🔥 Huang Reinstated — The AI Trade's Biggest Single-Day Reversal in Years</h3>
+      <p>Nvidia's board reinstated Jensen Huang as President and CEO effective immediately on Monday, less than two weeks after his resignation had helped trigger the prior week's AI-capex-fear selloff. The stock closed +31.48% at $165.05, adding roughly $950 billion in market value in a single session — among the largest one-day market-cap gains ever recorded for any company. The move instantly reversed the market's core anxiety: that AI infrastructure spending had lost its steadiest hand. Chip and AI-adjacent names followed Nvidia higher across the board — AMD closed +6.85% at $453.46, and semiconductor peers broadly outperformed.</p>
+      <p>The index-level reaction was the mirror image of the prior week's rout: S&amp;P 500 +4.73% (best session since April 2025), Nasdaq +6.51%, Dow +3.01%. VIX collapsed -25.83% to 26.62 as hedges unwound at speed — still elevated versus the ~17-20 "calm market" range, signaling traders aren't fully convinced the volatility regime has ended even as they bought the rally.</p>
+    </div>
+
+    <div class="story">
+      <h3>📉 What Didn't Reverse: Gold and Oil</h3>
+      <p>Gold rose a further +3.4% to roughly $3,634 even as equities staged their sharpest rally in over a year — an unusual combination that suggests some institutional positioning (inflation hedges, dollar diversification) didn't unwind alongside the equity-specific AI-fear trade. Oil continued lower to $80.17/bbl, consistent with still-soft global demand signals that the one-day equity rally didn't change. The 10-year Treasury yield held flat at 4.92%, suggesting bond markets are taking a wait-and-see approach rather than fully re-pricing for a return to risk-on conditions.</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       SECTION 2 — TOP PICKS: MODERATE RISK
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🎯</span>
+      <span class="section-title">Top Picks — Moderate Risk Portfolio</span>
+      <span class="section-tag tag-pick">BUY THESIS</span>
+    </div>
+
+    <div class="tldr" style="border-left-color: #3fb950;">
+      <strong>Portfolio philosophy:</strong> &nbsp; With the acute AI-leadership risk resolved and volatility compressing, this edition reintroduces AI-chip exposure (NVDA, AMD) alongside the financials, healthcare, and defense names that held up through the correction. Existing analyst price targets for NVDA/AMD predate Monday's news and are likely to be revised upward in coming days — treat current targets as a floor, not a ceiling.
+    </div>
+
+    <div class="pick-grid">
+
+      <!-- NVDA -->
+      <div class="pick-card">
+        <div class="pick-header">
+          <div>
+            <div class="pick-ticker">NVDA</div>
+            <div class="pick-company">NVIDIA Corporation</div>
+          </div>
+          <div class="pick-price">
+            <div class="price-val">$165.05</div>
+            <div class="price-change green">+31.48% Monday 🔥</div>
+          </div>
+        </div>
+        <p class="pick-desc">The single biggest catalyst in weeks: Jensen Huang's reinstatement as CEO removed the market's single largest source of AI-leadership uncertainty overnight. Pre-news analyst consensus target was ~$246.67 (+49% from here), but that figure was set before Monday's news and almost certainly understates where analysts will land after re-rating the stock this week. Position size for continued volatility — this is a high-conviction, high-beta re-entry, not a low-risk holding.</p>
+        <div class="pick-meta">
+          <span class="pick-badge badge-growth">High Conviction</span>
+          <span class="pick-badge badge-growth">AI Core</span>
+          <span class="pick-badge badge-moderate">High Beta</span>
+        </div>
+        <div class="target-row">
+          <div class="target-pill">Target: <span class="amber">~$247 (stale, pre-news)</span></div>
+          <div class="target-pill">Upside: <span class="green">+49%+ (likely to rise)</span></div>
+        </div>
+      </div>
+
+      <!-- AMD -->
+      <div class="pick-card">
+        <div class="pick-header">
+          <div>
+            <div class="pick-ticker">AMD</div>
+            <div class="pick-company">Advanced Micro Devices</div>
+          </div>
+          <div class="pick-price">
+            <div class="price-val">$453.46</div>
+            <div class="price-change green">+6.85% Monday</div>
+          </div>
+        </div>
+        <p class="pick-desc">Goldman Sachs flagged AMD as "clearly oversold" the week prior, alongside NVDA and AVGO, citing compelling valuations even in conservative AI-demand scenarios. Monday's rally confirms the thesis is playing out. Consensus 12-month target is $640 (median $650), implying roughly +41-43% upside. 27 of 31 analysts rate it Buy or Strong Buy.</p>
+        <div class="pick-meta">
+          <span class="pick-badge badge-buy">Buy</span>
+          <span class="pick-badge badge-growth">AI Chips</span>
+          <span class="pick-badge badge-moderate">High Beta</span>
+        </div>
+        <div class="target-row">
+          <div class="target-pill">Target: <span class="green">$640</span></div>
+          <div class="target-pill">Upside: <span class="green">+41%</span></div>
+        </div>
+      </div>
+
+      <!-- JPM -->
+      <div class="pick-card">
+        <div class="pick-header">
+          <div>
+            <div class="pick-ticker">JPM</div>
+            <div class="pick-company">JPMorgan Chase</div>
+          </div>
+          <div class="pick-price">
+            <div class="price-val">$338.10</div>
+            <div class="price-change amber">Nov 18 close*</div>
+          </div>
+        </div>
+        <p class="pick-desc">The steady core holding through the whole correction-and-rebound cycle. CFRA reiterated a Buy rating with a $375 price target, citing 8% revenue growth and 6% net income growth in Q3 and US economic expansion as the primary driver. A diversified bank with fortress balance sheet remains the right ballast alongside the AI-chip re-entry above.</p>
+        <div class="pick-meta">
+          <span class="pick-badge badge-buy">Buy</span>
+          <span class="pick-badge badge-defensive">Value</span>
+          <span class="pick-badge badge-income">Dividend</span>
+        </div>
+        <div class="target-row">
+          <div class="target-pill">Target: <span class="green">$375</span></div>
+          <div class="target-pill">Upside: <span class="green">+10.9%</span></div>
+        </div>
+      </div>
+
+      <!-- AMZN -->
+      <div class="pick-card">
+        <div class="pick-header">
+          <div>
+            <div class="pick-ticker">AMZN</div>
+            <div class="pick-company">Amazon.com</div>
+          </div>
+          <div class="pick-price">
+            <div class="price-val">$257.75</div>
+            <div class="price-change amber">Nov 18 close*</div>
+          </div>
+        </div>
+        <p class="pick-desc">Caught up in last week's AI-capex selloff despite solid AWS margins and improving retail operating leverage; should benefit from the same sentiment reversal lifting NVDA/AMD, as hyperscaler capex fears ease with AI leadership stabilized. Consensus target $321.74 implies +24.8% upside.</p>
+        <div class="pick-meta">
+          <span class="pick-badge badge-buy">Buy</span>
+          <span class="pick-badge badge-growth">Growth</span>
+          <span class="pick-badge badge-moderate">Moderate Beta</span>
+        </div>
+        <div class="target-row">
+          <div class="target-pill">Target: <span class="green">$321.74</span></div>
+          <div class="target-pill">Upside: <span class="green">+24.8%</span></div>
+        </div>
+      </div>
+
+      <!-- JNJ -->
+      <div class="pick-card">
+        <div class="pick-header">
+          <div>
+            <div class="pick-ticker">JNJ</div>
+            <div class="pick-company">Johnson &amp; Johnson</div>
+          </div>
+          <div class="pick-price">
+            <div class="price-val">$272.69</div>
+            <div class="price-change amber">Nov 18 close*</div>
+          </div>
+        </div>
+        <p class="pick-desc">Low-beta ballast, included specifically to dampen portfolio volatility while the AI-chip names above carry the growth/beta risk. Not exposed to the UNH/Humana Medicare Advantage audit overhang — this is diversified pharma/medtech, not a health insurer. Target $275.92 is modest (+1.2%); the point of holding it is stability and dividend income, not upside.</p>
+        <div class="pick-meta">
+          <span class="pick-badge badge-buy">Buy</span>
+          <span class="pick-badge badge-defensive">Defensive</span>
+          <span class="pick-badge badge-income">Dividend</span>
+        </div>
+        <div class="target-row">
+          <div class="target-pill">Target: <span class="green">$275.92</span></div>
+          <div class="target-pill">Upside: <span class="green">+1.2%</span></div>
+        </div>
+      </div>
+
+      <!-- HII -->
+      <div class="pick-card">
+        <div class="pick-header">
+          <div>
+            <div class="pick-ticker">HII</div>
+            <div class="pick-company">Huntington Ingalls Industries</div>
+          </div>
+          <div class="pick-price">
+            <div class="price-val">$287.89</div>
+            <div class="price-change amber">Nov 18 close*</div>
+          </div>
+        </div>
+        <p class="pick-desc">Carried over from Goldman's defensive "hide out" basket — a low-correlation diversifier with a multi-year Navy shipbuilding backlog that doesn't depend on the AI narrative in either direction. Consensus target ~$360 implies +25% upside.</p>
+        <div class="pick-meta">
+          <span class="pick-badge badge-buy">Buy</span>
+          <span class="pick-badge badge-defensive">Defense</span>
+          <span class="pick-badge badge-moderate">Low Correlation</span>
+        </div>
+        <div class="target-row">
+          <div class="target-pill">Target: <span class="green">~$360</span></div>
+          <div class="target-pill">Upside: <span class="green">+25%</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ETF Recommendations -->
+    <div class="story">
+      <h3>📦 ETF Core Positions — Diversification Layer</h3>
+      <p><strong class="blue">SPY (S&amp;P 500 ETF) — $722.51 | Expense: 0.09%</strong> — Monday's confirmed close, up sharply with the broad rally. Remains the right core anchor for a moderate-risk book regardless of the week-to-week AI-news cycle — a 20-25% allocation smooths out exactly the kind of single-stock-driven swings seen this week.</p>
+      <hr class="divider">
+      <p><strong class="blue">VIG (Vanguard Dividend Appreciation ETF) — $236.50 | Expense: 0.04%</strong> — Monday's confirmed close. VIG's quality/dividend-growth tilt (JPM-style names dominate) complements the AI-chip re-entry above without full exposure to single-name AI-headline risk.</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       SECTION 3 — 30-60-90 DAY OUTLOOK TABLE
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🗓️</span>
+      <span class="section-title">30–60–90 Day Outlook</span>
+      <span class="section-tag tag-market">PRICE TARGETS</span>
+    </div>
+
+    <div class="story" style="padding: 0; overflow-x: auto;">
+      <table class="outlook-table">
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th>Last Conf.</th>
+            <th>30-Day</th>
+            <th>60-Day</th>
+            <th>90-Day</th>
+            <th>12-Mo Consensus</th>
+            <th>Key Catalyst</th>
+            <th>Risk Level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="ticker-cell">NVDA</td>
+            <td class="price-cell">$165</td>
+            <td class="target-up">$185</td>
+            <td class="target-up">$210</td>
+            <td class="target-up">$230</td>
+            <td class="target-up">$247+ <span class="upside-pct">+49%</span></td>
+            <td>Analyst target re-rating post-Huang-return; Q4 earnings guidance</td>
+            <td><span class="risk-high">HIGH</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">AMD</td>
+            <td class="price-cell">$453</td>
+            <td class="target-up">$490</td>
+            <td class="target-up">$550</td>
+            <td class="target-up">$600</td>
+            <td class="target-up">$640 <span class="upside-pct">+41%</span></td>
+            <td>AI-chip demand read-through from NVDA; record revenue guidance</td>
+            <td><span class="risk-high">HIGH</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">JPM</td>
+            <td class="price-cell">$338</td>
+            <td class="target-up">$348</td>
+            <td class="target-up">$360</td>
+            <td class="target-up">$368</td>
+            <td class="target-up">$375 <span class="upside-pct">+10.9%</span></td>
+            <td>Q4 earnings mid-Jan; Fed rate path; NIM sensitivity</td>
+            <td><span class="risk-low">LOW</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">AMZN</td>
+            <td class="price-cell">$258</td>
+            <td class="target-up">$275</td>
+            <td class="target-up">$295</td>
+            <td class="target-up">$310</td>
+            <td class="target-up">$322 <span class="upside-pct">+24.8%</span></td>
+            <td>AWS margin trajectory; holiday retail quarter; capex clarity</td>
+            <td><span class="risk-med">MED</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">JNJ</td>
+            <td class="price-cell">$273</td>
+            <td class="target-flat">$274</td>
+            <td class="target-up">$275</td>
+            <td class="target-up">$276</td>
+            <td class="target-flat">$276 <span class="upside-pct">+1.2%</span></td>
+            <td>Pipeline readouts; dividend payout; low correlation to AI news</td>
+            <td><span class="risk-low">LOW</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">HII</td>
+            <td class="price-cell">$288</td>
+            <td class="target-up">$305</td>
+            <td class="target-up">$330</td>
+            <td class="target-up">$345</td>
+            <td class="target-up">$360 <span class="upside-pct">+25%</span></td>
+            <td>Navy shipbuilding backlog; Goldman "hide out" basket reiteration</td>
+            <td><span class="risk-low">LOW</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">SPY</td>
+            <td class="price-cell">$722.51</td>
+            <td class="target-up">$735</td>
+            <td class="target-up">$755</td>
+            <td class="target-up">$775</td>
+            <td class="target-up">~$800</td>
+            <td>Volatility normalization; Q4 earnings season (Jan); Fed policy</td>
+            <td><span class="risk-med">MED</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">VIG</td>
+            <td class="price-cell">$236.50</td>
+            <td class="target-up">$240</td>
+            <td class="target-up">$246</td>
+            <td class="target-up">$252</td>
+            <td class="target-up">~$260</td>
+            <td>Dividend payout cycle; quality factor rotation</td>
+            <td><span class="risk-low">LOW</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.75rem;color:#484f58;margin-top:10px;padding:0 4px;">
+      * 30/60/90-day targets are Jorge's estimates derived from analyst 12-month consensus targets scaled with technical levels. NVDA target is explicitly flagged as pre-news and likely stale upward. Not financial advice.
+    </p>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       SECTION 4 — INVESTOR INSIGHTS
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🧠</span>
+      <span class="section-title">Trusted Investor Insights</span>
+      <span class="section-tag tag-insight">MACRO VIEWS</span>
+    </div>
+
+    <div class="insight-card" style="border-left-color: #58a6ff;">
+      <span class="person" style="color: #58a6ff;">Goldman Sachs Macro Desk</span>
+      <h3>Semiconductors "Clearly Oversold" — Called It Before Monday</h3>
+      <p>Goldman analyst James Schneider had flagged NVDA, AVGO, and AMD as being "clearly in oversold territory" with tech-heavy indices sitting at valuations not seen in over a decade — a call that looks prescient after Monday's reversal. Goldman's broader point stands even after the rally: positioning had become so one-sided bearish on AI-capex fears that a relief rally was a when, not an if, question. The reinstatement of Huang was the trigger, but the oversold setup was already in place.</p>
+    </div>
+
+    <div class="insight-card" style="border-left-color: #a371f7;">
+      <span class="person" style="color: #a371f7;">JPMorgan Equity Strategy</span>
+      <h3>Positioning Unwind Drove Monday's Scale of Move</h3>
+      <p>JPMorgan's strategy desk noted that weak investor sentiment and oversold technical indicators created an attractive risk-reward setup heading into Monday — and that the speed and size of hedge unwinds (reflected in VIX's -25.8% collapse) amplified what was already a fundamentally positive catalyst. JPMorgan's own CFRA-rated Buy thesis on JPM itself ($375 target) is framed around steady US economic expansion continuing regardless of the AI-news cycle.</p>
+    </div>
+
+    <div class="insight-card" style="border-left-color: #e3b341;">
+      <span class="person">Howard Marks / Oaktree Capital</span>
+      <h3>One Day Doesn't Resolve the Underlying Debate</h3>
+      <p>Marks' standing view from last week — that current conditions reflect a valuation reset rather than a classic bubble bursting — gets a partial vindication from Monday's rally, but his caution hasn't changed: a single catalyst-driven +31% move in one stock doesn't retroactively validate the AI-capex spending levels that triggered the selloff in the first place. His prescription remains quality, income, and reasonable valuations over chasing momentum — which is why this brief still anchors on JPM/JNJ/HII alongside the AI-chip re-entry.</p>
+    </div>
+
+    <div class="insight-card">
+      <span class="person">Warren Buffett / Berkshire Hathaway</span>
+      <h3>Record Cash Still Sitting on the Sidelines</h3>
+      <p>No new public commentary from Buffett since the correction began, but Berkshire's large cash position remains unchanged and uncommitted as of last report — consistent with the thesis that Buffett sees single-stock-driven rallies like Monday's as noise relative to broader market valuation, not a signal to change course.</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       SECTION 5 — KEY RISKS & WATCHLIST
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">⚠️</span>
+      <span class="section-title">Key Risks &amp; Watchlist</span>
+      <span class="section-tag tag-risk">RISK MONITOR</span>
+    </div>
+
+    <div class="risk-grid">
+      <div class="risk-card">
+        <div class="risk-title">💻 AI / Leadership Risk</div>
+        <ul>
+          <li>Huang's reinstatement resolves the immediate leadership crisis but raises governance questions about why he resigned in the first place</li>
+          <li>A +31% single-day move leaves NVDA vulnerable to profit-taking if follow-through news disappoints</li>
+          <li>Broader AI-capex ROI questions that triggered last week's selloff are not fully resolved by this one catalyst</li>
+        </ul>
+      </div>
+
+      <div class="risk-card">
+        <div class="risk-title">💰 Macro / Volatility Risk</div>
+        <ul>
+          <li>VIX at 26.62 remains elevated vs. the ~17-20 "calm" range — further swings are likely</li>
+          <li>Gold rising alongside Monday's equity rally is an unusual cross-asset signal — some institutional hedges did not unwind</li>
+          <li>10Y yield flat at 4.92% suggests bond markets are not yet convinced the risk-on move is durable</li>
+        </ul>
+      </div>
+
+      <div class="risk-card">
+        <div class="risk-title">🏥 Healthcare / Regulatory Risk</div>
+        <ul>
+          <li>UNH/Humana CMS Medicare Advantage audit overhang from last week remains unresolved — still excluded from top picks</li>
+          <li>Managed-care sector contagion risk (CVS, Elevance, Cigna) persists independent of the AI-news cycle</li>
+        </ul>
+      </div>
+
+      <div class="risk-card">
+        <div class="risk-title">🔒 Data-Quality Risk</div>
+        <ul>
+          <li>JPM/AMZN/JNJ/HII prices in this brief are Nov 18 closes, now six trading days stale — verify live before trading</li>
+          <li>NVDA/AMD analyst targets predate Monday's news and should be treated as a floor pending revision</li>
+          <li>Russell 2000 Monday close not independently confirmed</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Watchlist -->
+    <div class="story" style="margin-top: 16px;">
+      <h3>👁️ Watchlist — Names to Monitor Closely</h3>
+      <div class="wl-item">
+        <div>
+          <span class="wl-ticker">NVDA</span>
+          <span class="wl-reason"> — +31.5% Monday. Watch for analyst target revisions this week and any follow-through commentary from Huang</span>
+        </div>
+        <span class="green">🔥 CATALYST</span>
+      </div>
+      <div class="wl-item">
+        <div>
+          <span class="wl-ticker">UNH / HUM</span>
+          <span class="wl-reason"> — CMS Medicare Advantage audit overhang unresolved from last week. Still on watchlist, not top picks</span>
+        </div>
+        <span class="red">⚠️ REGULATORY</span>
+      </div>
+      <div class="wl-item">
+        <div>
+          <span class="wl-ticker">VIX</span>
+          <span class="wl-reason"> — 26.62, down sharply but still elevated. A move below 20 would confirm the volatility regime has eased</span>
+        </div>
+        <span class="amber">📊 MONITOR</span>
+      </div>
+      <div class="wl-item">
+        <div>
+          <span class="wl-ticker">AVGO</span>
+          <span class="wl-reason"> — Also named in Goldman's oversold-chip basket; consensus target ~$526, Goldman's own target trimmed to $460</span>
+        </div>
+        <span class="amber">👀 WATCH</span>
+      </div>
+      <div class="wl-item" style="border: none;">
+        <div>
+          <span class="wl-ticker">GOLD</span>
+          <span class="wl-reason"> — Rising alongside Monday's equity rally — an unusual combination worth tracking for what it implies about positioning</span>
+        </div>
+        <span class="amber">🔍 UNUSUAL</span>
+      </div>
+    </div>
+
+    <!-- Suggested Portfolio Allocation -->
+    <div class="story" style="margin-top: 14px;">
+      <h3>📐 Suggested Moderate-Risk Allocation — Late Nov 2026</h3>
+      <p style="margin-bottom:12px;">A balanced allocation reflecting the partial return of AI-chip conviction alongside continued defensive ballast given still-elevated volatility:</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:0.83rem;">
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;">
+          <span style="color:#58a6ff;font-weight:700;">Core ETFs (30%)</span><br>
+          <span style="color:#8b949e;">SPY 18% · VIG 12%</span>
+        </div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;">
+          <span style="color:#3fb950;font-weight:700;">AI-Chip Re-Entry (20%)</span><br>
+          <span style="color:#8b949e;">NVDA 12% · AMD 8%</span>
+        </div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;">
+          <span style="color:#e3b341;font-weight:700;">Financials / Growth (25%)</span><br>
+          <span style="color:#8b949e;">JPM 12% · AMZN 13%</span>
+        </div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;">
+          <span style="color:#d2a8ff;font-weight:700;">Defensive / Low-Correlation (15%)</span><br>
+          <span style="color:#8b949e;">JNJ 7% · HII 8%</span>
+        </div>
+        <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px; grid-column: 1/-1;">
+          <span style="color:#f85149;font-weight:700;">Cash / Tactical (10%)</span><br>
+          <span style="color:#8b949e;">Hold for NVDA/AMD volatility · UNH re-entry if CMS proposal clarifies favorably</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <div class="footer">
+    <p><strong>Investment Brief by Jorge</strong> &nbsp;·&nbsp; Nov 24, 2026 &nbsp;·&nbsp; Anchored on Monday Nov 23's Huang-Return Rally</p>
+    <p style="margin-top:6px;">Data sourced from Bloomberg, Reuters, CNBC, MarketWatch, Yahoo Finance, CNN, Fool.com · Not financial advice · For informational purposes only</p>
+    <p style="margin-top:6px;"><a href="index.html">← Full briefing archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
