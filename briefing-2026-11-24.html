@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Daily Briefing — Tuesday, November 24, 2026</title>
+  <title>Daily Briefing — November 24, 2026</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -15,372 +15,428 @@
     }
     a { color: #58a6ff; text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
 
-    .briefing-header {
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── HEADER ── */
+    .header {
       text-align: center;
       padding: 52px 0 40px;
       border-bottom: 1px solid #21262d;
       margin-bottom: 48px;
     }
-    .briefing-header .label {
+    .header .label {
       font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
       text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
     }
-    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
-    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
-    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
-
-    .toc {
-      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
-      padding: 20px 24px; margin-bottom: 44px;
+    .header h1 { font-size: 2rem; font-weight: 800; color: #f0f6fc; margin-bottom: 6px; }
+    .header .date { font-size: 1rem; color: #8b949e; margin-bottom: 18px; }
+    .header .tags { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+    .tag {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
     }
-    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
-    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
-    .toc a:hover { color: #58a6ff; }
-    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+    .tag-iran  { background: #3d1c1c; color: #f85149; border: 1px solid #6e1a1a; }
+    .tag-cyber { background: #1c2d3d; color: #58a6ff; border: 1px solid #1a4a6e; }
+    .tag-ai    { background: #1d2d1d; color: #3fb950; border: 1px solid #1a4e1a; }
 
-    .topic-section { margin-bottom: 56px; }
-    .topic-header {
+    /* ── SECTION BLOCKS ── */
+    .section {
+      margin-bottom: 52px;
+    }
+    .section-header {
       display: flex; align-items: center; gap: 14px;
-      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+      border-bottom: 2px solid #21262d;
+      padding-bottom: 14px;
+      margin-bottom: 24px;
     }
-    .topic-icon { font-size: 2rem; }
-    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
-    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+    .section-icon { font-size: 1.9rem; }
+    .section-title { font-size: 1.3rem; font-weight: 800; color: #f0f6fc; }
+    .section-subtitle { font-size: 0.8rem; color: #6e7681; margin-top: 2px; }
 
-    .card {
-      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
-      padding: 24px 28px; margin-bottom: 16px;
+    /* ── STORY CARDS ── */
+    .story {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
     }
-    .card-title {
-      font-size: 1rem; font-weight: 700; color: #f0f6fc;
-      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    .story-title {
+      font-size: 0.98rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 6px;
     }
-    .badge {
-      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
-      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    .story-body {
+      font-size: 0.88rem; color: #c9d1d9; line-height: 1.65;
     }
-    .badge-red { background: #3d1e1e; color: #f85149; }
-    .badge-orange { background: #3d2a1e; color: #e3b341; }
-    .badge-blue { background: #1e2d3d; color: #58a6ff; }
-    .badge-green { background: #1e3d2a; color: #3fb950; }
-    .badge-purple { background: #2d1e3d; color: #bc8cff; }
-    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+    .story-source {
+      margin-top: 10px;
+      font-size: 0.78rem; color: #484f58;
+    }
+    .story-source a { color: #58a6ff; }
 
-    ul.news-list { list-style: none; }
-    ul.news-list li {
-      padding: 8px 0; border-bottom: 1px solid #21262d;
-      font-size: 0.9rem; line-height: 1.65;
+    /* ── AUDIENCE PILLS ── */
+    .audience-block {
+      margin-top: 10px;
+      border-top: 1px solid #21262d;
+      padding-top: 10px;
+      display: flex; flex-direction: column; gap: 7px;
     }
-    ul.news-list li:last-child { border-bottom: none; }
-    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+    .audience-row { display: flex; gap: 10px; align-items: flex-start; }
+    .audience-pill {
+      flex-shrink: 0;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
+      padding: 2px 9px; border-radius: 20px;
+      margin-top: 2px;
+    }
+    .pill-ciso   { background: #1c2d3d; color: #58a6ff; border: 1px solid #1a4a6e; }
+    .pill-partner{ background: #2d1d3d; color: #bc8cff; border: 1px solid #4a1a6e; }
+    .pill-exec   { background: #1d2d1d; color: #3fb950; border: 1px solid #1a4e1a; }
+    .audience-text { font-size: 0.83rem; color: #8b949e; }
 
-    .audience-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 14px; margin-top: 8px;
+    /* ── STAT PILLS ── */
+    .stats-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+    .stat-pill {
+      background: #161b22; border: 1px solid #30363d; border-radius: 8px;
+      padding: 10px 16px; font-size: 0.82rem;
     }
-    .audience-card {
-      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
-    }
-    .audience-card .aud-label {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
-      text-transform: uppercase; margin-bottom: 10px;
-    }
-    .aud-ciso { color: #f85149; }
-    .aud-partner { color: #e3b341; }
-    .aud-exec { color: #3fb950; }
-    .audience-card ul { list-style: none; font-size: 0.85rem; }
-    .audience-card ul li {
-      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
-    }
-    .audience-card ul li:last-child { border-bottom: none; }
-    .audience-card ul li::before { content: "• "; color: #484f58; }
+    .stat-pill .num { font-size: 1.3rem; font-weight: 800; color: #f0f6fc; display: block; }
+    .stat-pill .lbl { color: #6e7681; font-size: 0.75rem; }
 
-    .data-table {
-      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
-    }
-    .data-table th {
-      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
-      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
-      border-bottom: 1px solid #30363d;
-    }
-    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
-    .data-table tr:last-child td { border-bottom: none; }
-    .data-table .highlight { color: #f85149; font-weight: 700; }
-    .data-table .warn { color: #e3b341; font-weight: 600; }
-    .data-table .ok { color: #3fb950; }
-
-    .stat-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 12px; margin-top: 10px;
-    }
-    .stat-box {
-      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
-      padding: 14px 16px; text-align: center;
-    }
-    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
-    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
-
-    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
-    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
-    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
-    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
-
-    .sources {
-      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
-      font-size: 0.78rem; color: #6e7681;
-    }
-    .sources a { color: #58a6ff; margin-right: 10px; }
-
-    .briefing-footer {
-      text-align: center; margin-top: 64px; padding-top: 24px;
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center; margin-top: 56px; padding-top: 20px;
       border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
     }
-    .briefing-footer strong { color: #6e7681; }
+    .footer strong { color: #6e7681; }
+    .back-link {
+      display: inline-block; margin-bottom: 40px;
+      color: #58a6ff; font-size: 0.85rem;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    /* alert/urgent banner */
+    .alert-banner {
+      background: #3d1c1c; border: 1px solid #6e1a1a; border-radius: 8px;
+      padding: 10px 16px; margin-bottom: 14px;
+      font-size: 0.85rem; color: #f85149;
+      display: flex; align-items: center; gap: 10px;
+    }
   </style>
 </head>
 <body>
 <div class="container">
 
-  <div class="briefing-header">
-    <div class="label">Evening Intelligence Briefing</div>
+  <a class="back-link" href="index.html">← Back to Archive</a>
+
+  <div class="header">
+    <div class="label">Intelligence Briefing</div>
     <h1>📰 Daily Briefing</h1>
-    <div class="meta">
-      Tuesday, November 24, 2026
-      <span>·</span>
-      Iran War · Cybersecurity · AI
-      <span>·</span>
-      6:00 PM Paris
+    <div class="date">Tuesday, November 24, 2026 &nbsp;·&nbsp; Day ~269 of the Iran War</div>
+    <div class="tags">
+      <span class="tag tag-iran">🔥 Iran War</span>
+      <span class="tag tag-cyber">🔐 Cybersecurity</span>
+      <span class="tag tag-ai">🤖 AI</span>
     </div>
   </div>
 
-  <div class="toc">
-    <div class="toc-title">Contents</div>
-    <a href="#iran">🔥 Iran War — Four Tankers Hit Naval Mines in Hormuz Under US Navy Escort; Qatar Pushes to Revive Talks</a>
-    <div class="toc-section">IRGC Navy says four oil tankers struck mines and caught fire in restricted waters east of the strait while transiting under US military escort, which "failed to prevent it"; Qatar's PM meets Rubio and Vance in Washington to revive the diplomatic track; Iran still rules out talks until seven conditions, including lifting the blockade, are met; Hormuz traffic stays ~65% below pre-war levels</div>
-    <a href="#cyber">🔐 Cybersecurity — CISA's Deadline Hits Today for Exploited Outlook NTLM Zero-Day; AI Agents Caught Finding Their Own Zero-Day</a>
-    <div class="toc-section">Federal remediation deadline lands today for CVE-2026-124194, an exploited Outlook spoofing flaw leaking NTLM hashes; Amazon discloses that autonomous "Cairn" AI agents found and exploited a critical path-traversal zero-day (CVE-2026-133968, CVSS 9.8) in medical-imaging tool MONAI Label in 11 minutes, rooting a university server; BerriAI's LiteLLM sandbox-escape flaw (CVE-2026-40217) joins the KEV catalog for LLMjacking; VMware vCenter, Cisco Expressway, and Apache Roller flaws also under active exploitation</div>
-    <a href="#ai">🤖 Artificial Intelligence — Anthropic Launches "Claude Ship" to Review, Fix and Approve Pull Requests; Amazon Pays ~$7.5B for Decart's Chip-Optimization Tech</a>
-    <div class="toc-section">Anthropic pairs Code Review with new PR Steward and Claude Approvals agents, plus an Enterprise Frontier Safeguards system to detect coordinated AI misuse; Amazon acquires Decart's Optimization Stack and founding team to narrow the software gap with Nvidia ahead of selling Trainium chips; OpenAI's chat-tuned GPT-6.2 Sol rolls out to ChatGPT's main tab; Z.ai ships GLM-5.4 on a novel "Loop Transformer" architecture</div>
-  </div>
-
-  <div class="topic-section" id="iran">
-    <div class="topic-header">
-      <div class="topic-icon">🔥</div>
+  <!-- ═══════════════════════════════════════════════════════
+       SECTION 1 — IRAN WAR
+       ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🔥</div>
       <div>
-        <div class="topic-title">Iran War — Four Tankers Hit Naval Mines in Hormuz Under US Escort; Qatar Pushes to Revive Talks</div>
-        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 270</div>
+        <div class="section-title">Iran War — Day ~269</div>
+        <div class="section-subtitle">Battlefield · Diplomacy · Hormuz · Geopolitics</div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">
-        🌟 Top Story: Four Oil Tankers Hit Naval Mines and Catch Fire in Hormuz While Under US Navy Escort
-        <span class="badge badge-red">US ESCORT FAILED TO PREVENT IT · MINE WARFARE</span>
+    <!-- War snapshot stats -->
+    <div class="stats-row">
+      <div class="stat-pill"><span class="num">23</span><span class="lbl">US KIA</span></div>
+      <div class="stat-pill"><span class="num">865–900</span><span class="lbl">US WIA</span></div>
+      <div class="stat-pill"><span class="num">3,636+</span><span class="lbl">Iranian casualties</span></div>
+      <div class="stat-pill"><span class="num">$48.3B</span><span class="lbl">US war spend (Nov)</span></div>
+      <div class="stat-pill"><span class="num">9,049+</span><span class="lbl">Total killed (all sides)</span></div>
+    </div>
+
+    <!-- Story 1 -->
+    <div class="story">
+      <div class="story-title">🕊️ Trump Signals "Progress" — US Talking Directly to Tehran's Representatives</div>
+      <div class="story-body">
+        President Trump said Monday the United States is now in direct communication with Iranian representatives, calling the contacts "very encouraging." The White House stopped short of naming a venue or timeline. Qatar and Pakistan continue to serve as facilitators of indirect talks, with Doha stating it is "working tirelessly" to resolve the crisis. Iran is pushing for an accelerated ceasefire framework, aiming to reach a preliminary agreement within days. However, Iran's demands remain maximalist: lifting of the US naval blockade on Iranian ports, comprehensive sanctions relief, release of approximately $70B in frozen Iranian funds, formal declaration ending all hostilities, and payment of $290 billion in war reparations. US negotiators are reportedly willing to discuss partial sanctions relief but have rejected the reparations demand outright.
       </div>
-      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
-        Iran's IRGC Navy said four oil tankers struck naval mines and caught fire early Tuesday in restricted waters east of the Strait of Hormuz, with the first reports describing two tankers hit, then a third, then a fourth suffering a "severe explosion and fire." The IRGC pointedly noted the vessels were transiting under US military escort at the time — escort that "failed to prevent" the mine strikes — a claim that, if accurate, is a serious credibility blow to the US Navy's weeks-old policy of escorting tankers through the waterway. It is not yet confirmed who laid the mines; Tehran has previously warned ships against using what it calls unauthorized routes through the strait. The incident lands the same day Qatar intensified its mediation push: Prime Minister Sheikh Mohammed bin Abdulrahman Al Thani met Secretary of State Marco Rubio in Washington to launch the eighth US-Qatar Strategic Dialogue, while Vice President JD Vance separately hosted Qatari envoy Ali al-Thawadi at the White House. Al Thani said the region "cannot afford a new escalation" and called for restoring freedom of navigation through Hormuz alongside a return to US-Iran talks. Iran, however, continues to rule out negotiations until seven conditions are met — reportedly including lifting the US naval blockade on Iranian ports, easing sanctions, releasing frozen funds, ending hostilities on all fronts, and a formal declaration that the war is over. Trump has accused Tehran of not being serious about a deal. Bloomberg estimates Iranian attacks on shipping have averaged roughly one per day through November, with strait traffic still about 65% below pre-war levels and the Pentagon pegging total US war spending at $48.3 billion as of this month.
-      </p>
-      <div class="stat-grid">
-        <div class="stat-box">
-          <div class="stat-value" style="color:#f85149;">270 days</div>
-          <div class="stat-label">War duration</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-value" style="color:#e3b341;">4 tankers</div>
-          <div class="stat-label">Hit naval mines in Hormuz today, under US escort</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-value" style="color:#58a6ff;">~65%</div>
-          <div class="stat-label">Hormuz shipping traffic still below pre-war levels</div>
-        </div>
-      </div>
-      <div class="sources">
-        Sources: <a href="https://warhistory.org/maps/iran/2026-11-24/irgc-says-3-oil-tankers-hit-naval-mines-and-caught-fire-in-the-strait-of-hormuz-while-transiting-under-us-military-escort-which-failed-to-prevent-it">War History — IRGC Says Tankers Hit Naval Mines in the Strait of Hormuz While Under US Military Escort</a>
-        <a href="https://www.aa.com.tr/en/middle-east/iran-says-4th-oil-tanker-hits-naval-mine-catches-fire-in-strait-of-hormuz/4135570">Anadolu Agency — Iran Says 4th Oil Tanker Hits Naval Mine, Catches Fire in Strait of Hormuz</a>
-        <a href="https://www.aljazeera.com/video/newsfeed/2026/11/24/qatar-pm-looks-to-revive-us-iran-talks-after-meeting-rubio">Al Jazeera — Qatar PM Looks to Revive US-Iran Talks After Meeting Rubio</a>
-        <a href="https://gulfnews.com/world/mena/middle-east-conflict-us-investigates-iran-over-cyberattacks-on-50-ships-as-fresh-sanctions-target-irans-shadow-banking-network-1.500758688">Gulf News — Iran Warns Hormuz Ships, Rules Out US Talks Until Seven Conditions Met</a>
+      <div class="story-source">
+        Sources: <a href="https://www.aljazeera.com/amp/news/liveblog/2026/11/6/iran-war-live-trump-warns-us-may-have-to-destroy-rest-of-iran" target="_blank">Al Jazeera (Nov 6)</a> · <a href="https://www.aljazeera.com/news/2026/11/2/iran-pushing-accelerated-plan-for-ceasefire-talks-with-us" target="_blank">Al Jazeera (Nov 2)</a>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">📋 Also Today</div>
-      <ul class="news-list">
-        <li>Qatar launches the eighth US-Qatar Strategic Dialogue in Washington, explicitly framed around reviving the stalled US-Iran diplomatic track and restoring Hormuz navigation.</li>
-        <li>The US separately probes Iran over alleged cyberattacks on roughly 50 ships, as fresh sanctions target Iran's shadow banking network, per Gulf News reporting.</li>
-        <li>No independent confirmation yet on who laid the mines that hit the four tankers; Iran's own warnings about "unauthorized routes" add ambiguity to responsibility.</li>
-      </ul>
+    <!-- Story 2 -->
+    <div class="story">
+      <div class="story-title">⚓ Hormuz: Qeshm Missile Strikes, Tanker Attacks Continue — Oil Prices Drifting Lower</div>
+      <div class="story-body">
+        Iran's official news agency IRNA reported two missiles struck Qeshm Island in the Strait of Hormuz on November 23, though US Central Command (CENTCOM) described the broader situation as "relatively calm." Attacks on commercial shipping nonetheless persist: a Marshall Islands-flagged tanker was struck in the Persian Gulf on November 5, and additional vessels reported projectile hits north of Qatar. Despite the ongoing threat, oil prices have been on a slow decline — a sign markets believe a deal is closer. Iran has indicated Hormuz could reopen within 48 hours of a comprehensive agreement, but no such agreement exists. The US has disabled and sunk multiple Iranian oil tankers in retaliatory operations. Total US military spending in the conflict now stands at $48.3 billion.
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://cbsnews.com/live-updates/iran-war-us-trump-blockade-strait-of-hormuz-ship-attacks" target="_blank">CBS News (ongoing tracker)</a> · <a href="https://en.wikipedia.org/wiki/2026_Iran_war" target="_blank">Wikipedia: 2026 Iran War</a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
-      <table class="data-table">
-        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
-        <tbody>
-          <tr><td>US military</td><td>23</td><td>820 wounded (Pentagon)</td></tr>
-          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
-          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
-          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
-          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
-        </tbody>
-      </table>
-      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">Figures carried forward unchanged from Nov 23 — no new independently verified single-source casualty update today. Aggregator trackers continue to show wide, conflicting ranges (e.g. total deaths across all sides cited anywhere from ~9,000 to ~18,000 depending on methodology); we hold to the last officially sourced figures above pending confirmation.</p>
+    <!-- Story 3 -->
+    <div class="story">
+      <div class="story-title">⚔️ "No War, No Peace" — Battlefield Deadlock Persists</div>
+      <div class="story-body">
+        Analysis from Al Jazeera's Tehran bureau describes the current state as a grinding "no war, no peace" that neither side can sustain indefinitely. The formal ceasefire that collapsed on July 8 has never been fully reinstated. Iranian ballistic missiles targeted a US aircraft carrier and Navy vessel earlier this month; US forces responded by destroying five oil tankers in the Gulf of Oman and near Kharg Island. Lebanese casualties from the broader conflict now total approximately 4,390 killed since March. Iran played down hope for a deal after fresh US strikes coincided with the US midterm elections, with Pezeshkian calling Washington's response "unconvincing." The war has cost Iran at least 3,636 confirmed dead (1,701 civilians, 1,221 military, 714 unclassified) per Pentagon counts as of early November.
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://www.aljazeera.com/news/2026/11/12/no-war-no-peace-can-iran-break-the-deadlock-with-the-us" target="_blank">Al Jazeera (Nov 12)</a> · <a href="https://www.cbsnews.com/live-updates/iran-war-us-trump-negotiations-midterms/" target="_blank">CBS News (Nov midterms update)</a> · <a href="https://en.wikipedia.org/wiki/Casualties_of_the_2026_Iran_war" target="_blank">Wikipedia: Casualties</a>
+      </div>
+    </div>
+
+    <!-- Story 4 -->
+    <div class="story">
+      <div class="story-title">🌍 Geopolitical Reactions: Allies Diverge, $290B Reparations Demand Shocks West</div>
+      <div class="story-body">
+        Iran's demand for $290 billion in war damages has hardened positions in Washington, with congressional leaders calling it a "non-starter." European allies continue pressing for a framework deal that separates Hormuz reopening from the larger reparations and nuclear questions. The International Crisis Group has warned that the prolonged deadlock risks permanently reshaping Gulf energy infrastructure as regional players — Saudi Arabia, UAE, and Qatar — accelerate overland pipeline alternatives. Russia has reportedly maintained backchannel contacts with both sides, despite publicly backing Tehran.
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://en.wikipedia.org/wiki/2026_Iran_war_ceasefire" target="_blank">Wikipedia: 2026 Ceasefire</a> · <a href="https://thebostonreport.com/warfare/iran-war-tracker/" target="_blank">Boston Report Iran Tracker</a>
+      </div>
     </div>
   </div>
 
-  <div class="topic-section" id="cyber">
-    <div class="topic-header">
-      <div class="topic-icon">🔐</div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SECTION 2 — CYBERSECURITY
+       ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🔐</div>
       <div>
-        <div class="topic-title">Cybersecurity</div>
-        <div class="topic-subtitle">Tuesday, November 24, 2026</div>
+        <div class="section-title">Cybersecurity</div>
+        <div class="section-subtitle">Threats · CVEs · Ransomware · Nation-State Activity</div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">
-        🌟 Top Story: CISA's Patch Deadline Lands Today for Exploited Outlook NTLM Zero-Day — While AI Agents Are Caught Finding Their Own
-        <span class="badge badge-red">KEV DEADLINE TODAY · CVE-2026-124194</span>
+    <!-- CVE landscape snapshot -->
+    <div class="stats-row">
+      <div class="stat-pill"><span class="num">19,927</span><span class="lbl">MS/CISA KEV CVEs tracked</span></div>
+      <div class="stat-pill"><span class="num">1,792</span><span class="lbl">Confirmed exploited in wild</span></div>
+      <div class="stat-pill"><span class="num">2,547</span><span class="lbl">Rated Critical severity</span></div>
+      <div class="stat-pill"><span class="num">22</span><span class="lbl">Orgs hit via Check Point chain</span></div>
+    </div>
+
+    <!-- Story 1 — VMware critical -->
+    <div class="story">
+      <div class="story-title">🚨 VMware Patches 23 Flaws — Critical vCenter Auth Bypass + ESXi RCE (CVSS 9.8+)</div>
+      <div class="story-body">
+        Broadcom today released patches for 23 vulnerabilities across VMware ESX, vCenter, and related products. The most severe are a critical authentication bypass in vCenter that allows an unauthenticated attacker to gain an admin session, and multiple remote code execution flaws on ESXi hosts. This follows last week's disclosure that China-linked threat group <strong>Armory Castle</strong> had been silently exploiting a separate vCenter zero-day (CVE-2026-123890, CVSS 9.8) since early September — a two-month dwell time — using it in conjunction with a BeyondTrust Remote Support zero-day to hijack SSO sessions, build admin accounts, and plant SSH backdoors. The new batch of patches also addresses the previously-announced CVSS 9.8 auth bypass.
       </div>
-      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
-        The federal remediation deadline falls today for CVE-2026-124194, a Microsoft Outlook spoofing flaw (CVSS 6.5) under active exploitation: a specially crafted message file makes classic Outlook silently connect to an attacker-controlled server and leak the user's NTLMv2 hash, with no security warning shown. CISA added it to the Known Exploited Vulnerabilities catalog on November 10, the same day Microsoft shipped the fix as part of November Patch Tuesday (1,094 CVEs total, this the only confirmed actively-exploited one). Separately, Amazon disclosed a more unusual story: autonomous AI agents built on the open-source "Cairn" framework independently discovered and exploited a critical path-traversal zero-day (CVE-2026-133968, CVSS 9.8) in MONAI Label, an open-source medical-imaging annotation tool, without human direction. The agents fingerprinted the app, mapped its API, found an unauthenticated upload endpoint vulnerable to path traversal, and achieved arbitrary file writes and a root reverse shell in about 11 minutes — compromising a university server in East Asia in an operation Amazon links to a China-nexus actor and spotted via an exposed Cairn instance on September 10. MONAI Label 0.8.6 fixes it; the CISA KEV deadline is November 26. Rounding out the day: BerriAI's LiteLLM gateway sandbox-escape flaw (CVE-2026-40217), already being used for "LLMjacking" of stolen model access, joined the KEV catalog with a December 2 deadline; and CISA continues to warn of active exploitation of VMware vCenter (CVE-2026-123890), Cisco Expressway (CVE-2026-76466), and Apache Roller (CVE-2026-129448, unauthenticated RCE).
-      </p>
-      <div class="stat-grid">
-        <div class="stat-box">
-          <div class="stat-value" style="color:#f85149;">9.8</div>
-          <div class="stat-label">CVSS score of the AI-discovered MONAI Label zero-day</div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-pill pill-ciso">🔐 CISO</span>
+          <span class="audience-text">Emergency patching required. Any unpatched vCenter is effectively owned. Audit ESXi SSH authorized_keys for unexpected entries and check SSO admin accounts. Treat vCenter as fully compromised if unpatched since September.</span>
         </div>
-        <div class="stat-box">
-          <div class="stat-value" style="color:#e3b341;">11 min</div>
-          <div class="stat-label">Time for AI agents to reach root on target server</div>
+        <div class="audience-row">
+          <span class="audience-pill pill-partner">🤝 Partner</span>
+          <span class="audience-text">High client impact across VMware shops. Patch urgency + forensic review = billable emergency response. This is the second major vCenter CVSS 9.8 in 60 days — virtualization hygiene assessments are now a natural upsell.</span>
         </div>
-        <div class="stat-box">
-          <div class="stat-value" style="color:#58a6ff;">1,094</div>
-          <div class="stat-label">Total CVEs in November Patch Tuesday</div>
+        <div class="audience-row">
+          <span class="audience-pill pill-exec">💼 Executive</span>
+          <span class="audience-text">If your organization runs VMware (most large enterprises do), confirm with your CISO today that emergency patching is underway. A China-linked group had two-month silent access to unpatched environments.</span>
         </div>
       </div>
-      <div class="sources">
-        Sources: <a href="https://gurucul.com/blog/cve-2026-124194-microsoft-outlook-ntlm-zero-day-vulnerability/">Gurucul — CVE-2026-124194: Microsoft Outlook NTLM Zero-Day Vulnerability</a>
-        <a href="https://socradar.io/blog/november-2026-patch-tuesday-zero-day/">SOCRadar — November 2026 Patch Tuesday: 1,094 Flaws, One Exploited</a>
-        <a href="https://www.notebookcheck.net/Cairn-AI-agents-took-over-server-via-zero-day-flagged-by-CISA.1458774.0.html">Notebookcheck — Cairn AI Agents Took Over Server via Zero-Day Flagged by CISA</a>
-        <a href="https://corgea.com/research/cve-2026-133968-monai-label-datastore-path-traversal-cairn-zero-day-november-2026">Corgea Research — CVE-2026-133968: MONAI Label Path Traversal, Cairn Zero-Day</a>
-        <a href="https://safeguard.sh/resources/blog/litellm-cve-2026-40217-guardrail-sandbox-escape-kev">Safeguard — LiteLLM CVE-2026-40217 Guardrail Sandbox Escape, Now in KEV</a>
+      <div class="story-source">
+        Sources: <a href="https://www.securityweek.com/vmware-updates-patch-critical-esx-vcenter-vulnerabilities/" target="_blank">SecurityWeek</a> · <a href="https://thehackernews.com/2026/11/china-linked-hackers-exploit-critical.html" target="_blank">The Hacker News</a>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">📋 Also Today</div>
-      <ul class="news-list">
-        <li>CISA's federal remediation deadline for the Outlook NTLM-hash-leak zero-day (CVE-2026-124194) falls today, Nov 24; patch via the Nov 10 Microsoft security update if not already applied.</li>
-        <li>MONAI Label's AI-discovered zero-day (CVE-2026-133968) has a Nov 26 KEV deadline; affected instances (0.8.5 and earlier, auth disabled by default) should upgrade to 0.8.6 now.</li>
-        <li>BerriAI LiteLLM's sandbox-escape flaw (CVE-2026-40217) is being actively used for LLMjacking — stealing access to backend LLM credentials; patch to 1.83.11+.</li>
-        <li>CISA KEV additions are running 298 so far this year, up roughly 35% from 221 last year — a reminder that exploited-vulnerability volume keeps climbing.</li>
-      </ul>
+    <!-- Story 2 — Check Point AI-enabled campaign -->
+    <div class="story">
+      <div class="story-title">🤖 AI-Enabled Campaign Compromises 22 Orgs via Check Point SmartConsole + 4 CVEs</div>
+      <div class="story-body">
+        Security researchers have uncovered an AI-assisted attack campaign that chained five CVEs to compromise at least 22 organizations. The chain begins with Citrix Netscaler (CVE-2025-5777) and Ivanti (CVE-2024-21893) for initial access, escalates via Windows Netlogon (CVE-2026-41089), exploits Rejetto HFS (CVE-2026-61500) for payload delivery, and pivots through Check Point SmartConsole (CVE-2026-16232) to reach security management servers. The AI-assisted nature of the campaign — evidenced by unusually rapid exploit customization and lateral movement — signals that offense is continuing to outpace defense automation timelines.
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-pill pill-ciso">🔐 CISO</span>
+          <span class="audience-text">If you run Check Point SmartConsole or Rejetto HFS, treat them as top patch priorities today. CVE-2026-16232 is in the wild. Review Netlogon audit logs for privilege escalation patterns. Consider blocking outbound from management servers as default.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-pill pill-partner">🤝 Partner</span>
+          <span class="audience-text">AI-chained multi-CVE attacks are the new normal. This is a compelling case study for red team assessments that test AI-accelerated attacker behavior. Expect clients to ask about defensive AI tooling in response.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-pill pill-exec">💼 Executive</span>
+          <span class="audience-text">AI isn't just an enterprise productivity tool — attackers are now using it to find and chain vulnerabilities faster than humans can patch them. This is a board-level risk topic for Q4 2026.</span>
+        </div>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://www.cybersecuritydive.com/news/ai-enabled-campaign-targets-check-point-security-management-servers/875622/" target="_blank">CyberSecurity Dive</a> · <a href="https://www.duocircle.com/blog/cybersecurity-news-update-week-47-of-2026" target="_blank">DuoCircle Week 47</a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">📣 Audience-Tailored Takeaways</div>
-      <div class="audience-grid">
-        <div class="audience-card">
-          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
-          <ul>
-            <li>Confirm the Nov 10 Outlook update is deployed fleet-wide before end of day to close CVE-2026-124194 (NTLM hash leak); check LiteLLM gateways against CVE-2026-40217 and MONAI Label deployments against CVE-2026-133968 if used for medical-imaging/ML workloads</li>
-            <li>Treat the Cairn/MONAI incident as a preview of the threat model: autonomous AI red-team agents are now finding and weaponizing zero-days in production software within minutes, unsupervised — worth a tabletop on AI-speed exploitation of your own exposed services</li>
-          </ul>
+    <!-- Story 3 — EvilTokens -->
+    <div class="story">
+      <div class="story-title">🎣 EvilTokens Phishing Kit Resurfaces — 12,000+ Inboxes Across 10,000+ Orgs</div>
+      <div class="story-body">
+        The EvilTokens device-code phishing infrastructure — previously disrupted by Microsoft — has re-emerged with new attack hosts targeting M365 tenants. Microsoft reports the campaign has compromised more than 12,000 inboxes across over 10,000 organizations since resurging. The kit abuses OAuth device-code flow to harvest refresh tokens, bypassing MFA by hijacking already-authenticated sessions. This is the third major device-code phishing resurgence of 2026, underscoring that takedowns provide only temporary relief without architectural authentication changes.
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-pill pill-ciso">🔐 CISO</span>
+          <span class="audience-text">Disable device code flow in Conditional Access for all users who don't require it (most don't). Review Entra ID sign-in logs for device_code grant types from unexpected IPs. Token-based MFA bypass is the primary attack surface here.</span>
         </div>
-        <div class="audience-card">
-          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
-          <ul>
-            <li>The AI-agent-discovers-zero-day story is a timely hook for clients on AI governance and attack-surface management — the KEV catalog growing 35% year-over-year also supports a vulnerability-management maturity conversation</li>
-          </ul>
+        <div class="audience-row">
+          <span class="audience-pill pill-partner">🤝 Partner</span>
+          <span class="audience-text">Conditional Access review and M365 OAuth hardening is a fast, high-value client engagement. EvilTokens is hitting mid-market firms particularly hard — a natural entry point for new mandates.</span>
         </div>
-        <div class="audience-card">
-          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
-          <ul>
-            <li>If your organization runs internet-facing AI/ML tooling (even research or clinical-imaging systems), confirm with IT whether any component resembles MONAI Label's default-insecure configuration — "authentication off by default" keeps recurring as a root cause</li>
-          </ul>
+        <div class="audience-row">
+          <span class="audience-pill pill-exec">💼 Executive</span>
+          <span class="audience-text">MFA alone is not enough against modern phishing. Ask your security team whether device-code OAuth flows are disabled in your Microsoft 365 environment.</span>
         </div>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://gbhackers.com/eviltokens-phishing-infrastructure/" target="_blank">GBHackers</a> · <a href="https://www.hbs.net/cybersecurity-weekly/this-week-in-cybersecurity-november-20-2026" target="_blank">HBS Cyber Weekly (Nov 20)</a>
+      </div>
+    </div>
+
+    <!-- Story 4 — Today's CVEs -->
+    <div class="story">
+      <div class="story-title">📋 Today's Critical CVEs: Chrome Patch, Idunno AntiCsrf, Synology C3RB3R Ransomware</div>
+      <div class="story-body">
+        <strong>Chrome CVE-2026-134401</strong> — Google released an emergency desktop Chrome update on November 23. Patch immediately.<br><br>
+        <strong>CVE-2026-131914 (Idunno AntiCsrf, CVSS critical)</strong> — Attackers are actively exploiting a critical flaw in a third-party ASP.NET WebForms anti-CSRF library. Any application using the old Idunno.AntiCsrf NuGet package is exposed to remote code execution via upload endpoint filename parameter injection. Organizations running legacy ASP.NET WebForms apps should audit dependencies today.<br><br>
+        <strong>Synology DSM + C3RB3R Ransomware</strong> — Threat actors are actively chaining a 2024 Synology DSM vulnerability to deliver C3RB3R ransomware on NAS devices. If your NAS is internet-exposed, it should be isolated behind VPN immediately.
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-pill pill-ciso">🔐 CISO</span>
+          <span class="audience-text">Three separate active exploitation campaigns today. Add Synology NAS to asset inventory reviews — shadow NAS devices in offices are a common blind spot. Idunno AntiCsrf affects .NET legacy web apps across industries.</span>
+        </div>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://www.xloggs.com/2026/11/24/top-security-breaches-2026-11-24/" target="_blank">XLoggs (Nov 24)</a> · <a href="https://securityonline.info/" target="_blank">SecurityOnline</a> · <a href="https://github.com/catgrandfa/vuln-radar/releases/tag/daily-2026-11-24" target="_blank">Vuln Radar Nov 24</a>
       </div>
     </div>
   </div>
 
-  <div class="topic-section" id="ai">
-    <div class="topic-header">
-      <div class="topic-icon">🤖</div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SECTION 3 — AI
+       ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🤖</div>
       <div>
-        <div class="topic-title">Artificial Intelligence</div>
-        <div class="topic-subtitle">Tuesday, November 24, 2026</div>
+        <div class="section-title">Artificial Intelligence</div>
+        <div class="section-subtitle">Models · Market · Security · Strategy</div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">
-        🌟 Top Story: Anthropic Launches "Claude Ship" to Review, Fix and Approve Pull Requests; Amazon Pays ~$7.5B for Decart's Chip-Optimization Tech
-        <span class="badge badge-purple">AGENTIC DEV OPS · $7.5B CHIP-SOFTWARE DEAL</span>
+    <!-- Story 1 — GPT-6.2 / Anthropic IPO -->
+    <div class="story">
+      <div class="story-title">🏛️ Anthropic's Historic IPO: ANT Opens at $111.50 — The Biggest IPO in US History</div>
+      <div class="story-body">
+        Anthropic priced its IPO at $83 per share on November 19, 2026 — opening at $111.50 on Nasdaq under ticker <strong>ANT</strong> and setting a new US record as the largest tech IPO in history. The offering valued the company at approximately $81 billion at IPO price, expanding to over $100B at open. The timing became unexpectedly dramatic: OpenAI released GPT-6.2 Astra the same week, apparently hoping to overshadow the Anthropic listing. The strategy backfired. GPT-6.2 Astra received "absolutely appalling" early reviews from developers — one wrote it was "leagues behind current Anthropic models" — and independent benchmarking by Artificial Analysis placed Claude Fable 5.2 at #1 (65 points) with GPT-6.2 Astra a distant #2 (62 points). Developer consensus: "GPT-6.2 Astra is a pretty good ad for Anthropic's IPO."
       </div>
-      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
-        Anthropic launched Claude Ship in public beta for Claude Team and Enterprise GitHub users, pairing its generally-available Code Review agent with two new agents — PR Steward, which automatically fixes failing CI checks, merge conflicts, and review feedback, and Claude Approvals, which can approve pull requests under team-defined rules — to carry a PR from open to merge with minimal human intervention. Alongside it, Anthropic introduced Enterprise Frontier Safeguards (EFS), a privacy-preserving security system that analyzes activity patterns across multiple customer requests to flag coordinated AI misuse and generate Safety Case reports for security teams, without retaining the underlying prompts. Separately, Amazon agreed to acquire the technology behind Decart's Optimization Stack (DOS) — software that helps AI models run efficiently across Nvidia, Amazon, and Google chips — along with Decart's founding team, in a deal reported at roughly $7.5 billion. The move runs through Amazon's Annapurna Labs chip unit and is widely read as a bet on using software to narrow Amazon's efficiency gap with Nvidia just as it prepares to start selling Trainium and Inferentia chips externally. Elsewhere: OpenAI's chat-tuned GPT-6.2 Sol — faster and better at reading fine image detail than GPT-6 — is now rolling out to ChatGPT's main chat tab for Plus, Pro, Business, and Enterprise users; and Chinese lab Z.ai shipped GLM-5.4, the first flagship model built on a "Loop Transformer" architecture that runs its layers twice rather than adding more of them.
-      </p>
-      <div class="stat-grid">
-        <div class="stat-box">
-          <div class="stat-value" style="color:#bc8cff;">$7.5B</div>
-          <div class="stat-label">Reported price for Amazon's Decart tech acquisition</div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-pill pill-partner">🤝 Partner</span>
+          <span class="audience-text">Anthropic is now a public company with a market cap rivaling Microsoft's cloud divisions circa 2020. Expect enterprise procurement scrutiny to intensify — compliance, auditability, and SLAs now need to meet public-company standards. Claude contracts will be renegotiated.</span>
         </div>
-        <div class="stat-box">
-          <div class="stat-value" style="color:#58a6ff;">3 agents</div>
-          <div class="stat-label">In Claude Ship: Code Review, PR Steward, Claude Approvals</div>
+        <div class="audience-row">
+          <span class="audience-pill pill-exec">💼 Executive</span>
+          <span class="audience-text">The AI market just had its defining IPO moment. If you've been evaluating OpenAI vs. Anthropic, the market just voted with $100B+ in capital. Anthropic's #1 benchmark ranking and clean safety narrative are now backed by institutional investors.</span>
         </div>
-        <div class="stat-box">
-          <div class="stat-value" style="color:#3fb950;">GPT-6.2 Sol</div>
-          <div class="stat-label">Now rolling out to ChatGPT's main chat tab</div>
+        <div class="audience-row">
+          <span class="audience-pill pill-ciso">🔐 CISO</span>
+          <span class="audience-text">Public companies face stricter disclosure obligations for security incidents. Anthropic's IPO puts its model security practices under greater scrutiny — which could be positive for enterprise trust or introduce new surface area for activist short-sellers probing AI safety claims.</span>
         </div>
       </div>
-      <div class="sources">
-        Sources: <a href="https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/">TechCrunch — Anthropic Launches Claude Ship, Letting AI Agents Review, Fix and Approve Code Changes</a>
-        <a href="https://techcrunch.com/2026/11/23/amazon-snaps-up-decarts-ai-optimization-tech-for-7-5b-as-it-prepares-to-sell-trainium-chips/">TechCrunch — Amazon Snaps Up Decart's AI Optimization Tech for $7.5B as It Prepares to Sell Trainium Chips</a>
-        <a href="https://www.macrumors.com/2026/11/23/openai-gpt-6-2-sol-chatgpt/">MacRumors — OpenAI Brings GPT-6.2 Sol to ChatGPT's Chat Tab</a>
-        <a href="https://riorundown.substack.com/p/ai-news-nov-24-2026-anthropic-agent">Rio Rundown — AI News Nov 24, 2026: Anthropic Agent Security and Open Models</a>
+      <div class="story-source">
+        Sources: <a href="https://writingmate.ai/blog/ai-news-week-of-2026-11-23" target="_blank">WritingMate (Nov 23)</a> · <a href="https://joinaiweek.com/blog/ai-news-roundup-november-2026" target="_blank">AI Week Roundup</a> · <a href="https://finance.yahoo.com/video/openai-tried-ruin-anthropics-ipo-120000298.html" target="_blank">Yahoo Finance</a>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">📊 Also Today</div>
-      <ul class="news-list">
-        <li>Z.ai's GLM-5.4 debuts on a "Loop Transformer" architecture that reuses layers via a loop rather than stacking more of them — an efficiency-first design bet from the open-model camp.</li>
-        <li>Nvidia's reinstatement of Jensen Huang as CEO (Monday) continued to ripple through markets Tuesday, with coverage noting the move added close to a trillion dollars in market value over the two days.</li>
-        <li>Early results from the UK's £10M EDITH trial testing AI-assisted breast cancer detection across nearly 700,000 women begin circulating, a notable healthcare-AI efficacy data point.</li>
-      </ul>
+    <!-- Story 2 — GPT-6.2 Astra reviews -->
+    <div class="story">
+      <div class="story-title">😬 GPT-6.2 Astra Ships to Harsh Reviews — "Worse Than Previous OpenAI Models"</div>
+      <div class="story-body">
+        OpenAI's GPT-6.2 Astra and companion model GPT-6.2 Sol launched November 17. Astra is approximately 20% cheaper than its predecessor and is the first externally-released OpenAI model to meet their internal "High" threshold for AI self-improvement capability — a significant safety milestone. Despite these technical achievements, developer reception was deeply negative. The consensus on X and developer forums was that Astra represents a step backward in reasoning quality and instruction-following, particularly compared to Claude Fable 5.2. GPT-6.2 Sol, the smaller companion model, is expected to become the primary workhorse for most use cases. OpenAI's stock declined 4.2% in after-hours trading on launch day.
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-pill pill-ciso">🔐 CISO</span>
+          <span class="audience-text">GPT-6.2 Astra is the first publicly released model to meet OpenAI's "High" AI self-improvement threshold — meaning it can meaningfully assist in improving its own successors. This threshold triggers additional safety reporting requirements under US executive orders. Monitor Anthropic's equivalent safety cards when Claude Fable 5.3 ships.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-pill pill-partner">🤝 Partner</span>
+          <span class="audience-text">If your firm is mid-GPT migration, the benchmark data supports pausing and re-evaluating. Fable 5.2 leads all frontier benchmarks. Astra's pricing advantage (20% cheaper) may appeal to cost-sensitive clients despite quality concerns.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-pill pill-exec">💼 Executive</span>
+          <span class="audience-text">The AI "best in class" title has officially shifted to Anthropic for now. If your enterprise AI strategy was built around OpenAI parity, it may be time to revisit vendor selection criteria.</span>
+        </div>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://latent.space/p/ainews-gpt-6-2-astra-the-2-frontier-model-is-better-and-20-600-cheaper-but-has-mixed-reviews-6-2-sol/" target="_blank">Latent Space</a> · <a href="https://www.androidheadlines.com/2026/11/openai-gpt-6-2-astra-sol-release-reviews.html" target="_blank">Android Headlines</a> · <a href="https://www.therundown.ai/articles/openai-newest-release-lands-to-rough-reviews" target="_blank">The Rundown AI</a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">📣 Audience-Tailored Takeaways</div>
-      <div class="audience-grid">
-        <div class="audience-card">
-          <div class="aud-label aud-ciso">🔐 AI Security</div>
-          <ul>
-            <li>Claude Approvals granting agents authority to approve and merge code without human sign-off raises a concrete new supply-chain control point — confirm your org's branch-protection and approval policies account for AI-agent approvers, not just human ones</li>
-          </ul>
+    <!-- Story 3 — Gemini 4 Neon -->
+    <div class="story">
+      <div class="story-title">💎 Gemini 4 Neon Launches at $3/$15 Per Million Tokens — Google's 4th Gemini 4 in a Month</div>
+      <div class="story-body">
+        Google released Gemini 4 Neon on November 18, the fourth Gemini 4 variant in approximately 30 days (following Hydrogen, Carbon, and Argon). Neon is priced at $3 input / $15 output per million tokens — positioning it as a mid-tier option between Carbon ($2/$10) and hypothetical premium tiers. Google's aggressive release cadence underscores its determination to hold #2 benchmark position despite Anthropic's IPO momentum. Gemini 4 Carbon became generally available on November 10. Google also made Gemini 4 Carbon GA for enterprise on that date.
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-pill pill-partner">🤝 Partner</span>
+          <span class="audience-text">Google is flooding the market with model variants at aggressive price points. For clients cost-sensitive on inference, Gemini 4 Carbon ($2/$10) is now GA and strongly competitive. The pace of releases suggests Google is in a land-grab mode before the market consolidates post-Anthropic IPO.</span>
         </div>
-        <div class="audience-card">
-          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
-          <ul>
-            <li>Amazon's $7.5B Decart buy signals accelerating demand for chip-efficiency software, not just chips — a space advisory clients evaluating multi-cloud AI infrastructure bets should watch alongside Nvidia's CUDA moat</li>
-          </ul>
+        <div class="audience-row">
+          <span class="audience-pill pill-exec">💼 Executive</span>
+          <span class="audience-text">AI pricing continues to fall while capability rises. Locking into multi-year enterprise agreements now may cost more than waiting 6 months for further commoditization. Consult with your AI strategy team before large-scale commitments.</span>
         </div>
-        <div class="audience-card">
-          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
-          <ul>
-            <li>Claude Ship and GPT-6.2 Sol both point to agentic software-delivery and consumer-AI races intensifying simultaneously — expect vendor pressure to adopt agentic dev tooling to accelerate through year-end</li>
-          </ul>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://larwell.com/blog/ai-news-this-week-november-22-2026" target="_blank">Larwell AI News (Nov 22)</a> · <a href="https://llmgateway.io/timeline" target="_blank">LLM Gateway Timeline</a>
+      </div>
+    </div>
+
+    <!-- Story 4 — AI security: Amazon AI agents zero-day -->
+    <div class="story">
+      <div class="story-title">⚠️ Amazon AI Agents Discover & Exploit Zero-Day With "Almost No Human Help"</div>
+      <div class="story-body">
+        Amazon published research this week documenting AI agents that autonomously discovered and exploited a previously unknown vulnerability (CVE-2026-133968, CVSS 9.8) in MONAI Label — an open-source medical imaging application — with minimal human direction. Operators provided only a list of IP addresses and the goal "obtain shell access." The agents identified the application, analyzed its upload endpoint's filename parameter handling, wrote a working exploit, and confirmed successful compromise — all without human assistance. The vulnerability was disclosed responsibly and has been patched, but the research validates that AI-automated exploit discovery is now production-ready for adversaries.
+      </div>
+      <div class="audience-block">
+        <div class="audience-row">
+          <span class="audience-pill pill-ciso">🔐 CISO</span>
+          <span class="audience-text">AI-automated zero-day discovery now operates at "IP list in, shell access out" simplicity. Medical and healthcare tech stacks are a prime target given legacy software and regulatory reluctance to patch aggressively. This research should accelerate your red team investment and patch velocity conversations with the board.</span>
         </div>
+        <div class="audience-row">
+          <span class="audience-pill pill-partner">🤝 Partner</span>
+          <span class="audience-text">AI-augmented red teaming is now table stakes for any healthcare or critical infrastructure client. This Amazon research is excellent sales collateral for penetration testing mandates — AI attackers don't work 9-to-5.</span>
+        </div>
+        <div class="audience-row">
+          <span class="audience-pill pill-exec">💼 Executive</span>
+          <span class="audience-text">The attackers targeting your organization now potentially include autonomous AI agents running 24/7. The traditional "patch within 30 days" SLA is now dangerously outdated for critical vulnerabilities.</span>
+        </div>
+      </div>
+      <div class="story-source">
+        Sources: <a href="https://cryptobriefing.com/amazon-ai-agents-exploit-zero-day/" target="_blank">Crypto Briefing</a> · <a href="https://labs.cloudsecurityalliance.org/research/frontier-ready-daily-20261122" target="_blank">CSA Frontier Ready (Nov 22)</a>
       </div>
     </div>
   </div>
 
-  <div class="briefing-footer">
+  <div class="footer">
     <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Tuesday, November 24, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
-    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+    <p style="margin-top:6px;">Sources: Al Jazeera · CBS News · The Hacker News · SecurityWeek · CyberSecurity Dive · GBHackers · Latent Space · WritingMate AI · Larwell · CSA</p>
   </div>
 
 </div>
