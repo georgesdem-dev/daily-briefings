@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Tuesday, November 24, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Tuesday, November 24, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Four Tankers Hit Naval Mines in Hormuz Under US Navy Escort; Qatar Pushes to Revive Talks</a>
+    <div class="toc-section">IRGC Navy says four oil tankers struck mines and caught fire in restricted waters east of the strait while transiting under US military escort, which "failed to prevent it"; Qatar's PM meets Rubio and Vance in Washington to revive the diplomatic track; Iran still rules out talks until seven conditions, including lifting the blockade, are met; Hormuz traffic stays ~65% below pre-war levels</div>
+    <a href="#cyber">🔐 Cybersecurity — CISA's Deadline Hits Today for Exploited Outlook NTLM Zero-Day; AI Agents Caught Finding Their Own Zero-Day</a>
+    <div class="toc-section">Federal remediation deadline lands today for CVE-2026-124194, an exploited Outlook spoofing flaw leaking NTLM hashes; Amazon discloses that autonomous "Cairn" AI agents found and exploited a critical path-traversal zero-day (CVE-2026-133968, CVSS 9.8) in medical-imaging tool MONAI Label in 11 minutes, rooting a university server; BerriAI's LiteLLM sandbox-escape flaw (CVE-2026-40217) joins the KEV catalog for LLMjacking; VMware vCenter, Cisco Expressway, and Apache Roller flaws also under active exploitation</div>
+    <a href="#ai">🤖 Artificial Intelligence — Anthropic Launches "Claude Ship" to Review, Fix and Approve Pull Requests; Amazon Pays ~$7.5B for Decart's Chip-Optimization Tech</a>
+    <div class="toc-section">Anthropic pairs Code Review with new PR Steward and Claude Approvals agents, plus an Enterprise Frontier Safeguards system to detect coordinated AI misuse; Amazon acquires Decart's Optimization Stack and founding team to narrow the software gap with Nvidia ahead of selling Trainium chips; OpenAI's chat-tuned GPT-6.2 Sol rolls out to ChatGPT's main tab; Z.ai ships GLM-5.4 on a novel "Loop Transformer" architecture</div>
+  </div>
+
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — Four Tankers Hit Naval Mines in Hormuz Under US Escort; Qatar Pushes to Revive Talks</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 270</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Four Oil Tankers Hit Naval Mines and Catch Fire in Hormuz While Under US Navy Escort
+        <span class="badge badge-red">US ESCORT FAILED TO PREVENT IT · MINE WARFARE</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        Iran's IRGC Navy said four oil tankers struck naval mines and caught fire early Tuesday in restricted waters east of the Strait of Hormuz, with the first reports describing two tankers hit, then a third, then a fourth suffering a "severe explosion and fire." The IRGC pointedly noted the vessels were transiting under US military escort at the time — escort that "failed to prevent" the mine strikes — a claim that, if accurate, is a serious credibility blow to the US Navy's weeks-old policy of escorting tankers through the waterway. It is not yet confirmed who laid the mines; Tehran has previously warned ships against using what it calls unauthorized routes through the strait. The incident lands the same day Qatar intensified its mediation push: Prime Minister Sheikh Mohammed bin Abdulrahman Al Thani met Secretary of State Marco Rubio in Washington to launch the eighth US-Qatar Strategic Dialogue, while Vice President JD Vance separately hosted Qatari envoy Ali al-Thawadi at the White House. Al Thani said the region "cannot afford a new escalation" and called for restoring freedom of navigation through Hormuz alongside a return to US-Iran talks. Iran, however, continues to rule out negotiations until seven conditions are met — reportedly including lifting the US naval blockade on Iranian ports, easing sanctions, releasing frozen funds, ending hostilities on all fronts, and a formal declaration that the war is over. Trump has accused Tehran of not being serious about a deal. Bloomberg estimates Iranian attacks on shipping have averaged roughly one per day through November, with strait traffic still about 65% below pre-war levels and the Pentagon pegging total US war spending at $48.3 billion as of this month.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">270 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">4 tankers</div>
+          <div class="stat-label">Hit naval mines in Hormuz today, under US escort</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">~65%</div>
+          <div class="stat-label">Hormuz shipping traffic still below pre-war levels</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://warhistory.org/maps/iran/2026-11-24/irgc-says-3-oil-tankers-hit-naval-mines-and-caught-fire-in-the-strait-of-hormuz-while-transiting-under-us-military-escort-which-failed-to-prevent-it">War History — IRGC Says Tankers Hit Naval Mines in the Strait of Hormuz While Under US Military Escort</a>
+        <a href="https://www.aa.com.tr/en/middle-east/iran-says-4th-oil-tanker-hits-naval-mine-catches-fire-in-strait-of-hormuz/4135570">Anadolu Agency — Iran Says 4th Oil Tanker Hits Naval Mine, Catches Fire in Strait of Hormuz</a>
+        <a href="https://www.aljazeera.com/video/newsfeed/2026/11/24/qatar-pm-looks-to-revive-us-iran-talks-after-meeting-rubio">Al Jazeera — Qatar PM Looks to Revive US-Iran Talks After Meeting Rubio</a>
+        <a href="https://gulfnews.com/world/mena/middle-east-conflict-us-investigates-iran-over-cyberattacks-on-50-ships-as-fresh-sanctions-target-irans-shadow-banking-network-1.500758688">Gulf News — Iran Warns Hormuz Ships, Rules Out US Talks Until Seven Conditions Met</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Qatar launches the eighth US-Qatar Strategic Dialogue in Washington, explicitly framed around reviving the stalled US-Iran diplomatic track and restoring Hormuz navigation.</li>
+        <li>The US separately probes Iran over alleged cyberattacks on roughly 50 ships, as fresh sanctions target Iran's shadow banking network, per Gulf News reporting.</li>
+        <li>No independent confirmation yet on who laid the mines that hit the four tankers; Iran's own warnings about "unauthorized routes" add ambiguity to responsibility.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>23</td><td>820 wounded (Pentagon)</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">Figures carried forward unchanged from Nov 23 — no new independently verified single-source casualty update today. Aggregator trackers continue to show wide, conflicting ranges (e.g. total deaths across all sides cited anywhere from ~9,000 to ~18,000 depending on methodology); we hold to the last officially sourced figures above pending confirmation.</p>
+    </div>
+  </div>
+
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Tuesday, November 24, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: CISA's Patch Deadline Lands Today for Exploited Outlook NTLM Zero-Day — While AI Agents Are Caught Finding Their Own
+        <span class="badge badge-red">KEV DEADLINE TODAY · CVE-2026-124194</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        The federal remediation deadline falls today for CVE-2026-124194, a Microsoft Outlook spoofing flaw (CVSS 6.5) under active exploitation: a specially crafted message file makes classic Outlook silently connect to an attacker-controlled server and leak the user's NTLMv2 hash, with no security warning shown. CISA added it to the Known Exploited Vulnerabilities catalog on November 10, the same day Microsoft shipped the fix as part of November Patch Tuesday (1,094 CVEs total, this the only confirmed actively-exploited one). Separately, Amazon disclosed a more unusual story: autonomous AI agents built on the open-source "Cairn" framework independently discovered and exploited a critical path-traversal zero-day (CVE-2026-133968, CVSS 9.8) in MONAI Label, an open-source medical-imaging annotation tool, without human direction. The agents fingerprinted the app, mapped its API, found an unauthenticated upload endpoint vulnerable to path traversal, and achieved arbitrary file writes and a root reverse shell in about 11 minutes — compromising a university server in East Asia in an operation Amazon links to a China-nexus actor and spotted via an exposed Cairn instance on September 10. MONAI Label 0.8.6 fixes it; the CISA KEV deadline is November 26. Rounding out the day: BerriAI's LiteLLM gateway sandbox-escape flaw (CVE-2026-40217), already being used for "LLMjacking" of stolen model access, joined the KEV catalog with a December 2 deadline; and CISA continues to warn of active exploitation of VMware vCenter (CVE-2026-123890), Cisco Expressway (CVE-2026-76466), and Apache Roller (CVE-2026-129448, unauthenticated RCE).
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">9.8</div>
+          <div class="stat-label">CVSS score of the AI-discovered MONAI Label zero-day</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">11 min</div>
+          <div class="stat-label">Time for AI agents to reach root on target server</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">1,094</div>
+          <div class="stat-label">Total CVEs in November Patch Tuesday</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://gurucul.com/blog/cve-2026-124194-microsoft-outlook-ntlm-zero-day-vulnerability/">Gurucul — CVE-2026-124194: Microsoft Outlook NTLM Zero-Day Vulnerability</a>
+        <a href="https://socradar.io/blog/november-2026-patch-tuesday-zero-day/">SOCRadar — November 2026 Patch Tuesday: 1,094 Flaws, One Exploited</a>
+        <a href="https://www.notebookcheck.net/Cairn-AI-agents-took-over-server-via-zero-day-flagged-by-CISA.1458774.0.html">Notebookcheck — Cairn AI Agents Took Over Server via Zero-Day Flagged by CISA</a>
+        <a href="https://corgea.com/research/cve-2026-133968-monai-label-datastore-path-traversal-cairn-zero-day-november-2026">Corgea Research — CVE-2026-133968: MONAI Label Path Traversal, Cairn Zero-Day</a>
+        <a href="https://safeguard.sh/resources/blog/litellm-cve-2026-40217-guardrail-sandbox-escape-kev">Safeguard — LiteLLM CVE-2026-40217 Guardrail Sandbox Escape, Now in KEV</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>CISA's federal remediation deadline for the Outlook NTLM-hash-leak zero-day (CVE-2026-124194) falls today, Nov 24; patch via the Nov 10 Microsoft security update if not already applied.</li>
+        <li>MONAI Label's AI-discovered zero-day (CVE-2026-133968) has a Nov 26 KEV deadline; affected instances (0.8.5 and earlier, auth disabled by default) should upgrade to 0.8.6 now.</li>
+        <li>BerriAI LiteLLM's sandbox-escape flaw (CVE-2026-40217) is being actively used for LLMjacking — stealing access to backend LLM credentials; patch to 1.83.11+.</li>
+        <li>CISA KEV additions are running 298 so far this year, up roughly 35% from 221 last year — a reminder that exploited-vulnerability volume keeps climbing.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Confirm the Nov 10 Outlook update is deployed fleet-wide before end of day to close CVE-2026-124194 (NTLM hash leak); check LiteLLM gateways against CVE-2026-40217 and MONAI Label deployments against CVE-2026-133968 if used for medical-imaging/ML workloads</li>
+            <li>Treat the Cairn/MONAI incident as a preview of the threat model: autonomous AI red-team agents are now finding and weaponizing zero-days in production software within minutes, unsupervised — worth a tabletop on AI-speed exploitation of your own exposed services</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>The AI-agent-discovers-zero-day story is a timely hook for clients on AI governance and attack-surface management — the KEV catalog growing 35% year-over-year also supports a vulnerability-management maturity conversation</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>If your organization runs internet-facing AI/ML tooling (even research or clinical-imaging systems), confirm with IT whether any component resembles MONAI Label's default-insecure configuration — "authentication off by default" keeps recurring as a root cause</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Tuesday, November 24, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Anthropic Launches "Claude Ship" to Review, Fix and Approve Pull Requests; Amazon Pays ~$7.5B for Decart's Chip-Optimization Tech
+        <span class="badge badge-purple">AGENTIC DEV OPS · $7.5B CHIP-SOFTWARE DEAL</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Anthropic launched Claude Ship in public beta for Claude Team and Enterprise GitHub users, pairing its generally-available Code Review agent with two new agents — PR Steward, which automatically fixes failing CI checks, merge conflicts, and review feedback, and Claude Approvals, which can approve pull requests under team-defined rules — to carry a PR from open to merge with minimal human intervention. Alongside it, Anthropic introduced Enterprise Frontier Safeguards (EFS), a privacy-preserving security system that analyzes activity patterns across multiple customer requests to flag coordinated AI misuse and generate Safety Case reports for security teams, without retaining the underlying prompts. Separately, Amazon agreed to acquire the technology behind Decart's Optimization Stack (DOS) — software that helps AI models run efficiently across Nvidia, Amazon, and Google chips — along with Decart's founding team, in a deal reported at roughly $7.5 billion. The move runs through Amazon's Annapurna Labs chip unit and is widely read as a bet on using software to narrow Amazon's efficiency gap with Nvidia just as it prepares to start selling Trainium and Inferentia chips externally. Elsewhere: OpenAI's chat-tuned GPT-6.2 Sol — faster and better at reading fine image detail than GPT-6 — is now rolling out to ChatGPT's main chat tab for Plus, Pro, Business, and Enterprise users; and Chinese lab Z.ai shipped GLM-5.4, the first flagship model built on a "Loop Transformer" architecture that runs its layers twice rather than adding more of them.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#bc8cff;">$7.5B</div>
+          <div class="stat-label">Reported price for Amazon's Decart tech acquisition</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">3 agents</div>
+          <div class="stat-label">In Claude Ship: Code Review, PR Steward, Claude Approvals</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">GPT-6.2 Sol</div>
+          <div class="stat-label">Now rolling out to ChatGPT's main chat tab</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/">TechCrunch — Anthropic Launches Claude Ship, Letting AI Agents Review, Fix and Approve Code Changes</a>
+        <a href="https://techcrunch.com/2026/11/23/amazon-snaps-up-decarts-ai-optimization-tech-for-7-5b-as-it-prepares-to-sell-trainium-chips/">TechCrunch — Amazon Snaps Up Decart's AI Optimization Tech for $7.5B as It Prepares to Sell Trainium Chips</a>
+        <a href="https://www.macrumors.com/2026/11/23/openai-gpt-6-2-sol-chatgpt/">MacRumors — OpenAI Brings GPT-6.2 Sol to ChatGPT's Chat Tab</a>
+        <a href="https://riorundown.substack.com/p/ai-news-nov-24-2026-anthropic-agent">Rio Rundown — AI News Nov 24, 2026: Anthropic Agent Security and Open Models</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>Z.ai's GLM-5.4 debuts on a "Loop Transformer" architecture that reuses layers via a loop rather than stacking more of them — an efficiency-first design bet from the open-model camp.</li>
+        <li>Nvidia's reinstatement of Jensen Huang as CEO (Monday) continued to ripple through markets Tuesday, with coverage noting the move added close to a trillion dollars in market value over the two days.</li>
+        <li>Early results from the UK's £10M EDITH trial testing AI-assisted breast cancer detection across nearly 700,000 women begin circulating, a notable healthcare-AI efficacy data point.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 AI Security</div>
+          <ul>
+            <li>Claude Approvals granting agents authority to approve and merge code without human sign-off raises a concrete new supply-chain control point — confirm your org's branch-protection and approval policies account for AI-agent approvers, not just human ones</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Amazon's $7.5B Decart buy signals accelerating demand for chip-efficiency software, not just chips — a space advisory clients evaluating multi-cloud AI infrastructure bets should watch alongside Nvidia's CUDA moat</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>Claude Ship and GPT-6.2 Sol both point to agentic software-delivery and consumer-AI races intensifying simultaneously — expect vendor pressure to adopt agentic dev tooling to accelerate through year-end</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Tuesday, November 24, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
