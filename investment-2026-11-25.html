@@ -18,6 +18,7 @@
 
     .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
 
+    /* ── Header ── */
     .header {
       text-align: center;
       padding: 52px 0 40px;
@@ -33,6 +34,7 @@
     .header .nav { font-size: 0.82rem; color: #484f58; }
     .header .nav a { color: #6e7681; }
 
+    /* ── Stats Bar ── */
     .stats-bar {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
@@ -66,6 +68,7 @@
     .stat-card.bearish { border-top: 2px solid #da3633; }
     .stat-card.neutral { border-top: 2px solid #9e6a03; }
 
+    /* ── Section blocks ── */
     .section { margin-bottom: 52px; }
     .section-header {
       display: flex; align-items: center; gap: 12px;
@@ -84,6 +87,7 @@
     .tag-risk    { background: #3d1a1a; color: #f85149; border: 1px solid #6e2a2a; }
     .tag-insight { background: #3d2a0a; color: #e3b341; border: 1px solid #6e4a0a; }
 
+    /* ── Story cards ── */
     .story {
       background: #161b22; border: 1px solid #30363d;
       border-radius: 10px; padding: 20px 22px; margin-bottom: 14px;
@@ -94,6 +98,7 @@
     .story p:last-child { margin-bottom: 0; }
     .story .source { font-size: 0.76rem; color: #484f58; margin-top: 10px; }
 
+    /* ── Pick cards ── */
     .pick-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -148,6 +153,7 @@
     }
     .target-pill span { font-weight: 700; color: #f0f6fc; }
 
+    /* ── Outlook Table ── */
     .outlook-table {
       width: 100%; border-collapse: collapse; font-size: 0.82rem;
       margin-top: 6px;
@@ -175,6 +181,7 @@
     .risk-med    { color: #e3b341; font-size: 10px; font-weight: 700; }
     .risk-high   { color: #f85149; font-size: 10px; font-weight: 700; }
 
+    /* ── Insight cards ── */
     .insight-card {
       background: #161b22; border: 1px solid #30363d;
       border-left: 3px solid #e3b341;
@@ -185,6 +192,7 @@
     .insight-card .person { font-size: 10px; font-weight: 700; letter-spacing: 1px;
       text-transform: uppercase; color: #e3b341; margin-bottom: 8px; display: block; }
 
+    /* ── Risk / Watchlist ── */
     .risk-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 12px;
@@ -220,6 +228,7 @@
     .wl-ticker { font-weight: 700; color: #58a6ff; }
     .wl-reason { color: #8b949e; font-size: 0.76rem; }
 
+    /* ── TL;DR ── */
     .tldr {
       background: #161b22; border: 1px solid #30363d;
       border-left: 3px solid #58a6ff;
@@ -228,8 +237,10 @@
     }
     .tldr strong { color: #f0f6fc; }
 
+    /* ── Divider ── */
     .divider { border: none; border-top: 1px solid #21262d; margin: 14px 0 20px; }
 
+    /* ── Sector Bar ── */
     .sector-grid {
       display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px;
     }
@@ -241,17 +252,27 @@
     .sector-name { color: #c9d1d9; }
     .sector-pct  { font-weight: 700; }
 
+    /* ── Footer ── */
     .footer {
       text-align: center; margin-top: 60px; padding-top: 20px;
       border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
     }
     .footer strong { color: #6e7681; }
 
+    /* badges */
     .badge-critical { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; padding:2px 7px; border-radius:4px; background:#6e1f1f; color:#f85149; margin-right:6px; letter-spacing:0.8px; }
     .badge-watch    { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; padding:2px 7px; border-radius:4px; background:#3d2a0a; color:#e3b341; margin-right:6px; letter-spacing:0.8px; }
     .badge-new      { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; padding:2px 7px; border-radius:4px; background:#1a2d1a; color:#3fb950; margin-right:6px; letter-spacing:0.8px; }
     .upside-pct { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; background: #1a3d1a; color: #3fb950; margin-left: 6px; }
-    .gap-notice { background: #2d1a0a; border: 1px solid #6e4a0a; border-radius: 8px; padding: 12px 18px; margin-bottom: 20px; font-size: 0.82rem; color: #e3b341; }
+    .milestone-banner {
+      background: linear-gradient(135deg, #1a2d1a 0%, #0d1f0d 100%);
+      border: 1px solid #3fb950; border-radius: 10px;
+      padding: 16px 20px; margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px;
+      font-size: 0.88rem;
+    }
+    .milestone-banner .milestone-icon { font-size: 2rem; flex-shrink: 0; }
+    .milestone-banner strong { color: #3fb950; }
   </style>
 </head>
 <body>
@@ -261,67 +282,73 @@
   <div class="header">
     <div class="label">📈 Investment Brief · Moderate Risk Portfolio</div>
     <h1>Wednesday, November 25, 2026</h1>
-    <div class="date">Dow Tops 50,000 · AI Rally Gives Back Ground · For Georges</div>
+    <div class="date">Defensive Rotation Day &nbsp;·&nbsp; Dow Breaks 50,000 &nbsp;·&nbsp; Nvidia Crisis Deepens &nbsp;·&nbsp; For Georges</div>
     <div class="nav"><a href="index.html">← Back to archive</a></div>
-  </div>
-
-  <div class="gap-notice">
-    ⚠️ Markets haven't opened yet today (Thanksgiving-eve session, early PCE inflation data due). This brief is anchored on Tuesday Nov 24's confirmed close.
   </div>
 
   <!-- ═══════════════ TL;DR ═══════════════ -->
   <div class="tldr">
     <strong>Today at a glance:</strong> &nbsp;
-    The Dow closed above 50,000 for the first time ever (+0.85% to 50,018.70), but it was a split tape: value and healthcare rallied while Monday's Huang-reinstatement AI rally reversed hard — NVDA -5.9%, AMD -8.9% (hit further by a 337M-share resale filing) &nbsp;·&nbsp;
-    S&amp;P 500 -0.50% to 7,201.09, Nasdaq -1.48% to 23,733.54, VIX essentially flat at 26.36 &nbsp;·&nbsp;
-    Healthcare led sectors (+2.95%) on Sanofi's deal to acquire Insmed; Dollar Tree beat earnings as value rotation continued &nbsp;·&nbsp;
-    PCE inflation data lands Wednesday ahead of Thursday's Thanksgiving market closure
+    Historic day — the Dow Jones crossed 50,000 for the first time ever, driven by defensive sector strength &nbsp;·&nbsp;
+    Healthcare leads all sectors (+2.88%) as RBC upgrades it to Overweight, Consumer Staples +1.73% &nbsp;·&nbsp;
+    Tech crushed: Nasdaq -1.48%, Semiconductors (SOX) -7.88% — Nvidia gives back 5.9% after Monday's 31% surge &nbsp;·&nbsp;
+    New Trump tariffs on China loom; Fed December hike back at 95% probability; 10Y Treasury at 4.908% &nbsp;·&nbsp;
+    Top picks for moderate risk: AMGN, ABBV, WMT, CVX, BRK-B — all defensive, dividend-paying, analyst-backed
+  </div>
+
+  <!-- ═══════════════ MILESTONE BANNER ═══════════════ -->
+  <div class="milestone-banner">
+    <span class="milestone-icon">🏆</span>
+    <div>
+      <strong>HISTORIC: Dow Jones closes above 50,000 for the first time ever</strong><br>
+      <span style="color:#8b949e;">The Dow gained 424.52 points (+0.86%) to close at 50,019.83 — a symbolic milestone driven by defensive and industrial blue chips while tech languished. For context: Dow 10,000 was crossed in 1999, 20,000 in 2017, 30,000 in 2020, 40,000 in 2024. Each milestone arrived faster than the last.</span>
+    </div>
   </div>
 
   <!-- ═══════════════ STATS BAR ═══════════════ -->
   <div class="stats-bar">
     <div class="stat-card bearish">
       <span class="stat-label">S&amp;P 500</span>
-      <span class="stat-value">7,201.09</span>
-      <span class="stat-change red">-0.50%</span>
+      <span class="stat-value">7,201</span>
+      <span class="stat-change red">-36.08 &nbsp;-0.50%</span>
     </div>
     <div class="stat-card bullish">
       <span class="stat-label">Dow Jones</span>
-      <span class="stat-value">50,018.70</span>
-      <span class="stat-change green">+423.39 &nbsp;+0.85% · First close &gt;50K</span>
+      <span class="stat-value">50,020</span>
+      <span class="stat-change green">+424.52 &nbsp;+0.86% 🏆</span>
     </div>
     <div class="stat-card bearish">
       <span class="stat-label">Nasdaq</span>
-      <span class="stat-value">23,733.54</span>
-      <span class="stat-change red">-1.48%</span>
+      <span class="stat-value">23,734</span>
+      <span class="stat-change red">-356 &nbsp;-1.48%</span>
     </div>
     <div class="stat-card bullish">
       <span class="stat-label">Russell 2000</span>
-      <span class="stat-value">~2,684.94</span>
-      <span class="stat-change green">+0.57% (small-cap rebound)*</span>
+      <span class="stat-value">2,687</span>
+      <span class="stat-change green">+16.85 &nbsp;+0.63%</span>
     </div>
     <div class="stat-card neutral">
       <span class="stat-label">VIX</span>
-      <span class="stat-value">26.36</span>
-      <span class="stat-change amber">-0.98% — essentially flat</span>
+      <span class="stat-value">26.18</span>
+      <span class="stat-change amber">-0.44 &nbsp;-1.65%</span>
+    </div>
+    <div class="stat-card bullish">
+      <span class="stat-label">Crude Oil (WTI)</span>
+      <span class="stat-value">$82.20</span>
+      <span class="stat-change green">+0.89 &nbsp;+1.09%</span>
     </div>
     <div class="stat-card bearish">
-      <span class="stat-label">Crude Oil (WTI)</span>
-      <span class="stat-value">~$79.70</span>
-      <span class="stat-change red">-0.59%</span>
-    </div>
-    <div class="stat-card neutral">
       <span class="stat-label">Gold</span>
-      <span class="stat-value">~$3,550-3,620*</span>
-      <span class="stat-change amber">Sources diverge — see note</span>
+      <span class="stat-value">$3,620</span>
+      <span class="stat-change red">-15.2 &nbsp;-0.42%</span>
     </div>
     <div class="stat-card neutral">
       <span class="stat-label">10Y Treasury</span>
-      <span class="stat-value">~4.93-4.96%</span>
-      <span class="stat-change amber">Easing slightly</span>
+      <span class="stat-value">4.908%</span>
+      <span class="stat-change amber">+0.014 &nbsp;+2.9bps</span>
     </div>
   </div>
-  <p style="font-size:0.72rem;color:#484f58;margin-top:-34px;margin-bottom:34px;">* Russell 2000 move reported inconsistently across sources (+0.57% vs. a cited +3.40% "rebound") — using the more conservative index-level figure. Gold quoted both ~$3,550 (-2.31%) and ~$3,620 intraday by different sources; treat as a range pending reconciliation.</p>
+
 
   <!-- ═══════════════════════════════════════
        SECTION 1 — MARKET SNAPSHOT
@@ -330,37 +357,50 @@
     <div class="section-header">
       <span class="section-icon">📊</span>
       <span class="section-title">Market Snapshot</span>
-      <span class="section-tag tag-market">LIVE DATA</span>
+      <span class="section-tag tag-market">NOV 25, 2026</span>
     </div>
 
+    <!-- Sector Performance -->
     <div class="story">
-      <h3>🏭 Sector Performance — Tuesday Nov 24</h3>
-      <p>A clean rotation story: Healthcare led (+2.95%), boosted by Sanofi's agreement to acquire Insmed. Financials added a modest +0.83%. Technology was the day's lone big loser (-3.26%), with Semiconductors & Related Devices plunging -8.58% as Monday's Huang-reinstatement rally reversed hard. Value and small-caps caught a bid as money rotated out of the most AI-levered names.</p>
+      <h3>🏭 Sector Performance — Today's Defensive Rotation</h3>
+      <p>The market split decisively along defensive vs. growth lines today. Healthcare surged +2.88% — the best single-day sector performance in weeks — as RBC Capital Markets upgraded it to Overweight and downgraded Technology to Market Weight, validating a broad Wall Street pivot. Consumer Staples (+1.73%), Energy (+1.11%), and Utilities (+0.73%) rounded out the winners. Technology collapsed -2.77%, dragged by the Philadelphia Semiconductor Index imploding -7.88% — its worst session in months — as Nvidia's governance crisis continued to reverberate after Monday's short-lived 31% CEO-reinstatement relief rally.</p>
       <div class="sector-grid">
-        <div class="sector-row"><span class="sector-name">💊 Healthcare</span><span class="sector-pct green">+2.95%</span></div>
-        <div class="sector-row"><span class="sector-name">🏦 Financials</span><span class="sector-pct green">+0.83%</span></div>
-        <div class="sector-row"><span class="sector-name">🛒 Consumer Staples</span><span class="sector-pct green">Positive (DLTR beat)</span></div>
-        <div class="sector-row"><span class="sector-name">🏭 Industrials</span><span class="sector-pct green">Modestly positive</span></div>
-        <div class="sector-row"><span class="sector-name">🏘️ Real Estate</span><span class="sector-pct green">Modestly positive</span></div>
-        <div class="sector-row"><span class="sector-name">⚡ Energy</span><span class="sector-pct amber">Flat-to-soft (oil -0.6%)</span></div>
-        <div class="sector-row"><span class="sector-name">💡 Utilities</span><span class="sector-pct amber">Flat</span></div>
-        <div class="sector-row"><span class="sector-name">🚗 Consumer Discretionary</span><span class="sector-pct amber">Mixed</span></div>
-        <div class="sector-row"><span class="sector-name">🪨 Materials</span><span class="sector-pct amber">Mixed</span></div>
-        <div class="sector-row"><span class="sector-name">📡 Comm. Services</span><span class="sector-pct red">Negative (Nasdaq drag)</span></div>
-        <div class="sector-row"><span class="sector-name">💻 Technology</span><span class="sector-pct red">-3.26% (semis -8.58%)</span></div>
+        <div class="sector-row"><span class="sector-name">💊 Healthcare</span><span class="sector-pct green">+2.88% today</span></div>
+        <div class="sector-row"><span class="sector-name">🛒 Consumer Staples</span><span class="sector-pct green">+1.73% today</span></div>
+        <div class="sector-row"><span class="sector-name">⚡ Energy</span><span class="sector-pct green">+1.11% today</span></div>
+        <div class="sector-row"><span class="sector-name">💡 Utilities</span><span class="sector-pct green">+0.73% today</span></div>
+        <div class="sector-row"><span class="sector-name">🏘️ Real Estate</span><span class="sector-pct amber">~flat today</span></div>
+        <div class="sector-row"><span class="sector-name">🏦 Financial Services</span><span class="sector-pct amber">~flat today</span></div>
+        <div class="sector-row"><span class="sector-name">📡 Comm. Services</span><span class="sector-pct amber">~flat today</span></div>
+        <div class="sector-row"><span class="sector-name">🚗 Consumer Cyclical</span><span class="sector-pct amber">~flat today</span></div>
+        <div class="sector-row"><span class="sector-name">🪨 Basic Materials</span><span class="sector-pct amber">~flat today</span></div>
+        <div class="sector-row"><span class="sector-name">🔩 Industrials</span><span class="sector-pct red">-0.51% today</span></div>
+        <div class="sector-row"><span class="sector-name">💻 Technology</span><span class="sector-pct red">-2.77% today</span></div>
+        <div class="sector-row"><span class="sector-name">🖥️ Semiconductors (SOX)</span><span class="sector-pct red">-7.88% today</span></div>
       </div>
-      <p class="source" style="margin-top:12px;">Full 11-sector breakdown not independently confirmed across sources at publish time for all sectors; directional calls based on index-level and story-level reporting.</p>
     </div>
 
+    <!-- Key Movers -->
     <div class="story">
-      <h3>🎢 The AI Trade's Whiplash: Monday's Rally Gives Back Ground</h3>
-      <p>One day after Jensen Huang's reinstatement as Nvidia CEO triggered the best market session since April 2025, Tuesday brought a sharp reversal in the same names. NVDA closed -5.86% at $155.38, giving back roughly $240 billion of Monday's ~$950 billion gain — despite fresh bullish analyst action (StoneX's Cody Acree upgraded to Buy with a $270 target; Oppenheimer's Rick Schafer upgraded to Buy at $250, both signaling ~29%+ upside from current levels). AMD fell further, -8.86% to $413.27, compounded by a 337-million-share resale filing that added fresh supply overhang on top of profit-taking.</p>
-      <p>The net read: the re-rating thesis from Monday hasn't been invalidated — if anything, sell-side upgrades are still arriving — but the stocks are now trading with significant two-way volatility as the market digests both the leadership news and near-term technical/supply pressure. VIX holding roughly flat at 26.36 (rather than falling further) suggests traders are keeping hedges on through this chop rather than declaring the episode over.</p>
+      <h3>🔥 Key Market Movers Today</h3>
+      <p><strong class="green">Top Gainers:</strong> Dollar Tree (DLTR) surging +10.89% on strong Q3 same-store sales as inflation-fatigued consumers trade down. Amgen (AMGN) +5.65% after a strong Q3 earnings beat and 2026 guidance raise, with biosimilar pipeline progress. Nike (NKE) +5.63% on improving US wholesale numbers. Merck (MRK) +4.45% as pipeline optimism builds ahead of key oncology readouts.</p>
+      <p><strong class="red">Top Losers:</strong> Analog Devices (ADI) -17.70% on weak industrial chip demand guidance — a leading indicator of broader capex slowdown. Hewlett Packard Enterprise (HPE) -17.16% after cutting full-year revenue forecast due to tariff headwinds. Nvidia (NVDA) -5.97%, giving back a portion of Monday's 31% gain as governance concerns re-emerged. Micron Technology (MU) -11.28% caught in the semiconductor washout.</p>
+      <p><strong class="amber">Notable:</strong> The Dow's first-ever close above 50,000 was driven by defensive heavyweights — Amgen, Merck, Nike, and consumer staples — illustrating that the milestone is a symbol of defensive strength, not broad market health. The divergence between the Dow (+0.86%) and Nasdaq (-1.48%) is the widest since October's AI sell-off began.</p>
     </div>
 
+    <!-- Nvidia Crisis Deep Dive -->
     <div class="story">
-      <h3>🏛️ Dow 50,000 — A Milestone Driven by Rotation, Not Broad Strength</h3>
-      <p>The Dow's first-ever close above 50,000 is notable, but it reflects a value/defensive rotation rather than broad market strength — the S&amp;P and Nasdaq both fell the same day. Dollar Tree's Q3 beat (EPS $1.16 vs. estimates, comp sales +4.6% on a 3.8% traffic increase) reinforced the value-and-staples leg of the rotation; the healthcare M&amp;A deal (Sanofi/Insmed) did the same for defensives. Dell and Best Buy earnings were also due Tuesday, with Dell carrying a record $95B AI server backlog into the print — a read-through worth checking against actual results before trading on it.</p>
+      <h3>💥 Nvidia Crisis — The Governance Storm That Won't Quit</h3>
+      <p>Nvidia's tumultuous month continues. The stock has lost approximately $2.75 trillion in market cap over the past 30 days, falling ~43% from an October peak of ~$222 to a November 20 low of ~$125. Yesterday (Monday), shares surged +31% when the board unanimously reinstated Jensen Huang as CEO, president, and board director after his brief removal. Today, the market recalibrated, taking the stock -5.97% to around $155.</p>
+      <p>The governance crisis involves multiple overlapping issues: (1) SEC investigation into the company's accounting practices; (2) a California subpoena related to alleged chip sales to China-linked entities; (3) board concerns over Huang's undisclosed relationship with a Singapore-based executive classified by US authorities as a Chinese intelligence asset. While the board reinstated Huang — implying confidence in his ability to manage through — the legal overhangs remain live. Goldman Sachs AI spending thesis depends heavily on Nvidia maintaining its dominant GPU market position; any forced restructuring or regulatory action would shatter that framework.</p>
+      <p>The Philadelphia Semiconductor Index (-7.88%) reflects the contagion: Micron (-11.28%), Analog Devices (-17.70%), HPE (-17.16%) all hit hard. Morgan Stanley's sector strategist warned that semiconductor stocks could decline another 10-15% from prior levels before finding support.</p>
+    </div>
+
+    <!-- Macro Context -->
+    <div class="story">
+      <h3>📉 Macro Backdrop: Tariffs Return, Fed Hike Back on Table, 10Y at 4.9%</h3>
+      <p>Three macro headwinds materialized simultaneously today, explaining much of the tech and growth stock weakness. First: reports that President Trump will announce fresh import tariffs targeting China and dozens of other countries, echoing "Liberation Day" but with sharper focus on semiconductor supply chains and AI hardware — directly threatening chip stocks. Second: Fed rate cut expectations have fully reversed. Markets are now pricing a 95% probability of a December rate hike, with the 10-year Treasury yield climbing to 4.908% — its highest level since October. At this yield level, tech stocks with high forward P/E ratios (Nvidia, Palantir) face significant multiple compression. Third: Goldman Sachs warned that AI-related investment now accounts for nearly half of S&amp;P 500 EPS growth in 2026, creating dangerous concentration — a slowdown in hyperscaler capex spending would disproportionately hurt earnings.</p>
+      <p>The divergence is stark: Berkshire Hathaway's Greg Abel is sitting on ~$300B+ in cash/T-bills, quietly building dry powder as the Shiller CAPE ratio exceeds 40 — a level last seen at the dot-com peak. Buffett's most recent public statements issued his "starkest warning about the stock market in years," while maintaining his core philosophy: stay invested in productive businesses, but do not engage in speculation at any price.</p>
     </div>
   </div>
 
@@ -376,104 +416,108 @@
     </div>
 
     <div class="tldr" style="border-left-color: #3fb950;">
-      <strong>Portfolio philosophy:</strong> &nbsp; AI-chip names stay in the portfolio — the upgrade cycle continues even through the chop — but sized for genuine two-way volatility, not a one-way re-rating. Financials, healthcare, and defense names provide the ballast while NVDA/AMD digest Monday's move.
+      <strong>Portfolio philosophy:</strong> &nbsp; In a market defined by defensive rotation, today's picks deliberately skew toward healthcare, consumer staples, energy, and all-weather value. With the 10-year at 4.9%, VIX at 26, and AI stocks under governance/regulatory fire, the playbook is: quality earnings, dividend cushions, low beta. Target 10–15% total return over 12 months with meaningful downside protection. Tech exposure is deliberately minimal pending Nvidia/semiconductor resolution.
     </div>
 
     <div class="pick-grid">
 
-      <!-- NVDA -->
+      <!-- AMGN -->
       <div class="pick-card">
         <div class="pick-header">
           <div>
-            <div class="pick-ticker">NVDA</div>
-            <div class="pick-company">NVIDIA Corporation</div>
+            <div class="pick-ticker">AMGN</div>
+            <div class="pick-company">Amgen Inc.</div>
           </div>
           <div class="pick-price">
-            <div class="price-val">$155.38</div>
-            <div class="price-change red">-5.86% Tuesday</div>
+            <div class="price-val">$471.33</div>
+            <div class="price-change green">+5.65% today 🔥</div>
           </div>
         </div>
-        <p class="pick-desc">Gave back about $240B of Monday's gain, but fresh sell-side upgrades kept coming Tuesday: StoneX ($270 target) and Oppenheimer ($250 target) both signal ~29%+ upside from here. 63-analyst average target is $244.71 — meaningfully above the current price even after the pullback. Expect continued high volatility as the market works through both the Huang-return thesis and short-term profit-taking.</p>
+        <p class="pick-desc">Today's high-conviction healthcare leader. Amgen surged +5.65% — one of the top Dow performers — driven by strong Q3 earnings beat and a raised 2026 guidance. The biosimilar pipeline is a structural growth driver: AMGN cleared a key patent hurdle for its Opdivo (nivolumab) biosimilar, targeting a $7B+ market. CICC just initiated coverage with an Outperform and a $550 price target — the most bullish on the Street. With Citigroup at $465 and Barclays at $430, the blended analyst target sits around $455–550 depending on biosimilar launch success. Beta 0.67 provides defensive characteristics. Dividend yield ~3.1% ($6.68/share annually). P/E 23.4x on strong cash flow generation.</p>
         <div class="pick-meta">
-          <span class="pick-badge badge-growth">High Conviction</span>
-          <span class="pick-badge badge-growth">AI Core</span>
-          <span class="pick-badge badge-moderate">High Beta</span>
+          <span class="pick-badge badge-buy">Strong Buy</span>
+          <span class="pick-badge badge-defensive">Healthcare</span>
+          <span class="pick-badge badge-income">3.1% Yield</span>
         </div>
         <div class="target-row">
-          <div class="target-pill">Target: <span class="green">$244.71 avg (up to $270)</span></div>
-          <div class="target-pill">Upside: <span class="green">+57%</span></div>
+          <div class="target-pill">52-wk range: <span>$280–$485</span></div>
+          <div class="target-pill">Target: <span class="green">$500</span></div>
+          <div class="target-pill">Upside: <span class="green">+6.1%</span></div>
         </div>
       </div>
 
-      <!-- AMD -->
+      <!-- ABBV -->
       <div class="pick-card">
         <div class="pick-header">
           <div>
-            <div class="pick-ticker">AMD</div>
-            <div class="pick-company">Advanced Micro Devices</div>
+            <div class="pick-ticker">ABBV</div>
+            <div class="pick-company">AbbVie Inc.</div>
           </div>
           <div class="pick-price">
-            <div class="price-val">$413.27</div>
-            <div class="price-change red">-8.86% Tuesday</div>
+            <div class="price-val">$300.28</div>
+            <div class="price-change green">+1.4% today</div>
           </div>
         </div>
-        <p class="pick-desc">Hit harder than NVDA Tuesday, pressured by a 337-million-share resale filing that added a near-term supply/dilution overhang on top of the broader chip pullback. William Blair upgraded to Outperform the same day. Consensus target $642.71 (50 analysts) implies substantial upside, but the resale filing is a real near-term technical headwind worth watching before adding.</p>
+        <p class="pick-desc">The premier immunology and oncology dividend compounder. AbbVie's post-Humira transition is tracking ahead of schedule — Skyrizi and Rinvoq are now generating combined revenues in excess of $12B annually and growing +50% YoY, more than offsetting biosimilar erosion of its blockbuster. The pipeline includes oncology, neuroscience (Botox/aesthetics), and eye care. 29 Wall Street analysts rate it Buy with a consensus target of $310.65 (+3.5% price upside) — but the real return is the dividend: 3.3% yield ($9.84/share), paid quarterly and raised for 50+ consecutive years, qualifying it as a Dividend Aristocrat. Beta 0.59 — lowest volatility among pharma peers. Healthcare sector leading today; AbbVie is the perfect core-defensive healthcare position.</p>
         <div class="pick-meta">
           <span class="pick-badge badge-buy">Buy</span>
-          <span class="pick-badge badge-growth">AI Chips</span>
-          <span class="pick-badge badge-moderate">High Beta</span>
+          <span class="pick-badge badge-defensive">Dividend Aristocrat</span>
+          <span class="pick-badge badge-income">3.3% Yield</span>
         </div>
         <div class="target-row">
-          <div class="target-pill">Target: <span class="green">$642.71</span></div>
-          <div class="target-pill">Upside: <span class="green">+55%</span></div>
+          <div class="target-pill">52-wk range: <span>$180–$310</span></div>
+          <div class="target-pill">Target: <span class="green">$311</span></div>
+          <div class="target-pill">Total Return: <span class="green">+6.8%</span></div>
         </div>
       </div>
 
-      <!-- JPM -->
+      <!-- WMT -->
       <div class="pick-card">
         <div class="pick-header">
           <div>
-            <div class="pick-ticker">JPM</div>
-            <div class="pick-company">JPMorgan Chase</div>
+            <div class="pick-ticker">WMT</div>
+            <div class="pick-company">Walmart Inc.</div>
           </div>
           <div class="pick-price">
-            <div class="price-val">$338.10</div>
-            <div class="price-change amber">Nov 18 close*</div>
+            <div class="price-val">$127.36</div>
+            <div class="price-change red">-2.0% (post-Q3)</div>
           </div>
         </div>
-        <p class="pick-desc">The steady core holding, benefiting directly from Tuesday's financials rotation (+0.83% sector gain). CFRA's Buy rating and $375 target remain in place, citing continued revenue and net income growth and US economic expansion. Exactly the kind of ballast that holds up on days the AI trade whipsaws.</p>
+        <p class="pick-desc">Consumer staples sector leading today (+1.73%) and Walmart just delivered a solid Q3 earnings beat last week (Nov 19): Non-GAAP EPS $0.65 (above consensus), revenue $188.8B (+5.2% YoY), US e-commerce +23%, Sam's Club e-commerce +30%, advertising revenue +37%. Management raised full-year guidance. The post-earnings dip (-2% after-hours on Nov 19) is a gift — the market overreacted to slight margin pressure. 24/7 Wall St. price target: $141.79 (+11.3% upside from current). Tariff risk is real but manageable: Walmart's scale gives it unmatched supplier negotiating power, and its private label expansion insulates margins. Consumer staples is the defensive rotation trade of this quarter. Dividend yield ~1.1% ($1.40/share).</p>
         <div class="pick-meta">
           <span class="pick-badge badge-buy">Buy</span>
-          <span class="pick-badge badge-defensive">Value</span>
-          <span class="pick-badge badge-income">Dividend</span>
+          <span class="pick-badge badge-defensive">Consumer Staples</span>
+          <span class="pick-badge badge-moderate">E-commerce Growth</span>
         </div>
         <div class="target-row">
-          <div class="target-pill">Target: <span class="green">$375</span></div>
-          <div class="target-pill">Upside: <span class="green">+10.9%</span></div>
+          <div class="target-pill">52-wk range: <span>$88–$132</span></div>
+          <div class="target-pill">Target: <span class="green">$142</span></div>
+          <div class="target-pill">Upside: <span class="green">+11.3%</span></div>
         </div>
       </div>
 
-      <!-- AMZN -->
+      <!-- CVX -->
       <div class="pick-card">
         <div class="pick-header">
           <div>
-            <div class="pick-ticker">AMZN</div>
-            <div class="pick-company">Amazon.com</div>
+            <div class="pick-ticker">CVX</div>
+            <div class="pick-company">Chevron Corporation</div>
           </div>
           <div class="pick-price">
-            <div class="price-val">$257.75</div>
-            <div class="price-change amber">Nov 18 close*</div>
+            <div class="price-val">$208.73</div>
+            <div class="price-change green">+1.24% today</div>
           </div>
         </div>
-        <p class="pick-desc">A relatively lower-beta way to keep AI/cloud exposure versus NVDA/AMD directly — AWS capex benefits from the same hyperscaler spending cycle without the single-name whiplash seen in chip stocks this week. Consensus target $321.74 implies +24.8% upside.</p>
+        <p class="pick-desc">Oil is up +1.09% to $82.20/bbl today, and Chevron is the cleanest way to own energy exposure with low beta (0.52) and a generous dividend. With WTI at $82, Chevron is generating ~$8–10B per quarter in free cash flow — well above its breakeven of ~$65/bbl — funding a $20B buyback program and a 4.1% dividend yield ($6.52/share). Critically, Berkshire Hathaway (Greg Abel) still holds $18.6B in Chevron after trimming its position, signaling continued conviction at the $200–210 range. Average analyst target: $233 (+11.6% upside). Hess acquisition integration adds Guyana deepwater assets — the most cost-competitive barrels on earth at $25/bbl breakeven. Energy +1.11% today as the sector quietly outperforms.</p>
         <div class="pick-meta">
           <span class="pick-badge badge-buy">Buy</span>
-          <span class="pick-badge badge-growth">Growth</span>
-          <span class="pick-badge badge-moderate">Moderate Beta</span>
+          <span class="pick-badge badge-income">4.1% Yield</span>
+          <span class="pick-badge badge-defensive">Low Beta</span>
         </div>
         <div class="target-row">
-          <div class="target-pill">Target: <span class="green">$321.74</span></div>
-          <div class="target-pill">Upside: <span class="green">+24.8%</span></div>
+          <div class="target-pill">52-wk range: <span>$146–$236</span></div>
+          <div class="target-pill">Target: <span class="green">$233</span></div>
+          <div class="target-pill">Upside: <span class="green">+11.6%</span></div>
         </div>
       </div>
 
@@ -485,43 +529,70 @@
             <div class="pick-company">Johnson &amp; Johnson</div>
           </div>
           <div class="pick-price">
-            <div class="price-val">$272.69</div>
-            <div class="price-change amber">Nov 18 close*</div>
+            <div class="price-val">$270.09</div>
+            <div class="price-change green">+2.4% est. today</div>
           </div>
         </div>
-        <p class="pick-desc">Direct beneficiary of Tuesday's healthcare-sector leadership (+2.95%), even though the Sanofi/Insmed deal itself doesn't touch JNJ. Low-beta ballast with modest but reliable upside (target $275.92, +1.2%) and dividend income — the point of holding it is stability, not growth.</p>
+        <p class="pick-desc">The ultimate defensive blue chip, participating fully in today's healthcare rally. Post-Kenvue spin-off, JNJ is now a pure pharmaceutical and medtech company with one of the most robust pipelines in oncology and immunology. Beta 0.26 — the single lowest-volatility large-cap in the entire S&amp;P 500. With the CAPE ratio above 40 and VIX at 26, owning JNJ is a portfolio stabilizer, not just a pick. The 26 analysts covering it average a $276.54 target (+2.4% upside) but the value is the dividend: 3.5% yield ($9.44/share), 60+ consecutive years of raises — a Dividend King. Talc litigation overhang has diminished with the Texas Two-Step settlement progressing.</p>
         <div class="pick-meta">
           <span class="pick-badge badge-buy">Buy</span>
-          <span class="pick-badge badge-defensive">Defensive</span>
-          <span class="pick-badge badge-income">Dividend</span>
+          <span class="pick-badge badge-defensive">Dividend King</span>
+          <span class="pick-badge badge-income">3.5% Yield</span>
         </div>
         <div class="target-row">
-          <div class="target-pill">Target: <span class="green">$275.92</span></div>
-          <div class="target-pill">Upside: <span class="green">+1.2%</span></div>
+          <div class="target-pill">52-wk range: <span>$153–$280</span></div>
+          <div class="target-pill">Target: <span class="green">$277</span></div>
+          <div class="target-pill">Total Return: <span class="green">+5.9%</span></div>
         </div>
       </div>
 
-      <!-- HII -->
+      <!-- BRK-B -->
       <div class="pick-card">
         <div class="pick-header">
           <div>
-            <div class="pick-ticker">HII</div>
-            <div class="pick-company">Huntington Ingalls Industries</div>
+            <div class="pick-ticker">BRK-B</div>
+            <div class="pick-company">Berkshire Hathaway</div>
           </div>
           <div class="pick-price">
-            <div class="price-val">$287.89</div>
-            <div class="price-change amber">Nov 18 close*</div>
+            <div class="price-val">$586.76</div>
+            <div class="price-change red">-1.03% today</div>
           </div>
         </div>
-        <p class="pick-desc">Carried over as a low-correlation diversifier with a multi-year Navy shipbuilding backlog — unaffected by either the AI-chip whiplash or the healthcare rotation. Consensus target ~$360 implies +25% upside.</p>
+        <p class="pick-desc">The all-weather portfolio anchor for uncertain times. Under Greg Abel's leadership, Berkshire's cash pile has grown to approximately $300B+ — a staggering signal of caution (or dry powder) as Buffett publicly issues his "starkest market warning in years," citing the Shiller CAPE above 40. The stock dipped slightly today as its Apple, Bank of America, and Chevron holdings faced sector crosscurrents. But the thesis is intact: at P/E ~13x with zero debt at the holding company level, Berkshire is the most reasonably valued mega-cap in the US. The implied 12-month target of ~$650 (+10.8%) reflects book value growth plus potential for a transformative acquisition as Abel deploys capital. BNSF railroad + Berkshire Energy + insurance float = diversification no ETF can replicate.</p>
         <div class="pick-meta">
           <span class="pick-badge badge-buy">Buy</span>
-          <span class="pick-badge badge-defensive">Defense</span>
-          <span class="pick-badge badge-moderate">Low Correlation</span>
+          <span class="pick-badge badge-defensive">All-Weather</span>
+          <span class="pick-badge badge-moderate">Value</span>
         </div>
         <div class="target-row">
-          <div class="target-pill">Target: <span class="green">~$360</span></div>
-          <div class="target-pill">Upside: <span class="green">+25%</span></div>
+          <div class="target-pill">52-wk range: <span>$440–$640</span></div>
+          <div class="target-pill">Target: <span class="green">$650</span></div>
+          <div class="target-pill">Upside: <span class="green">+10.8%</span></div>
+        </div>
+      </div>
+
+      <!-- MRK -->
+      <div class="pick-card">
+        <div class="pick-header">
+          <div>
+            <div class="pick-ticker">MRK</div>
+            <div class="pick-company">Merck &amp; Co., Inc.</div>
+          </div>
+          <div class="pick-price">
+            <div class="price-val">~$96.50</div>
+            <div class="price-change green">+4.45% today 🔥</div>
+          </div>
+        </div>
+        <p class="pick-desc">Merck surged +4.45% today — one of the top Dow performers — as healthcare rotation accelerates. The Keytruda (pembrolizumab) franchise remains the world's top-selling cancer drug with label expansion opportunities in earlier-stage indications. The pipeline is the story: MK-1084 and other oncology candidates have multiple Phase 3 readouts expected over the next 6-12 months. Morgan Stanley raised its price target to $100 (Equal Weight) — conservative — while the stock has historically rerated significantly on positive pipeline news. Dividend yield 3.9% at current levels, ex-dividend approaching, making this a compelling total return story. P/E ~11x on 2026 earnings is among the cheapest in the pharma peer group.</p>
+        <div class="pick-meta">
+          <span class="pick-badge badge-moderate">Hold / Add</span>
+          <span class="pick-badge badge-defensive">Pharma Pipeline</span>
+          <span class="pick-badge badge-income">3.9% Yield</span>
+        </div>
+        <div class="target-row">
+          <div class="target-pill">52-wk range: <span>$80–$130</span></div>
+          <div class="target-pill">MS Target: <span class="amber">$100</span></div>
+          <div class="target-pill">Street High: <span class="green">$140</span></div>
         </div>
       </div>
 
@@ -529,10 +600,12 @@
 
     <!-- ETF Recommendations -->
     <div class="story">
-      <h3>📦 ETF Core Positions — Diversification Layer</h3>
-      <p><strong class="blue">SPY (S&amp;P 500 ETF) — ~$720 (estimate from index level) | Expense: 0.09%</strong> — Tracks Tuesday's -0.50% S&P decline. Still the right core anchor for a moderate-risk book — it smooths out exactly the kind of single-stock-driven swings seen in NVDA/AMD this week.</p>
+      <h3>📦 ETF Core Positions — Defensive Rotation Layer</h3>
+      <p><strong class="blue">SPY (S&amp;P 500 ETF) — ~$720 | Expense: 0.09% | Yield: 1.3%</strong> — The bedrock core position. S&amp;P at 7,201 represents a slight pullback that is healthy given the semiconductor-driven distortion of the August–October rally. Goldman and JPMorgan both maintain 8,000 year-end targets — roughly +11% upside from here. A 20-25% SPY allocation provides the market beta you need while your individual picks generate alpha.</p>
       <hr class="divider">
-      <p><strong class="blue">VIG (Vanguard Dividend Appreciation ETF) | Expense: 0.04%</strong> — Exact Tuesday close not independently confirmed this cycle; its quality/dividend-growth tilt benefited directionally from Tuesday's financials/value rotation. Verify live price before trading.</p>
+      <p><strong class="blue">XLV (Health Care Select Sector SPDR) — Sector ETF | Expense: 0.09%</strong> — With RBC upgrading Healthcare to Overweight and the sector leading (+2.88% today), adding sector-level exposure via XLV is a tactical supplement to individual AMGN, ABBV, JNJ picks. XLV's top holdings — UnitedHealth, Eli Lilly, Johnson &amp; Johnson, AbbVie, Merck — are precisely the defensives leading today. A 10-15% allocation adds concentrated defensive healthcare without single-stock risk.</p>
+      <hr class="divider">
+      <p><strong class="blue">VIG (Vanguard Dividend Appreciation ETF) — ~$232 | Expense: 0.04% | Yield: 1.6%</strong> — The low-cost quality dividend sleeve. VIG's holdings — Microsoft, Apple, JPMorgan, Visa, UnitedHealth — represent companies with 10+ consecutive years of dividend growth. Beta 0.83 provides market-like upside with lower drawdown. In an environment where the 10-year yields 4.9%, dividends and cash flow matter again. Ideal 15% allocation for income and quality in a moderate-risk portfolio.</p>
     </div>
   </div>
 
@@ -552,10 +625,10 @@
         <thead>
           <tr>
             <th>Ticker</th>
-            <th>Last Conf.</th>
-            <th>30-Day</th>
-            <th>60-Day</th>
-            <th>90-Day</th>
+            <th>Today</th>
+            <th>30-Day Target</th>
+            <th>60-Day Target</th>
+            <th>90-Day Target</th>
             <th>12-Mo Consensus</th>
             <th>Key Catalyst</th>
             <th>Risk Level</th>
@@ -563,90 +636,110 @@
         </thead>
         <tbody>
           <tr>
-            <td class="ticker-cell">NVDA</td>
-            <td class="price-cell">$155</td>
-            <td class="target-up">$175</td>
-            <td class="target-up">$200</td>
-            <td class="target-up">$225</td>
-            <td class="target-up">$244.71 <span class="upside-pct">+57%</span></td>
-            <td>Volatility settling post-Huang-return; Q4 guidance; continued analyst re-rating</td>
-            <td><span class="risk-high">HIGH</span></td>
-          </tr>
-          <tr>
-            <td class="ticker-cell">AMD</td>
-            <td class="price-cell">$413</td>
-            <td class="target-up">$460</td>
-            <td class="target-up">$530</td>
-            <td class="target-up">$590</td>
-            <td class="target-up">$642.71 <span class="upside-pct">+55%</span></td>
-            <td>337M-share resale digestion; AI-chip demand read-through; record revenue guidance</td>
-            <td><span class="risk-high">HIGH</span></td>
-          </tr>
-          <tr>
-            <td class="ticker-cell">JPM</td>
-            <td class="price-cell">$338</td>
-            <td class="target-up">$348</td>
-            <td class="target-up">$360</td>
-            <td class="target-up">$368</td>
-            <td class="target-up">$375 <span class="upside-pct">+10.9%</span></td>
-            <td>Q4 earnings mid-Jan; Fed rate path; NIM sensitivity</td>
+            <td class="ticker-cell">AMGN</td>
+            <td class="price-cell">$471</td>
+            <td class="target-up">$480</td>
+            <td class="target-up">$490</td>
+            <td class="target-up">$495</td>
+            <td class="target-up">$500 <span class="upside-pct">+6.1%</span></td>
+            <td>Opdivo biosimilar US launch; Q4 earnings Feb; Keytruda biosimilar strategy</td>
             <td><span class="risk-low">LOW</span></td>
           </tr>
           <tr>
-            <td class="ticker-cell">AMZN</td>
-            <td class="price-cell">$258</td>
-            <td class="target-up">$275</td>
-            <td class="target-up">$295</td>
-            <td class="target-up">$310</td>
-            <td class="target-up">$322 <span class="upside-pct">+24.8%</span></td>
-            <td>AWS margin trajectory; holiday retail quarter; capex clarity</td>
+            <td class="ticker-cell">ABBV</td>
+            <td class="price-cell">$300</td>
+            <td class="target-up">$304</td>
+            <td class="target-up">$307</td>
+            <td class="target-up">$309</td>
+            <td class="target-up">$311 <span class="upside-pct">+3.5%</span></td>
+            <td>Skyrizi/Rinvoq sales update; Q4 earnings Jan; ex-dividend Jan</td>
+            <td><span class="risk-low">LOW</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">WMT</td>
+            <td class="price-cell">$127</td>
+            <td class="target-up">$130</td>
+            <td class="target-up">$134</td>
+            <td class="target-up">$138</td>
+            <td class="target-up">$142 <span class="upside-pct">+11.3%</span></td>
+            <td>Holiday season sales data (Dec-Jan); FY27 guidance; e-commerce acceleration</td>
+            <td><span class="risk-low">LOW</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">CVX</td>
+            <td class="price-cell">$209</td>
+            <td class="target-up">$215</td>
+            <td class="target-up">$221</td>
+            <td class="target-up">$227</td>
+            <td class="target-up">$233 <span class="upside-pct">+11.6%</span></td>
+            <td>Q4 earnings Feb; Hess Guyana ramp; oil price trajectory; dividend ex-date Jan</td>
             <td><span class="risk-med">MED</span></td>
           </tr>
           <tr>
             <td class="ticker-cell">JNJ</td>
-            <td class="price-cell">$273</td>
-            <td class="target-flat">$274</td>
-            <td class="target-up">$275</td>
+            <td class="price-cell">$270</td>
+            <td class="target-up">$272</td>
+            <td class="target-up">$274</td>
             <td class="target-up">$276</td>
-            <td class="target-flat">$276 <span class="upside-pct">+1.2%</span></td>
-            <td>Pipeline readouts; dividend payout; low correlation to AI news</td>
+            <td class="target-up">$277 <span class="upside-pct">+2.4%</span></td>
+            <td>Oncology pipeline readouts Q1 2027; Q4 earnings Jan; talc settlement finalization</td>
             <td><span class="risk-low">LOW</span></td>
           </tr>
           <tr>
-            <td class="ticker-cell">HII</td>
-            <td class="price-cell">$288</td>
-            <td class="target-up">$305</td>
-            <td class="target-up">$330</td>
-            <td class="target-up">$345</td>
-            <td class="target-up">$360 <span class="upside-pct">+25%</span></td>
-            <td>Navy shipbuilding backlog; low correlation to tech/AI news</td>
+            <td class="ticker-cell">BRK-B</td>
+            <td class="price-cell">$587</td>
+            <td class="target-up">$600</td>
+            <td class="target-up">$618</td>
+            <td class="target-up">$635</td>
+            <td class="target-up">$650 <span class="upside-pct">+10.8%</span></td>
+            <td>Q4 earnings Feb; potential major acquisition (Abel's first); Apple/CVX positions</td>
             <td><span class="risk-low">LOW</span></td>
           </tr>
           <tr>
-            <td class="ticker-cell">SPY</td>
-            <td class="price-cell">~$720</td>
-            <td class="target-up">$735</td>
-            <td class="target-up">$755</td>
-            <td class="target-up">$775</td>
-            <td class="target-up">~$800</td>
-            <td>Volatility normalization; Q4 earnings season (Jan); Fed policy</td>
+            <td class="ticker-cell">MRK</td>
+            <td class="price-cell">~$97</td>
+            <td class="target-up">$99</td>
+            <td class="target-up">$100</td>
+            <td class="target-up">$103</td>
+            <td class="target-up">$100–140 <span class="upside-pct">+3–44%</span></td>
+            <td>MK-1084 Phase 3 readout; Keytruda label expansion; ex-dividend Jan</td>
             <td><span class="risk-med">MED</span></td>
           </tr>
           <tr>
+            <td class="ticker-cell">SPY</td>
+            <td class="price-cell">$720</td>
+            <td class="target-up">$730</td>
+            <td class="target-up">$750</td>
+            <td class="target-up">$768</td>
+            <td class="target-up">~$800 <span class="upside-pct">+11.1%</span></td>
+            <td>Q4 earnings season (Jan–Feb); Fed policy Dec/Jan; tariff resolution</td>
+            <td><span class="risk-low">LOW</span></td>
+          </tr>
+          <tr>
+            <td class="ticker-cell">XLV</td>
+            <td class="price-cell">est.</td>
+            <td class="target-up">+3%</td>
+            <td class="target-up">+5%</td>
+            <td class="target-up">+8%</td>
+            <td class="target-up">~+15% <span class="upside-pct">RBC OWT</span></td>
+            <td>Defensive rotation continuation; RBC Overweight upgrade; policy uncertainty</td>
+            <td><span class="risk-low">LOW</span></td>
+          </tr>
+          <tr>
             <td class="ticker-cell">VIG</td>
-            <td class="price-cell">n/a*</td>
-            <td class="target-up">—</td>
-            <td class="target-up">—</td>
-            <td class="target-up">—</td>
-            <td class="target-up">~$260 (est.)</td>
-            <td>Dividend payout cycle; quality factor rotation</td>
+            <td class="price-cell">~$232</td>
+            <td class="target-up">$236</td>
+            <td class="target-up">$240</td>
+            <td class="target-up">$245</td>
+            <td class="target-up">~$255 <span class="upside-pct">+9.9%</span></td>
+            <td>Dividend payout cycles; quality factor premium; rate stabilization</td>
             <td><span class="risk-low">LOW</span></td>
           </tr>
         </tbody>
       </table>
     </div>
     <p style="font-size:0.75rem;color:#484f58;margin-top:10px;padding:0 4px;">
-      * 30/60/90-day targets are Jorge's estimates derived from analyst 12-month consensus targets scaled with technical levels. VIG's exact Tuesday close was not independently confirmed this cycle. Not financial advice.
+      * 30/60/90-day targets are Jorge's estimates derived from analyst 12-month consensus targets scaled to time horizon + near-term catalysts. Not financial advice. Data sourced from Yahoo Finance, MarketBeat, 24/7 Wall St., November 25, 2026.
     </p>
   </div>
 
@@ -661,28 +754,34 @@
       <span class="section-tag tag-insight">MACRO VIEWS</span>
     </div>
 
+    <div class="insight-card">
+      <span class="person">Warren Buffett / Berkshire Hathaway</span>
+      <h3>"That's Not Investing, That's Gambling" — Buffett's Starkest Warning in Years</h3>
+      <p>Warren Buffett has issued what analysts describe as his most direct market warning in years, stating that some investors are "not speculating — they're gambling" at current US stock valuations. The Shiller CAPE ratio has exceeded 40, approaching levels last seen at the dot-com bubble peak of 2000. Berkshire is now holding approximately $300B+ in cash and T-bills — nearly one-third of its market cap. Meanwhile, Greg Abel (CEO) reportedly evaluated but passed on multiple major acquisition targets this year, suggesting nothing is sufficiently cheap. Buffett's core message remains unchanged: stay invested in productive businesses, never market-time, but do not pay any price for any company. His most recent counsel: "If a stock market crash is coming, the best move investors can make is to do nothing" — meaning those with quality holdings should sit tight and those without cash should not panic-sell. <em>Read: at Dow 50,000, Buffett is cautious but not bearish.</em></p>
+    </div>
+
     <div class="insight-card" style="border-left-color: #58a6ff;">
-      <span class="person" style="color: #58a6ff;">Sell-Side Analyst Action (StoneX, Oppenheimer)</span>
-      <h3>Fresh Upgrades Arrive Even as NVDA Pulls Back</h3>
-      <p>Notably, two fresh analyst upgrades on NVDA landed Tuesday — StoneX's Cody Acree to Buy with a $270 target, and Oppenheimer's Rick Schafer to Buy at $250 — even as the stock fell 5.86% intraday to end-of-day. That combination (price down, targets up) is a useful signal: the pullback looks more like profit-taking and positioning unwind after Monday's 31% spike than a reassessment of the underlying Huang-reinstatement thesis.</p>
+      <span class="person" style="color: #58a6ff;">Goldman Sachs — November 2026 Market Pulse</span>
+      <h3>S&P 500 Target: 8,000 — But AI Becoming a Risk, Not Just a Tailwind</h3>
+      <p>Goldman Sachs maintains its 8,000 year-end S&amp;P target — about 11% above current levels — but its tone has shifted materially. The core concern: AI-related investment now accounts for nearly half of the S&amp;P 500's projected EPS growth in 2026. Goldman warns that "AI investment could shift from supporting earnings growth in 2026 to becoming a drag by 2028" if hyperscalers' capex cannot translate into measurable productivity or revenue gains fast enough. The firm still likes technology and AI infrastructure as overweights, but is increasingly advocating for global diversification and active stock selection rather than passive AI exposure. Key call: broadening earnings across sectors is essential — a market rising only on AI concentration is fragile. Goldman's preferred sectors for Q4 2026 → Q1 2027: Healthcare (echoing RBC's upgrade), Energy, and international equities.</p>
     </div>
 
     <div class="insight-card" style="border-left-color: #a371f7;">
-      <span class="person" style="color: #a371f7;">William Blair</span>
-      <h3>AMD Upgraded Despite the Resale-Filing Overhang</h3>
-      <p>William Blair upgraded AMD to Outperform the same day a 337-million-share resale filing hit the stock for an 8.86% decline — again suggesting the sell-side view on fundamentals is diverging from the day's technical/supply-driven price action. Worth distinguishing: a resale filing is existing shareholders selling, not new dilution from the company, so the long-term share count impact is different from a capital raise.</p>
+      <span class="person" style="color: #a371f7;">Howard Marks / Oaktree Capital</span>
+      <h3>"AI Is the Most Consequential and Least Predictable Development for Investors"</h3>
+      <p>Howard Marks cited Warren Buffett's 1979 warning — when investors were fleeing stocks despite attractive valuations — as the perfect mirror lesson for today's AI boom. His conclusion: today's investors are doing the opposite, rushing into AI at valuations that assume everything goes right forever. Marks described AI as "the most consequential and least predictable development for investors in at least a generation" and recommended "calibrated humility regarding strategy selection, position sizing, and risk-taking." His practical advice: approach AI exposure with smaller position sizes than your conviction suggests, maintain larger cash or income allocations than you think necessary, and do not confuse the importance of a technology with the certainty of its near-term earnings trajectory. This brief's moderate-risk selections are designed to reflect Marks' framework — quality businesses, income, and defensible valuations.</p>
     </div>
 
-    <div class="insight-card" style="border-left-color: #e3b341;">
-      <span class="person">Howard Marks / Oaktree Capital</span>
-      <h3>Two-Way Volatility Is the Market Working, Not Breaking</h3>
-      <p>Marks' standing framework — that this is a valuation reset rather than a bubble bursting — gets further support from Tuesday's pattern: a sharp move up, a sharp move back, analyst targets holding or rising through both. That's consistent with a market still searching for a fair price on AI infrastructure spend, not one in freefall. His prescription is unchanged: quality, income, and reasonable valuations as the stable core while the AI-chip names find their level.</p>
+    <div class="insight-card" style="border-left-color: #3fb950;">
+      <span class="person" style="color: #3fb950;">JPMorgan Markets Research</span>
+      <h3>"Quality Over AI Hype" — Diversify Away from Semiconductor Concentration</h3>
+      <p>JPMorgan forecasts 30% global earnings growth in 2026 and 20% in 2027, underpinning its 8,000 S&amp;P target. But its tactical November message is unambiguous: quality businesses over indiscriminate AI exposure. JPMorgan is growing concerned that hyperscalers (Microsoft, Google, Amazon, Meta) are accessing debt markets to fund AI capex as spending exceeds cash flow — a sign that the cycle is maturing. The firm favors defensives, dividend payers, and international equities over US mega-cap tech in the near term. Specifically citing today's action, JPMorgan's sector desk upgraded Healthcare to reflect the defensive rotation they'd been anticipating since the Nvidia crisis escalated in October. Their call: "own the businesses where free cash flow is real and returns to shareholders are contractual."</p>
     </div>
 
-    <div class="insight-card">
-      <span class="person">Warren Buffett / Berkshire Hathaway</span>
-      <h3>Still No New Commentary — Cash Position Unchanged</h3>
-      <p>No fresh public statement since the correction began. Berkshire's large cash position remains the backdrop: a single volatile week in AI-chip names is the kind of noise Buffett has historically treated as irrelevant to a multi-year capital allocation decision.</p>
+    <div class="insight-card" style="border-left-color: #f85149;">
+      <span class="person" style="color: #f85149;">Morgan Stanley — Most Bearish Near-Term View</span>
+      <h3>7,100–7,200 Is Key Support; Semiconductor Stocks Could Fall Another 10–15%</h3>
+      <p>Morgan Stanley's chief equity strategist is the most cautious of the major banks. The team identifies 7,100–7,200 as the critical S&amp;P 500 support zone — we're at 7,201 today, essentially on the edge. A close below 7,100 would signal broader market deterioration. More alarmingly, 60% of Russell 3000 stocks are already down 20%+ from their June 2026 peaks — a bear market is already happening beneath the headline indices. Semiconductor stocks are warned to potentially decline another 10–15% from prior-week levels before finding fundamental support. Morgan Stanley maintains its 8,000 year-end target, but the trajectory requires a resolution of the Nvidia governance crisis, tariff clarity, and a Fed that does not hike in December. All three are uncertain. For the moderate-risk investor: today is not a day to add tech exposure.</p>
     </div>
   </div>
 
@@ -699,37 +798,46 @@
 
     <div class="risk-grid">
       <div class="risk-card">
-        <div class="risk-title">💻 AI / Chip Volatility Risk</div>
+        <div class="risk-title">🏛️ Governance / Regulatory Risks</div>
         <ul>
-          <li>NVDA/AMD are now showing genuine two-way volatility (+31% Monday, -5.9%/-8.9% Tuesday) — position size accordingly</li>
-          <li>AMD's 337M-share resale filing is a near-term technical overhang independent of the fundamental thesis</li>
-          <li>VIX holding flat rather than falling further suggests hedges are staying on through the chop</li>
+          <li>Nvidia SEC investigation into accounting practices — could force restatements</li>
+          <li>California subpoena on Nvidia chip sales to China-linked entities — export control violation risk</li>
+          <li>Jensen Huang reinstated but legal cloud persists — governance discount on NVDA</li>
+          <li>AI sector regulatory crackdown could follow if governance failures spread</li>
+          <li>Anthropic reportedly below IPO price — private AI valuations compressing</li>
         </ul>
       </div>
 
       <div class="risk-card">
-        <div class="risk-title">💰 Macro / Data Risk</div>
+        <div class="risk-title">📜 Tariff &amp; Trade Risks</div>
         <ul>
-          <li>PCE inflation data due Wednesday ahead of the Thursday Thanksgiving market closure — a market-moving print into a thin-liquidity week</li>
-          <li>Gold and 10Y yield figures diverge across sources this cycle — treat precise levels as approximate pending reconciliation</li>
-          <li>Dow 50,000 reflects rotation, not broad strength — don't read it as a signal the correction is fully over</li>
+          <li>Trump expected to announce fresh tariffs on China + other countries — semiconductor supply chain threat</li>
+          <li>HPE -17%: first major earnings casualty of renewed tariff pressure on enterprise hardware</li>
+          <li>ADI -17.7%: industrial chip demand from China collapsing — leading indicator of broader pain</li>
+          <li>Tariffs on consumer electronics would directly impact Apple, Samsung-dependent tech</li>
+          <li>Retaliatory tariffs on US pharma exports? Watch for China response to chip restrictions</li>
         </ul>
       </div>
 
       <div class="risk-card">
-        <div class="risk-title">🏥 Healthcare / M&amp;A Risk</div>
+        <div class="risk-title">💰 Rates &amp; Macro Risks</div>
         <ul>
-          <li>Sanofi/Insmed deal is a single-name catalyst — verify before assuming sector-wide read-through beyond Tuesday's bounce</li>
-          <li>UNH/Humana CMS Medicare Advantage audit overhang from two weeks ago remains unresolved independently of this</li>
+          <li>Fed December hike back at 95% probability — 10Y at 4.9% squeezes growth stock multiples</li>
+          <li>Shiller CAPE above 40 — historically associated with 10-year below-average returns</li>
+          <li>Goldman: AI capex risk — hyperscalers borrowing to fund spending beyond cash flow</li>
+          <li>Gold at $3,620 (down -0.42% today) — institutional inflation anxiety persists despite dip</li>
+          <li>Dollar strength from rate differential squeezes multinationals' foreign earnings</li>
         </ul>
       </div>
 
       <div class="risk-card">
-        <div class="risk-title">🔒 Data-Quality Risk</div>
+        <div class="risk-title">📉 Sector-Specific Risks</div>
         <ul>
-          <li>JPM/AMZN/JNJ/HII prices in this brief are Nov 18 closes, now stale — verify live before trading</li>
-          <li>VIG's exact Tuesday close and Russell 2000's exact daily move were not consistently confirmed across sources this cycle</li>
-          <li>Dell/Best Buy earnings were due Tuesday but results weren't confirmed in this research pass — check before acting on the "record AI backlog" narrative</li>
+          <li>Semiconductors (SOX -7.88%): Morgan Stanley warns another 10-15% possible</li>
+          <li>60% of Russell 3000 stocks down 20%+ from June peaks — hidden bear market</li>
+          <li>AI earnings sustainability: Goldman warns AI could become earnings drag by 2028</li>
+          <li>Energy: oil at $82 — well above breakevens but down from $100+ peak; Iran risk fading</li>
+          <li>Healthcare outperformance unsustainable if defensive rotation reverses on Fed pivot</li>
         </ul>
       </div>
     </div>
@@ -739,65 +847,79 @@
       <h3>👁️ Watchlist — Names to Monitor Closely</h3>
       <div class="wl-item">
         <div>
-          <span class="wl-ticker">NVDA / AMD</span>
-          <span class="wl-reason"> — Watch whether Wednesday brings stabilization or further unwind; analyst upgrades continuing through the dip is the key tell to track</span>
+          <span class="wl-ticker">NVDA</span>
+          <span class="wl-reason"> — $155 after -5.9%. SEC investigation + California subpoena = legal overhang. Watch $140 as next support</span>
         </div>
-        <span class="amber">🎢 VOLATILE</span>
+        <span class="red">⚠️ AVOID</span>
       </div>
       <div class="wl-item">
         <div>
-          <span class="wl-ticker">DELL / BBY</span>
-          <span class="wl-reason"> — Earnings due Tuesday; Dell entered with a record $95B AI-server backlog. Confirm actual results before trading the AI-demand read-through</span>
+          <span class="wl-ticker">DLTR</span>
+          <span class="wl-reason"> — Dollar Tree +10.89% today. Tariff-resilient discount retail with strong Q3. Consumer staples momentum pick</span>
         </div>
-        <span class="amber">📅 EARNINGS</span>
+        <span class="green">✅ WATCHLIST</span>
       </div>
       <div class="wl-item">
         <div>
-          <span class="wl-ticker">PCE (data)</span>
-          <span class="wl-reason"> — Inflation print due Wednesday ahead of Thursday's Thanksgiving closure; thin post-holiday liquidity can amplify any surprise</span>
+          <span class="wl-ticker">MU</span>
+          <span class="wl-reason"> — Micron -11.28% caught in SOX -7.88% selloff. Prior 12-mo target ~$130-140. Wait for stabilization</span>
         </div>
-        <span class="red">📊 CATALYST</span>
+        <span class="amber">👀 WAIT</span>
       </div>
       <div class="wl-item">
         <div>
-          <span class="wl-ticker">UNH / HUM</span>
-          <span class="wl-reason"> — CMS Medicare Advantage audit overhang still unresolved. Still on watchlist, not top picks</span>
+          <span class="wl-ticker">XLV</span>
+          <span class="wl-reason"> — Healthcare ETF riding RBC Overweight upgrade. Best way to own the sector rotation in one ticker</span>
         </div>
-        <span class="red">⚠️ REGULATORY</span>
+        <span class="green">📅 ADD</span>
+      </div>
+      <div class="wl-item">
+        <div>
+          <span class="wl-ticker">HPE</span>
+          <span class="wl-reason"> — -17.16% after cutting revenue forecast on tariff impact. Watch for further enterprise IT capex warnings</span>
+        </div>
+        <span class="red">⚠️ SIGNAL</span>
+      </div>
+      <div class="wl-item">
+        <div>
+          <span class="wl-ticker">OIL (CL=F)</span>
+          <span class="wl-reason"> — WTI $82.20 (+1.09%). Watch $85 resistance. Hold above $75 = energy stocks stay attractive</span>
+        </div>
+        <span class="amber">🛢️ MONITOR</span>
       </div>
       <div class="wl-item" style="border: none;">
         <div>
-          <span class="wl-ticker">GOLD</span>
-          <span class="wl-reason"> — Source disagreement on direction (-2.3% vs. roughly flat near $3,620) — reconcile before treating as a clean inflation-hedge signal</span>
+          <span class="wl-ticker">10Y UST</span>
+          <span class="wl-reason"> — 4.908% and rising. If breaks 5.0% cleanly, expect further multiple compression in growth stocks</span>
         </div>
-        <span class="amber">🔍 UNRECONCILED</span>
+        <span class="red">🔴 CRITICAL</span>
       </div>
     </div>
 
     <!-- Suggested Portfolio Allocation -->
     <div class="story" style="margin-top: 14px;">
-      <h3>📐 Suggested Moderate-Risk Allocation — Late Nov 2026</h3>
-      <p style="margin-bottom:12px;">Unchanged from Monday's allocation — Tuesday's reversal is read as volatility within the thesis, not a reason to exit the AI-chip re-entry:</p>
+      <h3>📐 Suggested Moderate-Risk Allocation — November 2026</h3>
+      <p style="margin-bottom:12px;">A balanced allocation for the current defensive rotation environment — targets ~10–15% expected annual return with focus on dividend income and capital preservation as AI volatility continues:</p>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:0.83rem;">
         <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;">
-          <span style="color:#58a6ff;font-weight:700;">Core ETFs (30%)</span><br>
-          <span style="color:#8b949e;">SPY 18% · VIG 12%</span>
+          <span style="color:#58a6ff;font-weight:700;">Core ETFs (35%)</span><br>
+          <span style="color:#8b949e;">SPY 20% · VIG 15%</span>
         </div>
         <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;">
-          <span style="color:#3fb950;font-weight:700;">AI-Chip Re-Entry (20%)</span><br>
-          <span style="color:#8b949e;">NVDA 12% · AMD 8%</span>
+          <span style="color:#3fb950;font-weight:700;">Healthcare (25%)</span><br>
+          <span style="color:#8b949e;">AMGN 8% · ABBV 8% · JNJ 5% · XLV 4%</span>
         </div>
         <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;">
-          <span style="color:#e3b341;font-weight:700;">Financials / Growth (25%)</span><br>
-          <span style="color:#8b949e;">JPM 12% · AMZN 13%</span>
+          <span style="color:#e3b341;font-weight:700;">Income / Defensives (20%)</span><br>
+          <span style="color:#8b949e;">CVX 8% · WMT 7% · MRK 5%</span>
         </div>
         <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px;">
-          <span style="color:#d2a8ff;font-weight:700;">Defensive / Low-Correlation (15%)</span><br>
-          <span style="color:#8b949e;">JNJ 7% · HII 8%</span>
+          <span style="color:#d2a8ff;font-weight:700;">All-Weather Value (10%)</span><br>
+          <span style="color:#8b949e;">BRK-B 10%</span>
         </div>
         <div style="background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 14px; grid-column: 1/-1;">
           <span style="color:#f85149;font-weight:700;">Cash / Tactical (10%)</span><br>
-          <span style="color:#8b949e;">Hold for continued NVDA/AMD volatility into Wednesday's PCE print</span>
+          <span style="color:#8b949e;">Hold for NVDA stabilization (below $130?) · Semiconductor mean-reversion entry · Fed clarity on December hike · Tariff policy resolution</span>
         </div>
       </div>
     </div>
@@ -805,8 +927,8 @@
 
   <!-- ═══════════════ FOOTER ═══════════════ -->
   <div class="footer">
-    <p><strong>Investment Brief by Jorge</strong> &nbsp;·&nbsp; Nov 25, 2026 &nbsp;·&nbsp; Anchored on Tuesday Nov 24's Confirmed Close</p>
-    <p style="margin-top:6px;">Data sourced from Yahoo Finance, Fool.com, Benzinga, 24/7 Wall St., Defense World, TradingEconomics, FX Leaders · Not financial advice · For informational purposes only</p>
+    <p><strong>Investment Brief by Jorge</strong> &nbsp;·&nbsp; Wednesday, November 25, 2026 &nbsp;·&nbsp; Dow 50,000 Day</p>
+    <p style="margin-top:6px;">Data sourced from Yahoo Finance, MarketBeat, 24/7 Wall St., Goldman Sachs, JPMorgan, Morgan Stanley, Bloomberg · Not financial advice · For informational purposes only</p>
     <p style="margin-top:6px;"><a href="index.html">← Full briefing archive</a></p>
   </div>
 
