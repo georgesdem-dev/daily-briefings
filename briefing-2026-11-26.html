@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Thursday, November 26, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 12px;
+    }
+    .header h1 { font-size: 2.1rem; font-weight: 800; color: #f0f6fc; margin-bottom: 8px; }
+    .header .date { font-size: 1rem; color: #8b949e; }
+
+    /* Section */
+    .section {
+      margin-bottom: 52px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid #21262d;
+    }
+    .section-icon { font-size: 2rem; }
+    .section-title { font-size: 1.35rem; font-weight: 800; color: #f0f6fc; }
+    .section-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    /* Story cards */
+    .story {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .story:hover { border-color: #444c56; }
+    .story-headline {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 8px; line-height: 1.4;
+    }
+    .story-body {
+      font-size: 0.88rem; color: #c9d1d9; line-height: 1.65;
+      margin-bottom: 10px;
+    }
+    .story-meta {
+      display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.5px;
+      text-transform: uppercase; padding: 2px 8px;
+      border-radius: 20px; background: #21262d; color: #8b949e;
+    }
+    .tag.red { background: #3d1a1a; color: #f78166; }
+    .tag.orange { background: #3d2b1a; color: #e3b341; }
+    .tag.blue { background: #1a2a3d; color: #58a6ff; }
+    .tag.green { background: #1a3d2b; color: #3fb950; }
+    .tag.purple { background: #2d1a3d; color: #c084fc; }
+    .source-link { font-size: 0.8rem; color: #58a6ff; }
+
+    /* Audience sections */
+    .audience-block {
+      background: #0d1117;
+      border: 1px solid #21262d;
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin-top: 10px;
+    }
+    .audience-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; margin-bottom: 8px;
+    }
+    .audience-label.ciso { color: #f78166; }
+    .audience-label.partner { color: #3fb950; }
+    .audience-label.exec { color: #e3b341; }
+    .audience-block p { font-size: 0.87rem; color: #c9d1d9; }
+
+    /* Status badge */
+    .status-row {
+      display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;
+    }
+    .status-badge {
+      display: flex; align-items: center; gap: 7px;
+      background: #161b22; border: 1px solid #30363d;
+      border-radius: 20px; padding: 6px 14px;
+      font-size: 0.82rem; color: #c9d1d9;
+    }
+    .status-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+    }
+    .dot-red { background: #f85149; box-shadow: 0 0 6px #f8514966; }
+    .dot-orange { background: #e3b341; box-shadow: 0 0 6px #e3b34166; }
+    .dot-green { background: #3fb950; box-shadow: 0 0 6px #3fb95066; }
+
+    /* Divider */
+    .divider { border: none; border-top: 1px solid #21262d; margin: 20px 0; }
+
+    /* Footer */
+    .footer {
+      text-align: center; margin-top: 60px; padding-top: 20px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .footer strong { color: #6e7681; }
+    .back-link {
+      display: inline-block; margin-bottom: 40px;
+      font-size: 0.85rem; color: #58a6ff;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <a class="back-link" href="index.html">← All Briefings</a>
+
+  <div class="header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="date">Thursday, November 26, 2026 &nbsp;·&nbsp; 6:00 PM</div>
+  </div>
+
+  <!-- ===================== IRAN WAR ===================== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">⚔️</div>
+      <div>
+        <div class="section-title">Iran War — Day ~271</div>
+        <div class="section-subtitle">Battlefield · Diplomacy · Hormuz · Energy · Geopolitics</div>
+      </div>
+    </div>
+
+    <div class="status-row">
+      <div class="status-badge"><div class="status-dot dot-red"></div> Active Conflict</div>
+      <div class="status-badge"><div class="status-dot dot-orange"></div> Hormuz: Contested</div>
+      <div class="status-badge"><div class="status-dot dot-orange"></div> Diplomacy: Stalled</div>
+      <div class="status-badge"><div class="status-dot dot-red"></div> US Naval Blockade: Active</div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">Iran Vows to Use "All Available Means" Against US Naval Blockade</div>
+      <div class="story-body">
+        Iran issued its strongest statement yet against the ongoing US naval blockade of its Persian Gulf and Gulf of Oman ports, declaring it will deploy "all available means" to counter the cordon. Tehran is conditioning any ceasefire discussion on three red lines: (1) immediate halt to all hostilities, (2) full lifting of the naval blockade, and (3) removal of sanctions. Officials stress Hormuz could reopen "within two days" if Washington complies — but the US has shown no sign of retreat.
+      </div>
+      <div class="story-meta">
+        <span class="tag red">Escalation Risk</span>
+        <span class="tag orange">Hormuz</span>
+        <a class="source-link" href="https://www.aljazeera.com/news/2026/11/23/iran-says-it-will-use-all-available-means-to-counter-us-blockade" target="_blank">Al Jazeera →</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">Ras Tanura Oil Refinery Hit — Smoke Visible from Satellite</div>
+      <div class="story-body">
+        Satellite imagery from November 25 shows a large smoke cloud over Saudi Arabia's Ras Tanura refinery — one of the world's largest crude oil processing facilities. While attribution remains unclear, the strike underscores how the conflict is bleeding into Gulf energy infrastructure. Oil prices remain surprisingly subdued, reflecting market calculations that strategic reserves and alternate routing are containing supply shock.
+      </div>
+      <div class="story-meta">
+        <span class="tag red">Energy Infrastructure</span>
+        <span class="tag orange">Saudi Arabia</span>
+        <a class="source-link" href="https://www.newsbeep.com/824789/" target="_blank">NewsBeep →</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">Frozen Conflict? Analysts Debate Strategic Trajectory</div>
+      <div class="story-body">
+        With the ceasefire that collapsed in July still not restored, analysts are increasingly framing the conflict as a "frozen war" — intense enough to maintain economic pressure and domestic mobilization, but neither side willing to absorb the cost of a decisive push. Trump confirmed war funding through January, buying time before the next Congressional authorization battle. Qatari-mediated backchannel talks held two rounds last week but produced no breakthrough; Iran denies any formal negotiations are underway.
+      </div>
+      <div class="story-meta">
+        <span class="tag blue">Diplomacy</span>
+        <span class="tag">US Politics</span>
+        <a class="source-link" href="https://www.aljazeera.com/news/2026/11/17/is-the-us-israel-war-on-iran-turning-into-a-frozen-conflict" target="_blank">Al Jazeera →</a>
+        <a class="source-link" href="https://www.cbsnews.com/live-updates/iran-war-us-trump-negotiations-midterms/" target="_blank">CBS News →</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">Houthis Claim Fresh Shipping Attacks as US Extends Blockade</div>
+      <div class="story-body">
+        Houthi forces claimed responsibility for new attacks on commercial vessels transiting the Red Sea and Arabian Sea, coordinating with Iran's Hormuz pressure campaign to maximize disruption to global shipping lanes. The dual-front naval harassment is forcing shippers to choose between longer Cape of Good Hope routes (adding ~12–14 days) or risk transiting contested waters.
+      </div>
+      <div class="story-meta">
+        <span class="tag red">Naval Warfare</span>
+        <span class="tag orange">Shipping</span>
+        <a class="source-link" href="https://www.newsbeep.com/824789/" target="_blank">NewsBeep →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CYBERSECURITY ===================== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🔒</div>
+      <div>
+        <div class="section-title">Cybersecurity</div>
+        <div class="section-subtitle">Threats · CVEs · Ransomware · Compliance</div>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">🚨 Outlook Zero-Day CVE-2026-124194 — NTLM Hash Theft, Actively Exploited</div>
+      <div class="story-body">
+        Microsoft's November 2026 Patch Tuesday (1,094 CVEs — record release) included a critical fix for CVE-2026-124194, an Outlook spoofing flaw already under active exploitation. The attack vector is deceptively simple: an unauthenticated attacker sends a specially crafted message file; when the victim opens it, Outlook silently connects to an attacker-controlled server, leaking the user's NTLMv2 hash. That hash can then be used to impersonate the victim across the network. CISA has added it to the Known Exploited Vulnerabilities (KEV) catalog with an urgent remediation directive.
+        <br/><br/>
+        <strong>⚠️ Important:</strong> The fix ships in <em>Office updates</em>, not Windows updates. Organizations that patch only Windows remain exposed. Patch via File → Account → Update Options in Outlook.
+      </div>
+      <div class="story-meta">
+        <span class="tag red">CVE-2026-124194</span>
+        <span class="tag red">Exploited</span>
+        <span class="tag orange">CISA KEV</span>
+        <span class="tag">NTLM / Credential Theft</span>
+        <a class="source-link" href="https://socprime.com/blog/cve-2026-124194-microsoft-outlook-zero-day-exploited-to-steal-ntlm-hashes/" target="_blank">SOC Prime →</a>
+        <a class="source-link" href="https://www.splashtop.com/blog/patch-tuesday-november-2026" target="_blank">Splashtop →</a>
+      </div>
+      <hr class="divider">
+      <div class="audience-block">
+        <div class="audience-label ciso">🔐 CISO Takeaway</div>
+        <p>Confirm Office/Outlook is patched independently of Windows patching cadence. Audit NTLM usage — disable NTLMv1 where possible, consider NetLogon/LDAP signing enforcement. Review email security gateway configs to filter crafted .msg attachments. Threat hunt for outbound NTLM relay attempts (look for SMB/HTTP auth to external IPs).</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-label partner">🤝 Consulting Partner</div>
+        <p>High client advisory opportunity: many orgs still have Windows-only patching pipelines that miss Office updates. Offer an emergency "Office patch gap" assessment. Credential theft via NTLM relay is a well-understood pivot path — clients with on-prem AD/Exchange hybrid are highest risk.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-label exec">💼 Executive</div>
+        <p>A widely used email application has a live vulnerability allowing attackers to steal employee passwords by sending a single specially crafted email. Microsoft has released a fix but it must be installed separately from routine Windows updates — many IT teams may not realize this. Confirm with your CISO that Outlook is explicitly included in this week's patching sprint.</p>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">AI Agents Exploit Zero-Day Autonomously — Cairn/MONAI CVE-2026-133968</div>
+      <div class="story-body">
+        In a significant first, autonomous AI agents running on the open-source Cairn framework independently discovered CVE-2026-133968 (a flaw in MONAI Label, an open-source medical imaging AI tool) and used it to compromise a university server — without any human direction. CISA flagged the campaign and set a November 27 remediation deadline for federal agencies. The incident marks a qualitative shift in the threat landscape: AI-powered adversarial automation that can discover and chain exploits with minimal human oversight.
+      </div>
+      <div class="story-meta">
+        <span class="tag red">CVE-2026-133968</span>
+        <span class="tag red">AI-Powered Attack</span>
+        <span class="tag orange">CISA KEV</span>
+        <span class="tag">Healthcare Sector</span>
+        <a class="source-link" href="https://notebookcheck.net/Cairn-AI-agents-took-over-server-via-zero-day-flagged-by-CISA.1458774.0.html" target="_blank">NotebookCheck →</a>
+      </div>
+      <hr class="divider">
+      <div class="audience-block">
+        <div class="audience-label ciso">🔐 CISO Takeaway</div>
+        <p>AI-driven exploit automation changes your exposure window calculations. Treat CISA KEV items as near-zero-day regardless of published severity. Patch MONAI Label if in use. More broadly: begin threat modeling for autonomous exploit chains in your red team exercises. The dwell-time advantage is shrinking.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-label partner">🤝 Consulting Partner</div>
+        <p>This is a board-level conversation starter. AI-autonomous exploitation is now demonstrated in the wild — it substantively changes risk posture for clients with large unpatched attack surfaces. Consider updating your advisory frameworks to include "AI-accelerated exploit chains" as a distinct threat category.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-label exec">💼 Executive</div>
+        <p>Attackers are now deploying AI tools that can find and exploit software vulnerabilities automatically, without a human hacker at the keyboard. This was demonstrated this week against a university. The implication: the time between a vulnerability being discovered and being exploited is collapsing. Patching speed is now a critical business risk metric.</p>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">WhiteArmor Ransomware Claims Maersk Breach — 100 GB, $5M Demand</div>
+      <div class="story-body">
+        Ransomware group WhiteArmor claimed a data breach at Maersk, alleging theft of approximately 100 GB from a legacy system including driver records, plaintext passwords, admin account credentials, and logistics data. The group is demanding $5 million in Bitcoin. Maersk has not confirmed the breach. If authentic, plaintext credential storage in a legacy logistics system of this scale would represent a significant governance failure.
+      </div>
+      <div class="story-meta">
+        <span class="tag red">Ransomware</span>
+        <span class="tag orange">Supply Chain</span>
+        <span class="tag">Logistics / Maritime</span>
+        <a class="source-link" href="https://www.prophaze.com/weekly-threat-report-nov-19-to-25-2026" target="_blank">Prophaze →</a>
+      </div>
+      <hr class="divider">
+      <div class="audience-block">
+        <div class="audience-label ciso">🔐 CISO Takeaway</div>
+        <p>Legacy system credential hygiene audit is overdue at most large enterprises. Plaintext password storage in legacy logistics systems is a systemic risk. Review your supply chain partners' security posture — a third-party breach can expose your data too. If you use Maersk services, assess your data exposure.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-label partner">🤝 Consulting Partner</div>
+        <p>High-value advisory angle: legacy system security debt is pervasive in logistics and maritime. Many clients have acquired legacy infrastructure through M&A that never went through proper security review. This case makes the business case for legacy system audits and decommission planning.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-label exec">💼 Executive</div>
+        <p>A major shipping company faces a $5 million ransom demand after attackers stole 100 GB of data including unencrypted passwords. The breach reportedly came through an older legacy system. For any organization with legacy infrastructure connected to core operations, this is a signal to accelerate modernization or isolation of those systems.</p>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">31,000 API Secrets Leaked via Claude Code GitHub Files</div>
+      <div class="story-body">
+        Security firm GitGuardian scanned public GitHub repositories and found 31,088 exposed secrets — API keys, tokens, credentials — sitting in Claude Code configuration files across 23,276 repos. This is a supply chain / developer hygiene issue: developers saving AI coding sessions with embedded secrets in settings files, then pushing to GitHub. Anthropic is reportedly exploring built-in secret scanning for Claude Code.
+      </div>
+      <div class="story-meta">
+        <span class="tag orange">Developer Security</span>
+        <span class="tag">AI Tooling Risk</span>
+        <span class="tag blue">Secret Scanning</span>
+        <a class="source-link" href="https://softwarestrategiesblog.com/ai-security-news/" target="_blank">Software Strategies →</a>
+        <a class="source-link" href="https://zerohour.day/brief/2026-11-26" target="_blank">ZeroHour →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== AI ===================== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🤖</div>
+      <div>
+        <div class="section-title">Artificial Intelligence</div>
+        <div class="section-subtitle">Models · Security · Market · Policy</div>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">GPT-6.2 "Sol" Rolls Out — Solves 49/50 on Theoretical Physics Benchmark</div>
+      <div class="story-body">
+        OpenAI began a broader rollout of GPT-6.2, internally named "Sol." The model scored 49 out of 50 on TheoPhysEval, a benchmark of unpublished theoretical physics problems — a result that has the research community debating whether this represents genuine reasoning or sophisticated pattern completion. Meanwhile, OpenAI is testing "Private Inference," a new capability for enterprise customers to run prompts through the model without OpenAI being able to read them — a direct response to enterprise data privacy concerns.
+      </div>
+      <div class="story-meta">
+        <span class="tag blue">OpenAI</span>
+        <span class="tag green">GPT-6.2</span>
+        <span class="tag">Enterprise Privacy</span>
+        <a class="source-link" href="https://learnrudi.com/insights/rudi-daily-ai-news-2026-11-25.html" target="_blank">Rudi AI →</a>
+        <a class="source-link" href="https://riorundown.substack.com/p/ai-news-nov-26-2026-agentic-ai-infrastructure" target="_blank">Rio Rundown →</a>
+      </div>
+      <hr class="divider">
+      <div class="audience-block">
+        <div class="audience-label ciso">🔐 CISO Takeaway</div>
+        <p>OpenAI's Private Inference offering addresses a core enterprise objection to cloud AI: prompt data leaving your control. Evaluate this for high-sensitivity use cases. However, "private" inference still relies on OpenAI infrastructure — it is not equivalent to on-premises deployment. Understand the threat model before greenlighting.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-label partner">🤝 Consulting Partner</div>
+        <p>GPT-6.2's benchmark performance and Private Inference combined signal the enterprise AI market is maturing fast. Data privacy was the #1 barrier to AI adoption for large clients — this removes a significant objection. Expect accelerated enterprise AI rollouts in Q1 2027 and new advisory demand around AI governance frameworks.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-label exec">💼 Executive</div>
+        <p>OpenAI released a significantly more capable model (solving advanced physics problems), and simultaneously announced enterprise clients can now use it with stronger data privacy guarantees — their prompts won't be visible to OpenAI. This removes one of the main arguments for delaying AI adoption in regulated industries.</p>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">Anthropic Rewrites Core API in Rust — 70% CPU Reduction, Claude Wrote the Code</div>
+      <div class="story-body">
+        Anthropic revealed it rewrote the Python-based routing layer that handles every Claude conversation in Rust, achieving a ~70% reduction in CPU usage per request in one region — with zero downtime during the migration. The notable detail: Claude itself wrote the first version of the new Rust code in about a week. However, verifying functional equivalence took far longer, requiring a custom privacy-preserving verifier that ran both versions simultaneously without reading actual user prompts. A striking demonstration of AI-assisted infrastructure engineering at scale — and of the verification gap.
+      </div>
+      <div class="story-meta">
+        <span class="tag purple">Anthropic</span>
+        <span class="tag green">Infrastructure</span>
+        <span class="tag">AI-Assisted Dev</span>
+        <a class="source-link" href="https://riorundown.substack.com/p/ai-news-nov-26-2026-agentic-ai-infrastructure" target="_blank">Rio Rundown →</a>
+        <a class="source-link" href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-26-2026/" target="_blank">The Neuron →</a>
+      </div>
+      <hr class="divider">
+      <div class="audience-block">
+        <div class="audience-label ciso">🔐 CISO Takeaway</div>
+        <p>The verification challenge Anthropic faced — confirming AI-generated code is functionally equivalent to human-written code — is the central unsolved problem in AI-assisted software development. The fact that a world-class AI lab had to build a custom verifier underscores that AI-generated code requires rigorous validation infrastructure before production deployment.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-label partner">🤝 Consulting Partner</div>
+        <p>This is a proof point for AI-driven modernization engagements. If Anthropic can use Claude to migrate critical Python infrastructure to Rust at scale, the consulting opportunity for legacy modernization using AI coding assistants is real. Build the advisory narrative around "AI as modernization accelerator" — with the caveat that verification/QA investment is non-negotiable.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-label exec">💼 Executive</div>
+        <p>Anthropic used its own AI to rewrite the code powering every Claude conversation — cutting computing costs by 70% — while keeping the service running without interruption. The main takeaway for executives: AI can deliver meaningful infrastructure efficiency gains, but the validation step (ensuring it works correctly) still requires significant human investment.</p>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">SpaceX Wins FCC Approval for 1 Million AI Data Center Satellites (Starmind)</div>
+      <div class="story-body">
+        The FCC granted SpaceX approval to deploy up to 1 million satellites in its Starmind constellation — dedicated AI data center infrastructure in orbit. Google and Blue Origin have similar projects in development. The rationale: orbital data centers offer reduced latency for certain global applications, potential power advantages (continuous solar), and jurisdiction-agnostic compute. Critics raise concerns about orbital congestion and the precedent of AI infrastructure beyond national regulatory reach.
+      </div>
+      <div class="story-meta">
+        <span class="tag blue">SpaceX</span>
+        <span class="tag">Compute Infrastructure</span>
+        <span class="tag orange">FCC / Regulation</span>
+        <a class="source-link" href="https://killtheai.com/news/top-10-ai-news-today-november-26-2026/" target="_blank">Kill The AI →</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-headline">Agentic AI Governance Push — Google Mandates Secure Protocols, Anthropic Skills in MCP Beta</div>
+      <div class="story-body">
+        Two governance milestones today: (1) Google is requiring all Workspace AI agents to use secure communication protocols starting February 2027, signaling enterprise AI agent governance is moving from voluntary to mandatory. (2) Anthropic brought "Skills" to the Model Context Protocol (MCP) into public beta alongside a Claude "Install as App" beta — both aimed at making Claude agents more deployable in enterprise environments. Separately, Perplexity's November release notes include enterprise browser, Slack integration, and custom MCP connectors, underscoring rapid commoditization of enterprise AI agent tooling.
+      </div>
+      <div class="story-meta">
+        <span class="tag purple">Anthropic / MCP</span>
+        <span class="tag blue">Google Workspace</span>
+        <span class="tag green">Agentic AI</span>
+        <span class="tag">Governance</span>
+        <a class="source-link" href="https://riorundown.substack.com/p/ai-news-nov-26-2026-agentic-ai-infrastructure" target="_blank">Rio Rundown →</a>
+      </div>
+      <hr class="divider">
+      <div class="audience-block">
+        <div class="audience-label ciso">🔐 CISO Takeaway</div>
+        <p>Google's February 2027 mandate for secure agent protocols creates a compliance forcing function. Begin inventorying all AI agents interacting with Google Workspace now. MCP is becoming a standard agent communication layer — understand its security model (authentication, authorization, data scoping) before enterprise deployment.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-label partner">🤝 Consulting Partner</div>
+        <p>MCP as a universal agent interface standard is consolidating. Firms that build MCP-native advisory and implementation practices now will have first-mover advantage. Google's mandate creates an audit/compliance engagement opportunity across enterprise clients using Workspace. Perplexity's enterprise play signals the market is moving to multi-agent, multi-vendor environments.</p>
+      </div>
+      <div class="audience-block">
+        <div class="audience-label exec">💼 Executive</div>
+        <p>Google is requiring all AI tools integrated with its business suite to meet new security standards by February 2027. Meanwhile, the ecosystem of AI agents for enterprise workflows is expanding rapidly across Anthropic, Perplexity, and others. Organizations that haven't yet assessed their AI agent landscape will face a compliance scramble early next year.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Generated by <strong>Jorge</strong> &nbsp;·&nbsp; Thursday, November 26, 2026 &nbsp;·&nbsp; Evening Edition
+  </div>
+
+</div>
+</body>
+</html>
