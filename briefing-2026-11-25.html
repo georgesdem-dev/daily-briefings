@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Briefing — Wednesday, November 25, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .briefing-header {
+      text-align: center;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 48px;
+    }
+    .briefing-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #58a6ff; margin-bottom: 14px;
+    }
+    .briefing-header h1 { font-size: 2.2rem; font-weight: 900; color: #f0f6fc; margin-bottom: 10px; }
+    .briefing-header .meta { font-size: 0.9rem; color: #8b949e; }
+    .briefing-header .meta span { display: inline-block; margin: 0 8px; color: #484f58; }
+
+    .toc {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 44px;
+    }
+    .toc-title { font-size: 0.8rem; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .toc a { color: #e6edf3; display: block; padding: 4px 0; font-size: 0.9rem; }
+    .toc a:hover { color: #58a6ff; }
+    .toc-section { font-size: 0.78rem; color: #484f58; margin-left: 14px; margin-bottom: 2px; }
+
+    .topic-section { margin-bottom: 56px; }
+    .topic-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid #21262d;
+    }
+    .topic-icon { font-size: 2rem; }
+    .topic-title { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .topic-subtitle { font-size: 0.82rem; color: #8b949e; margin-top: 2px; }
+
+    .card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700; color: #f0f6fc;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red { background: #3d1e1e; color: #f85149; }
+    .badge-orange { background: #3d2a1e; color: #e3b341; }
+    .badge-blue { background: #1e2d3d; color: #58a6ff; }
+    .badge-green { background: #1e3d2a; color: #3fb950; }
+    .badge-purple { background: #2d1e3d; color: #bc8cff; }
+    .badge-yellow { background: #3d3a1e; color: #f0c940; }
+
+    ul.news-list { list-style: none; }
+    ul.news-list li {
+      padding: 8px 0; border-bottom: 1px solid #21262d;
+      font-size: 0.9rem; line-height: 1.65;
+    }
+    ul.news-list li:last-child { border-bottom: none; }
+    ul.news-list li::before { content: "▸ "; color: #58a6ff; }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 8px;
+    }
+    .audience-card {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 20px;
+    }
+    .audience-card .aud-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .aud-ciso { color: #f85149; }
+    .aud-partner { color: #e3b341; }
+    .aud-exec { color: #3fb950; }
+    .audience-card ul { list-style: none; font-size: 0.85rem; }
+    .audience-card ul li {
+      padding: 4px 0; border-bottom: 1px solid #21262d; line-height: 1.5;
+    }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: "• "; color: #484f58; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;
+    }
+    .data-table th {
+      text-align: left; padding: 8px 12px; background: #0d1117; color: #8b949e;
+      font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid #30363d;
+    }
+    .data-table td { padding: 8px 12px; border-bottom: 1px solid #21262d; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #f85149; font-weight: 700; }
+    .data-table .warn { color: #e3b341; font-weight: 600; }
+    .data-table .ok { color: #3fb950; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px; margin-top: 10px;
+    }
+    .stat-box {
+      background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+      padding: 14px 16px; text-align: center;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #f0f6fc; }
+    .stat-label { font-size: 0.72rem; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .alert { border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; line-height: 1.6; }
+    .alert-red { background: #1e0b0b; border: 1px solid #3d1e1e; }
+    .alert-orange { background: #1e130b; border: 1px solid #3d2a1e; }
+    .alert-green { background: #0b1e12; border: 1px solid #1e3d2a; }
+
+    .sources {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #21262d;
+      font-size: 0.78rem; color: #6e7681;
+    }
+    .sources a { color: #58a6ff; margin-right: 10px; }
+
+    .briefing-footer {
+      text-align: center; margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid #21262d; color: #484f58; font-size: 0.78rem;
+    }
+    .briefing-footer strong { color: #6e7681; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="briefing-header">
+    <div class="label">Evening Intelligence Briefing</div>
+    <h1>📰 Daily Briefing</h1>
+    <div class="meta">
+      Wednesday, November 25, 2026
+      <span>·</span>
+      Iran War · Cybersecurity · AI
+      <span>·</span>
+      6:00 PM Paris
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#iran">🔥 Iran War — Houthis Strike Riyadh's PIF Tower a Second Time, Saudis Hit Hodeidah, Two More Tankers Hit Mines in Hormuz</a>
+    <div class="toc-section">A Houthi strike wounds 11 at Riyadh's Public Investment Fund tower — the second hit on the same building in six days — triggering a Saudi-led coalition bombardment of Hodeidah port and Houthi threats against Jeddah and other Red Sea ports; meanwhile Iran's Revolutionary Guards Navy reports two more tankers struck mines and caught fire in Hormuz, and Tehran offers (via Qatari mediators) to reopen the strait within 48 hours if Washington lifts its naval blockade and ends hostilities</div>
+    <a href="#cyber">🔐 Cybersecurity — Suspected AI-Driven Campaign Breaches 24 Check Point Management Servers Across 22 Countries; Hex.pm Hit by CVSS 10.0 RCE</a>
+    <div class="toc-section">GT13, a suspected AI-assisted threat actor, exploited a Check Point SmartConsole auth-bypass flaw (CVE-2026-16232) to seize 24 firewall management servers at 22 organizations across 17 countries, stealing firewall databases, credentials, and internal CA certificates; separately, attackers exploited a decade-old, pre-authentication RCE in the Hex.pm package registry (CVE-2026-129514, CVSS 10.0) on six production servers; VMware patches a third critical vCenter auth-bypass flaw (CVE-2026-123903, CVSS 9.8) in a week, with public exploit code already circulating</div>
+    <a href="#ai">🤖 Artificial Intelligence — US Tightens Chip Remote-Access Rules on China, Nvidia Sellers Scramble for Buyers; GPT-6.2 Sol Goes Global</a>
+    <div class="toc-section">A new Commerce Department rule closing the "remote access" loophole on advanced AI chips takes full effect, sending Nvidia GPU resellers scrambling for new buyers as Chinese firms lose cloud-based compute access; OpenAI's GPT-6.2 Sol rolls out globally to all paid ChatGPT tiers; Anthropic makes Claude artifacts installable as desktop apps and expands Skills for MCP; GPT-6 demonstrates de novo protein design with lab-confirmed binding across five targets</div>
+  </div>
+
+  <div class="topic-section" id="iran">
+    <div class="topic-header">
+      <div class="topic-icon">🔥</div>
+      <div>
+        <div class="topic-title">Iran War — Houthis Strike Riyadh's PIF Tower Again, Saudis Pound Hodeidah, Two More Tankers Hit Mines</div>
+        <div class="topic-subtitle">Operation Epic Fury · Feb 28, 2026 – Present · Day 271</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Houthis Hit Riyadh's PIF Tower a Second Time in Six Days; Saudi Coalition Strikes Hodeidah; Two More Tankers Mined in Hormuz
+        <span class="badge badge-red">ESCALATION ON THREE FRONTS</span>
+      </div>
+      <p style="font-size:0.9rem;color:#c9d1d9;margin-bottom:14px;">
+        The war widened on multiple fronts Wednesday. A Houthi missile or drone struck the Public Investment Fund (PIF) tower in Riyadh's King Abdullah Financial District for the second time in six days, wounding at least 11 people — all foreign nationals, according to Saudi civil defense — with damage visible roughly halfway up the 1,263-foot skyscraper, in the same zone hit on November 19. In response, the Saudi-led coalition ordered an evacuation warning and then carried out at least six airstrikes on Yemen's Hodeidah port, saying it targeted Houthi "operational capabilities." Houthi military spokesman Yahya Saree retaliated by publishing maps of Jeddah, Jazan, Yanbu, and the King Fahd Industrial Port, ordering port staff to evacuate and shipping companies to withdraw vessels immediately — though no strikes on Saudi Red Sea ports had materialized as of filing. In parallel, Iran's IRGC Navy reported that two more oil tankers struck naval mines, exploded, and caught fire in the Strait of Hormuz, with Tehran again saying the vessels had attempted to transit an "unauthorized route." Iranian Army spokesman Mohammad Akraminia said Tehran has deployed new surveillance systems to tighten control of the strait and warned that ships transiting without coordinating with Iranian forces keep striking mines. On the diplomatic track, Reuters reports Tehran has conveyed a proposal through Qatari mediators to reopen Hormuz to normal shipping within 48 hours of Washington lifting its naval blockade on Iranian ports and ending hostilities on all fronts — a potential opening, though it still hinges on conditions Washington has so far rejected. That diplomatic overture comes against the backdrop of Monday's Rubio/Vance meetings with Qatar's PM, and reports that Trump has told Vance the administration doesn't need a deal with Iran right now, instead directing him toward domestic priorities after the midterms.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">271 days</div>
+          <div class="stat-label">War duration</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">11 injured</div>
+          <div class="stat-label">In second Houthi strike on Riyadh's PIF tower in six days</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">48 hrs</div>
+          <div class="stat-label">Iran's offer to Qatari mediators to reopen Hormuz, conditional on US concessions</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.usnews.com/news/world/articles/2026-11-25/iran-says-ships-hit-mines-in-hormuz-warns-vessels-to-coordinate-passage">US News — Iran Says Ships Hit Mines in Hormuz, Warns Vessels to Coordinate Passage</a>
+        <a href="https://www.cnbc.com/2026/11/25/us-iran-war-trump-hormuz-houthi-saudi-pif-tower.html">CNBC — Houthi Attack on Saudi Sovereign Wealth Fund's PIF Tower Injures 11</a>
+        <a href="https://www.aljazeera.com/news/liveblog/2026/11/25/iran-war-live-houthis-threaten-saudi-ports-over-coalitions-hodeidah-order">Al Jazeera — Iran War Live: Houthis Threaten Saudi Ports Over Coalition's Hodeidah Strikes</a>
+        <a href="https://thursdaytimes.com/2026/11/25/news/international/houthis-threaten-jeddah-saudi-red-sea-ports-coalition-hits-hodeidah/">Thursday Times — Houthis Threaten Jeddah, Saudi Red Sea Ports as Coalition Hits Hodeidah</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>No Saudi Red Sea port has been struck yet despite Houthi threats against Jeddah, Jazan, Yanbu, and King Fahd Industrial Port — a live risk for Wednesday night/Thursday.</li>
+        <li>Iran's tightened Hormuz "coordination" regime — effectively requiring ships to clear passage with Iranian forces or risk mines — continues to function as a de facto blockade-within-a-blockade even as Tehran floats a 48-hour reopening offer.</li>
+        <li>Qatar's mediation push from Monday's Rubio/Vance meetings has not yet produced a formal US response to Iran's seven conditions or the new 48-hour proposal.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️ Casualties (last confirmed figures)</div>
+      <table class="data-table">
+        <thead><tr><th>Party</th><th>Killed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>US military</td><td>23</td><td>820 wounded (Pentagon)</td></tr>
+          <tr><td>Israel (military)</td><td>40</td><td>7,841 wounded</td></tr>
+          <tr><td>Iran (independent / HRANA)</td><td class="highlight">3,684</td><td>incl. 1,721 civilians</td></tr>
+          <tr><td>Iran (UN/OCHA)</td><td class="highlight">3,400+ civilians alone</td><td>33,000+ wounded</td></tr>
+          <tr><td>Yemen (Houthi offensive)</td><td class="highlight">500+</td><td>46,000 displaced</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">Figures carried forward unchanged from Nov 24 — today's reporting covers new injuries (11 in Riyadh) and tanker incidents but no new independently verified single-source cumulative death-toll update. Aggregator trackers continue to show wide, conflicting ranges (total deaths across all sides cited anywhere from ~9,000 to ~18,000 depending on methodology); we hold to the last officially sourced figures above pending confirmation.</p>
+    </div>
+  </div>
+
+  <div class="topic-section" id="cyber">
+    <div class="topic-header">
+      <div class="topic-icon">🔐</div>
+      <div>
+        <div class="topic-title">Cybersecurity</div>
+        <div class="topic-subtitle">Wednesday, November 25, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: Suspected AI-Driven Campaign Breaches 24 Check Point Management Servers Across 22 Organizations in 17 Countries
+        <span class="badge badge-red">GT13 · CVE-2026-16232 · AI-ASSISTED INTRUSION</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        Researchers detailed a campaign by a threat actor tracked as GT13 that compromised 24 Check Point Security Management Servers at 22 organizations across 17 countries and territories — spanning financial services, energy, government, transportation, mining, engineering, and manufacturing sectors in the UK, Ireland, France, Netherlands, Greece, Germany, Austria, Bulgaria, Poland, India, Thailand, Vietnam, South Korea, Hong Kong, China, Australia, and the US. GT13 exploited CVE-2026-16232, a critical authentication-bypass flaw in Check Point's SmartConsole login process (CVSS 9.3, patched in Check Point's July 2026 jumbo hotfix), to gain full administrator access to internet-exposed management servers without credentials. Once in, the actor copied firewall policy databases, stole credentials and internal CA material, minted rogue certificates, and exfiltrated security policies — enough to potentially rewrite firewall rules or impersonate trusted internal services later. Analysts flag the operation's speed and consistency across victims as consistent with AI-assisted tooling, though that attribution remains unproven. The confirmed intrusion window ran October 17 to November 2. Separately, a pre-authentication remote-code-execution flaw dating to 2016 (CVE-2026-129514, CVSS 10.0) in the Hex.pm package registry — the primary repository for the Elixir/Erlang ecosystem — was exploited Monday to run commands on six production servers; maintainers patched within roughly 15 minutes and found no tampered packages, but the registry's signing key remains unrotated and password hashes/2FA secrets were exposed. And VMware shipped a fix for a third critical vCenter authentication-bypass flaw (CVE-2026-123903, CVSS 9.8) in the vmdir/SSO component in as many weeks — distinct from the actively-exploited CVE-2026-123890 patched five days earlier — with public proof-of-concept code already posted to GitHub even though Broadcom has not yet confirmed in-the-wild exploitation.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#f85149;">24 servers</div>
+          <div class="stat-label">Check Point management servers breached across 22 orgs, 17 countries</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#e3b341;">10.0</div>
+          <div class="stat-label">CVSS score of the Hex.pm pre-auth RCE (CVE-2026-129514)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">3rd flaw</div>
+          <div class="stat-label">Critical vCenter auth-bypass patched by VMware this month</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://thehackernews.com/2026/11/hackers-compromise-24-check-point.html">The Hacker News — Hackers Compromise 24 Check Point Management Servers in Suspected AI-Driven Attack Campaign</a>
+        <a href="https://labs.cloudsecurityalliance.org/research/csa-research-note-gt13-ai-driven-checkpoint-management-compr/">Cloud Security Alliance — GT13: Suspected AI-Driven Intrusions Against Security Management Planes</a>
+        <a href="https://labs.cloudsecurityalliance.org/research/csa-research-note-hexpm-registry-server-compromise-20261125/">Cloud Security Alliance — Hex.pm Registry Server Compromise: When the Registry Is the Target</a>
+        <a href="https://thehackernews.com/2026/11/vmware-vcenter-hit-by-another-critical.html">The Hacker News — VMware vCenter Hit by Another Critical 9.8-Rated Auth Bypass Flaw After Zero-Day Exploitation</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Also Today</div>
+      <ul class="news-list">
+        <li>Check Point customers should confirm the July 2026 jumbo hotfix is installed and restrict SmartConsole/management-server access from the internet; GT13's confirmed activity window was Oct 17–Nov 2, so retrospective hunting for rogue certs and policy exports is warranted.</li>
+        <li>Self-hosted Hex.pm (hexpm) operators should patch to commit 379b0a2, fetch packages only from repo.hex.pm (not mirrors), and rotate Hex account passwords and 2FA enrollments.</li>
+        <li>VMware's third critical vCenter auth-bypass patch in a week (CVE-2026-123903, part of VMSA-2026-0011 covering 23 flaws) should be treated as urgent given public exploit code is already circulating.</li>
+        <li>GeoServer saw a second exploitation wave in three months as watchTowr observed attackers probing newly disclosed flaws on November 25, following the August CVE-2026-76904 zero-day.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 CISO — Action Items</div>
+          <ul>
+            <li>Audit internet-facing Check Point SmartConsole/management-server exposure immediately and hunt for signs of the GT13 TTPs (rogue certs, unexpected policy exports) going back to mid-October; patch vCenter against CVE-2026-123903 given public PoC is live, and verify any self-hosted Hex.pm or Erlang/Elixir build infrastructure is on the patched commit</li>
+            <li>The suspected-AI-assisted nature of GT13's campaign — speed and consistency across 22 disparate victims — reinforces that adversaries are operationalizing AI for reconnaissance and exploitation at scale; this belongs on the same risk register entry as last week's Cairn/MONAI incident</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>Firewall-management-plane compromise at 22 organizations across 17 countries is a strong hook for a security-architecture review conversation — especially for clients still exposing management consoles directly to the internet; the Hex.pm incident also supports a software-supply-chain/dependency-trust engagement for clients on Elixir/Erlang stacks</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Board Topics</div>
+          <ul>
+            <li>If your firm operates in any of the 17 countries named in the GT13 campaign (UK, US, Australia, India, Germany, and others), ask IT/security directly whether your firewall management infrastructure was in scope — this is a board-level disclosure question, not just an IT ticket</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-section" id="ai">
+    <div class="topic-header">
+      <div class="topic-icon">🤖</div>
+      <div>
+        <div class="topic-title">Artificial Intelligence</div>
+        <div class="topic-subtitle">Wednesday, November 25, 2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌟 Top Story: US Tightens Chip Remote-Access Rules on China — Nvidia Sellers Scramble for Buyers; GPT-6.2 Sol Goes Global
+        <span class="badge badge-purple">EXPORT CONTROLS TIGHTEN · GLOBAL CHATGPT ROLLOUT</span>
+      </div>
+      <p style="font-size:0.88rem;color:#c9d1d9;margin-bottom:14px;">
+        The Commerce Department's new rule closing the "remote access" loophole on advanced AI chips — announced November 16 and in effect since November 19 — is now visibly reshaping the GPU market. The rule extends 2022-era export controls, which only restricted direct chip sales to China, to also cover compute accessed remotely through data centers anywhere in the world serving China-headquartered companies; it additionally requires licenses for chip exports supporting data centers in Indonesia, Malaysia, Singapore, Thailand, and Brazil, with a 90-day window for existing operators to seek licenses. CNBC reports Nvidia GPU resellers are now actively hunting for new buyers as B300 chips hit the market and Chinese firms lose cloud-based remote access to advanced compute, while Asian data-center operators are cutting rental prices and pitching spare capacity to US buyers to fill the gap. On the product side, OpenAI's chat-tuned GPT-6.2 Sol — previously limited to ChatGPT's main tab — is now rolling out globally to all paid tiers (Plus, Pro, Business, Enterprise), with the older GPT-5.6 family slated for retirement in December; free and Go-tier users are excluded for now. Anthropic made Claude artifacts installable as standalone desktop apps and expanded its Skills framework for MCP, continuing its push to make Claude outputs persistent, reusable software rather than one-off chat responses. Also notable: OpenAI demonstrated GPT-6 designing novel protein sequences with laboratory-confirmed binding across five biological targets, and published a preprint claiming a matrix-multiplication exponent of 9/4 — a potential efficiency gain pending independent validation.
+      </p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-value" style="color:#bc8cff;">90 days</div>
+          <div class="stat-label">License grace period for data centers in Indonesia, Malaysia, Singapore, Thailand, Brazil</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#58a6ff;">GPT-6.2 Sol</div>
+          <div class="stat-label">Now rolling out globally to all paid ChatGPT tiers</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" style="color:#3fb950;">5 targets</div>
+          <div class="stat-label">Biological targets with lab-confirmed binding from GPT-6-designed proteins</div>
+        </div>
+      </div>
+      <div class="sources">
+        Sources: <a href="https://www.cnbc.com/2026/11/25/nvidia-china-ai-chip-remote-access.html">CNBC — Nvidia GPU Sellers Seek New Buyers as US Curbs China AI Chip Access</a>
+        <a href="https://www.lw.com/en/insights/us-commerce-department-adopts-rule-restricting-remote-access-to-advanced-ai-chips">Latham & Watkins — US Commerce Department Adopts Rule Restricting Remote Access to Advanced AI Chips</a>
+        <a href="https://learnrudi.com/insights/rudi-daily-ai-news-2026-11-25.html">Rudi Daily AI News — Nov 25, 2026: US Chip Remote-Access Rule, GPT-6.2 Sol Rollout</a>
+        <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-25-2026/">The Neuron — Everything That Happened in AI Today, November 25, 2026</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Also Today</div>
+      <ul class="news-list">
+        <li>South Korea proposed nearly doubling its defense AI budget to 361 billion won annually, with KT, Naver Cloud, and SK Telecom forming dedicated task forces to chase defense contracts.</li>
+        <li>The International Dockworkers Council set six minimum collective-bargaining standards for automation and AI in port terminals through 2030, warning that algorithms and terminal operating systems threaten jobs.</li>
+        <li>House lawmakers introduced the RSI Safety Act, which would require large AI developers to file quarterly automated R&D reports — a notable new legislative entry in the AI-governance space.</li>
+        <li>The UK's NHS began circulating early results from its £10M EDITH trial testing AI-assisted breast cancer detection across nearly 700,000 women.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📣 Audience-Tailored Takeaways</div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-label aud-ciso">🔐 AI Security</div>
+          <ul>
+            <li>Chip export-control tightening will push more AI workloads toward domestic/regional cloud providers scrambling for new customers — vet any new compute vendor's data residency and access controls before onboarding, especially capacity being resold out of markets affected by the new licensing rule</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-partner">🤝 Consulting Partner — Opportunities</div>
+          <ul>
+            <li>The remote-access chip rule creates near-term advisory demand around export-control compliance for any client running or leasing AI infrastructure across Southeast Asia or Brazil, given the 90-day licensing clock now running</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="aud-label aud-exec">💼 Business Executive — Competitive Landscape</div>
+          <ul>
+            <li>GPU oversupply signals from resellers scrambling for buyers could soften AI infrastructure costs for Western buyers near-term — worth revisiting compute procurement timelines if your AI roadmap has capacity-constrained projects on hold</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="briefing-footer">
+    <p><strong>Generated by Jorge</strong> &nbsp;·&nbsp; Wednesday, November 25, 2026 &nbsp;·&nbsp; 6:00 PM Paris time</p>
+    <p style="margin-top:6px;"><a href="index.html" style="color:#484f58;">← Back to Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
